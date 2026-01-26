@@ -1,11 +1,10 @@
-// @ts-nocheck
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { ArrowLeft, Copy, CreditCard, User, Mail, Phone, CheckCircle, Star, ShieldCheck, PlayCircle, BookOpen, Headphones, Heart, Sparkles, Award } from 'lucide-react';
+import { ArrowLeft, Copy, CreditCard, User, CheckCircle, Star, ShieldCheck, BookOpen, Headphones, Heart, Sparkles } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import {
   Accordion,
@@ -15,7 +14,6 @@ import {
 } from "@/components/ui/accordion";
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-// import { useAuth } from '@/contexts/AuthContext'; // REMOVED
 import { Toaster } from '@/components/ui/toaster';
 import { VideoFacade } from '@/components/ui/video-facade';
 import { 
@@ -69,15 +67,7 @@ const WhatsAppButton = () => (
 
 export default function EbookFeminineLanding() {
   const { toast } = useToast();
-  // const { user } = useAuth(); // REMOVED
-  const [user, setUser] = useState<any>(null); // Local state for user
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
-    });
-  }, []);
-
+  const [user, setUser] = useState<any>(null);
   const productNameBackend = 'ebook_feminine';
   const displayProductName = 'Feminine Magnetism: Audio Hipnoterapi + Ebook';
   const originalPrice = 300000;
@@ -93,6 +83,12 @@ export default function EbookFeminineLanding() {
   const [paymentData, setPaymentData] = useState<any>(null);
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
   const purchaseFiredRef = useRef(false);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) setUser(user);
+    });
+  }, []);
 
   // Helper to send CAPI events
   const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string) => {
@@ -147,8 +143,6 @@ export default function EbookFeminineLanding() {
       // External ID from authenticated user (Supabase user ID)
       if (session?.user?.id) {
         userData.external_id = session.user.id;
-      } else if (user?.id) {
-        userData.external_id = user.id;
       }
 
       // 🎯 FACEBOOK LOGIN ID EXTRACTION

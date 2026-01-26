@@ -1,13 +1,11 @@
-// @ts-nocheck
 import React, { useState, useEffect } from 'react';
-import { Play, Check, X, Star, Clock, Users, Shield, TrendingUp, Zap, ChevronDown, User, Mail, Phone, CreditCard, Copy, ArrowRight, Gift } from 'lucide-react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Play, Check, X, Clock, Shield, ChevronDown, User, CreditCard, Copy, Zap } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-// import { useAuth } from '@/contexts/AuthContext'; // REMOVED
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -26,7 +24,7 @@ import {
 } from '@/utils/fbpixel';
 
 const communityTestimonials = Object.values(
-  import.meta.glob('../assets/TESTI_KOMUNITAS/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { 
+  (import.meta as any).glob('../assets/TESTI_KOMUNITAS/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { 
     eager: true, 
     query: '?url', 
     import: 'default' 
@@ -55,6 +53,7 @@ const VideoModal = ({ video, onClose }: { video: string, onClose: () => void }) 
 );
 
 export default function UangPanasLanding() {
+  const [user, setUser] = useState<any>(null);
   const [timeLeft, setTimeLeft] = useState({
     hours: 5,
     minutes: 23,
@@ -63,16 +62,13 @@ export default function UangPanasLanding() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [memberCount, setMemberCount] = useState(2847);
 
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const affiliateRef = searchParams.get('ref');
   const { toast } = useToast();
-  // const { user } = useAuth(); // REMOVED
-  const [user, setUser] = useState<any>(null); // Local state for user
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) setUser(user);
     });
   }, []);
 
@@ -337,8 +333,6 @@ export default function UangPanasLanding() {
       // External ID from authenticated user (Supabase user ID)
       if (session?.user?.id) {
         userData.external_id = session.user.id;
-      } else if (user?.id) { // Fallback if session is not available but user from useAuth is
-        userData.external_id = user.id;
       }
 
       // 🎯 FACEBOOK LOGIN ID EXTRACTION
@@ -417,7 +411,7 @@ export default function UangPanasLanding() {
       currency: 'IDR'
     }, addPaymentInfoEventId);
 
-    let currentUserId = user?.id;
+    let currentUserId = null;
 
     // AUTO AUTH LOGIC
     if (!currentUserId) {
@@ -468,15 +462,14 @@ export default function UangPanasLanding() {
           // Ensure profile is created (Manual backup if trigger fails)
           try {
             const { error: profileError } = await supabase.from('profiles').upsert({
-              id: currentUserId, // Use user ID as primary key
-              user_id: currentUserId,
+              user_id: currentUserId as string,
               user_email: userEmail,
               display_name: userName,
               experience_points: 0,
               level: 1,
               streak_days: 0,
               updated_at: new Date().toISOString()
-            }, { onConflict: 'id' });
+            } as any, { onConflict: 'user_id' });
             
             if (profileError) {
                console.warn("Profile sync note (non-fatal):", profileError.message);
@@ -610,12 +603,6 @@ export default function UangPanasLanding() {
       </div>
     );
   }
-
-  const [visibleCount, setVisibleCount] = useState(12);
-
-  const loadMore = () => {
-    setVisibleCount(prev => prev + 12);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white selection:bg-red-500 selection:text-white">
@@ -1341,19 +1328,12 @@ export default function UangPanasLanding() {
             karena begitu banyak testimony, hanya sebagian kami selipkan disini
           </p>
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 text-left">
-            {communityTestimonials.slice(0, visibleCount).map((img, idx) => (
+            {communityTestimonials.map((img, idx) => (
                <div key={idx} className="break-inside-avoid rounded-lg overflow-hidden border border-gray-800 hover:border-red-500 transition-colors bg-gray-900">
                   <img src={img} alt={`Testimoni ${idx + 1}`} className="w-full h-auto object-cover" loading="lazy" />
                </div>
             ))}
           </div>
-          {visibleCount < communityTestimonials.length && (
-            <div className="mt-8">
-              <Button onClick={loadMore} variant="outline" className="border-purple-600 text-purple-400 hover:bg-purple-900/30">
-                Lihat Lebih Banyak ({communityTestimonials.length - visibleCount} Tersisa)
-              </Button>
-            </div>
-          )}
         </div>
       </section>
 

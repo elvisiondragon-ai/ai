@@ -1,4 +1,3 @@
-// @ts-nocheck
 // 🌐 IP Address Helper - Fetch client IP (IPv6 preferred)
 export const getClientIp = async (): Promise<string | null> => {
   try {
@@ -296,7 +295,7 @@ export const initFacebookPixelWithLogging = (pixelId: string, userData?: Advance
         };
         if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
         t = b.createElement(e); t.async = !0; t.src = v; 
-        t.onerror = function() { window.fbq = function() {}; };
+        t.onerror = function() { (window as any).fbq = function() {}; };
         s = b.getElementsByTagName(e)[0]; 
         try { s.parentNode.insertBefore(t, s); } catch (e) {}
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
