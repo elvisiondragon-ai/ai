@@ -6,6 +6,7 @@ import UangPanasLanding from './id_ebook/uangpanas.tsx'
 import EbookFeminineLanding from './id_ebook/ebook_feminine.tsx'
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/ebook_uangpanas" element={<UangPanasLanding />} />
         <Route path="/ebook_feminine" element={<EbookFeminineLanding />} />
       </Routes>
+      <SpeedInsights />
     </BrowserRouter>
   </React.StrictMode>,
 )
