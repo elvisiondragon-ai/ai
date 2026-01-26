@@ -611,6 +611,12 @@ export default function UangPanasLanding() {
     );
   }
 
+  const [visibleCount, setVisibleCount] = useState(12);
+
+  const loadMore = () => {
+    setVisibleCount(prev => prev + 12);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white selection:bg-red-500 selection:text-white">
       <Toaster />
@@ -1335,12 +1341,19 @@ export default function UangPanasLanding() {
             karena begitu banyak testimony, hanya sebagian kami selipkan disini
           </p>
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 text-left">
-            {communityTestimonials.map((img, idx) => (
+            {communityTestimonials.slice(0, visibleCount).map((img, idx) => (
                <div key={idx} className="break-inside-avoid rounded-lg overflow-hidden border border-gray-800 hover:border-red-500 transition-colors bg-gray-900">
                   <img src={img} alt={`Testimoni ${idx + 1}`} className="w-full h-auto object-cover" loading="lazy" />
                </div>
             ))}
           </div>
+          {visibleCount < communityTestimonials.length && (
+            <div className="mt-8">
+              <Button onClick={loadMore} variant="outline" className="border-purple-600 text-purple-400 hover:bg-purple-900/30">
+                Lihat Lebih Banyak ({communityTestimonials.length - visibleCount} Tersisa)
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

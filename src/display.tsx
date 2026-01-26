@@ -139,8 +139,8 @@ const DisplayPage = () => {
           © 2026 eL Vision Group. All rights reserved.
         </p>
         <div className="flex justify-center gap-4 mt-4">
-          <Button variant="link" size="sm" className="text-xs text-muted-foreground" onClick={() => window.location.href='/terms'}>Terms</Button>
-          <Button variant="link" size="sm" className="text-xs text-muted-foreground" onClick={() => window.location.href='/privacy-policy'}>Privacy</Button>
+          <Button variant="link" size="sm" className="text-xs text-muted-foreground" onClick={() => window.open('https://app.elvisiongroup.com/terms', '_blank')}>Terms</Button>
+          <Button variant="link" size="sm" className="text-xs text-muted-foreground" onClick={() => window.open('https://app.elvisiongroup.com/privacy-policy', '_blank')}>Privacy</Button>
         </div>
       </motion.footer>
 
