@@ -24,14 +24,14 @@ const DisplayPage = () => {
     },
     {
       title: "VIP ACCESS",
-      url: "https://app.elvisiongroup.com/3000",
+      url: "https://wa.me/62895325633487",
       icon: Crown,
       description: "Exclusive Access to Elite Content",
       color: "from-amber-400 via-yellow-500 to-orange-500",
     },
     {
       title: "Ecosystem eL Vision",
-      url: "https://app.elvisiongroup.com",
+      url: "https://wa.me/62895325633487",
       icon: Sparkles,
       description: "Explore our full ecosystem",
       color: "from-purple-500 to-pink-600",
@@ -70,7 +70,7 @@ const DisplayPage = () => {
           whileTap={{ scale: 0.95 }}
           className="inline-block"
         >
-          <img src="/favicon.png" alt="Logo" className="w-24 h-24 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(var(--primary),0.3)]" />
+          <img src="/logo.jpeg" alt="Logo" className="w-24 h-24 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(var(--primary),0.3)] rounded-full" />
         </motion.div>
         <h1 className="text-4xl font-bold font-exo bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent mb-2 tracking-tight">
           eL Vision Group
