@@ -3,6 +3,7 @@ import React, { Suspense } from 'react'
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from '@vercel/analytics/react'
 
 // Skip the line (Synchronous imports)
 import UangPanasLanding from './id_ebook/ebook_uangpanas.tsx';
@@ -20,6 +21,7 @@ const DietPaymentPage = React.lazy(() => import('./id_ebook/ebook_langsing.tsx')
 const EbookPercayaDiriLP = React.lazy(() => import('./id_ebook/ebook_percayadiri.tsx'));
 const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.tsx'));
 const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
+const Proteam = React.lazy(() => import('./proteam.tsx'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -37,9 +39,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/ebook_percayadiri" element={<EbookPercayaDiriLP />} />
         <Route path="/ebook_tracker" element={<EbookTrackerLanding />} />
         <Route path="/vip_15jt" element={<ELVision15K />} />
+        <Route path="/proteam" element={<Proteam />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
     <SpeedInsights />
+    <Analytics />
   </BrowserRouter>,
 )

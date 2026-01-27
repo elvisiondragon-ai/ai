@@ -138,17 +138,8 @@ export default function DietPaymentPage() {
   
   const totalAmount = productPrice;
 
-  // Facebook Pixel Initialization
-  useEffect(() => {
-    if (typeof window !== 'undefined' && !purchaseFiredRef.current) { // Re-using existing ref variable name concept, but creating a new one for pixels is cleaner. Let's create a new one.
-        // Actually, looking at the code, purchaseFiredRef is for purchase. I need a new one for pixels.
-    }
-  }, []);
-  */
-  // Wait, I cannot write comments in the 'new_string'. I will just write the code.
-  // I need to add 'const hasFiredPixelsRef = useRef(false);' before the useEffect.
-  
   const hasFiredPixelsRef = useRef(false);
+
 
   // Facebook Pixel Initialization
   useEffect(() => {
