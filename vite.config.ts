@@ -17,19 +17,19 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            // Split heavy vendor libs
-            if (id.includes('@supabase') || id.includes('@radix-ui') || id.includes('framer-motion') || id.includes('lucide-react')) {
-              return 'vendor-heavy'; 
+            // Group heavy SDKs and UI libraries
+            if (id.includes('@supabase') || id.includes('@radix-ui') || id.includes('lucide-react')) {
+              return 'vendor-core'; 
             }
-            // Keep React core separate
+            // Keep framework core separate
             if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
-              return 'vendor-react';
+              return 'vendor-framework';
             }
           }
         },
       },
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 1500,
   },
   server: {
     host: true, // Listen on all local IPs
