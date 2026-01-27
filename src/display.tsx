@@ -127,7 +127,14 @@ const DisplayPage = () => {
           whileTap={{ scale: 0.95 }}
           className="inline-block"
         >
-          <img src="/logo.jpeg" alt="Logo" className="w-24 h-24 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(var(--primary),0.3)] rounded-full" />
+          <img 
+            src="/logo.jpeg" 
+            alt="Logo" 
+            width="96" 
+            height="96"
+            fetchPriority="high"
+            className="w-24 h-24 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(var(--primary),0.3)] rounded-full" 
+          />
         </motion.div>
         <h1 className="text-4xl font-bold font-exo bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent mb-2 tracking-tight">
           eL Vision Group

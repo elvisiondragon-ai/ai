@@ -1,13 +1,17 @@
 import ReactDOM from 'react-dom/client'
 import React, { Suspense } from 'react'
-import EbookFeminineLanding from './id_ebook/ebook_feminine.tsx' // Keep direct import for this one
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
-const IntroLanding = React.lazy(() => import('./intro.tsx'));
+// Skip the line (Synchronous imports)
+import UangPanasLanding from './id_ebook/ebook_uangpanas.tsx';
+import EbookFeminineLanding from './id_ebook/ebook_feminine.tsx';
+import NotFound from './NotFound.tsx';
+
+// Lazy loaded components
 const DisplayPage = React.lazy(() => import('./display.tsx'));
-const UangPanasLanding = React.lazy(() => import('./id_ebook/ebook_uangpanas.tsx'));
+const IntroLanding = React.lazy(() => import('./intro.tsx'));
 const EbookAdhdLanding = React.lazy(() => import('./id_ebook/ebook_adhd.tsx'));
 const ArifEbookLanding = React.lazy(() => import('./id_ebook/ebook_arif.tsx'));
 const EbookElvisionPaymentPage = React.lazy(() => import('./id_ebook/ebook_elvision.tsx'));
@@ -16,7 +20,6 @@ const DietPaymentPage = React.lazy(() => import('./id_ebook/ebook_langsing.tsx')
 const EbookPercayaDiriLP = React.lazy(() => import('./id_ebook/ebook_percayadiri.tsx'));
 const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.tsx'));
 const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
-const NotFound = React.lazy(() => import('./NotFound.tsx')); // Lazy load NotFound as well
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
