@@ -35,7 +35,7 @@ const DisplayPage = () => {
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-100 rounded-full blur-[100px] opacity-50" />
       </div>
 
-      <div className="w-full max-w-md mt-10">
+      <main className="w-full max-w-md mt-10">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold tracking-tight mb-2 text-slate-900">eL Vision Group</h1>
           <p className="text-slate-500 text-sm font-medium">Effortless Wealthy Life</p>
@@ -49,10 +49,10 @@ const DisplayPage = () => {
               className="group cursor-pointer border border-slate-200 bg-white hover:border-slate-400 hover:shadow-md transition-all duration-200 rounded-xl p-4 flex justify-between items-center shadow-sm"
             >
               <div>
-                <h3 className={`font-bold text-lg bg-gradient-to-r ${link.gradient} bg-clip-text text-transparent`}>
+                <h2 className={`font-bold text-lg bg-gradient-to-r ${link.gradient} bg-clip-text text-transparent`}>
                   {link.title}
-                </h3>
-                <p className="text-xs text-slate-400 font-medium">{link.desc}</p>
+                </h2>
+                <p className="text-xs text-black font-bold uppercase tracking-tight">{link.desc}</p>
               </div>
               <span className="text-slate-300 group-hover:text-slate-600 group-hover:translate-x-1 transition-all">→</span>
             </div>
@@ -62,7 +62,7 @@ const DisplayPage = () => {
         <footer className="mt-16 text-center text-slate-400 text-xs font-medium">
           <p>© 2026 eL Vision Group</p>
         </footer>
-      </div>
+      </main>
     </div>
   );
 };

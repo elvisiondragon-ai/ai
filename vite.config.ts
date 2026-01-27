@@ -15,9 +15,23 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        // manualChunks removed for single bundle
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            // Split heavy vendor libs
+            if (id.includes('@supabase') || id.includes('@radix-ui') || id.includes('framer-motion') || id.includes('lucide-react')) {
+              return 'vendor-heavy'; 
+            }
+            // Keep React core separate
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'vendor-react';
+            }
+          }
+        },
       },
     },
-    chunkSizeWarningLimit: 3000, // Increased limit since we are bundling everything
+    chunkSizeWarningLimit: 1000,
+  },
+  server: {
+    host: true, // Listen on all local IPs
   },
 })
