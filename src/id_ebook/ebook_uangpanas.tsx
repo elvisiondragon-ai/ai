@@ -115,6 +115,7 @@ export default function UangPanasLanding() {
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
 
   const hasFiredPixelsRef = React.useRef(false);
+  const addPaymentInfoFiredRef = React.useRef(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -294,7 +295,7 @@ export default function UangPanasLanding() {
         customData: eventData,
         eventId: eventId,
         eventSourceUrl: window.location.href,
-        testCode: 'TEST9597' // ADDED FOR VISUAL VERIFICATION
+        testCode: 'TEST90028' // ADDED FOR VISUAL VERIFICATION
       };
 
       // Get FBC and FBP from cookies using the utility function
@@ -397,20 +398,23 @@ export default function UangPanasLanding() {
       external_id: user?.id
     };
 
-    // Track AddPaymentInfo
-    trackAddPaymentInfoEvent({
-      content_ids: [productNameBackend],
-      content_type: 'product',
-      value: totalAmount,
-      currency: 'IDR'
-    }, addPaymentInfoEventId, pixelId, userData);
-    
-    sendCapiEvent('AddPaymentInfo', {
-      content_ids: [productNameBackend],
-      content_type: 'product',
-      value: totalAmount,
-      currency: 'IDR'
-    }, addPaymentInfoEventId);
+    // Track AddPaymentInfo (Only once)
+    if (!addPaymentInfoFiredRef.current) {
+      addPaymentInfoFiredRef.current = true;
+      trackAddPaymentInfoEvent({
+        content_ids: [productNameBackend],
+        content_type: 'product',
+        value: totalAmount,
+        currency: 'IDR'
+      }, addPaymentInfoEventId, pixelId, userData);
+      
+      sendCapiEvent('AddPaymentInfo', {
+        content_ids: [productNameBackend],
+        content_type: 'product',
+        value: totalAmount,
+        currency: 'IDR'
+      }, addPaymentInfoEventId);
+    }
 
     let currentUserId = null;
 

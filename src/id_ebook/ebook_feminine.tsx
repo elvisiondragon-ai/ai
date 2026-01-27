@@ -84,6 +84,7 @@ export default function EbookFeminineLanding() {
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
   const purchaseFiredRef = useRef(false);
   const hasFiredPixelsRef = useRef(false);
+  const addPaymentInfoFiredRef = useRef(false);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -104,7 +105,7 @@ export default function EbookFeminineLanding() {
         customData: eventData,
         eventId: eventId,
         eventSourceUrl: window.location.href,
-        testCode: 'TEST9597' // ADDED FOR VISUAL VERIFICATION
+        testCode: 'TEST90028' // UPDATED TEST CODE
       };
 
       // Get FBC and FBP from cookies using the utility function
@@ -186,7 +187,6 @@ export default function EbookFeminineLanding() {
       
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
-      sendCapiEvent('PageView', {}, pageEventId);
 
       const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackViewContentEvent({
@@ -196,14 +196,6 @@ export default function EbookFeminineLanding() {
         value: productPrice,
         currency: 'IDR'
       }, viewContentEventId, pixelId);
-      
-      sendCapiEvent('ViewContent', {
-        content_name: displayProductName,
-        content_ids: [productNameBackend],
-        content_type: 'product',
-        value: productPrice,
-        currency: 'IDR'
-      }, viewContentEventId);
     }
   }, []);
 
@@ -273,20 +265,23 @@ export default function EbookFeminineLanding() {
         external_id: user?.id
       };
 
-      // Track AddPaymentInfo
-      trackAddPaymentInfoEvent({
-        content_ids: [productNameBackend],
-        content_type: 'product',
-        value: totalAmount,
-        currency: 'IDR'
-      }, addPaymentInfoEventId, pixelId, userData);
-      
-      sendCapiEvent('AddPaymentInfo', {
-        content_ids: [productNameBackend],
-        content_type: 'product',
-        value: totalAmount,
-        currency: 'IDR'
-      }, addPaymentInfoEventId);
+      // Track AddPaymentInfo (Only once)
+      if (!addPaymentInfoFiredRef.current) {
+        addPaymentInfoFiredRef.current = true;
+        trackAddPaymentInfoEvent({
+          content_ids: [productNameBackend],
+          content_type: 'product',
+          value: totalAmount,
+          currency: 'IDR'
+        }, addPaymentInfoEventId, pixelId, userData);
+        
+        sendCapiEvent('AddPaymentInfo', {
+          content_ids: [productNameBackend],
+          content_type: 'product',
+          value: totalAmount,
+          currency: 'IDR'
+        }, addPaymentInfoEventId);
+      }
 
       const { fbc, fbp } = getFbcFbpCookies();
 
@@ -409,22 +404,6 @@ export default function EbookFeminineLanding() {
                 value: totalAmount,
                 currency: 'IDR'
               }, eventId, pixelId, userData);
-          }
-
-          // FIRST-WIN DEDUPLICATION CHECK
-          // If Backend already sent CAPI (capi_purchase_sent = true), Frontend skips it.
-          const isBackendCapiSent = payload.new?.capi_purchase_sent === true;
-          
-          if (isBackendCapiSent) {
-             console.log(`⏭️ CAPI ${finalEventName} Skipped (Backend already sent)`);
-          } else {
-             // Send CAPI (Frontend wins)
-             sendCapiEvent(finalEventName, {
-               content_ids: [productNameBackend],
-               content_type: 'product',
-               value: totalAmount,
-               currency: 'IDR'
-             }, eventId);
           }
         }
       }).subscribe();
