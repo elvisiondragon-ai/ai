@@ -185,9 +185,12 @@ export default function EbookFeminineLanding() {
       
       initFacebookPixelWithLogging(pixelId);
       
+      // 1. PageView - Shared ID for Deduplication
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
+      sendCapiEvent('PageView', {}, pageEventId);
 
+      // 2. ViewContent - Shared ID for Deduplication
       const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackViewContentEvent({
         content_name: displayProductName,
@@ -196,6 +199,14 @@ export default function EbookFeminineLanding() {
         value: productPrice,
         currency: 'IDR'
       }, viewContentEventId, pixelId);
+      
+      sendCapiEvent('ViewContent', {
+        content_name: displayProductName,
+        content_ids: [productNameBackend],
+        content_type: 'product',
+        value: productPrice,
+        currency: 'IDR'
+      }, viewContentEventId);
     }
   }, []);
 

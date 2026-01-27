@@ -141,9 +141,12 @@ export default function UangPanasLanding() {
       
       initFacebookPixelWithLogging(pixelId);
       
+      // 1. PageView - Shared ID
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
+      sendCapiEvent('PageView', {}, pageEventId);
 
+      // 2. ViewContent - Shared ID
       const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackViewContentEvent({
         content_name: 'Sistem Uang Panas',
@@ -152,6 +155,14 @@ export default function UangPanasLanding() {
         value: 100000,
         currency: 'IDR'
       }, viewContentEventId, pixelId);
+      
+      sendCapiEvent('ViewContent', {
+        content_name: 'Sistem Uang Panas',
+        content_ids: ['ebook_uangpanas'],
+        content_type: 'product',
+        value: 100000,
+        currency: 'IDR'
+      }, viewContentEventId);
     }
 
     return () => {

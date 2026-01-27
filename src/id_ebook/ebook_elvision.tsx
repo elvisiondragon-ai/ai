@@ -51,8 +51,7 @@ export default function EbookElvisionPaymentPage() {
 
   const purchaseFiredRef = useRef(false);
   const isProcessingRef = useRef(false);
-
-
+  const addPaymentInfoFiredRef = useRef(false);
 
   // Helper to send CAPI events
   const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string) => {
@@ -67,6 +66,7 @@ export default function EbookElvisionPaymentPage() {
         customData: eventData,
         eventId: eventId,
         eventSourceUrl: window.location.href,
+        testCode: 'TEST90028' // UPDATED TEST CODE
       };
 
       // Get FBC and FBP from cookies using the utility function
@@ -251,20 +251,23 @@ export default function EbookElvisionPaymentPage() {
       external_id: user?.id || currentUserId
     };
 
-    // Track AddPaymentInfo
-    trackAddPaymentInfoEvent({
-      content_ids: [productNameBackend],
-      content_type: 'product',
-      value: totalAmount,
-      currency: 'IDR'
-    }, addPaymentInfoEventId, pixelId, userDataPixel);
-    
-    sendCapiEvent('AddPaymentInfo', {
-      content_ids: [productNameBackend],
-      content_type: 'product',
-      value: totalAmount,
-      currency: 'IDR'
-    }, addPaymentInfoEventId);
+    // Track AddPaymentInfo (Only once)
+    if (!addPaymentInfoFiredRef.current) {
+      addPaymentInfoFiredRef.current = true;
+      trackAddPaymentInfoEvent({
+        content_ids: [productNameBackend],
+        content_type: 'product',
+        value: totalAmount,
+        currency: 'IDR'
+      }, addPaymentInfoEventId, pixelId, userDataPixel);
+      
+      sendCapiEvent('AddPaymentInfo', {
+        content_ids: [productNameBackend],
+        content_type: 'product',
+        value: totalAmount,
+        currency: 'IDR'
+      }, addPaymentInfoEventId);
+    }
 
     const { fbc, fbp } = getFbcFbpCookies();
 
@@ -393,19 +396,6 @@ export default function EbookElvisionPaymentPage() {
               currency: 'IDR'
             }, eventId, pixelId, userDataPixel);
 
-            // FIRST-WIN DEDUPLICATION CHECK
-            const isBackendCapiSent = payload.new?.capi_purchase_sent === true;
-
-            if (isBackendCapiSent) {
-               console.log(`⏭️ CAPI Purchase Skipped (Backend already sent)`);
-            } else {
-               sendCapiEvent('Purchase', {
-                 content_ids: [productNameBackend],
-                 content_type: 'product',
-                 value: payload.new?.amount || totalAmount,
-                 currency: 'IDR'
-               }, eventId);
-            }
             // Optionally navigate after showing toast
             // navigate('/success-page'); 
           } else {
