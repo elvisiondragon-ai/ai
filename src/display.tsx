@@ -38,7 +38,7 @@ const DisplayPage = () => {
       <main className="w-full max-w-md mt-10">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold tracking-tight mb-2 text-slate-900">eL Vision Group</h1>
-          <p className="text-slate-500 text-sm font-medium">Effortless Wealthy Life</p>
+          <p className="text-slate-700 text-sm font-semibold">Effortless Wealthy Life</p>
         </div>
 
         <div className="space-y-3">
@@ -52,14 +52,14 @@ const DisplayPage = () => {
                 <h2 className={`font-bold text-lg bg-gradient-to-r ${link.gradient} bg-clip-text text-transparent`}>
                   {link.title}
                 </h2>
-                <p className="text-xs text-black font-bold uppercase tracking-tight">{link.desc}</p>
+                <p className="text-xs text-slate-900 font-bold uppercase tracking-tight">{link.desc}</p>
               </div>
-              <span className="text-slate-300 group-hover:text-slate-600 group-hover:translate-x-1 transition-all">→</span>
+              <span className="text-slate-400 group-hover:text-slate-700 group-hover:translate-x-1 transition-all">→</span>
             </div>
           ))}
         </div>
 
-        <footer className="mt-16 text-center text-slate-400 text-xs font-medium">
+        <footer className="mt-16 text-center text-slate-600 text-xs font-medium">
           <p>© 2026 eL Vision Group</p>
         </footer>
       </main>
