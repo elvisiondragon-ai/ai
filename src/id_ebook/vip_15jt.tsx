@@ -1,36 +1,78 @@
 import { useState, useEffect, useRef } from 'react';
 import { Star, CheckCircle, TrendingUp, Heart, Crown, DollarSign, Phone, ArrowRight, Sparkles, Shield, Check, Play, Pause } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { 
+  initFacebookPixelWithLogging, 
+  trackPageViewEvent, 
+  trackCustomEvent,
+  getFbcFbpCookies,
+  waitForFbp
+} from '@/utils/fbpixel';
 
 export default function ELVision15K() {
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) setUser(user);
+    });
+  }, []);
+
+  // Helper to send CAPI events
+  const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string) => {
+    try {
+      await waitForFbp();
+      const { data: { session } } = await supabase.auth.getSession();
+      const body: any = {
+        pixelId: '3319324491540889',
+        eventName,
+        customData: eventData,
+        eventId: eventId,
+        eventSourceUrl: window.location.href,
+      };
+
+      const { fbc, fbp } = getFbcFbpCookies();
+      const userData: any = {
+        client_user_agent: navigator.userAgent,
+      };
+
+      if (session?.user?.email) userData.email = session.user.email;
+      if (session?.user?.user_metadata?.phone) userData.phone = session.user.user_metadata.phone;
+      
+      let rawName = session?.user?.user_metadata?.full_name;
+      if (rawName) {
+        const nameParts = rawName.trim().split(/\s+/);
+        userData.fn = nameParts[0];
+        if (nameParts.length > 1) userData.ln = nameParts.slice(1).join(' ');
+      }
+
+      if (session?.user?.id) {
+        userData.external_id = session.user.id;
+      } else if (user?.id) {
+        userData.external_id = user.id;
+      }
+      
+      if (fbc) userData.fbc = fbc;
+      if (fbp) userData.fbp = fbp;
+      
+      body.userData = userData;
+
+      await supabase.functions.invoke('capi-universal', { body });
+    } catch (err) {
+      console.error('Failed to send CAPI event:', err);
+    }
+  };
+
   // Facebook Pixel Code
   useEffect(() => {
-    // @ts-ignore
-    !(function (f: any, b: any, e: any, v: any, n: any, t: any, s: any) {
-      if (f.fbq) return;
-      n = f.fbq = function () {
-        n.callMethod
-          ? n.callMethod.apply(n, arguments)
-          : n.queue.push(arguments);
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = '2.0';
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(
-      window,
-      document,
-      'script',
-      'https://connect.facebook.net/en_US/fbevents.js'
-    );
-    (window as any).fbq('init', '3319324491540889');
-    (window as any).fbq('init', 'EAAGuZBVYmBugBQfJ6MZBZBcqAIqy5a0CKROzIMwIJuccEYTefeNktWJyUuOLxvMTEZCThXsF7psOmNG6GH7YGs6UZC4EMZApVUc9xJMZCs9OArCXx22hZCTwzZC67iwlKbvoZBpqZALJv9DbT9sHoQ3HQR2L4WhOnMV2ZAvX4iZBpoFBSq9YfALyo8DqyZBeGg6BPKaiqRCQZDZD');
-    (window as any).fbq('track', 'PageView');
+    if (typeof window !== 'undefined') {
+      const pixelId = '3319324491540889';
+      initFacebookPixelWithLogging(pixelId);
+      
+      const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+      trackPageViewEvent({}, pageEventId, pixelId);
+      sendCapiEvent('PageView', {}, pageEventId);
+    }
   }, []);
 
   const videoTestimonials = [
@@ -1324,6 +1366,10 @@ export default function ELVision15K() {
             <button 
               className="group bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black font-bold text-2xl px-16 py-8 rounded-full transition-all transform hover:scale-105 shadow-2xl shadow-yellow-500/50 flex items-center gap-4 mx-auto mb-8"
               onClick={() => {
+                const eventId = `contact-${Date.now()}`;
+                const pixelId = '3319324491540889';
+                trackCustomEvent('Contact', { content_name: 'VIP 1:1 Booking' }, eventId, pixelId);
+                sendCapiEvent('Contact', { content_name: 'VIP 1:1 Booking' }, eventId);
                 window.open('https://wa.me/62895325633487?text=Hi%20saya%20ingin%20mendaftar%20VIP%201%3A1%20%0ANama:%20%0ATujuan%20Spesifik:%20', '_blank');
               }}
             >
