@@ -50,6 +50,7 @@ export default function EbookElvisionPaymentPage() {
   }, []);
 
   const purchaseFiredRef = useRef(false);
+  const isProcessingRef = useRef(false);
 
 
 
@@ -148,9 +149,12 @@ export default function EbookElvisionPaymentPage() {
   
   const totalAmount = productPrice;
 
+  const hasFiredPixelsRef = useRef(false);
+
   // Facebook Pixel Initialization
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+      hasFiredPixelsRef.current = true;
       const pixelId = '3319324491540889';
       const productNameBackend = 'ebook_elvision';
       
@@ -177,7 +181,7 @@ export default function EbookElvisionPaymentPage() {
         currency: 'IDR'
       }, viewContentEventId);
     }
-  }, [productPrice, productName]);
+  }, []);
 
   useEffect(() => {
     if (totalAmount > 5000000) {
@@ -219,6 +223,8 @@ export default function EbookElvisionPaymentPage() {
   };
 
   const handleCreatePayment = async () => {
+    if (isProcessingRef.current) return;
+
     if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
       toast({
         title: "Data Tidak Lengkap",
@@ -231,6 +237,7 @@ export default function EbookElvisionPaymentPage() {
     let currentUserId = user?.id;
 
 
+    isProcessingRef.current = true;
     setLoading(true);
 
     const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -339,6 +346,7 @@ export default function EbookElvisionPaymentPage() {
       }
     } finally {
       setLoading(false);
+      isProcessingRef.current = false;
     }
   };
 
@@ -415,7 +423,7 @@ export default function EbookElvisionPaymentPage() {
       console.log(`[EbookElvisionPaymentPage] Unsubscribing from channel: ${channelName}`);
       supabase.removeChannel(channel);
     };
-  }, [showPaymentInstructions, paymentData?.tripay_reference, paymentData?.merchant_ref, navigate, toast, userEmail, phoneNumber, userName, user]);
+  }, [showPaymentInstructions, paymentData]);
 
   if (showPaymentInstructions && paymentData) {
     return (

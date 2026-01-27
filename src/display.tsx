@@ -23,14 +23,14 @@ const DisplayPage = () => {
       color: "from-pink-500 to-rose-600",
     },
     {
-      title: "ADHD Executive Functioning Skill Pack",
+      title: "ADHD Kids Skill Pack",
       url: "/ebook_adhd",
       icon: Sparkles,
       description: "Focus & Organization Skills",
       color: "from-blue-500 to-indigo-600",
     },
     {
-      title: "Rahasia Kesembuhan Natural",
+      title: "Rahasia Kesembuhan",
       url: "/ebook_arif",
       icon: Heart,
       description: "Natural Healing Secrets",
@@ -65,7 +65,7 @@ const DisplayPage = () => {
       color: "from-red-500 to-orange-600",
     },
     {
-      title: "Invest Tracker Omnitracker",
+      title: "Invest Tracker",
       url: "/ebook_tracker",
       icon: TrendingUp,
       description: "Track All Your Investments",

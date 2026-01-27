@@ -63,9 +63,12 @@ export default function ELVision15K() {
     }
   };
 
+  const hasFiredPixelsRef = useRef(false);
+
   // Facebook Pixel Code
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+      hasFiredPixelsRef.current = true;
       const pixelId = '3319324491540889';
       initFacebookPixelWithLogging(pixelId);
       

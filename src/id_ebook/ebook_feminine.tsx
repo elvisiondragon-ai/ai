@@ -83,6 +83,7 @@ export default function EbookFeminineLanding() {
   const [paymentData, setPaymentData] = useState<any>(null);
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
   const purchaseFiredRef = useRef(false);
+  const hasFiredPixelsRef = useRef(false);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -177,7 +178,8 @@ export default function EbookFeminineLanding() {
 
   // Pixel Tracking
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+      hasFiredPixelsRef.current = true;
       const pixelId = '3319324491540889';
       
       initFacebookPixelWithLogging(pixelId);

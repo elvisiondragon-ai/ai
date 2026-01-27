@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Heart, Shield, ArrowRight, Check, X, AlertCircle, Sparkles, Copy } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useSearchParams } from 'react-router-dom';
@@ -30,6 +30,8 @@ const ArifEbookLanding = () => {
   const affiliateRef = searchParams.get('ref');
   const { toast } = useToast();
   const [user, setUser] = useState<any>(null);
+  const hasFiredPixelsRef = useRef(false);
+  const isProcessingRef = useRef(false);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -45,7 +47,8 @@ const ArifEbookLanding = () => {
   const pixelId = '3319324491540889'; // Using EbookIndo Pixel ID
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+      hasFiredPixelsRef.current = true;
       initFacebookPixelWithLogging(pixelId);
       
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -245,6 +248,8 @@ const ArifEbookLanding = () => {
   }, [user]);
 
   const handleCreatePayment = async () => {
+    if (isProcessingRef.current) return;
+
     if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
       toast({
         title: "Data Tidak Lengkap",
@@ -254,6 +259,7 @@ const ArifEbookLanding = () => {
       return;
     }
 
+    isProcessingRef.current = true;
     setLoading(true);
 
     const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -333,6 +339,7 @@ const ArifEbookLanding = () => {
       });
     } finally {
       setLoading(false);
+      isProcessingRef.current = false;
     }
   };
 

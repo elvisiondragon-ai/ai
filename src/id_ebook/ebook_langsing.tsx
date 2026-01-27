@@ -140,7 +140,20 @@ export default function DietPaymentPage() {
 
   // Facebook Pixel Initialization
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !purchaseFiredRef.current) { // Re-using existing ref variable name concept, but creating a new one for pixels is cleaner. Let's create a new one.
+        // Actually, looking at the code, purchaseFiredRef is for purchase. I need a new one for pixels.
+    }
+  }, []);
+  */
+  // Wait, I cannot write comments in the 'new_string'. I will just write the code.
+  // I need to add 'const hasFiredPixelsRef = useRef(false);' before the useEffect.
+  
+  const hasFiredPixelsRef = useRef(false);
+
+  // Facebook Pixel Initialization
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+      hasFiredPixelsRef.current = true;
       const pixelId = '3319324491540889';
       const productNameBackend = 'ebook_diet';
       
@@ -167,7 +180,7 @@ export default function DietPaymentPage() {
         currency: 'IDR'
       }, viewContentEventId);
     }
-  }, [productPrice, productName]);
+  }, []);
 
   useEffect(() => {
     if (totalAmount > 5000000) {
@@ -404,7 +417,7 @@ export default function DietPaymentPage() {
       console.log(`[DietPaymentPage] Unsubscribing from channel: ${channelName}`);
       supabase.removeChannel(channel);
     };
-  }, [showPaymentInstructions, paymentData?.tripay_reference, paymentData?.merchant_ref, navigate, toast]);
+  }, [showPaymentInstructions, paymentData]);
 
   if (showPaymentInstructions && paymentData) {
     return (

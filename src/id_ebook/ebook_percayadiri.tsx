@@ -92,10 +92,12 @@ export default function EbookPercayaDiriLP() {
   const [paymentData, setPaymentData] = useState<any>(null);
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
   const purchaseFiredRef = useRef(false);
+  const hasFiredPixelsRef = useRef(false);
 
   // Pixel Tracking
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+      hasFiredPixelsRef.current = true;
       const pixelId = '3319324491540889';
       
       initFacebookPixelWithLogging(pixelId);

@@ -114,6 +114,8 @@ export default function UangPanasLanding() {
   const [paymentData, setPaymentData] = useState<any>(null);
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
 
+  const hasFiredPixelsRef = React.useRef(false);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -132,7 +134,8 @@ export default function UangPanasLanding() {
       setMemberCount(prev => prev + 1);
     }, 45000);
 
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+      hasFiredPixelsRef.current = true;
       const pixelId = '3319324491540889';
       
       initFacebookPixelWithLogging(pixelId);
@@ -246,7 +249,7 @@ export default function UangPanasLanding() {
       }).subscribe();
 
     return () => { supabase.removeChannel(channel); };
-  }, [showPaymentInstructions, paymentData, userEmail, phoneNumber, userName, user]); // Added dependencies
+  }, [showPaymentInstructions, paymentData]);
 
   const testimonials = [
     {
