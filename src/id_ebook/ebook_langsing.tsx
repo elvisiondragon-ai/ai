@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-const dietImage = "https://placehold.co/400x400?text=Diet+Ebook";
+const dietImage = "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/diet/diet1.jpg";
 const qrisBcaImage = "https://placehold.co/400x400?text=QRIS+BCA";
 import { ArrowLeft, Copy, CreditCard, User, Mail, Phone } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -32,69 +32,7 @@ export default function DietPaymentPage() {
   const [searchParams] = useSearchParams();
   const affiliateRef = searchParams.get('ref');
   const { toast } = useToast();
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) setUser(user);
-    });
-  }, []);
-  
   const purchaseFiredRef = useRef(false);
-
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-  const isIOSStandalone = ('standalone' in window.navigator) && (window.navigator as any).standalone;
-
-  const handleLogout = async () => {
-    try {
-      localStorage.setItem('manual-logout-flag', 'true');
-      if (isIOS && isIOSStandalone) {
-        if ('serviceWorker' in navigator) {
-          const registrations = await navigator.serviceWorker.getRegistrations();
-          for (const registration of registrations) {
-            await registration.unregister();
-            console.log('Service worker unregistered for iOS PWA logout');
-          }
-        }
-        if ('caches' in window) {
-          const cacheNames = await caches.keys();
-          await Promise.all(cacheNames.map(cacheName => caches.delete(cacheName)));
-          console.log('All caches cleared for iOS PWA logout');
-        }
-      }
-      const { error } = await supabase.auth.signOut({ scope: 'local' });
-      if (error) {
-        console.error('Logout error:', error);
-        toast({
-          title: "Logout Error - Refreshing",
-          description: "Refreshing page to complete logout...",
-          variant: "destructive",
-        });
-        setTimeout(() => {
-          window.location.replace('/auth');
-        }, 1000);
-        return;
-      }
-      toast({
-        title: "Berhasil Logout",
-        description: "Anda berhasil keluar dari akun.",
-      });
-      setTimeout(() => {
-        window.location.reload();
-        window.location.replace('/auth');
-      }, 1000);
-    } catch (error: any) {
-      console.error('Unexpected logout error:', error);
-      toast({
-        title: "Logout Error - Refreshing",
-        description: "Refreshing page to complete logout...",
-        variant: "destructive",
-      });
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    }
-  };
 
   const productName = 'Ebook Diet';
   const originalPrice = 300000; // Original price
@@ -104,8 +42,7 @@ export default function DietPaymentPage() {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('QRIS');
   const [loading, setLoading] = useState(false);
@@ -163,65 +100,7 @@ export default function DietPaymentPage() {
       return;
     }
 
-    let currentUserId = user?.id;
-
-    // If user is not logged in, attempt to sign them up
-    if (!user) {
-      if (!password || !confirmPassword) {
-        toast({
-          title: "Password Dibutuhkan",
-          description: "Silakan masukkan dan konfirmasi password Anda untuk membuat akun.",
-          variant: "destructive",
-        });
-        return;
-      }
-      if (password !== confirmPassword) {
-        toast({
-          title: "Password Tidak Cocok",
-          description: "Password dan konfirmasi password tidak sama.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      setLoading(true);
-      
-      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-        email: userEmail,
-        password: password,
-        options: {
-          data: {
-            full_name: userName,
-          }
-        }
-      });
-
-      if (signUpError) {
-        toast({
-          title: "Gagal Membuat Akun",
-          description: signUpError.message,
-          variant: "destructive",
-        });
-        setLoading(false);
-        return;
-      }
-      
-      if (!signUpData.user) {
-        toast({
-          title: "Verifikasi Email Dibutuhkan",
-          description: "Silakan cek email Anda untuk verifikasi sebelum melanjutkan pembayaran.",
-          variant: "default",
-        });
-        setLoading(false);
-        return;
-      }
-
-      currentUserId = signUpData.user.id;
-      toast({
-        title: "Akun Berhasil Dibuat!",
-        description: "Melanjutkan ke proses pembayaran...",
-      });
-    }
+    let currentUserId = null;
 
     setLoading(true);
     const { fbc, fbp } = getFbcFbpCookies();
@@ -542,11 +421,7 @@ export default function DietPaymentPage() {
                     Checkout Diet Program
                 </h1>
             </div>
-            {user ? (
-                <Button variant="outline" onClick={handleLogout}>Logout</Button>
-            ) : (
-                <Button variant="outline" onClick={() => navigate('/auth?redirect=/ebook_langsing')}>Login</Button>
-            )}
+
         </div>
       </div>
 
@@ -577,12 +452,7 @@ export default function DietPaymentPage() {
               <Label className="text-green-600">Ongkos Kirim</Label>
               <span>FREE ONGKIR</span>
             </div>
-            <Card className="mt-4 bg-amber-400 text-black border-none shadow-md">
-              <CardContent className="p-4 text-center">
-                <p className="font-bold">Khusus Promo Hari ini saja! besok harga kembali Normal.</p>
-                <p className="text-sm mt-1">Ebook dikirimkan di email setelah membayar, secara otomatis.</p>
-              </CardContent>
-            </Card>
+
           </CardContent>
         </Card>
 
@@ -601,18 +471,7 @@ export default function DietPaymentPage() {
               <Label htmlFor="phoneNumber"><Phone className="inline-block w-4 h-4 mr-2"/>Nomor Telepon</Label>
               <Input id="phoneNumber" name="tel" type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="08123456789" required />
             </div>
-            {!user && (
-              <>
-                <div>
-                  <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required />
-                </div>
-                <div>
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
-                  <Input id="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="••••••••" required />
-                </div>
-              </>
-            )}
+
 
           </CardContent>
         </Card>
@@ -637,7 +496,7 @@ export default function DietPaymentPage() {
         </Card>
 
         <div className="fixed bottom-20 left-6 right-6">
-          <Button onClick={handleCreatePayment} disabled={loading} className="w-full" size="lg">
+          <Button onClick={handleCreatePayment} disabled={loading} className="w-full bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black border-none shadow-xl" size="lg">
             {loading ? <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" /> : <CreditCard className="w-4 h-4 mr-2" />}
             {loading ? 'Memproses...' : `Bayar Sekarang (${formatCurrency(totalAmount)})`}
           </Button>
