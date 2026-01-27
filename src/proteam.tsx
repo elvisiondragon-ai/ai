@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
 import { Lock, Zap, Brain, Target, Calendar, Users, ArrowRight, ChevronDown } from 'lucide-react';
 
 const ProTeamLandingPage = () => {
-  const [isQualified, setIsQualified] = useState(false);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
