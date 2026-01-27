@@ -142,7 +142,6 @@ export default function UangPanasLanding() {
       
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
-      sendCapiEvent('PageView', {}, pageEventId);
 
       const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackViewContentEvent({
@@ -152,14 +151,6 @@ export default function UangPanasLanding() {
         value: 100000,
         currency: 'IDR'
       }, viewContentEventId, pixelId);
-      
-      sendCapiEvent('ViewContent', {
-        content_name: 'Sistem Uang Panas',
-        content_ids: ['ebook_uangpanas'],
-        content_type: 'product',
-        value: 100000,
-        currency: 'IDR'
-      }, viewContentEventId);
     }
 
     return () => {
@@ -192,7 +183,7 @@ export default function UangPanasLanding() {
               duration: 5000, 
               variant: "default"
           });
-          
+
           // Use exact tripay_reference to match Backend CAPI event_id for deduplication
           const eventId = paymentData.tripay_reference;
 
@@ -226,22 +217,6 @@ export default function UangPanasLanding() {
                 value: totalAmount,
                 currency: 'IDR'
               }, eventId, pixelId, userData);
-          }
-
-          // FIRST-WIN DEDUPLICATION CHECK
-          // If Backend already sent CAPI (capi_purchase_sent = true), Frontend skips it.
-          const isBackendCapiSent = payload.new?.capi_purchase_sent === true;
-          
-          if (isBackendCapiSent) {
-             console.log(`⏭️ CAPI ${finalEventName} Skipped (Backend already sent)`);
-          } else {
-             // Send CAPI (Frontend wins)
-             sendCapiEvent(finalEventName, {
-               content_ids: [productNameBackend],
-               content_type: 'product',
-               value: totalAmount,
-               currency: 'IDR'
-             }, eventId);
           }
           
           // Optional: redirect to a thank you page or just show success state
