@@ -1,36 +1,42 @@
 import ReactDOM from 'react-dom/client'
-import IntroLanding from './intro.tsx'
-import DisplayPage from './display.tsx'
-import UangPanasLanding from './id_ebook/ebook_uangpanas.tsx'
-import EbookFeminineLanding from './id_ebook/ebook_feminine.tsx'
-import EbookAdhdLanding from './id_ebook/ebook_adhd.tsx'
-import ArifEbookLanding from './id_ebook/ebook_arif.tsx'
-import EbookElvisionPaymentPage from './id_ebook/ebook_elvision.tsx'
-import EbookGriefLanding from './id_ebook/ebook_grief.tsx'
-import DietPaymentPage from './id_ebook/ebook_langsing.tsx'
-import EbookPercayaDiriLP from './id_ebook/ebook_percayadiri.tsx'
-import EbookTrackerLanding from './id_ebook/ebook_tracker.tsx'
-import ELVision15K from './id_ebook/vip_15jt.tsx'
+import React, { Suspense } from 'react'
+import EbookFeminineLanding from './id_ebook/ebook_feminine.tsx' // Keep direct import for this one
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
+const IntroLanding = React.lazy(() => import('./intro.tsx'));
+const DisplayPage = React.lazy(() => import('./display.tsx'));
+const UangPanasLanding = React.lazy(() => import('./id_ebook/ebook_uangpanas.tsx'));
+const EbookAdhdLanding = React.lazy(() => import('./id_ebook/ebook_adhd.tsx'));
+const ArifEbookLanding = React.lazy(() => import('./id_ebook/ebook_arif.tsx'));
+const EbookElvisionPaymentPage = React.lazy(() => import('./id_ebook/ebook_elvision.tsx'));
+const EbookGriefLanding = React.lazy(() => import('./id_ebook/ebook_grief.tsx'));
+const DietPaymentPage = React.lazy(() => import('./id_ebook/ebook_langsing.tsx'));
+const EbookPercayaDiriLP = React.lazy(() => import('./id_ebook/ebook_percayadiri.tsx'));
+const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.tsx'));
+const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
+const NotFound = React.lazy(() => import('./NotFound.tsx')); // Lazy load NotFound as well
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<DisplayPage />} />
-      <Route path="/intro" element={<IntroLanding />} />
-      <Route path="/ebook_uangpanas" element={<UangPanasLanding />} />
-      <Route path="/ebook_feminine" element={<EbookFeminineLanding />} />
-      <Route path="/ebook_adhd" element={<EbookAdhdLanding />} />
-      <Route path="/ebook_arif" element={<ArifEbookLanding />} />
-      <Route path="/ebook_elvision" element={<EbookElvisionPaymentPage />} />
-      <Route path="/ebook_grief" element={<EbookGriefLanding />} />
-      <Route path="/ebook_langsing" element={<DietPaymentPage />} />
-      <Route path="/ebook_percayadiri" element={<EbookPercayaDiriLP />} />
-      <Route path="/ebook_tracker" element={<EbookTrackerLanding />} />
-      <Route path="/vip_15jt" element={<ELVision15K />} />
-    </Routes>
+    <Suspense fallback={<div>Full Speed To eL Vision!</div>}>
+      <Routes>
+        <Route path="/" element={<DisplayPage />} />
+        <Route path="/intro" element={<IntroLanding />} />
+        <Route path="/ebook_uangpanas" element={<UangPanasLanding />} />
+        <Route path="/ebook_feminine" element={<EbookFeminineLanding />} />
+        <Route path="/ebook_adhd" element={<EbookAdhdLanding />} />
+        <Route path="/ebook_arif" element={<ArifEbookLanding />} />
+        <Route path="/ebook_elvision" element={<EbookElvisionPaymentPage />} />
+        <Route path="/ebook_grief" element={<EbookGriefLanding />} />
+        <Route path="/ebook_langsing" element={<DietPaymentPage />} />
+        <Route path="/ebook_percayadiri" element={<EbookPercayaDiriLP />} />
+        <Route path="/ebook_tracker" element={<EbookTrackerLanding />} />
+        <Route path="/vip_15jt" element={<ELVision15K />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
     <SpeedInsights />
   </BrowserRouter>,
 )
