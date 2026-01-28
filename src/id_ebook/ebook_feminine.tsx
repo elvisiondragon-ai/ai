@@ -85,6 +85,7 @@ export default function EbookFeminineLanding() {
   const purchaseFiredRef = useRef(false);
   const hasFiredPixelsRef = useRef(false);
   const addPaymentInfoFiredRef = useRef(false);
+  const isProcessingRef = useRef(false);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -244,6 +245,8 @@ export default function EbookFeminineLanding() {
   };
 
   const handleCreatePayment = async () => {
+    if (isProcessingRef.current) return;
+
     if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
       toast({
         title: "Data Tidak Lengkap",
@@ -264,6 +267,7 @@ export default function EbookFeminineLanding() {
       return;
     }
 
+    isProcessingRef.current = true;
     setLoading(true);
     try {
       const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -356,6 +360,7 @@ export default function EbookFeminineLanding() {
       });
     } finally {
       setLoading(false);
+      isProcessingRef.current = false;
     }
   };
 

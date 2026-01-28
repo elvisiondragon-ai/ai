@@ -116,6 +116,7 @@ export default function UangPanasLanding() {
 
   const hasFiredPixelsRef = React.useRef(false);
   const addPaymentInfoFiredRef = React.useRef(false);
+  const isProcessingRef = React.useRef(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -379,6 +380,8 @@ export default function UangPanasLanding() {
   };
 
   const handleCreatePayment = async () => {
+    if (isProcessingRef.current) return;
+
     if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod || !password || !confirmPassword) {
       toast({
         title: "Data Tidak Lengkap",
@@ -397,6 +400,7 @@ export default function UangPanasLanding() {
       return;
     }
 
+    isProcessingRef.current = true;
     setLoading(true);
 
     const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -461,6 +465,7 @@ export default function UangPanasLanding() {
                   variant: "destructive",
                 });
                 setLoading(false);
+                isProcessingRef.current = false;
                 return;
               }
 
@@ -504,6 +509,7 @@ export default function UangPanasLanding() {
           variant: "destructive",
         });
         setLoading(false);
+        isProcessingRef.current = false;
         return; // Don't proceed if auth failed and it was intended
       }
     } else {
@@ -558,6 +564,7 @@ export default function UangPanasLanding() {
       });
     } finally {
       setLoading(false);
+      isProcessingRef.current = false;
     }
   };
 
