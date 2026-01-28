@@ -307,7 +307,7 @@ export default function UangPanasLanding() {
         customData: eventData,
         eventId: eventId,
         eventSourceUrl: window.location.href,
-        testCode: 'TEST90028' // ADDED FOR VISUAL VERIFICATION
+        testCode: 'TEST94618'
       };
 
       // Get FBC and FBP from cookies using the utility function

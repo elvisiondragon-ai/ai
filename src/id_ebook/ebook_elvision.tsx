@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import ebookElvisionImage from '/public/logo.jpeg';
+import ebookElvisionImage from '/logo.jpeg?url';
 const qrisBcaImage = "https://placehold.co/400x400?text=QRIS+BCA";
 import { ArrowLeft, Copy, CreditCard, User, Mail, Phone } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
