@@ -116,7 +116,7 @@ export default function EbookFeminineLanding() {
         customData: eventData,
         eventId: eventId,
         eventSourceUrl: window.location.href,
-        testCode: 'TEST94618'
+        testCode: 'TEST33364'
       };
 
       // Get FBC and FBP from cookies using the utility function
