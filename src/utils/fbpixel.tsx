@@ -324,7 +324,7 @@ export const updatePixelUserData = async (pixelId: string, userData: AdvancedMat
 };
 
 // ⭐ Generic Track Helper
-const trackEvent = async (eventName: string, eventData: any = {}, options: { eventID?: string, pixelId?: string, userData?: AdvancedMatchingData } = {}) => {
+const trackEvent = async (eventName: string, eventData: any = {}, options: { eventID?: string, pixelId?: string, userData?: AdvancedMatchingData, testEventCode?: string } = {}) => {
   if (typeof window === 'undefined' || !(window as any).fbq) return;
 
   // 🛑 BLOCK INTERNAL TRAFFIC
@@ -343,6 +343,11 @@ const trackEvent = async (eventName: string, eventData: any = {}, options: { eve
     if (options.eventID) {
       trackOptions.eventID = options.eventID;
     }
+    
+    // Add test_event_code if provided
+    if (options.testEventCode) {
+      trackOptions.test_event_code = options.testEventCode;
+    }
 
     if (options.pixelId) {
        // 🎯 Target SPECIFIC Pixel ID (Prevents cross-firing in SPA)
@@ -357,13 +362,13 @@ const trackEvent = async (eventName: string, eventData: any = {}, options: { eve
 };
 
 // ⭐ View Content Tracker
-export const trackViewContentEvent = async (eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData): Promise<void> => {
-  await trackEvent('ViewContent', eventData, { eventID, pixelId, userData });
+export const trackViewContentEvent = async (eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData, testEventCode?: string): Promise<void> => {
+  await trackEvent('ViewContent', eventData, { eventID, pixelId, userData, testEventCode });
 };
 
 // 📄 Page View Tracker
-export const trackPageViewEvent = async (eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData): Promise<void> => {
-  await trackEvent('PageView', eventData, { eventID, pixelId, userData });
+export const trackPageViewEvent = async (eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData, testEventCode?: string): Promise<void> => {
+  await trackEvent('PageView', eventData, { eventID, pixelId, userData, testEventCode });
 };
 
 // 🛒 Add to Cart Tracker
