@@ -21,9 +21,6 @@ import {
   initFacebookPixelWithLogging, 
   trackPageViewEvent, 
   trackViewContentEvent, 
-  trackAddPaymentInfoEvent, 
-  trackPurchaseEvent,
-  trackCustomEvent,
   AdvancedMatchingData,
   getFbcFbpCookies,
   waitForFbp
@@ -202,35 +199,49 @@ export default function EbookFeminineLanding() {
 
   // Pixel Tracking
   useEffect(() => {
-    if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
-      hasFiredPixelsRef.current = true;
-      const pixelId = '3319324491540889';
-      
-      initFacebookPixelWithLogging(pixelId);
-      
-      // 1. PageView - Shared ID for Deduplication
-      const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-      trackPageViewEvent({}, pageEventId, pixelId);
-      sendCapiEvent('PageView', {}, pageEventId);
+    const initPixel = async () => {
+      if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+        hasFiredPixelsRef.current = true;
+        const pixelId = '3319324491540889';
+        
+        // Fetch session to get user ID and FB Login ID
+        const { data: { session } } = await supabase.auth.getSession();
+        const { fbc, fbp } = getFbcFbpCookies();
+        
+        const userData: AdvancedMatchingData = {};
+        
+        if (session?.user?.id) {
+          userData.external_id = session.user.id;
+        }
+        
+        // Extract Facebook Login ID if available
+        const fbIdentity = session?.user?.identities?.find(id => id.provider === 'facebook');
+        if (fbIdentity) {
+          userData.db_id = fbIdentity.id;
+        }
+        
+        if (fbc) userData.fbc = fbc;
+        if (fbp) userData.fbp = fbp;
 
-      // 2. ViewContent - Shared ID for Deduplication
-      const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-      trackViewContentEvent({
-        content_name: displayProductName,
-        content_ids: [productNameBackend],
-        content_type: 'product',
-        value: productPrice,
-        currency: 'IDR'
-      }, viewContentEventId, pixelId);
-      
-      sendCapiEvent('ViewContent', {
-        content_name: displayProductName,
-        content_ids: [productNameBackend],
-        content_type: 'product',
-        value: productPrice,
-        currency: 'IDR'
-      }, viewContentEventId);
-    }
+        initFacebookPixelWithLogging(pixelId, userData);
+        
+        // 1. PageView - Shared ID for Deduplication
+        const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+        trackPageViewEvent({}, pageEventId, pixelId, userData);
+
+        // 2. ViewContent - Shared ID for Deduplication
+        const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+        trackViewContentEvent({
+          content_name: displayProductName,
+          content_ids: [productNameBackend],
+          content_type: 'product',
+          value: productPrice,
+          currency: 'IDR'
+        }, viewContentEventId, pixelId, userData);
+      }
+    };
+
+    initPixel();
   }, [displayProductName, productPrice]); // Re-run if these change
 
   const paymentMethods = [
@@ -294,23 +305,9 @@ export default function EbookFeminineLanding() {
     try {
       const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 
-      const pixelId = '3319324491540889';
-      const userData: AdvancedMatchingData = {
-        em: userEmail,
-        ph: phoneNumber,
-        fn: userName,
-        external_id: user?.id
-      };
-
       // Track AddPaymentInfo (Only once)
       if (!addPaymentInfoFiredRef.current) {
         addPaymentInfoFiredRef.current = true;
-        trackAddPaymentInfoEvent({
-          content_ids: [productNameBackend],
-          content_type: 'product',
-          value: totalAmount,
-          currency: 'IDR'
-        }, addPaymentInfoEventId, pixelId, userData);
         
         sendCapiEvent('AddPaymentInfo', {
           content_ids: [productNameBackend],
@@ -406,39 +403,13 @@ export default function EbookFeminineLanding() {
               variant: "default"
           });
           
-          // Use exact tripay_reference to match Backend CAPI event_id for deduplication
-          const eventId = paymentData.tripay_reference;
-
-          // Prepare User Data for Advanced Matching
-          const pixelId = '3319324491540889';
-          const userData: AdvancedMatchingData = {
-            em: userEmail,
-            ph: phoneNumber,
-            fn: userName,
-            external_id: user?.id
-          };
-          
           // TEST MODE CHECK
           const isTestUser = userEmail === 'elvisiondragon@gmail.com';
-          const finalEventName = isTestUser ? 'Test_Purchase' : 'Purchase';
 
           if (isTestUser) {
-              console.log('🧪 TEST MODE DETECTED: Firing Test_Purchase instead of Purchase');
-              // Track Custom Event for Test
-              trackCustomEvent(finalEventName, {
-                content_ids: [productNameBackend],
-                content_type: 'product',
-                value: totalAmount,
-                currency: 'IDR'
-              }, eventId, pixelId, userData);
+              console.log('🧪 TEST MODE DETECTED: Purchase recorded via Server CAPI');
           } else {
-              // Track Standard Purchase
-              trackPurchaseEvent({
-                content_ids: [productNameBackend],
-                content_type: 'product',
-                value: totalAmount,
-                currency: 'IDR'
-              }, eventId, pixelId, userData);
+              console.log('💰 Purchase recorded via Server CAPI');
           }
         }
       }).subscribe();
