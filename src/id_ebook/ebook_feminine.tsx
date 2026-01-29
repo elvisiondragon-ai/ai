@@ -97,7 +97,7 @@ export default function EbookFeminineLanding() {
   const purchaseFiredRef = React.useRef(false);
   const hasFiredPixelsRef = React.useRef(false);
   const addPaymentInfoFiredRef = React.useRef(false);
-  const isProcessingRef = React.useRef(isV2Route); // Initialize isProcessingRef to false for v2 route
+  const isProcessingRef = React.useRef(false); // Initialize isProcessingRef to false for v2 route
   const sentEventIdsRef = React.useRef(new Set<string>());
 
   useEffect(() => {
