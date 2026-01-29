@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -29,8 +30,8 @@ import {
 } from '@/utils/fbpixel';
 
 // Countdown Timer Component
-const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 15, seconds: 0 });
+const CountdownTimer = ({ initialHours = 0, initialMinutes = 0, initialSeconds = 0 }: { initialHours?: number, initialMinutes?: number, initialSeconds?: number }) => {
+    const [timeLeft, setTimeLeft] = useState({ hours: initialHours, minutes: initialMinutes, seconds: initialSeconds });
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -38,11 +39,12 @@ const CountdownTimer = () => {
                 if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
                 if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
                 if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-                return { hours: 0, minutes: 15, seconds: 0 };
+                // Reset to initial values when countdown finishes
+                return { hours: initialHours, minutes: initialMinutes, seconds: initialSeconds }; 
             });
         }, 1000);
         return () => clearInterval(timer);
-    }, []);
+    }, [initialHours, initialMinutes, initialSeconds]);
 
     return (
         <div className="bg-gradient-to-r from-rose-500 to-pink-600 text-white p-3 text-center font-bold text-sm md:text-base animate-pulse">
@@ -67,13 +69,23 @@ const WhatsAppButton = () => (
 
 export default function EbookFeminineLanding() {
   const { toast } = useToast();
+  const location = useLocation();
+  const isV2Route = location.pathname === '/ebook_feminine/v2';
+
   const [user, setUser] = useState<any>(null);
   const productNameBackend = 'ebook_feminine';
-  const displayProductName = 'Feminine Magnetism: Audio Hipnoterapi + Ebook';
-  const originalPrice = 300000;
-  const productPrice = 100000;
+  
+  let displayProductName = 'Feminine Magnetism: Audio Hipnoterapi + Ebook';
+  let originalPrice = 300000;
+  let productPrice = 100000;
+
+  if (isV2Route) {
+    displayProductName = 'Feminine Magnetism: Audio Hipnoterapi + Ebook (Diskon 50%)';
+    productPrice = 50000; // New price for v2 route
+  }
+
   const totalQuantity = 1;
-  const totalAmount = productPrice;
+  const totalAmount = productPrice; // Ensure totalAmount uses the potentially adjusted productPrice
 
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -85,7 +97,7 @@ export default function EbookFeminineLanding() {
   const purchaseFiredRef = React.useRef(false);
   const hasFiredPixelsRef = React.useRef(false);
   const addPaymentInfoFiredRef = React.useRef(false);
-  const isProcessingRef = React.useRef(false);
+  const isProcessingRef = React.useRef(isV2Route); // Initialize isProcessingRef to false for v2 route
   const sentEventIdsRef = React.useRef(new Set<string>());
 
   useEffect(() => {
@@ -219,7 +231,7 @@ export default function EbookFeminineLanding() {
         currency: 'IDR'
       }, viewContentEventId);
     }
-  }, []);
+  }, [displayProductName, productPrice]); // Re-run if these change
 
   const paymentMethods = [
     { code: 'QRIS', name: 'QRIS', description: 'Scan pakai GoPay, OVO, Dana, ShopeePay, BCA Mobile, dll' },
@@ -432,7 +444,7 @@ export default function EbookFeminineLanding() {
       }).subscribe();
 
     return () => { supabase.removeChannel(channel); };
-  }, [showPaymentInstructions, paymentData]);
+  }, [showPaymentInstructions, paymentData, userEmail, phoneNumber, userName, user?.id, productNameBackend, totalAmount]); // Added dependencies
 
   // --- RENDER PAYMENT INSTRUCTIONS ---
   if (showPaymentInstructions && paymentData) {
@@ -930,7 +942,14 @@ export default function EbookFeminineLanding() {
       <section id="checkout-section" className="py-20 px-4 md:px-8 bg-white">
         <div className="max-w-3xl mx-auto">
             <Card className="border-2 border-pink-200 shadow-2xl overflow-hidden rounded-2xl bg-white text-slate-900">
-                <CountdownTimer />
+                {isV2Route && (
+                  <>
+                    <div className="bg-red-600 text-white p-4 text-center text-xl font-bold animate-pulse">
+                      Diskon 50% Hanya Hari Ini!
+                    </div>
+                    <CountdownTimer initialHours={6} initialMinutes={0} initialSeconds={0} />
+                  </>
+                )}
                 <div className="bg-gradient-to-r from-pink-600 to-rose-600 text-white p-8 text-center">
                     <h2 className="text-3xl font-bold mb-2 font-serif">FORMULIR PEMESANAN</h2>
                     <p className="opacity-90 text-lg">Investasi untuk kebahagiaan & cinta sejatimu</p>
