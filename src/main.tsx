@@ -46,6 +46,7 @@ const App = () => {
         <Route path="/intro" element={<IntroLanding />} />
         <Route path="/ebook_uangpanas" element={<UangPanasLanding />} />
         <Route path="/ebook_feminine" element={<EbookFeminineLanding />} />
+        <Route path="/ebook_feminine/v2" element={<EbookFeminineLanding />} />
         <Route path="/ebook_adhd" element={<EbookAdhdLanding />} />
         <Route path="/ebook_arif" element={<ArifEbookLanding />} />
         <Route path="/ebook_elvision" element={<EbookElvisionPaymentPage />} />

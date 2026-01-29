@@ -511,6 +511,15 @@ export default function EbookFeminineLanding() {
       <WhatsAppButton />
       <Toaster />
 
+      {isV2Route && (
+        <div 
+          className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center p-3 font-bold text-lg cursor-pointer shadow-lg animate-pulse"
+          onClick={scrollToCheckout}
+        >
+          💥 Diskon 50% Hanya Hari Ini! Ambil Sekarang 💥
+        </div>
+      )}
+
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#2c1a32] to-[#4a2c40] text-white pt-20 pb-28 px-4 text-center">
         <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
