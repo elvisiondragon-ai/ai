@@ -17,7 +17,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Copy, CreditCard, User, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
 
-const WebinarIbuIstri = () => {
+const WebinarSopanMandiri = () => {
     const { toast } = useToast();
     const hasFiredPixelsRef = useRef(false);
     const sentEventIdsRef = useRef(new Set<string>());
@@ -34,9 +34,9 @@ const WebinarIbuIstri = () => {
     const [paymentData, setPaymentData] = useState<any>(null);
     const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
     
-    // Product Config (Webinar Roommate Syndrome)
-    const productNameBackend = 'webinar_respark_relationship'; 
-    const displayProductName = 'Webinar Re-Spark: Dari Teman Kos Jadi Soulmate';
+    // Product Config (Webinar Pria Mandiri/Pengangguran)
+    const productNameBackend = 'webinar_zero_to_hero'; 
+    const displayProductName = 'Webinar The Awakening: Dari Beban Jadi Andalan';
     const productPrice = 200000;
     const pixelId = '3319324491540889';
 
@@ -237,8 +237,8 @@ const WebinarIbuIstri = () => {
               if (purchaseFiredRef.current) return;
               purchaseFiredRef.current = true;
               toast({
-                  title: "PENDAFTARAN BERHASIL!",
-                  description: "Undangan eksklusif sudah dikirim ke email Bunda. Mari mulai lembaran baru!",
+                  title: "PEMBAYARAN DITERIMA!",
+                  description: "Saatnya bangkit, Bro! Akses webinar sudah dikirim ke emailmu.",
                   duration: 8000, 
               });
             }
@@ -247,55 +247,55 @@ const WebinarIbuIstri = () => {
     }, [showPaymentInstructions, paymentData]);
 
     const videoTestimonials = [
-        { name: "Agus Mulyadi, SH., MH.", title: "Client eL Vision", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/agus.jpg", thumbnail: "🎖️" },
-        { name: "Dr. Gumilar", title: "Praktisi Kesehatan", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/dr.jpg", thumbnail: "⚕️" },
+        { name: "Agus Mulyadi, SH., MH.", title: "Ex-Pengangguran", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/agus.jpg", thumbnail: "🎖️" },
+        { name: "Dr. Gumilar", title: "Praktisi", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/dr.jpg", thumbnail: "⚕️" },
         { name: "Habib Umar", title: "Tokoh Masyarakat", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/HABIBVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/habib.jpg", thumbnail: "🕌" },
-        { name: "Umi Jamilah", title: "Yayasan Pendidikan", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/UMIVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/umi.jpg", thumbnail: "👳‍♀️" },
+        { name: "Umi Jamilah", title: "Pendidik", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/UMIVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/umi.jpg", thumbnail: "👳‍♀️" },
         { name: "Felicia", title: "Pengusaha", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/FELVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/felicia.jpg", thumbnail: "👩‍💼" },
         { name: "Lena", title: "Ibu Rumah Tangga", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/LENA_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/lena.jpg", thumbnail: "🌟" },
-        { name: "Vio", title: "Ibu Pekerja", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/vio2.jpg", thumbnail: "✨" },
-        { name: "Arif", title: "Client eL Vision", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.jpg", thumbnail: "👨‍💻" }
+        { name: "Vio", title: "Freelancer Sukses", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/vio2.jpg", thumbnail: "✨" },
+        { name: "Arif", title: "IT Professional", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.jpg", thumbnail: "👨‍💻" }
     ];
 
     const testimonials = [
         {
-          name: "Rani, 32th",
-          title: "Ibu 2 Anak",
+          name: "Riko, 24th",
+          title: "Fresh Graduate",
           verified: true,
-          text: "Jujur, tadinya saya pikir suami selingkuh karena dingin banget. Ternyata saya yang 'tertutup' auranya. Setelah ikut sesi ini, suami bilang 'Kamu kok beda ya, jadi kayak waktu pacaran dulu'. Nangis bahagia banget Bun."
+          text: "Setahun nganggur, tiap hari cuma main game di kamar karena malu keluar rumah. Orang tua sering sindir halus, sakit banget rasanya. Setelah ikut webinar eL Vision, mental saya 'ditampar'. Seminggu kemudian saya berani lamar kerja door-to-door dan diterima!"
         },
         {
-          name: "Dewi, 29th",
-          title: "Ibu Baru",
+          name: "Bagas, 28th",
+          title: "Freelancer",
           verified: true,
-          text: "Kami tidur satu kasur tapi punggung-punggungan tiap malam. Hampa banget. Teknik komunikasi yang diajarkan Mas eL ajaib. Malam itu juga kami ngobrol deep talk sampai subuh. Rasanya 'nyambung' lagi."
+          text: "Dulu saya gengsi kerja kasar, maunya kerja kantoran AC tapi gak dapet-dapet. Mas eL ngajarin 'Buang Gengsi Makan Mimpi'. Sekarang saya jualan online, omsetnya malah lebih gede dari gaji temen yang kantoran."
         },
         {
-          name: "Siska, 40th",
-          title: "Wanita Karir",
+          name: "Wahyu, 32th",
+          title: "Korban PHK",
           verified: true,
-          text: "Saya sibuk, suami sibuk. Rumah kayak kos-kosan. Webinar ini menyadarkan saya kalau kami cuma butuh 'percikan' kecil. Sekarang tiap pulang kerja suami yang nyariin saya, bukan sebaliknya."
+          text: "Di-PHK pas istri lagi hamil. Dunia rasanya runtuh. Saya sempet depresi berat. Webinar ini ngebangunin 'Jiwa Petarung' saya yang tidur. Sekarang saya bangkit lagi buka usaha kuliner kecil-kecilan."
         },
         {
           name: "Felicia Quincy",
           title: "Entrepreneur",
           verified: true,
-          text: "Program ini bukan ngajarin cara 'melayani' suami secara fisik doang, tapi gimana menyentuh hatinya. Hubungan kami yang tadinya kaku sekarang cair dan hangat lagi."
+          text: "Laki-laki itu dinilai dari tanggung jawabnya. Program ini bagus banget buat cowok-cowok yang kehilangan arah (lost generation). Mindset is everything."
         },
         {
           name: "David Sutanto",
-          title: "Suami Alumni",
+          title: "Business Owner",
           verified: true,
-          text: "Istri saya ikut webinar ini, dan saya kaget perubahannya. Dia jadi lebih tenang, gak ngomel, tapi auranya bikin saya pengen dekat terus. Terima kasih sudah mengembalikan istri saya yang dulu."
+          text: "Saya sering interview anak muda yang lembek. Tapi alumni eL Vision beda. Mereka punya sorot mata tajam dan mental baja. Itu yang dicari dunia kerja sekarang."
         }
     ];
 
     if (showPaymentInstructions && paymentData) {
         return (
-          <div className="min-h-screen bg-rose-50 pb-20 font-sans text-slate-900">
-            <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-rose-100">
-              <div className="p-4 bg-rose-500 text-white flex items-center gap-2 sticky top-0 z-10">
-                <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-rose-600">
+          <div className="min-h-screen bg-red-50 pb-20 font-sans text-slate-900">
+            <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-red-100">
+              <div className="p-4 bg-red-600 text-white flex items-center gap-2 sticky top-0 z-10">
+                <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-red-700">
                   <ArrowLeft className="w-6 h-6" />
                 </Button>
                 <h1 className="font-bold text-lg">Instruksi Pembayaran</h1>
@@ -303,20 +303,20 @@ const WebinarIbuIstri = () => {
     
               <div className="p-6 space-y-6">
                 <div className="text-center">
-                    <p className="text-slate-500">Investasi Hati</p>
-                    <p className="text-3xl font-bold text-rose-600">{formatCurrency(paymentData.amount)}</p>
+                    <p className="text-slate-500">Modal Bangkit</p>
+                    <p className="text-3xl font-bold text-red-600">{formatCurrency(paymentData.amount)}</p>
                     <div className="mt-2 inline-block px-3 py-1 bg-amber-100 text-amber-600 rounded-full text-sm font-medium border border-amber-200">
-                        Menunggu Konfirmasi
+                        Menunggu Verifikasi
                     </div>
                 </div>
     
-                <Card className="border-2 border-rose-100 bg-white">
+                <Card className="border-2 border-red-100 bg-white">
                   <CardContent className="pt-6 space-y-4">
-                    <div className="space-y-2 border-b border-rose-50 pb-4 mb-4">
+                    <div className="space-y-2 border-b border-red-50 pb-4 mb-4">
                         <Label className="text-slate-400 text-xs uppercase tracking-wider">Ref. Transaksi</Label>
-                        <div className="flex items-center justify-between bg-rose-50/50 p-2 rounded border border-rose-100">
-                            <span className="font-mono text-sm text-rose-700">{paymentData.tripay_reference}</span>
-                            <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.tripay_reference)} className="h-8 w-8 p-0 text-rose-400">
+                        <div className="flex items-center justify-between bg-red-50/50 p-2 rounded border border-red-100">
+                            <span className="font-mono text-sm text-red-700">{paymentData.tripay_reference}</span>
+                            <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.tripay_reference)} className="h-8 w-8 p-0 text-red-400">
                                 <Copy className="w-3 h-3" />
                             </Button>
                         </div>
@@ -324,17 +324,17 @@ const WebinarIbuIstri = () => {
 
                     {paymentData.qrUrl && (
                         <div className="flex flex-col items-center">
-                            <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border-2 border-rose-100 rounded-xl p-2 bg-white" />
-                            <p className="text-sm text-slate-500 mt-4 text-center">Silakan scan QRIS untuk menyelesaikan pendaftaran.</p>
+                            <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border-2 border-red-100 rounded-xl p-2 bg-white" />
+                            <p className="text-sm text-slate-500 mt-4 text-center">Scan QRIS di atas. Ini langkah pertamamu.</p>
                         </div>
                     )}
                     
                     {paymentData.payCode && (
                         <div className="space-y-2">
                             <Label className="text-slate-500">Kode VA / Nomor Bayar</Label>
-                            <div className="flex items-center justify-between bg-rose-50 p-4 rounded-xl border border-rose-200">
-                                <span className="font-mono text-2xl font-black text-rose-700">{paymentData.payCode}</span>
-                                <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-rose-600">
+                            <div className="flex items-center justify-between bg-red-50 p-4 rounded-xl border border-red-200">
+                                <span className="font-mono text-2xl font-black text-red-700">{paymentData.payCode}</span>
+                                <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-red-600">
                                     <Copy className="w-5 h-5" />
                                 </Button>
                             </div>
@@ -342,12 +342,12 @@ const WebinarIbuIstri = () => {
                     )}
     
                     <div className="bg-amber-50 p-3 rounded-lg text-xs text-amber-800 border border-amber-200">
-                        <p><strong>PENTING:</strong> Bunda, mohon selesaikan pembayaran segera agar slot tidak diambil peserta lain.</p>
+                        <p><strong>PENTING:</strong> Bro, jangan tunda lagi. Bayar sekarang biar slot webinar gak diambil orang lain.</p>
                     </div>
                   </CardContent>
                 </Card>
                 
-                <Button variant="outline" className="w-full gap-2 border-rose-200 text-rose-600 hover:bg-rose-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk Webinar Re-Spark ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
+                <Button variant="outline" className="w-full gap-2 border-red-200 text-red-600 hover:bg-red-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk Webinar Zero to Hero ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
                     Chat Admin (Bantuan)
                 </Button>
               </div>
@@ -359,8 +359,8 @@ const WebinarIbuIstri = () => {
     return (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-            background: "linear-gradient(135deg, #fff1f2 0%, #fff7ed 100%)", // Rose to Warm Orange/Peach
-            color: "#4a044e", // Dark plum text for softer contrast than black
+            background: "linear-gradient(135deg, #fff1f2 0%, #fff7ed 100%)", // Very Light Red to Warm White
+            color: "#450a0a", // Dark Red/Brown Text
             lineHeight: 1.6
         }}>
             <Toaster />
@@ -368,46 +368,46 @@ const WebinarIbuIstri = () => {
                 
                 {/* 1. HEADER */}
                 <div style={{ textAlign: "center", padding: "20px 0", marginBottom: "20px" }}>
-                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#e11d48", letterSpacing: "2px" }}>eL VISION</div>
-                    <div style={{ fontSize: "12px", color: "#9f1239", textTransform: "uppercase", letterSpacing: "1px" }}>Official Relationship Series</div>
+                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#dc2626", letterSpacing: "2px" }}>eL VISION</div>
+                    <div style={{ fontSize: "12px", color: "#991b1b", textTransform: "uppercase", letterSpacing: "1px" }}>Official Independence Series</div>
                 </div>
 
                 {/* 2. HERO SECTION */}
-                <div style={{ textAlign: "center", padding: "40px 20px", background: "white", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(225, 29, 72, 0.1)", border: "1px solid rgba(255, 228, 230, 0.8)" }}>
-                    <span style={{ background: "#ffe4e6", color: "#e11d48", padding: "10px 25px", borderRadius: "50px", fontSize: "14px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "2px solid #fecdd3" }}>
-                        KHUSUS IBU YANG MERASA SENDIRIAN
+                <div style={{ textAlign: "center", padding: "40px 20px", background: "white", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(220, 38, 38, 0.1)", border: "1px solid rgba(220, 38, 38, 0.1)" }}>
+                    <span style={{ background: "#fef2f2", color: "#dc2626", padding: "10px 25px", borderRadius: "50px", fontSize: "14px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "2px solid #fca5a5" }}>
+                        KHUSUS PRIA YANG MAU "BANGUN TIDUR"
                     </span>
-                    <h1 style={{ fontSize: "26px", fontWeight: 800, color: "#881337", marginBottom: "15px", lineHeight: 1.4 }}>
-                        Bunda, Jujur... Apakah Suami Masih Menatap Bunda Sebagai "Kekasih", Atau Cuma "Ibu dari Anak-anaknya"?
+                    <h1 style={{ fontSize: "26px", fontWeight: 800, color: "#7f1d1d", marginBottom: "15px", lineHeight: 1.4 }}>
+                        Bro, Jujur... Sampai Kapan Mau Jadi Penonton di Rumah Sendiri?
                     </h1>
-                    <p style={{ fontSize: "16px", color: "#db2777", marginBottom: "10px", lineHeight: 1.6, fontWeight: 500 }}>
-                        Satu rumah, satu kasur, tapi rasanya seperti dua orang asing yang kebetulan "nge-kos" bareng.
+                    <p style={{ fontSize: "16px", color: "#b91c1c", marginBottom: "10px", lineHeight: 1.6, fontWeight: 500 }}>
+                        Umur terus bertambah, teman-teman sudah pamer karir & mobil, tapi kamu masih minta uang bensin sama Ibu?
                     </p>
-                    <div style={{ marginTop: "15px", fontWeight: "bold", color: "#f59e0b" }}>
+                    <div style={{ marginTop: "15px", fontWeight: "bold", color: "#ea580c" }}>
                         📅 LIVE: Minggu, 22 Februari 2026, 17:00 WIB
                     </div>
                 </div>
 
                 {/* 3. PAIN POINTS */}
-                <div style={{ background: "#fff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #fb7185", boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#be123c", marginBottom: "20px" }}>Apakah Rumah Bunda Terasa Seperti Ini?</h2>
+                <div style={{ background: "#fff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #ef4444", boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)" }}>
+                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#b91c1c", marginBottom: "20px" }}>Apakah Ini "Neraka" Kecilmu Tiap Hari?</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                        <div style={{ background: '#fff1f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecdd3' }}>
+                        <div style={{ background: '#fef2f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecaca' }}>
                             <div style={{ fontSize: '20px', marginBottom: '5px' }}>🤐</div>
-                            <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#881337' }}>
-                                <strong>"Silent Treatment"</strong> — Ngobrol cuma kalau penting (bayar listrik, rapor anak). Selebihnya? Sibuk main HP masing-masing.
+                            <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#991b1b' }}>
+                                <strong>"Pertanyaan Maut"</strong> — Tiap kumpul keluarga ditanya: "Kerja dimana sekarang?". Rasanya pengen menghilang ditelan bumi.
                             </p>
                         </div>
-                        <div style={{ background: '#fff1f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecdd3' }}>
-                            <div style={{ fontSize: '20px', marginBottom: '5px' }}>🛌</div>
-                            <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#881337' }}>
-                                <strong>"Punggung-punggungan"</strong> — Tidur satu ranjang tapi terasa ada tembok tebal. Tidak ada pelukan, tidak ada <em>pillow talk</em>.
+                        <div style={{ background: '#fef2f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecaca' }}>
+                            <div style={{ fontSize: '20px', marginBottom: '5px' }}>🎮</div>
+                            <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#991b1b' }}>
+                                <strong>"Pelarian Semu"</strong> — Tidur pagi, bangun sore. Main game atau scroll sosmed cuma buat melupakan fakta kalau hidupmu lagi <em>stuck</em>.
                             </p>
                         </div>
-                        <div style={{ background: '#fff1f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecdd3' }}>
-                            <div style={{ fontSize: '20px', marginBottom: '5px' }}>💔</div>
-                            <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#881337' }}>
-                                <strong>"Kesepian dalam Keramaian"</strong> — Suami ada fisiknya, tapi hatinya entah kemana. Bunda merasa tidak diinginkan (unwanted).
+                        <div style={{ background: '#fef2f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecaca' }}>
+                            <div style={{ fontSize: '20px', marginBottom: '5px' }}>😔</div>
+                            <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#991b1b' }}>
+                                <strong>"Rasa Bersalah"</strong> — Liat rambut orang tua makin putih, tapi kamu belum bisa kasih apa-apa. Malah masih jadi beban listrik dan makan.
                             </p>
                         </div>
                     </div>
@@ -415,49 +415,50 @@ const WebinarIbuIstri = () => {
 
                 {/* 4. LOGIC TRAP */}
                 <div style={{ padding: "20px 10px", marginBottom: "30px" }}>
-                    <h2 style={{ fontSize: "24px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#be123c" }}>"Ah, Namanya Juga Sudah Lama Nikah..."</h2>
-                    <p style={{ marginBottom: "15px", color: "#64748b", textAlign: "center" }}>Sering dengar kalimat itu? Hati-hati, Bun. Itu adalah pembenaran yang berbahaya.</p>
-                    <div style={{ background: "#fffbeb", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #f59e0b", color: "#b45309" }}>
-                        <strong>Fakta Menohok:</strong><br/>
-                        Hambar bukanlah fase "dewasa" dalam pernikahan.<br/>
-                        Hambar adalah <strong>pintu gerbang</strong> menuju perselingkuhan (fisik atau emosional).
+                    <h2 style={{ fontSize: "24px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#991b1b" }}>"Susah Cari Kerja Zaman Sekarang..."</h2>
+                    <p style={{ marginBottom: "15px", color: "#4b5563", textAlign: "center" }}>Itu alasan klasik, Bro. Berhenti menyalahkan keadaan.</p>
+                    <div style={{ background: "#fff7ed", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #f97316", color: "#c2410c" }}>
+                        <strong>Realita Keras:</strong><br/>
+                        Bukan kerjaan yang susah dicari,<br/>
+                        tapi <strong>MENTALITASMU</strong> yang belum layak dibayar mahal.<br/>
+                        Dunia tidak butuh orang yang jago ngeluh.
                     </div>
                 </div>
 
                 {/* 5. AGITATION & SOLUTION */}
-                <div style={{ background: "linear-gradient(135deg, #fff0f5 0%, #ffe4e6 100%)", color: "#881337", padding: "40px 25px", borderRadius: "25px", marginBottom: "30px", textAlign: "center", border: "2px solid white", boxShadow: "0 10px 25px rgba(244, 63, 94, 0.15)" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#e11d48" }}>ROOMMATE SYNDROME</h2>
+                <div style={{ background: "linear-gradient(135deg, #991b1b 0%, #b91c1c 100%)", color: "white", padding: "40px 25px", borderRadius: "25px", marginBottom: "30px", textAlign: "center", border: "2px solid #f87171" }}>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#fca5a5" }}>THE AWAKENING CALL</h2>
                     <p style={{ fontSize: "15px", lineHeight: 1.8, marginBottom: "20px" }}>
-                        Jika dibiarkan, Bunda akan berubah peran: Dari "Istri & Kekasih" menjadi sekadar <strong>"Manajer Operasional Rumah Tangga"</strong>.
+                        Laki-laki diciptakan untuk menjadi <strong>PUNGGUNG</strong>, bukan beban. Harga dirimu ada pada kemandirianmu.
                     </p>
-                    <div style={{ background: "rgba(255,255,255,0.6)", padding: "15px", borderRadius: "10px", marginBottom: "20px" }}>
-                        <p style={{ margin: 0 }}>Anak melihat orang tua yang dingin 👉 <strong>Trauma Bawah Sadar.</strong></p>
-                        <p style={{ margin: "10px 0" }}>Suami mencari kehangatan 👉 <strong>Rawan "Nyaman" dengan Wanita Lain.</strong></p>
-                        <p style={{ margin: 0 }}>Bunda memendam sedih 👉 <strong>Penyakit Fisik & Penuaan Dini.</strong></p>
+                    <div style={{ background: "rgba(255,255,255,0.1)", padding: "15px", borderRadius: "10px", marginBottom: "20px" }}>
+                        <p style={{ margin: 0 }}>Berhenti Menunggu Peluang 👉 <strong>Ciptakan Peluang.</strong></p>
+                        <p style={{ margin: "10px 0" }}>Berhenti Gengsi 👉 <strong>Gengsi Gak Bikin Kenyang.</strong></p>
+                        <p style={{ margin: 0 }}>Mulai Dari Mana? 👉 <strong>RESET MINDSET.</strong></p>
                     </div>
-                    <p style={{ fontWeight: "bold", fontSize: "16px", color: "#be123c" }}>
-                        Mari kita nyalakan kembali "Spark" yang dulu pernah ada.
+                    <p style={{ fontWeight: "bold", fontSize: "16px", color: "#fee2e2" }}>
+                        Ubah "Saya Butuh Kerja" menjadi "Saya Punya Nilai".
                     </p>
                 </div>
 
                 {/* 6. AUTHORITY */}
-                <div style={{ background: "white", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #fecdd3" }}>
+                <div style={{ background: "white", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #fca5a5" }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '20px', alignItems: 'center' }}>
                         <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/siapael1.jpeg" alt="eL" style={{ width: '100%', borderRadius: '15px', objectFit: 'cover', aspectRatio: '9/16' }} />
                         <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/siapael2.jpeg" alt="eL" style={{ width: '100%', borderRadius: '15px', objectFit: 'cover', aspectRatio: '1/1' }} />
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#e11d48", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
-                        <div style={{ fontSize: "13px", color: "#9f1239", letterSpacing: "1px", textTransform: "uppercase" }}>The Relationship Engineer</div>
+                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#dc2626", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
+                        <div style={{ fontSize: "13px", color: "#991b1b", letterSpacing: "1px", textTransform: "uppercase" }}>The Mental Switcher</div>
                     </div>
-                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginTop: "20px", color: "#881337", textAlign: "center" }}>
-                        Saya membantu pasangan menemukan kembali "koneksi batin" yang putus. Bukan dengan tips romantis murahan, tapi dengan memperbaiki <strong>frekuensi energi</strong> Bunda agar kembali magnetis bagi suami.
+                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginTop: "20px", color: "#7f1d1d", textAlign: "center" }}>
+                        Saya pernah di posisi kamu. Dianggap remeh, direndahkan, dan tidak punya masa depan. Saya tahu tombol mana di kepalamu yang harus ditekan agar "Mesin Kesuksesan"-mu menyala.
                     </p>
                 </div>
 
                 {/* 7. VIDEO TESTIMONIALS */}
                 <div style={{ marginBottom: "40px" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#881337" }}>Keluarga yang Hangat Kembali</h2>
+                    <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#991b1b" }}>Mereka yang Sudah Bangkit</h2>
                     <div style={{ display: "flex", overflowX: "auto", gap: "15px", paddingBottom: "15px", scrollSnapType: "x mandatory" }}>
                         {videoTestimonials.map((testi, idx) => (
                             <div key={idx} style={{ minWidth: "260px", background: "white", borderRadius: "15px", padding: "15px", scrollSnapAlign: "center", boxShadow: "0 2px 10px rgba(0,0,0,0.05)" }}>
@@ -472,31 +473,31 @@ const WebinarIbuIstri = () => {
                 </div>
 
                 {/* 8. TEXT TESTIMONIALS */}
-                <div style={{ background: "white", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #fecdd3" }}>
-                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#e11d48" }}>Suara Hati Para Istri</h2>
+                <div style={{ background: "white", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #fecaca" }}>
+                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#dc2626" }}>Bukti Bukan Janji</h2>
                      {testimonials.map((testi, idx) => (
-                        <div key={idx} style={{ background: "#fff1f2", padding: "20px", borderRadius: "10px", marginBottom: "15px" }}>
-                            <div style={{ fontWeight: 700, color: "#be123c", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#db2777'}}>✓</span>}</div>
-                            <div style={{ fontSize: '12px', color: '#9f1239', marginBottom: '10px' }}>{testi.title}</div>
-                            <p style={{ fontSize: "14px", lineHeight: 1.7, fontStyle: "italic", color: "#881337" }}>"{testi.text}"</p>
+                        <div key={idx} style={{ background: "#fef2f2", padding: "20px", borderRadius: "10px", marginBottom: "15px" }}>
+                            <div style={{ fontWeight: 700, color: "#991b1b", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#ef4444'}}>✓</span>}</div>
+                            <div style={{ fontSize: '12px', color: '#b91c1c', marginBottom: '10px' }}>{testi.title}</div>
+                            <p style={{ fontSize: "14px", lineHeight: 1.7, fontStyle: "italic", color: "#7f1d1d" }}>"{testi.text}"</p>
                         </div>
                      ))}
                 </div>
 
                 {/* 9. CURRICULUM */}
-                <div style={{ background: "white", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #fb7185" }}>
-                    <div style={{ background: "#fb7185", color: "white", display: "inline-block", padding: "5px 15px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", marginBottom: "15px" }}>MATERI EKSKLUSIF</div>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#881337" }}>WEBINAR: "RE-SPARK RELATIONSHIP"</h2>
+                <div style={{ background: "white", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #ef4444" }}>
+                    <div style={{ background: "#ef4444", color: "white", display: "inline-block", padding: "5px 15px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", marginBottom: "15px" }}>MATERI EKSKLUSIF</div>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#7f1d1d" }}>WEBINAR: "DARI NOL JADI HERO"</h2>
                     <div style={{ marginBottom: "20px" }}>
                         {[
-                            { title: 'The Spark Trigger', desc: 'Cara memantik kembali ketertarikan suami tanpa perlu tampil seksi berlebihan atau memelas perhatian.' },
-                            { title: 'Communication Detox', desc: 'Mengubah omelan menjadi obrolan yang membuat suami rindu pulang ke rumah.' },
-                            { title: 'Feminine Magnetism', desc: 'Teknik energi untuk membuat Bunda kembali dilihat sebagai "Wanita", bukan cuma "Ibu".' }
+                            { title: 'Mental Baja 101', desc: 'Menghapus mental "korban" dan "pemalas" yang bikin kamu betah miskin.' },
+                            { title: 'Opportunity Magnet', desc: 'Cara membuat orang lain percaya dan mau memberi peluang kerja/bisnis ke kamu.' },
+                            { title: 'The First Rp 10 Million', desc: 'Blueprint praktis menghasilkan uang halal tanpa modal besar, asal mau capek.' }
                         ].map((item, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "15px", marginBottom: "15px" }}>
-                                <div style={{ background: "#fff1f2", color: "#be123c", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0 }}>{idx + 1}</div>
+                                <div style={{ background: "#fee2e2", color: "#dc2626", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0 }}>{idx + 1}</div>
                                 <div>
-                                    <strong style={{ color: "#be123c" }}>{item.title}</strong>
+                                    <strong style={{ color: "#dc2626" }}>{item.title}</strong>
                                     <p style={{ fontSize: "14px", margin: "5px 0 0 0", color: "#4b5563" }}>{item.desc}</p>
                                 </div>
                             </div>
@@ -506,20 +507,20 @@ const WebinarIbuIstri = () => {
 
                 {/* 10. STEP BY STEP GUIDE */}
                 <div style={{ padding: "30px 10px", marginBottom: "30px" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "30px", color: "#881337", textAlign: "center" }}>Langkah Menuju Harmoni</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "30px", color: "#991b1b", textAlign: "center" }}>Langkah Menuju Mandiri</h2>
                     <div style={{ position: "relative" }}>
                         {/* Connecting Line */}
-                        <div style={{ position: "absolute", left: "20px", top: "20px", bottom: "20px", width: "2px", background: "#fecdd3" }}></div>
+                        <div style={{ position: "absolute", left: "20px", top: "20px", bottom: "20px", width: "2px", background: "#fecaca" }}></div>
                         
                         {[
-                            { title: "Langkah 1: Komitmen Diri", desc: "Daftar di bawah. Investasi Rp 200.000,- untuk kebahagiaan rumah tangga selamanya." },
-                            { title: "Langkah 2: Circle Positif", desc: "Masuk ke Grup WhatsApp khusus istri yang ingin bertumbuh, bukan tempat curhat ghibah." },
-                            { title: "Langkah 3: Live Healing", desc: "Hadir di Webinar 22 Feb 2026. Siapkan hati untuk menerima energi baru." }
+                            { title: "Langkah 1: Berani Mulai", desc: "Daftar di bawah. Investasi Rp 200.000,- (Mungkin uang terakhirmu, tapi jadikan ini yang paling berharga)." },
+                            { title: "Langkah 2: Circle Pemenang", desc: "Masuk ke Grup WhatsApp berisi orang-orang yang satu frekuensi mau sukses, bukan ngeluh doang." },
+                            { title: "Langkah 3: Live Reset", desc: "Hadir di Webinar 22 Feb 2026. Kita install ulang mindset kamu." }
                         ].map((step, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "20px", marginBottom: "30px", position: "relative" }}>
-                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#f43f5e", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid white" }}>{idx + 1}</div>
+                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#dc2626", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid white" }}>{idx + 1}</div>
                                 <div>
-                                    <h3 style={{ color: "#be123c", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
+                                    <h3 style={{ color: "#991b1b", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
                                     <p style={{ color: "#4b5563", fontSize: "14px" }}>{step.desc}</p>
                                 </div>
                             </div>
@@ -528,50 +529,50 @@ const WebinarIbuIstri = () => {
                 </div>
 
                 {/* 11. PRICING & PAYMENT FORM */}
-                <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(244, 63, 94, 0.1)", border: "1px solid #fecdd3" }}>
+                <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(220, 38, 38, 0.1)", border: "1px solid #fecaca" }}>
                     <div style={{ textAlign: "center" }}>
-                        <h2 style={{ fontSize: "22px", fontWeight: 700, marginBottom: "20px" }}>Investasi Cinta Bunda</h2>
+                        <h2 style={{ fontSize: "22px", fontWeight: 700, marginBottom: "20px" }}>Investasi Harga Diri</h2>
                         <div style={{ fontSize: "20px", textDecoration: "line-through", color: "#9ca3af" }}>Rp 5.000.000,-</div>
-                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#f43f5e", marginBottom: "10px" }}>Rp 200.000,-</div>
-                        <p style={{ fontSize: "13px", color: "#666", marginBottom: "30px" }}>(Lebih murah dari biaya skincare sebulan, tapi efeknya bikin glowing hati)</p>
+                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#ea580c", marginBottom: "10px" }}>Rp 200.000,-</div>
+                        <p style={{ fontSize: "13px", color: "#666", marginBottom: "30px" }}>(Kalau gak punya uang, pinjam teman/saudara dengan janji "Ini terakhir kalinya gue pinjam, gue mau berubah")</p>
                     </div>
 
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-rose-600">
-                                <User className="w-5 h-5" /> Data Diri Bunda
+                            <h3 className="font-bold text-lg flex items-center gap-2 text-red-700">
+                                <User className="w-5 h-5" /> Data Calon Sukses
                             </h3>
                             <div className="grid gap-4">
                                 <Input 
                                     placeholder="Nama Lengkap" 
                                     value={userName} 
                                     onChange={(e) => setUserName(e.target.value)} 
-                                    className="bg-white text-slate-900 border-rose-200 h-12 focus:border-rose-500 placeholder:text-slate-400"
+                                    className="bg-white text-slate-900 border-red-200 h-12 focus:border-red-500 placeholder:text-slate-400"
                                 />
                                 <Input 
                                     type="email" 
-                                    placeholder="Email (Undangan dikirim ke sini)" 
+                                    placeholder="Email (Link Zoom dikirim ke sini)" 
                                     value={userEmail} 
                                     onChange={(e) => setUserEmail(e.target.value)} 
-                                    className="bg-white text-slate-900 border-rose-200 h-12 focus:border-rose-500 placeholder:text-slate-400"
+                                    className="bg-white text-slate-900 border-red-200 h-12 focus:border-red-500 placeholder:text-slate-400"
                                 />
                                 <Input 
                                     placeholder="Nomor WhatsApp" 
                                     value={phoneNumber} 
                                     onChange={(e) => setPhoneNumber(e.target.value)} 
-                                    className="bg-white text-slate-900 border-rose-200 h-12 focus:border-rose-500 placeholder:text-slate-400"
+                                    className="bg-white text-slate-900 border-red-200 h-12 focus:border-red-500 placeholder:text-slate-400"
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-4">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-rose-600">
+                            <h3 className="font-bold text-lg flex items-center gap-2 text-red-700">
                                 <CreditCard className="w-5 h-5" /> Metode Pembayaran
                             </h3>
                             <RadioGroup value={selectedPaymentMethod} onValueChange={setSelectedPaymentMethod} className="grid grid-cols-1 gap-3">
                                 {paymentMethods.map((method) => (
-                                    <Label key={method.code} className={`flex items-start p-4 border rounded-xl cursor-pointer transition-all ${selectedPaymentMethod === method.code ? 'border-rose-500 bg-rose-50 shadow-sm' : 'border-slate-100 bg-white hover:border-slate-200'}`}>
-                                        <RadioGroupItem value={method.code} id={method.code} className="mt-1 mr-4 border-slate-300 text-rose-600" />
+                                    <Label key={method.code} className={`flex items-start p-4 border rounded-xl cursor-pointer transition-all ${selectedPaymentMethod === method.code ? 'border-red-500 bg-red-50 shadow-sm' : 'border-slate-100 bg-white hover:border-slate-200'}`}>
+                                        <RadioGroupItem value={method.code} id={method.code} className="mt-1 mr-4 border-slate-300 text-red-600" />
                                         <div>
                                             <div className="font-bold text-slate-800">{method.name}</div>
                                             <div className="text-xs text-slate-500">{method.description}</div>
@@ -582,32 +583,32 @@ const WebinarIbuIstri = () => {
                         </div>
 
                         <Button 
-                            className="w-full text-lg py-8 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 font-black shadow-xl rounded-full text-white border-none"
+                            className="w-full text-lg py-8 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 font-black shadow-xl rounded-full text-white border-none"
                             onClick={handleCreatePayment}
                             disabled={loading}
                         >
-                            {loading ? <Loader2 className="animate-spin" /> : "💖 SAYA MAU JADI SOULMATE SUAMI LAGI"}
+                            {loading ? <Loader2 className="animate-spin" /> : "🔥 SAYA SIAP BERUBAH SEKARANG"}
                         </Button>
                         
                         <div className="flex items-center justify-center gap-4 text-[10px] text-slate-400 font-medium">
-                            <div className="flex items-center gap-1"><ShieldCheck className="w-3 h-3 text-green-600" /> Privasi Dijaga</div>
-                            <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-blue-600" /> Proses Otomatis</div>
+                            <div className="flex items-center gap-1"><ShieldCheck className="w-3 h-3 text-green-600" /> Secure System</div>
+                            <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-blue-600" /> Life Changing</div>
                         </div>
                     </div>
                 </div>
 
                 {/* 12. FAQ SECTION */}
                 <div style={{ marginBottom: "40px", padding: "0 10px" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#881337", textAlign: "center" }}>Curhatan yang Sering Ditanyakan</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#991b1b", textAlign: "center" }}>Pertanyaan Bro-Bro Semua</h2>
                     <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
                         {[
-                            { q: "Suami saya cuek banget, emang bisa berubah?", a: "Bisa, Bun. Kuncinya bukan mengubah suami, tapi mengubah 'respon energi' Bunda. Saat Bunda berubah, otomatis suami akan merespon dengan cara baru." },
-                            { q: "Apa saya harus ajak suami ikut webinar?", a: "Tidak wajib. Justru perubahan paling kuat dimulai dari satu orang (Bunda). Nanti suami akan penasaran sendiri kenapa Bunda jadi lebih 'menawan'." },
-                            { q: "Kalau saya sibuk urus anak pas jam webinar?", a: "Tenang, ada rekaman lengkap. Bunda bisa tonton sambil me-time atau saat anak tidur." }
+                            { q: "Saya gak punya modal buat usaha, gimana?", a: "Usaha gak melulu soal modal uang. Di webinar ini kita bongkar cara pakai 'Modal Dengkul & Otak' buat hasilkan cuan." },
+                            { q: "Saya pemalu dan introvert, apa bisa sukses?", a: "Bisa banget. Banyak miliarder itu introvert. Masalahnya bukan sifatmu, tapi keyakinanmu. Kita perbaiki itu." },
+                            { q: "Kalau setelah ikut webinar saya masih gagal?", a: "Gagal itu kalau berhenti. Di sini kamu masuk komunitas. Kalau jatuh, ada yang nyemangatin buat bangkit lagi. Gak sendirian lagi." }
                         ].map((item, idx) => (
                             <div key={idx} style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #e2e8f0" }}>
-                                <div style={{ color: "#e11d48", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
-                                <div style={{ color: "#4b5563", fontSize: "14px", lineHeight: 1.6 }}>{item.a}</div>
+                                <div style={{ color: "#dc2626", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
+                                <div style={{ color: "#334155", fontSize: "14px", lineHeight: 1.6 }}>{item.a}</div>
                             </div>
                         ))}
                     </div>
@@ -622,4 +623,4 @@ const WebinarIbuIstri = () => {
     );
 };
 
-export default WebinarIbuIstri;
+export default WebinarSopanMandiri;

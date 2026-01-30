@@ -31,6 +31,9 @@ const WebinarOrtuAnak = React.lazy(() => import('./web/webinar_ortuanak.tsx'));
 const WebinarIbuIstri = React.lazy(() => import('./web/webinar_ibuistri.tsx'));
 const WebinarPriaSusis = React.lazy(() => import('./web/webinar_priasusis.tsx'));
 const WebinarPriaSingle = React.lazy(() => import('./web/webinar_priasingle.tsx'));
+const WebinarBurnout = React.lazy(() => import('./web/webinar_burnout.tsx'));
+const WebinarSopanMandiri = React.lazy(() => import('./web/webinar_sopanmandiri.tsx'));
+const WebList = React.lazy(() => import('./web/weblist.tsx'));
 
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
@@ -54,6 +57,9 @@ const App = () => {
         import('./web/webinar_ibuistri.tsx');
         import('./web/webinar_priasusis.tsx');
         import('./web/webinar_priasingle.tsx');
+        import('./web/webinar_burnout.tsx');
+        import('./web/webinar_sopanmandiri.tsx');
+        import('./web/weblist.tsx');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -83,6 +89,9 @@ const App = () => {
         <Route path="/webinar_ibuistri" element={<WebinarIbuIstri />} />
         <Route path="/webinar_priasusis" element={<WebinarPriaSusis />} />
         <Route path="/webinar_priasingle" element={<WebinarPriaSingle />} />
+        <Route path="/webinar_burnout" element={<WebinarBurnout />} />
+        <Route path="/webinar_sopanmandiri" element={<WebinarSopanMandiri />} />
+        <Route path="/weblist" element={<WebList />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
   );

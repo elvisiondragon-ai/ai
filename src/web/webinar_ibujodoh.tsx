@@ -594,8 +594,8 @@ const WebinarIbu = () => {
     return (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-            background: "linear-gradient(135deg, #1e1b29 0%, #2d1b3d 100%)",
-            color: "#e2e8f0",
+            background: "linear-gradient(135deg, #f0f4f8 0%, #e0e7ed 100%)", // Light greyish blue gradient
+            color: "#334155", // Dark slate text
             lineHeight: 1.6
         }}>
             <Toaster />
@@ -608,25 +608,25 @@ const WebinarIbu = () => {
                 </div>
 
                 {/* 2. HERO SECTION */}
-                <div style={{ textAlign: "center", padding: "40px 20px", background: "rgba(30, 41, 59, 0.8)", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(0,0,0,0.3)", border: "1px solid rgba(236, 72, 153, 0.1)" }}>
-                    <span style={{ background: "rgba(236, 72, 153, 0.1)", color: "#f9a8d4", padding: "10px 25px", borderRadius: "50px", fontSize: "16px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "1px solid #ec4899" }}>
+                <div style={{ textAlign: "center", padding: "40px 20px", background: "#ffffff", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(0,0,0,0.1)", border: "1px solid rgba(236, 72, 153, 0.2)" }}>
+                    <span style={{ background: "rgba(236, 72, 153, 0.1)", color: "#ec4899", padding: "10px 25px", borderRadius: "50px", fontSize: "16px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "1px solid #ec4899" }}>
                         {content.badge}
                     </span>
-                    <h1 style={{ fontSize: "28px", fontWeight: 800, color: "#fff", marginBottom: "15px", lineHeight: 1.3 }}>{content.headline}</h1>
-                    <p style={{ fontSize: "16px", color: "#cbd5e1", marginBottom: "0px", lineHeight: 1.6 }}>{content.subheadline}</p>
-                    <div style={{ marginTop: "20px", background: "rgba(0,0,0,0.3)", display: "inline-block", padding: "8px 16px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)" }}>
+                    <h1 style={{ fontSize: "28px", fontWeight: 800, color: "#1e293b", marginBottom: "15px", lineHeight: 1.3 }}>{content.headline}</h1>
+                    <p style={{ fontSize: "16px", color: "#475569", marginBottom: "0px", lineHeight: 1.6 }}>{content.subheadline}</p>
+                    <div style={{ marginTop: "20px", background: "rgba(0,0,0,0.05)", display: "inline-block", padding: "8px 16px", borderRadius: "10px", border: "1px solid rgba(0,0,0,0.1)" }}>
                         🗓️ Event: <strong>{content.eventDate}</strong>
                     </div>
                 </div>
 
                 {/* 3. PAIN SECTION */}
-                <div style={{ background: "#1e293b", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #ec4899" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#f9a8d4", marginBottom: "20px" }}>{content.painTitle}</h2>
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #ec4899", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#ec4899", marginBottom: "20px" }}>{content.painTitle}</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                         {content.painPoints.map((pain, idx) => (
-                            <div key={idx} style={{ background: 'rgba(255,255,255,0.05)', padding: '15px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                                <div style={{ fontSize: '24px', marginBottom: '10px' }}>{pain.icon}</div>
-                                <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#cbd5e1' }}>{pain.text}</p>
+                            <div key={idx} style={{ background: '#fef2f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecaca' }}>
+                                <div style={{ fontSize: '24px', marginBottom: '10px', color: '#dc2626' }}>{pain.icon}</div>
+                                <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#4b5563' }}>{pain.text}</p>
                             </div>
                         ))}
                     </div>
@@ -635,92 +635,92 @@ const WebinarIbu = () => {
                 {/* 4. LOGIC TRAP */}
                 <div style={{ padding: "20px 10px", marginBottom: "30px" }}>
                     <h2 style={{ fontSize: "24px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#fff" }}>{content.logicTitle}</h2>
-                    <div style={{ background: "rgba(220, 38, 38, 0.1)", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #ef4444", color: "#fca5a5" }}>
+                    <div style={{ background: "rgba(220, 38, 38, 0.1)", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #ef4444", color: "#b91c1c" }}>
                         <p dangerouslySetInnerHTML={{ __html: content.logicDescription }} />
                     </div>
                 </div>
 
                 {/* 5. AGITATION (HIGHLIGHT) */}
-                <div style={{ background: "#020617", color: "white", padding: "40px 25px", borderRadius: "25px", marginBottom: "30px", textAlign: "center", position: "relative", overflow: "hidden", border: "1px solid #1e293b" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#f9a8d4" }}>{content.agitationTitle}</h2>
+                <div style={{ background: "#ffffff", color: "#1e293b", padding: "40px 25px", borderRadius: "25px", marginBottom: "30px", textAlign: "center", position: "relative", overflow: "hidden", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#ec4899" }}>{content.agitationTitle}</h2>
                     {content.agitationText.map((text, idx) => (
-                        <p key={idx} style={{ fontSize: "15px", lineHeight: 1.8, marginBottom: "20px" }} dangerouslySetInnerHTML={{ __html: text }} />
+                        <p key={idx} style={{ fontSize: "15px", lineHeight: 1.8, marginBottom: "20px", color: "#475569" }} dangerouslySetInnerHTML={{ __html: text }} />
                     ))}
                     <div style={{ background: "rgba(236, 72, 153, 0.05)", padding: "15px", borderRadius: "10px", marginBottom: "20px", border: "1px solid rgba(236, 72, 153, 0.1)" }}>
                         {content.agitationBullets.map((bullet, idx) => (
-                            <p key={idx} style={{ margin: idx === 1 ? "10px 0" : "0", color: "#e2e8f0" }}>{bullet.trigger} 👉 <strong style={{color: "#f9a8d4"}}>{bullet.result}</strong></p>
+                            <p key={idx} style={{ margin: idx === 1 ? "10px 0" : "0", color: "#475569" }}>{bullet.trigger} 👉 <strong style={{color: "#ec4899"}}>{bullet.result}</strong></p>
                         ))}
                     </div>
-                    <p style={{ fontWeight: "bold", fontSize: "16px", color: "#fff" }}>{content.agitationClosing}</p>
+                    <p style={{ fontWeight: "bold", fontSize: "16px", color: "#1e293b" }}>{content.agitationClosing}</p>
                 </div>
 
                 {/* 6. SOLUTION */}
-                <div style={{ background: "#1e293b", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 4px 20px rgba(0,0,0,0.2)" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#fff", marginBottom: "20px", textAlign: "center" }}>{content.shiftTitle}</h2>
-                    <p style={{ marginBottom: "20px", textAlign: "center", color: "#cbd5e1" }} dangerouslySetInnerHTML={{ __html: content.shiftDescription }} />
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1e293b", marginBottom: "20px", textAlign: "center" }}>{content.shiftTitle}</h2>
+                    <p style={{ marginBottom: "20px", textAlign: "center", color: "#475569" }} dangerouslySetInnerHTML={{ __html: content.shiftDescription }} />
                     <div style={{ padding: "15px", background: "rgba(236, 72, 153, 0.1)", borderRadius: "15px", border: "1px solid rgba(236, 72, 153, 0.3)", marginBottom: "20px" }}>
-                        <p style={{ fontWeight: "bold", color: "#f9a8d4", marginBottom: "10px", textAlign: "center" }}>✨ SETELAH WEBINAR INI:</p>
+                        <p style={{ fontWeight: "bold", color: "#ec4899", marginBottom: "10px", textAlign: "center" }}>✨ SETELAH WEBINAR INI:</p>
                         <ul style={{ listStyle: "none", padding: 0 }}>
                             {content.shiftResults.map((res, idx) => (
-                                <li key={idx} style={{ padding: "8px 0", borderBottom: idx !== 2 ? "1px dashed rgba(249, 168, 212, 0.3)" : "none", color: "#f9d5e5" }} dangerouslySetInnerHTML={{ __html: res }} />
+                                <li key={idx} style={{ padding: "8px 0", borderBottom: idx !== 2 ? "1px dashed rgba(236, 72, 153, 0.3)" : "none", color: "#1e293b" }} dangerouslySetInnerHTML={{ __html: res }} />
                             ))}
                         </ul>
                     </div>
                 </div>
 
                 {/* 7. AUTHORITY */}
-                <div style={{ background: "#1e293b", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #334155" }}>
+                <div style={{ background: "#ffffff", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '20px', alignItems: 'center' }}>
                         <img src={founderImages[0]} alt="eL Reyzandra" style={{ width: '100%', borderRadius: '15px', objectFit: 'cover', aspectRatio: '9/16' }} />
                         <img src={founderImages[1]} alt="eL Reyzandra" style={{ width: '100%', borderRadius: '15px', objectFit: 'cover', aspectRatio: '1/1' }} />
                     </div>
                     <div style={{ textAlign: "center", marginBottom: "20px" }}>
-                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#f9a8d4", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
-                        <div style={{ fontSize: "13px", color: "#94a3b8", letterSpacing: "1px", textTransform: "uppercase" }}>The Mind Engineer</div>
+                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#ec4899", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
+                        <div style={{ fontSize: "13px", color: "#64748b", letterSpacing: "1px", textTransform: "uppercase" }}>The Mind Engineer</div>
                     </div>
-                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginBottom: "15px", color: "#e2e8f0", textAlign: "center" }}>Selama 16 tahun, saya meneliti bagaimana <strong>Alam Bawah Sadar</strong> mengendalikan 95% hidup manusia. Saya bukan motivator. Saya adalah "Insinyur Pikiran".</p>
-                    <div style={{ background: "#0f172a", color: "#f9a8d4", padding: "10px", borderRadius: "8px", textAlign: "center", fontSize: "14px", fontWeight: "bold", border: "1px solid #ec4899" }}>"Bahagia Adalah Koentji"</div>
+                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginBottom: "15px", color: "#334155", textAlign: "center" }}>Selama 16 tahun, saya meneliti bagaimana <strong>Alam Bawah Sadar</strong> mengendalikan 95% hidup manusia. Saya bukan motivator. Saya adalah "Insinyur Pikiran".</p>
+                    <div style={{ background: "#fdf2f8", color: "#ec4899", padding: "10px", borderRadius: "8px", textAlign: "center", fontSize: "14px", fontWeight: "bold", border: "1px solid #fbcfe8" }}>"Bahagia Adalah Koentji"</div>
                 </div>
 
                 {/* 8. VIDEO TESTIMONIALS */}
                 <div style={{ marginBottom: "40px" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#fff" }}>Apa Kata Mereka?</h2>
+                    <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>Apa Kata Mereka?</h2>
                     <div style={{ display: "flex", overflowX: "auto", gap: "15px", paddingBottom: "15px", scrollSnapType: "x mandatory" }}>
                         {videoTestimonials.map((testi, idx) => (
-                            <div key={idx} style={{ minWidth: "260px", background: "#1e293b", borderRadius: "15px", padding: "15px", scrollSnapAlign: "center", boxShadow: "0 2px 10px rgba(0,0,0,0.3)" }}>
-                                <video controls poster={testi.poster} style={{ width: "100%", borderRadius: "10px", aspectRatio: "9/16", objectFit: "cover", marginBottom: "10px", backgroundColor: "#000" }}>
+                            <div key={idx} style={{ minWidth: "260px", background: "#ffffff", borderRadius: "15px", padding: "15px", scrollSnapAlign: "center", boxShadow: "0 2px 10px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
+                                <video controls poster={testi.poster} style={{ width: "100%", borderRadius: "10px", aspectRatio: "9/16", objectFit: "cover", marginBottom: "10px", backgroundColor: "#f0f4f8" }}>
                                     <source src={testi.videoUrl} type="video/mp4" />
                                 </video>
-                                <div style={{ fontWeight: "bold", fontSize: "14px", color: "#f9a8d4" }}>{testi.name}</div>
-                                <div style={{ fontSize: "12px", color: "#94a3b8" }}>{testi.title}</div>
+                                <div style={{ fontWeight: "bold", fontSize: "14px", color: "#ec4899" }}>{testi.name}</div>
+                                <div style={{ fontSize: "12px", color: "#64748b" }}>{testi.title}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* 9. TEXT TESTIMONIALS */}
-                <div style={{ background: "#1e293b", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #334155" }}>
-                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#fff" }}>Kisah Perubahan Nyata</h2>
+                <div style={{ background: "#ffffff", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>Kisah Perubahan Nyata</h2>
                      {testimonials.map((testi, idx) => (
-                        <div key={idx} style={{ background: "rgba(255,255,255,0.05)", padding: "20px", borderRadius: "10px", marginBottom: "15px" }}>
-                            <div style={{ fontWeight: 700, color: "#f9a8d4", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#34d399'}}>✓</span>}</div>
-                            <div style={{ fontSize: '12px', color: '#94a3b8', marginBottom: '10px' }}>{testi.title}</div>
-                            <p style={{ fontSize: "14px", lineHeight: 1.7, fontStyle: "italic", color: "#cbd5e1" }}>"{testi.text}"</p>
+                        <div key={idx} style={{ background: "#f8fafc", padding: "20px", borderRadius: "10px", marginBottom: "15px", border: "1px solid #e2e8f0" }}>
+                            <div style={{ fontWeight: 700, color: "#ec4899", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#34d399'}}>✓</span>}</div>
+                            <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '10px' }}>{testi.title}</div>
+                            <p style={{ fontSize: "14px", lineHeight: 1.7, fontStyle: "italic", color: "#475569" }}>"{testi.text}"</p>
                         </div>
                      ))}
                 </div>
 
                 {/* 10. CURRICULUM - MATERI EKSKLUSIF */}
-                <div style={{ background: "#1e293b", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #ec4899" }}>
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #ec4899", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
                     <div style={{ background: "#ec4899", color: "#fff", display: "inline-block", padding: "5px 15px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", marginBottom: "15px" }}>MATERI EKSKLUSIF</div>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#fff" }}>{content.webinarTitle}</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#1e293b" }}>{content.webinarTitle}</h2>
                     <div style={{ marginBottom: "20px" }}>
                         {content.curriculum.map((item, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "15px", marginBottom: "15px" }}>
-                                <div style={{ background: "rgba(236, 72, 153, 0.1)", color: "#f9a8d4", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, border: "1px solid #ec4899" }}>{idx + 1}</div>
+                                <div style={{ background: "rgba(236, 72, 153, 0.1)", color: "#ec4899", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, border: "1px solid #fbcfe8" }}>{idx + 1}</div>
                                 <div>
-                                    <strong style={{ color: "#f9a8d4" }}>{item.title}</strong>
-                                    <p style={{ fontSize: "14px", margin: "5px 0 0 0", color: "#cbd5e1" }}>{item.desc}</p>
+                                    <strong style={{ color: "#ec4899" }}>{item.title}</strong>
+                                    <p style={{ fontSize: "14px", margin: "5px 0 0 0", color: "#475569" }}>{item.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -729,17 +729,17 @@ const WebinarIbu = () => {
 
                 {/* 11. STEP BY STEP GUIDE */}
                 <div style={{ padding: "30px 10px", marginBottom: "30px" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "30px", color: "#fff", textAlign: "center" }}>Cara Bergabung</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "30px", color: "#1e293b", textAlign: "center" }}>Cara Bergabung</h2>
                     <div style={{ position: "relative" }}>
                         {/* Connecting Line */}
-                        <div style={{ position: "absolute", left: "20px", top: "20px", bottom: "20px", width: "2px", background: "#4a3860" }}></div>
+                        <div style={{ position: "absolute", left: "20px", top: "20px", bottom: "20px", width: "2px", background: "#e2e8f0" }}></div>
                         
                         {content.steps.map((step, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "20px", marginBottom: "30px", position: "relative" }}>
-                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#ec4899", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid #1e1b29" }}>{idx + 1}</div>
+                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#ec4899", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid #f8fafc" }}>{idx + 1}</div>
                                 <div>
-                                    <h3 style={{ color: "#f9a8d4", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
-                                    <p style={{ color: "#cbd5e1", fontSize: "14px" }}>{step.desc}</p>
+                                    <h3 style={{ color: "#ec4899", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
+                                    <p style={{ color: "#475569", fontSize: "14px" }}>{step.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -842,21 +842,21 @@ const WebinarIbu = () => {
 
                 {/* 13. FAQ SECTION */}
                 <div style={{ marginBottom: "40px", padding: "0 10px" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#fff", textAlign: "center" }}>Pertanyaan Sering Diajukan</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#1e293b", textAlign: "center" }}>Pertanyaan Sering Diajukan</h2>
                     <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
                         {content.faq.map((item, idx) => (
-                            <div key={idx} style={{ background: "#1e1b29", padding: "20px", borderRadius: "15px", border: "1px solid #4a3860" }}>
-                                <div style={{ color: "#f9a8d4", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
-                                <div style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: 1.6 }}>{item.a}</div>
+                            <div key={idx} style={{ background: "#ffffff", padding: "20px", borderRadius: "15px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
+                                <div style={{ color: "#ec4899", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
+                                <div style={{ color: "#475569", fontSize: "14px", lineHeight: 1.6 }}>{item.a}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* FOOTER */}
-                <div style={{ textAlign: "center", paddingBottom: "30px", color: "#64748b", fontSize: "12px" }}>
-                    <p style={{ marginBottom: "5px", fontWeight: "bold" }}>eL Vision Group</p>
-                    <p>"Bahagia Adalah Koentji"</p>
+                <div style={{ textAlign: "center", paddingBottom: "30px", color: "#64748b", fontSize: "12px", background: "transparent" }}>
+                    <p style={{ marginBottom: "5px", fontWeight: "bold", color: "#334155" }}>eL Vision Group</p>
+                    <p style={{ color: "#475569" }}>"Bahagia Adalah Koentji"</p>
                 </div>
             </div>
         </div>

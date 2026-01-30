@@ -509,8 +509,8 @@ const WebinarBapak = () => {
     return (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-            background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", // Dark Navy Theme for Bapak
-            color: "#e2e8f0", // Light text for dark background
+            background: "linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%)", // Light background
+            color: "#334155", // Dark text
             lineHeight: 1.6
         }}>
             <Toaster />
@@ -518,30 +518,29 @@ const WebinarBapak = () => {
                 
                 {/* 1. HEADER LOGO */}
                 <div style={{ textAlign: "center", padding: "20px 0", marginBottom: "20px" }}>
-                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#fbbf24", letterSpacing: "2px" }}>eL VISION</div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "1px" }}>Official Webinar Series</div>
+                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#d97706", letterSpacing: "2px" }}>eL VISION</div>
+                    <div style={{ fontSize: "12px", color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>Official Webinar Series</div>
                 </div>
 
-                {/* 2. HERO SECTION */}
-                <div style={{ textAlign: "center", padding: "40px 20px", background: "rgba(30, 41, 59, 0.8)", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(0,0,0,0.3)", border: "1px solid rgba(251, 191, 36, 0.1)" }}>
-                    <span style={{ background: "rgba(251, 191, 36, 0.1)", color: "#fbbf24", padding: "10px 25px", borderRadius: "50px", fontSize: "16px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "1px solid #fbbf24" }}>
+                <div style={{ textAlign: "center", padding: "40px 20px", background: "#ffffff", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(0,0,0,0.1)", border: "1px solid rgba(251, 191, 36, 0.2)" }}>
+                    <span style={{ background: "rgba(251, 191, 36, 0.1)", color: "#d97706", padding: "10px 25px", borderRadius: "50px", fontSize: "16px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "1px solid #d97706" }}>
                         {content.targetBadge}
                     </span>
-                    <h1 style={{ fontSize: "28px", fontWeight: 800, color: "#fff", marginBottom: "15px", lineHeight: 1.3 }}>{content.headline}</h1>
-                    <p style={{ fontSize: "16px", color: "#cbd5e1", marginBottom: "0px", lineHeight: 1.6 }}>{content.subheadline}</p>
-                    <div style={{ marginTop: "20px", background: "rgba(0,0,0,0.3)", display: "inline-block", padding: "8px 16px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)" }}>
+                    <h1 style={{ fontSize: "28px", fontWeight: 800, color: "#1e293b", marginBottom: "15px", lineHeight: 1.3 }}>{content.headline}</h1>
+                    <p style={{ fontSize: "16px", color: "#475569", marginBottom: "0px", lineHeight: 1.6 }}>{content.subheadline}</p>
+                    <div style={{ marginTop: "20px", background: "rgba(0,0,0,0.05)", display: "inline-block", padding: "8px 16px", borderRadius: "10px", border: "1px solid rgba(0,0,0,0.1)" }}>
                         🗓️ Event: <strong>{content.eventDate}</strong>
                     </div>
                 </div>
 
                 {/* 3. PAIN SECTION */}
-                <div style={{ background: "#1e293b", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #fbbf24" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#fbbf24", marginBottom: "20px" }}>{content.painTitle}</h2>
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #d97706", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#d97706", marginBottom: "20px" }}>{content.painTitle}</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                         {content.painPoints.map((pain, idx) => (
-                            <div key={idx} style={{ background: 'rgba(255,255,255,0.05)', padding: '15px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                                <div style={{ fontSize: '24px', marginBottom: '10px' }}>{pain.icon}</div>
-                                <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#cbd5e1' }}>{pain.text}</p>
+                            <div key={idx} style={{ background: '#fffbeb', padding: '15px', borderRadius: '10px', border: '1px solid #fed7aa' }}>
+                                <div style={{ fontSize: '24px', marginBottom: '10px', color: '#f59e0b' }}>{pain.icon}</div>
+                                <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#4b5563' }}>{pain.text}</p>
                             </div>
                         ))}
                     </div>
@@ -550,92 +549,92 @@ const WebinarBapak = () => {
                 {/* 4. LOGIC TRAP */}
                 <div style={{ padding: "20px 10px", marginBottom: "30px" }}>
                     <h2 style={{ fontSize: "24px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#fff" }}>{content.logicTitle}</h2>
-                    <div style={{ background: "rgba(220, 38, 38, 0.1)", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #ef4444", color: "#fca5a5" }}>
+                    <div style={{ background: "rgba(220, 38, 38, 0.1)", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #ef4444", color: "#b91c1c" }}>
                         <p dangerouslySetInnerHTML={{ __html: content.logicDescription }} />
                     </div>
                 </div>
 
                 {/* 5. AGITATION (HIGHLIGHT) */}
-                <div style={{ background: "#020617", color: "white", padding: "40px 25px", borderRadius: "25px", marginBottom: "30px", textAlign: "center", position: "relative", overflow: "hidden", border: "1px solid #1e293b" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#fbbf24" }}>{content.agitationTitle}</h2>
+                <div style={{ background: "#ffffff", color: "#1e293b", padding: "40px 25px", borderRadius: "25px", marginBottom: "30px", textAlign: "center", position: "relative", overflow: "hidden", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#d97706" }}>{content.agitationTitle}</h2>
                     {content.agitationText.map((text, idx) => (
-                        <p key={idx} style={{ fontSize: "15px", lineHeight: 1.8, marginBottom: "20px" }} dangerouslySetInnerHTML={{ __html: text }} />
+                        <p key={idx} style={{ fontSize: "15px", lineHeight: 1.8, marginBottom: "20px", color: "#475569" }} dangerouslySetInnerHTML={{ __html: text }} />
                     ))}
                     <div style={{ background: "rgba(251, 191, 36, 0.05)", padding: "15px", borderRadius: "10px", marginBottom: "20px", border: "1px solid rgba(251, 191, 36, 0.1)" }}>
                         {content.agitationBullets.map((bullet, idx) => (
-                            <p key={idx} style={{ margin: idx === 1 ? "10px 0" : "0", color: "#e2e8f0" }}>{bullet.trigger} 👉 <strong style={{color: "#fbbf24"}}>{bullet.result}</strong></p>
+                            <p key={idx} style={{ margin: idx === 1 ? "10px 0" : "0", color: "#475569" }}>{bullet.trigger} 👉 <strong style={{color: "#d97706"}}>{bullet.result}</strong></p>
                         ))}
                     </div>
-                    <p style={{ fontWeight: "bold", fontSize: "16px", color: "#fff" }}>{content.agitationClosing}</p>
+                    <p style={{ fontWeight: "bold", fontSize: "16px", color: "#1e293b" }}>{content.agitationClosing}</p>
                 </div>
 
                 {/* 6. SOLUTION */}
-                <div style={{ background: "#1e293b", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 4px 20px rgba(0,0,0,0.2)" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#fff", marginBottom: "20px", textAlign: "center" }}>{content.shiftTitle}</h2>
-                    <p style={{ marginBottom: "20px", textAlign: "center", color: "#cbd5e1" }} dangerouslySetInnerHTML={{ __html: content.shiftDescription }} />
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1e293b", marginBottom: "20px", textAlign: "center" }}>{content.shiftTitle}</h2>
+                    <p style={{ marginBottom: "20px", textAlign: "center", color: "#475569" }} dangerouslySetInnerHTML={{ __html: content.shiftDescription }} />
                     <div style={{ padding: "15px", background: "rgba(16, 185, 129, 0.1)", borderRadius: "15px", border: "1px solid rgba(16, 185, 129, 0.3)", marginBottom: "20px" }}>
-                        <p style={{ fontWeight: "bold", color: "#34d399", marginBottom: "10px", textAlign: "center" }}>✨ SETELAH WEBINAR INI:</p>
+                        <p style={{ fontWeight: "bold", color: "#10b981", marginBottom: "10px", textAlign: "center" }}>✨ SETELAH WEBINAR INI:</p>
                         <ul style={{ listStyle: "none", padding: 0 }}>
                             {content.shiftResults.map((res, idx) => (
-                                <li key={idx} style={{ padding: "8px 0", borderBottom: idx !== 2 ? "1px dashed rgba(52, 211, 153, 0.3)" : "none", color: "#d1fae5" }} dangerouslySetInnerHTML={{ __html: res }} />
+                                <li key={idx} style={{ padding: "8px 0", borderBottom: idx !== 2 ? "1px dashed rgba(16, 185, 129, 0.3)" : "none", color: "#1e293b" }} dangerouslySetInnerHTML={{ __html: res }} />
                             ))}
                         </ul>
                     </div>
                 </div>
 
                 {/* 7. AUTHORITY */}
-                <div style={{ background: "#1e293b", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #334155" }}>
+                <div style={{ background: "#ffffff", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '20px', alignItems: 'center' }}>
                         <img src={founderImages[0]} alt="eL Reyzandra" style={{ width: '100%', borderRadius: '15px', objectFit: 'cover', aspectRatio: '9/16' }} />
                         <img src={founderImages[1]} alt="eL Reyzandra" style={{ width: '100%', borderRadius: '15px', objectFit: 'cover', aspectRatio: '1/1' }} />
                     </div>
                     <div style={{ textAlign: "center", marginBottom: "20px" }}>
-                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#fbbf24", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
-                        <div style={{ fontSize: "13px", color: "#94a3b8", letterSpacing: "1px", textTransform: "uppercase" }}>The Mind Engineer</div>
+                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#d97706", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
+                        <div style={{ fontSize: "13px", color: "#64748b", letterSpacing: "1px", textTransform: "uppercase" }}>The Mind Engineer</div>
                     </div>
-                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginBottom: "15px", color: "#e2e8f0", textAlign: "center" }}>Selama 16 tahun, saya meneliti bagaimana <strong>Alam Bawah Sadar</strong> mengendalikan 95% hidup manusia. Saya bukan motivator. Saya adalah "Insinyur Pikiran".</p>
-                    <div style={{ background: "#0f172a", color: "#fbbf24", padding: "10px", borderRadius: "8px", textAlign: "center", fontSize: "14px", fontWeight: "bold", border: "1px solid #fbbf24" }}>"Bahagia Adalah Koentji"</div>
+                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginBottom: "15px", color: "#334155", textAlign: "center" }}>Selama 16 tahun, saya meneliti bagaimana <strong>Alam Bawah Sadar</strong> mengendalikan 95% hidup manusia. Saya bukan motivator. Saya adalah "Insinyur Pikiran".</p>
+                    <div style={{ background: "#fffbeb", color: "#d97706", padding: "10px", borderRadius: "8px", textAlign: "center", fontSize: "14px", fontWeight: "bold", border: "1px solid #fed7aa" }}>"Bahagia Adalah Koentji"</div>
                 </div>
 
                 {/* 8. VIDEO TESTIMONIALS (RESTORED ALL) */}
                 <div style={{ marginBottom: "40px" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#fff" }}>Apa Kata Mereka?</h2>
+                    <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>Apa Kata Mereka?</h2>
                     <div style={{ display: "flex", overflowX: "auto", gap: "15px", paddingBottom: "15px", scrollSnapType: "x mandatory" }}>
                         {videoTestimonials.map((testi, idx) => (
-                            <div key={idx} style={{ minWidth: "260px", background: "#1e293b", borderRadius: "15px", padding: "15px", scrollSnapAlign: "center", boxShadow: "0 2px 10px rgba(0,0,0,0.3)" }}>
-                                <video controls poster={testi.poster} style={{ width: "100%", borderRadius: "10px", aspectRatio: "9/16", objectFit: "cover", marginBottom: "10px", backgroundColor: "#000" }}>
+                            <div key={idx} style={{ minWidth: "260px", background: "#ffffff", borderRadius: "15px", padding: "15px", scrollSnapAlign: "center", boxShadow: "0 2px 10px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
+                                <video controls poster={testi.poster} style={{ width: "100%", borderRadius: "10px", aspectRatio: "9/16", objectFit: "cover", marginBottom: "10px", backgroundColor: "#f0f4f8" }}>
                                     <source src={testi.videoUrl} type="video/mp4" />
                                 </video>
-                                <div style={{ fontWeight: "bold", fontSize: "14px", color: "#fbbf24" }}>{testi.name}</div>
-                                <div style={{ fontSize: "12px", color: "#94a3b8" }}>{testi.title}</div>
+                                <div style={{ fontWeight: "bold", fontSize: "14px", color: "#d97706" }}>{testi.name}</div>
+                                <div style={{ fontSize: "12px", color: "#64748b" }}>{testi.title}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* 9. TEXT TESTIMONIALS (RESTORED ALL) */}
-                <div style={{ background: "#1e293b", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #334155" }}>
-                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#fff" }}>Kisah Perubahan Nyata</h2>
+                <div style={{ background: "#ffffff", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>Kisah Perubahan Nyata</h2>
                      {testimonials.map((testi, idx) => (
-                        <div key={idx} style={{ background: "rgba(255,255,255,0.05)", padding: "20px", borderRadius: "10px", marginBottom: "15px" }}>
-                            <div style={{ fontWeight: 700, color: "#fbbf24", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#34d399'}}>✓</span>}</div>
-                            <div style={{ fontSize: '12px', color: '#94a3b8', marginBottom: '10px' }}>{testi.title}</div>
-                            <p style={{ fontSize: "14px", lineHeight: 1.7, fontStyle: "italic", color: "#cbd5e1" }}>"{testi.text}"</p>
+                        <div key={idx} style={{ background: "#f8fafc", padding: "20px", borderRadius: "10px", marginBottom: "15px", border: "1px solid #e2e8f0" }}>
+                            <div style={{ fontWeight: 700, color: "#d97706", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#34d399'}}>✓</span>}</div>
+                            <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '10px' }}>{testi.title}</div>
+                            <p style={{ fontSize: "14px", lineHeight: 1.7, fontStyle: "italic", color: "#475569" }}>"{testi.text}"</p>
                         </div>
                      ))}
                 </div>
 
                 {/* 10. CURRICULUM */}
-                <div style={{ background: "#1e293b", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #fbbf24" }}>
-                    <div style={{ background: "#fbbf24", color: "#000", display: "inline-block", padding: "5px 15px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", marginBottom: "15px" }}>MATERI EKSKLUSIF</div>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#fff" }}>{content.webinarTitle}</h2>
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #d97706", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <div style={{ background: "#d97706", color: "#fff", display: "inline-block", padding: "5px 15px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", marginBottom: "15px" }}>MATERI EKSKLUSIF</div>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#1e293b" }}>{content.webinarTitle}</h2>
                     <div style={{ marginBottom: "20px" }}>
                         {content.curriculum.map((item, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "15px", marginBottom: "15px" }}>
-                                <div style={{ background: "rgba(251, 191, 36, 0.1)", color: "#fbbf24", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, border: "1px solid #fbbf24" }}>{idx + 1}</div>
+                                <div style={{ background: "rgba(251, 191, 36, 0.1)", color: "#d97706", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, border: "1px solid #d97706" }}>{idx + 1}</div>
                                 <div>
-                                    <strong style={{ color: "#fbbf24" }}>{item.title}</strong>
-                                    <p style={{ fontSize: "14px", margin: "5px 0 0 0", color: "#cbd5e1" }}>{item.desc}</p>
+                                    <strong style={{ color: "#d97706" }}>{item.title}</strong>
+                                    <p style={{ fontSize: "14px", margin: "5px 0 0 0", color: "#475569" }}>{item.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -644,17 +643,17 @@ const WebinarBapak = () => {
 
                 {/* 11. STEP BY STEP GUIDE */}
                 <div style={{ padding: "30px 10px", marginBottom: "30px" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "30px", color: "#fff", textAlign: "center" }}>Cara Bergabung</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "30px", color: "#1e293b", textAlign: "center" }}>Cara Bergabung</h2>
                     <div style={{ position: "relative" }}>
                         {/* Connecting Line */}
-                        <div style={{ position: "absolute", left: "20px", top: "20px", bottom: "20px", width: "2px", background: "#334155" }}></div>
+                        <div style={{ position: "absolute", left: "20px", top: "20px", bottom: "20px", width: "2px", background: "#e2e8f0" }}></div>
                         
                         {content.steps.map((step, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "20px", marginBottom: "30px", position: "relative" }}>
-                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#fbbf24", color: "#000", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid #0f172a" }}>{idx + 1}</div>
+                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#d97706", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid #f8fafc" }}>{idx + 1}</div>
                                 <div>
-                                    <h3 style={{ color: "#fbbf24", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
-                                    <p style={{ color: "#cbd5e1", fontSize: "14px" }}>{step.desc}</p>
+                                    <h3 style={{ color: "#d97706", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
+                                    <p style={{ color: "#475569", fontSize: "14px" }}>{step.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -757,21 +756,21 @@ const WebinarBapak = () => {
 
                 {/* 13. FAQ SECTION */}
                 <div style={{ marginBottom: "40px", padding: "0 10px" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#fff", textAlign: "center" }}>Pertanyaan Sering Diajukan</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#1e293b", textAlign: "center" }}>Pertanyaan Sering Diajukan</h2>
                     <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
                         {content.faq.map((item, idx) => (
-                            <div key={idx} style={{ background: "#1e293b", padding: "20px", borderRadius: "15px", border: "1px solid #334155" }}>
-                                <div style={{ color: "#fbbf24", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
-                                <div style={{ color: "#cbd5e1", fontSize: "14px", lineHeight: 1.6 }}>{item.a}</div>
+                            <div key={idx} style={{ background: "#ffffff", padding: "20px", borderRadius: "15px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
+                                <div style={{ color: "#d97706", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
+                                <div style={{ color: "#475569", fontSize: "14px", lineHeight: 1.6 }}>{item.a}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* FOOTER */}
-                <div style={{ textAlign: "center", paddingBottom: "30px", color: "#64748b", fontSize: "12px" }}>
-                    <p style={{ marginBottom: "5px", fontWeight: "bold" }}>eL Vision Group</p>
-                    <p>"Bahagia Adalah Koentji"</p>
+                <div style={{ textAlign: "center", paddingBottom: "30px", color: "#64748b", fontSize: "12px", background: "transparent" }}>
+                    <p style={{ marginBottom: "5px", fontWeight: "bold", color: "#334155" }}>eL Vision Group</p>
+                    <p style={{ color: "#475569" }}>"Bahagia Adalah Koentji"</p>
                 </div>
             </div>
         </div>
