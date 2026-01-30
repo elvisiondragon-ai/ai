@@ -22,6 +22,8 @@ const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.ts
 const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
 const Proteam = React.lazy(() => import('./proteam.tsx'));
 const IntroLanding = React.lazy(() => import('./intro.tsx'));
+const WebinarIbu = React.lazy(() => import('./web/webinar_ibu.tsx'));
+const WebinarBapak = React.lazy(() => import('./web/webinar_bapak.tsx'));
 
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
@@ -36,6 +38,8 @@ const App = () => {
     const timer = setTimeout(() => {
         import('./id_ebook/ebook_elvision.tsx');
         import('./id_ebook/vip_15jt.tsx');
+        import('./web/webinar_ibu.tsx');
+        import('./web/webinar_bapak.tsx');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -56,6 +60,8 @@ const App = () => {
         <Route path="/ebook_tracker" element={<EbookTrackerLanding />} />
         <Route path="/vip_15jt" element={<ELVision15K />} />
         <Route path="/proteam" element={<Proteam />} />
+        <Route path="/webinar_ibu" element={<WebinarIbu />} />
+        <Route path="/webinar_bapak" element={<WebinarBapak />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
   );
