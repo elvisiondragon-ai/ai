@@ -24,6 +24,13 @@ const Proteam = React.lazy(() => import('./proteam.tsx'));
 const IntroLanding = React.lazy(() => import('./intro.tsx'));
 const WebinarIbu = React.lazy(() => import('./web/webinar_ibu.tsx'));
 const WebinarBapak = React.lazy(() => import('./web/webinar_bapak.tsx'));
+const WebinarIbuJodoh = React.lazy(() => import('./web/webinar_ibujodoh.tsx'));
+const WebinarAnakMandiri = React.lazy(() => import('./web/webinar_anakmandiri.tsx'));
+const WebinarOrtuSakit = React.lazy(() => import('./web/webinar_ortusakit.tsx'));
+const WebinarOrtuAnak = React.lazy(() => import('./web/webinar_ortuanak.tsx'));
+const WebinarIbuIstri = React.lazy(() => import('./web/webinar_ibuistri.tsx'));
+const WebinarPriaSusis = React.lazy(() => import('./web/webinar_priasusis.tsx'));
+const WebinarPriaSingle = React.lazy(() => import('./web/webinar_priasingle.tsx'));
 
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
@@ -40,6 +47,13 @@ const App = () => {
         import('./id_ebook/vip_15jt.tsx');
         import('./web/webinar_ibu.tsx');
         import('./web/webinar_bapak.tsx');
+        import('./web/webinar_ibujodoh.tsx');
+        import('./web/webinar_anakmandiri.tsx');
+        import('./web/webinar_ortusakit.tsx');
+        import('./web/webinar_ortuanak.tsx');
+        import('./web/webinar_ibuistri.tsx');
+        import('./web/webinar_priasusis.tsx');
+        import('./web/webinar_priasingle.tsx');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -62,6 +76,13 @@ const App = () => {
         <Route path="/proteam" element={<Proteam />} />
         <Route path="/webinar_ibu" element={<WebinarIbu />} />
         <Route path="/webinar_bapak" element={<WebinarBapak />} />
+                <Route path="/webinar_ibujodoh" element={<WebinarIbuJodoh />} />
+                <Route path="/webinar_anakmandiri" element={<WebinarAnakMandiri />} />
+        <Route path="/webinar_ortusakit" element={<WebinarOrtuSakit />} />
+        <Route path="/webinar_ortuanak" element={<WebinarOrtuAnak />} />
+        <Route path="/webinar_ibuistri" element={<WebinarIbuIstri />} />
+        <Route path="/webinar_priasusis" element={<WebinarPriaSusis />} />
+        <Route path="/webinar_priasingle" element={<WebinarPriaSingle />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
   );

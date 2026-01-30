@@ -440,8 +440,8 @@ const WebinarBapak = () => {
 
     if (showPaymentInstructions && paymentData) {
         return (
-          <div className="min-h-screen bg-slate-900 pb-20 font-sans text-slate-100">
-            <div className="max-w-md mx-auto bg-slate-800 min-h-screen shadow-2xl border-x border-slate-700">
+          <div className="min-h-screen bg-slate-50 pb-20 font-sans text-slate-900">
+            <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-slate-200">
               <div className="p-4 bg-amber-600 text-white flex items-center gap-2 sticky top-0 z-10">
                 <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-amber-700">
                   <ArrowLeft className="w-6 h-6" />
@@ -451,42 +451,52 @@ const WebinarBapak = () => {
     
               <div className="p-6 space-y-6">
                 <div className="text-center">
-                    <p className="text-gray-400">Total Tagihan</p>
-                    <p className="text-3xl font-bold text-amber-500">{formatCurrency(paymentData.amount)}</p>
-                    <div className="mt-2 inline-block px-3 py-1 bg-amber-900/30 text-amber-400 rounded-full text-sm font-medium border border-amber-500/30">
+                    <p className="text-slate-500">Total Tagihan</p>
+                    <p className="text-3xl font-bold text-amber-600">{formatCurrency(paymentData.amount)}</p>
+                    <div className="mt-2 inline-block px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium border border-amber-200">
                         Menunggu Pembayaran
                     </div>
                 </div>
     
-                <Card className="border-2 border-slate-700 bg-slate-900">
+                <Card className="border-2 border-slate-100 bg-white">
                   <CardContent className="pt-6 space-y-4">
+                    <div className="space-y-2 border-b border-slate-100 pb-4 mb-4">
+                        <Label className="text-slate-500">Nomor Referensi</Label>
+                        <div className="flex items-center justify-between bg-slate-50 p-2 rounded border border-slate-200">
+                            <span className="font-mono text-sm text-amber-600">{paymentData.tripay_reference}</span>
+                            <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.tripay_reference)} className="h-8 w-8 p-0 text-slate-400 hover:text-amber-600">
+                                <Copy className="w-3 h-3" />
+                            </Button>
+                        </div>
+                    </div>
+
                     {paymentData.qrUrl && (
                         <div className="flex flex-col items-center">
-                            <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border border-slate-700 rounded-lg bg-white" />
-                            <p className="text-sm text-gray-400 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
+                            <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border border-slate-200 rounded-lg bg-white" />
+                            <p className="text-sm text-slate-500 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
                         </div>
                     )}
                     
                     {paymentData.payCode && (
                         <div className="space-y-2">
-                            <Label className="text-slate-300">Kode Bayar / Virtual Account</Label>
-                            <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-600">
-                                <span className="font-mono text-xl font-bold tracking-wider text-amber-500">{paymentData.payCode}</span>
-                                <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-slate-400 hover:text-white">
+                            <Label className="text-slate-600">Kode Bayar / Virtual Account</Label>
+                            <div className="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <span className="font-mono text-xl font-bold tracking-wider text-amber-600">{paymentData.payCode}</span>
+                                <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-slate-400 hover:text-amber-600">
                                     <Copy className="w-4 h-4" />
                                 </Button>
                             </div>
                         </div>
                     )}
     
-                    <div className="bg-amber-900/20 p-3 rounded text-sm text-amber-200 border border-amber-800/50">
+                    <div className="bg-amber-50 p-3 rounded text-sm text-amber-800 border border-amber-100">
                         <p><strong>PENTING:</strong> Lakukan pembayaran sebelum waktu habis. Sistem akan otomatis memverifikasi pembayaran Anda.</p>
                     </div>
                   </CardContent>
                 </Card>
                 
                 <div className="text-center">
-                   <Button variant="outline" className="w-full gap-2 border-slate-600 text-slate-300 hover:bg-slate-700" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order Webinar Rezeki ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
+                   <Button variant="outline" className="w-full gap-2 border-slate-200 text-slate-600 hover:bg-slate-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order Webinar Rezeki ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
                        Bantuan Admin
                    </Button>
                 </div>
@@ -652,31 +662,31 @@ const WebinarBapak = () => {
                 </div>
 
                 {/* 12. PRICING & PAYMENT FORM */}
-                <div style={{ background: "linear-gradient(180deg, #1e293b 0%, #020617 100%)", color: "white", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.5)", border: "1px solid #334155" }}>
+                <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>
                         <h2 style={{ marginTop: "20px", fontSize: "22px", fontWeight: 700, marginBottom: "20px" }}>Investasi Kewibawaan</h2>
-                        <p style={{ fontSize: "14px", color: "#94a3b8", marginBottom: "20px" }}>Biasanya, sesi private bersama saya dihargai:</p>
-                        <div style={{ fontSize: "20px", textDecoration: "line-through", color: "#64748b", marginBottom: "5px" }}>{content.priceAnchor}</div>
-                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#fbbf24", marginBottom: "10px", textShadow: "0 2px 10px rgba(251, 191, 36, 0.3)" }}>{content.priceReal}</div>
+                        <p style={{ fontSize: "14px", color: "#64748b", marginBottom: "20px" }}>Biasanya, sesi private bersama saya dihargai:</p>
+                        <div style={{ fontSize: "20px", textDecoration: "line-through", color: "#94a3b8", marginBottom: "5px" }}>{content.priceAnchor}</div>
+                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#d97706", marginBottom: "10px" }}>{content.priceReal}</div>
                         <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "30px" }}>(Setara harga makan malam dengan kolega)</p>
                     </div>
 
                     {/* FORM INPUTS */}
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-amber-500">
+                            <h3 className="font-bold text-lg flex items-center gap-2 text-amber-600">
                                 <User className="w-5 h-5" /> Data Diri
                             </h3>
                             <div className="grid gap-4">
                                 <div>
-                                    <Label htmlFor="name" className="text-slate-300 font-semibold mb-1 block">Nama Lengkap</Label>
+                                    <Label htmlFor="name" className="text-slate-700 font-semibold mb-1 block">Nama Lengkap</Label>
                                     <Input 
                                         id="name" 
                                         autoComplete="name"
                                         placeholder="Contoh: Budi Santoso" 
                                         value={userName} 
                                         onChange={(e) => setUserName(e.target.value)} 
-                                        className="bg-slate-800 text-white placeholder:text-slate-500 border-slate-600 focus:border-amber-500 h-12"
+                                        className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
                                     />
                                 </div>
                                 <div className="grid md:grid-cols-2 gap-4">
@@ -689,7 +699,7 @@ const WebinarBapak = () => {
                                             placeholder="Untuk link webinar" 
                                             value={userEmail} 
                                             onChange={(e) => setUserEmail(e.target.value)} 
-                                            className="bg-slate-800 text-white placeholder:text-slate-500 border-slate-600 focus:border-amber-500 h-12"
+                                            className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
                                         />
                                     </div>
                                     <div>
@@ -701,7 +711,7 @@ const WebinarBapak = () => {
                                             placeholder="0812xxxx" 
                                             value={phoneNumber} 
                                             onChange={(e) => setPhoneNumber(e.target.value)} 
-                                            className="bg-slate-800 text-white placeholder:text-slate-500 border-slate-600 focus:border-amber-500 h-12"
+                                            className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
                                         />
                                     </div>
                                 </div>
@@ -709,16 +719,16 @@ const WebinarBapak = () => {
                         </div>
 
                         <div className="space-y-4">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-amber-500">
+                            <h3 className="font-bold text-lg flex items-center gap-2 text-amber-600">
                                 <CreditCard className="w-5 h-5" /> Metode Pembayaran
                             </h3>
                             <RadioGroup value={selectedPaymentMethod} onValueChange={setSelectedPaymentMethod} className="grid grid-cols-1 gap-4">
                                 {paymentMethods.map((method) => (
-                                    <Label key={method.code} className={`flex items-start p-4 border rounded-xl cursor-pointer transition-all ${selectedPaymentMethod === method.code ? 'border-amber-500 bg-amber-500/10 shadow-md ring-1 ring-amber-500' : 'border-slate-700 bg-slate-800 hover:border-slate-600'}`}>
-                                        <RadioGroupItem value={method.code} id={method.code} className="mt-1 mr-4 border-slate-400 text-amber-500" />
+                                    <Label key={method.code} className={`flex items-start p-4 border rounded-xl cursor-pointer transition-all ${selectedPaymentMethod === method.code ? 'border-amber-500 bg-amber-50 shadow-md ring-1 ring-amber-500' : 'border-slate-200 bg-white hover:border-slate-300'}`}>
+                                        <RadioGroupItem value={method.code} id={method.code} className="mt-1 mr-4 border-slate-400 text-amber-600" />
                                         <div className="flex-1">
-                                            <div className="font-bold text-slate-200 text-lg">{method.name}</div>
-                                            <div className="text-sm text-slate-400">{method.description}</div>
+                                            <div className="font-bold text-slate-800 text-lg">{method.name}</div>
+                                            <div className="text-sm text-slate-500">{method.description}</div>
                                         </div>
                                     </Label>
                                 ))}
@@ -734,12 +744,12 @@ const WebinarBapak = () => {
                             {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Memproses...</> : content.ctaButton}
                         </Button>
                         
-                         <div className="flex items-center justify-center gap-4 text-xs text-slate-500 font-medium mt-4">
+                         <div className="flex items-center justify-center gap-4 text-xs text-slate-400 font-medium mt-4">
                             <div className="flex items-center gap-1">
-                                <ShieldCheck className="w-3 h-3 text-green-500" /> Secure Payment
+                                <ShieldCheck className="w-3 h-3 text-green-600" /> Secure Payment
                             </div>
                             <div className="flex items-center gap-1">
-                                <CheckCircle className="w-3 h-3 text-blue-500" /> Instant Access
+                                <CheckCircle className="w-3 h-3 text-blue-600" /> Instant Access
                             </div>
                         </div>
                     </div>
