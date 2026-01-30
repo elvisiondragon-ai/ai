@@ -290,8 +290,10 @@ const WebinarSopanMandiri = () => {
         }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-red-50 pb-20 font-sans text-slate-900">
             <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-red-100">
               <div className="p-4 bg-red-600 text-white flex items-center gap-2 sticky top-0 z-10">
@@ -353,17 +355,13 @@ const WebinarSopanMandiri = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #fff1f2 0%, #fff7ed 100%)", // Very Light Red to Warm White
             color: "#450a0a", // Dark Red/Brown Text
             lineHeight: 1.6
         }}>
-            <Toaster />
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* 1. HEADER */}
@@ -620,6 +618,8 @@ const WebinarSopanMandiri = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 

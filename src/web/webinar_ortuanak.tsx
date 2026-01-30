@@ -298,34 +298,37 @@ const WebinarOrtuAnak = () => {
         }
     };
 
-    // Realtime Payment Listener
+    // Realtime Payment Listener (Polling Fallback)
     useEffect(() => {
         if (!showPaymentInstructions || !paymentData?.tripay_reference) return;
         
-        const channel = supabase
-          .channel(`payment-${paymentData.tripay_reference}`)
-          .on('postgres_changes', { 
-            event: 'UPDATE', 
-            schema: 'public', 
-            table: 'global_product', 
-            filter: `tripay_reference=eq.${paymentData.tripay_reference}`
-          }, (payload) => {
-            if (payload.new?.status === 'PAID') {
-              if (purchaseFiredRef.current) return;
-              purchaseFiredRef.current = true;
-    
-              toast({
-                  title: "LUNAS! Akses Dikirim.",
-                  description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Webinar.",
-                  duration: 5000, 
-                  variant: "default"
-              });
-              
-              // Purchase event handled elsewhere/ignored as per strict instructions
+        const checkStatus = async () => {
+            const { data } = await supabase
+                .from('global_product')
+                .select('status')
+                .eq('tripay_reference', paymentData.tripay_reference)
+                .maybeSingle();
+            
+            if (data && (data as any).status === 'PAID') {
+                if (purchaseFiredRef.current) return;
+                purchaseFiredRef.current = true;
+
+                toast({
+                    title: "LUNAS! Akses Dikirim.",
+                    description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Webinar.",
+                    duration: 5000, 
+                    variant: "default"
+                });
             }
-          }).subscribe();
-    
-        return () => { supabase.removeChannel(channel); };
+        };
+
+        // Check immediately
+        checkStatus();
+
+        // Check every 5 seconds
+        const intervalId = setInterval(checkStatus, 5000);
+
+        return () => clearInterval(intervalId);
     }, [showPaymentInstructions, paymentData]);
 
     // ==========================================
@@ -438,8 +441,10 @@ const WebinarOrtuAnak = () => {
         { name: "Rudi Hartono", title: "Pensiunan", verified: true, image: "👴", rating: 5, text: "Menyesal baru tahu ilmu ini di usia senja. Tapi alhamdulillah, sisa umur ini bisa saya pakai untuk memperbaiki hubungan dengan anak-anak yang sempat renggang." }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-slate-50 pb-20 font-sans text-slate-900">
             <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-slate-200">
               <div className="p-4 bg-teal-600 text-white flex items-center gap-2 sticky top-0 z-10">
@@ -503,17 +508,13 @@ const WebinarOrtuAnak = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #f0fdfa 0%, #e6fffa 100%)", // Light Teal background
             color: "#334155", // Dark text
             lineHeight: 1.6
         }}>
-            <Toaster />
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* 1. HEADER LOGO */}
@@ -774,6 +775,8 @@ const WebinarOrtuAnak = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 

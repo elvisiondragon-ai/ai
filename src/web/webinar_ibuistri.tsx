@@ -437,8 +437,10 @@ const WebinarIbuIstri = () => {
         { name: "Agus Mulyadi", title: "Klien eL Vision", verified: true, image: "👨‍💼", rating: 5, text: "Intuisi dan ketenangan meningkat tajam. Sangat berpengaruh dalam pengambilan keputusan besar dalam keluarga." }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-purple-50 pb-20 font-sans text-slate-900">
             <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-purple-100">
               <div className="p-4 bg-violet-600 text-white flex items-center gap-2 sticky top-0 z-10">
@@ -502,17 +504,14 @@ const WebinarIbuIstri = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)", // Light Purple/Violet background (THEME CHANGE)
             color: "#334155", // Dark text
             lineHeight: 1.6
         }}>
-            <Toaster />
+            {/* Toaster removed here as it is now in parent */}
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* 1. HEADER LOGO */}
@@ -774,6 +773,8 @@ const WebinarIbuIstri = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 

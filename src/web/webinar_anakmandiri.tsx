@@ -438,8 +438,10 @@ const WebinarAkuMandiri = () => {
         { name: "Felicia Quincy", title: "Pengusaha Muda", verified: true, image: "👩‍💼", rating: 5, text: "Awalnya saya ragu dengan masa depan saya. Setelah program, visi saya jelas. Saya tahu apa yang harus dilakukan dan ketakutan itu hilang berganti keyakinan." }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-slate-50 pb-20 font-sans text-slate-900">
             <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-slate-200">
               <div className="p-4 bg-indigo-600 text-white flex items-center gap-2 sticky top-0 z-10">
@@ -503,17 +505,13 @@ const WebinarAkuMandiri = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)", // Cool gray/slate background
             color: "#334155", // Dark slate text
             lineHeight: 1.6
         }}>
-            <Toaster />
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* 1. HEADER LOGO */}
@@ -774,6 +772,8 @@ const WebinarAkuMandiri = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 

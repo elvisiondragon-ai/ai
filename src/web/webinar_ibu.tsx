@@ -437,8 +437,10 @@ const WebinarIbuOverthinking = () => {
         { name: "Agus Mulyadi", title: "Klien eL Vision", verified: true, image: "👨‍💼", rating: 5, text: "Intuisi dan ketenangan meningkat tajam. Sangat berpengaruh dalam pengambilan keputusan besar dalam hidup dan keluarga." }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-violet-50 pb-20 font-sans text-slate-900">
             <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-violet-100">
               <div className="p-4 bg-violet-600 text-white flex items-center gap-2 sticky top-0 z-10">
@@ -502,17 +504,13 @@ const WebinarIbuOverthinking = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)", // Light Violet/Purple background
             color: "#1e293b", // Slate 800
             lineHeight: 1.6
         }}>
-            <Toaster />
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* 1. HEADER LOGO */}
@@ -774,6 +772,8 @@ const WebinarIbuOverthinking = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 

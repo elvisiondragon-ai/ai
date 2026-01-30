@@ -419,8 +419,10 @@ const WebinarPriaSusis = () => {
         { name: "Fajar Ramadan", title: "Klien eL Vision", verified: true, image: "👑", rating: 5, text: "Komunikasi yang tadinya penuh tuntutan dan bentakan, berubah menjadi rasa hormat yang tulus. Saya merasa kembali menjadi 'Raja' di istana saya sendiri." }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-slate-900 pb-20 font-sans text-slate-100">
             <div className="max-w-md mx-auto bg-slate-800 min-h-screen shadow-2xl border-x border-slate-700">
               <div className="p-4 bg-amber-700 text-white flex items-center gap-2 sticky top-0 z-10 shadow-lg">
@@ -461,7 +463,7 @@ const WebinarPriaSusis = () => {
                     {paymentData.payCode && (
                         <div className="space-y-2">
                             <Label className="text-slate-400">Kode Bayar / Virtual Account</Label>
-                            <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
+                            <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-200">
                                 <span className="font-mono text-xl font-bold tracking-wider text-amber-500">{paymentData.payCode}</span>
                                 <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-slate-400 hover:text-amber-500">
                                     <Copy className="w-4 h-4" />
@@ -484,10 +486,7 @@ const WebinarPriaSusis = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%)", // DARK THEME
@@ -495,7 +494,6 @@ const WebinarPriaSusis = () => {
             lineHeight: 1.6,
             minHeight: "100vh"
         }}>
-            <Toaster />
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* 1. HEADER LOGO */}
@@ -756,6 +754,8 @@ const WebinarPriaSusis = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 

@@ -298,35 +298,61 @@ const WebinarBapak = () => {
         }
     };
 
-    // Realtime Payment Listener
+    // Original Realtime Payment Listener (Intended)
     useEffect(() => {
+
         if (!showPaymentInstructions || !paymentData?.tripay_reference) return;
+
         
+
         const channel = supabase
-          .channel(`payment-${paymentData.tripay_reference}`)
-          .on('postgres_changes', { 
-            event: 'UPDATE', 
-            schema: 'public', 
-            table: 'global_product', 
-            filter: `tripay_reference=eq.${paymentData.tripay_reference}`
-          }, (payload) => {
-            if (payload.new?.status === 'PAID') {
-              if (purchaseFiredRef.current) return;
-              purchaseFiredRef.current = true;
-    
-              toast({
-                  title: "LUNAS! Akses Dikirim.",
-                  description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Webinar.",
-                  duration: 5000, 
-                  variant: "default"
-              });
-              
-              // CAPI Purchase Event is handled by server-side logic usually, 
-              // but we can log it here or redirect if needed.
-            }
-          }).subscribe();
-    
+
+            .channel(`payment-status-webinar-${paymentData.tripay_reference}`)
+
+            .on('postgres_changes', { 
+
+                event: 'UPDATE', 
+
+                schema: 'public', 
+
+                table: 'global_product', 
+
+                filter: `tripay_reference=eq.${paymentData.tripay_reference}`
+
+              },
+
+              (payload) => {
+
+                if (payload.new?.status === 'PAID') {
+
+                    if (purchaseFiredRef.current) return;
+
+                    purchaseFiredRef.current = true;
+
+                    toast({
+
+                        title: "LUNAS! Akses Dikirim.",
+
+                        description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Webinar.",
+
+                        duration: 5000, 
+
+                        variant: "default"
+
+                    });
+
+                }
+
+              }
+
+            )
+
+            .subscribe();
+
+        
+
         return () => { supabase.removeChannel(channel); };
+
     }, [showPaymentInstructions, paymentData]);
 
     // ==========================================
@@ -438,8 +464,10 @@ const WebinarBapak = () => {
         { name: "Felicia Quincy", title: "Pengusaha", verified: true, image: "👩‍💼", rating: 5, text: "Awalnya semua keputusan saya kabur. Setelah program, saya bisa melihat hal-hal lebih jelas, realitas, koneksi dan keuangan saya menjadi lebih baik." }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-slate-50 pb-20 font-sans text-slate-900">
             <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-slate-200">
               <div className="p-4 bg-amber-600 text-white flex items-center gap-2 sticky top-0 z-10">
@@ -473,7 +501,7 @@ const WebinarBapak = () => {
                     {paymentData.qrUrl && (
                         <div className="flex flex-col items-center">
                             <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border border-slate-200 rounded-lg bg-white" />
-                            <p className="text-sm text-slate-500 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
+                            <p className="text-sm text-slate-500 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet or mobile banking Anda.</p>
                         </div>
                     )}
                     
@@ -503,17 +531,14 @@ const WebinarBapak = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%)", // Light background
             color: "#334155", // Dark text
             lineHeight: 1.6
         }}>
-            <Toaster />
+
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* 1. HEADER LOGO */}
@@ -774,6 +799,8 @@ const WebinarBapak = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 

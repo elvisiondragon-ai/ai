@@ -542,70 +542,70 @@ export default function UangPanasLanding() {
     }
   };
 
-  if (showPaymentInstructions && paymentData) {
-    return (
-      <div className="min-h-screen bg-black pb-20 font-sans text-white">
-        <div className="max-w-md mx-auto bg-gray-900 min-h-screen shadow-2xl border-x border-gray-800">
-          <div className="p-4 bg-red-600 text-white flex items-center gap-2 sticky top-0 z-10">
-            <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-red-700">
-              <X className="w-6 h-6" />
-            </Button>
-            <h1 className="font-bold text-lg">Selesaikan Pembayaran</h1>
-          </div>
-
-          <div className="p-6 space-y-6">
-            <div className="text-center">
-                <p className="text-gray-400">Total Tagihan</p>
-                <p className="text-4xl font-bold text-green-500">{formatCurrency(paymentData.amount)}</p>
-                <div className="mt-2 inline-block px-3 py-1 bg-red-900/30 text-red-400 rounded-full text-sm font-medium border border-red-500/30">
-                    Menunggu Pembayaran
-                </div>
+  // --- RENDER ---
+  return (
+    <div className="relative">
+      <Toaster />
+      {showPaymentInstructions && paymentData ? (
+        <div className="min-h-screen bg-black pb-20 font-sans text-white">
+          <div className="max-w-md mx-auto bg-gray-900 min-h-screen shadow-2xl border-x border-gray-800">
+            <div className="p-4 bg-red-600 text-white flex items-center gap-2 sticky top-0 z-10">
+              <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-red-700">
+                <X className="w-6 h-6" />
+              </Button>
+              <h1 className="font-bold text-lg">Selesaikan Pembayaran</h1>
             </div>
 
-            <Card className="bg-gray-800 border-gray-700 border-2">
-              <CardContent className="pt-6 space-y-4">
-                {paymentData.qrUrl && (
-                    <div className="flex flex-col items-center">
-                        <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain bg-white p-2 rounded-lg" />
-                        <p className="text-sm text-gray-400 mt-4 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
-                    </div>
-                )}
-                
-                {paymentData.payCode && (
-                    <div className="space-y-2">
-                        <Label className="text-gray-300">Kode Bayar / Virtual Account</Label>
-                        <div className="flex items-center justify-between bg-black p-3 rounded-lg border border-gray-700">
-                            <span className="font-mono text-xl font-bold tracking-wider text-yellow-400">{paymentData.payCode}</span>
-                            <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-gray-400 hover:text-white">
-                                <Copy className="w-4 h-4" />
-                            </Button>
-                        </div>
-                    </div>
-                )}
+            <div className="p-6 space-y-6">
+              <div className="text-center">
+                  <p className="text-gray-400">Total Tagihan</p>
+                  <p className="text-4xl font-bold text-green-500">{formatCurrency(paymentData.amount)}</p>
+                  <div className="mt-2 inline-block px-3 py-1 bg-red-900/30 text-red-400 rounded-full text-sm font-medium border border-red-500/30">
+                      Menunggu Pembayaran
+                  </div>
+              </div>
 
-                <div className="bg-red-900/20 p-3 rounded text-sm text-red-300 border border-red-900/50">
-                    <p><strong>PENTING:</strong> Lakukan pembayaran sebelum waktu habis. Sistem akan otomatis memverifikasi pembayaran Anda dalam 1-2 menit.</p>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <div className="text-center">
-               <p className="text-sm text-gray-500 mb-4">Sudah bayar tapi status belum berubah?</p>
-               <Button variant="outline" className="w-full gap-2 border-green-600 text-green-500 hover:bg-green-600 hover:text-white" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
-                   <FaWhatsapp /> Hubungi Bantuan Admin
-               </Button>
+              <Card className="bg-gray-800 border-gray-700 border-2">
+                <CardContent className="pt-6 space-y-4">
+                  {paymentData.qrUrl && (
+                      <div className="flex flex-col items-center">
+                          <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain bg-white p-2 rounded-lg" />
+                          <p className="text-sm text-gray-400 mt-4 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
+                      </div>
+                  )}
+                  
+                  {paymentData.payCode && (
+                      <div className="space-y-2">
+                          <Label className="text-gray-300">Kode Bayar / Virtual Account</Label>
+                          <div className="flex items-center justify-between bg-black p-3 rounded-lg border border-gray-700">
+                              <span className="font-mono text-xl font-bold tracking-wider text-yellow-400">{paymentData.payCode}</span>
+                              <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-gray-400 hover:text-white">
+                                  <Copy className="w-4 h-4" />
+                              </Button>
+                          </div>
+                      </div>
+                  )}
+
+                  <div className="bg-red-900/20 p-3 rounded text-sm text-red-300 border border-red-900/50">
+                      <p><strong>PENTING:</strong> Lakukan pembayaran sebelum waktu habis. Sistem akan otomatis memverifikasi pembayaran Anda dalam 1-2 menit.</p>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <div className="text-center">
+                 <p className="text-sm text-gray-500 mb-4">Sudah bayar tapi status belum berubah?</p>
+                 <Button variant="outline" className="w-full gap-2 border-green-600 text-green-500 hover:bg-green-600 hover:text-white" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
+                     <FaWhatsapp /> Hubungi Bantuan Admin
+                 </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      ) : (
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white selection:bg-red-500 selection:text-white">
+        {/* Toaster removed here as it is now in parent */}
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white selection:bg-red-500 selection:text-white">
-      <Toaster />
-
-      {/* Hero Section */}
+        {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-black/20"></div>
         <div className="relative z-10 max-w-6xl mx-auto text-center">
@@ -1346,6 +1346,8 @@ export default function UangPanasLanding() {
 
       {/* Video Modal */}
       {selectedVideo && <VideoModal video={selectedVideo} onClose={() => setSelectedVideo(null)} />}
+    </div>
+    )}
     </div>
   );
 }

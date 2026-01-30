@@ -69,7 +69,6 @@ export default function EbookFeminineLanding() {
   const location = useLocation();
   const isV2Route = location.pathname === '/ebook_feminine/v2';
 
-  const [user, setUser] = useState<any>(null);
   const productNameBackend = 'ebook_feminine';
   
   let displayProductName = 'Feminine Magnetism: Audio Hipnoterapi + Ebook';
@@ -96,12 +95,6 @@ export default function EbookFeminineLanding() {
   const addPaymentInfoFiredRef = React.useRef(false);
   const isProcessingRef = React.useRef(false); // Initialize isProcessingRef to false for v2 route
   const sentEventIdsRef = React.useRef(new Set<string>());
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) setUser(user);
-    });
-  }, []);
 
   // Helper to send CAPI events
   const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string) => {    
@@ -448,116 +441,119 @@ export default function EbookFeminineLanding() {
     }
   };
 
-  // Realtime Payment Listener
+  // Realtime Payment Listener (Polling Fallback)
   useEffect(() => {
     if (!showPaymentInstructions || !paymentData?.tripay_reference) return;
     
-    const channel = supabase
-      .channel(`payment-${paymentData.tripay_reference}`)
-      .on('postgres_changes', { 
-        event: 'UPDATE', 
-        schema: 'public', 
-        table: 'global_product', 
-        filter: `tripay_reference=eq.${paymentData.tripay_reference}`
-      }, (payload) => {
-        if (payload.new?.status === 'PAID') {
-          if (purchaseFiredRef.current) return;
-          purchaseFiredRef.current = true;
+    const checkStatus = async () => {
+        const { data } = await supabase
+            .from('global_product')
+            .select('status')
+            .eq('tripay_reference', paymentData.tripay_reference)
+            .maybeSingle();
+        
+        if (data && (data as any).status === 'PAID') {
+            if (purchaseFiredRef.current) return;
+            purchaseFiredRef.current = true;
 
-          toast({
-              title: "LUNAS! Akses Dikirim.",
-              description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Audio & Ebook.",
-              duration: 5000, 
-              variant: "default"
-          });
-          
-          // TEST MODE CHECK
-          const isTestUser = userEmail === 'elvisiondragon@gmail.com';
-
-          if (isTestUser) {
-              console.log('🧪 TEST MODE DETECTED: Purchase recorded via Server CAPI');
-          } else {
-              console.log('💰 Purchase recorded via Server CAPI');
-          }
-        }
-      }).subscribe();
-
-    return () => { supabase.removeChannel(channel); };
-  }, [showPaymentInstructions, paymentData, userEmail, phoneNumber, userName, user?.id, productNameBackend, totalAmount]); // Added dependencies
-
-  // --- RENDER PAYMENT INSTRUCTIONS ---
-  if (showPaymentInstructions && paymentData) {
-    return (
-      <div className="min-h-screen bg-pink-50 pb-20 font-sans">
-        <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl">
-          <div className="p-4 bg-rose-600 text-white flex items-center gap-2 sticky top-0 z-10">
-            <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-rose-700">
-              <ArrowLeft className="w-6 h-6" />
-            </Button>
-            <h1 className="font-bold text-lg">Selesaikan Pembayaran</h1>
-          </div>
-
-          <div className="p-6 space-y-6">
-            <div className="text-center">
-                <p className="text-gray-500">Total Tagihan</p>
-                <p className="text-3xl font-bold text-rose-600">{formatCurrency(paymentData.amount)}</p>
-                <div className="mt-2 inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium">
-                    Menunggu Pembayaran
-                </div>
-            </div>
-
-            <Card className="border-2 border-rose-100">
-              <CardContent className="pt-6 space-y-4">
-                {paymentData.qrUrl && (
-                    <div className="flex flex-col items-center">
-                        <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border rounded-lg" />
-                        <p className="text-sm text-gray-500 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
-                    </div>
-                )}
-                
-                {paymentData.payCode && (
-                    <div className="space-y-2">
-                        <Label>Kode Bayar / Virtual Account</Label>
-                        <div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border">
-                            <span className="font-mono text-xl font-bold tracking-wider text-rose-700">{paymentData.payCode}</span>
-                            <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)}>
-                                <Copy className="w-4 h-4" />
-                            </Button>
-                        </div>
-                    </div>
-                )}
-
-                <div className="bg-yellow-50 p-3 rounded text-sm text-yellow-800 border border-yellow-200">
-                    <p><strong>PENTING:</strong> Lakukan pembayaran sebelum waktu habis. Sistem akan otomatis memverifikasi pembayaran Anda.</p>
-                </div>
-              </CardContent>
-            </Card>
+            toast({
+                title: "LUNAS! Akses Dikirim.",
+                description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Audio & Ebook.",
+                duration: 5000, 
+                variant: "default"
+            });
             
-            <div className="text-center">
-               <Button variant="outline" className="w-full gap-2 border-rose-200 text-rose-600 hover:bg-rose-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order Feminine Magnetism ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
-                   Bantuan Admin
-               </Button>
+            // TEST MODE CHECK
+            const isTestUser = userEmail === 'elvisiondragon@gmail.com';
+
+            if (isTestUser) {
+                console.log('🧪 TEST MODE DETECTED: Purchase recorded via Server CAPI');
+            } else {
+                console.log('💰 Purchase recorded via Server CAPI');
+            }
+        }
+    };
+
+    // Check immediately
+    checkStatus();
+
+    // Check every 5 seconds
+    const intervalId = setInterval(checkStatus, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [showPaymentInstructions, paymentData, userEmail]); // Re-run if these change
+
+  // --- RENDER ---
+  return (
+    <div className="relative">
+      <Toaster />
+      {showPaymentInstructions && paymentData ? (
+        <div className="min-h-screen bg-pink-50 pb-20 font-sans">
+          <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl">
+            <div className="p-4 bg-rose-600 text-white flex items-center gap-2 sticky top-0 z-10">
+              <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-rose-700">
+                <ArrowLeft className="w-6 h-6" />
+              </Button>
+              <h1 className="font-bold text-lg">Selesaikan Pembayaran</h1>
+            </div>
+
+            <div className="p-6 space-y-6">
+              <div className="text-center">
+                  <p className="text-gray-500">Total Tagihan</p>
+                  <p className="text-3xl font-bold text-rose-600">{formatCurrency(paymentData.amount)}</p>
+                  <div className="mt-2 inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium">
+                      Menunggu Pembayaran
+                  </div>
+              </div>
+
+              <Card className="border-2 border-rose-100">
+                <CardContent className="pt-6 space-y-4">
+                  {paymentData.qrUrl && (
+                      <div className="flex flex-col items-center">
+                          <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border rounded-lg" />
+                          <p className="text-sm text-gray-500 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
+                      </div>
+                  )}
+                  
+                  {paymentData.payCode && (
+                      <div className="space-y-2">
+                          <Label>Kode Bayar / Virtual Account</Label>
+                          <div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border">
+                              <span className="font-mono text-xl font-bold tracking-wider text-rose-700">{paymentData.payCode}</span>
+                              <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)}>
+                                  <Copy className="w-4 h-4" />
+                              </Button>
+                          </div>
+                      </div>
+                  )}
+
+                  <div className="bg-yellow-50 p-3 rounded text-sm text-yellow-800 border border-yellow-200">
+                      <p><strong>PENTING:</strong> Lakukan pembayaran sebelum waktu habis. Sistem akan otomatis memverifikasi pembayaran Anda.</p>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <div className="text-center">
+                 <Button variant="outline" className="w-full gap-2 border-rose-200 text-rose-600 hover:bg-slate-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order Feminine Magnetism ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
+                     Bantuan Admin
+                 </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      ) : (
+      <div className="min-h-screen bg-rose-50/30 font-sans text-slate-800">
+        <WhatsAppButton />
+        {/* Toaster removed here as it is now in parent */}
 
-  // --- LANDING PAGE CONTENT ---
-  return (
-    <div className="min-h-screen bg-rose-50/30 font-sans text-slate-800">
-      <WhatsAppButton />
-      <Toaster />
-
-      {isV2Route && (
-        <div 
-          className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center p-3 font-bold text-lg cursor-pointer shadow-lg animate-pulse"
-          onClick={scrollToCheckout}
-        >
-          💥 Diskon 50% Hanya Hari Ini! Ambil Sekarang 💥
-        </div>
-      )}
+        {isV2Route && (
+          <div 
+            className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center p-3 font-bold text-lg cursor-pointer shadow-lg animate-pulse"
+            onClick={scrollToCheckout}
+          >
+            💥 Diskon 50% Hanya Hari Ini! Ambil Sekarang 💥
+          </div>
+        )}
 
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#2c1a32] to-[#4a2c40] text-white pt-20 pb-28 px-4 text-center">
@@ -1119,6 +1115,8 @@ export default function EbookFeminineLanding() {
             Disclaimer: Program ini adalah alat bantu psikologis untuk pengembangan diri.<br/>Hasil dapat bervariasi untuk setiap individu.
         </p>
       </footer>
+    </div>
+    )}
     </div>
   );
 }

@@ -284,8 +284,10 @@ const WebinarOrtuSakit = () => {
         { name: "Felicia Quincy", title: "Pengusaha", verified: true, text: "Ketegangan di wajah dan leher saya hilang total. Kualitas hidup meningkat drastis karena batin sudah damai." }
     ];
 
-    if (showPaymentInstructions && paymentData) {
-        return (
+    return (
+      <div className="relative">
+        <Toaster />
+        {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-teal-50 pb-20 font-sans text-slate-900">
             <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-teal-100">
               <div className="p-4 bg-teal-700 text-white flex items-center gap-2 sticky top-0 z-10">
@@ -337,17 +339,13 @@ const WebinarOrtuSakit = () => {
               </div>
             </div>
           </div>
-        );
-      }
-
-    return (
+        ) : (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
             background: "linear-gradient(135deg, #f0f9ff 0%, #e0f2f1 100%)",
             color: "#1e293b",
             lineHeight: 1.6
         }}>
-            <Toaster />
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 
                 {/* HEADER LOGO */}
@@ -537,6 +535,8 @@ const WebinarOrtuSakit = () => {
                 </div>
             </div>
         </div>
+        )}
+      </div>
     );
 };
 
