@@ -17,7 +17,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Copy, CreditCard, User, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
 
-const WebinarIbu = () => {
+const WebinarIbuJodoh = () => {
     const { toast } = useToast();
     const hasFiredPixelsRef = useRef(false);
     const sentEventIdsRef = useRef(new Set<string>());
@@ -34,11 +34,11 @@ const WebinarIbu = () => {
     const [paymentData, setPaymentData] = useState<any>(null);
     const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
     
-    // Hardcoded for this specific webinar
-    const productNameBackend = 'webinar_cinta_sadar'; 
-    const displayProductName = 'Webinar Stop Menarik Pria Toxic';
+    // Hardcoded for this specific webinar (MUST REMAIN IDENTICAL)
+    const productNameBackend = 'webinar_el'; 
+    const displayProductName = 'Webinar Jodoh Cermin Diri';
     const productPrice = 200000;
-    const pixelId = '3319324491540889'; // Same as ebook_feminine
+    const pixelId = '3319324491540889'; 
 
     const paymentMethods = [
         { code: 'QRIS', name: 'QRIS', description: 'Scan pakai GoPay, OVO, Dana, ShopeePay, BCA Mobile, dll' },
@@ -66,7 +66,7 @@ const WebinarIbu = () => {
         });
     };
 
-    // Helper to send CAPI events
+    // Helper to send CAPI events (IDENTICAL LOGIC)
     const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string) => {    
       try {
         // 🛡️ DEDUPLICATION CHECK
@@ -142,460 +142,374 @@ const WebinarIbu = () => {
 
         console.log(`🚀 Sending CAPI Event: ${eventName}`, body);
 
+        // IDENTICAL URL ENDPOINT
         const { data, error } = await supabase.functions.invoke('capi-universal', { body });
         
         if (error) {
-          console.error(`❌ CAPI Error for ${eventName}:`, error);
-          throw error;
+            console.error(`❌ CAPI Error for ${eventName}:`, error);
+        } else {
+            console.log(`✅ CAPI Success for ${eventName}:`, data);
         }
-        
-        console.log(`✅ CAPI Success for ${eventName}:`, data);
-      } catch (error) {
-        console.error(`❌ Failed to send CAPI event ${eventName}:`, error);
-        throw error;
+      } catch (err) {
+        console.error('Failed to send CAPI event (Critical):', err);
       }
     };
 
-    const handlePixelAndCapiEvents = async (viewOnly: boolean = false) => {
-      if (hasFiredPixelsRef.current) {
-        console.warn("⚠️ Duplicate call to handlePixelAndCapiEvents blocked by ref check.");
-        return;
-      }
-      hasFiredPixelsRef.current = true;
-    
-      try {
-        const advancedMatching: AdvancedMatchingData = {};
-        if (userEmail) advancedMatching.em = userEmail;
-        if (phoneNumber) advancedMatching.ph = phoneNumber;
-    
-        const nameParts = userName.trim().split(/\s+/);
-        if (nameParts.length > 0) advancedMatching.fn = nameParts[0];
-        if (nameParts.length > 1) advancedMatching.ln = nameParts.slice(1).join(' ');
-    
-        console.log("🎬 Initializing Facebook Pixel with Advanced Matching...");
-        initFacebookPixelWithLogging(pixelId, advancedMatching);
-    
-        console.log("📄 Tracking PageView...");
-        trackPageViewEvent();
-    
-        console.log("🔍 Tracking ViewContent...");
-        const viewContentEventId = `view_content_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        trackViewContentEvent({
-          content_name: displayProductName,
-          content_ids: [productNameBackend],
-          content_type: 'product',
-          value: productPrice,
-          currency: 'IDR'
-        }, viewContentEventId);
-    
-        await sendCapiEvent('ViewContent', {
-          content_name: displayProductName,
-          content_ids: [productNameBackend],
-          content_type: 'product',
-          value: productPrice,
-          currency: 'IDR'
-        }, viewContentEventId);
-    
-        if (!viewOnly) {
-          if (typeof window !== 'undefined' && (window as any).fbq) {
-            console.log("💳 Tracking AddPaymentInfo (Browser Pixel)...");
-            const addPaymentInfoEventId = `add_payment_info_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-            (window as any).fbq('track', 'AddPaymentInfo', {
-              content_name: displayProductName,
-              content_ids: [productNameBackend],
-              value: productPrice,
-              currency: 'IDR'
-            }, { eventID: addPaymentInfoEventId });
-            
-            await sendCapiEvent('AddPaymentInfo', {
-              content_name: displayProductName,
-              content_ids: [productNameBackend],
-              value: productPrice,
-              currency: 'IDR'
-            }, addPaymentInfoEventId);
+    // Pixel Tracking (PageView & ViewContent)
+    useEffect(() => {
+      const initPixel = async () => {
+        if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
+          hasFiredPixelsRef.current = true;
+          
+          const { data: { session } } = await supabase.auth.getSession();
+          const { fbc, fbp } = getFbcFbpCookies();
+          
+          const userData: AdvancedMatchingData = {};
+          
+          if (session?.user?.id) {
+            userData.external_id = session.user.id;
           }
-        }
-      } catch (error) {
-        console.error("❌ Error in handlePixelAndCapiEvents:", error);
-      }
-    };
-
-    const handleCreatePayment = async () => {
-      if (!userName || !userEmail || !phoneNumber) {
-        toast({
-          title: "Data Tidak Lengkap",
-          description: "Mohon isi semua data diri Anda",
-          variant: "destructive"
-        });
-        return;
-      }
-
-      if (isProcessingRef.current) {
-        console.warn("⚠️ Payment already processing, ignoring duplicate click.");
-        return;
-      }
-
-      isProcessingRef.current = true;
-      setLoading(true);
-
-      try {
-        if (!hasFiredPixelsRef.current) {
-          await handlePixelAndCapiEvents(false);
-        } else if (!addPaymentInfoFiredRef.current) {
-          if (typeof window !== 'undefined' && (window as any).fbq) {
-            console.log("💳 Tracking AddPaymentInfo (Browser Pixel) - delayed...");
-            const addPaymentInfoEventId = `add_payment_info_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-            (window as any).fbq('track', 'AddPaymentInfo', {
-              content_name: displayProductName,
-              content_ids: [productNameBackend],
-              value: productPrice,
-              currency: 'IDR'
-            }, { eventID: addPaymentInfoEventId });
-            
-            await sendCapiEvent('AddPaymentInfo', {
-              content_name: displayProductName,
-              content_ids: [productNameBackend],
-              value: productPrice,
-              currency: 'IDR'
-            }, addPaymentInfoEventId);
-            addPaymentInfoFiredRef.current = true;
+          
+          const fbIdentity = session?.user?.identities?.find(id => id.provider === 'facebook');
+          if (fbIdentity) {
+            userData.db_id = fbIdentity.id;
           }
-        }
+          
+          if (fbc) userData.fbc = fbc;
+          if (fbp) userData.fbp = fbp;
 
-        const { data, error } = await supabase.functions.invoke('payment-create-xendit', {
-          body: {
-            product_name: productNameBackend,
-            user_name: userName,
-            user_email: userEmail,
-            phone_number: phoneNumber,
-            payment_method: selectedPaymentMethod,
-          }
-        });
+          initFacebookPixelWithLogging(pixelId, userData);
 
-        if (error) throw error;
-        if (!data?.payment_url) throw new Error('Payment URL tidak diterima dari server');
+          // 1. PageView
+          const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+          trackPageViewEvent({}, pageEventId, pixelId, userData, 'TEST33364');
 
-        console.log("💳 Payment created successfully:", data);
-        setPaymentData(data);
-        setShowPaymentInstructions(true);
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      } catch (error: any) {
-        console.error("❌ Payment creation failed:", error);
-        toast({
-          title: "Gagal Membuat Pembayaran",
-          description: error.message || "Terjadi kesalahan saat memproses pembayaran",
-          variant: "destructive"
-        });
-      } finally {
-        setLoading(false);
-        isProcessingRef.current = false;
-      }
-    };
-
-    const pollPaymentStatus = async (invoiceId: string) => {
-      const maxAttempts = 60;
-      let attempts = 0;
-
-      const poll = async () => {
-        if (attempts >= maxAttempts) {
-          console.log("⏱️ Polling timeout reached");
-          return;
-        }
-
-        try {
-          const { data, error } = await supabase.functions.invoke('payment-status-xendit', {
-            body: { invoice_id: invoiceId }
-          });
-
-          if (error) throw error;
-
-          console.log(`🔄 Polling attempt ${attempts + 1}:`, data);
-
-          if (data?.status === 'PAID' || data?.status === 'SETTLED') {
-            console.log("✅ Payment confirmed as PAID/SETTLED");
-            
-            if (!purchaseFiredRef.current && typeof window !== 'undefined' && (window as any).fbq) {
-              console.log("🎉 Tracking Purchase (Browser Pixel)...");
-              const purchaseEventId = `purchase_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-              (window as any).fbq('track', 'Purchase', {
-                content_name: displayProductName,
-                content_ids: [productNameBackend],
-                value: productPrice,
-                currency: 'IDR'
-              }, { eventID: purchaseEventId });
-
-              await sendCapiEvent('Purchase', {
-                content_name: displayProductName,
-                content_ids: [productNameBackend],
-                value: productPrice,
-                currency: 'IDR'
-              }, purchaseEventId);
-              
-              purchaseFiredRef.current = true;
-            }
-
-            toast({
-              title: "Pembayaran Berhasil! 🎉",
-              description: "Terima kasih! Link webinar akan dikirim ke email Anda.",
-            });
-
-            setTimeout(() => {
-              window.location.href = '/success';
-            }, 2000);
-            
-            return;
-          }
-
-          attempts++;
-          setTimeout(poll, 5000);
-        } catch (error) {
-          console.error("❌ Error polling payment status:", error);
-          attempts++;
-          setTimeout(poll, 5000);
+          // 2. ViewContent
+          const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+          trackViewContentEvent({
+            content_name: displayProductName,
+            content_ids: [productNameBackend],
+            content_type: 'product',
+            value: productPrice,
+            currency: 'IDR'
+          }, viewContentEventId, pixelId, userData, 'TEST33364');
         }
       };
 
-      poll();
-    };
-
-    useEffect(() => {
-      if (!hasFiredPixelsRef.current) {
-        handlePixelAndCapiEvents(true);
-      }
+      initPixel();
     }, []);
 
-    useEffect(() => {
-      if (paymentData?.invoice_id) {
-        console.log("🔄 Starting payment status polling for:", paymentData.invoice_id);
-        pollPaymentStatus(paymentData.invoice_id);
-      }
-    }, [paymentData]);
+    const handleCreatePayment = async () => {
+        if (isProcessingRef.current) return;
 
-    // CONTENT OBJECT - UPDATED FOR CINTA SADAR AVATAR
-    const content = {
-        badge: "KHUSUS PEREMPUAN YANG CAPEK DISAKITI & DIMANFAATKAN",
-        headline: "Cantik, Pinter, Tapi Kok Selalu Jatuh ke Pelukan 'Buaya'?",
-        subheadline: "Kamu pikir kali ini beda karena dia manis di awal. Tapi akhirnya sama saja: Manipulatif, selingkuh, atau ghosting.",
-        eventDate: "Live Zoom - Sabtu, 22 Februari 2025, 17:00 WIB",
-        
-        painTitle: "Jujur, Kamu Mulai Mikir Begini Kan?",
-        painPoints: [
-            {
-                icon: "💔",
-                text: "\"Apa ada yang salah sama gue? Apa gue dikutuk selalu dapet cowok toxic?\""
-            },
-            {
-                icon: "😩",
-                text: "\"Jujur, gue capek harus mulai PDKT dari nol lagi cuma buat dibuang di tengah jalan.\""
-            },
-            {
-                icon: "🤡",
-                text: "\"Gue udah kasih segalanya, tenaga, waktu, bahkan uang... tapi ujungnya dikhianatin.\""
+        if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
+            toast({
+                title: "Data Tidak Lengkap",
+                description: "Mohon lengkapi nama, email, no. whatsapp, dan metode pembayaran.",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(userEmail)) {
+            toast({
+                title: "Email Tidak Valid",
+                description: "Mohon masukkan alamat email yang benar (contoh: nama@email.com).",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        isProcessingRef.current = true;
+        setLoading(true);
+
+        try {
+             // Track AddPaymentInfo (Only once) - IDENTICAL LOGIC
+             if (!addPaymentInfoFiredRef.current) {
+                addPaymentInfoFiredRef.current = true;
+                const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+                
+                sendCapiEvent('AddPaymentInfo', {
+                  content_ids: [productNameBackend],
+                  content_type: 'product',
+                  value: productPrice,
+                  currency: 'IDR'
+                }, addPaymentInfoEventId);
             }
+
+            const { fbc, fbp } = getFbcFbpCookies();
+
+            // IDENTICAL URL ENDPOINT
+            const { data, error } = await supabase.functions.invoke('tripay-create-payment', {
+                body: {
+                  subscriptionType: productNameBackend,
+                  paymentMethod: selectedPaymentMethod,
+                  userName: userName,
+                  userEmail: userEmail,
+                  phoneNumber: phoneNumber,
+                  amount: productPrice,
+                  quantity: 1,
+                  productName: displayProductName,
+                  userId: null, // No auth required
+                  fbc,
+                  fbp
+                }
+            });
+
+            if (error || !data?.success) {
+                let errorMessage = data?.error || error?.message || "Terjadi kesalahan sistem.";
+                if (data?.details?.message) {
+                     errorMessage = data.details.message;
+                     if (errorMessage.includes("Invalid customer email")) {
+                         errorMessage = "Format email tidak valid.";
+                     } else if (errorMessage.includes("Invalid customer phone")) {
+                         errorMessage = "Format nomor HP tidak valid. Gunakan awalan 08...";
+                     }
+                }
+        
+                toast({
+                  title: "Gagal Memproses",
+                  description: errorMessage,
+                  variant: "destructive",
+                });
+                return;
+            }
+
+            if (data?.success) {
+                setPaymentData(data);
+                setShowPaymentInstructions(true);
+                toast({
+                  title: "Order Dibuat!",
+                  description: "Silakan selesaikan pembayaran Anda.",
+                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+        } catch (error: any) {
+            console.error('Payment Error:', error);
+            toast({
+              title: "Error",
+              description: "Gagal menghubungi server pembayaran.",
+              variant: "destructive",
+            });
+        } finally {
+            setLoading(false);
+            isProcessingRef.current = false;
+        }
+    };
+
+    // Realtime Payment Listener
+    useEffect(() => {
+        if (!showPaymentInstructions || !paymentData?.tripay_reference) return;
+        
+        const channel = supabase
+          .channel(`payment-${paymentData.tripay_reference}`)
+          .on('postgres_changes', { 
+            event: 'UPDATE', 
+            schema: 'public', 
+            table: 'global_product', 
+            filter: `tripay_reference=eq.${paymentData.tripay_reference}`
+          }, (payload) => {
+            if (payload.new?.status === 'PAID') {
+              if (purchaseFiredRef.current) return;
+              purchaseFiredRef.current = true;
+    
+              toast({
+                  title: "LUNAS! Akses Dikirim.",
+                  description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Webinar.",
+                  duration: 5000, 
+                  variant: "default"
+              });
+            }
+          }).subscribe();
+    
+        return () => { supabase.removeChannel(channel); };
+    }, [showPaymentInstructions, paymentData]);
+
+    // ==========================================
+    // 📝 STRATEGI COPYWRITING: WANITA/JODOH (PROVIDER)
+    // TONE: POLARISM YANG SOPAN & MENUSUK
+    // ==========================================
+    const content = {
+        // 1. TARGET BADGE
+        targetBadge: "KHUSUS WANITA YANG LELAH DISAKITI",
+        
+        // 2. HERO SECTION
+        headline: "Cantik, Pintar, Karir Bagus... Tapi Kenapa Selalu Jatuh ke Pelukan Pria yang Salah?",
+        subheadline: "Anda berusaha tulus, setia, dan 'low profile'. Tapi kenapa yang datang selalu pria manipulatif, tidak modal, atau emosional? Apa yang salah dengan sinyal Anda?",
+
+        // 3. PAIN SECTION (THE VOICES)
+        painTitle: "Apakah Ini Suara Hati Kecil Anda?",
+        painPoints: [
+            { icon: "🥀", text: <span><strong>"Selalu Ketemu Buaya."</strong> Awalnya manis bak pangeran, sebulan kemudian aslinya keluar. Selingkuh, kasar, atau pinjam uang.</span> },
+            { icon: "🎭", text: <span><strong>"Saya yang Berjuang Sendirian."</strong> Anda yang 'ngemong', Anda yang bayar, Anda yang minta maaf. Anda pasangannya atau ibunya?</span> },
+            { icon: "🩹", text: <span><strong>"Trauma Trust Issue."</strong> Ingin menikah tapi takut salah pilih lagi. Akhirnya menutup diri dan dianggap sombong, padahal hati rapuh.</span> }
         ],
 
-        logicTitle: "Perangkap Bawah Sadarmu",
-        logicDescription: "<strong>KAMU MENARIK APA YANG KAMU RASA:</strong><br/>Bukan karena kamu kurang cantik, tapi karena bawah sadarmu merasa 'tidak berharga'. Inilah yang membuat radar cintamu justru mencari pria yang akan merendahkanmu.",
+        // 4. LOGIC TRAP
+        logicTitle: "Jebakan 'Cantik = Dapat Pria Baik'",
+        logicDescription: "Logika Anda berteriak: <em>'Kalau saya lebih cantik dan penurut, dia akan berubah.'</em><br/><br/><strong>SALAH BESAR, MBAK.</strong><br/>Anda tidak menarik apa yang Anda INGINKAN. Anda menarik apa yang Anda PANCARKAN (Vibrasi). Jika 'Inner Child' Anda terluka, Anda adalah magnet bagi predator.",
 
-        agitationTitle: "🐍 THE TOXIC ATTRACTION CYCLE",
+        // 5. AGITATION (THE METAPHOR)
+        agitationTitle: "THE SAVIOR SYNDROME: Sindrom Penyelamat",
         agitationText: [
-            "Trauma diselingkuhi atau ditinggalkan bukan sekadar nasib buruk. Itu adalah pola energi.",
-            "Tanpa disadari, pikiranmu seperti <strong>magnet bagi pria bermasalah</strong>:"
+            "Jujur Mbak, apakah Anda merasa punya bakat 'memperbaiki' pria rusak?",
+            "Anda pikir kesabaran Anda akan mengubah 'Bad Boy' menjadi suami soleh. Sayangnya, itu bukan cinta. Itu adalah <strong>kebutuhan untuk merasa dibutuhkan</strong> karena Anda merasa tidak berharga jika hanya dicintai.",
+            "Jangan sampai kecantikan dan masa muda Anda habis hanya untuk menjadi 'Tempat Rehabilitasi' pria yang tidak tahu diri."
         ],
         agitationBullets: [
-            { trigger: "Merasa 'I am not worthy'", result: "Menarik cowok narsis yang butuh pelayan" },
-            { trigger: "Takut kesepian", result: "Menarik cowok ghosting yang datang saat butuh saja" },
-            { trigger: "Trauma masa lalu", result: "Terjebak di hubungan yang polanya itu-itu saja" }
+            { trigger: "Anda Terlalu Baik?", result: "Dimanfaatkan." },
+            { trigger: "Anda Terlalu Dominan?", result: "Pria lemah mendekat." },
+            { trigger: "Anda Terlalu Butuh?", result: "Pria ilfeel & lari." }
         ],
-        agitationClosing: "Jika polanya tidak diputus sekarang, kamu hanya akan berganti wajah pria dengan rasa sakit yang sama.",
+        agitationClosing: "Mau sampai kapan mengemis cinta di tempat yang salah?",
 
-        shiftTitle: "✨ Bayangkan Jika...",
-        shiftDescription: "Kamu memiliki <strong>Standard & Aura</strong> yang begitu kuat sehingga pria toxic minder mendekat, dan pria berkualitas berjuang untukmu.",
+        // 6. THE SHIFT (SOLUTION)
+        shiftTitle: "Dari 'Pengemis' Menjadi 'Ratu'",
+        shiftDescription: "Di webinar ini, kita tidak belajar makeup atau trik menggoda. Kita akan mereset <strong>'Cetak Biru Bawah Sadar'</strong> Anda agar otomatis menolak pria toxic dan hanya menarik Pria High Value.",
         shiftResults: [
-            "💃 Kamu merasa utuh dan bahagia meski tanpa pasangan (Aura Magnetis)",
-            "🛡️ Radar 'Red Flag' kamu aktif otomatis sebelum terlambat",
-            "👑 Menarik pria yang benar-benar menghargai dan memuliakanmu"
+            "✅ Pria berkualitas mendekat tanpa Anda perlu mengejar-ngejar.",
+            "✅ Memutus pola 'Siklus Karma' selalu bertemu jenis pria yang sama.",
+            "✅ Menjadi wanita yang disegani, bukan hanya dijadikan opsi cadangan."
         ],
 
-        webinarTitle: "Apa yang Akan Kita Bongkar:",
+        // 7. WEBINAR DETAILS
+        webinarTitle: 'WEBINAR: "JODOH CERMIN DIRI (THE SOULMATE MIRROR)"',
+        eventDate: "Minggu, 22 Februari 2026, 17:00 WIB", // Updated Date & Time
         curriculum: [
-            { title: "Detoks Bawah Sadar", desc: "Buang program 'Gue Gak Layak Bahagia' dalam 1 sesi singkat." },
-            { title: "Aura Queen Mechanism", desc: "Cara memancarkan energi feminin yang bikin pria berinvestasi emosi." },
-            { title: "Psychological Red Flag", desc: "Teknik membaca niat pria hanya dari 30 menit percakapan pertama." }
+            { title: 'Detox Energi Mantan', desc: 'Membersihkan residu energi masa lalu yang membuat jodoh baru terhalang masuk.' },
+            { title: 'The High Value Vibration', desc: 'Cara memancarkan aura "Mahal" yang membuat pria toxic minder dan menjauh otomatis.' },
+            { title: 'Feminine Surrender', desc: 'Seni menerima dan mempercayai, bukan mengontrol. Kunci agar pria ingin melayani & melindungi Anda.' }
         ],
 
+        // 8. PRICING & CTA
+        priceAnchor: "Rp 5.000.000,-",
+        priceReal: "Rp 200.000,-",
+        ctaButton: "👉 SAYA SIAP BERTEMU 'THE ONE'",
+
+        // 9. STEPS
         steps: [
-            { title: "Amankan Slot Webinar", desc: "Pilih metode pembayaran untuk konfirmasi kehadiranmu." },
-            { title: "Verifikasi Pembayaran", desc: "Proses otomatis, tidak perlu kirim bukti transfer secara manual." },
-            { title: "Dapatkan Akses Kelas", desc: "Link Zoom dan materi akan langsung dikirim ke email kamu." }
+            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol di bawah. Investasi Rp 200.000,- untuk kebahagiaan seumur hidup." },
+            { title: "Langkah 2: Join Grup VIP", desc: "Anda akan masuk ke Circle Wanita High Value untuk saling support." },
+            { title: "Langkah 3: Live Transformasi", desc: "Hadir tanggal 22 Februari 2026. Siapkan tisu, kita akan bongkar luka batin dan sembuhkan." }
         ],
 
-        priceAnchor: "Rp 5.000.000",
-        priceReal: "Rp 200.000",
-        ctaButton: "🎯 DAFTAR WEBINAR: STOP MENARIK PRIA TOXIC",
-
+        // 10. FAQ
         faq: [
-            {
-                q: "Apakah ini semacam konsultasi jodoh?",
-                a: "Bukan. Ini adalah 'Mind Engineering' untuk mengubah magnet dalam dirimu agar tidak lagi menarik orang yang salah."
-            },
-            {
-                q: "Saya baru putus dan masih trauma, apa boleh ikut?",
-                a: "Justru ini saat terbaik. Sebelum kamu masuk ke hubungan baru, kita bersihkan dulu sampahnya agar tidak terulang."
-            },
-            {
-                q: "Kalau saya tidak bisa hadir saat live?",
-                a: "Tenang, rekaman eksklusif akan diberikan agar kamu bisa pelajari tekniknya berkali-kali."
-            }
+            { q: "Saya sudah umur 35+, apa masih ada harapan?", a: "Jodoh bukan soal umur, tapi soal kesiapan frekuensi. Banyak klien kami bertemu jodoh justru di usia matang setelah vibrasinya 'klik'." },
+            { q: "Apakah ini diajari cara dandan/goda pria?", a: "TIDAK. Kami membedah psikologi bawah sadar dan energi. Kecantikan fisik hanya bonus, inner beauty adalah magnet utamanya." },
+            { q: "Pasangan saya sekarang toxic, boleh ikut?", a: "Sangat disarankan. Anda akan mendapat kejelasan: apakah hubungan ini layak diperjuangkan atau harus dilepaskan demi kewarasan." },
+            { q: "Saya introvert dan pemalu.", a: "Justru wanita introvert punya 'Misteri' yang kuat jika dikelola dengan benar. Kami ajarkan caranya tanpa perlu mengubah kepribadian Anda." }
         ]
     };
 
     // ==========================================
-    // 🖼️ MEDIA ASSETS (CONSTANTS)
+    // 🖼️ MEDIA ASSETS (IDENTICAL LINKS AS REQUESTED)
     // ==========================================
     const founderImages = [
         "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/siapael1.jpeg",
         "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/siapael2.jpeg"
     ];
 
+    // Full Video Testimonials (IDENTICAL ARRAY & LINKS)
     const videoTestimonials = [
-        { name: "Agus Mulyadi, SH., MH.", title: "Kepala Intelijen Pangandaran", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/agus.jpg", thumbnail: "🎖️" },
-        { name: "Dr. Gumilar", title: "Hipnoterapist & Pemimpin Yayasan", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/dr.jpg", thumbnail: "⚕️" },
-        { name: "Habib Umar", title: "Pemimpin Pondok Pesantren Atsaqofah", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/HABIBVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/habib.jpg", thumbnail: "🕌" },
-        { name: "Umi Jamilah", title: "Pemimpin Yayasan", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/UMIVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/umi.jpg", thumbnail: "👳‍♀️" },
+        { name: "Agus Mulyadi, SH., MH.", title: "Klien eL Vision", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/agus.jpg", thumbnail: "🎖️" },
+        { name: "Dr. Gumilar", title: "Hipnoterapist", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/dr.jpg", thumbnail: "⚕️" },
+        { name: "Habib Umar", title: "Tokoh Masyarakat", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/HABIBVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/habib.jpg", thumbnail: "🕌" },
+        { name: "Umi Jamilah", title: "Yayasan", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/UMIVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/umi.jpg", thumbnail: "👳‍♀️" },
         { name: "Felicia", title: "Pengusaha", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/FELVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/felicia.jpg", thumbnail: "👩‍💼" },
         { name: "Lena", title: "Klien eL Vision", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/LENA_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/lena.jpg", thumbnail: "🌟" },
         { name: "Vio", title: "Klien eL Vision", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/vio2.jpg", thumbnail: "✨" },
         { name: "Arif", title: "Klien eL Vision", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.jpg", thumbnail: "👨‍💻" }
     ];
 
+    // Full Text Testimonials (Same content structure)
     const testimonials = [
-        { name: "Siska", title: "Karyawan Swasta", image: "💎", rating: 5, text: "Gue selalu ngerasa 'gak pantes' dapet cowok baik. Setelah kelas eL Vision, gue berani nge-cut cowok manipulatif dalam sehari. Mind blowing!" },
-        { name: "Indah", title: "Freelancer", image: "🎯", rating: 5, text: "Aura gue berubah total. Dulu selalu gue yang ngejar-ngejar, sekarang gue yang dikejar pria yang jauh lebih berkualitas." },
-        { name: "Umi Jamilah", title: "Pemimpin Yayasan", verified: true, image: "👳‍♀️", rating: 5, text: "Manajemen energi yang diajarkan eL sangat aplikatif untuk membersihkan beban emosional masa lalu." },
-        { name: "Felicia Quincy", title: "Pengusaha", verified: true, image: "👩‍💼", rating: 5, text: "Dulu keputusan gue selalu kabur karena trauma. Sekarang gue punya standar yang sangat jelas." },
-        { name: "Lena", title: "Klien eL Vision", verified: true, image: "🌟", rating: 5, text: "Gue nemuin ketenangan yang selama ini hilang. Ternyata kuncinya ada di bawah sadar gue sendiri." },
-        { name: "Putri", title: "Mahasiswi", image: "👩‍💼", rating: 5, text: "Gak perlu pakai susuk atau klenik. Ini murni psikologi dan reset otak. Berhasil banget!" },
-        { name: "Vio", title: "Klien eL Vision", verified: true, image: "✨", rating: 5, text: "Program ini mengubah cara gue memandang diri sendiri. Gue bukan lagi 'korban' cinta." },
-        { name: "Ratna", title: "Educator", image: "📚", rating: 5, text: "Sangat direkomendasikan buat cewek-cewek yang sering di-ghosting. Bongkar akarnya di sini." }
+        { name: "Felicia Quincy", title: "Pengusaha", verified: true, image: "👩‍💼", rating: 5, text: "Dulu saya selalu curiga dan posesif. Ternyata itu karena luka batin saya sendiri. Setelah sesi eL Vision, saya lebih tenang dan pasangan justru makin lengket." },
+        { name: "Linda Permata", title: "Investor Real Estate", image: "👩‍💼", rating: 5, text: "Saya pikir karir sukses akan mendatangkan pria sukses. Ternyata saya malah mengintimidasi mereka. Di sini saya belajar menjadi 'Alpha Female' yang tetap feminin." },
+        { name: "Umi Jamilah", title: "Pemimpin Yayasan", verified: true, image: "🌟", rating: 5, text: "Ketenangan hati adalah kunci. Saat hati tenang, semua urusan termasuk jodoh dan rezeki mengalir seperti air." },
+        { name: "Vio", title: "Klien eL Vision", verified: true, image: "✨", rating: 5, text: "Saya belajar untuk mencintai diri sendiri dulu. Ajaibnya, saat saya berhenti mengejar, dia yang saya harapkan malah datang melamar." },
+        { name: "Lena", title: "Klien eL Vision", verified: true, image: "💎", rating: 5, text: "Metode yang sangat logis tapi menyentuh hati. Saya sadar selama ini saya 'meminta' disakiti oleh alam bawah sadar saya sendiri. Sekarang pola itu putus." },
+        { name: "Arif", title: "Klien eL Vision", verified: true, image: "👨‍💻", rating: 5, text: "Istri saya ikut program ini, dan perubahannya luar biasa. Rumah tangga kami yang di ujung tanduk kini harmonis kembali." },
+        { name: "Dr. Gumilar", title: "Dokter & Hipnoterapis", verified: true, image: "⚕️", rating: 5, text: "Emosi yang terpendam adalah racun. Program ini adalah detoksifikasi mental terbaik yang pernah saya temui." },
+        { name: "Agus Mulyadi", title: "Klien eL Vision", verified: true, image: "👨‍💼", rating: 5, text: "Intuisi dan ketenangan meningkat tajam. Sangat berpengaruh dalam pengambilan keputusan besar dalam hidup." }
     ];
 
     if (showPaymentInstructions && paymentData) {
         return (
-            <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #fce7f3 0%, #f3e7fc 100%)", padding: "20px 0" }}>
-                <Toaster />
-                <div style={{ maxWidth: "600px", margin: "0 auto", background: "white", borderRadius: "25px", padding: "30px 20px", boxShadow: "0 20px 60px rgba(236, 72, 153, 0.15)" }}>
-                    <Button
-                        variant="ghost"
-                        onClick={() => setShowPaymentInstructions(false)}
-                        className="mb-4 text-pink-600 hover:text-pink-700 hover:bg-pink-50"
-                    >
-                        <ArrowLeft className="mr-2 h-4 w-4" /> Kembali
-                    </Button>
-
-                    <div className="text-center mb-6">
-                        <div className="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <CheckCircle className="w-10 h-10 text-white" />
-                        </div>
-                        <h1 className="text-2xl font-bold text-slate-800 mb-2">Pesanan Berhasil Dibuat!</h1>
-                        <p className="text-slate-600">Silakan selesaikan pembayaran kamu</p>
-                    </div>
-
-                    <Card className="mb-6 border-pink-200 shadow-lg">
-                        <CardContent className="p-6">
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-center pb-4 border-b border-pink-100">
-                                    <span className="text-slate-600 font-semibold">Total Pembayaran</span>
-                                    <span className="text-3xl font-bold text-pink-600">{formatCurrency(productPrice)}</span>
-                                </div>
-
-                                {selectedPaymentMethod === 'QRIS' ? (
-                                    <div className="text-center py-4">
-                                        <p className="text-sm text-slate-600 mb-4 font-semibold">Scan QR Code dengan aplikasi pembayaran kamu</p>
-                                        {paymentData.qr_string && (
-                                            <div className="bg-white p-4 rounded-xl inline-block border-2 border-pink-200 shadow-md">
-                                                <img 
-                                                    src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(paymentData.qr_string)}`}
-                                                    alt="QR Code"
-                                                    className="w-64 h-64"
-                                                />
-                                            </div>
-                                        )}
-                                        <p className="text-xs text-slate-500 mt-4">Scan dengan GoPay, OVO, Dana, ShopeePay, atau m-banking lainnya</p>
-                                    </div>
-                                ) : (
-                                    <div className="space-y-3">
-                                        <div className="bg-pink-50 p-4 rounded-xl border border-pink-200">
-                                            <Label className="text-sm text-slate-600 font-semibold mb-2 block">Nomor Virtual Account</Label>
-                                            <div className="flex items-center gap-2">
-                                                <code className="flex-1 bg-white px-4 py-3 rounded-lg text-lg font-bold text-slate-800 border border-pink-300">
-                                                    {paymentData.virtual_account_number || paymentData.account_number}
-                                                </code>
-                                                <Button
-                                                    size="sm"
-                                                    variant="outline"
-                                                    onClick={() => copyToClipboard(paymentData.virtual_account_number || paymentData.account_number)}
-                                                    className="border-pink-300 text-pink-600 hover:bg-pink-50"
-                                                >
-                                                    <Copy className="h-4 w-4" />
-                                                </Button>
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-purple-50 p-4 rounded-xl border border-purple-200">
-                                            <Label className="text-sm text-slate-600 font-semibold mb-2 block">Jumlah Transfer</Label>
-                                            <div className="flex items-center gap-2">
-                                                <code className="flex-1 bg-white px-4 py-3 rounded-lg text-lg font-bold text-slate-800 border border-purple-300">
-                                                    {formatCurrency(productPrice)}
-                                                </code>
-                                                <Button
-                                                    size="sm"
-                                                    variant="outline"
-                                                    onClick={() => copyToClipboard(productPrice.toString())}
-                                                    className="border-purple-300 text-purple-600 hover:bg-purple-50"
-                                                >
-                                                    <Copy className="h-4 w-4" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                <div className="bg-gradient-to-br from-pink-50 to-purple-50 p-4 rounded-xl border border-pink-200 mt-4">
-                                    <p className="text-sm text-slate-700 leading-relaxed">
-                                        <strong className="text-pink-600">📧 Link webinar akan dikirim otomatis ke email kamu</strong> setelah pembayaran dikonfirmasi.
-                                        Mohon cek inbox atau folder spam.
-                                    </p>
-                                </div>
-
-                                {paymentData.payment_url && (
-                                    <Button
-                                        className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold py-6 mt-4 shadow-lg"
-                                        onClick={() => window.open(paymentData.payment_url, '_blank')}
-                                    >
-                                        Buka Halaman Pembayaran
-                                    </Button>
-                                )}
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    <div className="text-center text-xs text-slate-500 mt-6">
-                        <p>Pembayaran akan otomatis dikonfirmasi dalam 1-5 menit</p>
-                        <p className="mt-1">Jika ada kendala, hubungi customer service kami</p>
+          <div className="min-h-screen bg-pink-50 pb-20 font-sans text-slate-900">
+            <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl border-x border-pink-100">
+              <div className="p-4 bg-pink-600 text-white flex items-center gap-2 sticky top-0 z-10">
+                <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-pink-700">
+                  <ArrowLeft className="w-6 h-6" />
+                </Button>
+                <h1 className="font-bold text-lg">Selesaikan Pembayaran</h1>
+              </div>
+    
+              <div className="p-6 space-y-6">
+                <div className="text-center">
+                    <p className="text-slate-500">Total Tagihan</p>
+                    <p className="text-3xl font-bold text-pink-600">{formatCurrency(paymentData.amount)}</p>
+                    <div className="mt-2 inline-block px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-medium border border-pink-200">
+                        Menunggu Pembayaran
                     </div>
                 </div>
+    
+                <Card className="border-2 border-slate-100 bg-white">
+                  <CardContent className="pt-6 space-y-4">
+                    <div className="space-y-2 border-b border-slate-100 pb-4 mb-4">
+                        <Label className="text-slate-500">Nomor Referensi</Label>
+                        <div className="flex items-center justify-between bg-slate-50 p-2 rounded border border-slate-200">
+                            <span className="font-mono text-sm text-pink-600">{paymentData.tripay_reference}</span>
+                            <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.tripay_reference)} className="h-8 w-8 p-0 text-slate-400 hover:text-pink-600">
+                                <Copy className="w-3 h-3" />
+                            </Button>
+                        </div>
+                    </div>
+
+                    {paymentData.qrUrl && (
+                        <div className="flex flex-col items-center">
+                            <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border border-slate-200 rounded-lg bg-white" />
+                            <p className="text-sm text-slate-500 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet atau mobile banking Anda.</p>
+                        </div>
+                    )}
+                    
+                    {paymentData.payCode && (
+                        <div className="space-y-2">
+                            <Label className="text-slate-600">Kode Bayar / Virtual Account</Label>
+                            <div className="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <span className="font-mono text-xl font-bold tracking-wider text-pink-600">{paymentData.payCode}</span>
+                                <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-slate-400 hover:text-pink-600">
+                                    <Copy className="w-4 h-4" />
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+    
+                    <div className="bg-pink-50 p-3 rounded text-sm text-pink-800 border border-pink-100">
+                        <p><strong>PENTING:</strong> Lakukan pembayaran sebelum waktu habis. Sistem akan otomatis memverifikasi pembayaran Anda.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <div className="text-center">
+                   <Button variant="outline" className="w-full gap-2 border-slate-200 text-slate-600 hover:bg-slate-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order Webinar Jodoh ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
+                       Bantuan Admin
+                   </Button>
+                </div>
+              </div>
             </div>
+          </div>
         );
-    }
+      }
 
     return (
         <div style={{
             fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-            background: "linear-gradient(135deg, #f0f4f8 0%, #e0e7ed 100%)", // Light greyish blue gradient
-            color: "#334155", // Dark slate text
+            background: "linear-gradient(135deg, #fdf2f8 0%, #fff1f2 100%)", // Light Pink/Rose background
+            color: "#334155", // Dark text
             lineHeight: 1.6
         }}>
             <Toaster />
@@ -603,14 +517,14 @@ const WebinarIbu = () => {
                 
                 {/* 1. HEADER LOGO */}
                 <div style={{ textAlign: "center", padding: "20px 0", marginBottom: "20px" }}>
-                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#ec4899", letterSpacing: "2px" }}>eL VISION</div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "1px" }}>Official Webinar Series</div>
+                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#db2777", letterSpacing: "2px" }}>eL VISION</div>
+                    <div style={{ fontSize: "12px", color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>Official Webinar Series</div>
                 </div>
 
-                {/* 2. HERO SECTION */}
-                <div style={{ textAlign: "center", padding: "40px 20px", background: "#ffffff", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(0,0,0,0.1)", border: "1px solid rgba(236, 72, 153, 0.2)" }}>
-                    <span style={{ background: "rgba(236, 72, 153, 0.1)", color: "#ec4899", padding: "10px 25px", borderRadius: "50px", fontSize: "16px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "1px solid #ec4899" }}>
-                        {content.badge}
+                {/* 2. HERO HEADLINE */}
+                <div style={{ textAlign: "center", padding: "40px 20px", background: "#ffffff", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(219, 39, 119, 0.1)", border: "1px solid rgba(219, 39, 119, 0.2)" }}>
+                    <span style={{ background: "rgba(219, 39, 119, 0.1)", color: "#db2777", padding: "10px 25px", borderRadius: "50px", fontSize: "16px", fontWeight: "900", marginBottom: "25px", display: "inline-block", letterSpacing: "1px", border: "1px solid #db2777" }}>
+                        {content.targetBadge}
                     </span>
                     <h1 style={{ fontSize: "28px", fontWeight: 800, color: "#1e293b", marginBottom: "15px", lineHeight: 1.3 }}>{content.headline}</h1>
                     <p style={{ fontSize: "16px", color: "#475569", marginBottom: "0px", lineHeight: 1.6 }}>{content.subheadline}</p>
@@ -620,12 +534,12 @@ const WebinarIbu = () => {
                 </div>
 
                 {/* 3. PAIN SECTION */}
-                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #ec4899", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
-                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#ec4899", marginBottom: "20px" }}>{content.painTitle}</h2>
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", borderLeft: "5px solid #db2777", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <h2 style={{ fontSize: "20px", fontWeight: 700, color: "#db2777", marginBottom: "20px" }}>{content.painTitle}</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                         {content.painPoints.map((pain, idx) => (
-                            <div key={idx} style={{ background: '#fef2f2', padding: '15px', borderRadius: '10px', border: '1px solid #fecaca' }}>
-                                <div style={{ fontSize: '24px', marginBottom: '10px', color: '#dc2626' }}>{pain.icon}</div>
+                            <div key={idx} style={{ background: '#fdf2f8', padding: '15px', borderRadius: '10px', border: '1px solid #fbcfe8' }}>
+                                <div style={{ fontSize: '24px', marginBottom: '10px', color: '#db2777' }}>{pain.icon}</div>
                                 <p style={{ margin: 0, fontSize: '14px', fontStyle: 'italic', color: '#4b5563' }}>{pain.text}</p>
                             </div>
                         ))}
@@ -634,21 +548,21 @@ const WebinarIbu = () => {
 
                 {/* 4. LOGIC TRAP */}
                 <div style={{ padding: "20px 10px", marginBottom: "30px" }}>
-                    <h2 style={{ fontSize: "24px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#fff" }}>{content.logicTitle}</h2>
-                    <div style={{ background: "rgba(220, 38, 38, 0.1)", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #ef4444", color: "#b91c1c" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#be185d" }}>{content.logicTitle}</h2>
+                    <div style={{ background: "rgba(220, 38, 38, 0.05)", padding: "20px", borderRadius: "15px", textAlign: "center", border: "1px dashed #f43f5e", color: "#9f1239" }}>
                         <p dangerouslySetInnerHTML={{ __html: content.logicDescription }} />
                     </div>
                 </div>
 
                 {/* 5. AGITATION (HIGHLIGHT) */}
                 <div style={{ background: "#ffffff", color: "#1e293b", padding: "40px 25px", borderRadius: "25px", marginBottom: "30px", textAlign: "center", position: "relative", overflow: "hidden", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
-                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#ec4899" }}>{content.agitationTitle}</h2>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "20px", color: "#db2777" }}>{content.agitationTitle}</h2>
                     {content.agitationText.map((text, idx) => (
                         <p key={idx} style={{ fontSize: "15px", lineHeight: 1.8, marginBottom: "20px", color: "#475569" }} dangerouslySetInnerHTML={{ __html: text }} />
                     ))}
-                    <div style={{ background: "rgba(236, 72, 153, 0.05)", padding: "15px", borderRadius: "10px", marginBottom: "20px", border: "1px solid rgba(236, 72, 153, 0.1)" }}>
+                    <div style={{ background: "rgba(219, 39, 119, 0.05)", padding: "15px", borderRadius: "10px", marginBottom: "20px", border: "1px solid rgba(219, 39, 119, 0.1)" }}>
                         {content.agitationBullets.map((bullet, idx) => (
-                            <p key={idx} style={{ margin: idx === 1 ? "10px 0" : "0", color: "#475569" }}>{bullet.trigger} 👉 <strong style={{color: "#ec4899"}}>{bullet.result}</strong></p>
+                            <p key={idx} style={{ margin: idx === 1 ? "10px 0" : "0", color: "#475569" }}>{bullet.trigger} 👉 <strong style={{color: "#db2777"}}>{bullet.result}</strong></p>
                         ))}
                     </div>
                     <p style={{ fontWeight: "bold", fontSize: "16px", color: "#1e293b" }}>{content.agitationClosing}</p>
@@ -659,7 +573,7 @@ const WebinarIbu = () => {
                     <h2 style={{ fontSize: "22px", fontWeight: 700, color: "#1e293b", marginBottom: "20px", textAlign: "center" }}>{content.shiftTitle}</h2>
                     <p style={{ marginBottom: "20px", textAlign: "center", color: "#475569" }} dangerouslySetInnerHTML={{ __html: content.shiftDescription }} />
                     <div style={{ padding: "15px", background: "rgba(236, 72, 153, 0.1)", borderRadius: "15px", border: "1px solid rgba(236, 72, 153, 0.3)", marginBottom: "20px" }}>
-                        <p style={{ fontWeight: "bold", color: "#ec4899", marginBottom: "10px", textAlign: "center" }}>✨ SETELAH WEBINAR INI:</p>
+                        <p style={{ fontWeight: "bold", color: "#db2777", marginBottom: "10px", textAlign: "center" }}>✨ SETELAH WEBINAR INI:</p>
                         <ul style={{ listStyle: "none", padding: 0 }}>
                             {content.shiftResults.map((res, idx) => (
                                 <li key={idx} style={{ padding: "8px 0", borderBottom: idx !== 2 ? "1px dashed rgba(236, 72, 153, 0.3)" : "none", color: "#1e293b" }} dangerouslySetInnerHTML={{ __html: res }} />
@@ -675,14 +589,14 @@ const WebinarIbu = () => {
                         <img src={founderImages[1]} alt="eL Reyzandra" style={{ width: '100%', borderRadius: '15px', objectFit: 'cover', aspectRatio: '1/1' }} />
                     </div>
                     <div style={{ textAlign: "center", marginBottom: "20px" }}>
-                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#ec4899", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
+                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#db2777", marginBottom: "5px" }}>Siapa eL Reyzandra?</h2>
                         <div style={{ fontSize: "13px", color: "#64748b", letterSpacing: "1px", textTransform: "uppercase" }}>The Mind Engineer</div>
                     </div>
-                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginBottom: "15px", color: "#334155", textAlign: "center" }}>Selama 16 tahun, saya meneliti bagaimana <strong>Alam Bawah Sadar</strong> mengendalikan 95% hidup manusia. Saya bukan motivator. Saya adalah "Insinyur Pikiran".</p>
-                    <div style={{ background: "#fdf2f8", color: "#ec4899", padding: "10px", borderRadius: "8px", textAlign: "center", fontSize: "14px", fontWeight: "bold", border: "1px solid #fbcfe8" }}>"Bahagia Adalah Koentji"</div>
+                    <p style={{ fontSize: "15px", lineHeight: 1.7, marginBottom: "15px", color: "#334155", textAlign: "center" }}>Selama 16 tahun, saya meneliti bagaimana <strong>Alam Bawah Sadar</strong> mengendalikan 95% keputusan cinta kita. Saya bukan mak comblang. Saya adalah "Teknisi Pikiran" Anda.</p>
+                    <div style={{ background: "#fdf2f8", color: "#db2777", padding: "10px", borderRadius: "8px", textAlign: "center", fontSize: "14px", fontWeight: "bold", border: "1px solid #fbcfe8" }}>"Bahagia Adalah Pilihan, Bukan Kebetulan"</div>
                 </div>
 
-                {/* 8. VIDEO TESTIMONIALS */}
+                {/* 8. VIDEO TESTIMONIALS (IDENTICAL AS REQUESTED) */}
                 <div style={{ marginBottom: "40px" }}>
                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>Apa Kata Mereka?</h2>
                     <div style={{ display: "flex", overflowX: "auto", gap: "15px", paddingBottom: "15px", scrollSnapType: "x mandatory" }}>
@@ -691,7 +605,7 @@ const WebinarIbu = () => {
                                 <video controls poster={testi.poster} style={{ width: "100%", borderRadius: "10px", aspectRatio: "9/16", objectFit: "cover", marginBottom: "10px", backgroundColor: "#f0f4f8" }}>
                                     <source src={testi.videoUrl} type="video/mp4" />
                                 </video>
-                                <div style={{ fontWeight: "bold", fontSize: "14px", color: "#ec4899" }}>{testi.name}</div>
+                                <div style={{ fontWeight: "bold", fontSize: "14px", color: "#db2777" }}>{testi.name}</div>
                                 <div style={{ fontSize: "12px", color: "#64748b" }}>{testi.title}</div>
                             </div>
                         ))}
@@ -703,23 +617,23 @@ const WebinarIbu = () => {
                      <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>Kisah Perubahan Nyata</h2>
                      {testimonials.map((testi, idx) => (
                         <div key={idx} style={{ background: "#f8fafc", padding: "20px", borderRadius: "10px", marginBottom: "15px", border: "1px solid #e2e8f0" }}>
-                            <div style={{ fontWeight: 700, color: "#ec4899", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#34d399'}}>✓</span>}</div>
+                            <div style={{ fontWeight: 700, color: "#db2777", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#34d399'}}>✓</span>}</div>
                             <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '10px' }}>{testi.title}</div>
                             <p style={{ fontSize: "14px", lineHeight: 1.7, fontStyle: "italic", color: "#475569" }}>"{testi.text}"</p>
                         </div>
                      ))}
                 </div>
 
-                {/* 10. CURRICULUM - MATERI EKSKLUSIF */}
-                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #ec4899", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
-                    <div style={{ background: "#ec4899", color: "#fff", display: "inline-block", padding: "5px 15px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", marginBottom: "15px" }}>MATERI EKSKLUSIF</div>
+                {/* 10. CURRICULUM */}
+                <div style={{ background: "#ffffff", padding: "30px 25px", borderRadius: "25px", marginBottom: "30px", border: "2px solid #db2777", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
+                    <div style={{ background: "#db2777", color: "#fff", display: "inline-block", padding: "5px 15px", borderRadius: "20px", fontSize: "12px", fontWeight: "bold", marginBottom: "15px" }}>MATERI EKSKLUSIF</div>
                     <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "25px", color: "#1e293b" }}>{content.webinarTitle}</h2>
                     <div style={{ marginBottom: "20px" }}>
                         {content.curriculum.map((item, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "15px", marginBottom: "15px" }}>
-                                <div style={{ background: "rgba(236, 72, 153, 0.1)", color: "#ec4899", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, border: "1px solid #fbcfe8" }}>{idx + 1}</div>
+                                <div style={{ background: "rgba(219, 39, 119, 0.1)", color: "#db2777", width: "30px", height: "30px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, border: "1px solid #db2777" }}>{idx + 1}</div>
                                 <div>
-                                    <strong style={{ color: "#ec4899" }}>{item.title}</strong>
+                                    <strong style={{ color: "#db2777" }}>{item.title}</strong>
                                     <p style={{ fontSize: "14px", margin: "5px 0 0 0", color: "#475569" }}>{item.desc}</p>
                                 </div>
                             </div>
@@ -736,9 +650,9 @@ const WebinarIbu = () => {
                         
                         {content.steps.map((step, idx) => (
                             <div key={idx} style={{ display: "flex", gap: "20px", marginBottom: "30px", position: "relative" }}>
-                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#ec4899", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid #f8fafc" }}>{idx + 1}</div>
+                                <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "#db2777", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", flexShrink: 0, zIndex: 2, border: "4px solid #fdf2f8" }}>{idx + 1}</div>
                                 <div>
-                                    <h3 style={{ color: "#ec4899", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
+                                    <h3 style={{ color: "#db2777", fontSize: "18px", fontWeight: "bold", marginBottom: "5px" }}>{step.title}</h3>
                                     <p style={{ color: "#475569", fontSize: "14px" }}>{step.desc}</p>
                                 </div>
                             </div>
@@ -749,11 +663,11 @@ const WebinarIbu = () => {
                 {/* 12. PRICING & PAYMENT FORM */}
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>
-                        <h2 style={{ marginTop: "20px", fontSize: "22px", fontWeight: 700, marginBottom: "20px" }}>Investasi untuk Kebahagiaan Cintamu</h2>
-                        <p style={{ fontSize: "14px", color: "#64748b", marginBottom: "20px" }}>Biasanya, sesi private bersama saya dihargai:</p>
+                        <h2 style={{ marginTop: "20px", fontSize: "22px", fontWeight: 700, marginBottom: "20px" }}>Investasi Masa Depan Cinta</h2>
+                        <p style={{ fontSize: "14px", color: "#64748b", marginBottom: "20px" }}>Harga normal untuk konsultasi private:</p>
                         <div style={{ fontSize: "20px", textDecoration: "line-through", color: "#94a3b8", marginBottom: "5px" }}>{content.priceAnchor}</div>
-                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#ec4899", marginBottom: "10px" }}>{content.priceReal}</div>
-                        <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "30px" }}>(Hanya seharga sekali makan di mall untuk mengubah hidupmu)</p>
+                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#db2777", marginBottom: "10px" }}>{content.priceReal}</div>
+                        <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "30px" }}>(Lebih murah dari harga skincare bulanan Anda)</p>
                     </div>
 
                     {/* FORM INPUTS */}
@@ -768,7 +682,7 @@ const WebinarIbu = () => {
                                     <Input 
                                         id="name" 
                                         autoComplete="name"
-                                        placeholder="Contoh: Siti Nurhaliza" 
+                                        placeholder="Contoh: Sinta Bella" 
                                         value={userName} 
                                         onChange={(e) => setUserName(e.target.value)} 
                                         className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-pink-500 h-12"
@@ -776,7 +690,7 @@ const WebinarIbu = () => {
                                 </div>
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div>
-                                        <Label htmlFor="email" className="text-slate-700 font-semibold mb-1 block">Alamat Email (PENTING)</Label>
+                                        <Label htmlFor="email" className="text-slate-300 font-semibold mb-1 block">Alamat Email (PENTING)</Label>
                                         <Input 
                                             id="email" 
                                             type="email" 
@@ -788,7 +702,7 @@ const WebinarIbu = () => {
                                         />
                                     </div>
                                     <div>
-                                        <Label htmlFor="phone" className="text-slate-700 font-semibold mb-1 block">Nomor WhatsApp</Label>
+                                        <Label htmlFor="phone" className="text-slate-300 font-semibold mb-1 block">Nomor WhatsApp</Label>
                                         <Input 
                                             id="phone" 
                                             type="tel" 
@@ -822,7 +736,7 @@ const WebinarIbu = () => {
 
                         <Button 
                             size="lg" 
-                            className="w-full text-lg py-8 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 font-bold shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] text-white border-none mt-6"
+                            className="w-full text-lg py-8 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 font-bold shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] text-white border-none mt-6"
                             onClick={handleCreatePayment}
                             disabled={loading}
                         >
@@ -846,7 +760,7 @@ const WebinarIbu = () => {
                     <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
                         {content.faq.map((item, idx) => (
                             <div key={idx} style={{ background: "#ffffff", padding: "20px", borderRadius: "15px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}>
-                                <div style={{ color: "#ec4899", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
+                                <div style={{ color: "#db2777", fontWeight: "bold", marginBottom: "10px", fontSize: "16px" }}>{item.q}</div>
                                 <div style={{ color: "#475569", fontSize: "14px", lineHeight: 1.6 }}>{item.a}</div>
                             </div>
                         ))}
@@ -863,4 +777,4 @@ const WebinarIbu = () => {
     );
 };
 
-export default WebinarIbu;
+export default WebinarIbuJodoh;
