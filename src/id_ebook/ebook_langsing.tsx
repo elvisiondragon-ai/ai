@@ -243,7 +243,7 @@ export default function DietPaymentPage() {
       content_type: 'product',
       value: totalAmount,
       currency: 'IDR'
-    }, addPaymentInfoEventId, pixelId, userDataPixel);
+    }, addPaymentInfoEventId, pixelId, userDataPixel, 'testcode_indo');
     
     sendCapiEvent('AddPaymentInfo', {
       content_ids: [productNameBackend],
@@ -376,7 +376,7 @@ export default function DietPaymentPage() {
               content_type: 'product',
               value: payload.new?.amount || totalAmount,
               currency: 'IDR'
-            }, eventId, pixelId, userDataPixel);
+            }, eventId, pixelId, userDataPixel, 'testcode_indo');
 
             // FIRST-WIN DEDUPLICATION CHECK
             const isBackendCapiSent = payload.new?.capi_purchase_sent === true;

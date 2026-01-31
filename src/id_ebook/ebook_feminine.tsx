@@ -118,7 +118,7 @@ export default function EbookFeminineLanding() {
         customData: eventData,
         eventId: eventId,
         eventSourceUrl: window.location.href,
-        testCode: 'TEST33364'
+        testCode: 'testcode_indo'
       };
 
       // Get FBC and FBP from cookies using the utility function
@@ -268,7 +268,7 @@ export default function EbookFeminineLanding() {
 
         // If this is for Pixel, we can pass it in the track call options?
 
-        // fbq('track', 'PageView', {}, { test_event_code: 'TEST33364' });
+        // fbq('track', 'PageView', {}, { test_event_code: 'testcode_indo' });
 
         // Let's update the track calls to include this option if possible.
 
@@ -288,7 +288,7 @@ export default function EbookFeminineLanding() {
 
         // 1. PageView - Shared ID for Deduplication
         const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-        trackPageViewEvent({}, pageEventId, pixelId, userData, 'TEST33364');
+        trackPageViewEvent({}, pageEventId, pixelId, userData, 'testcode_indo');
 
         // 2. ViewContent - Shared ID for Deduplication
         const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -298,7 +298,7 @@ export default function EbookFeminineLanding() {
           content_type: 'product',
           value: productPrice,
           currency: 'IDR'
-        }, viewContentEventId, pixelId, userData, 'TEST33364');
+        }, viewContentEventId, pixelId, userData, 'testcode_indo');
       }
     };
 

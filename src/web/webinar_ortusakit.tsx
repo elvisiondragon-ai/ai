@@ -37,7 +37,7 @@ const WebinarOrtuSakit = () => {
     // Hardcoded for this specific webinar
     const productNameBackend = 'webinar_el'; 
     const displayProductName = 'Webinar Rezeki Jalur Langit: Healing Masa Tua';
-    const productPrice = 200000;
+    const productPrice = 199999;
     const pixelId = '3319324491540889';
 
     const paymentMethods = [
@@ -84,7 +84,7 @@ const WebinarOrtuSakit = () => {
           customData: eventData,
           eventId: eventId,
           eventSourceUrl: window.location.href,
-          testCode: 'TEST33364',
+          testCode: 'testcode_indo',
           userData: {
             client_user_agent: navigator.userAgent,
             email: userEmail || session?.user?.email,
@@ -115,7 +115,7 @@ const WebinarOrtuSakit = () => {
 
           // 1. PageView (Allowed)
           const pageEventId = `pageview-${Date.now()}`;
-          trackPageViewEvent({}, pageEventId, pixelId, userData, 'TEST33364');
+          trackPageViewEvent({}, pageEventId, pixelId, userData, 'testcode_indo');
 
           // 2. ViewContent (Allowed)
           const viewContentEventId = `viewcontent-${Date.now()}`;
@@ -125,7 +125,7 @@ const WebinarOrtuSakit = () => {
             content_type: 'product',
             value: productPrice,
             currency: 'IDR'
-          }, viewContentEventId, pixelId, userData, 'TEST33364');
+          }, viewContentEventId, pixelId, userData, 'testcode_indo');
         }
       };
       initPixel();

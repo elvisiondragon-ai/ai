@@ -66,7 +66,7 @@ export default function EbookElvisionPaymentPage() {
         customData: eventData,
         eventId: eventId,
         eventSourceUrl: window.location.href,
-        testCode: 'TEST90028' // UPDATED TEST CODE
+        testCode: 'testcode_indo' // Centralized Test Code Key
       };
 
       // Get FBC and FBP from cookies using the utility function
@@ -259,7 +259,7 @@ export default function EbookElvisionPaymentPage() {
         content_type: 'product',
         value: totalAmount,
         currency: 'IDR'
-      }, addPaymentInfoEventId, pixelId, userDataPixel);
+      }, addPaymentInfoEventId, pixelId, userDataPixel, 'testcode_indo');
       
       sendCapiEvent('AddPaymentInfo', {
         content_ids: [productNameBackend],
@@ -394,7 +394,7 @@ export default function EbookElvisionPaymentPage() {
               content_type: 'product',
               value: payload.new?.amount || totalAmount,
               currency: 'IDR'
-            }, eventId, pixelId, userDataPixel);
+            }, eventId, pixelId, userDataPixel, 'testcode_indo');
 
             // Optionally navigate after showing toast
             // navigate('/success-page'); 

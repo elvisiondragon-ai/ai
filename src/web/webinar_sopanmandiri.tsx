@@ -37,7 +37,7 @@ const WebinarSopanMandiri = () => {
     // Product Config (Webinar Pria Mandiri/Pengangguran)
     const productNameBackend = 'webinar_zero_to_hero'; 
     const displayProductName = 'Webinar The Awakening: Dari Beban Jadi Andalan';
-    const productPrice = 200000;
+    const productPrice = 199999;
     const pixelId = '3319324491540889';
 
     const paymentMethods = [
@@ -83,7 +83,7 @@ const WebinarSopanMandiri = () => {
           customData: eventData,
           eventId: eventId,
           eventSourceUrl: window.location.href,
-          testCode: 'TEST33364'
+          testCode: 'testcode_indo'
         };
 
         const userData: any = { client_user_agent: navigator.userAgent };
@@ -132,7 +132,7 @@ const WebinarSopanMandiri = () => {
           initFacebookPixelWithLogging(pixelId, userData);
 
           const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-          trackPageViewEvent({}, pageEventId, pixelId, userData, 'TEST33364');
+          trackPageViewEvent({}, pageEventId, pixelId, userData, 'testcode_indo');
 
           const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
           trackViewContentEvent({
@@ -141,7 +141,7 @@ const WebinarSopanMandiri = () => {
             content_type: 'product',
             value: productPrice,
             currency: 'IDR'
-          }, viewContentEventId, pixelId, userData, 'TEST33364');
+          }, viewContentEventId, pixelId, userData, 'testcode_indo');
         }
       };
 

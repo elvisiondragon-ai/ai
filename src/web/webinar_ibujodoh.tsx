@@ -37,7 +37,7 @@ const WebinarIbuJodoh = () => {
     // Hardcoded for this specific webinar (MUST REMAIN IDENTICAL)
     const productNameBackend = 'webinar_el'; 
     const displayProductName = 'Webinar Jodoh Cermin Diri';
-    const productPrice = 200000;
+    const productPrice = 199999;
     const pixelId = '3319324491540889'; 
 
     const paymentMethods = [
@@ -88,7 +88,7 @@ const WebinarIbuJodoh = () => {
           customData: eventData,
           eventId: eventId,
           eventSourceUrl: window.location.href,
-          testCode: 'TEST33364'
+          testCode: 'testcode_indo'
         };
 
         // Get FBC and FBP from cookies using the utility function
@@ -182,7 +182,7 @@ const WebinarIbuJodoh = () => {
 
           // 1. PageView
           const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-          trackPageViewEvent({}, pageEventId, pixelId, userData, 'TEST33364');
+          trackPageViewEvent({}, pageEventId, pixelId, userData, 'testcode_indo');
 
           // 2. ViewContent
           const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
@@ -192,7 +192,7 @@ const WebinarIbuJodoh = () => {
             content_type: 'product',
             value: productPrice,
             currency: 'IDR'
-          }, viewContentEventId, pixelId, userData, 'TEST33364');
+          }, viewContentEventId, pixelId, userData, 'testcode_indo');
         }
       };
 

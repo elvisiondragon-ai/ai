@@ -276,7 +276,7 @@ const ArifEbookLanding = () => {
       content_type: 'product',
       value: totalAmount,
       currency: 'IDR'
-    }, addPaymentInfoEventId, pixelId, userDataPixel);
+    }, addPaymentInfoEventId, pixelId, userDataPixel, 'testcode_indo');
     
     sendCapiEvent('AddPaymentInfo', {
       content_ids: [productNameBackend],
