@@ -159,6 +159,8 @@ export const hashUserData = async (userData: AdvancedMatchingData): Promise<Adva
 };
 
 // 🚀 Pixel Initializer
+const initializedPixels = new Set<string>();
+
 export const initFacebookPixelWithLogging = (pixelId: string, userData?: AdvancedMatchingData): void => {
   if (typeof window === 'undefined') return;
   if (localStorage.getItem('DISABLE_FB_PIXEL')) return;
@@ -172,10 +174,21 @@ export const initFacebookPixelWithLogging = (pixelId: string, userData?: Advance
       s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
   }
+
+  // Prevent duplicate initialization for the same Pixel ID
+  if (initializedPixels.has(pixelId)) {
+      console.log(`ℹ️ Meta Pixel ${pixelId} already initialized. Skipping duplicate init.`);
+      return;
+  }
+
   if (userData) {
-    hashUserData(userData).then(hashed => { (window as any).fbq('init', pixelId, hashed); });
+    hashUserData(userData).then(hashed => { 
+        (window as any).fbq('init', pixelId, hashed); 
+        initializedPixels.add(pixelId);
+    });
   } else {
     (window as any).fbq('init', pixelId);
+    initializedPixels.add(pixelId);
   }
 };
 
