@@ -152,7 +152,6 @@ export default function DietPaymentPage() {
       
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
-      sendCapiEvent('PageView', {}, pageEventId);
 
       const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackViewContentEvent({
@@ -162,14 +161,6 @@ export default function DietPaymentPage() {
         value: productPrice,
         currency: 'IDR'
       }, viewContentEventId, pixelId);
-      
-      sendCapiEvent('ViewContent', {
-        content_name: productName,
-        content_ids: [productNameBackend],
-        content_type: 'product',
-        value: productPrice,
-        currency: 'IDR'
-      }, viewContentEventId);
     }
   }, []);
 

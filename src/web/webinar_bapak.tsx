@@ -425,10 +425,10 @@ const WebinarBapak = () => {
 
         // 10. FAQ
         faq: [
-            { q: "Saya gaptek dan jarang ikut webinar, apa bisa?", a: "Sangat bisa, Pak. Kami gunakan Zoom yang mudah. Nanti ada tim admin yang bantu pandu sampai bisa masuk room." },
-            { q: "Apakah ini berhubungan dengan klenik/mistis?", a: "Sama sekali TIDAK. Ini adalah sains pikiran (psikologi) dan manajemen energi tubuh. Halal dan logis." },
-            { q: "Saya sibuk sekali, kalau ketinggalan gimana?", a: "Disarankan hadir live untuk energi maksimal. Tapi jika berhalangan, rekaman akan diberikan di grup." },
-            { q: "Istri saya galak/dominan, apa webinar ini bisa bantu?", a: "Justru itu kuncinya. Saat energi 'Raja' Bapak bangkit, energi dominan istri akan otomatis melembut (Feminine Shift) tanpa Bapak perlu menyuruhnya." }
+            { q: "Apakah teknik ini bisa membantu saya melunasi hutang atau cicilan yang menumpuk?", a: "Sangat bisa, Pak. Hutang seringkali adalah manifestasi dari 'Energi Kekurangan' di dalam pikiran. Di webinar ini kita akan membersihkan mental block tersebut agar rezeki mengalir lebih lancar tanpa sumbatan." },
+            { q: "Saya sudah terlalu lelah bekerja dari pagi sampai malam, apakah webinar ini memakan waktu lama?", a: "Webinar ini justru solusi untuk rasa lelah Bapak. Kami mengajarkan cara kerja cerdas secara energi. Bapak tidak perlu lagi 'jungkir balik' secara fisik jika frekuensi rezeki Bapak sudah selaras dan tenang." },
+            { q: "Istri saya sangat dominan dan sering meremehkan saya sebagai kepala keluarga, apa bisa berubah?", a: "Bisa banget, Pak. Hukum alamnya: Energi Maskulin yang kuat (Raja) akan menarik Energi Feminin yang lembut. Saat wibawa Bapak bangkit dari dalam, istri akan otomatis merasa aman dan melembutkan sikapnya tanpa perlu Bapak marahi." },
+            { q: "Apakah ini semacam ilmu penarik uang atau pesugihan?", a: "Bukan, Pak. Ini adalah manajemen energi dan psikologi bawah sadar (Science of Vibration). Semua metodenya logis, masuk akal, dan tetap dalam koridor iman kepada Tuhan Sang Maha Pemberi Rezeki." }
         ]
     };
 
@@ -454,14 +454,10 @@ const WebinarBapak = () => {
 
     // Full Text Testimonials (Restored)
     const testimonials = [
-        { name: "David Sutanto", title: "CEO Tech Startup, Valuasi $50M", image: "💎", rating: 5, text: "Uang bukan lagi masalah, tapi masalah terus datang. Setelah 1:1 dengan eL Vision, saya paham: yang hilang bukan strategi, tapi kalibrasi energi. Sekarang bisnis berkembang tanpa drama." },
-        { name: "Budi Hermawan", title: "Pemilik Grup Manufaktur", image: "🎯", rating: 5, text: "6 minggu mengubah 15 tahun pola pikir. Kekayaan ada, tapi kedamaian tidak. Sekarang saya mengerti: kemakmuran sejati dimulai dengan 1% fokus yang tepat." },
-        { name: "Agus Mulyadi, SH., MH.", title: "Kepala Intelijen Pangandaran", verified: true, image: "👨‍💼", rating: 5, text: "Sebagai kepala intelijen saya memiliki banyak tugas sulit. Dengan meditasi ini saya memiliki intuisi super untuk mendapatkan hasil terbaik dari pekerjaan saya." },
-        { name: "Suryadi", title: "Yayasan Aisyah - Mengelola 100+ Panti Asuhan", verified: true, image: "🌟", rating: 5, text: "Bagian tersulit adalah mendapatkan donatur yang memahami nilainya. Dengan meditasi mendalam bersama eL, luar biasa, saya lebih mudah bertemu donatur yang tepat." },
-        { name: "Linda Permata", title: "Investor Real Estate", image: "👩‍💼", rating: 5, text: "Saya pikir saya sudah 'selesai' secara finansial. Ternyata ada level berikutnya: manifestasi tanpa paksaan. Investasi terbaik dibandingkan seminar mahal yang hanya teori." },
-        { name: "Arif", title: "Klien eL Vision", verified: true, image: "👨‍💻", rating: 5, text: "Saya didiagnosis kanker otak stadium 4. Sekarang sudah 2 tahun lebih saya hidup dan lebih baik dari sebelumnya, tehnik ini bukan tehnik biasa." },
-        { name: "Dr. Gumilar", title: "Dokter & Hipnoterapis (20+ Tahun)", verified: true, image: "⚕️", rating: 5, text: "Metode eL Vision selama 6 minggu sepenuhnya mengubah perspektif saya dan melihat bahwa metode modern ini memberikan hasil yang cepat." },
-        { name: "Felicia Quincy", title: "Pengusaha", verified: true, image: "👩‍💼", rating: 5, text: "Awalnya semua keputusan saya kabur. Setelah program, saya bisa melihat hal-hal lebih jelas, realitas, koneksi dan keuangan saya menjadi lebih baik." }
+        { name: "Hendrik Pratama", title: "Karyawan Swasta & Ayah 3 Anak", verified: true, image: "💼", rating: 5, text: "Dulu saya merasa cuma jadi mesin ATM di rumah. Capek kerja, pulang masih kena omel. Setelah ikut webinar eL, aura saya berubah. Istri jadi jauh lebih hormat dan nurut, rezeki pun datang dari arah yang tak terduga." },
+        { name: "Slamet Riyadi", title: "Wiraswasta, Pejuang Nafkah", verified: true, image: "🚛", rating: 5, text: "Dulu batin saya hancur karena hutang dan tekanan. Berkat teknik Magnet Uang dari eL, saya lebih tenang. Ajaibnya, saat batin tenang, orderan proyek malah makin kencang. Sekarang saya merasa jadi Raja di rumah sendiri." },
+        { name: "Gunawan", title: "Manager Operasional", verified: true, image: "🏢", rating: 5, text: "Kerja belasan tahun tapi hidup stag. Webinar ini membuka mata saya bahwa kerja keras saja tidak cukup tanpa kalibrasi energi. Sekarang wibawa saya sebagai provider kembali bangkit." },
+        { name: "Bambang", title: "Ayah Pejuang Keluarga", verified: true, image: "🛠️", rating: 5, text: "Saya merasa dihargai kembali sebagai manusia, bukan cuma alat pencari uang. Hubungan dengan anak-anak jadi lebih dekat dan rezeki terasa sangat berkecukupan." }
     ];
 
     return (
@@ -639,7 +635,7 @@ const WebinarBapak = () => {
 
                 {/* 9. TEXT TESTIMONIALS (RESTORED ALL) */}
                 <div style={{ background: "#ffffff", padding: "30px 20px", borderRadius: "25px", marginBottom: "30px", border: "1px solid #e2e8f0", boxShadow: "0 5px 15px rgba(0,0,0,0.08)" }}>
-                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>Kisah Perubahan Nyata</h2>
+                     <h2 style={{ fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center", color: "#1e293b" }}>KISAH BAPAK-BAPAK PEJUANG (PROVIDER)</h2>
                      {testimonials.map((testi, idx) => (
                         <div key={idx} style={{ background: "#f8fafc", padding: "20px", borderRadius: "10px", marginBottom: "15px", border: "1px solid #e2e8f0" }}>
                             <div style={{ fontWeight: 700, color: "#d97706", marginBottom: "5px" }}>{testi.name} {testi.verified && <span style={{color: '#34d399'}}>✓</span>}</div>

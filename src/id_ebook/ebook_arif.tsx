@@ -53,7 +53,6 @@ const ArifEbookLanding = () => {
       
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
-      sendCapiEvent('PageView', {}, pageEventId);
 
       const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackViewContentEvent({
@@ -63,14 +62,6 @@ const ArifEbookLanding = () => {
         value: totalAmount,
         currency: 'IDR'
       }, viewContentEventId, pixelId);
-      
-      sendCapiEvent('ViewContent', {
-        content_name: displayProductName,
-        content_ids: [productNameBackend],
-        content_type: 'product',
-        value: totalAmount,
-        currency: 'IDR'
-      }, viewContentEventId);
     }
 
     const timer = setInterval(() => {

@@ -74,7 +74,6 @@ export default function ELVision15K() {
       
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
-      sendCapiEvent('PageView', {}, pageEventId);
     }
   }, []);
 
