@@ -46,25 +46,20 @@ export const sha256 = async (message: string): Promise<string> => {
 // 🍪 Cookie Helper - Set cookie with domain handling
 export const setCookieHelper = (name: string, value: string, days: number = 90) => {
     if (typeof document === 'undefined') return;
-    
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = `expires=${date.toUTCString()}`;
-    
-    // Attempt to set on root domain for better persistence
     const hostname = window.location.hostname;
     const parts = hostname.split('.');
     let domain = hostname;
-    
     if (parts.length >= 2 && !hostname.includes('localhost') && !/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(hostname)) {
         domain = '.' + parts.slice(-2).join('.');
     }
-
     document.cookie = `${name}=${value}; ${expires}; path=/; domain=${domain}; SameSite=Lax`;
     document.cookie = `${name}=${value}; ${expires}; path=/; SameSite=Lax`;
 };
 
-// 🍪 FBC Cookie Helper - Get browser cookie value
+// 🍪 FBC Cookie Helper
 export const getFbcCookieHelper = (name: string): string | null => {
   if (typeof document === 'undefined') return null;
   const value = `; ${document.cookie}`;
@@ -83,14 +78,12 @@ export const getFbcClickIdFromUrl = (): string | null => {
      const hashParams = new URLSearchParams(hashString);
      fbclid = hashParams.get('fbclid');
   }
-
   if (fbclid) {
     const hasUppercase = /[A-Z]/.test(fbclid);
     const hasLowercase = /[a-z]/.test(fbclid);
     const isTooShort = fbclid.length < 20;
     const isTest = /test/i.test(fbclid);
     const isCorruptedLowercase = !hasUppercase && hasLowercase;
-
     if (isTest || isTooShort || isCorruptedLowercase) {
       console.warn("⚠️ Meta Pixel: Ignoring invalid/corrupted fbclid:", fbclid);
       return null;
@@ -127,8 +120,6 @@ export const handleFbcCookieManager = (): void => {
 export const getFbcFbpCookies = (): { fbc: string | null; fbp: string | null } => {
   let fbc = getFbcCookieHelper('_fbc');
   let fbp = getFbcCookieHelper('_fbp');
-  
-  // IP/Validation logic (same as main)
   if (fbc) {
     const parts = fbc.split('.');
     if (parts.length >= 4) {
@@ -136,7 +127,6 @@ export const getFbcFbpCookies = (): { fbc: string | null; fbp: string | null } =
       if (!/[A-Z]/.test(fbclid) && /[a-z]/.test(fbclid)) fbc = null;
     }
   }
-
   return { fbc, fbp };
 };
 
@@ -160,6 +150,7 @@ export const hashUserData = async (userData: AdvancedMatchingData): Promise<Adva
 
 // 🚀 Pixel Initializer
 const initializedPixels = new Set<string>();
+const userDataCache = new Map<string, string>();
 
 export const initFacebookPixelWithLogging = (pixelId: string, userData?: AdvancedMatchingData): void => {
   if (typeof window === 'undefined') return;
@@ -175,20 +166,20 @@ export const initFacebookPixelWithLogging = (pixelId: string, userData?: Advance
     })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
   }
 
-  // Prevent duplicate initialization for the same Pixel ID
-  if (initializedPixels.has(pixelId)) {
-      console.log(`ℹ️ Meta Pixel ${pixelId} already initialized. Skipping duplicate init.`);
-      return;
-  }
-
   if (userData) {
     hashUserData(userData).then(hashed => { 
-        (window as any).fbq('init', pixelId, hashed); 
-        initializedPixels.add(pixelId);
+        const hashedStr = JSON.stringify(hashed);
+        if (!initializedPixels.has(pixelId) || userDataCache.get(pixelId) !== hashedStr) {
+            (window as any).fbq('init', pixelId, hashed); 
+            initializedPixels.add(pixelId);
+            userDataCache.set(pixelId, hashedStr);
+        }
     });
   } else {
-    (window as any).fbq('init', pixelId);
-    initializedPixels.add(pixelId);
+    if (!initializedPixels.has(pixelId)) {
+        (window as any).fbq('init', pixelId);
+        initializedPixels.add(pixelId);
+    }
   }
 };
 
@@ -197,7 +188,15 @@ const trackEvent = async (eventName: string, eventData: any = {}, options: { eve
   if (typeof window === 'undefined' || !(window as any).fbq) return;
   if (localStorage.getItem('DISABLE_FB_PIXEL')) return;
   try {
-    if (options.userData && options.pixelId) await hashUserData(options.userData).then(h => (window as any).fbq('init', options.pixelId, h));
+    if (options.userData && options.pixelId) {
+        const hashed = await hashUserData(options.userData);
+        const hashedStr = JSON.stringify(hashed);
+        if (userDataCache.get(options.pixelId) !== hashedStr) {
+            (window as any).fbq('init', options.pixelId, hashed);
+            userDataCache.set(options.pixelId, hashedStr);
+            initializedPixels.add(options.pixelId);
+        }
+    }
     const trackOptions: any = {};
     if (options.eventID) trackOptions.eventID = options.eventID;
     if (options.testCode) trackOptions.test_event_code = TEST_CODE_MAPPING[options.testCode] || options.testCode;
