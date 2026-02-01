@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import { VideoFacade } from '@/components/ui/video-facade';
 import { 
   initFacebookPixelWithLogging, 
   trackPageViewEvent, 
@@ -500,6 +501,28 @@ const WebinarPriaSusis = () => {
                 <div style={{ textAlign: "center", padding: "20px 0", marginBottom: "20px" }}>
                     <div style={{ fontSize: "24px", fontWeight: 800, color: "#f59e0b", letterSpacing: "3px", textShadow: "0 0 10px rgba(245, 158, 11, 0.5)" }}>eL VISION</div>
                     <div style={{ fontSize: "12px", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "2px" }}>The King's Series</div>
+                </div>
+
+                {/* VSL Video Section */}
+                <div style={{ marginBottom: "30px", textAlign: "center" }}>
+                    <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "15px", color: "#ffffff" }}>Tonton Ini Selengkap nya !</h2>
+                    <div style={{ 
+                        width: "100%",
+                        maxWidth: "320px",
+                        margin: "0 auto",
+                        aspectRatio: "9/16",
+                        borderRadius: "20px", 
+                        overflow: "hidden", 
+                        boxShadow: "0 10px 30px rgba(0,0,0,0.1)", 
+                        border: "1px solid #334155", 
+                        backgroundColor: "#000" 
+                    }}>
+                        <VideoFacade 
+                            src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.mp4"
+                            poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.png"
+                            className="w-full h-full"
+                        />
+                    </div>
                 </div>
 
                 <div style={{ textAlign: "center", padding: "40px 20px", background: "rgba(15, 23, 42, 0.8)", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 20px 50px rgba(0,0,0,0.5)", border: "1px solid rgba(245, 158, 11, 0.2)", backdropFilter: "blur(10px)" }}>
