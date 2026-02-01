@@ -607,6 +607,11 @@ const WebinarPriaBurnout = () => {
                         <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "30px" }}>(Setara harga 4 gelas kopi kekinian)</p>
                     </div>
 
+                    <div style={{ background: "#fffbeb", border: "1px dashed #ea580c", padding: "15px", borderRadius: "15px", marginBottom: "30px", textAlign: "left" }}>
+                        <p style={{ fontSize: "14px", color: "#9a3412", fontWeight: "bold", marginBottom: "5px" }}>🎁 BONUS EKSKLUSIF LANGSUNG:</p>
+                        <p style={{ fontSize: "13px", color: "#c2410c", lineHeight: "1.5" }}>Anda juga mendapatkan <strong>Ebook eL Vision Pro + Audio Hipnosis Set</strong> selama menunggu Webinar yang bisa anda praktekan langsung untuk hasil instan.</p>
+                    </div>
+
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">
                             <h3 className="font-bold text-lg flex items-center gap-2 text-orange-600"><User className="w-5 h-5" /> Data Diri</h3>

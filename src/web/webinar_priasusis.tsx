@@ -650,6 +650,11 @@ const WebinarPriaSusis = () => {
                         <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "30px" }}>(Lebih murah dari traktir teman makan)</p>
                     </div>
 
+                    <div style={{ background: "rgba(251, 191, 36, 0.1)", border: "1px dashed #fbbf24", padding: "15px", borderRadius: "15px", marginBottom: "30px", textAlign: "left" }}>
+                        <p style={{ fontSize: "14px", color: "#fbbf24", fontWeight: "bold", marginBottom: "5px" }}>🎁 BONUS EKSKLUSIF LANGSUNG:</p>
+                        <p style={{ fontSize: "13px", color: "#cbd5e1", lineHeight: "1.5" }}>Anda juga mendapatkan <strong>Ebook eL Vision Pro + Audio Hipnosis Set</strong> selama menunggu Webinar yang bisa anda praktekan langsung untuk hasil instan.</p>
+                    </div>
+
                     {/* FORM INPUTS */}
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">

@@ -535,6 +535,11 @@ const WebinarSopanMandiri = () => {
                         <p style={{ fontSize: "13px", color: "#666", marginBottom: "30px" }}>(Kalau gak punya uang, pinjam teman/saudara dengan janji "Ini terakhir kalinya gue pinjam, gue mau berubah")</p>
                     </div>
 
+                    <div style={{ background: "#fff1f2", border: "1px dashed #dc2626", padding: "15px", borderRadius: "15px", marginBottom: "30px", textAlign: "left" }}>
+                        <p style={{ fontSize: "14px", color: "#991b1b", fontWeight: "bold", marginBottom: "5px" }}>🎁 BONUS EKSKLUSIF LANGSUNG:</p>
+                        <p style={{ fontSize: "13px", color: "#b91c1c", lineHeight: "1.5" }}>Anda juga mendapatkan <strong>Ebook eL Vision Pro + Audio Hipnosis Set</strong> selama menunggu Webinar yang bisa anda praktekan langsung untuk hasil instan.</p>
+                    </div>
+
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">
                             <h3 className="font-bold text-lg flex items-center gap-2 text-red-700">

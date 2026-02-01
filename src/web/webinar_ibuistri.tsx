@@ -669,6 +669,11 @@ const WebinarIbuIstri = () => {
                         <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "30px" }}>(Lebih murah dari sekali makan malam keluarga)</p>
                     </div>
 
+                    <div style={{ background: "#fffbeb", border: "1px dashed #7c3aed", padding: "15px", borderRadius: "15px", marginBottom: "30px", textAlign: "left" }}>
+                        <p style={{ fontSize: "14px", color: "#6d28d9", fontWeight: "bold", marginBottom: "5px" }}>🎁 BONUS EKSKLUSIF LANGSUNG:</p>
+                        <p style={{ fontSize: "13px", color: "#7c3aed", lineHeight: "1.5" }}>Anda juga mendapatkan <strong>Ebook eL Vision Pro + Audio Hipnosis Set</strong> selama menunggu Webinar yang bisa anda praktekan langsung untuk hasil instan.</p>
+                    </div>
+
                     {/* FORM INPUTS */}
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">

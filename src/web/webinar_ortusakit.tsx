@@ -477,6 +477,11 @@ const WebinarOrtuSakit = () => {
                         <p style={{ fontSize: "14px", color: "#64748b", marginBottom: "30px" }}>*Hanya untuk 50 pendaftar pertama hari ini</p>
                     </div>
 
+                    <div style={{ background: "#fffbeb", border: "1px dashed #0d9488", padding: "15px", borderRadius: "15px", marginBottom: "30px", textAlign: "left" }}>
+                        <p style={{ fontSize: "14px", color: "#0f766e", fontWeight: "bold", marginBottom: "5px" }}>🎁 BONUS EKSKLUSIF LANGSUNG:</p>
+                        <p style={{ fontSize: "13px", color: "#0d9488", lineHeight: "1.5" }}>Anda juga mendapatkan <strong>Ebook eL Vision Pro + Audio Hipnosis Set</strong> selama menunggu Webinar yang bisa anda praktekan langsung untuk hasil instan.</p>
+                    </div>
+
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">
                             <h3 className="font-bold text-lg text-teal-700 flex items-center gap-2">
