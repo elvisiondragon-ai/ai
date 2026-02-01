@@ -242,8 +242,8 @@ const WebinarOrtuSakit = () => {
             { title: 'Vibrasi Kesembuhan', desc: 'Menaikkan level energi tubuh agar sistem imun bekerja maksimal menyembuhkan diri sendiri.' }
         ],
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
-        ctaButton: "👉 DAFTAR SEKARANG UNTUK HIDUP LEBIH SEHAT",
+        priceReal: "Rp 199.999,-",
+        ctaButton: "👉 SAYA MAU ORANG TUA SAYA PULIH",
         steps: [
             { title: "Langkah 1: Pilih Metode", desc: "Isi data dan amankan kursi Bapak/Ibu sebelum slot habis." },
             { title: "Langkah 2: Persiapan Diri", desc: "Masuk ke grup VIP untuk mendapatkan panduan awal sebelum hari-H." },

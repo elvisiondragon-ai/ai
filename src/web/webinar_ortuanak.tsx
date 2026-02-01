@@ -390,8 +390,8 @@ const WebinarOrtuAnak = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 3.500.000,-",
-        priceReal: "Rp 200.000,-",
-        ctaButton: "👉 SAYA INGIN MEMELUK ANAK SAYA KEMBALI",
+        priceReal: "Rp 199.999,-",
+        ctaButton: "👉 SAYA MAU ANAK SAYA BERUBAH",
 
         // 9. STEPS
         steps: [

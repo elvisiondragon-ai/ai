@@ -366,11 +366,11 @@ const WebinarPriaBurnout = () => {
         ],
 
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
+        priceReal: "Rp 199.999,-",
         ctaButton: "👉 SAYA MAU RESET HIDUP SAYA",
 
         steps: [
-            { title: "Langkah 1: Amankan Slot", desc: "Selesaikan investasi Rp 200.000,- (Lebih murah dari biaya berobat ke psikiater)." },
+            { title: "Langkah 1: Amankan Slot", desc: "Selesaikan investasi Rp 199.999,- (Lebih murah dari biaya berobat ke psikiater)." },
             { title: "Langkah 2: Join VIP Room", desc: "Anda akan masuk ke komunitas pria-pria berdaya yang sadar akan kesehatan mental." },
             { title: "Langkah 3: Live Reset", desc: "Hadir Minggu 22 Februari 2026 via Zoom. Kita lakukan pembersihan mental bersama." }
         ],

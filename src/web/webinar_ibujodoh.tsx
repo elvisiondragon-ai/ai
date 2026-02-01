@@ -386,12 +386,12 @@ const WebinarIbuJodoh = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
+        priceReal: "Rp 199.999,-",
         ctaButton: "👉 SAYA SIAP BERTEMU 'THE ONE'",
 
         // 9. STEPS
         steps: [
-            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol di bawah. Investasi Rp 200.000,- untuk kebahagiaan seumur hidup." },
+            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol di bawah. Investasi Rp 199.999,- untuk kebahagiaan seumur hidup." },
             { title: "Langkah 2: Join Grup VIP", desc: "Anda akan masuk ke Circle Wanita High Value untuk saling support." },
             { title: "Langkah 3: Live Transformasi", desc: "Hadir tanggal 22 Februari 2026. Siapkan tisu, kita akan bongkar luka batin dan sembuhkan." }
         ],

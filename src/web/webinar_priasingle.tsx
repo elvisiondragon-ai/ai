@@ -386,12 +386,12 @@ const WebinarPriaSingle = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
+        priceReal: "Rp 199.999,-",
         ctaButton: "👉 SAYA SIAP JADI PRIA MAGNETIK",
 
         // 9. STEPS
         steps: [
-            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol di bawah. Investasi Rp 200.000,- untuk harga diri Anda seumur hidup." },
+            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol di bawah. Investasi Rp 199.999,- untuk harga diri Anda seumur hidup." },
             { title: "Langkah 2: Join Grup VIP", desc: "Masuk ke circle pria-pria yang sedang bertumbuh (Brotherhood of Growth)." },
             { title: "Langkah 3: Live Upgrade", desc: "Hadir tanggal 22 Februari 2026. Kita upgrade software otak Anda secara live." }
         ],

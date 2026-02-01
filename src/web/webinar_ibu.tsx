@@ -386,12 +386,12 @@ const WebinarIbuOverthinking = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
+        priceReal: "Rp 199.999,-",
         ctaButton: "👉 SAYA MAU KEMBALI TENTRAM",
 
         // 9. STEPS
         steps: [
-            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol. Investasi Rp 200.000,- lebih murah dari sekali sesi konseling psikolog." },
+            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol. Investasi Rp 199.999,- lebih murah dari sekali sesi konseling psikolog." },
             { title: "Langkah 2: Join Grup VIP", desc: "Masuk ke circle ibu-ibu sadar (Conscious Mother) yang saling menguatkan." },
             { title: "Langkah 3: Live Healing", desc: "Hadir tanggal 22 Februari 2026. Siapkan tisu, kita buang sampah emosi bertahun-tahun." }
         ],

@@ -511,7 +511,7 @@ const WebinarSopanMandiri = () => {
                         <div style={{ position: "absolute", left: "20px", top: "20px", bottom: "20px", width: "2px", background: "#fecaca" }}></div>
                         
                         {[
-                            { title: "Langkah 1: Berani Mulai", desc: "Daftar di bawah. Investasi Rp 200.000,- (Mungkin uang terakhirmu, tapi jadikan ini yang paling berharga)." },
+                            { title: "Langkah 1: Berani Mulai", desc: "Daftar di bawah. Investasi Rp 199.999,- (Mungkin uang terakhirmu, tapi jadikan ini yang paling berharga)." },
                             { title: "Langkah 2: Circle Pemenang", desc: "Masuk ke Grup WhatsApp berisi orang-orang yang satu frekuensi mau sukses, bukan ngeluh doang." },
                             { title: "Langkah 3: Live Reset", desc: "Hadir di Webinar 22 Feb 2026. Kita install ulang mindset kamu." }
                         ].map((step, idx) => (
@@ -531,7 +531,7 @@ const WebinarSopanMandiri = () => {
                     <div style={{ textAlign: "center" }}>
                         <h2 style={{ fontSize: "22px", fontWeight: 700, marginBottom: "20px" }}>Investasi Harga Diri</h2>
                         <div style={{ fontSize: "20px", textDecoration: "line-through", color: "#9ca3af" }}>Rp 5.000.000,-</div>
-                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#ea580c", marginBottom: "10px" }}>Rp 200.000,-</div>
+                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#ea580c", marginBottom: "10px" }}>Rp 199.999,-</div>
                         <p style={{ fontSize: "13px", color: "#666", marginBottom: "30px" }}>(Kalau gak punya uang, pinjam teman/saudara dengan janji "Ini terakhir kalinya gue pinjam, gue mau berubah")</p>
                     </div>
 

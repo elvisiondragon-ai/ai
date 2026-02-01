@@ -372,8 +372,8 @@ const WebinarPriaSusis = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
-        ctaButton: "👉 SAYA AMBIL KEMBALI TAHTA SAYA",
+        priceReal: "Rp 199.999,-",
+        ctaButton: "👉 SAYA MAU KEMBALI DIHARGAI",
 
         // 9. STEPS
         steps: [

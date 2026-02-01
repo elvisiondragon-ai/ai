@@ -387,12 +387,12 @@ const WebinarAkuMandiri = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
+        priceReal: "Rp 199.999,-",
         ctaButton: "👉 SAYA MAU SUKSES & MANDIRI",
 
         // 9. STEPS
         steps: [
-            { title: "Langkah 1: Amankan Tiket", desc: "Klik tombol di bawah. Rp 200.000,- adalah harga kecil untuk masa depan yang cerah." },
+            { title: "Langkah 1: Amankan Tiket", desc: "Klik tombol di bawah. Rp 199.999,- adalah harga kecil untuk masa depan yang cerah." },
             { title: "Langkah 2: Join Circle Positif", desc: "Masuk ke Grup WhatsApp eksklusif. Tinggalkan circle lamamu yang toxic." },
             { title: "Langkah 3: Live Mentoring", desc: "Hadir Minggu, 22 Februari 2026 jam 17:00 WIB. Siapkan catatan, kita ubah nasibmu hari itu juga." }
         ],

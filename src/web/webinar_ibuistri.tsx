@@ -386,12 +386,12 @@ const WebinarIbuIstri = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
+        priceReal: "Rp 199.999,-",
         ctaButton: "👉 SAYA INGIN RUMAH TANGGA HANGAT KEMBALI",
 
         // 9. STEPS
         steps: [
-            { title: "Langkah 1: Amankan Hati", desc: "Daftar sekarang. Investasi Rp 200.000,- untuk menyelamatkan puluhan tahun masa depan pernikahan." },
+            { title: "Langkah 1: Amankan Hati", desc: "Daftar sekarang. Investasi Rp 199.999,- untuk menyelamatkan puluhan tahun masa depan pernikahan." },
             { title: "Langkah 2: Gabung Circle Istri", desc: "Masuk ke grup VIP, bertemu para istri yang saling menguatkan, bukan saling menjatuhkan." },
             { title: "Langkah 3: Live Terapi", desc: "Hadir 22 Februari 2026. Kita akan lakukan terapi massal untuk melepas beban hati Bunda." }
         ],

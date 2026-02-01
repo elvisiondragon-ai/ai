@@ -413,12 +413,12 @@ const WebinarBapak = () => {
 
         // 8. PRICING & CTA
         priceAnchor: "Rp 5.000.000,-",
-        priceReal: "Rp 200.000,-",
+        priceReal: "Rp 199.999,-",
         ctaButton: "👉 SAYA MAU JADI RAJA KEMBALI",
 
         // 9. STEPS
         steps: [
-            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol di bawah dan selesaikan investasi Rp 200.000,- (Harga Promo)." },
+            { title: "Langkah 1: Amankan Slot", desc: "Klik tombol di bawah dan selesaikan investasi Rp 199.999,- (Harga Promo)." },
             { title: "Langkah 2: Join Grup VIP", desc: "Anda akan otomatis dimasukkan ke Grup WhatsApp khusus peserta webinar." },
             { title: "Langkah 3: Live Webinar", desc: "Hadir tanggal 28 Februari via Zoom. Kita akan Meditasi, Tanya Jawab, Praktek Langsung, dan ada PR Harian." }
         ],
