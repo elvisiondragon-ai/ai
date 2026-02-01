@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { VideoFacade } from '@/components/ui/video-facade';
 import { 
   initFacebookPixelWithLogging, 
   trackPageViewEvent, 
@@ -270,8 +269,7 @@ const WebinarOrtuSakit = () => {
         { name: "Umi Jamilah", title: "Melepas Beban Masa Lalu", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/UMIVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/umi.jpg" },
         { name: "Felicia", title: "Transformasi Kesehatan", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/FELVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/felicia.jpg" },
         { name: "Lena", title: "Bebas dari Maag Kronis", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/LENA_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/lena.jpg" },
-        { name: "Vio", title: "Energi Baru Masa Tua", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/vio2.jpg" },
-        { name: "Arif", title: "Keajaiban Sel Tubuh", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.jpg" }
+        { name: "Vio", title: "Energi Baru Masa Tua", videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4", poster: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/vio2.jpg" }
     ];
 
     const testimonials = [
@@ -358,23 +356,25 @@ const WebinarOrtuSakit = () => {
                 {/* VSL Video Section */}
                 <div style={{ marginBottom: "30px", textAlign: "center" }}>
                     <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "15px", color: "#1e293b" }}>Tonton Ini Selengkap nya !</h2>
-                    <div style={{ 
-                        width: "100%",
-                        maxWidth: "320px",
-                        margin: "0 auto",
-                        aspectRatio: "9/16",
-                        borderRadius: "20px", 
-                        overflow: "hidden", 
-                        boxShadow: "0 10px 30px rgba(0,0,0,0.1)", 
-                        border: "1px solid #e2e8f0", 
-                        backgroundColor: "#000" 
-                    }}>
-                        <VideoFacade 
-                            src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.mp4"
-                            poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.png"
-                            className="w-full h-full"
-                        />
-                    </div>
+                    <video 
+                        controls 
+                        playsInline 
+                        poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.png" 
+                        style={{ 
+                            width: "100%", 
+                            maxWidth: "320px", 
+                            margin: "0 auto", 
+                            borderRadius: "20px", 
+                            aspectRatio: "9/16", 
+                            objectFit: "cover", 
+                            boxShadow: "0 10px 30px rgba(0,0,0,0.1)", 
+                            border: "1px solid #e2e8f0", 
+                            backgroundColor: "#000" 
+                        }}
+                    >
+                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
 
                 <div style={{ textAlign: "center", padding: "40px 20px", background: "#ffffff", borderRadius: "25px", marginBottom: "30px", boxShadow: "0 10px 30px rgba(13, 148, 136, 0.1)", border: "1px solid rgba(13, 148, 136, 0.1)" }}>
@@ -434,6 +434,36 @@ const WebinarOrtuSakit = () => {
                                 <li key={idx} style={{ padding: "10px 0", borderBottom: idx !== 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>{res}</li>
                             ))}
                         </ul>
+                    </div>
+                </div>
+
+                {/* FEATURED TESTIMONY: ARIF (CANCER STAGE 4) */}
+                <div style={{ background: "#ffffff", padding: "35px 25px", borderRadius: "25px", marginBottom: "30px", border: "3px solid #0d9488", boxShadow: "0 10px 30px rgba(13, 148, 136, 0.2)" }}>
+                    <div style={{ textAlign: "center", marginBottom: "20px" }}>
+                        <span style={{ background: "#0d9488", color: "#ffffff", padding: "5px 15px", borderRadius: "50px", fontSize: "12px", fontWeight: "900", textTransform: "uppercase", letterSpacing: "1px" }}>
+                            Kisah Paling Menginspirasi
+                        </span>
+                        <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#0f172a", marginTop: "15px" }}>Sembuh Dari Kanker Stadium 4</h2>
+                        <p style={{ fontSize: "14px", color: "#475569", marginTop: "5px" }}>Keajaiban Sel Tubuh & Kekuatan Pikiran Bawah Sadar</p>
+                    </div>
+                    <video 
+                        controls 
+                        playsInline 
+                        poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.jpg" 
+                        style={{ 
+                            width: "100%", 
+                            borderRadius: "15px", 
+                            aspectRatio: "9/16", 
+                            objectFit: "cover", 
+                            backgroundColor: "#000" 
+                        }}
+                    >
+                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif_inte.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div style={{ marginTop: "15px", textAlign: "center" }}>
+                        <div style={{ fontWeight: "bold", fontSize: "16px", color: "#0d9488" }}>Arif</div>
+                        <div style={{ fontSize: "13px", color: "#64748b" }}>Survivor Kanker Stadium 4</div>
                     </div>
                 </div>
 

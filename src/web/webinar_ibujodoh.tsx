@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { VideoFacade } from '@/components/ui/video-facade';
 import { 
   initFacebookPixelWithLogging, 
   trackPageViewEvent, 
@@ -523,23 +522,25 @@ const WebinarIbuJodoh = () => {
                 {/* VSL Video Section */}
                 <div style={{ marginBottom: "30px", textAlign: "center" }}>
                     <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "15px", color: "#1e293b" }}>Tonton Ini Selengkap nya !</h2>
-                    <div style={{ 
-                        width: "100%",
-                        maxWidth: "320px",
-                        margin: "0 auto",
-                        aspectRatio: "9/16",
-                        borderRadius: "20px", 
-                        overflow: "hidden", 
-                        boxShadow: "0 10px 30px rgba(0,0,0,0.1)", 
-                        border: "1px solid #e2e8f0", 
-                        backgroundColor: "#000" 
-                    }}>
-                        <VideoFacade 
-                            src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.mp4"
-                            poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.png"
-                            className="w-full h-full"
-                        />
-                    </div>
+                    <video 
+                        controls 
+                        playsInline 
+                        poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.png" 
+                        style={{ 
+                            width: "100%", 
+                            maxWidth: "320px", 
+                            margin: "0 auto", 
+                            borderRadius: "20px", 
+                            aspectRatio: "9/16", 
+                            objectFit: "cover", 
+                            boxShadow: "0 10px 30px rgba(0,0,0,0.1)", 
+                            border: "1px solid #e2e8f0", 
+                            backgroundColor: "#000" 
+                        }}
+                    >
+                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/siapael/el_vsl1.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
 
                 {/* 2. HERO HEADLINE */}
