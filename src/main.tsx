@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from '@vercel/analytics/react'
 import { AnalyticsTracker } from './components/AnalyticsTracker';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 // Static Import (Primary Landing Pages - Instant Load)
 import DisplayPage from './display.tsx';
@@ -109,6 +110,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Suspense fallback={<LoadingFallback />}>
       <App />
     </Suspense>
+    <WhatsAppButton />
     <SpeedInsights />
     <Analytics />
   </BrowserRouter>,
