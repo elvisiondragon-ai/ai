@@ -34,6 +34,7 @@ const WebinarPriaSingle = React.lazy(() => import('./web/webinar_priasingle.tsx'
 const WebinarBurnout = React.lazy(() => import('./web/webinar_burnout.tsx'));
 const WebinarSopanMandiri = React.lazy(() => import('./web/webinar_sopanmandiri.tsx'));
 const WebList = React.lazy(() => import('./web/weblist.tsx'));
+const WebPay = React.lazy(() => import('./web/webpay.tsx'));
 
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
@@ -60,6 +61,7 @@ const App = () => {
         import('./web/webinar_burnout.tsx');
         import('./web/webinar_sopanmandiri.tsx');
         import('./web/weblist.tsx');
+        import('./web/webpay.tsx');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -92,6 +94,7 @@ const App = () => {
         <Route path="/webinar_burnout" element={<WebinarBurnout />} />
         <Route path="/webinar_sopanmandiri" element={<WebinarSopanMandiri />} />
         <Route path="/weblist" element={<WebList />} />
+        <Route path="/webpay" element={<WebPay />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
   );
