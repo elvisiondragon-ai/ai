@@ -4,6 +4,7 @@ import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from '@vercel/analytics/react'
+import { AnalyticsTracker } from './components/AnalyticsTracker';
 
 // Static Import (Primary Landing Pages - Instant Load)
 import DisplayPage from './display.tsx';
@@ -33,6 +34,7 @@ const WebinarPriaSusis = React.lazy(() => import('./web/webinar_priasusis.tsx'))
 const WebinarPriaSingle = React.lazy(() => import('./web/webinar_priasingle.tsx'));
 const WebinarBurnout = React.lazy(() => import('./web/webinar_burnout.tsx'));
 const WebinarSopanMandiri = React.lazy(() => import('./web/webinar_sopanmandiri.tsx'));
+const AnalyticsDashboard = React.lazy(() => import('./web/analytics.tsx'));
 const WebList = React.lazy(() => import('./web/weblist.tsx'));
 const WebPay = React.lazy(() => import('./web/webpay.tsx'));
 
@@ -93,6 +95,7 @@ const App = () => {
         <Route path="/webinar_priasingle" element={<WebinarPriaSingle />} />
         <Route path="/webinar_burnout" element={<WebinarBurnout />} />
         <Route path="/webinar_sopanmandiri" element={<WebinarSopanMandiri />} />
+        <Route path="/analytics" element={<AnalyticsDashboard />} />
         <Route path="/weblist" element={<WebList />} />
         <Route path="/webpay" element={<WebPay />} />
         <Route path="*" element={<NotFound />} />
@@ -102,6 +105,7 @@ const App = () => {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
+    <AnalyticsTracker />
     <Suspense fallback={<LoadingFallback />}>
       <App />
     </Suspense>

@@ -4,6 +4,7 @@ const DisplayPage = () => {
   const navigate = useNavigate();
   
   const links = [
+    { title: "Webinar 22 Februari 2026", url: "/webpay", desc: "Special Webinar", gradient: "from-amber-600 to-orange-600" },
     { title: "Uang Panas System", url: "/ebook_uangpanas", desc: "Generate Income", gradient: "from-red-600 to-orange-600" },
     { title: "Feminine Magnetism", url: "/ebook_feminine", desc: "Activate Energy", gradient: "from-pink-600 to-rose-600" },
     { title: "ADHD Kids Skill Pack", url: "/ebook_adhd", desc: "Focus Skills", gradient: "from-blue-600 to-indigo-600" },
