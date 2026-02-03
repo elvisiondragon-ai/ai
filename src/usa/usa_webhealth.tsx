@@ -598,7 +598,7 @@ const UsaWebHealth = () => {
             <h2>The Secret to Massive Transformation</h2>
             <p className="subtitle">Watch this first to understand how we align your subconscious for results</p>
             <div className="video-container">
-                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/el_usa_vsl.jpg">
+                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/el_vsl_usa.jpg">
                     <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/el_vsl_usa.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
