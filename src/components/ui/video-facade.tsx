@@ -1,19 +1,63 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { PlayCircle } from 'lucide-react';
+import { useAnalytics } from '@/hooks/use-analytics';
+import { trackCustomEvent } from '@/utils/fbpixel';
 
 interface VideoFacadeProps {
   src: string;
   poster: string;
   className?: string;
   ariaLabel?: string;
+  contentId?: string; // Optional: specific ID for analytics
 }
 
-export function VideoFacade({ src, poster, className = "", ariaLabel = "Play video" }: VideoFacadeProps) {
+export function VideoFacade({ src, poster, className = "", ariaLabel = "Play video", contentId }: VideoFacadeProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { trackEvent } = useAnalytics();
+  
+  // Use provided contentId or fallback to filename from src
+  const trackingId = contentId || src.split('/').pop() || src;
+  
+  // Tracking state to prevent duplicate events
+  const [trackedImpression, setTrackedImpression] = useState(false);
+  const [tracked15, setTracked15] = useState(false);
+  const [tracked30, setTracked30] = useState(false);
+  const [tracked60, setTracked60] = useState(false);
+
+  // Track impression when video becomes visible
+  useEffect(() => {
+    if (trackedImpression) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !trackedImpression) {
+          trackEvent('impression', trackingId, { type: 'video_view' });
+          setTrackedImpression(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [trackingId, trackedImpression, trackEvent]);
 
   const handlePlay = () => {
     setIsPlaying(true);
+    // Track initial play as an start event
+    trackEvent('impression', trackingId, { type: 'video_start' });
+    
+    // Meta Pixel Tracking
+    trackCustomEvent('VideoPlay', { 
+      content_name: trackingId,
+      video_url: src 
+    });
+    
     // Use a small timeout to ensure the video element is ready if it was hidden
     setTimeout(() => {
       if (videoRef.current) {
@@ -24,8 +68,43 @@ export function VideoFacade({ src, poster, className = "", ariaLabel = "Play vid
     }, 0);
   };
 
+  const handleTimeUpdate = () => {
+    if (!videoRef.current) return;
+    const currentTime = videoRef.current.currentTime;
+
+    if (currentTime >= 15 && !tracked15) {
+      trackEvent('content_engagement', trackingId, { duration: 15, video_url: src });
+      trackCustomEvent('VideoSpent', { 
+        content_name: trackingId, 
+        seconds: 15,
+        url: window.location.pathname 
+      });
+      setTracked15(true);
+    }
+
+    if (currentTime >= 30 && !tracked30) {
+      trackEvent('content_engagement', trackingId, { duration: 30, video_url: src });
+      trackCustomEvent('VideoSpent', { 
+        content_name: trackingId, 
+        seconds: 30,
+        url: window.location.pathname 
+      });
+      setTracked30(true);
+    }
+
+    if (currentTime >= 60 && !tracked60) {
+      trackEvent('content_engagement', trackingId, { duration: 60, video_url: src });
+      trackCustomEvent('VideoSpent', { 
+        content_name: trackingId, 
+        seconds: 60,
+        url: window.location.pathname 
+      });
+      setTracked60(true);
+    }
+  };
+
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
       {!isPlaying ? (
         <div 
           className="absolute inset-0 z-10 cursor-pointer group"
@@ -56,6 +135,7 @@ export function VideoFacade({ src, poster, className = "", ariaLabel = "Play vid
         playsInline
         preload="metadata"
         poster={poster}
+        onTimeUpdate={handleTimeUpdate}
       >
         <source src={src} type="video/mp4" />
         Your browser does not support the video tag.

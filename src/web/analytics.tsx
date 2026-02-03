@@ -60,21 +60,18 @@ const AnalyticsDashboard = () => {
   const generateAISummary = () => {
     const date = new Date().toLocaleDateString();
     const totalSessions = pageStats.reduce((acc, curr) => acc + curr.total_sessions, 0);
-    const avgBounce = pageStats.reduce((acc, curr) => acc + curr.bounce_rate_percentage, 0) / (pageStats.length || 1);
 
     let summary = `*** ANALYTICS REPORT FOR AI ADVISOR (${date}) ***\n\n`;
     summary += `TYPE: BounceRate Mastery Report\n`;
     summary += `GOAL: Analyze user engagement and identify content that kills or boosts conversions.\n\n`;
     
     summary += `=== SITE OVERVIEW ===\n`;
-    summary += `- Total Sessions Tracked: ${totalSessions}\n`;
-    summary += `- Average Site Bounce Rate: ${avgBounce.toFixed(1)}%\n\n`;
+    summary += `- Total Sessions Tracked: ${totalSessions}\n\n`;
 
     summary += `=== PAGE PERFORMANCE (Traffic vs Retention) ===\n`;
     pageStats.forEach(p => {
       summary += `PAGE: ${p.path}\n`;
       summary += `  - Traffic: ${p.total_sessions} sessions\n`;
-      summary += `  - Bounce Rate: ${p.bounce_rate_percentage}% (Lower is better)\n`;
       summary += `  - Avg Time on Page: ${Math.round(p.avg_duration_seconds)}s\n`;
     });
     summary += `\n`;
@@ -114,7 +111,7 @@ const AnalyticsDashboard = () => {
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", padding: '20px', maxWidth: '1000px', margin: '40px auto', color: '#1e293b' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-        <h1 style={{ fontSize: '2em', margin: 0 }}>BounceRate Mastery Dashboard</h1>
+        <h1 style={{ fontSize: '2em', margin: 0 }}>eL Vision Analytics Dashboard</h1>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button 
             onClick={copyToClipboard}
@@ -152,7 +149,6 @@ const AnalyticsDashboard = () => {
                   <tr>
                     <th style={{ textAlign: 'left', padding: '15px', borderBottom: '1px solid #e2e8f0' }}>Path</th>
                     <th style={{ textAlign: 'center', padding: '15px', borderBottom: '1px solid #e2e8f0' }}>Total Sessions</th>
-                    <th style={{ textAlign: 'center', padding: '15px', borderBottom: '1px solid #e2e8f0' }}>Bounce Rate</th>
                     <th style={{ textAlign: 'center', padding: '15px', borderBottom: '1px solid #e2e8f0' }}>Avg. Duration</th>
                   </tr>
                 </thead>
@@ -161,13 +157,10 @@ const AnalyticsDashboard = () => {
                     <tr key={idx} style={{ borderBottom: '1px solid #f1f5f9' }}>
                       <td style={{ padding: '15px' }}>{stat.path}</td>
                       <td style={{ padding: '15px', textAlign: 'center' }}>{stat.total_sessions}</td>
-                      <td style={{ padding: '15px', textAlign: 'center', fontWeight: 'bold', color: stat.bounce_rate_percentage > 50 ? '#ef4444' : '#22c55e' }}>
-                        {stat.bounce_rate_percentage}%
-                      </td>
                       <td style={{ padding: '15px', textAlign: 'center' }}>{Math.round(stat.avg_duration_seconds)}s</td>
                     </tr>
                   ))}
-                  {pageStats.length === 0 && <tr><td colSpan={4} style={{ textAlign: 'center', padding: '20px' }}>No data available yet</td></tr>}
+                  {pageStats.length === 0 && <tr><td colSpan={3} style={{ textAlign: 'center', padding: '20px' }}>No data available yet</td></tr>}
                 </tbody>
               </table>
             </div>

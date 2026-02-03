@@ -38,6 +38,9 @@ const WebinarSopanMandiri = React.lazy(() => import('./web/webinar_sopanmandiri.
 const AnalyticsDashboard = React.lazy(() => import('./web/analytics.tsx'));
 const WebList = React.lazy(() => import('./web/weblist.tsx'));
 const WebPay = React.lazy(() => import('./web/webpay.tsx'));
+const UsaWebHealth = React.lazy(() => import('./usa/usa_webhealth.tsx'));
+const UsaWebFinance = React.lazy(() => import('./usa/usa_webfinance.tsx'));
+const UsaWebRelationship = React.lazy(() => import('./usa/usa_webrelationship.tsx'));
 
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
@@ -65,6 +68,9 @@ const App = () => {
         import('./web/webinar_sopanmandiri.tsx');
         import('./web/weblist.tsx');
         import('./web/webpay.tsx');
+        import('./usa/usa_webhealth.tsx');
+        import('./usa/usa_webfinance.tsx');
+        import('./usa/usa_webrelationship.tsx');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -99,6 +105,9 @@ const App = () => {
         <Route path="/analytics" element={<AnalyticsDashboard />} />
         <Route path="/weblist" element={<WebList />} />
         <Route path="/webpay" element={<WebPay />} />
+        <Route path="/usa_webhealth" element={<UsaWebHealth />} />
+        <Route path="/usa_webfinance" element={<UsaWebFinance />} />
+        <Route path="/usa_webrelationship" element={<UsaWebRelationship />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
   );

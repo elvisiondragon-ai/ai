@@ -1,6 +1,7 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { supabase } from '../integrations/supabase/client';
+import { trackCustomEvent } from '@/utils/fbpixel';
 
 const SESSION_KEY = 'analytics_session_id';
 
@@ -17,6 +18,8 @@ const generateUUID = () => {
 export const useAnalytics = () => {
   const location = useLocation();
   const [sessionId, setSessionId] = useState<string>('');
+  const sessionStartTime = useRef<number>(Date.now());
+  const milestonesTracked = useRef<Set<number>>(new Set());
 
   useEffect(() => {
     let sid = sessionStorage.getItem(SESSION_KEY);
@@ -27,18 +30,26 @@ export const useAnalytics = () => {
     setSessionId(sid);
   }, []);
 
+  // Reset milestones and start time on location change
+  useEffect(() => {
+    sessionStartTime.current = Date.now();
+    milestonesTracked.current = new Set();
+  }, [location.pathname]);
+
   const trackEvent = useCallback(async (
     eventType: 'page_view' | 'impression' | 'heartbeat' | 'click' | 'content_engagement',
     contentId?: string,
     metadata?: any
   ) => {
-    // 1. Block Localhost
+    // 1. Block Localhost (TEMPORARILY DISABLED FOR TESTING)
+    /*
     if (
         window.location.hostname === 'localhost' || 
         window.location.hostname === '127.0.0.1'
     ) {
         return;
     }
+    */
 
     // 2. Block Opt-out Users (Run localStorage.setItem('analytics_opt_out', 'true') in console)
     if (localStorage.getItem('analytics_opt_out')) {
@@ -67,17 +78,32 @@ export const useAnalytics = () => {
     }
   }, [location.pathname, sessionId, trackEvent]);
 
-  // Heartbeat (every 30 seconds) to track engagement
-  // Increased to 30s to avoid DB spam, adjust as needed for "Mastery" resolution
+  // Heartbeat (every 15 seconds) to track engagement and Meta TimeSpent
   useEffect(() => {
     if (!sessionId) return;
     
     const interval = setInterval(() => {
         trackEvent('heartbeat');
-    }, 30000);
+        
+        const elapsedSeconds = Math.floor((Date.now() - sessionStartTime.current) / 1000);
+        
+        // Define milestones for Meta Pixel
+        const milestones = [15, 30, 60, 90, 120, 180, 300];
+        
+        milestones.forEach(s => {
+            if (elapsedSeconds >= s && !milestonesTracked.current.has(s)) {
+                trackCustomEvent('TimeSpent', { 
+                    url: location.pathname, 
+                    seconds: s 
+                });
+                milestonesTracked.current.add(s);
+            }
+        });
+
+    }, 15000); // Check every 15s to catch milestones more accurately
 
     return () => clearInterval(interval);
-  }, [sessionId, trackEvent]);
+  }, [sessionId, trackEvent, location.pathname]);
 
   return { trackEvent };
 };
