@@ -56,8 +56,8 @@ const WebPay = () => {
     const copyToClipboard = (text: string) => {
         navigator.clipboard.writeText(text);
         toast({
-            title: "Berhasil Disalin",
-            description: "Teks telah disalin ke clipboard",
+            title: "Copied Successfully",
+            description: "Text has been copied to clipboard",
         });
     };
 
@@ -309,8 +309,8 @@ const WebPay = () => {
                     if (purchaseFiredRef.current) return;
                     purchaseFiredRef.current = true;
                     toast({
-                        title: "LUNAS! Akses Dikirim.",
-                        description: "Pembayaran berhasil. Cek email Anda sekarang untuk akses Webinar.",
+                        title: "PAID! Access Sent.",
+                        description: "Payment successful. Check your email now for Webinar access.",
                         duration: 5000, 
                         variant: "default"
                     });
@@ -332,22 +332,22 @@ const WebPay = () => {
                 <Button variant="ghost" size="icon" onClick={() => setShowPaymentInstructions(false)} className="text-white hover:bg-amber-700">
                   <ArrowLeft className="w-6 h-6" />
                 </Button>
-                <h1 className="font-bold text-lg">Selesaikan Pembayaran</h1>
+                <h1 className="font-bold text-lg">Complete Payment</h1>
               </div>
     
               <div className="p-6 space-y-6">
                 <div className="text-center">
-                    <p className="text-slate-500">Total Tagihan</p>
+                    <p className="text-slate-500">Total Invoice</p>
                     <p className="text-3xl font-bold text-amber-600">{formatCurrency(paymentData.amount)}</p>
                     <div className="mt-2 inline-block px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium border border-amber-200">
-                        Menunggu Pembayaran
+                        Awaiting Payment
                     </div>
                 </div>
     
                 <Card className="border-2 border-slate-100 bg-white">
                   <CardContent className="pt-6 space-y-4">
                     <div className="space-y-2 border-b border-slate-100 pb-4 mb-4">
-                        <Label className="text-slate-500">Nomor Referensi</Label>
+                        <Label className="text-slate-500">Reference Number</Label>
                         <div className="flex items-center justify-between bg-slate-50 p-2 rounded border border-slate-200">
                             <span className="font-mono text-sm text-amber-600">{paymentData.tripay_reference}</span>
                             <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.tripay_reference)} className="h-8 w-8 p-0 text-slate-400 hover:text-amber-600">
@@ -359,13 +359,13 @@ const WebPay = () => {
                     {paymentData.qrUrl && (
                         <div className="flex flex-col items-center">
                             <img src={paymentData.qrUrl} alt="QRIS" className="w-64 h-64 object-contain border border-slate-200 rounded-lg bg-white" />
-                            <p className="text-sm text-slate-500 mt-2 text-center">Scan QR di atas menggunakan aplikasi e-wallet or mobile banking Anda.</p>
+                            <p className="text-sm text-slate-500 mt-2 text-center">Scan the QR above using your e-wallet or mobile banking app.</p>
                         </div>
                     )}
                     
                     {paymentData.payCode && (
                         <div className="space-y-2">
-                            <Label className="text-slate-600">Kode Bayar / Virtual Account</Label>
+                            <Label className="text-slate-600">Payment Code / Virtual Account</Label>
                             <div className="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-200">
                                 <span className="font-mono text-xl font-bold tracking-wider text-amber-600">{paymentData.payCode}</span>
                                 <Button size="sm" variant="ghost" onClick={() => copyToClipboard(paymentData.payCode)} className="text-slate-400 hover:text-amber-600">
@@ -376,14 +376,14 @@ const WebPay = () => {
                     )}
     
                     <div className="bg-amber-50 p-3 rounded text-sm text-amber-800 border border-amber-100">
-                        <p><strong>PENTING:</strong> Lakukan pembayaran sebelum waktu habis. Sistem akan otomatis memverifikasi pembayaran Anda.</p>
+                        <p><strong>IMPORTANT:</strong> Complete your payment before it expires. Our system will automatically verify your transaction.</p>
                     </div>
                   </CardContent>
                 </Card>
                 
                 <div className="text-center">
-                   <Button variant="outline" className="w-full gap-2 border-slate-200 text-slate-600 hover:bg-slate-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Halo admin, saya sudah bayar untuk order Webinar Rezeki ${paymentData.tripay_reference} tapi belum aktif.`, '_blank')}>
-                       Bantuan Admin
+                   <Button variant="outline" className="w-full gap-2 border-slate-200 text-slate-600 hover:bg-slate-50" onClick={() => window.open(`https://wa.me/62895325633487?text=Hi admin, I have paid for order ${paymentData.tripay_reference} but it is not yet active.`, '_blank')}>
+                       Admin Support
                    </Button>
                 </div>
               </div>
@@ -410,27 +410,27 @@ const WebPay = () => {
                         </span>
                         <h1 style={{ fontSize: "28px", fontWeight: 800, color: "#1e293b", marginBottom: "15px", lineHeight: 1.3 }}>{displayProductName}</h1>
                         <div style={{ fontSize: "42px", fontWeight: 900, color: "#d97706", marginBottom: "10px" }}>{formatCurrency(productPrice)}</div>
-                        <p style={{ fontSize: "16px", color: "#475569", marginBottom: "30px" }}>Lengkapi data di bawah untuk mendapatkan akses webinar.</p>
+                        <p style={{ fontSize: "16px", color: "#475569", marginBottom: "30px" }}>Complete the form below to get instant webinar access.</p>
                     </div>
 
                     <div style={{ background: "#fffbeb", border: "1px dashed #d97706", padding: "15px", borderRadius: "15px", marginBottom: "30px", textAlign: "left" }}>
-                        <p style={{ fontSize: "14px", color: "#92400e", fontWeight: "bold", marginBottom: "5px" }}>🎁 BONUS EKSKLUSIF LANGSUNG:</p>
-                        <p style={{ fontSize: "13px", color: "#b45309", lineHeight: "1.5" }}>Anda juga mendapatkan <strong>Ebook eL Vision Pro + Audio Hipnosis Set</strong> selama menunggu Webinar yang bisa anda praktekan langsung untuk hasil instan.</p>
+                        <p style={{ fontSize: "14px", color: "#92400e", fontWeight: "bold", marginBottom: "5px" }}>🎁 INSTANT EXCLUSIVE BONUS:</p>
+                        <p style={{ fontSize: "13px", color: "#b45309", lineHeight: "1.5" }}>You will also receive the <strong>eL Vision Pro Ebook + Hypnosis Audio Set</strong> immediately, which you can practice right away for instant results while waiting for the Webinar.</p>
                     </div>
 
                     {/* FORM INPUTS */}
                     <div className="space-y-6 mt-8">
                         <div className="space-y-4">
                             <h3 className="font-bold text-lg flex items-center gap-2 text-amber-600">
-                                <User className="w-5 h-5" /> Data Diri
+                                <User className="w-5 h-5" /> Your Information
                             </h3>
                             <div className="grid gap-4">
                                 <div>
-                                    <Label htmlFor="name" className="text-slate-700 font-semibold mb-1 block">Nama Lengkap</Label>
+                                    <Label htmlFor="name" className="text-slate-700 font-semibold mb-1 block">Full Name</Label>
                                     <Input 
                                         id="name" 
                                         autoComplete="name"
-                                        placeholder="Contoh: Budi Santoso" 
+                                        placeholder="e.g., John Doe" 
                                         value={userName} 
                                         onChange={(e) => setUserName(e.target.value)} 
                                         className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
@@ -438,24 +438,24 @@ const WebPay = () => {
                                 </div>
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div>
-                                        <Label htmlFor="email" className="text-slate-700 font-semibold mb-1 block">Alamat Email (PENTING)</Label>
+                                        <Label htmlFor="email" className="text-slate-700 font-semibold mb-1 block">Email Address (IMPORTANT)</Label>
                                         <Input 
                                             id="email" 
                                             type="email" 
                                             autoComplete="email"
-                                            placeholder="Untuk link webinar" 
+                                            placeholder="For webinar link delivery" 
                                             value={userEmail} 
                                             onChange={(e) => setUserEmail(e.target.value)} 
                                             className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
                                         />
                                     </div>
                                     <div>
-                                        <Label htmlFor="phone" className="text-slate-700 font-semibold mb-1 block">Nomor WhatsApp</Label>
+                                        <Label htmlFor="phone" className="text-slate-700 font-semibold mb-1 block">WhatsApp Number</Label>
                                         <Input 
                                             id="phone" 
                                             type="tel" 
                                             autoComplete="tel"
-                                            placeholder="0812xxxx" 
+                                            placeholder="Include country code (e.g. +1...)" 
                                             value={phoneNumber} 
                                             onChange={(e) => setPhoneNumber(e.target.value)} 
                                             className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
@@ -467,7 +467,7 @@ const WebPay = () => {
 
                         <div className="space-y-4">
                             <h3 className="font-bold text-lg flex items-center gap-2 text-amber-600">
-                                <CreditCard className="w-5 h-5" /> Metode Pembayaran
+                                <CreditCard className="w-5 h-5" /> Payment Method
                             </h3>
                             <RadioGroup value={selectedPaymentMethod} onValueChange={setSelectedPaymentMethod} className="grid grid-cols-1 gap-4">
                                 {paymentMethods.map((method) => (
@@ -488,7 +488,7 @@ const WebPay = () => {
                             onClick={handleCreatePayment}
                             disabled={loading}
                         >
-                            {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Memproses...</> : "BAYAR SEKARANG"}
+                            {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processing...</> : "PAY NOW"}
                         </Button>
                         
                          <div className="flex items-center justify-center gap-4 text-xs text-slate-400 font-medium mt-4">
@@ -505,7 +505,7 @@ const WebPay = () => {
                 {/* FOOTER */}
                 <div style={{ textAlign: "center", paddingBottom: "30px", color: "#64748b", fontSize: "12px", background: "transparent" }}>
                     <p style={{ marginBottom: "5px", fontWeight: "bold", color: "#334155" }}>eL Vision Group</p>
-                    <p style={{ color: "#475569" }}>"Bahagia Adalah Koentji"</p>
+                    <p style={{ color: "#475569" }}>"Happiness is the Key"</p>
                 </div>
             </div>
         </div>

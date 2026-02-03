@@ -17,14 +17,7 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            // Group heavy SDKs and UI libraries
-            if (id.includes('@supabase') || id.includes('@radix-ui') || id.includes('lucide-react')) {
-              return 'vendor-core'; 
-            }
-            // Keep framework core separate
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
-              return 'vendor-framework';
-            }
+            return 'vendor';
           }
         },
       },
