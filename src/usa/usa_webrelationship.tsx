@@ -556,6 +556,18 @@ const UsaWebRelationship = () => {
             <p className="subheading">Discover the deep subconscious method that breaks the invisible pattern keeping you alone — and makes real, lasting love possible</p>
         </div>
 
+        {/* VSL Section */}
+        <div className="video-section">
+            <h2>The Secret to Massive Transformation</h2>
+            <p className="subtitle">Watch this first to understand how we align your subconscious for results</p>
+            <div className="video-container">
+                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/el_usa_vsl.jpg">
+                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/el_vsl_usa.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
         {/* ─── STORY / INTRO ─── */}
         <div className="story-section">
             <h2>Hi, I'm eL Reyzandra</h2>
