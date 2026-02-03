@@ -55,13 +55,11 @@ const UsaWebRelationship = () => {
     
     trackPageViewEvent({}, eventId, PIXEL_ID);
     trackCustomEvent('ViewContent', {
-      content_name: 'usa_webinarrelationship',
+      content_name: 'usa_webinar20',
       content_category: 'Relationship Webinar',
       value: 20.00,
       currency: 'USD'
     }, eventId, PIXEL_ID);
-    
-    sendCAPIEvent('PageView', {}, {}, eventId);
   }, []);
 
   // Purchase handler — IDENTICAL flow, product key changed
@@ -75,13 +73,12 @@ const UsaWebRelationship = () => {
       setLoading(true);
       const eventId = `checkout-${Date.now()}`;
       const eventData = {
-        content_name: 'usa_webinarrelationship',
+        content_name: 'usa_webinar20',
         value: 20.00,
         currency: 'USD'
       };
 
       trackCustomEvent('InitiateCheckout', eventData, eventId, PIXEL_ID, { em: email });
-      sendCAPIEvent('InitiateCheckout', { email }, eventData, eventId);
       
       sendCAPIEvent('AddPaymentInfo', { email }, eventData, eventId);
 
@@ -90,7 +87,7 @@ const UsaWebRelationship = () => {
       // PAYPAL via Tripay — IDENTICAL structure, subscriptionType changed
       const { data, error } = await supabase.functions.invoke('tripay-create-payment', {
         body: {
-          subscriptionType: "usa_webinarrelationship",
+          subscriptionType: "usa_webinar20",
           paymentMethod: "PAYPAL",
           userEmail: email,
           userName: email.split('@')[0],

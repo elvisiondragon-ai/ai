@@ -57,13 +57,11 @@ const UsaWebHealth = () => {
     // 🎯 PIXEL RULE: Purchase must be triggered from BACKEND ONLY (tripay-callback) to prevent duplication.
     trackPageViewEvent({}, eventId, PIXEL_ID);
     trackCustomEvent('ViewContent', {
-      content_name: 'usa_webinarhealth',
+      content_name: 'usa_webinar20',
       content_category: 'Health Webinar',
       value: 20.00,
       currency: 'USD'
     }, eventId, PIXEL_ID);
-    
-    sendCAPIEvent('PageView', {}, {}, eventId);
   }, []);
 
   const handlePurchase = async () => {
@@ -76,13 +74,12 @@ const UsaWebHealth = () => {
       setLoading(true);
       const eventId = `checkout-${Date.now()}`;
       const eventData = {
-        content_name: 'usa_webinarhealth',
+        content_name: 'usa_webinar20',
         value: 20.00,
         currency: 'USD'
       };
 
       trackCustomEvent('InitiateCheckout', eventData, eventId, PIXEL_ID, { em: email });
-      sendCAPIEvent('InitiateCheckout', { email }, eventData, eventId);
       
       // 🎯 PIXEL RULE: AddPaymentInfo CAPI
       sendCAPIEvent('AddPaymentInfo', { email }, eventData, eventId);
@@ -91,7 +88,7 @@ const UsaWebHealth = () => {
 
       const { data, error } = await supabase.functions.invoke('tripay-create-payment', {
         body: {
-          subscriptionType: "usa_webinarhealth",
+          subscriptionType: "usa_webinar20",
           paymentMethod: "PAYPAL",
           userEmail: email,
           userName: email.split('@')[0],

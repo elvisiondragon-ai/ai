@@ -16,7 +16,7 @@ export const getClientIp = async (): Promise<string | null> => {
 // 🎯 TEST CODE MAPPING (Dynamic Source of Truth)
 const TEST_CODE_MAPPING: Record<string, string> = {
   'testcode_indo': 'TEST3660', 
-  'testcode_usa': 'TEST88049',
+  'testcode_usa': 'TEST84659',
 };
 
 // ⏳ Wait for FBP Cookie Helper

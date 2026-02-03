@@ -17,7 +17,7 @@ const UsaWebFinance = () => {
   const [paymentData, setPaymentData] = React.useState<any>(null);
   const purchaseFiredRef = React.useRef(false);
 
-  // CAPI Configuration
+  // CAPI Configuration (IDENTICAL)
   const PIXEL_ID = '1393383179182528';
 
   // Helper to send CAPI events
@@ -53,17 +53,14 @@ const UsaWebFinance = () => {
     initFacebookPixelWithLogging(PIXEL_ID);
     const eventId = `pageview-${Date.now()}`;
     
-    // 🎯 PIXEL RULE: ViewContent + PageView (Browser Only)
-    // 🎯 PIXEL RULE: Purchase must be triggered from BACKEND ONLY (tripay-callback) to prevent duplication.
+    // 🎯 PIXEL RULE: ViewContent + PageView
     trackPageViewEvent({}, eventId, PIXEL_ID);
     trackCustomEvent('ViewContent', {
-      content_name: 'usa_webinarfinance',
+      content_name: 'usa_webinar20',
       content_category: 'Finance Webinar',
       value: 20.00,
       currency: 'USD'
     }, eventId, PIXEL_ID);
-    
-    sendCAPIEvent('PageView', {}, {}, eventId);
   }, []);
 
   const handlePurchase = async () => {
@@ -76,13 +73,12 @@ const UsaWebFinance = () => {
       setLoading(true);
       const eventId = `checkout-${Date.now()}`;
       const eventData = {
-        content_name: 'usa_webinarfinance',
+        content_name: 'usa_webinar20',
         value: 20.00,
         currency: 'USD'
       };
 
       trackCustomEvent('InitiateCheckout', eventData, eventId, PIXEL_ID, { em: email });
-      sendCAPIEvent('InitiateCheckout', { email }, eventData, eventId);
       
       // 🎯 PIXEL RULE: AddPaymentInfo CAPI
       sendCAPIEvent('AddPaymentInfo', { email }, eventData, eventId);
@@ -91,7 +87,7 @@ const UsaWebFinance = () => {
 
       const { data, error } = await supabase.functions.invoke('tripay-create-payment', {
         body: {
-          subscriptionType: "usa_webinarfinance",
+          subscriptionType: "usa_webinar20",
           paymentMethod: "PAYPAL",
           userEmail: email,
           userName: email.split('@')[0],
@@ -153,19 +149,10 @@ const UsaWebFinance = () => {
 
       }, [paymentData, email]);
 
-    
-
       return (
-
         <div className="usa-webfinance-page">
-
           <Toaster />
-
-          
-
           <style dangerouslySetInnerHTML={{ __html: `
-
-    
         .usa-webfinance-page {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
@@ -204,62 +191,58 @@ const UsaWebFinance = () => {
             font-weight: bold;
         }
 
-        .usa-webfinance-page .hero .subheadline {
-            font-size: 1.3rem;
-            color: #555;
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-
-        .usa-webfinance-page .hero .claim {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 25px 0;
-            border: 3px solid #f0c419;
-        }
-
-        .usa-webfinance-page .hero .claim p {
-            margin: 8px 0;
+        .usa-webfinance-page .hero .subheading {
             font-size: 1.1rem;
-            color: #1a1a1a;
-            font-weight: 600;
+            color: #666;
+            margin-bottom: 25px;
         }
 
-        /* Pain Section */
-        .usa-webfinance-page .pain-section {
-            background: linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%);
+        .usa-webfinance-page .highlight {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* Video Testimonial Section */
+        .usa-webfinance-page .video-section {
+            background: white;
             border-radius: 20px;
             padding: 40px 30px;
             margin-bottom: 30px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            color: white;
         }
 
-        .usa-webfinance-page .pain-section h2 {
-            font-size: 2rem;
-            margin-bottom: 25px;
+        .usa-webfinance-page .video-section h2 {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 10px;
             text-align: center;
             font-weight: bold;
         }
 
-        .usa-webfinance-page .pain-item {
-            background: rgba(255,255,255,0.1);
-            border-left: 5px solid #ffd700;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-
-        .usa-webfinance-page .pain-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #ffd700;
-        }
-
-        .usa-webfinance-page .pain-item p {
+        .usa-webfinance-page .video-section .subtitle {
+            text-align: center;
+            color: #e74c3c;
             font-size: 1.1rem;
-            line-height: 1.6;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .usa-webfinance-page .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .usa-webfinance-page .video-container video {
+            width: 100%;
+            display: block;
         }
 
         /* Story Section */
@@ -272,67 +255,98 @@ const UsaWebFinance = () => {
         }
 
         .usa-webfinance-page .story-section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #1e3c72;
-            margin-bottom: 25px;
-            text-align: center;
+            margin-bottom: 20px;
             font-weight: bold;
         }
 
         .usa-webfinance-page .story-section p {
-            font-size: 1.15rem;
-            margin-bottom: 20px;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #333;
             line-height: 1.8;
         }
 
-        .usa-webfinance-page .story-section .highlight {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        .usa-webfinance-page .story-highlight {
+            background: #f0f4ff;
             padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #ffd700;
-            margin: 25px 0;
+            border-left: 4px solid #1e3c72;
+            margin: 20px 0;
+            border-radius: 8px;
         }
 
-        .usa-webfinance-page .story-section .highlight p {
-            margin: 10px 0;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        /* Solution Section */
-        .usa-webfinance-page .solution-section {
-            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+        /* Offer Section */
+        .usa-webfinance-page .offer-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             border-radius: 20px;
             padding: 40px 30px;
             margin-bottom: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             color: white;
+            text-align: center;
         }
 
-        .usa-webfinance-page .solution-section h2 {
+        .usa-webfinance-page .offer-section h2 {
             font-size: 2rem;
-            margin-bottom: 25px;
-            text-align: center;
+            margin-bottom: 20px;
             font-weight: bold;
         }
 
-        .usa-webfinance-page .solution-item {
+        .usa-webfinance-page .price-container {
             background: rgba(255,255,255,0.15);
-            padding: 25px;
-            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
             border-radius: 15px;
-            border: 2px solid rgba(255,255,255,0.3);
+            padding: 30px;
+            margin: 25px 0;
         }
 
-        .usa-webfinance-page .solution-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: #ffd700;
+        .usa-webfinance-page .original-price {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-bottom: 10px;
         }
 
-        .usa-webfinance-page .solution-item p {
-            font-size: 1.1rem;
-            line-height: 1.7;
+        .usa-webfinance-page .current-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .usa-webfinance-page .price-detail {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .usa-webfinance-page .countdown {
+            background: #ffd700;
+            color: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        /* CTA Button */
+        .usa-webfinance-page .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1e3c72;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-top: 20px;
+        }
+
+        .usa-webfinance-page .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
 
         /* Benefits Section */
@@ -345,9 +359,9 @@ const UsaWebFinance = () => {
         }
 
         .usa-webfinance-page .benefits-section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #1e3c72;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
             font-weight: bold;
         }
@@ -355,32 +369,31 @@ const UsaWebFinance = () => {
         .usa-webfinance-page .benefit-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
-            border-left: 5px solid #1e3c72;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 10px;
         }
 
         .usa-webfinance-page .benefit-icon {
-            font-size: 2.5rem;
-            margin-right: 20px;
+            font-size: 2rem;
+            margin-right: 15px;
             flex-shrink: 0;
         }
 
         .usa-webfinance-page .benefit-text h3 {
-            font-size: 1.3rem;
             color: #1e3c72;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
         .usa-webfinance-page .benefit-text p {
-            font-size: 1.05rem;
-            color: #555;
-            line-height: 1.6;
+            color: #666;
+            font-size: 1rem;
         }
 
-        /* Testimonials Section */
+        /* Testimonials Grid */
         .usa-webfinance-page .testimonials-section {
             background: white;
             border-radius: 20px;
@@ -390,20 +403,19 @@ const UsaWebFinance = () => {
         }
 
         .usa-webfinance-page .testimonials-section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #1e3c72;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-align: center;
             font-weight: bold;
         }
 
         .usa-webfinance-page .testimonial-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
+            background: #f8f9ff;
             padding: 25px;
-            margin-bottom: 25px;
-            border-left: 5px solid #ffd700;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #1e3c72;
         }
 
         .usa-webfinance-page .testimonial-header {
@@ -418,259 +430,282 @@ const UsaWebFinance = () => {
         }
 
         .usa-webfinance-page .testimonial-info h4 {
-            font-size: 1.2rem;
             color: #1e3c72;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
+            font-size: 1.1rem;
             font-weight: bold;
         }
 
         .usa-webfinance-page .testimonial-info p {
-            font-size: 0.95rem;
             color: #666;
-            margin: 0;
-        }
-
-        .usa-webfinance-page .stars {
-            color: #ffd700;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
         }
 
         .usa-webfinance-page .testimonial-text {
-            font-size: 1.05rem;
-            line-height: 1.7;
             color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
             font-style: italic;
+        }
+
+        .usa-webfinance-page .stars {
+            color: #f39c12;
+            margin-bottom: 10px;
         }
 
         /* Guarantee Section */
         .usa-webfinance-page .guarantee-section {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             border-radius: 20px;
-            padding: 35px 30px;
+            padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            color: white;
             text-align: center;
-            border: 3px solid #f0c419;
         }
 
         .usa-webfinance-page .guarantee-section h3 {
             font-size: 1.8rem;
-            color: #1a1a1a;
             margin-bottom: 15px;
             font-weight: bold;
-        }
-
-        .usa-webfinance-page .guarantee-section p {
-            font-size: 1.15rem;
-            color: #1a1a1a;
-            line-height: 1.7;
-            font-weight: 500;
-        }
-
-        /* Offer Section */
-        .usa-webfinance-page .offer-section {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-            color: white;
-        }
-
-        .usa-webfinance-page .offer-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .usa-webfinance-page .cta-button {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #1a1a1a;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255,215,0,0.3);
-        }
-
-        .usa-webfinance-page .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255,215,0,0.5);
-        }
-
-        .usa-webfinance-page .cta-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
         }
 
         /* Footer */
         .usa-webfinance-page .footer {
             text-align: center;
-            padding: 30px 20px;
             color: white;
-            font-size: 0.95rem;
+            padding: 30px;
         }
 
         .usa-webfinance-page .footer p {
-            margin: 8px 0;
+            margin-bottom: 10px;
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .usa-webfinance-page .hero h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
-            .usa-webfinance-page .hero .subheadline {
+            .usa-webfinance-page .hero .subheading {
+                font-size: 1rem;
+            }
+
+            .usa-webfinance-page .video-section h2,
+            .usa-webfinance-page .story-section h2,
+            .usa-webfinance-page .benefits-section h2,
+            .usa-webfinance-page .testimonials-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .usa-webfinance-page .current-price {
+                font-size: 2.2rem;
+            }
+
+            .usa-webfinance-page .cta-button {
+                padding: 15px 35px;
                 font-size: 1.1rem;
             }
 
-            .usa-webfinance-page .pain-section h2,
-            .usa-webfinance-page .story-section h2,
-            .usa-webfinance-page .solution-section h2,
-            .usa-webfinance-page .benefits-section h2,
-            .usa-webfinance-page .testimonials-section h2 {
-                font-size: 1.6rem;
+            .usa-webfinance-page .container {
+                padding: 15px;
+            }
+
+            .usa-webfinance-page .hero,
+            .usa-webfinance-page .video-section,
+            .usa-webfinance-page .story-section,
+            .usa-webfinance-page .offer-section,
+            .usa-webfinance-page .benefits-section,
+            .usa-webfinance-page .testimonials-section,
+            .usa-webfinance-page .guarantee-section {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .usa-webfinance-page .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .usa-webfinance-page .current-price {
+                font-size: 2rem;
             }
 
             .usa-webfinance-page .benefit-item {
                 flex-direction: column;
-                text-align: center;
             }
 
             .usa-webfinance-page .benefit-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
             }
         }
       ` }} />
-
       <div className="container">
-        {/* Hero */}
+        {/* Hero Section */}
         <div className="hero">
-            <h1>Stuck at the Same Income Level Year After Year?</h1>
-            <p className="subheadline">Discover How One Indonesian Entrepreneur Broke Through His Financial Ceiling and 10X'd His Revenue in Just 8 Weeks</p>
-            
-            <div className="claim">
-                <p>✅ From $5K/month to $50K/month in 8 weeks</p>
-                <p>✅ Zero new marketing. Zero new products.</p>
-                <p>✅ 100% Internal Alignment Shift</p>
+            <h1>From Financial Stagnation to <span className="highlight">Unstoppable Wealth</span></h1>
+            <p className="subheading">Discover why "working harder" is keeping you poor, and how to align your subconscious for effortless abundance.</p>
+        </div>
+
+        {/* Video Testimonial - Arif (Proof of Method Power) */}
+        <div className="video-section">
+            <h2>If It Can Heal Brain Cancer, It Can Fix Your Finances</h2>
+            <p className="subtitle">This same frequency alignment saved Arif from Stage 4 Cancer. Imagine what this power can do for your bank account.</p>
+            <div className="video-container">
+                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.jpg">
+                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
 
-        {/* PAIN - Serious Financial Struggles */}
-        <div className="pain-section">
-            <h2>🔥 Are You Experiencing These Financial Roadblocks?</h2>
-            
-            <div className="pain-item">
-                <h3>💔 The Revenue Ceiling That Won't Break</h3>
-                <p>You've tried every strategy, every course, every marketing tactic... yet your income stays flat. Month after month, you hit the same ceiling. You're working harder than ever, but the money just isn't flowing.</p>
-            </div>
-
-            <div className="pain-item">
-                <h3>😰 Constant Money Anxiety Despite "Success"</h3>
-                <p>Even when money comes in, you can't shake the fear that it'll disappear. You're stressed about bills, worried about the future, and feel like you're one bad month away from disaster. The sleepless nights are taking their toll.</p>
-            </div>
-
-            <div className="pain-item">
-                <h3>🔄 The Feast-or-Famine Cycle</h3>
-                <p>One month you're celebrating a big win, the next month you're scrambling to pay rent. The income rollercoaster is exhausting. You can't plan, can't invest, can't breathe. Stability feels like a distant dream.</p>
-            </div>
-
-            <div className="pain-item">
-                <h3>😤 Working 70+ Hours With Nothing to Show</h3>
-                <p>You're hustling from dawn to midnight. You've sacrificed time with family, your health, your sanity... but the bank account doesn't reflect your effort. You feel like a hamster on a wheel—running hard but going nowhere.</p>
-            </div>
-
-            <div className="pain-item">
-                <h3>🚫 Invisible Blocks Sabotaging Every Opportunity</h3>
-                <p>Deals fall through at the last minute. Clients ghost you. Partnerships crumble. It feels like the universe is conspiring against you. Deep down, you wonder if you're just "not meant" to be wealthy.</p>
+        {/* Video Interview English */}
+        <div className="video-section">
+            <h2>Full Interview (English)</h2>
+            <p className="subtitle">Understand the science behind "Perfect Reality" and how it reshapes your destiny.</p>
+            <div className="video-container">
+                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg">
+                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
 
-        {/* AGITATE - The Real Story */}
+        {/* Story Section */}
         <div className="story-section">
-            <h2>This Was Exactly Arif's Reality...</h2>
+            <h2>Hi, I'm eL Reyzandra</h2>
+            <p>I've been <strong>obsessed with mind power</strong> for 16 years. Why? Because I used to be broke, desperate, and stuck.</p>
             
-            <p>Meet Arif, a talented digital entrepreneur from Jakarta who was stuck at $5,000/month for three straight years.</p>
-            
-            <p>He had the skills. He had the work ethic. He had the products. But something invisible was blocking him.</p>
+            <p>When I first tried "The Secret" and the Law of Attraction to get rich, it didn't just fail—<strong>it backfired spectacularly</strong>. I lost money, got into debt, and felt like a failure.</p>
 
-            <div className="highlight">
-                <p>💸 Arif was working 80-hour weeks but couldn't break $5K/month</p>
-                <p>😓 He borrowed money from family just to keep his business afloat</p>
-                <p>💔 His marriage was suffering. His kids barely saw him.</p>
-                <p>🔥 Every time opportunity knocked, self-sabotage answered the door</p>
+            <div className="story-highlight">
+                <p><strong>Affirmations don't pay the bills.</strong></p>
+                <p>You can chant "I am rich" all day, but if your subconscious is screaming "I am afraid of poverty," you will only attract more lack. The real secret? <strong>Perfect Reality alignment</strong>—resetting your internal financial thermostat.</p>
             </div>
 
-            <p>Arif tried everything—more ads, different niches, hiring coaches, investing in courses. Nothing worked. His revenue stayed stubbornly flat.</p>
+            <p>My specialty is creating what I call <span className="highlight"><strong>Perfect Reality</strong></span>—a state so deeply aligned that opportunities chase YOU. My clients include:</p>
+            <ul style={{ marginLeft: '25px', marginTop: '15px', marginBottom: '15px', listStyleType: 'disc' }}>
+                <li>National Intelligence Officers</li>
+                <li>Foundation Leaders Managing Millions in Funds</li>
+                <li>Doctors & Entrepreneurs</li>
+                <li>CEOs of Major Corporations</li>
+            </ul>
 
-            <p><strong>The worst part?</strong> He watched peers with less talent and less experience zoom past him. They were making $30K, $50K, even $100K per month while he struggled to pay his bills.</p>
-
-            <p>Arif felt cursed. Broken. Like success was reserved for "other people."</p>
-
-            <div className="highlight">
-                <p><strong>Then he discovered something that changed everything...</strong></p>
-                <p>The problem wasn't his strategy. It wasn't his work ethic. It wasn't even the market.</p>
-                <p><strong style={{ fontSize: '1.3rem', color: '#1e3c72' }}>The problem was his internal vibration frequency.</strong></p>
-            </div>
-
-            <p>Arif's subconscious mind was running on poverty programming—beliefs about money formed in childhood that were invisibly repelling wealth.</p>
-
-            <p>His nervous system was wired for scarcity. His energy field was broadcasting "not enough." And the universe was responding accordingly.</p>
-
-            <p><strong>Once Arif aligned his internal reality to match the wealth he desired, everything shifted...</strong></p>
-
-            <div className="highlight">
-                <p>✨ Week 2: First $10K month of his life</p>
-                <p>✨ Week 5: $30K month—triple his previous record</p>
-                <p>✨ Week 8: $50K month—a 10X increase from where he started</p>
-                <p>✨ Same business. Same products. Different internal state.</p>
-            </div>
-
-            <p>The money started flowing effortlessly. High-ticket clients appeared out of nowhere. Opportunities that used to fall apart now closed easily.</p>
-
-            <p>Arif wasn't working harder—he was working from a completely different frequency.</p>
+            <p>And now, I want to help you break through the invisible glass ceiling that is holding your income down.</p>
         </div>
 
-        {/* SOLUTION - The Method */}
-        <div className="solution-section">
-            <h2>🎯 The Solution: Internal Wealth Alignment</h2>
+        {/* Pain & Agitate & Solution Section (FINANCE FOCUSED) */}
+        <div className="story-section" style={{ background: '#fff5f5', borderLeft: '6px solid #e74c3c' }}>
+            <h2 style={{ color: '#c53030' }}>Why You Are Stuck Financially</h2>
+            <p>Does this sound familiar? You work harder than everyone else. You take the courses. You try the side hustles. But at the end of the month, <strong>the money is gone</strong>.</p>
             
-            <div className="solution-item">
-                <h3>🧠 Reprogram Your Money Subconscious</h3>
-                <p>Using advanced Theta wave technology, we'll identify and dissolve the limiting beliefs about money that were installed in childhood. Your subconscious will be rewired for wealth, abundance, and financial flow.</p>
+            <p>It’s agonizing to watch less talented, less hardworking people fly past you in their careers while you stay stuck in the same place, year after year.</p>
+
+            <p>The truth is, your financial reality is not defined by the economy. It is defined by your <strong>Internal Wealth Frequency</strong>. If you carry a subconscious "Poverty Vow" or deep-seated guilt about money, you will subconsciously <strong>sabotage every opportunity</strong> that comes your way.</p>
+
+            <div className="story-highlight" style={{ background: 'white', borderLeft: '4px solid #c53030' }}>
+                <p><strong>The Proven Wealth Solution:</strong></p>
+                <p>For the last 7 years, I have helped people delete these "poverty programs" from their mind. We don't teach you 'how to invest'—we teach you how to become the person who <strong>naturally attracts wealth</strong>. When you fix the frequency, the money follows.</p>
             </div>
 
-            <div className="solution-item">
-                <h3>⚡ Elevate Your Energetic Frequency</h3>
-                <p>Money is energy. If you're vibrating at the frequency of lack, you'll attract lack. We'll train you to embody the energy of wealth so you become a magnet for opportunity, abundance, and prosperity.</p>
-            </div>
-
-            <div className="solution-item">
-                <h3>🔓 Remove Subconscious Sabotage Patterns</h3>
-                <p>Ever notice how success slips away right when you're about to break through? That's self-sabotage. We'll dissolve the unconscious patterns that have been blocking your financial growth for years.</p>
-            </div>
-
-            <div className="solution-item">
-                <h3>🌊 Master the Flow State of Wealth</h3>
-                <p>Stop forcing. Stop hustling. Start flowing. We'll teach you to enter the quantum field where opportunities, ideas, and money come to you naturally—without grinding yourself into the ground.</p>
-            </div>
-
-            <div className="solution-item">
-                <h3>💎 Activate Your Wealth Blueprint</h3>
-                <p>You have a unique energetic blueprint for wealth inside you. Most people never activate it. We'll unlock your personal prosperity code so money flows to you in alignment with your authentic purpose.</p>
-            </div>
+            <p style={{ fontWeight: 'bold', fontSize: '1.2rem', textAlign: 'center', marginTop: '20px', color: '#c53030' }}>
+                Join this transformation now before the global launch promo ends.
+            </p>
         </div>
 
-        {/* Video Testimonials Section */}
-        <div className="video-section" style={{ background: 'white', borderRadius: '20px', padding: '40px 30px', marginBottom: '30px', boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
-            <h2 style={{ fontSize: '2rem', color: '#1e3c72', marginBottom: '10px', textAlign: 'center', fontWeight: 'bold' }}>Genuine Success Stories</h2>
-            <p style={{ textAlign: 'center', color: '#e74c3c', fontSize: '1.1rem', fontWeight: '600', marginBottom: '25px' }}>Real people, real results (Original Language)</p>
+        {/* Who Is This For Section (FINANCE FOCUSED) */}
+        <div className="story-section" style={{ background: '#f8fafc', borderLeft: '6px solid #1e3c72' }}>
+            <h2 style={{ color: '#1e3c72' }}>Who Is This For?</h2>
+            <p>Our program is designed for those who are tired of financial struggle and are ready to address the <strong>energetic and mental roots</strong> of their wealth blockage.</p>
+            
+            <p className="mb-4"><strong>Check which category you currently fall into:</strong></p>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px', marginTop: '20px' }}>
+                <div style={{ background: 'white', padding: '15px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ color: '#1e3c72', fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '8px' }}>📉 The Stagnant</h3>
+                    <p style={{ fontSize: '0.9rem', color: '#64748b' }}>You've been at the same income level for 5 years. No matter what you do, you can't break through the glass ceiling.</p>
+                </div>
+                <div style={{ background: 'white', padding: '15px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ color: '#1e3c72', fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '8px' }}>💸 The Leaker</h3>
+                    <p style={{ fontSize: '0.9rem', color: '#64748b' }}>You make good money, but it disappears instantly on "emergencies" and unexpected bills. You can't keep what you earn.</p>
+                </div>
+                <div style={{ background: 'white', padding: '15px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ color: '#1e3c72', fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '8px' }}>😰 The Anxious</h3>
+                    <p style={{ fontSize: '0.9rem', color: '#64748b' }}>Checking your bank account gives you a panic attack. You live in constant fear of "running out."</p>
+                </div>
+                <div style={{ background: 'white', padding: '15px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ color: '#1e3c72', fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '8px' }}>📉 The Debtor</h3>
+                    <p style={{ fontSize: '0.9rem', color: '#64748b' }}>You are stuck in a cycle of borrowing to pay off other debts. You feel like you are drowning in obligation.</p>
+                </div>
+                <div style={{ background: 'white', padding: '15px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ color: '#1e3c72', fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '8px' }}>🌫️ The Foggy</h3>
+                    <p style={{ fontSize: '0.9rem', color: '#64748b' }}>You have no idea what your purpose is. You jump from business idea to business idea, never finishing anything.</p>
+                </div>
+                <div style={{ background: 'white', padding: '15px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ color: '#1e3c72', fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '8px' }}>🌪️ The Burnout</h3>
+                    <p style={{ fontSize: '0.9rem', color: '#64748b' }}>You believe you have to suffer to succeed. You are exhausted, overworked, and underpaid.</p>
+                </div>
+            </div>
+
+            <p style={{ marginTop: '25px', fontStyle: 'italic', color: '#4a5568', textAlign: 'center' }}>
+                "We don't just fix the bank balance; we fix the person managing it. When you become abundant inside, the reality reflects it."
+            </p>
+        </div>
+
+        {/* Limited Time Offer */}
+        <div className="offer-section">
+            <h2>🌟 Limited Time Global Launch Offer 🌟</h2>
+            
+            <div className="price-container">
+                <div className="original-price">Regular: $400 (4 sessions × $100)</div>
+                <div className="current-price">$20</div>
+                <div className="price-detail">4 Weekly Sessions (30-45 minutes each)</div>
+                <div className="price-detail">Just $5 per wealth-aligning session</div>
+            </div>
+
+            <div className="countdown">
+                ⏰ THIS PRICE ENDS IN 24 HOURS ⏰
+            </div>
+
+            <p style={{ fontSize: '1.1rem', marginBottom: '20px' }}>Invest in your mindset for less than the cost of a pizza. This is the best ROI you will find this year.</p>
+            
+            <div id="register" style={{ maxWidth: '400px', margin: '0 auto 20px auto' }}>
+                <input
+                    type="email"
+                    placeholder="Enter your email address..."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={{
+                        width: '100%',
+                        padding: '15px 20px',
+                        borderRadius: '50px',
+                        border: '2px solid rgba(255,255,255,0.3)',
+                        background: 'rgba(255,255,255,0.1)',
+                        color: 'white',
+                        fontSize: '1.1rem',
+                        textAlign: 'center',
+                        outline: 'none',
+                        marginBottom: '15px'
+                    }}
+                />
+                <button 
+                    onClick={handlePurchase} 
+                    disabled={loading}
+                    className="cta-button"
+                    style={{ width: '100%', cursor: 'pointer', border: 'none' }}
+                >
+                    {loading ? 'PROCESSING...' : 'SECURE MY SPOT NOW'}
+                </button>
+            </div>
+            
+            <p style={{ marginTop: '20px', fontSize: '0.95rem' }}>✅ 100% Money-Back Guarantee</p>
+        </div>
+
+        {/* Video Testimonials Section - IDENTICAL FILES AS REQUESTED */}
+        <div className="video-section">
+            <h2>Genuine Success Stories</h2>
+            <p className="subtitle">Real people, real results (Original Language)</p>
             <div className="video-grid" style={{ 
                 display: 'grid', 
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
@@ -679,7 +714,7 @@ const UsaWebFinance = () => {
             }}>
                 {/* Felicia */}
                 <div className="video-card">
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: '0 auto', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', aspectRatio: '9/16' }}>
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
                         <iframe 
                             width="100%" 
                             height="100%" 
@@ -691,12 +726,12 @@ const UsaWebFinance = () => {
                             style={{ borderRadius: '15px' }}
                         ></iframe>
                     </div>
-                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold', color: '#1e3c72' }}>Felicia - Influencer</p>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>Felicia - Influencer</p>
                 </div>
 
                 {/* Habib Umar */}
                 <div className="video-card">
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: '0 auto', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', aspectRatio: '9/16' }}>
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
                         <iframe 
                             width="100%" 
                             height="100%" 
@@ -708,12 +743,12 @@ const UsaWebFinance = () => {
                             style={{ borderRadius: '15px' }}
                         ></iframe>
                     </div>
-                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold', color: '#1e3c72' }}>Habib Umar - Head of Pesantren</p>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>Habib Umar - Head of Pesantren</p>
                 </div>
 
                 {/* Agus Mulyadi */}
                 <div className="video-card">
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: '0 auto', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', aspectRatio: '9/16' }}>
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
                         <iframe 
                             width="100%" 
                             height="100%" 
@@ -725,12 +760,12 @@ const UsaWebFinance = () => {
                             style={{ borderRadius: '15px' }}
                         ></iframe>
                     </div>
-                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold', color: '#1e3c72' }}>Agus Mulyadi - Intelengence</p>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>Agus Mulyadi - Intelengence</p>
                 </div>
 
                 {/* Dr. Gumilar */}
                 <div className="video-card">
-                    <div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: '0 auto', borderRadius: '15px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.3)', aspectRatio: '9/16' }}>
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
                         <iframe 
                             width="100%" 
                             height="100%" 
@@ -742,140 +777,104 @@ const UsaWebFinance = () => {
                             style={{ borderRadius: '15px' }}
                         ></iframe>
                     </div>
-                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold', color: '#1e3c72' }}>Dr. Gumilar - Hypnotherapist</p>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>Dr. Gumilar - Hypnotherapist</p>
                 </div>
             </div>
         </div>
 
-        {/* Benefits */}
+        {/* Benefits Section */}
         <div className="benefits-section">
             <h2>What You'll Experience in 4 Weeks</h2>
+            
+            <div className="benefit-item">
+                <div className="benefit-icon">🧠</div>
+                <div className="benefit-text">
+                    <h3>Deep Subconscious Reset</h3>
+                    <p>Delete the "poverty programs" that your parents unknowingly passed down to you.</p>
+                </div>
+            </div>
 
             <div className="benefit-item">
                 <div className="benefit-icon">💰</div>
                 <div className="benefit-text">
-                    <h3>Quantum Leap in Income</h3>
-                    <p>Like Arif, experience exponential revenue growth without working more hours or changing your business model</p>
+                    <h3>Financial Breakthrough</h3>
+                    <p>Align your energy with abundance and watch opportunities flow naturally without the struggle.</p>
                 </div>
             </div>
 
             <div className="benefit-item">
-                <div className="benefit-icon">🧘</div>
+                <div className="benefit-icon">🛡️</div>
                 <div className="benefit-text">
-                    <h3>Peace & Confidence Around Money</h3>
-                    <p>End the anxiety, fear, and stress. Feel financially secure and abundant from the inside out</p>
+                    <h3>The Shield of Confidence</h3>
+                    <p>Walk into business meetings or negotiations with an aura that commands respect and high value.</p>
                 </div>
             </div>
 
             <div className="benefit-item">
-                <div className="benefit-icon">🎯</div>
+                <div className="benefit-icon">🚀</div>
                 <div className="benefit-text">
-                    <h3>Magnetic Attraction of Opportunities</h3>
-                    <p>Stop chasing clients, deals, and money. Start attracting them effortlessly through energetic alignment</p>
+                    <h3>Intuitive Action</h3>
+                    <p>Stop overthinking and start doing. Know exactly which step to take next to grow your wealth.</p>
                 </div>
             </div>
 
             <div className="benefit-item">
-                <div className="benefit-icon">🔥</div>
+                <div className="benefit-icon">😌</div>
                 <div className="benefit-text">
-                    <h3>Elimination of Self-Sabotage</h3>
-                    <p>Finally break free from the invisible patterns that have been destroying your deals and blocking your success</p>
-                </div>
-            </div>
-
-            <div className="benefit-item">
-                <div className="benefit-icon">⚡</div>
-                <div className="benefit-text">
-                    <h3>Sustainable Wealth Frequency</h3>
-                    <p>Move from feast-or-famine to consistent, reliable income that grows month after month</p>
-                </div>
-            </div>
-
-            <div className="benefit-item">
-                <div className="benefit-icon">🌟</div>
-                <div className="benefit-text">
-                    <h3>Energetic Wealth Mastery</h3>
-                    <p>Understand and command the energetic laws of money so you can create prosperity on demand</p>
+                    <h3>Peace of Mind</h3>
+                    <p>Replace the anxiety of "not enough" with the calm certainty of "always provided for."</p>
                 </div>
             </div>
         </div>
 
-        {/* Testimonials */}
+        {/* Testimonials - Adapted to Finance */}
         <div className="testimonials-section">
             <h2>Real Results from Real People</h2>
 
             {/* Western Finance Testimonials */}
             <div className="testimonial-card">
                 <div className="testimonial-header">
-                    <div className="testimonial-icon">💼</div>
+                    <div className="testimonial-icon">👨‍💻</div>
                     <div className="testimonial-info">
-                        <h4>Marcus Thompson</h4>
-                        <p>New York, USA • E-commerce Owner</p>
+                        <h4>James Carter</h4>
+                        <p>New York, USA • Entrepreneur</p>
                     </div>
                 </div>
                 <div className="stars">★★★★★</div>
                 <div className="testimonial-text">
-                    "I was stuck at $8K/month for 2 years. Every strategy failed. After 3 weeks of the eL Vision wealth alignment program, I hit my first $25K month. The next month was $42K. I didn't change my business—I changed my internal frequency."
+                    "I was stuck at $5k/month for three years. I tried every marketing strategy out there. After 3 sessions of eL Vision, I realized I had a deep fear of success. Once we cleared that, I hit $15k the very next month with zero extra ad spend."
                 </div>
             </div>
 
             <div className="testimonial-card">
                 <div className="testimonial-header">
-                    <div className="testimonial-icon">📈</div>
+                    <div className="testimonial-icon">👩‍💼</div>
                     <div className="testimonial-info">
-                        <h4>Sarah Mitchell</h4>
-                        <p>London, UK • Financial Consultant</p>
+                        <h4>Sarah Peterson</h4>
+                        <p>London, UK • Corporate Executive</p>
                     </div>
                 </div>
                 <div className="stars">★★★★★</div>
                 <div className="testimonial-text">
-                    "I had massive money anxiety despite making six figures. I'd sabotage every big opportunity. After dissolving my scarcity programming with this method, I signed three high-ticket clients in one week—deals worth $180K total. My nervous system finally feels safe with wealth."
+                    "I was passed over for promotion twice. I felt invisible. The eL Vision protocol helped me change my internal posture. Two weeks later, my boss approached ME for a Director role. The return on investment here is infinite."
                 </div>
             </div>
 
             <div className="testimonial-card">
                 <div className="testimonial-header">
-                    <div className="testimonial-icon">🚀</div>
+                    <div className="testimonial-icon">🏘️</div>
                     <div className="testimonial-info">
-                        <h4>David Chen</h4>
-                        <p>Toronto, Canada • SaaS Founder</p>
+                        <h4>Robert D.</h4>
+                        <p>Sydney, Australia • Real Estate</p>
                     </div>
                 </div>
                 <div className="stars">★★★★★</div>
                 <div className="testimonial-text">
-                    "My revenue was yo-yoing for 3 years. One month $15K, next month $3K. Couldn't scale. Couldn't plan. After realigning my wealth frequency, I've had 6 consecutive months of $30K+. The stability is life-changing. My family finally has peace."
+                    "Real estate is stressful. I was burning out. This program didn't just help me relax; it sharpened my intuition. I sensed a bad deal that would have cost me $50k, and found a hidden gem that made me $20k instantly. Pure mind power."
                 </div>
             </div>
 
-            <div className="testimonial-card">
-                <div className="testimonial-header">
-                    <div className="testimonial-icon">💎</div>
-                    <div className="testimonial-info">
-                        <h4>Jennifer Rodriguez</h4>
-                        <p>Miami, USA • Real Estate Agent</p>
-                    </div>
-                </div>
-                <div className="stars">★★★★★</div>
-                <div className="testimonial-text">
-                    "I always felt like I didn't deserve big commissions. I'd unconsciously sabotage luxury listings. The subconscious reprogramming unlocked something profound—I closed two $2M properties in the same month. My income tripled and I finally feel worthy of wealth."
-                </div>
-            </div>
-
-            <div className="testimonial-card">
-                <div className="testimonial-header">
-                    <div className="testimonial-icon">🏆</div>
-                    <div className="testimonial-info">
-                        <h4>Robert Kim</h4>
-                        <p>Sydney, Australia • Business Coach</p>
-                    </div>
-                </div>
-                <div className="stars">★★★★★</div>
-                <div className="testimonial-text">
-                    "I teach business strategy but couldn't break my own income ceiling. The irony was painful. After just 4 weeks of energetic wealth alignment, I had my first $100K month. Opportunities that used to fall through now close effortlessly. It's like the universe finally said yes."
-                </div>
-            </div>
-
-            {/* Original Indonesian Testimonials */}
+            {/* Original High-Profile Testimonials (Kept as they are broad/powerful) */}
             <div className="testimonial-card">
                 <div className="testimonial-header">
                     <div className="testimonial-icon">👨‍💼</div>
@@ -892,21 +891,7 @@ const UsaWebFinance = () => {
 
             <div className="testimonial-card">
                 <div className="testimonial-header">
-                    <div className="testimonial-icon">⚕️</div>
-                    <div className="testimonial-info">
-                        <h4>Dr. Gumilar</h4>
-                        <p>Doctor & Hypnotherapist (20+ Years)</p>
-                    </div>
-                </div>
-                <div className="stars">★★★★★</div>
-                <div className="testimonial-text">
-                    "As doctor myself and hypnotherapist for more than 20 years I REALIZED my hypnotherapy is out of date, doing eL Vision method for 6 weeks completely change my perspective and see that this modern method was fast result"
-                </div>
-            </div>
-
-            <div className="testimonial-card">
-                <div className="testimonial-header">
-                    <div className="testimonial-icon">👩‍💼</div>
+                    <div className="testimonial-info">👩‍💼</div>
                     <div className="testimonial-info">
                         <h4>Felicia Quincy</h4>
                         <p>Instagram: @itsfelicia.quincy</p>
@@ -922,13 +907,13 @@ const UsaWebFinance = () => {
         {/* Guarantee */}
         <div className="guarantee-section">
             <h3>💯 100% Money-Back Guarantee</h3>
-            <p>I'm so confident in this program that if you don't experience a tangible shift in your financial energy, abundance mindset, and money flow, you get your full $20 back—no questions asked.</p>
+            <p>I'm so confident in this program that if you don't feel a shift in your mindset regarding money and success, you get your full $20 back—no questions asked.</p>
         </div>
 
         {/* Final CTA */}
         <div className="offer-section">
-            <h2>Ready to Break Your Financial Ceiling?</h2>
-            <p style={{ fontSize: '1.2rem', marginBottom: '20px' }}>Join me for 4 weeks and experience the wealth alignment that took Arif from $5K to $50K per month—and can transform your financial reality too.</p>
+            <h2>Ready to Rewrite Your Financial Destiny?</h2>
+            <p style={{ fontSize: '1.2rem', marginBottom: '20px' }}>Join me for 4 weeks and experience the alignment that opens the floodgates of abundance.</p>
             
             <div style={{ maxWidth: '400px', margin: '0 auto 20px auto' }}>
                 <input
@@ -955,7 +940,7 @@ const UsaWebFinance = () => {
                     className="cta-button"
                     style={{ width: '100%', cursor: 'pointer', border: 'none' }}
                 >
-                    {loading ? 'PROCESSING...' : 'YES, I\'M READY FOR WEALTH'}
+                    {loading ? 'PROCESSING...' : 'YES, I\'M READY TO TRANSFORM'}
                 </button>
             </div>
             

@@ -42,6 +42,16 @@ const UsaWebHealth = React.lazy(() => import('./usa/usa_webhealth.tsx'));
 const UsaWebFinance = React.lazy(() => import('./usa/usa_webfinance.tsx'));
 const UsaWebRelationship = React.lazy(() => import('./usa/usa_webrelationship.tsx'));
 
+// Moved from elvisiongroup
+const UsaEbookSlim = React.lazy(() => import('./usa/usa_ebookslim.tsx'));
+const Usa3000 = React.lazy(() => import('./usa/usa_3000.tsx'));
+const UsaPay3000 = React.lazy(() => import('./usa/usa_pay3000.tsx'));
+const Usa3000Survey = React.lazy(() => import('./usa/usa_3000survey.tsx'));
+const UsaPaypal = React.lazy(() => import('./usa/usa_paypal.tsx'));
+const UsaEbookHealth = React.lazy(() => import('./usa/usa_ebookhealth.tsx'));
+const UsaEbookFeminine = React.lazy(() => import('./usa/usa_ebookfeminine.tsx'));
+const UsaPaypalFinish = React.lazy(() => import('./usa/usa_paypal_finish.tsx'));
+
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-black text-white">
@@ -71,6 +81,14 @@ const App = () => {
         import('./usa/usa_webhealth.tsx');
         import('./usa/usa_webfinance.tsx');
         import('./usa/usa_webrelationship.tsx');
+        import('./usa/usa_ebookslim.tsx');
+        import('./usa/usa_3000.tsx');
+        import('./usa/usa_pay3000.tsx');
+        import('./usa/usa_3000survey.tsx');
+        import('./usa/usa_paypal.tsx');
+        import('./usa/usa_ebookhealth.tsx');
+        import('./usa/usa_ebookfeminine.tsx');
+        import('./usa/usa_paypal_finish.tsx');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -108,6 +126,17 @@ const App = () => {
         <Route path="/usa_webhealth" element={<UsaWebHealth />} />
         <Route path="/usa_webfinance" element={<UsaWebFinance />} />
         <Route path="/usa_webrelationship" element={<UsaWebRelationship />} />
+        
+        {/* Moved from elvisiongroup */}
+        <Route path="/usa_ebookslim" element={<UsaEbookSlim />} />
+        <Route path="/usa_3000" element={<Usa3000 />} />
+        <Route path="/usa_pay3000" element={<UsaPay3000 />} />
+        <Route path="/usa_3000survey" element={<Usa3000Survey />} />
+        <Route path="/usa_paypal" element={<UsaPaypal />} />
+        <Route path="/usa_ebookhealth" element={<UsaEbookHealth />} />
+        <Route path="/usa_ebookfeminine" element={<UsaEbookFeminine />} />
+        <Route path="/usa_paypal_finish" element={<UsaPaypalFinish />} />
+
         <Route path="*" element={<NotFound />} />
     </Routes>
   );
