@@ -25,7 +25,6 @@ const UsaWebFinance = () => {
     try {
       await waitForFbp();
       const { fbc, fbp } = getFbcFbpCookies();
-      await supabase.auth.getSession();
       
       const body: any = {
         pixelId: PIXEL_ID,

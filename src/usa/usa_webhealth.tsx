@@ -25,7 +25,6 @@ const UsaWebHealth = () => {
     try {
       await waitForFbp();
       const { fbc, fbp } = getFbcFbpCookies();
-      await supabase.auth.getSession();
       
       const body: any = {
         pixelId: PIXEL_ID,
@@ -168,7 +167,7 @@ const UsaWebHealth = () => {
             line-height: 1.6;
             color: #1a1a1a;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100-vh;
+            min-height: 100vh;
             margin: 0;
             padding: 0;
         }
