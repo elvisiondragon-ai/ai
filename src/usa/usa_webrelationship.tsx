@@ -1003,7 +1003,25 @@ const UsaWebRelationship = () => {
             <p>I'm so confident in this program that if you don't experience a tangible shift in your relationships, your self-worth, and your inner peace, you get your full $20 back — no questions asked.</p>
         </div>
 
-        {/* ─── FINAL CTA — IDENTICAL structure ─── */}
+        {/* Emotional Trigger */}
+        <div style={{ textAlign: 'center', marginBottom: '40px', padding: '0 20px', color: 'white' }}>
+            <h2 style={{ fontSize: '1.8rem', marginBottom: '20px' }}>You have two options now:</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', maxWidth: '800px', margin: '0 auto 30px auto' }}>
+                <div style={{ background: '#1a1a1a', border: '2px solid rgba(231, 76, 60, 0.5)', padding: '25px', borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+                    <h3 style={{ color: '#ff6b6b', fontWeight: 'bold', marginBottom: '10px' }}>1. Stay in the Loop</h3>
+                    <p style={{ color: '#D1D5DB', fontSize: '0.95rem' }}>Continue repeating the same painful patterns. Accept the loneliness, the rejection, or the cold dynamic as your "fate" while your heart stays closed.</p>
+                </div>
+                <div style={{ background: '#1a1a1a', border: '2px solid rgba(46, 204, 113, 0.5)', padding: '25px', borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+                    <h3 style={{ color: '#51cf66', fontWeight: 'bold', marginBottom: '10px' }}>2. Invest a "Coffee Budget"</h3>
+                    <p style={{ color: '#D1D5DB', fontSize: '0.95rem' }}>Commit just $20—less than you'd spend on a single date—for a massive 4-week transformation. Break the cycle and finally allow yourself to be loved.</p>
+                </div>
+            </div>
+            <p style={{ fontSize: '1.2rem', fontStyle: 'italic', marginBottom: '10px' }}>"The choice is yours. I wish you all the best. Your heart follows your mind. Let me show you how to lead it."</p>
+            <p style={{ fontWeight: 'bold', color: '#F0ABFC' }}>Click the button below. Secure your spot before the price goes back to $400.</p>
+            <p style={{ marginTop: '5px' }}>I’ll see you on the inside.</p>
+        </div>
+
+        {/* Final CTA */}
         <div className="offer-section">
             <h2>Ready to Finally Feel Loved?</h2>
             <p style={{ fontSize: '1.2rem', marginBottom: '20px' }}>Join me for 4 weeks and experience the alignment that changes everything — your heart, your relationships, your life.</p>
