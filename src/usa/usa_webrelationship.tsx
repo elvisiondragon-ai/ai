@@ -556,29 +556,6 @@ const UsaWebRelationship = () => {
             <p className="subheading">Discover the deep subconscious method that breaks the invisible pattern keeping you alone — and makes real, lasting love possible</p>
         </div>
 
-        {/* ─── VIDEO TESTIMONIAL (IDENTICAL embeds) ─── */}
-        <div className="video-section">
-            <h2>Real Transformation Stories</h2>
-            <p className="subtitle">From heartbreak and loneliness → to love and connection</p>
-            <div className="video-container">
-                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.jpg">
-                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-
-        <div className="video-section">
-            <h2>Full Interview (English)</h2>
-            <p className="subtitle">How the eL Vision method completely rewired someone's inner world — and their relationships changed overnight</p>
-            <div className="video-container">
-                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg">
-                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-
         {/* ─── STORY / INTRO ─── */}
         <div className="story-section">
             <h2>Hi, I'm eL Reyzandra</h2>
@@ -683,6 +660,29 @@ const UsaWebRelationship = () => {
             </p>
         </div>
 
+        {/* FAQ Section */}
+        <div className="story-section" style={{ background: '#fdf2f8', borderTop: '4px solid #e84393' }}>
+            <h2 style={{ color: '#e84393', textAlign: 'center', marginBottom: '30px' }}>Frequently Asked Questions</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #f0d4e3' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#e84393', marginBottom: '10px' }}>Q: Can I use this method to get my ex back or change a specific person?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> We don't believe in "manipulating" others. However, when you shift your internal frequency, the people around you naturally react differently. If that person is part of your highest path, they will be drawn back to your new energy. If not, you will naturally attract someone far better who actually values you.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #f0d4e3' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#e84393', marginBottom: '10px' }}>Q: What if I've been single for a very long time and feel "hopeless"?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> Longevity of a pattern doesn't make it harder to break—it just means the "groove" in your subconscious is deeper. We use Theta-state alignment to smooth over those old grooves and create a new reality where love is possible. Many of our clients break 10-year single streaks within weeks of starting.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #f0d4e3' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#e84393', marginBottom: '10px' }}>Q: My partner's family is very toxic. Can this really help?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> Yes. Toxicity thrives on a specific energetic "hook." When you do the internal work and reach a state of Perfect Reality, you unhook yourself from their drama. Often, the family members either stop their behavior or lose their power to affect your relationship completely.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #f0d4e3' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#e84393', marginBottom: '10px' }}>Q: Is this just about "self-love" or is there more to it?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> Self-love is the cliché, but "Subconscious Alignment" is the science. We don't just tell you to "love yourself"—we help you delete the core data in your mind that says you are unworthy of it. When that data is gone, the self-love (and the external love) becomes automatic.</p>
+                </div>
+            </div>
+        </div>
+
         {/* ─── LIMITED TIME OFFER (IDENTICAL structure + PayPal) ─── */}
         <div className="offer-section">
             <h2>🌟 Limited Time Global Launch Offer 🌟</h2>
@@ -742,6 +742,28 @@ const UsaWebRelationship = () => {
                 gap: '20px',
                 marginTop: '30px'
             }}>
+                {/* Arif - Miraculous Proof */}
+                <div className="video-card">
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
+                        <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px' }}>
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>Arif - Stage 4 Recovery</p>
+                    <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#666', padding: '0 10px' }}>Proof: If this method can reset cellular health, it can reset your pattern in relationships.</p>
+                </div>
+
+                {/* English Interview - Science */}
+                <div className="video-card">
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
+                        <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px' }}>
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>The Science of Love Alignment</p>
+                    <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#666', padding: '0 10px' }}>Full Interview (English): How frequency creates attraction and connection.</p>
+                </div>
+
                 {/* Felicia — IDENTICAL */}
                 <div className="video-card">
                     <div className="video-container" style={{ aspectRatio: '9/16' }}>

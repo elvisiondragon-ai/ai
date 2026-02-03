@@ -660,7 +660,30 @@ const UsaWebHealth = () => {
             </p>
         </div>
 
-        {/* Limited Time Offer */}
+        {/* FAQ Section */}
+        <div className="story-section" style={{ background: '#f0f4ff', borderTop: '4px solid #667eea' }}>
+            <h2 style={{ color: '#1a365d', textAlign: 'center', marginBottom: '30px' }}>Frequently Asked Questions</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#667eea', marginBottom: '10px' }}>Q: Is this a replacement for my doctor or medical treatment?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> No. Think of this as the "software update" for your healing process. Medicine handles the physical, while eL Vision handles the mental and energetic foundation. When your mind is in a state of "Perfect Reality," your body can finally utilize its own natural regenerative powers effectively.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#667eea', marginBottom: '10px' }}>Q: My doctor said my condition is incurable. How can this help?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> Doctors speak based on statistics and physical evidence. Arif was also told his Stage 4 brain cancer was a terminal sentence. We focus on the <em>exceptions</em> to those statistics—the people whose subconscious "blueprint" for health was so strong that the body followed suit despite the odds.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#667eea', marginBottom: '10px' }}>Q: How is this different from 'The Secret' or regular affirmations?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> Affirmations often fail because the surface mind is saying "I am healthy" while the subconscious is screaming "I am sick." We use deep Theta-state alignment to bypass that conflict and reprogram the root frequency directly. No more faking it—your reality actually shifts.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#667eea', marginBottom: '10px' }}>Q: Can 4 sessions really change a chronic health issue?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> You won't just "learn" about healing; you will <em>experience</em> the shift in these 4 weeks. Most people feel a profound sense of physical and mental peace after the very first session. This momentum is what triggers the body's natural healing response.</p>
+                </div>
+            </div>
+        </div>
+
+        {/* Offer Section */}
         <div className="offer-section">
             <h2>🌟 Limited Time Global Launch Offer 🌟</h2>
             

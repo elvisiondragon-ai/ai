@@ -547,30 +547,6 @@ const UsaWebFinance = () => {
             <p className="subheading">Discover why "working harder" is keeping you poor, and how to align your subconscious for effortless abundance.</p>
         </div>
 
-        {/* Video Testimonial - Arif (Proof of Method Power) */}
-        <div className="video-section">
-            <h2>If It Can Heal Brain Cancer, It Can Fix Your Finances</h2>
-            <p className="subtitle">This same frequency alignment saved Arif from Stage 4 Cancer. Imagine what this power can do for your bank account.</p>
-            <div className="video-container">
-                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.jpg">
-                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-
-        {/* Video Interview English */}
-        <div className="video-section">
-            <h2>Full Interview (English)</h2>
-            <p className="subtitle">Understand the science behind "Perfect Reality" and how it reshapes your destiny.</p>
-            <div className="video-container">
-                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg">
-                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-
         {/* Story Section */}
         <div className="story-section">
             <h2>Hi, I'm eL Reyzandra</h2>
@@ -652,6 +628,29 @@ const UsaWebFinance = () => {
             </p>
         </div>
 
+        {/* FAQ Section */}
+        <div className="story-section" style={{ background: '#f8fafc', borderTop: '4px solid #1e3c72' }}>
+            <h2 style={{ color: '#1e3c72', textAlign: 'center', marginBottom: '30px' }}>Frequently Asked Questions</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#1e3c72', marginBottom: '10px' }}>Q: Is this a "get rich quick" scheme or financial advice?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> Absolutely not. We don't tell you what stocks to buy. We fix the <em>source</em> of your financial patterns. If you have a subconscious "lack" mindset, no amount of money will stay with you. We help you become the version of yourself that naturally attracts and manages wealth.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#1e3c72', marginBottom: '10px' }}>Q: I've tried manifestion before and it didn't work. Why is this different?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> Manifestation fails when there is a "frequency gap." You want millions, but your subconscious is afraid of the responsibility or feels guilty about money. We use eL's unique "Perfect Reality" alignment to delete those hidden blocks in the Theta state so your desire and your subconscious are finally on the same page.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#1e3c72', marginBottom: '10px' }}>Q: I'm deep in debt right now. Can I really afford this?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> At $20, this is less than the cost of a single meal. The real question is: Can you afford to stay in the same financial loop for another year? This program is designed specifically to help you break the energetic cycle of debt and stagnation so you can start seeing a real ROI in your life.</p>
+                </div>
+                <div style={{ background: 'white', padding: '20px', borderRadius: '15px', border: '1px solid #e2e8f0' }}>
+                    <h3 style={{ fontWeight: 'bold', color: '#1e3c72', marginBottom: '10px' }}>Q: Do I need to be a business owner for this to work?</h3>
+                    <p style={{ fontSize: '0.95rem', color: '#4a5568' }}><strong>A:</strong> No. Whether you are an employee looking for a promotion, a freelancer wanting higher-paying clients, or an entrepreneur scaling a company—the principles of wealth frequency are universal. When you change, your external reality (and your bank account) must adjust to match.</p>
+                </div>
+            </div>
+        </div>
+
         {/* Limited Time Offer */}
         <div className="offer-section">
             <h2>🌟 Limited Time Global Launch Offer 🌟</h2>
@@ -711,6 +710,28 @@ const UsaWebFinance = () => {
                 gap: '20px',
                 marginTop: '30px'
             }}>
+                {/* Arif - Miraculous Proof */}
+                <div className="video-card">
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
+                        <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px' }}>
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>Arif - Stage 4 Recovery</p>
+                    <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#666', padding: '0 10px' }}>Proof: If alignment can heal brain cancer, it can easily fix your financial frequency.</p>
+                </div>
+
+                {/* English Interview - Science */}
+                <div className="video-card">
+                    <div className="video-container" style={{ aspectRatio: '9/16' }}>
+                        <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px' }}>
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>The Science of Alignment</p>
+                    <p style={{ textAlign: 'center', fontSize: '0.8rem', color: '#666', padding: '0 10px' }}>Full Interview (English): Deep dive into the "Perfect Reality" method.</p>
+                </div>
+
                 {/* Felicia */}
                 <div className="video-card">
                     <div className="video-container" style={{ aspectRatio: '9/16' }}>

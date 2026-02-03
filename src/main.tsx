@@ -38,6 +38,7 @@ const WebinarSopanMandiri = React.lazy(() => import('./web/webinar_sopanmandiri.
 const AnalyticsDashboard = React.lazy(() => import('./web/analytics.tsx'));
 const WebList = React.lazy(() => import('./web/weblist.tsx'));
 const WebPay = React.lazy(() => import('./web/webpay.tsx'));
+const WebinarLeft = React.lazy(() => import('./web/webinar_left.tsx'));
 const UsaWebHealth = React.lazy(() => import('./usa/usa_webhealth.tsx'));
 const UsaWebFinance = React.lazy(() => import('./usa/usa_webfinance.tsx'));
 const UsaWebRelationship = React.lazy(() => import('./usa/usa_webrelationship.tsx'));
@@ -78,6 +79,7 @@ const App = () => {
         import('./web/webinar_sopanmandiri.tsx');
         import('./web/weblist.tsx');
         import('./web/webpay.tsx');
+        import('./web/webinar_left.tsx');
         import('./usa/usa_webhealth.tsx');
         import('./usa/usa_webfinance.tsx');
         import('./usa/usa_webrelationship.tsx');
@@ -123,6 +125,7 @@ const App = () => {
         <Route path="/analytics" element={<AnalyticsDashboard />} />
         <Route path="/weblist" element={<WebList />} />
         <Route path="/webpay" element={<WebPay />} />
+        <Route path="/webinarleft" element={<WebinarLeft />} />
         <Route path="/usa_webhealth" element={<UsaWebHealth />} />
         <Route path="/usa_webfinance" element={<UsaWebFinance />} />
         <Route path="/usa_webrelationship" element={<UsaWebRelationship />} />
