@@ -5,6 +5,7 @@ import {
   initFacebookPixelWithLogging, 
   trackCustomEvent, 
   trackAddPaymentInfoEvent,
+  trackPageViewEvent,
   AdvancedMatchingData,
   getFbcFbpCookies
 } from '@/utils/fbpixel';

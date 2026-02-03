@@ -781,7 +781,7 @@ const UsaWebRelationship = () => {
                 <div className="video-card">
                     <div className="video-container" style={{ aspectRatio: '9/16' }}>
                         <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px' }}>
-                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/MOF_USA_HEALTH1.mp4" type="video/mp4" />
                         </video>
                     </div>
                     <p style={{ textAlign: 'center', marginTop: '10px', fontWeight: 'bold' }}>The Science of Love Alignment</p>

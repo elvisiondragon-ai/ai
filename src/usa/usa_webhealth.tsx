@@ -575,7 +575,7 @@ const UsaWebHealth = () => {
             <p className="subtitle">Detailed breakdown of the recovery process and mental transformation</p>
             <div className="video-container">
                 <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg">
-                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
+                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/MOF_USA_HEALTH1.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
