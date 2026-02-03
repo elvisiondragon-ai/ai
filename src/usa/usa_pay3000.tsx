@@ -70,15 +70,10 @@ export default function Pay3000() {
     }
   };
 
-  // Facebook Pixel Code
   useEffect(() => {
     initFacebookPixelWithLogging(PIXEL_ID);
-    
-    const eventId = crypto.randomUUID();
-    trackCustomEvent('PageView', {}, eventId, PIXEL_ID);
-    
-    // Send Server-Side Event
-    sendCAPIEvent('PageView', {}, {}, eventId);
+    const eventId = `pageview-${Date.now()}`;
+    trackPageViewEvent({}, eventId, PIXEL_ID);
   }, []);
 
   const handlePurchase = async () => {
