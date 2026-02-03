@@ -29,32 +29,27 @@ const WebPay = () => {
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('QRIS');
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('PAYPAL');
     const [loading, setLoading] = useState(false);
     const [paymentData, setPaymentData] = useState<any>(null);
     const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
     
-    // Hardcoded for this specific webinar
-    const productNameBackend = 'webinar_22feb'; 
-    const displayProductName = 'Webinar 22 Februari 2026';
-    const productPrice = 199000;
-    const pixelId = '3319324491540889'; // Same as ebook_feminine
+    // Hardcoded for this specific webinar (USA Consolidated)
+    const productNameBackend = 'usa_webinar20'; 
+    const displayProductName = 'eL Vision Global Webinar (24H Promo)';
+    const productPrice = 20.00;
+    const pixelId = '1393383179182528'; // USA KAYA PIXEL
 
     const paymentMethods = [
-        { code: 'QRIS', name: 'QRIS', description: 'Scan pakai GoPay, OVO, Dana, ShopeePay, BCA Mobile, dll' },
-        { code: 'BCAVA', name: 'BCA Virtual Account', description: 'Transfer otomatis via BCA' },
-        { code: 'BNIVA', name: 'BNI Virtual Account', description: 'Transfer otomatis via BNI' },
-        { code: 'BRIVA', name: 'BRI Virtual Account', description: 'Transfer otomatis via BRI' },
-        { code: 'MANDIRIVA', name: 'Mandiri Virtual Account', description: 'Transfer otomatis via Mandiri' },
-        { code: 'PERMATAVA', name: 'Permata Virtual Account', description: 'Transfer otomatis via Permata' },
+        { code: 'PAYPAL', name: 'PayPal', description: 'Fast & secure checkout with PayPal or Cards' }
     ];
 
     const formatCurrency = (amount: number) => {
-        return new Intl.NumberFormat('id-ID', {
+        return new Intl.NumberFormat('en-US', {
             style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
         }).format(amount);
     };
 
@@ -88,7 +83,7 @@ const WebPay = () => {
           customData: eventData,
           eventId: eventId,
           eventSourceUrl: window.location.href,
-          testCode: 'testcode_indo'
+          testCode: 'testcode_usa'
         };
 
         // Get FBC and FBP from cookies using the utility function
