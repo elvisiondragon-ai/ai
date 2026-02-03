@@ -581,6 +581,18 @@ const UsaWebHealth = () => {
             </div>
         </div>
 
+        {/* The LOA Lie VSL Section */}
+        <div className="video-section">
+            <h2>The "Law of Attraction" Lie</h2>
+            <p className="subtitle">Discover why manifestation fails for 99% of people—and the missing piece you need</p>
+            <div className="video-container">
+                <video controls poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/el_vsl_lie_loa.jpg">
+                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/el_vsl_lie_loa.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
         {/* VSL Section */}
         <div className="video-section">
             <h2>The Secret to Massive Transformation</h2>
