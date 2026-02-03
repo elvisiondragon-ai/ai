@@ -132,6 +132,13 @@ const WebinarOrtuSakit = () => {
     }, []);
 
     const handleCreatePayment = async () => {
+        toast({
+            title: "Pendaftaran Ditutup",
+            description: "Maaf pendaftaran batch ditutup, tunggu batch selanjutnya",
+            variant: "destructive",
+        });
+        return;
+
         if (isProcessingRef.current) return;
         if (!userName || !userEmail || !phoneNumber) {
             toast({ title: "Mohon lengkapi data diri Anda.", variant: "destructive" });

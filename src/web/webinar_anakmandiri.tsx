@@ -199,6 +199,13 @@ const WebinarAkuMandiri = () => {
     }, []);
 
     const handleCreatePayment = async () => {
+        toast({
+            title: "Pendaftaran Ditutup",
+            description: "Maaf pendaftaran batch ditutup, tunggu batch selanjutnya",
+            variant: "destructive",
+        });
+        return;
+
         if (isProcessingRef.current) return;
 
         if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
