@@ -745,6 +745,25 @@ const WebinarPriaSingle = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#eff6ff", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #2563eb", textAlign: "center", boxShadow: "0 10px 25px rgba(37, 99, 235, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#1e40af", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#1e3a8a", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Kamu akan berhenti menjadi "Nice Guy" yang membosankan dan menjadi "Magnet Pria" yang memikat.</strong></p>
+                        
+                        <p>Kita akan bongkar mental "pengemis cinta" dan install mental "Sang Penakluk". Wanita berkualitas akan mulai melirikmu, bukan karena kamu membelikan mereka barang, tapi karena kamu punya KHARISMA.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #bfdbfe", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#2563eb", margin: 0 }}>
+                                "Bayangkan tidak lagi diabaikan di tongkrongan. Bayangkan wanita idamanmu membalas chat dengan antusias. Jangan sampai kamu tua sendirian hanya karena tidak tahu caranya menjadi Pria Bernilai Tinggi."
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#1e40af", fontWeight: "bold" }}>👉 Upgrade diri Anda sekarang.</p>
+                    </div>
+                </div>
+
                 {/* 12. PRICING & PAYMENT FORM */}
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>

@@ -745,6 +745,25 @@ const WebinarIbuJodoh = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#fdf2f8", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #db2777", textAlign: "center", boxShadow: "0 10px 25px rgba(219, 39, 119, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#be185d", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#9d174d", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Mbak akan berhenti mengejar cinta, dan mulai menarik cinta.</strong></p>
+                        
+                        <p>Kita akan aktifkan "Feminine Magnetism" dalam diri Mbak. Pria berkualitas akan mendekat bukan karena Mbak "murahan", tapi karena aura Mbak yang begitu mahal dan menenangkan.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #f9a8d4", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#db2777", margin: 0 }}>
+                                "Bayangkan tidak lagi kondangan sendirian. Bayangkan ada pria yang bangga menggandeng tangan Mbak di depan umum. Jangan biarkan trauma masa lalu menutup pintu jodoh Mbak selamanya. Buka kuncinya sekarang."
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#be185d", fontWeight: "bold" }}>👉 Jemput kebahagiaan Mbak hari ini.</p>
+                    </div>
+                </div>
+
                 {/* 12. PRICING & PAYMENT FORM */}
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>

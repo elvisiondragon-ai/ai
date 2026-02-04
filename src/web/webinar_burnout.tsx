@@ -686,6 +686,25 @@ const WebinarPriaBurnout = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#fff7ed", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #ea580c", textAlign: "center", boxShadow: "0 10px 25px rgba(234, 88, 12, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#9a3412", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#c2410c", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Kamu akan mendapatkan kembali "Nyawa"-mu yang hilang ditelan pekerjaan.</strong></p>
+                        
+                        <p>Kita akan matikan mode "Survival" di otakmu dan nyalakan mode "Enjoy". Tidurmu akan kembali nyenyak tanpa dihantui deadline. Bangun pagi dengan senyum, bukan dengan helaan nafas berat.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #fdba74", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#ea580c", margin: 0 }}>
+                                "Bayangkan rasanya punya energi berlimpah untuk main sama anak setelah pulang kerja. Bayangkan tidak lagi meledak marah pada hal sepele. Hidup cuma sekali, Pak. Jangan habiskan sisa umurmu cuma buat stress. Reset sekarang!"
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#c2410c", fontWeight: "bold" }}>👉 Kembalikan kendali atas hidup Anda hari ini.</p>
+                    </div>
+                </div>
+
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>
                         <h2 style={{ fontSize: "22px", fontWeight: 700, marginBottom: "20px" }}>Investasi Kewarasan Anda</h2>

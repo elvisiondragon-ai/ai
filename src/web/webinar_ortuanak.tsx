@@ -748,6 +748,25 @@ const WebinarOrtuAnak = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#f0fdfa", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #0f766e", textAlign: "center", boxShadow: "0 10px 25px rgba(15, 118, 110, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#0d9488", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#115e59", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Bapak/Ibu akan memegang "Remote Control" hati anak, bukan dengan paksaan, tapi dengan koneksi batin.</strong></p>
+                        
+                        <p>Kita akan sambung kembali "kabel rasa" yang putus antara orang tua dan anak. Anak akan mulai mendengarkan dan kooperatif karena mereka merasa DIMENGERTI, bukan dihakimi. Rumah yang tadinya medan perang akan kembali menjadi tempat pulang yang dirindukan.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #5eead4", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#0f766e", margin: 0 }}>
+                                "Bayangkan anak memeluk Bapak/Ibu dengan erat dan berkata 'Terima kasih sudah mengerti aku'. Bayangkan tawa renyah kembali terdengar di ruang keluarga. Jangan biarkan anak mencari rumah di tempat lain. Pulangkan hatinya sekarang."
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#0d9488", fontWeight: "bold" }}>👉 Selamatkan masa depan anak dan keluarga Anda hari ini.</p>
+                    </div>
+                </div>
+
                 {/* 12. PRICING & PAYMENT FORM */}
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>

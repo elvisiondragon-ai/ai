@@ -746,6 +746,25 @@ const WebinarIbuIstri = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#fdf4ff", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #7c3aed", textAlign: "center", boxShadow: "0 10px 25px rgba(124, 58, 237, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#6d28d9", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#5b21b6", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Bunda akan menjadi Istri yang "Dicari" suami, bukan sekadar "Dibutuhkan".</strong></p>
+                        
+                        <p>Kita akan bangkitkan kembali "Goddess Energy" yang tertimbun rutinitas rumah tangga. Suami akan merasakan getaran hangat yang membuatnya betah di rumah. Bukan karena Bunda dandan menor, tapi karena aura Bunda memancarkan pesona yang tak bisa ditolak.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #c4b5fd", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#7c3aed", margin: 0 }}>
+                                "Bayangkan suami pulang kerja langsung mencari Bunda untuk ngobrol, bukan main HP. Bayangkan tatapan matanya kembali berbinar seperti saat pacaran dulu. Jangan biarkan pernikahan menjadi 'kuburan cinta'. Hidupkan lagi apinya sekarang."
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#6d28d9", fontWeight: "bold" }}>👉 Selamatkan kehangatan rumah tangga Bunda hari ini.</p>
+                    </div>
+                </div>
+
                 {/* 12. PRICING & PAYMENT FORM */}
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>

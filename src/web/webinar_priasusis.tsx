@@ -727,6 +727,25 @@ const WebinarPriaSusis = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#1e293b", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #fbbf24", textAlign: "center", boxShadow: "0 10px 25px rgba(251, 191, 36, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#f59e0b", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#e2e8f0", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Bapak akan mengambil kembali "Mahkota" yang sempat hilang.</strong></p>
+                        
+                        <p>Kita akan bangkitkan wibawa suami yang membuat istri segan tanpa Bapak perlu marah-marah atau membentak. Istri akan hormat bukan karena takut, tapi karena melihat perubahan energi Bapak yang tenang namun tegas.</p>
+                        
+                        <div style={{ background: "rgba(251, 191, 36, 0.1)", padding: "20px", borderRadius: "15px", border: "1px solid #b45309", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#fbbf24", margin: 0 }}>
+                                "Bayangkan istri Bapak kembali lembut dan melayani dengan tulus. Bayangkan anak-anak menatap Bapak dengan kagum sebagai pemimpin keluarga. Jangan biarkan harga diri Bapak terinjak-injak di rumah sendiri. Tegakkan kepala Bapak sekarang."
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#f59e0b", fontWeight: "bold" }}>👉 Jadilah Raja di Istana Bapak sendiri.</p>
+                    </div>
+                </div>
+
                 {/* 12. PRICING & PAYMENT FORM */}
                 <div style={{ background: "#1e293b", color: "#f1f5f9", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 20px 50px rgba(0,0,0,0.4)", border: "1px solid #334155" }}>
                     <div style={{ textAlign: "center" }}>

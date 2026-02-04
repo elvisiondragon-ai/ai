@@ -613,6 +613,25 @@ const WebinarSopanMandiri = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#fff1f2", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #e11d48", textAlign: "center", boxShadow: "0 10px 25px rgba(225, 29, 72, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#9f1239", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#881337", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Kamu akan berhenti merasa seperti "Sampah" di rumah sendiri.</strong></p>
+                        
+                        <p>Kita akan bongkar total mental blok "susah cari kerja" dan menggantinya dengan mental "Pencipta Peluang". Kamu akan punya sorot mata baru yang bikin orang segan, bukan kasihan.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #fda4af", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#be123c", margin: 0 }}>
+                                "Bayangkan wajah bangga Ibu dan Bapak saat kamu menyodorkan amplop gaji pertamamu. Bayangkan mereka bisa pamer ke tetangga: 'Anakku sekarang sukses!'. Jangan biarkan mereka menutup mata dalam keadaan kecewa padamu. Waktumu tidak banyak, Bro!"
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#e11d48", fontWeight: "bold" }}>👉 Ini bukan sekadar webinar, ini tiketmu untuk kembali menjadi Laki-laki seutuhnya.</p>
+                    </div>
+                </div>
+
                 {/* 11. PRICING & PAYMENT FORM */}
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(220, 38, 38, 0.1)", border: "1px solid #fecaca" }}>
                     <div style={{ textAlign: "center" }}>

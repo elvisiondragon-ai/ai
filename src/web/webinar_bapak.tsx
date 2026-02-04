@@ -768,6 +768,25 @@ const WebinarBapak = () => {
                     </div>
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#fffbeb", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #d97706", textAlign: "center", boxShadow: "0 10px 25px rgba(217, 119, 6, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#b45309", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#92400e", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Bapak akan berhenti menjadi "Mesin ATM" dan kembali menjadi "Raja" di rumah sendiri.</strong></p>
+                        
+                        <p>Kita akan bangkitkan Wibawa Alami Bapak. Pulang ke rumah tidak lagi membawa sisa amarah kantor, tapi membawa ketenangan yang membuat Istri dan Anak hormat karena segan, bukan karena takut.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #fcd34d", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#d97706", margin: 0 }}>
+                                "Bayangkan saat Bapak pulang, anak-anak berlari menyambut bukan karena minta uang jajan, tapi karena rindu sosok Ayahnya. Bayangkan istri melayani dengan lembut tanpa diminta. Itu harga diri laki-laki yang sesungguhnya."
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#b45309", fontWeight: "bold" }}>👉 Ambil kembali mahkota Bapak hari ini.</p>
+                    </div>
+                </div>
+
                 {/* 12. PRICING & PAYMENT FORM */}
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>

@@ -584,6 +584,25 @@ const WebinarOrtuSakit = () => {
                     ))}
                 </div>
 
+                {/* NEW SECTION: Apa yang saya dapat */}
+                <div style={{ background: "#f0fdfa", padding: "35px 25px", borderRadius: "30px", marginBottom: "40px", border: "2px dashed #0d9488", textAlign: "center", boxShadow: "0 10px 25px rgba(13, 148, 136, 0.1)" }}>
+                    <h2 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#0f766e", textTransform: "uppercase", letterSpacing: "1px" }}>Apa yang saya dapat jika Ikut Protokol 4 sesi ini?</h2>
+                    
+                    <div style={{ fontSize: "17px", lineHeight: "1.7", color: "#115e59", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p><strong>Bapak/Ibu akan memiliki kemampuan untuk 'Berbicara' dengan tubuh yang sakit.</strong></p>
+                        
+                        <p>Kami akan ajarkan teknik menyalurkan energi penyembuhan yang spesifik untuk membuang 'sampah emosi' yang menyumbat kesembuhan. Bayangkan rasa nyeri yang selama ini menetap, perlahan mulai reda tanpa paksaan obat kimia berlebih.</p>
+                        
+                        <div style={{ background: "white", padding: "20px", borderRadius: "15px", border: "1px solid #5eead4", marginTop: "10px" }}>
+                            <p style={{ fontStyle: "italic", fontWeight: "600", color: "#0d9488", margin: 0 }}>
+                                "Jangan tunggu sampai dokter angkat tangan. Jangan biarkan masa tua habis hanya untuk bolak-balik rumah sakit. Tubuh Bapak/Ibu merindukan kedamaian, berikanlah haknya sekarang juga."
+                            </p>
+                        </div>
+
+                        <p style={{ fontSize: "14px", marginTop: "10px", color: "#0f766e", fontWeight: "bold" }}>👉 Ini adalah Ikhtiar Jalur Langit untuk kesembuhan Bapak/Ibu.</p>
+                    </div>
+                </div>
+
                 {/* PRICING & FORM */}
                 <div style={{ background: "white", padding: "45px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 20px 50px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
                     <div style={{ textAlign: "center" }}>
