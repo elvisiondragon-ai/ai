@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const WebList = () => {
   const webinarRoutes = [
-    { name: 'Webinar 22 Februari 2026', path: '/webpay' },
+    { name: 'Webinar eL Vision Global', path: '/webpay' },
     { name: 'Webinar Anak Mandiri', path: '/webinar_anakmandiri' },
     { name: 'Webinar Bapak', path: '/webinar_bapak' },
     { name: 'Webinar Burnout', path: '/webinar_burnout' },

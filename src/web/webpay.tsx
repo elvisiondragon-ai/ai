@@ -3,7 +3,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { 
   initFacebookPixelWithLogging, 
   trackPageViewEvent, 
-  trackViewContentEvent, 
+  trackViewContentEvent,
+  trackCustomEvent,
   AdvancedMatchingData,
   getFbcFbpCookies,
   waitForFbp
@@ -15,7 +16,13 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Copy, CreditCard, User, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
+import { ArrowLeft, Copy, User, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 const WebPay = () => {
     const { toast } = useToast();
@@ -33,6 +40,9 @@ const WebPay = () => {
     const [loading, setLoading] = useState(false);
     const [paymentData, setPaymentData] = useState<any>(null);
     const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
+
+    // INDO VERSION STATE
+    const [selectedPaymentMethodIndo, setSelectedPaymentMethodIndo] = useState('QRIS');
     
     // Hardcoded for this specific webinar (USA Consolidated)
     const productNameBackend = 'usa_webinar20'; 
@@ -40,8 +50,24 @@ const WebPay = () => {
     const productPrice = 20.00;
     const pixelId = '1393383179182528'; // USA KAYA PIXEL
 
+    // INDO VERSION CONFIG
+    const productNameBackendIndo = 'webinar_el'; 
+    const displayProductNameIndo = 'Indonesian Weekly Protocol Reality Alignment';
+    const productPriceIndo = 199999;
+    const pixelIdIndo = '3319324491540889';
+
     const paymentMethods = [
         { code: 'PAYPAL', name: 'PayPal', description: 'Fast & secure checkout with PayPal or Cards' }
+    ];
+
+    // INDO VERSION METHODS
+    const paymentMethodsIndo = [
+        { code: 'QRIS', name: 'QRIS', description: 'Scan pakai GoPay, OVO, Dana, ShopeePay, BCA Mobile, dll' },
+        { code: 'BCAVA', name: 'BCA Virtual Account', description: 'Transfer otomatis via BCA' },
+        { code: 'BNIVA', name: 'BNI Virtual Account', description: 'Transfer otomatis via BNI' },
+        { code: 'BRIVA', name: 'BRI Virtual Account', description: 'Transfer otomatis via BRI' },
+        { code: 'MANDIRIVA', name: 'Mandiri Virtual Account', description: 'Transfer otomatis via Mandiri' },
+        { code: 'PERMATAVA', name: 'Permata Virtual Account', description: 'Transfer otomatis via Permata' },
     ];
 
     const formatCurrency = (amount: number) => {
@@ -50,6 +76,16 @@ const WebPay = () => {
             currency: 'USD',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
+        }).format(amount);
+    };
+
+    // INDO VERSION FORMAT
+    const formatCurrencyIndo = (amount: number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
         }).format(amount);
     };
 
@@ -62,7 +98,7 @@ const WebPay = () => {
     };
 
     // Helper to send CAPI events
-    const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string) => {    
+    const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string, isIndo?: boolean) => {    
       try {
         // 🛡️ DEDUPLICATION CHECK
         if (eventId && sentEventIdsRef.current.has(eventId)) {
@@ -78,12 +114,12 @@ const WebPay = () => {
 
         const { data: { session } } = await supabase.auth.getSession();
         const body: any = {
-          pixelId,
+          pixelId: isIndo ? pixelIdIndo : pixelId,
           eventName,
           customData: eventData,
           eventId: eventId,
           eventSourceUrl: window.location.href,
-          testCode: 'testcode_usa'
+          testCode: isIndo ? 'testcode_indo' : 'testcode_usa'
         };
 
         // Get FBC and FBP from cookies using the utility function
@@ -172,21 +208,33 @@ const WebPay = () => {
           if (fbc) userData.fbc = fbc;
           if (fbp) userData.fbp = fbp;
 
+          // INIT BOTH PIXELS
           initFacebookPixelWithLogging(pixelId, userData);
+          initFacebookPixelWithLogging(pixelIdIndo, userData);
 
           // 1. PageView
           const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-          trackPageViewEvent({}, pageEventId, pixelId, userData, 'testcode_indo');
+          trackPageViewEvent({}, pageEventId, pixelId, userData, 'testcode_usa');
+          trackPageViewEvent({}, pageEventId, pixelIdIndo, userData, 'testcode_indo');
 
-          // 2. ViewContent
+          // 2. ViewContent Global
           const viewContentEventId = `viewcontent-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
           trackViewContentEvent({
             content_name: displayProductName,
             content_ids: [productNameBackend],
             content_type: 'product',
             value: productPrice,
+            currency: 'USD'
+          }, viewContentEventId, pixelId, userData, 'testcode_usa');
+
+          // 3. ViewContent Indo
+          trackViewContentEvent({
+            content_name: displayProductNameIndo,
+            content_ids: [productNameBackendIndo],
+            content_type: 'product',
+            value: productPriceIndo,
             currency: 'IDR'
-          }, viewContentEventId, pixelId, userData, 'testcode_indo');
+          }, viewContentEventId, pixelIdIndo, userData, 'testcode_indo');
         }
       };
 
@@ -194,16 +242,57 @@ const WebPay = () => {
     }, []);
 
     const handleCreatePayment = async () => {
-        toast({
-            title: "Pendaftaran Ditutup",
-            description: "Maaf pendaftaran batch ditutup, tunggu batch selanjutnya",
-            variant: "destructive",
-        });
-        return;
+        if (!userEmail || !userEmail.includes('@')) {
+            alert("Please enter a valid email address first to proceed.");
+            return;
+        }
 
+        try {
+            setLoading(true);
+            const eventId = `checkout-${Date.now()}`;
+            const eventData = {
+                content_name: 'usa_webinar20',
+                value: 20.00,
+                currency: 'USD'
+            };
+
+            // 🎯 PIXEL RULE: InitiateCheckout
+            trackCustomEvent('InitiateCheckout', eventData, eventId, pixelId, { em: userEmail });
+            
+            // 🎯 PIXEL RULE: AddPaymentInfo CAPI
+            sendCapiEvent('AddPaymentInfo', eventData, eventId);
+
+            const { fbc, fbp } = getFbcFbpCookies();
+
+            const { data, error } = await supabase.functions.invoke('tripay-create-payment', {
+                body: {
+                    subscriptionType: "usa_webinar20",
+                    paymentMethod: "PAYPAL",
+                    userEmail: userEmail,
+                    userName: userEmail.split('@')[0],
+                    quantity: 1,
+                    fbc,
+                    fbp
+                }
+            });
+
+            if (error) throw new Error(error.message || "Connection failed");
+            if (!data || !data.success) throw new Error("Failed to init payment");
+
+            setPaymentData(data);
+            window.location.href = data.checkoutUrl;
+
+        } catch (err: any) {
+            alert("Payment Error: " + err.message);
+            setLoading(false);
+        }
+    };
+
+    // INDO VERSION HANDLER
+    const handleCreatePaymentIndo = async () => {
         if (isProcessingRef.current) return;
 
-        if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
+        if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethodIndo) {
             toast({
                 title: "Data Tidak Lengkap",
                 description: "Mohon lengkapi nama, email, no. whatsapp, dan metode pembayaran.",
@@ -212,7 +301,6 @@ const WebPay = () => {
             return;
         }
 
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(userEmail)) {
             toast({
@@ -227,32 +315,31 @@ const WebPay = () => {
         setLoading(true);
 
         try {
-             // Track AddPaymentInfo (Only once)
              if (!addPaymentInfoFiredRef.current) {
                 addPaymentInfoFiredRef.current = true;
                 const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
                 
                 sendCapiEvent('AddPaymentInfo', {
-                  content_ids: [productNameBackend],
+                  content_ids: [productNameBackendIndo],
                   content_type: 'product',
-                  value: productPrice,
+                  value: productPriceIndo,
                   currency: 'IDR'
-                }, addPaymentInfoEventId);
+                }, addPaymentInfoEventId, true);
             }
 
             const { fbc, fbp } = getFbcFbpCookies();
 
             const { data, error } = await supabase.functions.invoke('tripay-create-payment', {
                 body: {
-                  subscriptionType: productNameBackend,
-                  paymentMethod: selectedPaymentMethod,
+                  subscriptionType: productNameBackendIndo,
+                  paymentMethod: selectedPaymentMethodIndo,
                   userName: userName,
                   userEmail: userEmail,
                   phoneNumber: phoneNumber,
-                  amount: productPrice,
+                  amount: productPriceIndo,
                   quantity: 1,
-                  productName: displayProductName,
-                  userId: null, // No auth required
+                  productName: displayProductNameIndo,
+                  userId: null, 
                   fbc,
                   fbp
                 }
@@ -260,14 +347,7 @@ const WebPay = () => {
 
             if (error || !data?.success) {
                 let errorMessage = data?.error || error?.message || "Terjadi kesalahan sistem.";
-                if (data?.details?.message) {
-                     errorMessage = data.details.message;
-                     if (errorMessage.includes("Invalid customer email")) {
-                         errorMessage = "Format email tidak valid.";
-                     } else if (errorMessage.includes("Invalid customer phone")) {
-                         errorMessage = "Format nomor HP tidak valid. Gunakan awalan 08...";
-                     }
-                }
+                if (data?.details?.message) errorMessage = data.details.message;
         
                 toast({
                   title: "Gagal Memproses",
@@ -345,7 +425,7 @@ const WebPay = () => {
               <div className="p-6 space-y-6">
                 <div className="text-center">
                     <p className="text-slate-500">Total Invoice</p>
-                    <p className="text-3xl font-bold text-amber-600">{formatCurrency(paymentData.amount)}</p>
+                    <p className="text-3xl font-bold text-amber-600">{paymentData.amount > 1000 ? formatCurrencyIndo(paymentData.amount) : formatCurrency(paymentData.amount)}</p>
                     <div className="mt-2 inline-block px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium border border-amber-200">
                         Awaiting Payment
                     </div>
@@ -406,8 +486,8 @@ const WebPay = () => {
         }}>
             <div style={{ maxWidth: "680px", margin: "0 auto", padding: "20px" }}>
                 <div style={{ textAlign: "center", padding: "20px 0", marginBottom: "20px" }}>
-                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#d97706", letterSpacing: "2px" }}>eL VISION</div>
-                    <div style={{ fontSize: "12px", color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>Official Webinar Series</div>
+                    <div style={{ fontSize: "24px", fontWeight: 800, color: "#d97706", letterSpacing: "2px" }}>eL Vision</div>
+                    <div style={{ fontSize: "12px", color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>Perfect Reality Alignment Protocol</div>
                 </div>
 
                 <div style={{ background: "white", color: "#1e293b", padding: "40px 25px", borderRadius: "30px", marginBottom: "40px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)", border: "1px solid #e2e8f0" }}>
@@ -415,88 +495,197 @@ const WebPay = () => {
                         <span style={{ background: "rgba(251, 191, 36, 0.1)", color: "#d97706", padding: "8px 20px", borderRadius: "50px", fontSize: "14px", fontWeight: "900", marginBottom: "20px", display: "inline-block", letterSpacing: "1px", border: "1px solid #d97706" }}>
                             CHECKOUT PAGE
                         </span>
-                        <h1 style={{ fontSize: "28px", fontWeight: 800, color: "#1e293b", marginBottom: "15px", lineHeight: 1.3 }}>{displayProductName}</h1>
-                        <div style={{ fontSize: "42px", fontWeight: 900, color: "#d97706", marginBottom: "10px" }}>{formatCurrency(productPrice)}</div>
-                        <p style={{ fontSize: "16px", color: "#475569", marginBottom: "30px" }}>Complete the form below to get instant webinar access.</p>
-                    </div>
-
-                    <div style={{ background: "#fffbeb", border: "1px dashed #d97706", padding: "15px", borderRadius: "15px", marginBottom: "30px", textAlign: "left" }}>
-                        <p style={{ fontSize: "14px", color: "#92400e", fontWeight: "bold", marginBottom: "5px" }}>🎁 INSTANT EXCLUSIVE BONUS:</p>
-                        <p style={{ fontSize: "13px", color: "#b45309", lineHeight: "1.5" }}>You will also receive the <strong>eL Vision Pro Ebook + Hypnosis Audio Set</strong> immediately, which you can practice right away for instant results while waiting for the Webinar.</p>
                     </div>
 
                     {/* FORM INPUTS */}
                     <div className="space-y-6 mt-8">
-                        <div className="space-y-4">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-amber-600">
-                                <User className="w-5 h-5" /> Your Information
-                            </h3>
-                            <div className="grid gap-4">
-                                <div>
-                                    <Label htmlFor="name" className="text-slate-700 font-semibold mb-1 block">Full Name</Label>
-                                    <Input 
-                                        id="name" 
-                                        autoComplete="name"
-                                        placeholder="e.g., John Doe" 
-                                        value={userName} 
-                                        onChange={(e) => setUserName(e.target.value)} 
-                                        className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
-                                    />
-                                </div>
-                                <div className="grid md:grid-cols-2 gap-4">
-                                    <div>
-                                        <Label htmlFor="email" className="text-slate-700 font-semibold mb-1 block">Email Address (IMPORTANT)</Label>
-                                        <Input 
-                                            id="email" 
-                                            type="email" 
-                                            autoComplete="email"
-                                            placeholder="For webinar link delivery" 
-                                            value={userEmail} 
-                                            onChange={(e) => setUserEmail(e.target.value)} 
-                                            className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
-                                        />
-                                    </div>
-                                    <div>
-                                        <Label htmlFor="phone" className="text-slate-700 font-semibold mb-1 block">WhatsApp Number</Label>
-                                        <Input 
-                                            id="phone" 
-                                            type="tel" 
-                                            autoComplete="tel"
-                                            placeholder="Include country code (e.g. +1...)" 
-                                            value={phoneNumber} 
-                                            onChange={(e) => setPhoneNumber(e.target.value)} 
-                                            className="bg-white text-slate-900 placeholder:text-slate-400 border-slate-300 focus:border-amber-500 h-12"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="space-y-4">
-                            <h3 className="font-bold text-lg flex items-center gap-2 text-amber-600">
-                                <CreditCard className="w-5 h-5" /> Payment Method
-                            </h3>
-                            <RadioGroup value={selectedPaymentMethod} onValueChange={setSelectedPaymentMethod} className="grid grid-cols-1 gap-4">
-                                {paymentMethods.map((method) => (
-                                    <Label key={method.code} className={`flex items-start p-4 border rounded-xl cursor-pointer transition-all ${selectedPaymentMethod === method.code ? 'border-amber-500 bg-amber-50 shadow-md ring-1 ring-amber-500' : 'border-slate-200 bg-white hover:border-slate-300'}`}>
-                                        <RadioGroupItem value={method.code} id={method.code} className="mt-1 mr-4 border-slate-400 text-amber-600" />
-                                        <div className="flex-1">
-                                            <div className="font-bold text-slate-800 text-lg">{method.name}</div>
-                                            <div className="text-sm text-slate-500">{method.description}</div>
+                        <div className="pt-4 border-t border-slate-100">
+                            <Accordion type="single" collapsible className="w-full">
+                                {/* INDONESIAN CLASS */}
+                                <AccordionItem value="indo-class" className="border-none mb-4">
+                                    <AccordionTrigger className="hover:no-underline p-0">
+                                        <div className="w-full text-left p-4 bg-blue-600 text-white rounded-xl font-bold shadow-md hover:bg-blue-700 transition-all">
+                                            🇮🇩 Indonesian Class (Weekly Protocol)
                                         </div>
-                                    </Label>
-                                ))}
-                            </RadioGroup>
-                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent className="pt-4">
+                                        <div style={{ background: "rgba(37, 99, 235, 0.05)", padding: "20px", borderRadius: "20px", border: "1px solid #2563eb" }}>
+                                            <h3 className="font-bold text-lg text-blue-600 mb-4 text-left">Indonesian Weekly Protocol</h3>
+                                            <div style={{ fontSize: "28px", fontWeight: 900, color: "#2563eb", marginBottom: "20px" }} className="text-left">{formatCurrencyIndo(productPriceIndo)}</div>
+                                            
+                                            {/* PROTOCOL DESCRIPTION INDO */}
+                                            <div className="bg-white/50 p-4 rounded-xl border border-blue-100 mb-6 text-left">
+                                                <h4 className="font-bold text-blue-700 mb-2">The Perfect Reality Alignment Protocol</h4>
+                                                <p className="text-sm text-slate-600 mb-3 font-semibold">Apa itu :</p>
+                                                <p className="text-sm text-slate-600 leading-relaxed italic">
+                                                    "Setelah 16 Tahun mempelajari Law of Attraction saya menyadari ada sebuah cacat sistem saat kita menginginkan sesuatu yang terjadi malah sebaliknya. Itu adalah ketidak selarasan antara kenyataan dan keinginan. Anda menginginkan suatu pencapaian tapi diri tidak merasakan nya.<br/><br/>
+                                                    Protokol ini diadakan mingguan untuk selalu mereset dan melaraskan energi diri, perasaan, mindset agar selalu selaras dengan Keinginan kita secara kejelasan yang begitu dalam, dan kepasrahan yang lepas. Sehingga kita senantiasa merasa plong, bahagia seakan sudah mendapatkannya. Dengan Protokol ini mendapatkan Visi kita akan jauh lebih mungkin, jalan terbuka lebih cepat."
+                                                </p>
+                                            </div>
 
-                        <Button 
-                            size="lg" 
-                            className="w-full text-lg py-8 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 font-bold shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] text-white border-none mt-6"
-                            onClick={handleCreatePayment}
-                            disabled={loading}
-                        >
-                            {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processing...</> : "PAY NOW"}
-                        </Button>
+                                            {/* DATA DIRI INDO */}
+                                            <div className="space-y-4 mb-6 text-left">
+                                                <h3 className="font-bold text-md flex items-center gap-2 text-blue-600">
+                                                    <User className="w-4 h-4" /> Data Diri
+                                                </h3>
+                                                <div className="grid gap-3">
+                                                    <div>
+                                                        <Label htmlFor="name-indo" className="text-slate-700 text-sm font-semibold mb-1 block">Nama Lengkap</Label>
+                                                        <Input 
+                                                            id="name-indo" 
+                                                            placeholder="Nama Lengkap" 
+                                                            value={userName} 
+                                                            onChange={(e) => setUserName(e.target.value)} 
+                                                            className="bg-white text-slate-900 border-slate-300 h-12"
+                                                        />
+                                                    </div>
+                                                    <div className="grid md:grid-cols-2 gap-3">
+                                                        <div>
+                                                            <Label htmlFor="email-indo" className="text-slate-700 text-sm font-semibold mb-1 block">Email</Label>
+                                                            <Input 
+                                                                id="email-indo" 
+                                                                type="email" 
+                                                                placeholder="nama@email.com" 
+                                                                value={userEmail} 
+                                                                onChange={(e) => setUserEmail(e.target.value)} 
+                                                                className="bg-white text-slate-900 border-slate-300 h-12"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label htmlFor="phone-indo" className="text-slate-700 text-sm font-semibold mb-1 block">Nomor WhatsApp</Label>
+                                                            <Input 
+                                                                id="phone-indo" 
+                                                                type="tel" 
+                                                                placeholder="0812xxxx" 
+                                                                value={phoneNumber} 
+                                                                onChange={(e) => setPhoneNumber(e.target.value)} 
+                                                                className="bg-white text-slate-900 border-slate-300 h-12"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-4 text-left">
+                                                <Label className="font-bold text-slate-700">Metode Pembayaran</Label>
+                                                <RadioGroup value={selectedPaymentMethodIndo} onValueChange={setSelectedPaymentMethodIndo} className="grid grid-cols-1 gap-3">
+                                                    {paymentMethodsIndo.map((method) => (
+                                                        <Label key={method.code} className={`flex items-start p-3 border rounded-xl cursor-pointer transition-all ${selectedPaymentMethodIndo === method.code ? 'border-blue-500 bg-blue-50 ring-1 ring-blue-500' : 'border-slate-200 bg-white'}`}>
+                                                            <RadioGroupItem value={method.code} id={`indo-${method.code}`} className="mt-1 mr-3 border-slate-400 text-blue-600" />
+                                                            <div className="flex-1">
+                                                                <div className="font-bold text-slate-800 text-sm">{method.name}</div>
+                                                                <div className="text-xs text-slate-500">{method.description}</div>
+                                                            </div>
+                                                        </Label>
+                                                    ))}
+                                                </RadioGroup>
+                                            </div>
+
+                                            <Button 
+                                                size="lg" 
+                                                className="w-full text-lg py-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 font-bold shadow-xl transition-all text-white border-none mt-6"
+                                                onClick={handleCreatePaymentIndo}
+                                                disabled={loading}
+                                            >
+                                                {loading ? <Loader2 className="animate-spin" /> : "BAYAR RUPIAH"}
+                                            </Button>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+
+                                {/* GLOBAL CLASS */}
+                                <AccordionItem value="global-class" className="border-none">
+                                    <AccordionTrigger className="hover:no-underline p-0">
+                                        <div className="w-full text-left p-4 bg-amber-600 text-white rounded-xl font-bold shadow-md hover:bg-amber-700 transition-all">
+                                            🌎 Global English Version
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent className="pt-4">
+                                        <div style={{ background: "rgba(251, 191, 36, 0.05)", padding: "20px", borderRadius: "20px", border: "1px solid #d97706" }}>
+                                            <h3 className="font-bold text-lg text-amber-600 mb-4 text-left">Global English Version</h3>
+                                            <div style={{ fontSize: "28px", fontWeight: 900, color: "#d97706", marginBottom: "20px" }} className="text-left">{formatCurrency(productPrice)}</div>
+                                            
+                                            {/* PROTOCOL DESCRIPTION GLOBAL */}
+                                            <div className="bg-white/50 p-4 rounded-xl border border-amber-100 mb-6 text-left">
+                                                <h4 className="font-bold text-amber-700 mb-2">The Perfect Reality Alignment Protocol</h4>
+                                                <p className="text-sm text-slate-600 mb-3 font-semibold">What is it:</p>
+                                                <p className="text-sm text-slate-600 leading-relaxed italic">
+                                                    "After 16 years of studying the Law of Attraction, I realized there is a systemic flaw when we want something and the opposite happens. It is the misalignment between reality and desire. You want an achievement, but your self does not feel it.<br/><br/>
+                                                    This protocol is held weekly to constantly reset and align your self-energy, feelings, and mindset to always be in sync with our desires with deep clarity and total surrender. Thus, we constantly feel relieved and happy as if we have already received it. With this protocol, achieving our vision becomes much more possible, and the path opens up faster."
+                                                </p>
+                                            </div>
+
+                                            {/* YOUR INFORMATION GLOBAL */}
+                                            <div className="space-y-4 mb-6 text-left">
+                                                <h3 className="font-bold text-md flex items-center gap-2 text-amber-600">
+                                                    <User className="w-4 h-4" /> Your Information
+                                                </h3>
+                                                <div className="grid gap-3">
+                                                    <div>
+                                                        <Label htmlFor="name-global" className="text-slate-700 text-sm font-semibold mb-1 block">Full Name</Label>
+                                                        <Input 
+                                                            id="name-global" 
+                                                            placeholder="John Doe" 
+                                                            value={userName} 
+                                                            onChange={(e) => setUserName(e.target.value)} 
+                                                            className="bg-white text-slate-900 border-slate-300 h-12"
+                                                        />
+                                                    </div>
+                                                    <div className="grid md:grid-cols-2 gap-3">
+                                                        <div>
+                                                            <Label htmlFor="email-global" className="text-slate-700 text-sm font-semibold mb-1 block">Email Address</Label>
+                                                            <Input 
+                                                                id="email-global" 
+                                                                type="email" 
+                                                                placeholder="john@example.com" 
+                                                                value={userEmail} 
+                                                                onChange={(e) => setUserEmail(e.target.value)} 
+                                                                className="bg-white text-slate-900 border-slate-300 h-12"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label htmlFor="phone-global" className="text-slate-700 text-sm font-semibold mb-1 block">WhatsApp Number</Label>
+                                                            <Input 
+                                                                id="phone-global" 
+                                                                type="tel" 
+                                                                placeholder="+1..." 
+                                                                value={phoneNumber} 
+                                                                onChange={(e) => setPhoneNumber(e.target.value)} 
+                                                                className="bg-white text-slate-900 border-slate-300 h-12"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-4 text-left">
+                                                <Label className="font-bold text-slate-700">Payment Method</Label>
+                                                <RadioGroup value={selectedPaymentMethod} onValueChange={setSelectedPaymentMethod} className="grid grid-cols-1 gap-3">
+                                                    {paymentMethods.map((method) => (
+                                                        <Label key={method.code} className={`flex items-start p-3 border rounded-xl cursor-pointer transition-all ${selectedPaymentMethod === method.code ? 'border-amber-500 bg-amber-50 ring-1 ring-amber-500' : 'border-slate-200 bg-white'}`}>
+                                                            <RadioGroupItem value={method.code} id={method.code} className="mt-1 mr-3 border-slate-400 text-amber-600" />
+                                                            <div className="flex-1">
+                                                                <div className="font-bold text-slate-800 text-sm">{method.name}</div>
+                                                                <div className="text-xs text-slate-500">{method.description}</div>
+                                                            </div>
+                                                        </Label>
+                                                    ))}
+                                                </RadioGroup>
+                                            </div>
+
+                                            <Button 
+                                                size="lg" 
+                                                className="w-full text-lg py-6 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 font-bold shadow-xl transition-all text-white border-none mt-6"
+                                                onClick={handleCreatePayment}
+                                                disabled={loading}
+                                            >
+                                                {loading ? <Loader2 className="animate-spin" /> : "PAY IN USD"}
+                                            </Button>
+                                        </div>
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
                         
                          <div className="flex items-center justify-center gap-4 text-xs text-slate-400 font-medium mt-4">
                             <div className="flex items-center gap-1">

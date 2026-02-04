@@ -17,6 +17,38 @@ import { Toaster } from '@/components/ui/toaster';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Copy, CreditCard, User, CheckCircle, ShieldCheck, Loader2 } from 'lucide-react';
 
+const communityTestimonials = [
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_15taun.png",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_17juli.png",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_28juli.png",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_2jt.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_3minggu.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_agustinus.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio1.png",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio2.png",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_damai.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_depres.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_eldi3.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jahit.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testI_jahitan.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jauh.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_JOE.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_karimah.png",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_kelas1.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_marah.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_muklas.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pelakor.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantren.png",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantreren01.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_proyek.jpg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santet.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santri.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi01.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi03.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi05.jpeg",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi09.png"
+];
+
 const WebinarOrtuAnak = () => {
     const { toast } = useToast();
     const hasFiredPixelsRef = useRef(false);
@@ -199,13 +231,6 @@ const WebinarOrtuAnak = () => {
     }, []);
 
     const handleCreatePayment = async () => {
-        toast({
-            title: "Pendaftaran Ditutup",
-            description: "Maaf pendaftaran batch ditutup, tunggu batch selanjutnya",
-            variant: "destructive",
-        });
-        return;
-
         if (isProcessingRef.current) return;
 
         if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
@@ -387,7 +412,7 @@ const WebinarOrtuAnak = () => {
 
         // 7. WEBINAR DETAILS
         webinarTitle: 'WEBINAR: "MEMULIHKAN HATI YANG TERSEKAT"',
-        eventDate: "Minggu, 22 Februari 2026", 
+        eventDate: "Setiap Minggu (Weekly - 4 Sesi)", 
         eventTime: "17:00 WIB",
         curriculum: [
             { title: 'The Parent\'s Mirror', desc: 'Memahami bagaimana perilaku "nakal" anak sebenarnya adalah cerminan dari kecemasan & luka batin orang tua yang tak terucap.' },
@@ -404,7 +429,7 @@ const WebinarOrtuAnak = () => {
         steps: [
             { title: "Langkah 1: Daftar Sekarang", desc: "Amankan kursi Anda. Kesempatan memperbaiki hubungan tidak datang dua kali." },
             { title: "Langkah 2: Masuk Grup VIP", desc: "Anda akan dipandu admin untuk masuk ke grup khusus materi persiapan." },
-            { title: "Langkah 3: Sesi Pemulihan", desc: "Hadir tanggal 22 Februari jam 17:00 WIB. Siapkan tisu, kita akan banyak melepas emosi (Healing)." }
+            { title: "Langkah 3: Sesi Pemulihan", desc: "Hadir Setiap Minggu via Zoom selama 4 sesi. Siapkan tisu, kita akan banyak melepas emosi (Healing)." }
         ],
 
         // 10. FAQ
@@ -527,7 +552,38 @@ const WebinarOrtuAnak = () => {
                 {/* 1. HEADER LOGO */}
                 <div style={{ textAlign: "center", padding: "20px 0", marginBottom: "20px" }}>
                     <div style={{ fontSize: "24px", fontWeight: 800, color: "#0f766e", letterSpacing: "2px" }}>eL VISION</div>
-                    <div style={{ fontSize: "12px", color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>Parenting Series</div>
+                    <div style={{ fontSize: "12px", color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>eL Vision Perfect Reality Alignment protocol</div>
+                </div>
+
+                {/* Description Box */}
+                <div style={{ 
+                    background: "linear-gradient(145deg, #ffffff 0%, #f8fafc 100%)",
+                    border: "2px solid #e2e8f0",
+                    padding: "35px", 
+                    borderRadius: "30px", 
+                    marginBottom: "40px", 
+                    textAlign: "left",
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}>
+                    <h3 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#1e293b", textAlign: "center", textTransform: "uppercase", letterSpacing: "1px" }}>The Perfect Reality Alignment Protocol</h3>
+                    <p style={{ fontSize: "20px", fontWeight: 800, marginBottom: "15px", color: "#dc2626" }}>Apa itu?</p>
+                    <div style={{ fontSize: "16px", lineHeight: "1.8", color: "#475569", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p>Saya menghabiskan 16 tahun mencari tahu: <strong>"Kenapa makin kita ngoyo mengejar sesuatu, malah makin susah dapatnya?"</strong></p>
+                        
+                        <p style={{ padding: "15px", background: "#f1f5f9", borderRadius: "15px", borderLeft: "5px solid #3b82f6", fontStyle: "italic" }}>
+                            Ini seperti kamu ingin pergi ke Taman Bermain, tapi kakimu malah berjalan ke arah Sekolah. Pasti nggak sampai-sampai, kan?
+                        </p>
+
+                        <p>Jawabannya satu: <strong>Karena Anda sedang perang batin, jadinya tidak akan pernah sampai, salah arah.</strong></p>
+
+                        <p>Pikiran Anda ingin kaya, tapi hati Anda merasa kekurangan. Selama dua ini tidak akur, hidup akan terasa berat.</p>
+
+                        <p>Di sesi mingguan ini, kita akan mendamaikan perang itu. Kita akan <strong>"reset"</strong> perasaan Anda dari yang tadinya cemas mengejar target, menjadi tenang and pasrah.</p>
+
+                        <p style={{ fontSize: "18px", color: "#0f172a", fontWeight: "700" }}>
+                            Hasilnya? Beban di dada hilang seketika. Anda akan merasa bahagia seolah-olah impian itu sudah di tangan. Dan anehnya, saat Anda berhenti cemas, jalan sukses justru terbuka lebar dengan cepat.
+                        </p>
+                    </div>
                 </div>
 
                 {/* VSL Video Section */}
@@ -803,6 +859,21 @@ const WebinarOrtuAnak = () => {
                         ))}
                     </div>
                 </div>
+
+                {/* Community Testimonials Grid */}
+                <section className="py-20 px-4 bg-black border-t border-gray-900 rounded-[30px] mt-10 text-center">
+                    <div className="max-w-7xl mx-auto">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Testimoni Komunitas</h2>
+                        <p className="text-gray-400 mb-12">karena begitu banyak testimony, hanya sebagian kami selipkan disini</p>
+                        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 text-left">
+                            {communityTestimonials.map((img, idx) => (
+                                <div key={idx} className="break-inside-avoid rounded-lg overflow-hidden border border-gray-800 hover:border-red-500 transition-colors bg-gray-900">
+                                    <img src={img} alt={`Testimoni ${idx + 1}`} className="w-full h-auto object-cover" loading="lazy" />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
                 {/* FOOTER */}
                 <div style={{ textAlign: "center", paddingBottom: "30px", color: "#64748b", fontSize: "12px", background: "transparent" }}>

@@ -197,13 +197,6 @@ const WebinarPriaSusis = () => {
     }, []);
 
     const handleCreatePayment = async () => {
-        toast({
-            title: "Pendaftaran Ditutup",
-            description: "Maaf pendaftaran batch ditutup, tunggu batch selanjutnya",
-            variant: "destructive",
-        });
-        return;
-
         if (isProcessingRef.current) return;
 
         if (!userName || !userEmail || !phoneNumber || !selectedPaymentMethod) {
@@ -369,8 +362,8 @@ const WebinarPriaSusis = () => {
         ],
 
         // 7. WEBINAR DETAILS
-        webinarTitle: 'WEBINAR: "THE KING\'S RETURN - 22 FEB 2026"',
-        eventDate: "Minggu, 22 Februari 2026 | 17:00 WIB",
+        webinarTitle: 'WEBINAR: "THE KING\'S RETURN"',
+        eventDate: "Setiap Minggu (Weekly - 4 Sesi), 17:00 WIB",
         curriculum: [
             { title: 'The Masculine Core', desc: 'Cara mengisi ulang tangki "Kewibawaan" yang bocor akibat terlalu sering mengalah.' },
             { title: 'Polarity Switch', desc: 'Teknik psikologi membalikkan dominasi istri menjadi kelembutan (Feminine Surrender) dalam 3 detik.' },
@@ -386,7 +379,7 @@ const WebinarPriaSusis = () => {
         steps: [
             { title: "Langkah 1: Komitmen", desc: "Klik tombol di bawah. Ini bukan soal uang 200rb, ini soal harga diri Anda yang tak ternilai." },
             { title: "Langkah 2: Masuk Circle", desc: "Anda akan bergabung dengan para pria yang juga sedang berjuang mengembalikan marwahnya." },
-            { title: "Langkah 3: Transformasi", desc: "Hadir Live 22 Februari jam 17:00 WIB. Jangan terlambat. Raja tidak pernah terlambat." }
+            { title: "Langkah 3: Transformasi", desc: "Hadir Setiap Minggu via Zoom selama 4 sesi. Jangan terlambat. Raja tidak pernah terlambat." }
         ],
 
         // 10. FAQ
@@ -424,6 +417,38 @@ const WebinarPriaSusis = () => {
         { name: "Eko Prasetyo", title: "Karyawan Senior", verified: true, image: "🛡️", rating: 5, text: "Selama ini saya terjebak doktrin 'ngalah demi damai'. Ternyata itu yang bikin respek hilang. Setelah belajar dari eL, saya tahu cara memimpin dengan benar." },
         { name: "Yusuf", title: "Arsitek", verified: true, image: "📐", rating: 5, text: "Metode eL Vision selama 6 minggu sepenuhnya mengubah perspektif saya dan melihat bahwa metode modern ini memberikan hasil yang cepat." },
         { name: "Fajar Ramadan", title: "Klien eL Vision", verified: true, image: "👑", rating: 5, text: "Komunikasi yang tadinya penuh tuntutan dan bentakan, berubah menjadi rasa hormat yang tulus. Saya merasa kembali menjadi 'Raja' di istana saya sendiri." }
+    ];
+
+    const communityTestimonials = [
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_15taun.png",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_17juli.png",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_28juli.png",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_2jt.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_3minggu.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_agustinus.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio1.png",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio2.png",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_damai.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_depres.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_eldi3.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jahit.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testI_jahitan.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jauh.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_JOE.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_karimah.png",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_kelas1.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_marah.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_muklas.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pelakor.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantren.png",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantreren01.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_proyek.jpg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santet.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santri.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi01.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi03.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi05.jpeg",
+        "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi09.png"
     ];
 
     return (
@@ -506,7 +531,38 @@ const WebinarPriaSusis = () => {
                 {/* 1. HEADER LOGO */}
                 <div style={{ textAlign: "center", padding: "20px 0", marginBottom: "20px" }}>
                     <div style={{ fontSize: "24px", fontWeight: 800, color: "#f59e0b", letterSpacing: "3px", textShadow: "0 0 10px rgba(245, 158, 11, 0.5)" }}>eL VISION</div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "2px" }}>The King's Series</div>
+                    <div style={{ fontSize: "12px", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "2px" }}>eL Vision Perfect Reality Alignment protocol</div>
+                </div>
+
+                {/* Description Box */}
+                <div style={{ 
+                    background: "linear-gradient(145deg, #1e293b 0%, #0f172a 100%)",
+                    border: "2px solid #334155",
+                    padding: "35px", 
+                    borderRadius: "30px", 
+                    marginBottom: "40px", 
+                    textAlign: "left",
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3)"
+                }}>
+                    <h3 style={{ fontSize: "24px", fontWeight: 900, marginBottom: "20px", color: "#fbbf24", textAlign: "center", textTransform: "uppercase", letterSpacing: "1px", textShadow: "0 0 15px rgba(251, 191, 36, 0.3)" }}>The Perfect Reality Alignment Protocol</h3>
+                    <p style={{ fontSize: "20px", fontWeight: 800, marginBottom: "15px", color: "#f87171" }}>Apa itu?</p>
+                    <div style={{ fontSize: "16px", lineHeight: "1.8", color: "#cbd5e1", display: "flex", flexDirection: "column", gap: "15px" }}>
+                        <p>Saya menghabiskan 16 tahun mencari tahu: <strong>"Kenapa makin kita ngoyo mengejar sesuatu, malah makin susah dapatnya?"</strong></p>
+                        
+                        <p style={{ padding: "15px", background: "rgba(30, 58, 138, 0.2)", borderRadius: "15px", borderLeft: "5px solid #3b82f6", fontStyle: "italic", color: "#e2e8f0" }}>
+                            Ini seperti kamu ingin pergi ke Taman Bermain, tapi kakimu malah berjalan ke arah Sekolah. Pasti nggak sampai-sampai, kan?
+                        </p>
+
+                        <p>Jawabannya satu: <strong>Karena Anda sedang perang batin, jadinya tidak akan pernah sampai, salah arah.</strong></p>
+
+                        <p>Pikiran Anda ingin kaya, tapi hati Anda merasa kekurangan. Selama dua ini tidak akur, hidup akan terasa berat.</p>
+
+                        <p>Di sesi mingguan ini, kita akan mendamaikan perang itu. Kita akan <strong>"reset"</strong> perasaan Anda dari yang tadinya cemas mengejar target, menjadi tenang and pasrah.</p>
+
+                        <p style={{ fontSize: "18px", color: "#ffffff", fontWeight: "700" }}>
+                            Hasilnya? Beban di dada hilang seketika. Anda akan merasa bahagia seolah-olah impian itu sudah di tangan. Dan anehnya, saat Anda berhenti cemas, jalan sukses justru terbuka lebar dengan cepat.
+                        </p>
+                    </div>
                 </div>
 
                 {/* VSL Video Section */}
@@ -782,6 +838,21 @@ const WebinarPriaSusis = () => {
                         ))}
                     </div>
                 </div>
+
+                {/* Community Testimonials Grid */}
+                <section className="py-20 px-4 bg-black border-t border-gray-900 rounded-[30px] mt-10 text-center">
+                    <div className="max-w-7xl mx-auto">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">Testimoni Komunitas</h2>
+                        <p className="text-gray-400 mb-12">karena begitu banyak testimony, hanyak sebagian kami selipkan disini</p>
+                        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 text-left">
+                            {communityTestimonials.map((img, idx) => (
+                                <div key={idx} className="break-inside-avoid rounded-lg overflow-hidden border border-gray-800 hover:border-red-500 transition-colors bg-gray-900">
+                                    <img src={img} alt={`Testimoni ${idx + 1}`} className="w-full h-auto object-cover" loading="lazy" />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
                 {/* FOOTER */}
                 <div style={{ textAlign: "center", paddingBottom: "30px", color: "#64748b", fontSize: "12px", background: "transparent" }}>

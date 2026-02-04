@@ -30,7 +30,7 @@ const WebinarLeft = () => {
 
     try {
       const { data, error } = await (supabase as any)
-        .from('usa_webinar')
+        .from('user_webinar')
         .select('*')
         .eq('email', email.trim().toLowerCase())
         .order('paid_at', { ascending: false })
