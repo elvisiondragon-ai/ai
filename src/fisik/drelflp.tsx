@@ -33,6 +33,24 @@ export default function DrelfLanding() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-rose-50">
+      {/* Trust Banner */}
+      <div className="bg-amber-900 text-amber-50 py-2 px-4 overflow-hidden">
+        <div className="container mx-auto flex flex-wrap justify-center gap-4 md:gap-8 text-[10px] md:text-xs font-bold uppercase tracking-widest animate-pulse">
+          <div className="flex items-center gap-2">
+            <Shield className="w-3 h-3" />
+            Fast Delivery to Singapore from Indonesia
+          </div>
+          <div className="flex items-center gap-2">
+            <Shield className="w-3 h-3" />
+            Money Back Guarantee
+          </div>
+          <div className="flex items-center gap-2">
+            <Shield className="w-3 h-3" />
+            CS Support 24/7
+          </div>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-amber-100 via-champagne to-rose-100 pt-12 pb-20">
         <div className="absolute inset-0 opacity-10">
