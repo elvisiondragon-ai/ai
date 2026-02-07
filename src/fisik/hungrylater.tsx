@@ -15,6 +15,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Toaster } from '@/components/ui/toaster';
 import { Separator } from '@/components/ui/separator';
 import { getFbcFbpCookies, getClientIp } from '@/utils/fbpixel';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 export default function HungryLaterPaymentPage() {
   const navigate = useNavigate();
@@ -256,6 +257,7 @@ export default function HungryLaterPaymentPage() {
           </Button>
         </div>
       </div>
+      <WhatsAppButton message="Hi Renata, I have a question about HungryLater Weight Control..." />
     </div>
   );
 }

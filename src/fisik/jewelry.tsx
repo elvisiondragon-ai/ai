@@ -14,6 +14,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Toaster } from '@/components/ui/toaster';
 import { Separator } from '@/components/ui/separator';
 import { getFbcFbpCookies, getClientIp } from '@/utils/fbpixel';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 export default function JewelryPaymentPage() {
   const [searchParams] = useSearchParams();
@@ -614,14 +615,28 @@ Please confirm my order. Thank you.`;
           </Button>
         </div>
 
-        <footer className="mt-8 px-6 text-center pb-10">
-          <div className="pt-6 border-t border-slate-200">
-            <p className="text-slate-500 text-xs font-semibold">
-              © 2026 eL Royal Jewelry. All Rights Reserved.
-            </p>
-          </div>
-        </footer>
-      </div>
-    </div>
-  );
-}
+                <footer className="mt-8 px-6 text-center pb-10">
+
+                  <div className="pt-6 border-t border-slate-200">
+
+                    <p className="text-slate-500 text-xs font-semibold">
+
+                      © 2026 eL Royal Jewelry. All Rights Reserved.
+
+                    </p>
+
+                  </div>
+
+                </footer>
+
+              </div>
+
+              <WhatsAppButton message={`Hi Renata, I have a question about ${selectedProduct.name} jewelry...`} />
+
+            </div>
+
+          );
+
+        }
+
+        

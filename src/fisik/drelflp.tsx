@@ -5,6 +5,7 @@ import {
   trackPageViewEvent, 
   trackViewContentEvent 
 } from '@/utils/fbpixel';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 export default function DrelfLanding() {
   const PIXEL_ID = '1749197952320359';
@@ -403,6 +404,7 @@ export default function DrelfLanding() {
           </div>
         </div>
       </footer>
+      <WhatsAppButton message="Hi Renata, I have a question about Drelf Collagen Ritual..." />
     </div>
   );
 }
