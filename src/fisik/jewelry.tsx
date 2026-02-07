@@ -137,7 +137,7 @@ export default function JewelryPaymentPage() {
     return new Intl.NumberFormat('en-SG', {
       style: 'currency',
       currency: 'SGD',
-    }).format(amount);
+    }).format(amount) + ' SGD';
   };
 
   const handleCreatePayment = async () => {
@@ -417,6 +417,15 @@ Please confirm my order. Thank you.`;
                 </span>
             </div>
 
+            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg my-4">
+              <p className="text-blue-800 text-xs font-semibold flex items-center gap-2">
+                ✨ Premium Moissanite Specification:
+              </p>
+              <p className="text-blue-700 text-[11px] mt-1 leading-relaxed">
+                Our moissanite stones range from <strong>2.0 to 3.0 Carats</strong>. The exact carat weight is optimized based on your selected ring size to ensure the most elegant and balanced aesthetic for your piece.
+              </p>
+            </div>
+
             <Separator/>
             
             <div className="flex justify-between items-center">
@@ -435,7 +444,7 @@ Please confirm my order. Thank you.`;
             <Separator/>
 
             <div className="flex justify-between items-center">
-              <Label className="text-lg font-bold">Total Price</Label>
+              <Label className="text-lg font-bold">Total Price (SGD)</Label>
               <div className="text-right">
                   <span className="font-bold text-xl text-primary">{formatCurrency(totalAmount)}</span>
               </div>
