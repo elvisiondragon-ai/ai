@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import AddressEn from '@/components/address_en';
-import { ArrowLeft, CreditCard, User, Mail, Phone, Plus, Minus } from 'lucide-react';
+import { ArrowLeft, CreditCard, User, Mail, Phone, Plus, Minus, Globe } from 'lucide-react';
 import { FaWhatsapp, FaPaypal, FaBitcoin } from 'react-icons/fa';
 import { SiTether } from 'react-icons/si';
 import { useToast } from '@/hooks/use-toast';
@@ -62,6 +62,7 @@ export default function JewelryPaymentPage() {
   const [userEmail, setUserEmail] = useState(searchParams.get('email') || '');
   const [phoneNumber, setPhoneNumber] = useState(searchParams.get('phone') || '');
   const [userAddress, setUserAddress] = useState(searchParams.get('address') || '');
+  const [country, setCountry] = useState('');
   const [selectedProvince, setSelectedProvince] = useState(searchParams.get('region') || '');
   const [kota, setKota] = useState(searchParams.get('city') || '');
   const [kecamatan, setKecamatan] = useState(searchParams.get('district') || '');
@@ -71,7 +72,7 @@ export default function JewelryPaymentPage() {
   const [ringSize, setRingSize] = useState(searchParams.get('ringSize') || '');
   const [goldColor, setGoldColor] = useState(searchParams.get('goldColor') || '');
 
-  const fullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${kodePos}`;
+  const fullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${country}, ${kodePos}`;
   
   const getUnitPrice = () => selectedProduct.priceValue * (rates[currency as keyof typeof rates]);
   const totalAmount = getUnitPrice() * quantity;
@@ -152,7 +153,7 @@ export default function JewelryPaymentPage() {
   ];
 
   const handleCreatePayment = async () => {
-    if (!userName || !userEmail || !phoneNumber || !userAddress || !selectedProvince || !kota || !kecamatan || !kodePos || !selectedPaymentMethod || !ringSize || !goldColor) {
+    if (!userName || !userEmail || !phoneNumber || !userAddress || !country || !selectedProvince || !kota || !kecamatan || !kodePos || !selectedPaymentMethod || !ringSize || !goldColor) {
       toast({
         title: "Incomplete Data",
         description: "Please complete all shipping and product customization information.",
@@ -496,6 +497,10 @@ Please confirm my order. Thank you.`;
             <div>
               <Label htmlFor="phoneNumber"><Phone className="inline-block w-4 h-4 mr-2"/>Phone Number</Label>
               <Input id="phoneNumber" name="tel" type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="+65 8123 4567" required />
+            </div>
+            <div>
+              <Label htmlFor="country"><Globe className="inline-block w-4 h-4 mr-2"/>Country *</Label>
+              <Input id="country" name="country" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="e.g. Singapore, USA, Malaysia" required />
             </div>
             <AddressEn
               selectedProvince={selectedProvince}

@@ -36,7 +36,7 @@ const DisplayPage = () => {
       <main className="w-full max-w-md mt-10">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold tracking-tight mb-2 text-slate-900">eL Vision Group</h1>
-          <p className="text-slate-700 text-sm font-semibold uppercase tracking-widest">Effortless Wealthy Life</p>
+          <p className="text-slate-700 text-sm font-semibold uppercase tracking-widest">Global Hub</p>
         </div>
 
         <div className="space-y-3">
@@ -54,6 +54,82 @@ const DisplayPage = () => {
                   Drelf Collagen Ritual
                 </h2>
                 <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Bio-Acoustic Beauty</p>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-all" />
+          </div>
+
+          {/* eL Royal Jewelry */}
+          <div 
+            onClick={() => handleNavigation('/jewelry')}
+            className="group cursor-pointer border border-slate-200 bg-white hover:border-slate-400 hover:shadow-md transition-all duration-200 rounded-2xl p-4 flex justify-between items-center shadow-sm"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-slate-50 rounded-lg group-hover:bg-white transition-colors">
+                <Star className="w-5 h-5 text-amber-500" />
+              </div>
+              <div>
+                <h2 className={`font-bold text-lg bg-gradient-to-r from-amber-400 to-amber-700 bg-clip-text text-transparent`}>
+                  eL Royal Jewelry
+                </h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Premium Moissanite Collection</p>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-all" />
+          </div>
+
+          {/* FitFactor Herbal */}
+          <div 
+            onClick={() => handleNavigation('/fitfactor')}
+            className="group cursor-pointer border border-slate-200 bg-white hover:border-slate-400 hover:shadow-md transition-all duration-200 rounded-2xl p-4 flex justify-between items-center shadow-sm"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-slate-50 rounded-lg group-hover:bg-white transition-colors">
+                <Star className="w-5 h-5 text-emerald-500" />
+              </div>
+              <div>
+                <h2 className={`font-bold text-lg bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent`}>
+                  FitFactor Herbal
+                </h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Natural Circulation Support</p>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-all" />
+          </div>
+
+          {/* eL Royale Parfum */}
+          <div 
+            onClick={() => handleNavigation('/parfum')}
+            className="group cursor-pointer border border-slate-200 bg-white hover:border-slate-400 hover:shadow-md transition-all duration-200 rounded-2xl p-4 flex justify-between items-center shadow-sm"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-slate-50 rounded-lg group-hover:bg-white transition-colors">
+                <Star className="w-5 h-5 text-purple-500" />
+              </div>
+              <div>
+                <h2 className={`font-bold text-lg bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent`}>
+                  eL Royale Parfum
+                </h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Signature Scents</p>
+              </div>
+            </div>
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-all" />
+          </div>
+
+          {/* HungryLater */}
+          <div 
+            onClick={() => handleNavigation('/hungrylater')}
+            className="group cursor-pointer border border-slate-200 bg-white hover:border-slate-400 hover:shadow-md transition-all duration-200 rounded-2xl p-4 flex justify-between items-center shadow-sm"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-slate-50 rounded-lg group-hover:bg-white transition-colors">
+                <Star className="w-5 h-5 text-orange-500" />
+              </div>
+              <div>
+                <h2 className={`font-bold text-lg bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent`}>
+                  HungryLater
+                </h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Weight Control System</p>
               </div>
             </div>
             <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-all" />

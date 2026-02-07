@@ -8,7 +8,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import AddressEn from '@/components/address_en';
 import drelfImage from '@/assets/drelf.png';
 import qrisBcaImage from '@/assets/qrisbca.jpeg';
-import { ArrowLeft, Copy, CreditCard, User, Mail, Phone, Plus, Minus } from 'lucide-react';
+import { ArrowLeft, Copy, CreditCard, User, Mail, Phone, Plus, Minus, Globe } from 'lucide-react';
 import { FaWhatsapp, FaPaypal, FaBitcoin } from 'react-icons/fa';
 import { SiTether } from 'react-icons/si';
 import { useToast } from '@/hooks/use-toast';
@@ -60,12 +60,13 @@ export default function DrelfPaymentPage() {
   const [userEmail, setUserEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [userAddress, setUserAddress] = useState('');
+  const [country, setCountry] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('');
   const [kota, setKota] = useState('');
   const [kecamatan, setKecamatan] = useState('');
   const [kodePos, setKodePos] = useState('');
   
-  const fullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${kodePos}`;
+  const fullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${country}, ${kodePos}`;
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('PAYPAL');
   const [loading, setLoading] = useState(false);
@@ -153,7 +154,7 @@ export default function DrelfPaymentPage() {
   };
 
   const handleCreatePayment = async () => {
-    if (!userName || !userEmail || !phoneNumber || !userAddress || !selectedProvince || !kota || !kecamatan || !kodePos || !selectedPaymentMethod) {
+    if (!userName || !userEmail || !phoneNumber || !userAddress || !country || !selectedProvince || !kota || !kecamatan || !kodePos || !selectedPaymentMethod) {
       toast({
         title: "Incomplete Data",
         description: "Please complete all shipping information.",
@@ -590,6 +591,10 @@ export default function DrelfPaymentPage() {
             <div>
               <Label htmlFor="phoneNumber"><Phone className="inline-block w-4 h-4 mr-2"/>Phone Number</Label>
               <Input id="phoneNumber" name="tel" type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="+65 8123 4567" required />
+            </div>
+            <div>
+              <Label htmlFor="country"><Globe className="inline-block w-4 h-4 mr-2"/>Country *</Label>
+              <Input id="country" name="country" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="e.g. Singapore, USA, Malaysia" required />
             </div>
             <AddressEn
               selectedProvince={selectedProvince}
