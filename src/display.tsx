@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Folder, ChevronDown, ChevronRight, BookOpen, Star } from "lucide-react";
 
 const DisplayPage = () => {
   const navigate = useNavigate();
+  const [isEbookFolderOpen, setIsEbookFolderOpen] = useState(false);
   
-  const links = [
-    { title: "Webinar 22 Februari 2026", url: "/webpay", desc: "Special Webinar", gradient: "from-amber-600 to-orange-600" },
+  const ebookLinks = [
     { title: "Uang Panas System", url: "/ebook_uangpanas", desc: "Generate Income", gradient: "from-red-600 to-orange-600" },
     { title: "Feminine Magnetism", url: "/ebook_feminine", desc: "Activate Energy", gradient: "from-pink-600 to-rose-600" },
     { title: "ADHD Kids Skill Pack", url: "/ebook_adhd", desc: "Focus Skills", gradient: "from-blue-600 to-indigo-600" },
@@ -14,11 +16,6 @@ const DisplayPage = () => {
     { title: "Program Diet", url: "/ebook_langsing", desc: "Ideal Weight", gradient: "from-lime-600 to-green-600" },
     { title: "Pria Alpha System", url: "/ebook_percayadiri", desc: "Build Confidence", gradient: "from-red-600 to-orange-600" },
     { title: "Invest Tracker", url: "/ebook_tracker", desc: "Track Wealth", gradient: "from-blue-600 to-cyan-600" },
-    { title: "VIP 1:1 Coaching", url: "/vip_15jt", desc: "Exclusive Coaching", gradient: "from-amber-600 to-yellow-600" },
-    { title: "VIP ACCESS", url: "https://wa.me/62895325633487", desc: "Elite Content", gradient: "from-amber-500 to-orange-600" },
-    { title: "Ecosystem eL Vision", url: "https://wa.me/62895325633487", desc: "Full Ecosystem", gradient: "from-purple-600 to-indigo-600" },
-    { title: "Direct Support", url: "https://wa.me/62895325633487", desc: "WhatsApp Us", gradient: "from-green-600 to-teal-600" },
-    { title: "Founder Instagram", url: "https://www.instagram.com/elreyzandra", desc: "Follow Journey", gradient: "from-pink-600 to-purple-600" },
   ];
 
   const handleNavigation = (url: string) => {
@@ -39,28 +36,80 @@ const DisplayPage = () => {
       <main className="w-full max-w-md mt-10">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold tracking-tight mb-2 text-slate-900">eL Vision Group</h1>
-          <p className="text-slate-700 text-sm font-semibold">Effortless Wealthy Life</p>
+          <p className="text-slate-700 text-sm font-semibold uppercase tracking-widest">Effortless Wealthy Life</p>
         </div>
 
         <div className="space-y-3">
-          {links.map((link, index) => (
-            <div 
-              key={index}
-              onClick={() => handleNavigation(link.url)}
-              className="group cursor-pointer border border-slate-200 bg-white hover:border-slate-400 hover:shadow-md transition-all duration-200 rounded-xl p-4 flex justify-between items-center shadow-sm"
-            >
-              <div>
-                <h2 className={`font-bold text-lg bg-gradient-to-r ${link.gradient} bg-clip-text text-transparent`}>
-                  {link.title}
-                </h2>
-                <p className="text-xs text-slate-900 font-bold uppercase tracking-tight">{link.desc}</p>
+          {/* Drelf Ritual */}
+          <div 
+            onClick={() => handleNavigation('/drelflp')}
+            className="group cursor-pointer border border-slate-200 bg-white hover:border-slate-400 hover:shadow-md transition-all duration-200 rounded-2xl p-4 flex justify-between items-center shadow-sm"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-2 bg-slate-50 rounded-lg group-hover:bg-white transition-colors">
+                <Star className="w-5 h-5 text-[#BF953F]" />
               </div>
-              <span className="text-slate-400 group-hover:text-slate-700 group-hover:translate-x-1 transition-all">→</span>
+              <div>
+                <h2 className={`font-bold text-lg bg-gradient-to-r from-[#BF953F] to-[#B38728] bg-clip-text text-transparent`}>
+                  Drelf Collagen Ritual
+                </h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Bio-Acoustic Beauty</p>
+              </div>
             </div>
-          ))}
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-slate-600 transition-all" />
+          </div>
+
+          {/* Ebook Folder */}
+          <div className="pt-2">
+            <div 
+              onClick={() => setIsEbookFolderOpen(!isEbookFolderOpen)}
+              className={`cursor-pointer border-2 transition-all duration-300 rounded-2xl p-5 flex justify-between items-center shadow-md ${
+                isEbookFolderOpen 
+                ? 'border-blue-500 bg-blue-50/50 shadow-blue-100' 
+                : 'border-slate-200 bg-white hover:border-slate-300'
+              }`}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-3 rounded-xl transition-colors ${isEbookFolderOpen ? 'bg-blue-500 text-white' : 'bg-blue-50 text-blue-600'}`}>
+                  <Folder className="w-6 h-6" />
+                </div>
+                <div>
+                  <h2 className="font-extrabold text-xl text-slate-900">Ebook Collection</h2>
+                  <p className="text-[10px] text-blue-600 font-bold uppercase tracking-wider">
+                    {isEbookFolderOpen ? 'Tap to close folder' : `Explore ${ebookLinks.length} digital products`}
+                  </p>
+                </div>
+              </div>
+              {isEbookFolderOpen ? <ChevronDown className="w-5 h-5 text-blue-500" /> : <ChevronRight className="w-5 h-5 text-slate-400" />}
+            </div>
+
+            {/* Folder Contents */}
+            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isEbookFolderOpen ? 'max-h-[1000px] opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+              <div className="grid grid-cols-1 gap-2 pl-4 border-l-2 border-blue-100 ml-8">
+                {ebookLinks.map((link, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleNavigation(link.url)}
+                    className="group cursor-pointer border border-slate-100 bg-white hover:border-blue-200 hover:shadow-sm transition-all duration-200 rounded-xl p-3 flex justify-between items-center"
+                  >
+                    <div className="flex items-center gap-3">
+                      <BookOpen className="w-4 h-4 text-slate-400 group-hover:text-blue-500" />
+                      <div>
+                        <h3 className={`font-bold text-md bg-gradient-to-r ${link.gradient} bg-clip-text text-transparent`}>
+                          {link.title}
+                        </h3>
+                        <p className="text-[9px] text-slate-400 font-bold uppercase">{link.desc}</p>
+                      </div>
+                    </div>
+                    <ChevronRight className="w-3 h-3 text-slate-300 group-hover:text-blue-400" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <footer className="mt-16 text-center text-slate-600 text-xs font-medium">
+        <footer className="mt-16 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">
           <p>© 2026 eL Vision Group</p>
         </footer>
       </main>

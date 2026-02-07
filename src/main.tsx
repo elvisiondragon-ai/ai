@@ -53,6 +53,10 @@ const UsaEbookHealth = React.lazy(() => import('./usa/usa_ebookhealth.tsx'));
 const UsaEbookFeminine = React.lazy(() => import('./usa/usa_ebookfeminine.tsx'));
 const UsaPaypalFinish = React.lazy(() => import('./usa/usa_paypal_finish.tsx'));
 
+// Fisik
+const DrelfLP = React.lazy(() => import('./fisik/drelflp.tsx'));
+const DrelfPayment = React.lazy(() => import('./fisik/drelf.tsx'));
+
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-black text-white">
@@ -91,6 +95,9 @@ const App = () => {
         import('./usa/usa_ebookhealth.tsx');
         import('./usa/usa_ebookfeminine.tsx');
         import('./usa/usa_paypal_finish.tsx');
+        import('./fisik/drelflp.tsx');
+        import('./fisik/drelf.tsx');
+        import('./components/address_en.tsx');
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -139,6 +146,10 @@ const App = () => {
         <Route path="/usa_ebookhealth" element={<UsaEbookHealth />} />
         <Route path="/usa_ebookfeminine" element={<UsaEbookFeminine />} />
         <Route path="/usa_paypal_finish" element={<UsaPaypalFinish />} />
+
+        {/* Fisik */}
+        <Route path="/drelflp" element={<DrelfLP />} />
+        <Route path="/drelf" element={<DrelfPayment />} />
 
         <Route path="*" element={<NotFound />} />
     </Routes>

@@ -18,7 +18,9 @@ const WebList = () => {
   ];
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", padding: '20px', maxWidth: '600px', margin: '50px auto', backgroundColor: '#f8fafc', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+    <div style={{ position: 'relative' }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.95)', zIndex: 9999, display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', padding: '20px' }}>Maaf Pendaftaran Tutup</div>
+      <div style={{ fontFamily: "'Inter', sans-serif", padding: '20px', maxWidth: '600px', margin: '50px auto', backgroundColor: '#f8fafc', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
       <h1 style={{ color: '#1e293b', fontSize: '2em', marginBottom: '20px', textAlign: 'center' }}>Webinar List</h1>
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {webinarRoutes.map((route, index) => (
@@ -30,6 +32,7 @@ const WebList = () => {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };

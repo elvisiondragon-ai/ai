@@ -109,7 +109,9 @@ const AnalyticsDashboard = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", padding: '20px', maxWidth: '1000px', margin: '40px auto', color: '#1e293b' }}>
+    <div style={{ position: 'relative' }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.95)', zIndex: 9999, display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', padding: '20px' }}>Maaf Pendaftaran Tutup</div>
+      <div style={{ fontFamily: "'Inter', sans-serif", padding: '20px', maxWidth: '1000px', margin: '40px auto', color: '#1e293b' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
         <h1 style={{ fontSize: '2em', margin: 0 }}>eL Vision Analytics Dashboard</h1>
         <div style={{ display: 'flex', gap: '10px' }}>
@@ -224,6 +226,7 @@ const AnalyticsDashboard = () => {
 
       <div style={{ marginTop: '40px', textAlign: 'center' }}>
         <Link to="/" style={{ color: '#64748b', textDecoration: 'none' }}>← Back to Home</Link>
+      </div>
       </div>
     </div>
   );

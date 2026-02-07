@@ -471,6 +471,7 @@ const WebinarIbuOverthinking = () => {
 
     return (
       <div className="relative">
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.95)', zIndex: 9999, display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', padding: '20px' }}>Maaf Pendaftaran Tutup</div>
         <Toaster />
         {showPaymentInstructions && paymentData ? (
           <div className="min-h-screen bg-violet-50 pb-20 font-sans text-slate-900">
