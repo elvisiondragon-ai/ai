@@ -56,6 +56,7 @@ const UsaPaypalFinish = React.lazy(() => import('./usa/usa_paypal_finish.tsx'));
 // Fisik
 const DrelfLP = React.lazy(() => import('./fisik/drelflp.tsx'));
 const DrelfPayment = React.lazy(() => import('./fisik/drelf.tsx'));
+const JewelryPayment = React.lazy(() => import('./fisik/jewelry.tsx'));
 
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
@@ -97,6 +98,7 @@ const App = () => {
         import('./usa/usa_paypal_finish.tsx');
         import('./fisik/drelflp.tsx');
         import('./fisik/drelf.tsx');
+        import('./fisik/jewelry.tsx');
         import('./components/address_en.tsx');
     }, 2000);
     return () => clearTimeout(timer);
@@ -150,6 +152,7 @@ const App = () => {
         {/* Fisik */}
         <Route path="/drelflp" element={<DrelfLP />} />
         <Route path="/drelf" element={<DrelfPayment />} />
+        <Route path="/jewelry" element={<JewelryPayment />} />
 
         <Route path="*" element={<NotFound />} />
     </Routes>
