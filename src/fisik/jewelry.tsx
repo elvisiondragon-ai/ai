@@ -58,8 +58,28 @@ export default function JewelryPaymentPage() {
   const [selectedProduct, setSelectedProduct] = useState(initialProduct);
   const [quantity, setQuantity] = useState(1);
   
+  const [userName, setUserName] = useState(searchParams.get('name') || '');
+  const [userEmail, setUserEmail] = useState(searchParams.get('email') || '');
+  const [phoneNumber, setPhoneNumber] = useState(searchParams.get('phone') || '');
+  const [userAddress, setUserAddress] = useState(searchParams.get('address') || '');
+  const [selectedProvince, setSelectedProvince] = useState(searchParams.get('region') || '');
+  const [kota, setKota] = useState(searchParams.get('city') || '');
+  const [kecamatan, setKecamatan] = useState(searchParams.get('district') || '');
+  const [kodePos, setKodePos] = useState(searchParams.get('postalCode') || '');
+  
+  // Custom params for Jewelry
+  const [ringSize, setRingSize] = useState(searchParams.get('ringSize') || '');
+  const [goldColor, setGoldColor] = useState(searchParams.get('goldColor') || '');
+
+  const fullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${kodePos}`;
+  
   const getUnitPrice = () => selectedProduct.priceValue * (rates[currency as keyof typeof rates]);
   const totalAmount = getUnitPrice() * quantity;
+
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('PAYPAL');
+  const [loading, setLoading] = useState(false);
+  const [paymentData, setPaymentData] = useState<any>(null);
+  const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat(currency === 'SGD' ? 'en-SG' : currency === 'USD' ? 'en-US' : 'ms-MY', {
@@ -67,6 +87,116 @@ export default function JewelryPaymentPage() {
       currency: currency,
     }).format(amount) + ` ${currency}`;
   };
+
+  // Helper to send CAPI events
+  const sendCapiEvent = async (eventName: string, eventData: any, eventId?: string) => {    
+    try {
+      const { fbc, fbp } = getFbcFbpCookies();
+
+      const userData: any = {
+        client_user_agent: navigator.userAgent,
+        fbc,
+        fbp
+      };
+
+      if (userEmail) userData.em = userEmail;
+      if (userName) {
+          const nameParts = userName.trim().split(/\s+/);
+          userData.fn = nameParts[0];
+          if (nameParts.length > 1) userData.ln = nameParts.slice(1).join(' ');
+      }
+      if (phoneNumber) userData.ph = phoneNumber;
+      if (user?.id) userData.external_id = user.id;
+
+      await supabase.functions.invoke('capi-universal', {
+        body: {
+          pixelId: PIXEL_ID,
+          eventName,
+          customData: eventData,
+          eventId: eventId,
+          eventSourceUrl: window.location.href,
+          userData
+        }
+      });
+    } catch (err) {
+      console.error('CAPI Error:', err);
+    }
+  };
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user && !userName) {
+        setUserName(session.user.user_metadata.full_name || '');
+        setUserEmail(session.user.email || '');
+      }
+    });
+
+    // Track AddToCart on Cart Load (CAPI Only)
+    const eventId = `addtocart-jewelry-${Date.now()}`;
+    sendCapiEvent('AddToCart', {
+      content_name: selectedProduct.name,
+      value: getUnitPrice(),
+      currency: currency
+    }, eventId);
+  }, [currency, selectedProduct]);
+
+  const handleIncrement = () => setQuantity(prev => prev + 1);
+  const handleDecrement = () => setQuantity(prev => Math.max(1, prev - 1));
+  
+  const paymentMethods = [
+    { code: 'PAYPAL', name: 'PayPal', description: 'Pay with PayPal or Credit Card', icon: <FaPaypal className="text-[#003087]" /> },
+    { code: 'QRIS', name: 'QRIS', description: 'Pay with All Banks, DANA, OVO, SHOPEEPAY', icon: null },
+    { code: 'BITCOIN', name: 'Bitcoin (BTC)', description: 'Pay with Bitcoin', icon: <FaBitcoin className="text-[#F7931A]" /> },
+    { code: 'USDT', name: 'USDT (BEP20/ERC20)', description: 'Pay with USDT Stablecoin', icon: <SiTether className="text-[#26A17B]" /> },
+  ];
+
+  const handleCreatePayment = async () => {
+    if (!userName || !userEmail || !phoneNumber || !userAddress || !selectedProvince || !kota || !kecamatan || !kodePos || !selectedPaymentMethod || !ringSize || !goldColor) {
+      toast({
+        title: "Incomplete Data",
+        description: "Please complete all shipping and product customization information.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const currentFullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${kodePos}`;
+
+    setLoading(true);
+
+    // Track AddPaymentInfo (CAPI Only)
+    const apiEventId = `addpaymentinfo-jewelry-${Date.now()}`;
+    sendCapiEvent('AddPaymentInfo', {
+      content_name: selectedProduct.name,
+      value: totalAmount,
+      currency: currency
+    }, apiEventId);
+
+    const { fbc, fbp } = getFbcFbpCookies();
+    const clientIp = await getClientIp();
+
+    const manualMethods = ['BITCOIN', 'USDT'];
+
+    try {
+      const { data, error } = await supabase.functions.invoke('tripay-create-payment', {
+        body: {
+          subscriptionType: 'jewelry',
+          paymentMethod: selectedPaymentMethod,
+          userName: userName,
+          userEmail: userEmail,
+          phoneNumber: phoneNumber,
+          address: `Ring Size: ${ringSize}, Color: ${goldColor}. Address: ${currentFullAddress}`,
+          amount: totalAmount,
+          currency: currency,
+          quantity: quantity,
+          productName: `Jewelry: ${selectedProduct.name} (${goldColor}, Size ${ringSize})`,
+          userId: user?.id || null,
+          fbc,
+          fbp,
+          clientIp
+        }
+      });
 
       if (error || !data?.success) {
         if (manualMethods.includes(selectedPaymentMethod)) {
@@ -257,16 +387,23 @@ Please confirm my order. Thank you.`;
                 </h1>
             </div>
 
-            <div className="flex bg-secondary p-1 rounded-lg">
-                {['SGD', 'USD', 'MYR'].map((cur) => (
-                    <button
-                        key={cur}
-                        onClick={() => setCurrency(cur)}
-                        className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${currency === cur ? 'bg-background shadow-sm' : 'text-muted-foreground'}`}
-                    >
-                        {cur}
-                    </button>
-                ))}
+            <div className="flex flex-col items-end gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Choose Your Currency</span>
+                <div className="flex bg-secondary p-1 rounded-lg border border-gold/10">
+                    {['SGD', 'USD', 'MYR'].map((cur) => (
+                        <button
+                            key={cur}
+                            onClick={() => setCurrency(cur)}
+                            className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all duration-300 ${
+                                currency === cur 
+                                ? 'bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728] text-amber-950 shadow-md scale-105' 
+                                : 'text-muted-foreground hover:text-foreground'
+                            }`}
+                        >
+                            {cur}
+                        </button>
+                    ))}
+                </div>
             </div>
         </div>
       </div>
