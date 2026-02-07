@@ -531,6 +531,15 @@ export default function DrelfPaymentPage() {
                   <span className={`font-bold text-xl ${autoDiscount > 0 || shippingFee === 0 ? 'text-green-600' : 'text-primary'}`}>{formatCurrency(totalAmount)}</span>
               </div>
             </div>
+
+            <div className="mt-4 bg-amber-50 p-4 rounded-xl border border-amber-100 space-y-2">
+              <p className="text-amber-900 text-[10px] font-bold">
+                🛡️ BPOM RI 271282014100002 (HSA equivalent) by PT. SKA
+              </p>
+              <p className="text-amber-800 text-[10px] leading-relaxed">
+                One box contains 10 sachets. Recommended dosage: 1 sachet per day. 3 boxes for 1 month supply to keep your beauty outstanding naturally.
+              </p>
+            </div>
           </CardContent>
         </Card>
 
@@ -612,6 +621,14 @@ export default function DrelfPaymentPage() {
             {loading ? 'Processing...' : `Pay Now (${formatCurrency(totalAmount)})`}
           </Button>
         </div>
+
+        <footer className="mt-8 px-6 text-center pb-10">
+          <div className="pt-6 border-t border-slate-200">
+            <p className="text-slate-500 text-xs font-semibold">
+              © 2026 eL Vision Group. All Rights Reserved.
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
   );

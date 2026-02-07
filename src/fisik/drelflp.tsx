@@ -637,12 +637,9 @@ export default function DrelfLanding() {
             
             <div className="border-t border-gray-800 pt-8 text-center">
               <p className="text-gray-500 text-sm">
-                © 2024 DRELF.ID - All Rights Reserved. This is BPOM RI 271282014100002 (HSA equivalent) by PT. SKA.
+                © 2024 DRELF.ID - All Rights Reserved.
               </p>
-              <p className="text-gray-400 text-xs mt-2">
-                One box contains 10 sachets. Recommended dosage: 1 sachet per day. 3 boxes for 1 month supply to keep your beauty outstanding naturally.
-              </p>
-              <p className="text-gray-600 text-[10px] mt-2 italic">
+              <p className="text-gray-600 text-xs mt-2">
                 Results may vary depending on individual conditions. Consult a doctor if you have specific medical conditions.
               </p>
             </div>
