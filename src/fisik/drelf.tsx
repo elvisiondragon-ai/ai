@@ -81,32 +81,46 @@ export default function DrelfPaymentPage() {
 
 
   const productName = 'Drelf Collagen';
-  const unitPrice = 40; // 40 SGD
+  const unitPriceSGD = 60;
+  const bundlePriceSGD = 100; // for 3 boxes
 
+  const [currency, setCurrency] = useState('SGD');
   const [quantity, setQuantity] = useState(1);
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [userAddress, setUserAddress] = useState('');
-  const [selectedProvince, setSelectedProvince] = useState('');
-  const [kota, setKota] = useState('');
-  const [kecamatan, setKecamatan] = useState('');
-  const [kodePos, setKodePos] = useState('');
-  
-  const fullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${kodePos}`;
 
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('PAYPAL');
-  const [loading, setLoading] = useState(false);
-  const [paymentData, setPaymentData] = useState<any>(null);
-  const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
+  // Conversion rates (Fixed for consistency with backend)
+  const rates = {
+    'SGD': 1,
+    'USD': 0.75, // Approx 1 SGD = 0.75 USD
+    'MYR': 3.5   // Approx 1 SGD = 3.5 MYR
+  };
+
+  const getUnitPrice = () => unitPriceSGD * (rates[currency as keyof typeof rates]);
+  const getBundlePrice = () => bundlePriceSGD * (rates[currency as keyof typeof rates]);
 
   const handleIncrement = () => setQuantity(prev => prev + 1);
   const handleDecrement = () => setQuantity(prev => Math.max(1, prev - 1));
   
-  const originalTotalAmount = unitPrice * quantity;
-  const autoDiscount = quantity >= 3 ? 20 : 0;
-  const shippingFee = quantity >= 3 ? 0 : 10;
-  const totalAmount = originalTotalAmount - autoDiscount + shippingFee;
+  const calculateTotal = () => {
+    const unit = getUnitPrice();
+    const bundle = getBundlePrice();
+    
+    if (quantity >= 3) {
+        const bundles = Math.floor(quantity / 3);
+        const remaining = quantity % 3;
+        return (bundles * bundle) + (remaining * unit);
+    }
+    return quantity * unit;
+  };
+
+  const totalAmount = calculateTotal() + (quantity >= 3 ? 0 : (10 * rates[currency as keyof typeof rates]));
+  const shippingFee = quantity >= 3 ? 0 : (10 * rates[currency as keyof typeof rates]);
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat(currency === 'SGD' ? 'en-SG' : currency === 'USD' ? 'en-US' : 'ms-MY', {
+      style: 'currency',
+      currency: currency,
+    }).format(amount) + ` ${currency}`;
+  };
 
   const paymentMethods = [
     { code: 'PAYPAL', name: 'PayPal', description: 'Pay with PayPal or Credit Card', icon: <FaPaypal className="text-[#003087]" /> },
@@ -150,7 +164,7 @@ export default function DrelfPaymentPage() {
     sendCapiEvent('AddPaymentInfo', {
       content_name: productName,
       value: totalAmount,
-      currency: 'SGD'
+      currency: currency
     }, apiEventId);
 
     const { fbc, fbp } = getFbcFbpCookies();
@@ -172,9 +186,9 @@ export default function DrelfPaymentPage() {
           kecamatan: kecamatan,
           kodePos: kodePos,
           amount: totalAmount,
-          currency: 'SGD',
+          currency: currency,
           quantity: quantity,
-          productName: productName + (autoDiscount > 0 ? ' (Auto Discount Applied)' : '') + (shippingFee === 0 ? ' (Free Shipping)' : ''),
+          productName: productName + (quantity >= 3 ? ' (Promo Bundle Applied)' : '') + (shippingFee === 0 ? ' (Free Shipping)' : ''),
           userId: user?.id || null,
           fbc,
           fbp,
@@ -466,6 +480,18 @@ export default function DrelfPaymentPage() {
                     Checkout Drelf
                 </h1>
             </div>
+            
+            <div className="flex bg-secondary p-1 rounded-lg">
+                {['SGD', 'USD', 'MYR'].map((cur) => (
+                    <button
+                        key={cur}
+                        onClick={() => setCurrency(cur)}
+                        className={`px-3 py-1 text-xs font-bold rounded-md transition-all ${currency === cur ? 'bg-background shadow-sm' : 'text-muted-foreground'}`}
+                    >
+                        {cur}
+                    </button>
+                ))}
+            </div>
         </div>
       </div>
 
@@ -505,16 +531,9 @@ export default function DrelfPaymentPage() {
             <Separator/>
             
             <div className="flex justify-between items-center">
-              <Label className="text-muted-foreground">Total Pack</Label>
-              <span className="font-medium">{formatCurrency(originalTotalAmount)}</span>
+              <Label className="text-muted-foreground">Subtotal</Label>
+              <span className="font-medium">{formatCurrency(calculateTotal())}</span>
             </div>
-
-            {autoDiscount > 0 && (
-              <div className="flex justify-between items-center text-green-600">
-                <Label className="text-green-600">Bundle Discount</Label>
-                <span className="font-medium">-{formatCurrency(autoDiscount)}</span>
-              </div>
-            )}
 
             <div className="flex justify-between items-center">
               <Label className="text-muted-foreground">Shipping Fee</Label>

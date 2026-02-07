@@ -22,7 +22,7 @@ export default function DrelfLanding() {
     trackViewContentEvent({
       content_name: 'Drelf Collagen Ritual',
       content_category: 'Beauty',
-      value: 40.00,
+      value: 60.00,
       currency: 'SGD'
     }, viewContentEventId, PIXEL_ID);
   }, []);
@@ -310,7 +310,7 @@ export default function DrelfLanding() {
                 <div className="text-5xl mb-4">💰</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Massive Savings</h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Instead of losing $3,000 in skin value to stress, protect your entire month for just $40.
+                  Instead of losing $3,000 in skin value to stress, protect your entire month for just $60.
                 </p>
               </div>
             </div>
@@ -360,7 +360,7 @@ export default function DrelfLanding() {
                   name: "Michelle T.",
                   age: "28",
                   image: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/drelf/2.jpeg",
-                  text: "I've spent thousands on treatments. This $40 ritual did more for my skin than $500 facials. The combination of collagen + relaxation is revolutionary.",
+                  text: "I've spent thousands on treatments. This $60 ritual did more for my skin than $500 facials. The combination of collagen + relaxation is revolutionary.",
                   rating: 5
                 },
                 {
@@ -433,7 +433,7 @@ export default function DrelfLanding() {
                     <p className="text-gray-600">Try the ritual and experience the difference</p>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-bold text-amber-600">$40</div>
+                    <div className="text-3xl font-bold text-amber-600">$60</div>
                     <div className="text-sm text-gray-500">30-day supply</div>
                   </div>
                 </div>
@@ -449,7 +449,7 @@ export default function DrelfLanding() {
               <div className="relative bg-gradient-to-br from-amber-100 to-rose-100 p-1 rounded-2xl">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                   <div className="bg-gradient-to-r from-rose-500 to-rose-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">
-                    🔥 BEST VALUE - SAVE $20
+                    🔥 BEST VALUE - SAVE $80
                   </div>
                 </div>
                 <div className="bg-white p-8 rounded-2xl shadow-xl">
@@ -469,7 +469,7 @@ export default function DrelfLanding() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm text-gray-500 line-through">$120</div>
+                      <div className="text-sm text-gray-500 line-through">$180</div>
                       <div className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">$100</div>
                       <div className="text-sm text-gray-600">Best Value Bundle</div>
                     </div>
@@ -517,7 +517,7 @@ export default function DrelfLanding() {
                     onClick={() => window.location.href = '/drelf'}
                     className="w-full py-5 bg-gradient-to-r from-amber-500 via-amber-600 to-rose-500 text-white rounded-full font-bold text-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mb-4"
                   >
-                    Get Bundle & Save $20 <ChevronRight size={24} />
+                    Get Bundle & Save $80 <ChevronRight size={24} />
                   </button>
 
                   <div className="text-center space-y-2 text-sm text-gray-600">
