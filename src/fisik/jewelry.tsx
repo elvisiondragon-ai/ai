@@ -20,14 +20,34 @@ export default function JewelryPaymentPage() {
   const { toast } = useToast();
   const PIXEL_ID = 'CAPI_JEWELRY'; // Signals capi-universal to use JEWELRY_PIXEL_ID env
   
+  const products = [
+    {
+      id: 'innocence',
+      name: 'Innocence',
+      priceValue: 1000,
+      image: 'https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/eljewelry/innocence1.jpg'
+    },
+    {
+      id: 'full-moisanite',
+      name: 'Full moisanite',
+      priceValue: 1500,
+      image: 'https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/eljewelry/fulmoisanite1.png'
+    },
+    {
+      id: 'liontin-chanel',
+      name: 'Liontin Chanel',
+      priceValue: 1200,
+      image: 'https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/eljewelry/chanelliontin.jpg'
+    }
+  ];
+
   const [user, setUser] = useState<any>(null);
 
   // Get initial product info from URL params if available
-  const initialProductName = searchParams.get('product') || 'Jewelry';
-  const initialPrice = parseInt(searchParams.get('price') || '1000');
+  const initialProductName = searchParams.get('product') || products[0].name;
+  const initialProduct = products.find(p => initialProductName.includes(p.name)) || products[0];
 
-  const [productName] = useState(initialProductName);
-  const [unitPrice] = useState(initialPrice);
+  const [selectedProduct, setSelectedProduct] = useState(initialProduct);
   const [quantity, setQuantity] = useState(1);
   const [userName, setUserName] = useState(searchParams.get('name') || '');
   const [userEmail, setUserEmail] = useState(searchParams.get('email') || '');
@@ -43,6 +63,7 @@ export default function JewelryPaymentPage() {
   const [goldColor, setGoldColor] = useState(searchParams.get('goldColor') || '');
 
   const fullAddress = `${userAddress}, ${kecamatan}, ${kota}, ${selectedProvince}, ${kodePos}`;
+  const totalAmount = selectedProduct.priceValue * quantity;
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('PAYPAL');
   const [loading, setLoading] = useState(false);
@@ -96,8 +117,8 @@ export default function JewelryPaymentPage() {
     // Track AddToCart on Cart Load (CAPI Only)
     const eventId = `addtocart-jewelry-${Date.now()}`;
     sendCapiEvent('AddToCart', {
-      content_name: productName,
-      value: unitPrice,
+      content_name: selectedProduct.name,
+      value: selectedProduct.priceValue,
       currency: 'SGD'
     }, eventId);
   }, []);
@@ -105,8 +126,6 @@ export default function JewelryPaymentPage() {
   const handleIncrement = () => setQuantity(prev => prev + 1);
   const handleDecrement = () => setQuantity(prev => Math.max(1, prev - 1));
   
-  const totalAmount = unitPrice * quantity;
-
   const paymentMethods = [
     { code: 'PAYPAL', name: 'PayPal', description: 'Pay with PayPal or Credit Card', icon: <FaPaypal className="text-[#003087]" /> },
     { code: 'QRIS', name: 'QRIS', description: 'Pay with All Banks, DANA, OVO, SHOPEEPAY', icon: null },
@@ -138,7 +157,7 @@ export default function JewelryPaymentPage() {
     // Track AddPaymentInfo (CAPI Only)
     const apiEventId = `addpaymentinfo-jewelry-${Date.now()}`;
     sendCapiEvent('AddPaymentInfo', {
-      content_name: productName,
+      content_name: selectedProduct.name,
       value: totalAmount,
       currency: 'SGD'
     }, apiEventId);
@@ -160,7 +179,7 @@ export default function JewelryPaymentPage() {
           amount: totalAmount,
           currency: 'SGD',
           quantity: quantity,
-          productName: `Jewelry: ${productName} (${goldColor}, Size ${ringSize})`,
+          productName: `Jewelry: ${selectedProduct.name} (${goldColor}, Size ${ringSize})`,
           userId: user?.id || null,
           fbc,
           fbp,
@@ -238,7 +257,7 @@ Payment Details:
 - Email: ${userEmail}
 - Phone: ${phoneNumber}
 - Address: ${fullAddress}
-- Product: ${productName} (${goldColor}, Size ${ringSize})
+- Product: ${selectedProduct.name} (${goldColor}, Size ${ringSize})
 - Total: ${formatCurrency(totalAmount)}
 - Method: ${selectedPaymentMethod}
 - Ref TriPay: ${paymentData?.tripay_reference || 'N/A'}
@@ -365,9 +384,30 @@ Please confirm my order. Thank you.`;
             <CardTitle>1. Order Summary</CardTitle>
             </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex justify-between items-center">
-              <Label className="text-muted-foreground">Product</Label>
-              <span className="font-medium">{productName}</span>
+            <div className="flex justify-center mb-4">
+              <img 
+                src={selectedProduct.image} 
+                alt={selectedProduct.name} 
+                className="w-48 h-48 object-cover rounded-lg border border-gold/20"
+              />
+            </div>
+            <div>
+              <Label htmlFor="product">Product Model *</Label>
+              <select 
+                id="product" 
+                value={selectedProduct.name}
+                onChange={(e) => {
+                  const p = products.find(prod => prod.name === e.target.value);
+                  console.log('Selected product name:', e.target.value, 'Found product:', p);
+                  if (p) setSelectedProduct(p);
+                }}
+                className="w-full h-10 px-3 rounded-md border border-input bg-background mt-1"
+                required
+              >
+                {products.map(p => (
+                  <option key={p.id} value={p.name}>{p.name}</option>
+                ))}
+              </select>
             </div>
             
             <div className="flex justify-between items-center text-sm">
@@ -453,17 +493,35 @@ Please confirm my order. Thank you.`;
               <div>
                 <Label>Gold Color (18Ct Gold) *</Label>
                 <RadioGroup value={goldColor} onValueChange={setGoldColor} className="flex flex-wrap gap-4 mt-2">
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="Rose Gold" id="rose-gold" />
-                    <Label htmlFor="rose-gold">Rose Gold</Label>
+                  <div className="flex items-center space-x-3 cursor-pointer group">
+                    <RadioGroupItem value="Rose Gold" id="rose-gold" className="sr-only" />
+                    <Label 
+                      htmlFor="rose-gold" 
+                      className={`flex items-center gap-2 p-2 rounded-full border transition-all ${goldColor === 'Rose Gold' ? 'border-primary ring-2 ring-primary/20 bg-primary/5' : 'border-transparent'}`}
+                    >
+                      <span className="w-6 h-6 rounded-full" style={{ background: 'linear-gradient(135deg, #e5b2ca 0%, #703642 100%)' }}></span>
+                      <span className="text-sm font-medium">Rose Gold</span>
+                    </Label>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="Yellow Gold" id="yellow-gold" />
-                    <Label htmlFor="yellow-gold">Yellow Gold</Label>
+                  <div className="flex items-center space-x-3 cursor-pointer group">
+                    <RadioGroupItem value="Yellow Gold" id="yellow-gold" className="sr-only" />
+                    <Label 
+                      htmlFor="yellow-gold" 
+                      className={`flex items-center gap-2 p-2 rounded-full border transition-all ${goldColor === 'Yellow Gold' ? 'border-primary ring-2 ring-primary/20 bg-primary/5' : 'border-transparent'}`}
+                    >
+                      <span className="w-6 h-6 rounded-full" style={{ background: 'linear-gradient(135deg, #ffd700 0%, #b8860b 100%)' }}></span>
+                      <span className="text-sm font-medium">Yellow Gold</span>
+                    </Label>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="White Gold" id="white-gold" />
-                    <Label htmlFor="white-gold">White Gold</Label>
+                  <div className="flex items-center space-x-3 cursor-pointer group">
+                    <RadioGroupItem value="White Gold" id="white-gold" className="sr-only" />
+                    <Label 
+                      htmlFor="white-gold" 
+                      className={`flex items-center gap-2 p-2 rounded-full border transition-all ${goldColor === 'White Gold' ? 'border-primary ring-2 ring-primary/20 bg-primary/5' : 'border-transparent'}`}
+                    >
+                      <span className="w-6 h-6 rounded-full" style={{ background: 'linear-gradient(135deg, #e5e5e5 0%, #a0a0a0 100%)' }}></span>
+                      <span className="text-sm font-medium">White Gold</span>
+                    </Label>
                   </div>
                 </RadioGroup>
               </div>
