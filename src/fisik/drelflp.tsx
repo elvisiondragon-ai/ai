@@ -449,7 +449,7 @@ export default function DrelfLanding() {
               <div className="relative bg-gradient-to-br from-amber-100 to-rose-100 p-1 rounded-2xl">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                   <div className="bg-gradient-to-r from-rose-500 to-rose-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">
-                    🔥 BEST VALUE - SAVE $30
+                    🔥 BEST VALUE - SAVE $20
                   </div>
                 </div>
                 <div className="bg-white p-8 rounded-2xl shadow-xl">
@@ -460,7 +460,7 @@ export default function DrelfLanding() {
                       <div className="space-y-2">
                         <div className="flex items-center gap-2 text-green-700">
                           <Shield className="w-5 h-5" />
-                          <span className="font-semibold">Save $30 instantly</span>
+                          <span className="font-semibold">Total $100 + FREE Shipping</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-700">
                           <Heart className="w-5 h-5" />
@@ -470,8 +470,8 @@ export default function DrelfLanding() {
                     </div>
                     <div className="text-right">
                       <div className="text-sm text-gray-500 line-through">$120</div>
-                      <div className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">$90</div>
-                      <div className="text-sm text-gray-600">Just $30/box</div>
+                      <div className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">$100</div>
+                      <div className="text-sm text-gray-600">Best Value Bundle</div>
                     </div>
                   </div>
 
@@ -517,7 +517,7 @@ export default function DrelfLanding() {
                     onClick={() => window.location.href = '/drelf'}
                     className="w-full py-5 bg-gradient-to-r from-amber-500 via-amber-600 to-rose-500 text-white rounded-full font-bold text-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mb-4"
                   >
-                    Get Bundle & Save $30 <ChevronRight size={24} />
+                    Get Bundle & Save $20 <ChevronRight size={24} />
                   </button>
 
                   <div className="text-center space-y-2 text-sm text-gray-600">
