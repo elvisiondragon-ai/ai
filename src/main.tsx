@@ -52,6 +52,9 @@ const UsaEbookHealth = React.lazy(() => import('./usa/usa_ebookhealth.tsx'));
 const UsaEbookFeminine = React.lazy(() => import('./usa/usa_ebookfeminine.tsx'));
 const UsaPaypalFinish = React.lazy(() => import('./usa/usa_paypal_finish.tsx'));
 
+// SG
+const SgElvision = React.lazy(() => import('./sg/sg_elvision.tsx'));
+
 // Fisik
 const DrelfLP = React.lazy(() => import('./fisik/drelflp.tsx'));
 const DrelfPayment = React.lazy(() => import('./fisik/drelf.tsx'));
@@ -98,6 +101,7 @@ const App = () => {
         import('./usa/usa_ebookhealth.tsx');
         import('./usa/usa_ebookfeminine.tsx');
         import('./usa/usa_paypal_finish.tsx');
+        import('./sg/sg_elvision.tsx');
         import('./fisik/drelflp.tsx');
         import('./fisik/drelf.tsx');
         import('./fisik/jewelry.tsx');
@@ -153,6 +157,9 @@ const App = () => {
         <Route path="/usa_ebookhealth" element={<UsaEbookHealth />} />
         <Route path="/usa_ebookfeminine" element={<UsaEbookFeminine />} />
         <Route path="/usa_paypal_finish" element={<UsaPaypalFinish />} />
+
+        {/* SG */}
+        <Route path="/sg_elvision" element={<SgElvision />} />
 
         {/* Fisik */}
         <Route path="/drelflp" element={<DrelfLP />} />
