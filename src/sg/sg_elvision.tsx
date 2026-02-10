@@ -42,6 +42,7 @@ export default function ELVisionLanding() {
   const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState<any>(null);
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
+  const [currentPrice, setCurrentPrice] = useState<number>(47);
   
   // Dynamic Product Information
   const [productNameBackend, setProductNameBackend] = useState('sg_elvision_en');
@@ -50,23 +51,29 @@ export default function ELVisionLanding() {
   // Handle URL Parameters
   useEffect(() => {
     const search = window.location.search;
-    if (search.includes('malay')) {
+    if (search.includes('sg27')) {
+      setLanguage('en');
+      setCurrency('SGD');
+      setCurrentPrice(27);
+      setProductNameBackend('sg_elvision_en_27');
+      setDisplayProductName('Ebook eL Vision (English Edition - Special Offer)');
+    } else if (search.includes('malay')) {
       setLanguage('ms');
       setCurrency('MYR');
+      setCurrentPrice(89);
       setProductNameBackend('sg_elvision_malay');
       setDisplayProductName('Ebook eL Vision (Malay Edition)');
     } else if (search.includes('en')) {
       setLanguage('en');
       setCurrency('SGD');
+      setCurrentPrice(47);
       setProductNameBackend('sg_elvision_en');
       setDisplayProductName('Ebook eL Vision (English Edition)');
     }
   }, []);
 
   const getPrice = () => {
-    if (currency === 'SGD') return 47.00;
-    if (currency === 'MYR') return 89.00;
-    return 47.00;
+    return currentPrice;
   };
 
   const productPrice = getPrice();
@@ -319,11 +326,13 @@ export default function ELVisionLanding() {
     if (language === 'en') {
       setLanguage('ms');
       setCurrency('MYR');
+      setCurrentPrice(89);
       setProductNameBackend('sg_elvision_malay');
       setDisplayProductName('Ebook eL Vision (Malay Edition)');
     } else {
       setLanguage('en');
       setCurrency('SGD');
+      setCurrentPrice(47);
       setProductNameBackend('sg_elvision_en');
       setDisplayProductName('Ebook eL Vision (English Edition)');
     }
@@ -334,7 +343,7 @@ export default function ELVisionLanding() {
   };
 
   const t = content[language];
-  const dynamicCta = `${t.cta} (${currency === 'SGD' ? '$' : 'RM'} ${t.pricing.current})`;
+  const dynamicCta = `${t.cta} (${currency === 'SGD' ? '$' : 'RM'} ${currentPrice})`;
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
@@ -465,7 +474,7 @@ export default function ELVisionLanding() {
                       </span>
                   </div>
                   <div className="text-5xl font-black text-white mb-4">
-                      {currency === 'SGD' ? '$' : 'RM'} {t.pricing.current}
+                      {currency === 'SGD' ? '$' : 'RM'} {currentPrice}
                   </div>
                   <button 
                     onClick={() => document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' })}
@@ -871,7 +880,7 @@ export default function ELVisionLanding() {
                   <div className="text-center p-8 bg-purple-600/10 rounded-2xl border border-purple-500/50">
                       <div className="text-purple-300 uppercase tracking-widest font-bold mb-2">Special Price Today</div>
                       <div className="text-6xl font-black text-white mb-6 tracking-tighter">
-                          {currency === 'SGD' ? '$' : 'RM'} {t.pricing.current}
+                          {currency === 'SGD' ? '$' : 'RM'} {currentPrice}
                       </div>
                       <div className="bg-red-500 text-white px-4 py-2 rounded-full inline-block font-bold text-sm animate-bounce">
                           {t.pricing.reason}
