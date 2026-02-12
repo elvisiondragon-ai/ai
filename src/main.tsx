@@ -55,14 +55,6 @@ const UsaPaypalFinish = React.lazy(() => import('./usa/usa_paypal_finish.tsx'));
 // SG
 const SgElvision = React.lazy(() => import('./sg/sg_elvision.tsx'));
 
-// Fisik
-const DrelfLP = React.lazy(() => import('./fisik/drelflp.tsx'));
-const DrelfPayment = React.lazy(() => import('./fisik/drelf.tsx'));
-const JewelryPayment = React.lazy(() => import('./fisik/jewelry.tsx'));
-const FitFactorPayment = React.lazy(() => import('./fisik/fitfactor.tsx'));
-const ParfumPayment = React.lazy(() => import('./fisik/parfum.tsx'));
-const HungryLaterPayment = React.lazy(() => import('./fisik/hungrylater.tsx'));
-
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-black text-white">
@@ -102,12 +94,6 @@ const App = () => {
         import('./usa/usa_ebookfeminine.tsx');
         import('./usa/usa_paypal_finish.tsx');
         import('./sg/sg_elvision.tsx');
-        import('./fisik/drelflp.tsx');
-        import('./fisik/drelf.tsx');
-        import('./fisik/jewelry.tsx');
-        import('./fisik/fitfactor.tsx');
-        import('./fisik/parfum.tsx');
-        import('./fisik/hungrylater.tsx');
         import('./components/address_en.tsx');
     }, 2000);
     return () => clearTimeout(timer);
@@ -160,14 +146,6 @@ const App = () => {
 
         {/* SG */}
         <Route path="/sg_elvision" element={<SgElvision />} />
-
-        {/* Fisik */}
-        <Route path="/drelflp" element={<DrelfLP />} />
-        <Route path="/drelf" element={<DrelfPayment />} />
-        <Route path="/jewelry" element={<JewelryPayment />} />
-        <Route path="/fitfactor" element={<FitFactorPayment />} />
-        <Route path="/parfum" element={<ParfumPayment />} />
-        <Route path="/hungrylater" element={<HungryLaterPayment />} />
 
         <Route path="*" element={<NotFound />} />
     </Routes>
