@@ -484,7 +484,7 @@ const ArifEbookLanding = () => {
                   webkit-playsinline="true"
                   poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/arifweb/arif2.jpeg"
                 >
-                  <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/arifweb/arif2.mp4" type="video/mp4" />
+                  <source src="https://www.youtube.com/shorts/9L28-k3FAig" type="video/mp4" />
                   Browser Anda tidak mendukung pemutaran video.
                 </video>
               </div>
@@ -857,7 +857,7 @@ const ArifEbookLanding = () => {
                 webkit-playsinline="true"
                 poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/arifweb/arif1.jpeg"
               >
-                <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/arifweb/arif1.mp4" type="video/mp4" />
+                <source src="https://www.youtube.com/shorts/9L28-k3FAig" type="video/mp4" />
                 Browser Anda tidak mendukung pemutaran video.
               </video>
             </div>

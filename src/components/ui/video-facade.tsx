@@ -59,13 +59,29 @@ export function VideoFacade({ src, poster, className = "", ariaLabel = "Play vid
     });
     
     // Use a small timeout to ensure the video element is ready if it was hidden
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.play().catch(err => {
-          console.error("Video play failed:", err);
-        });
-      }
-    }, 0);
+    if (!isYouTube) {
+      setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(err => {
+            console.error("Video play failed:", err);
+          });
+        }
+      }, 0);
+    }
+  };
+
+  const isYouTube = src.includes('youtube.com') || src.includes('youtu.be');
+  const getEmbedUrl = (url: string) => {
+    if (url.includes('shorts/')) {
+      return url.replace('shorts/', 'embed/');
+    }
+    if (url.includes('watch?v=')) {
+      return url.replace('watch?v=', 'embed/');
+    }
+    if (url.includes('youtu.be/')) {
+      return url.replace('youtu.be/', 'www.youtube.com/embed/');
+    }
+    return url;
   };
 
   const handleTimeUpdate = () => {
@@ -128,18 +144,29 @@ export function VideoFacade({ src, poster, className = "", ariaLabel = "Play vid
         </div>
       ) : null}
 
-      <video
-        ref={videoRef}
-        className="w-full h-full object-cover"
-        controls
-        playsInline
-        preload="metadata"
-        poster={poster}
-        onTimeUpdate={handleTimeUpdate}
-      >
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {isPlaying && isYouTube ? (
+        <iframe
+          src={`${getEmbedUrl(src)}?autoplay=1`}
+          className="w-full h-full absolute inset-0"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          controls
+          playsInline
+          preload="metadata"
+          poster={poster}
+          onTimeUpdate={handleTimeUpdate}
+        >
+          <source src={src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
     </div>
   );
 }

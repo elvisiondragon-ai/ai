@@ -81,49 +81,49 @@ export default function ELVision15K() {
     {
       name: "Agus Mulyadi, SH., MH.",
       title: "Kepala Intelijen Pangandaran",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4",
+      videoUrl: "https://www.youtube.com/shorts/kVgfxHX_GeY",
       thumbnail: "🎖️"
     },
     {
       name: "Dr. Gumilar",
       title: "Hipnoterapist & Pemimpin Yayasan",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4",
+      videoUrl: "https://www.youtube.com/shorts/U6NsL9RL9rY",
       thumbnail: "⚕️"
     },
     {
       name: "Habib Umar",
       title: "Pemimpin Pondok Pesantren Atsaqofah",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/HABIBVIDEO_WA.mp4",
+      videoUrl: "https://www.youtube.com/shorts/jD6XlkCL4sI",
       thumbnail: "🕌"
     },
     {
       name: "Umi Jamilah",
       title: "Pemimpin Yayasan",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/UMIVIDEO_WA.mp4",
+      videoUrl: "https://www.youtube.com/shorts/1ZNFxjPdFr8",
       thumbnail: "👳‍♀️"
     },
     {
       name: "Felicia",
       title: "Pengusaha",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/FELVIDEO_WA.mp4",
+      videoUrl: "https://www.youtube.com/shorts/Rs_UDalr8q8",
       thumbnail: "👩‍💼"
     },
     {
       name: "Lena",
       title: "Klien eL Vision",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/LENA_WA.mp4",
+      videoUrl: "https://www.youtube.com/shorts/-9u7v6vT5ds",
       thumbnail: "🌟"
     },
     {
       name: "Vio",
       title: "Klien eL Vision",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4",
+      videoUrl: "https://www.youtube.com/shorts/cPwGC0NW8s4",
       thumbnail: "✨"
     },
     {
       name: "Arif",
       title: "Klien eL Vision",
-      videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif.mp4",
+      videoUrl: "https://www.youtube.com/shorts/-xsxQ6cUP7M",
       thumbnail: "👨‍💻"
     }
   ];
@@ -570,7 +570,7 @@ export default function ELVision15K() {
                 playsInline
                 webkit-playsinline="true"
               >
-                <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif.mp4" type="video/mp4" />
+                <source src="https://www.youtube.com/shorts/-xsxQ6cUP7M" type="video/mp4" />
                 Browser Anda tidak mendukung pemutaran video.
               </video>
 

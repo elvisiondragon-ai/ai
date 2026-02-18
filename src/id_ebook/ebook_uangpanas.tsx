@@ -222,21 +222,21 @@ export default function UangPanasLanding() {
     {
       name: "Habib Umar",
       title: "Ustadz",
-      video: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.mp4",
+      video: "https://www.youtube.com/shorts/jD6XlkCL4sI",
       poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.jpg",
       quote: "Awalnya ragu, tapi setelah dengar audionya, rezeki datang dari arah tak disangka."
     },
     {
       name: "VIO",
       title: "Anak Muda",
-      video: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio.mp4",
+      video: "https://www.youtube.com/shorts/cPwGC0NW8s4",
       poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio.jpg",
       quote: "Modulnya gampang banget, tinggal copy paste. Sehari bisa dapat 300rb santai."
     },
     {
       name: "Dr Gumilar",
       title: "Hipnoterapis Certified",
-      video: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.mp4",
+      video: "https://www.youtube.com/shorts/U6NsL9RL9rY",
       poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.jpg",
       quote: "Marketplace potongan gede, pindah ke sini malah lebih cuan tanpa stok barang."
     }

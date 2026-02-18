@@ -1,3 +1,21 @@
+const APP_VERSION = '2026.02.18.01'; // Force update
+
+if (localStorage.getItem('v_cache') !== APP_VERSION) {
+  // 1. Clear Service Workers
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+  }
+
+  // 2. Clear Caches
+  if ('caches' in window) {
+    caches.keys().then(names => names.forEach(n => caches.delete(n)));
+  }
+
+  // 3. Update version and Hard Reload
+  localStorage.setItem('v_cache', APP_VERSION);
+  setTimeout(() => window.location.reload(), 500);
+}
+
 import ReactDOM from 'react-dom/client'
 import React, { Suspense } from 'react'
 import './index.css'
@@ -23,24 +41,6 @@ const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.ts
 const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
 const Proteam = React.lazy(() => import('./proteam.tsx'));
 const IntroLanding = React.lazy(() => import('./intro.tsx'));
-const WebinarIbu = React.lazy(() => import('./web/webinar_ibu.tsx'));
-const WebinarBapak = React.lazy(() => import('./web/webinar_bapak.tsx'));
-const WebinarIbuJodoh = React.lazy(() => import('./web/webinar_ibujodoh.tsx'));
-const WebinarAnakMandiri = React.lazy(() => import('./web/webinar_anakmandiri.tsx'));
-const WebinarOrtuSakit = React.lazy(() => import('./web/webinar_ortusakit.tsx'));
-const WebinarOrtuAnak = React.lazy(() => import('./web/webinar_ortuanak.tsx'));
-const WebinarIbuIstri = React.lazy(() => import('./web/webinar_ibuistri.tsx'));
-const WebinarPriaSusis = React.lazy(() => import('./web/webinar_priasusis.tsx'));
-const WebinarPriaSingle = React.lazy(() => import('./web/webinar_priasingle.tsx'));
-const WebinarBurnout = React.lazy(() => import('./web/webinar_burnout.tsx'));
-const WebinarSopanMandiri = React.lazy(() => import('./web/webinar_sopanmandiri.tsx'));
-const AnalyticsDashboard = React.lazy(() => import('./web/analytics.tsx'));
-const WebList = React.lazy(() => import('./web/weblist.tsx'));
-const WebPay = React.lazy(() => import('./web/webpay.tsx'));
-const WebinarLeft = React.lazy(() => import('./web/webinar_left.tsx'));
-const UsaWebHealth = React.lazy(() => import('./usa/usa_webhealth.tsx'));
-const UsaWebFinance = React.lazy(() => import('./usa/usa_webfinance.tsx'));
-const UsaWebRelationship = React.lazy(() => import('./usa/usa_webrelationship.tsx'));
 
 // Moved from elvisiongroup
 const UsaEbookSlim = React.lazy(() => import('./usa/usa_ebookslim.tsx'));
@@ -55,6 +55,9 @@ const UsaPaypalFinish = React.lazy(() => import('./usa/usa_paypal_finish.tsx'));
 // SG
 const SgElvision = React.lazy(() => import('./sg/sg_elvision.tsx'));
 
+// Audio Product
+const AudioProductPayment = React.lazy(() => import('./checkout/audio_product.tsx'));
+
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-black text-white">
@@ -68,23 +71,6 @@ const App = () => {
     const timer = setTimeout(() => {
         import('./id_ebook/ebook_elvision.tsx');
         import('./id_ebook/vip_15jt.tsx');
-        import('./web/webinar_ibu.tsx');
-        import('./web/webinar_bapak.tsx');
-        import('./web/webinar_ibujodoh.tsx');
-        import('./web/webinar_anakmandiri.tsx');
-        import('./web/webinar_ortusakit.tsx');
-        import('./web/webinar_ortuanak.tsx');
-        import('./web/webinar_ibuistri.tsx');
-        import('./web/webinar_priasusis.tsx');
-        import('./web/webinar_priasingle.tsx');
-        import('./web/webinar_burnout.tsx');
-        import('./web/webinar_sopanmandiri.tsx');
-        import('./web/weblist.tsx');
-        import('./web/webpay.tsx');
-        import('./web/webinar_left.tsx');
-        import('./usa/usa_webhealth.tsx');
-        import('./usa/usa_webfinance.tsx');
-        import('./usa/usa_webrelationship.tsx');
         import('./usa/usa_ebookslim.tsx');
         import('./usa/usa_3000.tsx');
         import('./usa/usa_pay3000.tsx');
@@ -94,6 +80,7 @@ const App = () => {
         import('./usa/usa_ebookfeminine.tsx');
         import('./usa/usa_paypal_finish.tsx');
         import('./sg/sg_elvision.tsx');
+        import('./checkout/audio_product.tsx');
         import('./components/address_en.tsx');
     }, 2000);
     return () => clearTimeout(timer);
@@ -115,24 +102,6 @@ const App = () => {
         <Route path="/ebook_tracker" element={<EbookTrackerLanding />} />
         <Route path="/vip_15jt" element={<ELVision15K />} />
         <Route path="/proteam" element={<Proteam />} />
-        <Route path="/webinar_ibu" element={<WebinarIbu />} />
-        <Route path="/webinar_bapak" element={<WebinarBapak />} />
-                <Route path="/webinar_ibujodoh" element={<WebinarIbuJodoh />} />
-                <Route path="/webinar_anakmandiri" element={<WebinarAnakMandiri />} />
-        <Route path="/webinar_ortusakit" element={<WebinarOrtuSakit />} />
-        <Route path="/webinar_ortuanak" element={<WebinarOrtuAnak />} />
-        <Route path="/webinar_ibuistri" element={<WebinarIbuIstri />} />
-        <Route path="/webinar_priasusis" element={<WebinarPriaSusis />} />
-        <Route path="/webinar_priasingle" element={<WebinarPriaSingle />} />
-        <Route path="/webinar_burnout" element={<WebinarBurnout />} />
-        <Route path="/webinar_sopanmandiri" element={<WebinarSopanMandiri />} />
-        <Route path="/analytics" element={<AnalyticsDashboard />} />
-        <Route path="/weblist" element={<WebList />} />
-        <Route path="/webpay" element={<WebPay />} />
-        <Route path="/webinarleft" element={<WebinarLeft />} />
-        <Route path="/usa_webhealth" element={<UsaWebHealth />} />
-        <Route path="/usa_webfinance" element={<UsaWebFinance />} />
-        <Route path="/usa_webrelationship" element={<UsaWebRelationship />} />
         
         {/* Moved from elvisiongroup */}
         <Route path="/usa_ebookslim" element={<UsaEbookSlim />} />
@@ -146,6 +115,9 @@ const App = () => {
 
         {/* SG */}
         <Route path="/sg_elvision" element={<SgElvision />} />
+
+        {/* Audio */}
+        <Route path="/audio" element={<AudioProductPayment />} />
 
         <Route path="*" element={<NotFound />} />
     </Routes>
