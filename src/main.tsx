@@ -41,6 +41,7 @@ const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.ts
 const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
 const Proteam = React.lazy(() => import('./proteam.tsx'));
 const IntroLanding = React.lazy(() => import('./intro.tsx'));
+const Rajaranjang = React.lazy(() => import('./rajaranjang/rajaranjang.tsx'));
 
 // Moved from elvisiongroup
 const UsaEbookSlim = React.lazy(() => import('./usa/usa_ebookslim.tsx'));
@@ -102,6 +103,7 @@ const App = () => {
         <Route path="/ebook_tracker" element={<EbookTrackerLanding />} />
         <Route path="/vip_15jt" element={<ELVision15K />} />
         <Route path="/proteam" element={<Proteam />} />
+        <Route path="/rajaranjang" element={<Rajaranjang />} />
         
         {/* Moved from elvisiongroup */}
         <Route path="/usa_ebookslim" element={<UsaEbookSlim />} />
