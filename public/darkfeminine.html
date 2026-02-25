@@ -1,0 +1,1043 @@
+< !DOCTYPE html >
+    <html lang="id">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+            <title>Dark Feminine — 52 Jurus Rahasia</title>
+            <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+            <style>
+                :root {
+                    --bg - primary: #0A0612;
+                --bg-card: #1A0A2E;
+                --bg-section: #120820;
+                --purple: #8B5CF6;
+                --purple-light: #A78BFA;
+                --purple-glow: rgba(139,92,246,0.15);
+                --gold: #C9991A;
+                --gold-light: #F0C84A;
+                --gold-dark: #9A7010;
+                --cream: #EEE5C8;
+                --muted: #7D6B9E;
+                --white: #FFFFFF;
+                --red: #EF4444;
+                --green-wa: #25D366;
+                --burgundy: #800020;
+                --font-display: 'Cormorant Garamond', Georgia, serif;
+                --font-body: 'DM Sans', system-ui, sans-serif;
+}
+                *,*::before,*::after{box - sizing:border-box;margin:0;padding:0;}
+                html{scroll - behavior:smooth;}
+                body{
+                    background:var(--bg-primary);
+                color:var(--cream);
+                font-family:var(--font-body);
+                font-size:17px;
+                line-height:1.75;
+                overflow-x:hidden;
+                position:relative;
+}
+                body::before{
+                    content:'';
+                position:fixed;inset:0;
+                background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+                pointer-events:none;z-index:9999;opacity:0.4;
+}
+                .wrap{max - width:560px;margin:0 auto;padding:0 22px;}
+
+                /* SCROLL PROGRESS */
+                #progress-bar{
+                    position:fixed;top:0;left:0;height:3px;width:0%;
+                background:linear-gradient(90deg,var(--purple),var(--gold-light));
+                z-index:10001;transition:width 0.1s;
+}
+
+                /* URGENCY BAR */
+                #urgency-bar{
+                    position:sticky;top:0;z-index:10000;
+                background:linear-gradient(90deg,#4C1D95,#7C3AED,#4C1D95);
+                background-size:200% 100%;
+                animation:urgencyMove 4s linear infinite;
+                text-align:center;padding:11px 22px;
+                font-size:14px;font-weight:700;letter-spacing:0.04em;color:#fff;
+}
+                @keyframes urgencyMove{0 % { background- position:0% 0%;}100%{background - position:200% 0%;}}
+                #countdown{font - family:var(--font-display);font-size:18px;letter-spacing:0.08em;color:var(--gold-light);}
+
+                /* LANG TOGGLE */
+                #lang-btn{
+                    position:fixed;top:52px;right:16px;z-index:9998;
+                background:var(--bg-card);border:1px solid var(--purple);
+                color:var(--cream);font-size:13px;font-weight:700;
+                padding:6px 12px;border-radius:20px;cursor:pointer;
+                letter-spacing:0.04em;transition:all 0.2s;
+}
+                #lang-btn:hover{background:var(--purple);color:#fff;}
+
+                /* HERO */
+                #hero{
+                    min - height:88vh;display:flex;align-items:center;
+                background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(139,92,246,0.22) 0%,transparent 70%),var(--bg-primary);
+                position:relative;overflow:hidden;padding:80px 0 60px;
+}
+                #hero::before{
+                    content:'';position:absolute;inset:0;
+                background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(139,92,246,0.04) 40px,rgba(139,92,246,0.04) 41px),
+                repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(139,92,246,0.04) 40px,rgba(139,92,246,0.04) 41px);
+                pointer-events:none;
+}
+                .hero-badge{
+                    display:inline-block;background:rgba(139,92,246,0.18);
+                border:1px solid rgba(139,92,246,0.4);
+                color:var(--purple-light);font-size:13px;font-weight:700;
+                letter-spacing:0.12em;padding:7px 16px;border-radius:30px;
+                margin-bottom:22px;text-transform:uppercase;
+}
+                .hero-h1{
+                    font - family:var(--font-display);font-size:44px;font-weight:700;
+                line-height:1.1;color:var(--white);margin-bottom:8px;
+}
+                .hero-h1 .gold-italic{
+                    color:var(--gold-light);font-style:italic;display:block;
+}
+                .hero-sub{
+                    font - size:17px;color:var(--cream);opacity:0.85;
+                margin:20px 0 32px;line-height:1.75;
+}
+                .hero-img{
+                    width:100%;border-radius:18px;margin:28px 0;
+                overflow:hidden;border:1px solid rgba(139,92,246,0.3);
+}
+                .hero-img img{
+                    width:100%;height:auto;display:block;border-radius:18px;
+}
+                .pain-img{
+                    width:100%;border-radius:16px;margin:24px 0;
+                overflow:hidden;border:1px solid rgba(139,92,246,0.25);
+}
+                .pain-img img{width:100%;height:auto;display:block;border-radius:16px;}
+                .video-player{
+                    width:100%;border-radius:16px;overflow:hidden;
+                border:1px solid rgba(139,92,246,0.25);margin:18px 0;
+                background:var(--bg-card);
+}
+                .video-player video{
+                    width:100%;height:auto;display:block;
+}
+                .video-label{
+                    padding:12px 16px;font-size:15px;color:var(--muted);
+                display:flex;align-items:center;justify-content:space-between;
+}
+                .video-label strong{color:var(--cream);}
+                .img-gallery{
+                    display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0;
+}
+                .img-gallery img{
+                    width:100%;height:auto;border-radius:14px;
+                border:1px solid rgba(139,92,246,0.2);
+}
+                .social-proof{
+                    display:flex;align-items:center;gap:10px;
+                font-size:15px;color:var(--muted);margin-top:8px;
+}
+                .social-proof strong{color:var(--gold-light);}
+
+                /* CTA BUTTON */
+                .cta-btn{
+                    display:block;width:100%;
+                background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light),var(--gold));
+                background-size:300% 100%;
+                animation:shimmer 3s ease infinite;
+                color:#000;font-size:20px;font-weight:700;
+                text-align:center;text-decoration:none;
+                padding:17px 22px;border-radius:13px;
+                border:none;cursor:pointer;min-height:52px;
+                letter-spacing:0.03em;position:relative;overflow:hidden;
+                transition:transform 0.15s,box-shadow 0.15s;
+}
+                .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,153,26,0.4);}
+                .cta-btn::after{
+                    content:'';position:absolute;inset:-2px;
+                background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,0.15) 50%,transparent 60%);
+                background-size:200% 200%;
+                animation:shimmerOverlay 2.5s ease infinite;
+                pointer-events:none;border-radius:14px;
+}
+                @keyframes shimmer{0 % { background- position:100% 0%;}100%{background - position:-100% 0%;}}
+                @keyframes shimmerOverlay{0 % { background- position:200% 200%;}100%{background - position:-200% -200%;}}
+                .cta-sub{text - align:center;font-size:15px;color:var(--muted);margin-top:10px;}
+                .trust-badges{
+                    display:flex;justify-content:center;flex-wrap:wrap;
+                gap:14px;margin-top:14px;font-size:13px;color:var(--muted);font-weight:700;
+                letter-spacing:0.04em;
+}
+
+                /* SECTIONS */
+                section{padding:44px 0;}
+                .section-label{
+                    font - size:13px;font-weight:700;letter-spacing:0.15em;
+                text-transform:uppercase;color:var(--purple-light);margin-bottom:14px;
+}
+                .section-h2{
+                    font - family:var(--font-display);font-size:34px;font-weight:700;
+                line-height:1.15;color:var(--white);margin-bottom:22px;
+}
+                .section-h2 .gold{color:var(--gold-light);}
+                .section-h2 .newline{display:block;}
+
+                /* PAIN SECTION */
+                #pain{background:linear-gradient(180deg,var(--bg-section) 0%,var(--bg-primary) 100%);}
+                .pain-card{
+                    background:var(--bg-card);
+                border-left:3px solid #7C3AED;
+                border-radius:14px;padding:18px 20px;
+                margin-bottom:14px;display:flex;gap:14px;align-items:flex-start;
+                font-size:17px;line-height:1.75;
+}
+                .pain-icon{font - size:22px;flex-shrink:0;margin-top:2px;}
+
+                /* AGITATION */
+                #agitation{background:var(--bg-primary);}
+                .agitation-text{font - size:17px;line-height:1.75;color:var(--cream);}
+                .agitation-text strong{color:var(--white);}
+                .agitation-text .highlight{color:var(--gold-light);font-weight:700;}
+                .agitation-list{margin:18px 0;font-size:17px;color:var(--cream);}
+                .agitation-list li{
+                    list - style:none;padding:6px 0;padding-left:16px;
+                position:relative;
+}
+                .agitation-list li::before{content:'→';position:absolute;left:0;color:var(--muted);}
+                .pain-img-placeholder{
+                    width:100%;min-height:200px;border-radius:16px;
+                background:linear-gradient(135deg,#1A0A2E,#2D1459,#0A0612);
+                border:1px solid rgba(139,92,246,0.25);
+                display:flex;align-items:center;justify-content:center;
+                color:var(--muted);font-size:13px;letter-spacing:0.08em;
+                margin:24px 0;
+}
+
+                /* SOLUTION */
+                #solution{background:var(--bg-section);}
+
+                /* CHECKLIST */
+                #contents{background:var(--bg-primary);}
+                .check-item{
+                    display:flex;align-items:flex-start;gap:14px;
+                margin-bottom:16px;font-size:17px;line-height:1.75;
+}
+                .check-icon{
+                    width:28px;height:28px;flex-shrink:0;margin-top:3px;
+                background:var(--purple);border-radius:50%;
+                display:flex;align-items:center;justify-content:center;
+                color:#fff;font-size:13px;font-weight:700;
+}
+                .plus-more{
+                    text - align:center;font-size:15px;color:var(--muted);
+                font-style:italic;margin-top:4px;
+}
+
+                /* TESTIMONIALS */
+                #testimonials{background:linear-gradient(180deg,var(--bg-section) 0%,var(--bg-primary) 100%);}
+                .testi-card{
+                    background:var(--bg-card);border-radius:18px;
+                padding:22px 20px;margin-bottom:20px;
+                border:1px solid rgba(139,92,246,0.2);
+                position:relative;
+}
+                .testi-card::before{
+                    content:'"';position:absolute;top:-8px;left:18px;
+                font-family:var(--font-display);font-size:60px;
+                color:var(--purple);opacity:0.4;line-height:1;
+}
+                .testi-bubble{
+                    font - size:17px;line-height:1.75;color:var(--cream);
+                margin-bottom:14px;
+}
+                .testi-meta{
+                    display:flex;align-items:center;justify-content:space-between;
+                font-size:15px;
+}
+                .testi-name{color:var(--purple-light);font-weight:700;}
+                .testi-stars{color:var(--gold-light);letter-spacing:2px;}
+                .testi-timestamp{
+                    font - size:13px;color:var(--muted);text-align:right;
+                margin-top:8px;
+}
+                .verified{
+                    display:inline-flex;align-items:center;gap:4px;
+                font-size:13px;color:var(--green-wa);font-weight:700;
+                background:rgba(37,211,102,0.1);padding:3px 8px;border-radius:10px;
+}
+
+                /* BONUS */
+                #bonuses{background:var(--bg-section);}
+                .bonus-card{
+                    background:var(--bg-card);border-radius:16px;
+                padding:20px;margin-bottom:14px;
+                border:1px solid rgba(139,92,246,0.18);
+                display:flex;gap:16px;align-items:flex-start;
+}
+                .bonus-icon{font - size:28px;flex-shrink:0;}
+                .bonus-title{font - size:17px;font-weight:700;color:var(--white);margin-bottom:4px;}
+                .bonus-desc{font - size:15px;color:var(--muted);line-height:1.6;}
+                .bonus-price{
+                    margin - top:8px;font-size:15px;
+                color:var(--green-wa);font-weight:700;
+}
+                .bonus-price s{color:var(--muted);text-decoration:line-through;font-weight:400;}
+
+                /* VALUE STACK */
+                #pricing{background:var(--bg-primary);}
+                .value-card{
+                    background:var(--bg-card);border-radius:18px;
+                padding:28px 22px;border:1px solid rgba(201,153,26,0.3);
+}
+                .value-row{
+                    display:flex;justify-content:space-between;align-items:center;
+                padding:11px 0;border-bottom:1px solid rgba(139,92,246,0.12);
+                font-size:17px;
+}
+                .value-row:last-of-type{border - bottom:none;}
+                .value-title{color:var(--cream);}
+                .value-price{color:var(--muted);font-weight:700;}
+                .total-row{
+                    margin - top:20px;padding:16px;
+                background:rgba(239,68,68,0.08);border-radius:12px;
+                display:flex;justify-content:space-between;align-items:center;
+}
+                .total-label{font - size:15px;color:var(--muted);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+                .total-price{
+                    font - family:var(--font-display);font-size:26px;font-weight:700;
+                color:var(--red);text-decoration:line-through;
+}
+                .final-row{
+                    margin - top:16px;padding:20px;
+                background:linear-gradient(135deg,rgba(201,153,26,0.12),rgba(240,200,74,0.08));
+                border-radius:14px;border:1px solid rgba(201,153,26,0.3);
+                display:flex;justify-content:space-between;align-items:center;
+}
+                .final-label{font - size:15px;color:var(--cream);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
+                .final-price{
+                    font - family:var(--font-display);font-size:38px;font-weight:700;
+                color:var(--gold-light);
+                animation:shimmer 3s ease infinite;
+                background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),var(--gold));
+                background-size:200% auto;
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+                .savings-badge{
+                    display:block;text-align:center;margin-top:14px;
+                background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);
+                color:var(--green-wa);font-size:14px;font-weight:700;
+                padding:9px;border-radius:10px;letter-spacing:0.06em;
+}
+
+                /* NOT FOR EVERYONE */
+                #exclusivity{background:var(--bg-section);}
+                .exclusivity-card{
+                    background:var(--bg-card);border-radius:16px;padding:26px 22px;
+                border:2px solid rgba(239,68,68,0.35);
+}
+                .excl-item{
+                    display:flex;align-items:flex-start;gap:12px;
+                padding:10px 0;font-size:17px;line-height:1.6;
+                border-bottom:1px solid rgba(239,68,68,0.1);
+}
+                .excl-item:last-of-type{border - bottom:none;}
+                .excl-x{color:var(--red);font-weight:700;font-size:18px;flex-shrink:0;margin-top:2px;}
+                .excl-cta{
+                    margin - top:22px;font-size:17px;text-align:center;
+                color:var(--gold-light);font-family:var(--font-display);
+                font-style:italic;font-size:20px;line-height:1.4;
+}
+
+                /* FAQ */
+                #faq{background:var(--bg-primary);}
+                .faq-item{
+                    background:var(--bg-card);border-radius:14px;
+                margin-bottom:12px;overflow:hidden;
+                border:1px solid rgba(139,92,246,0.18);
+}
+                .faq-q{
+                    padding:18px 20px;font-size:17px;font-weight:700;
+                color:var(--white);cursor:pointer;display:flex;
+                justify-content:space-between;align-items:center;gap:12px;
+                -webkit-tap-highlight-color:transparent;
+}
+                .faq-arrow{
+                    color:var(--purple-light);font-size:20px;flex-shrink:0;
+                transition:transform 0.3s;
+}
+                .faq-item.open .faq-arrow{transform:rotate(180deg);}
+                .faq-a{
+                    max - height:0;overflow:hidden;
+                transition:max-height 0.35s ease, padding 0.35s ease;
+                padding:0 20px;font-size:17px;color:var(--cream);line-height:1.75;
+}
+                .faq-item.open .faq-a{max - height:300px;padding:0 20px 18px;}
+
+                /* STICKY BOTTOM CTA */
+                #sticky-cta{
+                    position:fixed;bottom:0;left:0;right:0;z-index:9997;
+                background:linear-gradient(0deg,#0A0612 70%,transparent);
+                padding:16px 22px 20px;
+                transform:translateY(100%);transition:transform 0.4s ease;
+                max-width:560px;margin:0 auto;
+}
+                #sticky-cta.show{transform:translateY(0);}
+                .sticky-inner{
+                    background:var(--bg-card);border-radius:14px;
+                padding:14px;border:1px solid rgba(139,92,246,0.3);
+                display:flex;align-items:center;gap:14px;
+}
+                .sticky-text{font - size:15px;font-weight:700;color:var(--cream);flex:1;}
+                .sticky-text span{color:var(--gold-light);}
+                .sticky-btn{
+                    background:linear-gradient(135deg,var(--gold-dark),var(--gold-light));
+                color:#000;font-size:15px;font-weight:700;
+                padding:12px 18px;border-radius:11px;border:none;
+                cursor:pointer;white-space:nowrap;min-height:44px;
+                text-decoration:none;display:inline-block;text-align:center;
+                animation:shimmer 3s ease infinite;background-size:300% 100%;
+                background-image:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light),var(--gold));
+}
+
+                /* FOOTER */
+                footer{
+                    text - align:center;padding:32px 22px;
+                font-size:13px;color:var(--muted);
+                border-top:1px solid rgba(139,92,246,0.12);
+}
+                footer strong{color:var(--purple-light);}
+
+                /* PULSE */
+                .pulse-ring{
+                    position:relative;display:inline-block;
+}
+                .pulse-ring::before{
+                    content:'';position:absolute;inset:-6px;border-radius:inherit;
+                border:2px solid var(--gold-light);
+                animation:pulse-anim 2s ease-out infinite;
+                pointer-events:none;
+}
+                @keyframes pulse-anim{
+                    0 % { opacity: 0.7; transform: scale(1); }
+  100%{opacity:0;transform:scale(1.1);}
+}
+
+                /* FADE IN */
+                .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+                .fade-in.visible{opacity:1;transform:translateY(0);}
+
+                /* MOBILE sticky fix */
+                @media(max-width:560px){
+                    #sticky - cta{max - width:100%;}
+                .hero-h1{font - size:38px;}
+}
+            </style>
+        </head>
+        <body>
+
+            <div id="progress-bar"></div>
+
+            <!-- URGENCY BAR -->
+            <div id="urgency-bar">
+                <span id="urgency-text">⚡ HARGA SPESIAL — Berakhir dalam <span id="countdown">00:00:00</span> ⚡</span>
+            </div>
+
+            <!-- LANG TOGGLE -->
+            <button id="lang-btn" onclick="toggleLang()">🇮🇩 ID</button>
+
+            <!-- HERO -->
+            <section id="hero">
+                <div class="wrap">
+                    <div class="hero-badge" id="hero-badge">🌙 PANDUAN RAHASIA WANITA</div>
+                    <h1 class="hero-h1">
+                        <span id="hero-h1-a">Jadilah Wanita yang</span>
+                        <span class="gold-italic" id="hero-h1-b">Tidak Bisa Dilupakan</span>
+                    </h1>
+                    <p class="hero-sub" id="hero-sub">52 jurus rahasia daya tarik yang tidak pernah diajarkan ibu, guru, atau siapapun.</p>
+                    <div class="hero-img">
+                        <img src="/assets/darkfem/df08_secret_she_knows.png" alt="Dark Feminine — Wanita Misterius" />
+                    </div>
+                    <div class="pulse-ring">
+                        <a href="https://wa.me/62XXXXXXXX?text=Halo%20saya%20mau%20order%20Dark%20Feminine" class="cta-btn" id="hero-cta">DAPATKAN 52 JURUS SEKARANG →</a>
+                    </div>
+                    <div class="trust-badges">
+                        <span>🔒 100% Privasi</span>
+                        <span>⚡ Instan</span>
+                        <span>📱 Akses Seumur Hidup</span>
+                    </div>
+                    <div class="social-proof" style="margin-top:18px;">
+                        <span>🔥</span>
+                        <span id="social-proof-text"><strong>4.200+ wanita</strong> sudah membuktikan</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAIN SECTION -->
+            <section id="pain">
+                <div class="wrap fade-in">
+                    <div class="section-label" id="pain-label">JUJUR SAMA DIRI SENDIRI</div>
+                    <h2 class="section-h2">
+                        <span id="pain-h2a">Kamu Pernah Merasakan</span>
+                        <span class="newline gold" id="pain-h2b">Ini Semua?</span>
+                    </h2>
+                    <div class="pain-cards" id="pain-cards">
+                        <div class="pain-card"><span class="pain-icon">😔</span><span>Selalu jadi "teman curhat" tapi bukan <strong>PILIHAN</strong> siapapun</span></div>
+                        <div class="pain-card"><span class="pain-icon">💔</span><span>Ditinggal atau diselingkuhi padahal sudah baik dan setia</span></div>
+                        <div class="pain-card"><span class="pain-icon">😤</span><span>Iri sama cewek yang "biasa aja" tapi dapat cowok impian</span></div>
+                        <div class="pain-card"><span class="pain-icon">📱</span><span>Nonton drama pelakor jam 2 pagi dan diam-diam pengen jadi <strong>DIA</strong></span></div>
+                        <div class="pain-card"><span class="pain-icon">🔄</span><span>Selalu attract cowok toxic — di-ghosted setelah 3 bulan</span></div>
+                        <div class="pain-card"><span class="pain-icon">😶</span><span>Diberi label "terlalu baik" yang artinya "terlalu <strong>BORING</strong>"</span></div>
+                    </div>
+                    <div style="margin-top:32px;">
+                        <a href="https://wa.me/62XXXXXXXX?text=Halo%20saya%20mau%20order%20Dark%20Feminine" class="cta-btn" id="pain-cta">UBAH SEGALANYA SEKARANG →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AGITATION -->
+            <section id="agitation">
+                <div class="wrap fade-in">
+                    <h2 class="section-h2">
+                        <span id="agit-h2a">Kenapa yang "Rendah"</span>
+                        <span class="newline gold" id="agit-h2b">Malah Dapat CEO?</span>
+                    </h2>
+                    <div class="pain-img">
+                        <img src="/assets/darkfem/df01_paradox.png" alt="Kenapa yang Rendah Malah Dapat CEO?" />
+                    </div>
+                    <div class="agitation-text">
+                        <p id="agit-text"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SOLUTION -->
+            <section id="solution">
+                <div class="wrap fade-in">
+                    <div class="section-label" id="sol-label">JAWABANNYA</div>
+                    <h2 class="section-h2">
+                        <span id="sol-h2a">Dark Feminine</span>
+                        <span class="newline gold" id="sol-h2b">52 Jurus Rahasia</span>
+                    </h2>
+                    <p id="sol-text" style="font-size:17px;line-height:1.75;color:var(--cream);"></p>
+                    <div style="margin-top:28px;">
+                        <a href="https://wa.me/62XXXXXXXX?text=Halo%20saya%20mau%20order%20Dark%20Feminine" class="cta-btn">PELAJARI ILMUNYA SEKARANG →</a>
+                    </div>
+                </div>
+                    <!-- VIDEO 1: Transformation Story -->
+                    <div class="video-player">
+                        <video controls playsinline preload="metadata" poster="/assets/darkfem/df03_nice_girl_dies.png">
+                            <source src="/assets/darkfem/video1.mp4" type="video/mp4" />
+                        </video>
+                        <div class="video-label"><strong>🎬 Video 1</strong><span>Kisah Transformasi</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTENTS -->
+            <section id="contents">
+                <div class="wrap fade-in">
+                    <div class="section-label" id="contents-label">YANG AKAN KAMU PELAJARI</div>
+                    <h2 class="section-h2" id="contents-h2">52 Jurus Daya Tarik <span class="gold">Lengkap</span></h2>
+                    <div id="check-list"></div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS -->
+            <section id="testimonials">
+                <div class="wrap fade-in">
+                    <div class="section-label" id="testi-label">MEREKA SUDAH BUKTIKAN</div>
+                    <h2 class="section-h2" id="testi-h2">Hasil Nyata dari <span class="gold">4.200+ Wanita</span></h2>
+                    <div id="testi-list"></div>
+                </div>
+                    <!-- VIDEO 2 & 3 -->
+                    <div class="video-player" style="margin-top:28px;">
+                        <video controls playsinline preload="metadata" poster="/assets/darkfem/df04_teman_curhat.png">
+                            <source src="/assets/darkfem/video2.mp4" type="video/mp4" />
+                        </video>
+                        <div class="video-label"><strong>🎬 Video 2</strong><span>Dari Diabaikan Jadi Dikagumi</span></div>
+                    </div>
+                    <div class="video-player">
+                        <video controls playsinline preload="metadata" poster="/assets/darkfem/df09_wake_up_call.png">
+                            <source src="/assets/darkfem/video3.mp4" type="video/mp4" />
+                        </video>
+                        <div class="video-label"><strong>🎬 Video 3</strong><span>Istri yang Dilupakan</span></div>
+                    </div>
+
+                    <!-- CREATIVE IMAGE GALLERY -->
+                    <div style="margin-top:32px;">
+                        <div class="section-label">VISUAL STORIES</div>
+                        <div class="img-gallery">
+                            <img src="/assets/darkfem/df02_2am_scroll.png" alt="2AM Scroll" />
+                            <img src="/assets/darkfem/df05_comparison.png" alt="Comparison" />
+                            <img src="/assets/darkfem/df06_fuckboy_cycle.png" alt="Ghosted Lagi" />
+                            <img src="/assets/darkfem/df07_drakor_fantasy.png" alt="Drakor Fantasy" />
+                            <img src="/assets/darkfem/df10_society_lie.png" alt="Society Lie" />
+                            <img src="/assets/darkfem/df03_nice_girl_dies.png" alt="Nice Girl Dies" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--BONUSES -->
+            <section id="bonuses">
+                <div class="wrap fade-in">
+                    <div class="section-label" id="bonus-label">BONUS EKSKLUSIF</div>
+                    <h2 class="section-h2" id="bonus-h2">8 Bonus Senilai <span class="gold">Rp795.000</span></h2>
+                    <div id="bonus-list"></div>
+                    <div style="margin-top:28px;">
+                        <a href="https://wa.me/62XXXXXXXX?text=Halo%20saya%20mau%20order%20Dark%20Feminine" class="cta-btn">CLAIM SEMUA BONUS GRATIS →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!--PRICING -->
+            <section id="pricing">
+                <div class="wrap fade-in">
+                    <div class="section-label" id="price-label">INVESTASI SEUMUR HIDUP</div>
+                    <h2 class="section-h2" id="price-h2">Dapatkan Semuanya <span class="gold">Hari Ini</span></h2>
+                    <div class="value-card">
+                        <div id="value-rows"></div>
+                        <div class="total-row">
+                            <span class="total-label">Total Nilai</span>
+                            <span class="total-price">Rp995.000</span>
+                        </div>
+                        <div class="final-row">
+                            <span class="final-label" id="price-today-label">Harga Hari Ini</span>
+                            <span class="final-price">Rp199.000</span>
+                        </div>
+                        <div class="savings-badge" id="savings-badge">🎉 Hemat 80% — Penawaran Terbatas!</div>
+                    </div>
+                    <div style="margin-top:24px;">
+                        <div class="pulse-ring">
+                            <a href="https://wa.me/62XXXXXXXX?text=Halo%20saya%20mau%20order%20Dark%20Feminine" class="cta-btn" id="price-cta">DAPATKAN SEKARANG — Rp199.000</a>
+                        </div>
+                        <p class="cta-sub" id="price-sub">📲 Dikirim INSTAN ke WhatsApp kamu</p>
+                        <div class="trust-badges">
+                            <span>🔒 100% Privasi</span>
+                            <span>⚡ Instan</span>
+                            <span>📱 Akses Seumur Hidup</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--EXCLUSIVITY -->
+            <section id="exclusivity">
+                <div class="wrap fade-in">
+                    <div class="section-label">BUKAN UNTUK SEMUA ORANG</div>
+                    <h2 class="section-h2" id="excl-h2">Dark Feminine <span class="gold">BUKAN</span> untuk:</h2>
+                    <div class="exclusivity-card">
+                        <div id="excl-list"></div>
+                        <p class="excl-cta" id="excl-cta">"Ini HANYA untuk wanita yang SIAP mengambil kendali hidupnya."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!--FAQ -->
+            <section id="faq">
+                <div class="wrap fade-in">
+                    <div class="section-label" id="faq-label">PERTANYAAN UMUM</div>
+                    <h2 class="section-h2" id="faq-h2">Ada yang <span class="gold">Ditanyakan?</span></h2>
+                    <div id="faq-list"></div>
+                    <div style="margin-top:32px;">
+                        <a href="https://wa.me/62XXXXXXXX?text=Halo%20saya%20mau%20order%20Dark%20Feminine" class="cta-btn" id="faq-cta">YA, SAYA SIAP BERUBAH →</a>
+                        <p class="cta-sub" id="faq-sub">📲 Dikirim INSTAN ke WhatsApp kamu</p>
+                    </div>
+                </div>
+            </section>
+
+            <!--FOOTER -->
+            <footer>
+                <strong>Dark Feminine — eL Vision</strong><br />
+                <span style="display:block;margin-top:6px;">© 2024 Semua Hak Dilindungi</span>
+                <div style="margin-top:14px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+                    <span>Privasi Terjamin</span><span>•</span>
+                    <span>Digital Product</span><span>•</span>
+                    <span>WhatsApp Support</span>
+                </div>
+            </footer>
+
+            <!--STICKY BOTTOM CTA-- >
+            <div id="sticky-cta">
+                <div class="sticky-inner">
+                    <div class="sticky-text">🌙 52 Jurus — <span>Rp199.000</span></div>
+                    <a href="https://wa.me/62XXXXXXXX?text=Halo%20saya%20mau%20order%20Dark%20Feminine" class="sticky-btn" id="sticky-btn">PESAN SEKARANG</a>
+                </div>
+            </div>
+
+            <script>
+// ─── CONTENT DATA ────────────────────────────────────────────────
+                const content = {
+                    id: {
+                    agitText: `Lo diajarin dari kecil: jadi anak baik, jangan menggoda, tunggu dijemput bola. <strong>DAN APA HASILNYA?</strong> Lo jadi teman curhat favorit sementara dia milih yang lain.<br /><br /><ul class="agitation-list"><li>Yang setia → ditinggalin.</li><li>Yang sabar → diinjak.</li><li>Yang pengertian → dianggap lemah.</li></ul><br />Tapi cewek yang "biasa aja"? Dapat <span class="highlight">SEGALANYA</span>.<br /><br />Bukan karena dia cantik. Bukan karena dia beruntung.<br />Tapi karena dia <span class="highlight">PAHAM sesuatu yang TIDAK PERNAH lo pelajari.</span>`,
+                solText: `Panduan lengkap daya tarik wanita yang ditulis berdasarkan psikologi modern. Dari seni misteri, push-pull dynamics, sampai cara membangun aura yang bikin pria <strong>TIDAK BISA berhenti memikirkan kamu</strong>.<br /><br />Bukan tips murahan. Bukan saran "jadilah diri sendiri".<br />Tapi <strong>ILMU</strong> yang benar-benar <strong>MENGUBAH frekuensi kamu.</strong>`,
+                checks: [
+                "Seni <strong>MISTERI</strong> — bagaimana jadi wanita yang tidak bisa ditebak",
+                "<strong>PUSH-PULL</strong> Dynamics — menarik dan mendorong bersamaan",
+                "Bahasa tubuh yang bikin pria <strong>TIDAK BISA berpaling</strong>",
+                "Kontrol emosi — kamu yang memegang kendali",
+                "<strong>Abundance Mindset</strong> — berhenti mengejar, mulai MENARIK",
+                "<strong>Silent Power</strong> — kekuatan dari DIAM",
+                "<strong>Sexual Market Value</strong> — cara meningkatkan nilaimu",
+                "<strong>Text Game</strong> — membuat dia ketagihan dari chat",
+                ],
+                checksPlus: "+ 44 jurus lainnya...",
+                testis: [
+                {text: "Demi allah sis, baru 2 minggu praktekin jurus 7... cowok yang dulu ghosting gue TIBA-TIBA nge-DM lagi. Padahal gue ga ngapa-ngapain. Cuma DIEM. Ternyata itu ilmunya 😭🔥", name: "Anisa, 24 thn", time: "2 hari lalu" },
+                {text: "Suami gue yang tadinya cuek, sekarang GELISAH kalau gue keluar rumah. Bukan karena posesif. Tapi karena dia mulai TAKUT KEHILANGAN. Jurus 1 doang udah sedahsyat ini.", name: "Sari, 31 thn", time: "5 hari lalu" },
+                {text: "Ex gue nikah sama cewek lain. 6 bulan kemudian gue apply dark feminine, gue dapet cowok yang 10x lebih ganteng dan kaya. Dan tau ga? Ex gue NGESTALK ig gue sekarang setiap hari. Karma is real 💅", name: "Rina, 27 thn", time: "1 minggu lalu" },
+                ],
+                bonuses: [
+                {icon:"🌙", title:"Femme Fatale Secrets (140 hal)", desc:"Rahasia membuat dia terobsesi — dari inner confidence sampai seni manipulasi halus yang LEGAL", price:"Rp97.000" },
+                {icon:"💜", title:"Kursus Femme Fatale (68 hal)", desc:"Program transformasi dari nice girl ke dark feminine — step by step", price:"Rp127.000" },
+                {icon:"📅", title:"Workbook 30 Hari (73 hal)", desc:"Tantangan harian untuk membangun daya tarikmu dalam 30 hari", price:"Rp97.000" },
+                {icon:"🗡️", title:"Seni Merayu — Robert Greene (31 hal)", desc:"Ringkasan strategi rayuan paling legendary sepanjang sejarah", price:"Rp77.000" },
+                {icon:"👑", title:"High Value Woman (22 hal)", desc:"Panduan cepat menjadi wanita bernilai tinggi", price:"Rp57.000" },
+                {icon:"✨", title:"Simply Irresistible (272 hal)", desc:"Unleash your inner siren — panduan lengkap dari studi kasus wanita paling memikat dalam sejarah", price:"Rp147.000" },
+                {icon:"🔥", title:"How to Please Your Man (29 hal)", desc:"Rahasia ranjang yang bikin dia TUNDUK dan KETAGIHAN", price:"Rp97.000" },
+                {icon:"💋", title:"Selimut Ungu (61 hal)", desc:"Panduan puncak kenikmatan — teknik yang tidak diajarkan siapapun", price:"Rp97.000" },
+                ],
+                valueRows: [
+                {title:"Ebook Utama: 52 Jurus Dark Feminine (156 hal)", price:"Rp199.000" },
+                {title:"Bonus 1: Femme Fatale Secrets (140 hal)", price:"Rp97.000" },
+                {title:"Bonus 2: Kursus Femme Fatale (68 hal)", price:"Rp127.000" },
+                {title:"Bonus 3: Workbook 30 Hari (73 hal)", price:"Rp97.000" },
+                {title:"Bonus 4: Seni Merayu (31 hal)", price:"Rp77.000" },
+                {title:"Bonus 5: High Value Woman (22 hal)", price:"Rp57.000" },
+                {title:"Bonus 6: Simply Irresistible (272 hal)", price:"Rp147.000" },
+                {title:"Bonus 7: How to Please Your Man (29 hal)", price:"Rp97.000" },
+                {title:"Bonus 8: Selimut Ungu (61 hal)", price:"Rp97.000" },
+                ],
+                exclItems: [
+                "Wanita yang masih percaya 'menunggu jodoh' itu cukup",
+                "Yang tidak mau berubah dan hanya mau mengeluh",
+                "Yang mencari cara instan tanpa effort",
+                "Yang tidak siap meninggalkan 'nice girl' lama",
+                ],
+                faqs: [
+                {q:"Bagaimana cara aksesnya?", a:"Setelah pembayaran, ebook dikirim ke WhatsApp kamu dalam 5 menit. Format HTML bisa dibaca di HP, tablet, atau komputer." },
+                {q:"Apakah ini aman dan privat?", a:"100% privat. Tidak ada nama produk di bukti transfer. Semua dikirim digital, rahasia." },
+                {q:"Apakah ini mengajarkan jadi pelakor?", a:"TIDAK. Dark Feminine mengajarkan kamu jadi HIGH VALUE WOMAN yang paham psikologi daya tarik. Bukan jadi orang jahat, tapi jadi BERHARGA." },
+                {q:"Berapa lama sampai terasa hasilnya?", a:"Kebanyakan pembaca merasakan perubahan dalam 2-4 minggu setelah konsisten praktekkan. Jurus 1-7 sudah cukup powerful." },
+                {q:"Apakah berlaku untuk yang berjilbab / religius?", a:"Ya. Dark Feminine bukan soal pakaian atau penampilan fisik. Ini tentang AURA, MISTERI, dan CARA BERPIKIR. Banyak pembaca kami yang berjilbab." },
+                ],
+    urgency: (t)=>`⚡ HARGA SPESIAL — Berakhir dalam ${t} ⚡`,
+                heroBadge:"🌙 PANDUAN RAHASIA WANITA",
+                heroH1a:"Jadilah Wanita yang",
+                heroH1b:"Tidak Bisa Dilupakan",
+                heroSub:"52 jurus rahasia daya tarik yang tidak pernah diajarkan ibu, guru, atau siapapun.",
+                heroCta:"DAPATKAN 52 JURUS SEKARANG →",
+                socialProof:"sudah membuktikan",
+                painLabel:"JUJUR SAMA DIRI SENDIRI",
+                painH2a:"Kamu Pernah Merasakan",
+                painH2b:"Ini Semua?",
+                agitH2a:"Kenapa yang \"Rendah\"",
+                agitH2b:"Malah Dapat CEO?",
+                solLabel:"JAWABANNYA",
+                solH2a:"Dark Feminine",
+                solH2b:"52 Jurus Rahasia",
+                contentsLabel:"YANG AKAN KAMU PELAJARI",
+                contentsH2:"52 Jurus Daya Tarik",
+                testiLabel:"MEREKA SUDAH BUKTIKAN",
+                testiH2:"Hasil Nyata dari",
+                bonusLabel:"BONUS EKSKLUSIF",
+                bonusH2:"8 Bonus Senilai",
+                priceLabel:"INVESTASI SEUMUR HIDUP",
+                priceH2:"Dapatkan Semuanya",
+                priceTodayLabel:"Harga Hari Ini",
+                savingsBadge:"🎉 Hemat 80% — Penawaran Terbatas!",
+                priceCta:"DAPATKAN SEKARANG — Rp199.000",
+                priceSub:"📲 Dikirim INSTAN ke WhatsApp kamu",
+                exclH2:"Dark Feminine BUKAN untuk:",
+                exclCta:'"Ini HANYA untuk wanita yang SIAP mengambil kendali hidupnya."',
+                faqLabel:"PERTANYAAN UMUM",
+                faqH2:"Ada yang",
+                faqCta:"YA, SAYA SIAP BERUBAH →",
+                faqSub:"📲 Dikirim INSTAN ke WhatsApp kamu",
+                stickyCta:"PESAN SEKARANG",
+                stickyText:"🌙 52 Jurus —",
+  },
+                en: {
+                    agitText: `You were taught from childhood: be nice, don't flirt, wait for Prince Charming. <strong>AND WHAT HAPPENED?</strong> You became everyone's favorite therapist while he chose someone else.<br /><br /><ul class="agitation-list"><li>The loyal one → left behind.</li><li>The patient one → walked over.</li><li>The understanding one → seen as weak.</li></ul><br />But the "average" girl? Gets <span class="highlight">EVERYTHING</span>.<br /><br />Not because she's pretty. Not because she's lucky.<br />Because she <span class="highlight">KNOWS something you were NEVER taught.</span>`,
+                solText: `A complete guide to feminine attraction based on modern psychology. From the art of mystery, push-pull dynamics, to building an aura that makes men <strong>UNABLE to stop thinking about you</strong>.<br /><br />Not cheap tips. Not "just be yourself" advice.<br />But <strong>KNOWLEDGE</strong> that truly <strong>CHANGES your frequency.</strong>`,
+                checks: [
+                "The Art of <strong>MYSTERY</strong> — how to be unpredictable",
+                "<strong>PUSH-PULL</strong> Dynamics — attract and repel simultaneously",
+                "Body language that makes him <strong>UNABLE to look away</strong>",
+                "Emotional control — you hold the power",
+                "<strong>Abundance Mindset</strong> — stop chasing, start ATTRACTING",
+                "<strong>Silent Power</strong> — the strength of SILENCE",
+                "<strong>Sexual Market Value</strong> — how to raise yours",
+                "<strong>Text Game</strong> — make him addicted from texts",
+                ],
+                checksPlus: "+ 44 more moves...",
+                testis: [
+                {text: "I swear, just 2 weeks practicing move 7... the guy who ghosted me SUDDENLY DM'd again. I didn't do ANYTHING. Just stayed SILENT. Turns out that's the secret 😭🔥", name: "Anisa, 24", time: "2 days ago" },
+                {text: "My husband who used to ignore me is now ANXIOUS when I leave the house. Not possessive. But because he's starting to FEAR LOSING ME. Just move 1 already this powerful.", name: "Sari, 31", time: "5 days ago" },
+                {text: "My ex married someone else. 6 months later I applied dark feminine, I got a guy 10x more handsome and rich. And guess what? My ex now STALKS my IG every day. Karma is real 💅", name: "Rina, 27", time: "1 week ago" },
+                ],
+                bonuses: [
+                {icon:"🌙", title:"Femme Fatale Secrets (140 pages)", desc:"Secrets to making him obsessed — from inner confidence to the art of subtle (legal) influence", price:"Rp97,000" },
+                {icon:"💜", title:"Femme Fatale Course (68 pages)", desc:"Transformation program from nice girl to dark feminine — step by step", price:"Rp127,000" },
+                {icon:"📅", title:"30-Day Workbook (73 pages)", desc:"Daily challenges to build your attraction in 30 days", price:"Rp97,000" },
+                {icon:"🗡️", title:"The Art of Seduction — Robert Greene (31 pages)", desc:"Summary of the most legendary seduction strategies in history", price:"Rp77,000" },
+                {icon:"👑", title:"High Value Woman (22 pages)", desc:"Quick guide to becoming a high-value woman", price:"Rp57,000" },
+                {icon:"✨", title:"Simply Irresistible (272 pages)", desc:"Unleash your inner siren — complete guide from case studies of history's most captivating women", price:"Rp147,000" },
+                {icon:"🔥", title:"How to Please Your Man (29 pages)", desc:"Bedroom secrets that make him SUBMIT and ADDICTED", price:"Rp97,000" },
+                {icon:"💋", title:"Purple Sheets (61 pages)", desc:"Guide to ultimate pleasure — techniques no one has taught you", price:"Rp97,000" },
+                ],
+                valueRows: [
+                {title:"Main Ebook: 52 Dark Feminine Moves (156 pages)", price:"Rp199,000" },
+                {title:"Bonus 1: Femme Fatale Secrets (140 pages)", price:"Rp97,000" },
+                {title:"Bonus 2: Femme Fatale Course (68 pages)", price:"Rp127,000" },
+                {title:"Bonus 3: 30-Day Workbook (73 pages)", price:"Rp97,000" },
+                {title:"Bonus 4: The Art of Seduction (31 pages)", price:"Rp77,000" },
+                {title:"Bonus 5: High Value Woman (22 pages)", price:"Rp57,000" },
+                {title:"Bonus 6: Simply Irresistible (272 pages)", price:"Rp147,000" },
+                {title:"Bonus 7: How to Please Your Man (29 pages)", price:"Rp97,000" },
+                {title:"Bonus 8: Purple Sheets (61 pages)", price:"Rp97,000" },
+                ],
+                exclItems: [
+                "Women who still believe 'waiting for the right one' is enough",
+                "Those who refuse to change and only complain",
+                "Those looking for instant results with zero effort",
+                "Those not ready to leave the old 'nice girl' behind",
+                ],
+                faqs: [
+                {q:"How do I access it?", a:"After payment, the ebook is sent to your WhatsApp within 5 minutes. HTML format, readable on phone, tablet, or computer." },
+                {q:"Is this safe and private?", a:"100% private. No product name on the payment receipt. Everything delivered digitally and discreetly." },
+                {q:"Does this teach you to be a homewrecker?", a:"NO. Dark Feminine teaches you to be a HIGH VALUE WOMAN who understands the psychology of attraction. Not to be a bad person, but to be VALUABLE." },
+                {q:"How long until I see results?", a:"Most readers feel a change within 2-4 weeks of consistent practice. Moves 1-7 are already powerful enough." },
+                {q:"Does this apply for hijab-wearing / religious women?", a:"Yes. Dark Feminine is not about clothing or physical appearance. It's about AURA, MYSTERY, and MINDSET. Many of our readers wear hijab." },
+                ],
+    urgency: (t)=>`⚡ SPECIAL PRICE — Ends in ${t} ⚡`,
+                heroBadge:"🌙 SECRET WOMEN'S GUIDE",
+                heroH1a:"Become the Woman",
+                heroH1b:"He Can't Forget",
+                heroSub:"52 secret attraction moves never taught by your mother, teachers, or anyone.",
+                heroCta:"GET 52 SECRET MOVES NOW →",
+                socialProof:"women have proven it",
+                painLabel:"BE HONEST WITH YOURSELF",
+                painH2a:"Have You Ever",
+                painH2b:"Felt All of This?",
+                agitH2a:`Why Does the "Average Girl"`,
+                agitH2b:"Get the CEO?",
+                solLabel:"THE ANSWER",
+                solH2a:"Dark Feminine",
+                solH2b:"52 Secret Moves",
+                contentsLabel:"WHAT YOU'LL LEARN",
+                contentsH2:"52 Complete Attraction Moves",
+                testiLabel:"THEY'VE PROVEN IT",
+                testiH2:"Real Results from",
+                bonusLabel:"EXCLUSIVE BONUSES",
+                bonusH2:"8 Bonuses Worth",
+                priceLabel:"LIFETIME INVESTMENT",
+                priceH2:"Get Everything",
+                priceTodayLabel:"Today's Price",
+                savingsBadge:"🎉 Save 80% — Limited Offer!",
+                priceCta:"GET IT NOW — Rp199,000",
+                priceSub:"📲 Delivered INSTANTLY to your WhatsApp",
+                exclH2:"Dark Feminine is NOT for:",
+                exclCta:'"This is ONLY for women READY to take control of their life."',
+                faqLabel:"FAQ",
+                faqH2:"Questions?",
+                faqCta:"YES, I'M READY TO CHANGE →",
+                faqSub:"📲 Delivered INSTANTLY to your WhatsApp",
+                stickyCta:"ORDER NOW",
+                stickyText:"🌙 52 Moves —",
+  }
+};
+
+                // ─── STATE ────────────────────────────────────────────────────────
+                let lang = 'id';
+
+                function toggleLang(){
+                    lang = lang === 'id' ? 'en' : 'id';
+                document.getElementById('lang-btn').textContent = lang==='id' ? '🇮🇩 ID' : '🇬🇧 EN';
+                try{const u=new URL(location.href);u.searchParams.set('lang',lang);history.replaceState(null,'',u);}catch(e){ }
+                renderAll();
+}
+
+                function renderAll(){
+  const c = content[lang];
+                // urgency text
+                document.getElementById('urgency-text').innerHTML = c.urgency(`<span id="countdown">00:00:00</span>`);
+                // hero
+                document.getElementById('hero-badge').textContent = c.heroBadge;
+                document.getElementById('hero-h1-a').textContent = c.heroH1a;
+                document.getElementById('hero-h1-b').textContent = c.heroH1b;
+                document.getElementById('hero-sub').textContent = c.heroSub;
+                document.getElementById('hero-cta').textContent = c.heroCta;
+                document.getElementById('social-proof-text').innerHTML = `<strong>4.200+ ${lang === 'id' ? 'wanita' : ' women'}</strong> ${c.socialProof}`;
+                // pain
+                document.getElementById('pain-label').textContent = c.painLabel;
+                document.getElementById('pain-h2a').textContent = c.painH2a;
+                document.getElementById('pain-h2b').textContent = c.painH2b;
+                // agitation
+                document.getElementById('agit-h2a').textContent = c.agitH2a;
+                document.getElementById('agit-h2b').textContent = c.agitH2b;
+                document.getElementById('agit-text').innerHTML = c.agitText;
+                // solution
+                document.getElementById('sol-label').textContent = c.solLabel;
+                document.getElementById('sol-h2a').textContent = c.solH2a;
+                document.getElementById('sol-h2b').textContent = c.solH2b;
+                document.getElementById('sol-text').innerHTML = c.solText;
+                // contents
+                document.getElementById('contents-label').textContent = c.contentsLabel;
+                document.getElementById('contents-h2').innerHTML = c.contentsH2+' <span class="gold">'+( lang==='id'?'Lengkap':'Complete')+'</span>';
+                const cl = document.getElementById('check-list');
+  cl.innerHTML = c.checks.map(t=>`<div class="check-item"><div class="check-icon">✦</div><span>${t}</span></div>`).join('')
+                + `<p class="plus-more">${c.checksPlus}</p>`;
+                // testimonials
+                document.getElementById('testi-label').textContent = c.testiLabel;
+                document.getElementById('testi-h2').innerHTML = c.testiH2+' <span class="gold">4.200+ '+(lang==='id'?'Wanita':'Women')+'</span>';
+                const tl = document.getElementById('testi-list');
+  tl.innerHTML = c.testis.map(t=>`
+                <div class="testi-card">
+                    <p class="testi-bubble">${t.text}</p>
+                    <div class="testi-meta">
+                        <span class="testi-name">— ${t.name}</span>
+                        <span class="testi-stars">★★★★★</span>
+                    </div>
+                    <div class="testi-timestamp">
+                        <span class="verified">✓ Verified</span> &nbsp; ${t.time}
+                    </div>
+                </div>`).join('');
+                // bonuses
+                document.getElementById('bonus-label').textContent = c.bonusLabel;
+                document.getElementById('bonus-h2').innerHTML = c.bonusH2+' <span class="gold">Rp795.000</span>';
+                const bl = document.getElementById('bonus-list');
+  bl.innerHTML = c.bonuses.map(b=>`
+                <div class="bonus-card">
+                    <div class="bonus-icon">${b.icon}</div>
+                    <div>
+                        <div class="bonus-title">${b.title}</div>
+                        <div class="bonus-desc">${b.desc}</div>
+                        <div class="bonus-price"><s>${b.price}</s> → GRATIS</div>
+                    </div>
+                </div>`).join('');
+                // pricing
+                document.getElementById('price-label').textContent = c.priceLabel;
+                document.getElementById('price-h2').innerHTML = c.priceH2+' <span class="gold">'+(lang==='id'?'Hari Ini':'Today')+'</span>';
+                const vr = document.getElementById('value-rows');
+  vr.innerHTML = c.valueRows.map(r=>`
+                <div class="value-row">
+                    <span class="value-title">${r.title}</span>
+                    <span class="value-price">${r.price}</span>
+                </div>`).join('');
+                document.getElementById('price-today-label').textContent = c.priceTodayLabel;
+                document.getElementById('savings-badge').textContent = c.savingsBadge;
+                document.getElementById('price-cta').textContent = c.priceCta;
+                document.getElementById('price-sub').textContent = c.priceSub;
+                // exclusivity
+                document.getElementById('excl-h2').innerHTML = c.exclH2;
+                const exl = document.getElementById('excl-list');
+  exl.innerHTML = c.exclItems.map(i=>`<div class="excl-item"><span class="excl-x">✕</span><span>${i}</span></div>`).join('');
+                document.getElementById('excl-cta').textContent = c.exclCta;
+                // faq
+                document.getElementById('faq-label').textContent = c.faqLabel;
+                document.getElementById('faq-h2').innerHTML = c.faqH2+' <span class="gold">'+(lang==='id'?'Ditanyakan?':'Anything?')+'</span>';
+                const fl = document.getElementById('faq-list');
+  fl.innerHTML = c.faqs.map((f,i)=>`
+                <div class="faq-item" id="faq-${i}">
+                    <div class="faq-q" onclick="toggleFaq(${i})">
+                        <span>${f.q}</span><span class="faq-arrow">▾</span>
+                    </div>
+                    <div class="faq-a">${f.a}</div>
+                </div>`).join('');
+                document.getElementById('faq-cta').textContent = c.faqCta;
+                document.getElementById('faq-sub').textContent = c.faqSub;
+                // sticky
+                document.getElementById('sticky-btn').textContent = c.stickyCta;
+                document.getElementById('sticky-btn').textContent = c.stickyCta;
+                const st = document.querySelector('.sticky-text');
+                st.innerHTML = `${c.stickyText} <span>Rp199.000</span>`;
+                // pain cards bilingual
+                if(lang==='en'){
+    const enPains = [
+                ["😔","Always the 'best friend' but <strong>NEVER</strong> the first choice"],
+                ["💔","Left or cheated on despite being loyal and good"],
+                ["😤","Jealous of 'average' girls who get dream boyfriends"],
+                ["📱","Watching drama at 2AM secretly wishing to <strong>BE her</strong>"],
+                ["🔄","Always attracting toxic guys — ghosted after 3 months"],
+                ["😶","Labeled 'too nice' which really means 'too <strong>BORING</strong>'"],
+                ];
+                const pc = document.getElementById('pain-cards');
+    pc.innerHTML = enPains.map(([ic,tx])=>`<div class="pain-card"><span class="pain-icon">${ic}</span><span>${tx}</span></div>`).join('');
+  } else {
+    const idPains = [
+                ["😔","Selalu jadi \"teman curhat\" tapi bukan <strong>PILIHAN</strong> siapapun"],
+                ["💔","Ditinggal atau diselingkuhi padahal sudah baik dan setia"],
+                ["😤","Iri sama cewek yang \"biasa aja\" tapi dapat cowok impian"],
+                ["📱","Nonton drama pelakor jam 2 pagi dan diam-diam pengen jadi <strong>DIA</strong>"],
+                ["🔄","Selalu attract cowok toxic — di-ghosted setelah 3 bulan"],
+                ["😶","Diberi label \"terlalu baik\" yang artinya \"terlalu <strong>BORING</strong>\""],
+                ];
+                const pc = document.getElementById('pain-cards');
+    pc.innerHTML = idPains.map(([ic,tx])=>`<div class="pain-card"><span class="pain-icon">${ic}</span><span>${tx}</span></div>`).join('');
+  }
+                // restart countdown display
+                startCountdown();
+}
+
+                // ─── FAQ TOGGLE ────────────────────────────────────────────────────
+                function toggleFaq(i){
+  const el = document.getElementById('faq-'+i);
+                el.classList.toggle('open');
+}
+
+                // ─── COUNTDOWN ─────────────────────────────────────────────────────
+                let countdownInterval;
+                function startCountdown(){
+  if(countdownInterval) clearInterval(countdownInterval);
+                const KEY='df_end_time';
+                let endTime = localStorage.getItem(KEY);
+  if(!endTime || Date.now()>parseInt(endTime)){
+                    endTime = Date.now() + 3 * 60 * 60 * 1000;
+                localStorage.setItem(KEY, endTime);
+  }
+                function update(){
+    const now=Date.now(), diff=Math.max(0,parseInt(endTime)-now);
+                const h=Math.floor(diff/3600000), m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+                const str=`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                const el=document.getElementById('countdown');
+                if(el) el.textContent=str;
+  }
+                update();
+                countdownInterval=setInterval(update,1000);
+}
+
+// ─── SCROLL EFFECTS ────────────────────────────────────────────────
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+                const pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+                document.getElementById('progress-bar').style.width=pct+'%';
+                // sticky cta
+                const sc=document.getElementById('sticky-cta');
+  if(pct>30) sc.classList.add('show'); else sc.classList.remove('show');
+  // fade in
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>{
+    const rect=el.getBoundingClientRect();
+                if(rect.top<window.innerHeight*0.92) el.classList.add('visible');
+  });
+});
+
+                // ─── INIT ──────────────────────────────────────────────────────────
+                (function init(){
+  // check URL param
+  try{const p=new URLSearchParams(location.search);if(p.get('lang')==='en')lang='en';}catch(e){ }
+                document.getElementById('lang-btn').textContent=lang==='id'?'🇮🇩 ID':'🇬🇧 EN';
+                renderAll();
+  // initial fade check
+  setTimeout(()=>{
+                    document.querySelectorAll('.fade-in').forEach(el => {
+                        const rect = el.getBoundingClientRect();
+                        if (rect.top < window.innerHeight) el.classList.add('visible');
+                    });
+  },100);
+})();
+            </script>
+        </body >
+    </html >
