@@ -296,7 +296,10 @@ export default function RajaRanjangLP() {
     const [paymentData, setPaymentData] = useState<any>(null);
     const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
 
-    const priceID = 149000;
+    const isV2 = new URLSearchParams(window.location.search).has('v2');
+    const priceID = isV2 ? 259000 : 149000;
+    const displayPrice = isV2 ? 'Rp259.000' : 'Rp149.000';
+    const savePct = isV2 ? '66%' : '81%';
     const PIXEL_ID = '934836615539666';
 
     // WhatsApp Alert Helper
@@ -447,7 +450,7 @@ export default function RajaRanjangLP() {
             fbq('track', 'PageView');
             fbq('track', 'ViewContent', {
                 content_name: 'universal raja ranjang',
-                value: 149000,
+                value: priceID,
                 currency: 'IDR'
             });
         }
@@ -967,7 +970,7 @@ export default function RajaRanjangLP() {
                                             Maka <strong style={{ color: "#F0C84A" }}>ambil kesempatan ini sebelum harga naik</strong> — dengan bundle bonus yang massive, <strong>sekarang juga</strong>.
                                         </p>
                                         <p style={{ margin: 0, paddingTop: 10, borderTop: "1px solid rgba(239,68,68,.2)" }}>
-                                            💰 Harga <strong style={{ color: "#F0C84A", fontSize: 22 }}>Rp149.000</strong> sangatlah kecil dibanding biaya <em>harga diri</em>, <em>ketenangan</em>, dan <em>wibawa</em> Anda — yang melebihi harga <strong>1x makan di luar</strong>.
+                                            💰 Harga <strong style={{ color: "#F0C84A", fontSize: 22 }}>{displayPrice}</strong> sangatlah kecil dibanding biaya <em>harga diri</em>, <em>ketenangan</em>, dan <em>wibawa</em> Anda — yang melebihi harga <strong>1x makan di luar</strong>.
                                         </p>
                                     </div>
                                 </div>
@@ -1017,8 +1020,8 @@ export default function RajaRanjangLP() {
                                     <div className="pkgitems">Ebook Utama + 4 Bonus Premium (599 halaman total)</div>
                                     <div className="pkgprow">
                                         <div className="pkgold">Rp769.000</div>
-                                        <div className="pkgnew">Rp149.000</div>
-                                        <div className="savetag">Hemat 81%</div>
+                                        <div className="pkgnew">{displayPrice}</div>
+                                        <div className="savetag">Hemat {savePct}</div>
                                     </div>
                                 </div>
                             </div>
@@ -1077,17 +1080,17 @@ export default function RajaRanjangLP() {
                                     <div style={{ background: "rgba(201,153,26,.05)", border: "1px solid rgba(201,153,26,.13)", borderRadius: 11, padding: 14 }}>
                                         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: "#7D94AF" }}>
                                             <span>Paket Lengkap Raja Ranjang</span>
-                                            <span style={{ color: "#EEE5C8", fontWeight: 600 }}>Rp149.000</span>
+                                            <span style={{ color: "#EEE5C8", fontWeight: 600 }}>{displayPrice}</span>
                                         </div>
                                         <div style={{ height: 1, background: "rgba(201,153,26,.09)", marginBottom: 7 }} />
                                         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14.5, fontWeight: 700 }}>
                                             <span style={{ color: "#EEE5C8" }}>Total</span>
-                                            <span style={{ color: "#C9991A", fontFamily: "var(--fd)", fontSize: 21 }}>Rp149.000</span>
+                                            <span style={{ color: "#C9991A", fontFamily: "var(--fd)", fontSize: 21 }}>{displayPrice}</span>
                                         </div>
                                     </div>
 
                                     <button className="sbtn" onClick={submitOrder} disabled={loading}>
-                                        {loading ? "Memproses..." : "🛒 Pesan Sekarang — Rp149.000"}
+                                        {loading ? "Memproses..." : `🛒 Pesan Sekarang — ${displayPrice}`}
                                     </button>
                                     <p style={{ fontSize: 12, color: "#374151", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital (Email/WA). Tidak ada penagihan mencurigakan di rekening. Privasi 100% terjaga.</p>
                                 </div>
@@ -1123,7 +1126,7 @@ export default function RajaRanjangLP() {
                                 onClick={(name && phone && email && payment) ? submitOrder : scrollToForm}
                                 disabled={loading}
                             >
-                                {loading ? "Memproses..." : "🛒 Pesan Sekarang — Rp149.000"}
+                                {loading ? "Memproses..." : `🛒 Pesan Sekarang — ${displayPrice}`}
                             </button>
                             <div className="stickyp">⚡ Akses instan · 🔒 100% privasi · ✅ Garansi 7 hari</div>
                         </div>
