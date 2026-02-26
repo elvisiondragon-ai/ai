@@ -1,4 +1,4 @@
-const APP_VERSION = '2026.02.26.02'; // Force update
+const APP_VERSION = '2026.02.26.03'; // Force update
 
 if (localStorage.getItem('v_cache') !== APP_VERSION) {
   // 1. Clear Service Workers
@@ -41,8 +41,8 @@ const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.ts
 const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
 const Proteam = React.lazy(() => import('./proteam.tsx'));
 const IntroLanding = React.lazy(() => import('./intro.tsx'));
-const Rajaranjang = React.lazy(() => import('./rajaranjang/rajaranjang.tsx'));
-const DarkFeminine = React.lazy(() => import('./darkfeminine.tsx'));
+const Rajaranjang = React.lazy(() => import('./universal/rajaranjang.tsx'));
+const DarkFeminine = React.lazy(() => import('./universal/darkfeminine.tsx'));
 
 // Moved from elvisiongroup
 const UsaEbookSlim = React.lazy(() => import('./usa/usa_ebookslim.tsx'));
