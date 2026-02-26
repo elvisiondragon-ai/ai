@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { supabase } from "./integrations/supabase/client";
+import { supabase } from "../integrations/supabase/client";
 import { ArrowLeft, Copy } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
-import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "./utils/fbpixel";
-import qrisBcaImage from "./assets/qrisbca.jpeg";
+import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "../utils/fbpixel";
+import qrisBcaImage from "../assets/qrisbca.jpeg";
 
 // Asset Imports for ID
-import df01Id from './assets/darkfem_id/df01_paradox.png';
-import df02Id from './assets/darkfem_id/df02_2am_scroll.png';
-import df03Id from './assets/darkfem_id/df03_nice_girl_dies.png';
-import df04Id from './assets/darkfem_id/df04_teman_curhat.png';
-import df05Id from './assets/darkfem_id/df05_comparison.png';
-import df06Id from './assets/darkfem_id/df06_fuckboy_cycle.png';
-import df07Id from './assets/darkfem_id/df07_drakor_fantasy.png';
-import df08Id from './assets/darkfem_id/df08_secret_she_knows.png';
-import df09Id from './assets/darkfem_id/df09_wake_up_call.png';
-import df10Id from './assets/darkfem_id/df10_society_lie.png';
-import video1Id from './assets/darkfem_id/video1.mp4';
-import video2Id from './assets/darkfem_id/video2.mp4';
-import video3Id from './assets/darkfem_id/video3.mp4';
+import df01Id from '../assets/darkfem_id/df01_paradox.png';
+import df02Id from '../assets/darkfem_id/df02_2am_scroll.png';
+import df03Id from '../assets/darkfem_id/df03_nice_girl_dies.png';
+import df04Id from '../assets/darkfem_id/df04_teman_curhat.png';
+import df05Id from '../assets/darkfem_id/df05_comparison.png';
+import df06Id from '../assets/darkfem_id/df06_fuckboy_cycle.png';
+import df07Id from '../assets/darkfem_id/df07_drakor_fantasy.png';
+import df08Id from '../assets/darkfem_id/df08_secret_she_knows.png';
+import df09Id from '../assets/darkfem_id/df09_wake_up_call.png';
+import df10Id from '../assets/darkfem_id/df10_society_lie.png';
+import video1Id from '../assets/darkfem_id/video1.mp4';
+import video2Id from '../assets/darkfem_id/video2.mp4';
+import video3Id from '../assets/darkfem_id/video3.mp4';
 
 // For English, fallback to ID if we don't have separate assets yet.
 const assetsMap: any = {
@@ -128,14 +128,14 @@ const contentData: any = {
         priceTodayLabel: "Harga Hari Ini",
         savingsBadge: "🎉 Hemat 80% — Penawaran Terbatas!",
         priceCta: "DAPATKAN SEKARANG — Rp199.000",
-        priceSub: "📲 Dikirim INSTAN ke WhatsApp kamu",
+        priceSub: "🚀 Dikirim INSTAN ke WhatsApp kamu",
         exclH2: "Dark Feminine BUKAN untuk:",
         exclCta: '"Ini HANYA untuk wanita yang SIAP mengambil kendali hidupnya."',
         faqLabel: "PERTANYAAN UMUM",
         faqH2: "Ada yang",
         faqH2Span: "Ditanyakan?",
         faqCta: "YA, SAYA SIAP BERUBAH →",
-        faqSub: "�� Dikirim INSTAN ke WhatsApp kamu",
+        faqSub: "🚀 Dikirim INSTAN ke WhatsApp kamu",
         stickyCta: "PESAN SEKARANG",
         stickyText: "🌙 52 Jurus —",
         stickyPrice: "Rp199.000",
@@ -261,6 +261,13 @@ const DarkFeminineTSX = () => {
     const [paymentData, setPaymentData] = useState<any>(null);
     const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
 
+    // Free Ebook States
+    const [nameFree, setNameFree] = useState("");
+    const [waFree, setWaFree] = useState("");
+    const [emailFree, setEmailFree] = useState("");
+    const [loadingFree, setLoadingFree] = useState(false);
+    const [successFree, setSuccessFree] = useState(false);
+
     const priceID = addUpsell ? 249000 : 199000;
     const PIXEL_ID = '3319324491540889';
 
@@ -326,6 +333,50 @@ const DarkFeminineTSX = () => {
         } catch (e) { alert('Network Error. Silakan pesan via WhatsApp.'); console.error(e); } finally { setLoading(false); }
     };
 
+    const submitFreeEbook = async () => {
+        if (!nameFree || !waFree || !emailFree) {
+            alert('Harap isi Nama, WhatsApp, dan Email.');
+            return;
+        }
+
+        let formattedWa = waFree.trim().replace(/\D/g, '');
+        if (formattedWa.startsWith('0')) {
+            formattedWa = '62' + formattedWa.slice(1);
+        } else if (!formattedWa.startsWith('62')) {
+            formattedWa = '62' + formattedWa;
+        }
+
+        setLoadingFree(true);
+        try {
+            const payload = {
+                userEmail: emailFree,
+                userName: nameFree,
+                phone: formattedWa,
+                productName: 'darkfeminine_free_ebook',
+                amount: 0,
+                currency: 'IDR',
+                reference: `FREE-${Date.now()}`
+            };
+
+            const { data, error } = await supabase.functions.invoke('send-ebooks-email', {
+                body: payload
+            });
+
+            if (error) throw error;
+
+            if (data?.success) {
+                setSuccessFree(true);
+            } else {
+                alert('Gagal mengirim WhatsApp. Silahkan coba lagi nanti.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Terjadi kesalahan jaringan.');
+        } finally {
+            setLoadingFree(false);
+        }
+    };
+
     const scrollToForm = useCallback(() => { document.getElementById("checkout")?.scrollIntoView({ behavior: "smooth" }); }, []);
     const purchaseFiredRef = useRef(false);
 
@@ -334,7 +385,7 @@ const DarkFeminineTSX = () => {
         const channelName = `payment-status-df-${paymentData.tripay_reference}`;
         const channel = supabase.channel(channelName)
             .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'global_product', filter: `tripay_reference=eq.${paymentData.tripay_reference}` },
-                (payload) => {
+                (payload: any) => {
                     if (payload.new?.status === 'PAID') {
                         if (purchaseFiredRef.current) return;
                         purchaseFiredRef.current = true;
@@ -660,6 +711,45 @@ const DarkFeminineTSX = () => {
         .df-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 20px; font-size: 17px; color: var(--cream); line-height: 1.75; }
         .df-faq-item.open .df-faq-a { max-height: 300px; padding: 0 20px 18px; }
         
+        .df-free-form {
+          margin-top: 24px;
+          background: rgba(139, 92, 246, 0.05);
+          border: 1px solid rgba(139, 92, 246, 0.2);
+          border-radius: 12px;
+          padding: 20px;
+        }
+        .df-free-input {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: var(--cream);
+          padding: 12px 14px;
+          border-radius: 8px;
+          font-family: var(--font-body);
+          font-size: 15px;
+          margin-bottom: 12px;
+          outline: none;
+        }
+        .df-free-input:focus { border-color: var(--purple-light); }
+        .df-free-pwrap { display: flex; margin-bottom: 12px; }
+        .df-free-pwrap .df-free-input { margin-bottom: 0; border-radius: 0 8px 8px 0; }
+        .df-free-ppfx { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.1); border-right: none; border-radius: 8px 0 0 8px; padding: 12px 14px; font-size: 15px; font-weight: 600; color: var(--cream); white-space: nowrap; display: flex; align-items: center; }
+        .df-free-btn {
+          width: 100%;
+          background: var(--purple);
+          color: white;
+          border: none;
+          padding: 12px;
+          border-radius: 8px;
+          font-weight: 700;
+          font-family: var(--font-body);
+          cursor: pointer;
+          font-size: 15px;
+          transition: background 0.2s;
+        }
+        .df-free-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+        .df-free-btn:hover:not(:disabled) { background: var(--purple-light); }
+
         #df-sticky-cta {
           position: fixed; bottom: 0; left: 0; right: 0; z-index: 9997;
           background: linear-gradient(0deg, #0A0612 70%, transparent); padding: 16px 22px 20px;
@@ -720,9 +810,6 @@ const DarkFeminineTSX = () => {
                             <div className="df-img-box">
                                 <img src={assets.df08} alt="Dark Feminine" />
                             </div>
-                            <div className="df-pulse-ring">
-                                <a onClick={scrollToForm} className="df-cta-btn" style={{ cursor: "pointer", color: "#000" }}>{c.heroCta}</a>
-                            </div>
                             <div className="df-trust-badges">
                                 <span>🔒 100% Privasi</span><span>⚡ Instan</span><span>📱 Akses Seumur Hidup</span>
                             </div>
@@ -749,8 +836,8 @@ const DarkFeminineTSX = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div style={{ marginTop: '32px' }}>
-                                <a onClick={scrollToForm} className="df-cta-btn" style={{ cursor: "pointer", color: "#000" }}>{c.painLabel === 'JUJUR SAMA DIRI SENDIRI' ? 'UBAH SEGALANYA SEKARANG →' : 'CHANGE EVERYTHING NOW →'}</a>
+                            <div className="df-img-box">
+                                <img src={assets.df02} alt="Pain Visual" />
                             </div>
                         </div>
                     </section>
@@ -768,6 +855,9 @@ const DarkFeminineTSX = () => {
                             <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>
                                 <p>{c.agitText}</p>
                             </div>
+                            <div className="df-img-box">
+                                <img src={assets.df06} alt="Agitation Visual" />
+                            </div>
                         </div>
                     </section>
 
@@ -780,9 +870,6 @@ const DarkFeminineTSX = () => {
                                 <span className="df-newline df-gold">{c.solH2b}</span>
                             </h2>
                             <p style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</p>
-                            <div style={{ marginTop: '28px' }}>
-                                <a onClick={scrollToForm} className="df-cta-btn" style={{ cursor: "pointer", color: "#000" }}>{lang === 'id' ? 'PELAJARI ILMUNYA SEKARANG →' : 'LEARN THE SECRETS NOW →'}</a>
-                            </div>
                             <div className="df-video-player">
                                 <video controls playsInline preload="metadata" poster={assets.df03}>
                                     <source src={assets.video1} type="video/mp4" />
@@ -806,6 +893,9 @@ const DarkFeminineTSX = () => {
                                 ))}
                                 <p style={{ textAlign: 'center', fontSize: '15px', color: 'var(--muted)', fontStyle: 'italic', marginTop: '4px' }}>{c.checksPlus}</p>
                             </div>
+                            <div className="df-img-box">
+                                <img src={assets.df05} alt="Contents Visual" />
+                            </div>
                         </div>
                     </section>
 
@@ -814,6 +904,9 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.testiLabel}</div>
                             <h2 className="df-section-h2">{c.testiH2} <span className="df-gold">{c.testiH2Span}</span></h2>
+                            <div className="df-img-box">
+                                <img src={assets.df10} alt="Social Proof" />
+                            </div>
                             <div>
                                 {c.testis.map((t: any, i: number) => (
                                     <div key={i} className="df-testi-card">
@@ -841,18 +934,6 @@ const DarkFeminineTSX = () => {
                                 </video>
                                 <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : 'The Forgotten Wife'}</span></div>
                             </div>
-
-                            <div style={{ marginTop: '32px' }}>
-                                <div className="df-section-label">VISUAL STORIES</div>
-                                <div className="df-img-gallery">
-                                    <img src={assets.df02} alt="Visual" />
-                                    <img src={assets.df05} alt="Visual" />
-                                    <img src={assets.df06} alt="Visual" />
-                                    <img src={assets.df07} alt="Visual" />
-                                    <img src={assets.df10} alt="Visual" />
-                                    <img src={assets.df03} alt="Visual" />
-                                </div>
-                            </div>
                         </div>
                     </section>
 
@@ -875,8 +956,8 @@ const DarkFeminineTSX = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div style={{ marginTop: '28px' }}>
-                                <a onClick={scrollToForm} className="df-cta-btn" style={{ cursor: "pointer", color: "#000" }}>{lang === 'id' ? 'CLAIM SEMUA BONUS GRATIS →' : 'CLAIM ALL BONUSES FREE →'}</a>
+                            <div className="df-img-box">
+                                <img src={assets.df07} alt="Bonus Visual" />
                             </div>
                         </div>
                     </section>
@@ -886,6 +967,9 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.priceLabel}</div>
                             <h2 className="df-section-h2">{c.priceH2} <span className="df-gold">{lang === 'id' ? 'Hari Ini' : 'Today'}</span></h2>
+                            <div className="df-img-box">
+                                <img src={assets.df08} alt="Pricing Visual" />
+                            </div>
                             <div className="df-value-card">
                                 <div>
                                     {c.valueRows.map((r: any, i: number) => (
@@ -908,9 +992,6 @@ const DarkFeminineTSX = () => {
                                 </div>
                             </div>
                             <div style={{ marginTop: '24px' }}>
-                                <div className="df-pulse-ring">
-                                    <a onClick={scrollToForm} className="df-cta-btn" style={{ cursor: "pointer", color: "#000" }}>{c.priceCta}</a>
-                                </div>
                                 <p style={{ textAlign: 'center', fontSize: '15px', color: 'var(--muted)', marginTop: '10px' }}>{c.priceSub}</p>
                                 <div className="df-trust-badges">
                                     <span>🔒 100% Privasi</span><span>⚡ Instan</span><span>📱 Akses Seumur Hidup</span>
@@ -924,6 +1005,9 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : 'NOT FOR EVERYONE'}</div>
                             <h2 className="df-section-h2">{c.exclH2}</h2>
+                            <div className="df-img-box">
+                                <img src={assets.df09} alt="Exclusivity Visual" />
+                            </div>
                             <div style={{ background: 'var(--bg-card)', borderRadius: '16px', padding: '26px 22px', border: '2px solid rgba(239,68,68,0.35)' }}>
                                 <div>
                                     {c.exclItems.map((item: string, i: number) => (
@@ -936,6 +1020,55 @@ const DarkFeminineTSX = () => {
                                 <p style={{ marginTop: '22px', textAlign: 'center', color: 'var(--gold-light)', fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: '20px', lineHeight: 1.4 }}>
                                     {c.exclCta}
                                 </p>
+
+                                <div className="df-free-form">
+                                    <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+                                        <span style={{ color: 'var(--purple-light)', fontSize: '18px', fontWeight: 700 }}>🎁 Dapatkan Free Ebook</span>
+                                    </div>
+
+                                    {successFree ? (
+                                        <div style={{ textAlign: 'center', background: 'rgba(37, 211, 102, 0.1)', border: '1px solid rgba(37, 211, 102, 0.3)', padding: '16px', borderRadius: '8px' }}>
+                                            <div style={{ fontSize: '24px', marginBottom: '8px' }}>✅</div>
+                                            <strong style={{ display: 'block', color: 'var(--green-wa)', marginBottom: '4px' }}>Berhasil!</strong>
+                                            <span style={{ fontSize: '14px', color: 'var(--cream)' }}>Silahkan Periksa whatsapp anda,, Ketik Ya jika anda ingin menerima Free ebook..</span>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <input
+                                                type="text"
+                                                className="df-free-input"
+                                                placeholder="Nama Kamu"
+                                                value={nameFree}
+                                                onChange={(e) => setNameFree(e.target.value)}
+                                            />
+                                            <div className="df-free-pwrap">
+                                                <div className="df-free-ppfx">🇮🇩 +62</div>
+                                                <input
+                                                    type="tel"
+                                                    className="df-free-input"
+                                                    placeholder="812345678"
+                                                    value={waFree}
+                                                    onChange={(e) => setWaFree(e.target.value)}
+                                                />
+                                            </div>
+                                            <input
+                                                type="email"
+                                                className="df-free-input"
+                                                placeholder="Email Aktif"
+                                                value={emailFree}
+                                                onChange={(e) => setEmailFree(e.target.value)}
+                                                style={{ marginBottom: '16px' }}
+                                            />
+                                            <button
+                                                className="df-free-btn"
+                                                onClick={submitFreeEbook}
+                                                disabled={loadingFree}
+                                            >
+                                                {loadingFree ? 'Memproses...' : 'Kirim Sekarang →'}
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -1042,6 +1175,9 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.faqLabel}</div>
                             <h2 className="df-section-h2">{c.faqH2} <span className="df-gold">{c.faqH2Span}</span></h2>
+                            <div className="df-img-box">
+                                <img src={assets.df03} alt="FAQ Visual" />
+                            </div>
                             <div>
                                 {c.faqs.map((f: any, i: number) => (
                                     <div key={i} className={`df-faq-item ${openFaq === i ? 'open' : ''}`}>
@@ -1054,7 +1190,6 @@ const DarkFeminineTSX = () => {
                                 ))}
                             </div>
                             <div style={{ marginTop: '32px' }}>
-                                <a onClick={scrollToForm} className="df-cta-btn" style={{ cursor: "pointer", color: "#000" }}>{c.faqCta}</a>
                                 <p style={{ textAlign: 'center', fontSize: '15px', color: 'var(--muted)', marginTop: '10px' }}>{c.faqSub}</p>
                             </div>
                         </div>
@@ -1078,7 +1213,7 @@ const DarkFeminineTSX = () => {
                                 {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>Rp{addUpsell ? '249.000' : '199.000'}</span>
                                 {addUpsell && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
                             </div>
-                            <a onClick={scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
+                            <a onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
                         </div>
                     </div>
 

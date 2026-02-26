@@ -606,7 +606,6 @@ export default function RajaRanjangLP() {
                                 <div className="hbadge"><div className="hbadge-dot" /> Panduan Dewasa Premium</div>
                                 <h1 className="ht">Jadilah Pria Yang Membuat Dia <em>Merasa Istimewa</em></h1>
                                 <p className="hs">5-10 menit tidak cukup membuat dia puas. Temukan rahasianya di panduan keintiman berbasis riset psikologi modern ini.</p>
-                                <button className="hcta" onClick={scrollToForm}>Dapatkan Panduan Lengkapnya →</button>
                                 <div className="spbar">
                                     <div className="avstack">
                                         {(["#A78BFA", "#34D399", "#60A5FA", "#F472B6", "#FB923C"] as const).map((c, i) => (
