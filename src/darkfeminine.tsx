@@ -4,7 +4,7 @@ import { supabase } from "./integrations/supabase/client";
 import { ArrowLeft, Copy } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
-import { getFbcFbpCookies, getClientIp } from "./utils/fbpixel";
+import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "./utils/fbpixel";
 import qrisBcaImage from "./assets/qrisbca.jpeg";
 
 // Asset Imports for ID
@@ -347,10 +347,12 @@ const DarkFeminineTSX = () => {
     }, [showPaymentInstructions, paymentData, PIXEL_ID, priceID, toast]);
 
     useEffect(() => {
-        if (typeof window !== 'undefined' && (window as any).fbq) {
-            const fbq = (window as any).fbq;
-            fbq('init', PIXEL_ID); fbq('track', 'PageView'); fbq('track', 'ViewContent', { content_name: 'Universal - Dark Feminine', value: priceID, currency: 'IDR' });
-        }
+        initFacebookPixelWithLogging(PIXEL_ID);
+        trackViewContentEvent(
+            { content_name: 'Universal - Dark Feminine', value: priceID, currency: 'IDR' },
+            undefined,
+            PIXEL_ID
+        );
     }, [PIXEL_ID]);
     const hasEn = searchParams.has('en');
     const hasId = searchParams.has('id');
