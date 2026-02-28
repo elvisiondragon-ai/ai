@@ -1362,6 +1362,7 @@ Total: Rp ${details.amount.toLocaleString('id-ID')}`;
                     <section className="py-14 px-4 bg-primaryLight">
                         <div className="max-w-4xl mx-auto">
                             <div className="text-center mb-10">
+                                <span className="inline-block bg-white text-black border border-black text-sm font-bold px-4 py-1 rounded-full mb-4">Atau mau lebih Simpel dan data disimpen di Cloud?</span>
                                 <h2 className="font-display text-2xl md:text-3xl font-bold text-primary mb-3">Lihat Bagaimana App Bekerja</h2>
                                 <p className="text-muted text-lg">Intip fitur-fitur sinkronisasi kalender dan budget yang sangat mudah digunakan.</p>
                             </div>
@@ -1402,19 +1403,19 @@ Total: Rp ${details.amount.toLocaleString('id-ID')}`;
 
 
                                     <div className="pt-4 border-t border-border mt-4">
-                                        <label className="block text-sm font-semibold text-primary mb-3">Pilih Paket Anda</label>
+                                        <label className="block text-sm font-semibold text-primary mb-3">Fitur Add-ons (optional)</label>
 
                                         {/* Base */}
-                                        <div onClick={() => setAddUpsell(false)} className={`flex items-center p-4 rounded-xl cursor-pointer transition-all mb-3 ${!addUpsell ? 'bg-primary/5 border border-primary/50 ring-1 ring-primary/20' : 'bg-white border border-border'}`}>
+                                        <div onClick={() => setAddUpsell(false)} className={`flex items-center p-4 rounded-xl cursor-pointer transition-all mb-3 ${!addUpsell ? 'bg-amber-50 border border-amber-400 ring-1 ring-amber-200' : 'bg-white border border-border'}`}>
                                             <div className="mr-3 flex-shrink-0">
-                                                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${!addUpsell ? 'border-primary' : 'border-gray-300'}`}>
-                                                    {!addUpsell && <div className="w-2.5 h-2.5 bg-primary rounded-full"></div>}
+                                                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${!addUpsell ? 'border-amber-500' : 'border-gray-300'}`}>
+                                                    {!addUpsell && <div className="w-2.5 h-2.5 bg-amber-500 rounded-full"></div>}
                                                 </div>
                                             </div>
                                             <div className="flex-1">
-                                                <div className={`font-bold text-sm ${!addUpsell ? 'text-primary' : 'text-gray-600'}`}>Template Co-Parenting Sheets</div>
+                                                <div className={`font-bold text-sm ${!addUpsell ? 'text-amber-700' : 'text-gray-600'}`}>Template Co-Parenting Sheets</div>
                                             </div>
-                                            <div className={`font-bold ${!addUpsell ? 'text-primary' : 'text-gray-600'}`}>Rp 99.000</div>
+                                            <div className={`font-bold ${!addUpsell ? 'text-amber-700' : 'text-gray-600'}`}>Rp 99.000</div>
                                         </div>
 
                                         {/* Upsell */}
@@ -1431,7 +1432,7 @@ Total: Rp ${details.amount.toLocaleString('id-ID')}`;
                                                 </div>
                                                 <div className="text-xs text-gray-500">Akses App Sinkronisasi Kalender & Budget. <span className="text-red-500 line-through">(Senilai Rp250.000)</span></div>
                                             </div>
-                                            <div className={`font-bold ${addUpsell ? 'text-amber-700' : 'text-gray-600'}`}>Rp 149.000</div>
+                                            <div className={`font-bold ${addUpsell ? 'text-amber-700' : 'text-gray-600'}`}>+ Rp 50.000 / Bulan</div>
                                         </div>
                                     </div>
 
@@ -1457,7 +1458,7 @@ Total: Rp ${details.amount.toLocaleString('id-ID')}`;
                                     <div className="mt-6 pt-6 border-t border-border">
                                         <div className="flex justify-between items-center mb-4">
                                             <span className="font-semibold text-primary">{addUpsell ? "Total: Template + App Sync" : "Total Pembayaran"}</span>
-                                            <span className="font-display text-2xl font-bold text-primary">Rp {addUpsell ? "149.000" : "99.000"}</span>
+                                            <span className="font-display text-2xl font-bold text-primary">Rp {addUpsell ? "149.000 (Lalu 50rb/bln)" : "99.000"}</span>
                                         </div>
 
                                         <button onClick={submitOrder} disabled={loading} className="w-full btn-primary text-white font-bold text-lg p-4 rounded-xl flex items-center justify-center gap-2">
@@ -1625,6 +1626,23 @@ Total: Rp ${details.amount.toLocaleString('id-ID')}`;
                                         </p>
                                     </div>
                                 </div>
+
+                                {/* FAQ Item 7 */}
+                                <div className="bg-white rounded-xl border border-border overflow-hidden mt-4">
+                                    <button onClick={(e) => toggleFAQ(e.currentTarget)} className="w-full flex items-center justify-between p-5 text-left"
+                                        aria-expanded="false">
+                                        <span className="font-semibold text-primary pr-4">Apakah Template Google Sheet ini 1x bayar atau bulanan?</span>
+                                        <svg className="faq-icon w-5 h-5 text-muted flex-shrink-0" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="faq-answer">
+                                        <p className="px-5 pb-5 text-muted">
+                                            Untuk Template Google Sheet, pembayarannya cukup <b>1x bayar seumur hidup</b>. Namun, jika Anda ingin menggunakan versi Online yang terkontrol di Cloud (App Sync Add-on), biayanya adalah berlangganan <b>Rp 50.000 per bulan</b>.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -1710,8 +1728,8 @@ Total: Rp ${details.amount.toLocaleString('id-ID')}`;
                                 <p className="text-sm text-muted line-through">Rp 199.000</p>
                                 <p className="text-xl font-bold text-primary">Rp 99.000</p>
                             </div>
-                            <button onClick={scrollToForm} className="btn-primary text-white font-bold px-6 py-3 rounded-xl">
-                                Beli Sekarang
+                            <button onClick={() => (name && phone && email) ? submitOrder() : scrollToForm()} disabled={loading} className="btn-primary text-white font-bold px-6 py-3 rounded-xl">
+                                {loading ? "Memproses..." : "Beli Sekarang"}
                             </button>
                         </div>
                         <p className="text-xs text-muted text-center mt-2">Pembayaran aman via Midtrans</p>
