@@ -1,4 +1,4 @@
-const APP_VERSION = '2026.02.26.03'; // Force update
+const APP_VERSION = '2026.03.01.01'; // Force update
 
 if (localStorage.getItem('v_cache') !== APP_VERSION) {
   // 1. Clear Service Workers
@@ -43,6 +43,9 @@ const Proteam = React.lazy(() => import('./proteam.tsx'));
 const IntroLanding = React.lazy(() => import('./intro.tsx'));
 const Rajaranjang = React.lazy(() => import('./universal/rajaranjang.tsx'));
 const DarkFeminine = React.lazy(() => import('./universal/darkfeminine.tsx'));
+const HotAffiliate = React.lazy(() => import('./universal/hotaffiliate.tsx'));
+const SmartParenting = React.lazy(() => import('./universal/smartparenting.tsx'));
+const Parenting = React.lazy(() => import('./id_ebook/parenting.tsx'));
 
 // Moved from elvisiongroup
 const UsaEbookSlim = React.lazy(() => import('./usa/usa_ebookslim.tsx'));
@@ -106,6 +109,9 @@ const App = () => {
       <Route path="/proteam" element={<Proteam />} />
       <Route path="/rajaranjang" element={<Rajaranjang />} />
       <Route path="/darkfeminine" element={<DarkFeminine />} />
+      <Route path="/hotaffiliate" element={<HotAffiliate />} />
+      <Route path="/smartparenting" element={<SmartParenting />} />
+      <Route path="/id_parenting" element={<Parenting />} />
 
       {/* Moved from elvisiongroup */}
       <Route path="/usa_ebookslim" element={<UsaEbookSlim />} />
