@@ -38,227 +38,206 @@ const assetsMap: any = {
 
 const contentData: any = {
     id: {
-        agitText: <>Lo diajarin dari kecil: jadi anak baik, jangan menggoda, tunggu dijemput bola. <strong>DAN APA HASILNYA?</strong> Lo jadi teman curhat favorit sementara dia milih yang lain.<br /><br /><ul className="agitation-list"><li>Yang setia → ditinggalin.</li><li>Yang sabar → diinjak.</li><li>Yang pengertian → dianggap lemah.</li></ul><br />Tapi cewek yang "biasa aja"? Dapat <span className="highlight">SEGALANYA</span>.<br /><br />Bukan karena dia cantik. Bukan karena dia beruntung.<br />Tapi karena dia <span className="highlight">PAHAM sesuatu yang TIDAK PERNAH lo pelajari.</span></>,
-        solText: <>Panduan lengkap daya tarik wanita yang ditulis berdasarkan psikologi modern. Dari seni misteri, push-pull dynamics, sampai cara membangun aura yang bikin pria <strong>TIDAK BISA berhenti memikirkan kamu</strong>.<br /><br />Bukan tips murahan. Bukan saran "jadilah diri sendiri".<br />Tapi <strong>ILMU</strong> yang benar-benar <strong>MENGUBAH frekuensi kamu.</strong></>,
+        agitText: <>Masalahnya BUKAN anak Anda nakal atau susah diatur. Masalahnya adalah <span className="highlight">POLA KOMUNIKASI</span> Anda. Saat Anda berteriak, anak tidak belajar mendengarkan, mereka hanya belajar untuk <strong>TAKUT pada Anda.</strong><br /><br /><ul className="agitation-list"><li>Makin dibentak → makin melawan</li><li>Makin dilarang → makin sembunyi-sembunyi</li><li>Makin dipaksa → makin tantrum</li></ul><br />Orang tua yang "kelihatan santai"? Anak mereka nurut dan terbuka.<br /><br />Bukan karena anak mereka kebetulan penurut.<br />Tapi karena mereka <span className="highlight">PAHAM psikologi anak yang jarang diajarkan.</span></>,
+        solText: <>Kami tidak membagikan 'teori parenting' membosankan. Kami memberikan <span className="highlight">SISTEM PRAKTIS</span> berbasis psikologi anak modern. Dari cara meredam tantrum tanpa emosi, seni mendengar aktif, hingga membangun anak yang <strong>CERDAS EMOSIONAL</strong>.<br /><br />Bukan sekadar buku biasa.<br />Tapi <strong>PANDUAN</strong> yang akan <strong>MENGUBAH masa depan anak Anda.</strong></>,
         checks: [
-            <>Seni <strong>MISTERI</strong> — bagaimana jadi wanita yang tidak bisa ditebak</>,
-            <><strong>PUSH-PULL</strong> Dynamics — menarik dan mendorong bersamaan</>,
-            <>Bahasa tubuh yang bikin pria <strong>TIDAK BISA berpaling</strong></>,
-            <>Kontrol emosi — kamu yang memegang kendali</>,
-            <><strong>Abundance Mindset</strong> — berhenti mengejar, mulai MENARIK</>,
-            <><strong>Silent Power</strong> — kekuatan dari DIAM</>,
-            <><strong>Sexual Market Value</strong> — cara meningkatkan nilaimu</>,
-            <><strong>Text Game</strong> — membuat dia ketagihan dari chat</>,
+            <>Seni <strong>KOMUNIKASI EMPATIK</strong> — anak mau mendengar tanpa disuruh dua kali</>,
+            <><strong>TANTRUM HACK</strong> — cara elegan meredakan anak ngamuk di tempat umum</>,
+            <>Metode <strong>Disiplin Tanpa Air Mata</strong> — tegas tapi tetap disayangi</>,
+            <>Membangun <strong>Kepercayaan Diri</strong> anak sejak dini</>,
+            <>Rahasia <strong>Screen-Time Sehat</strong> di era digital</>,
         ],
-        checksPlus: "+ 44 jurus lainnya...",
+        checksPlus: "+ 25 strategi parenting lainnya...",
         testis: [
-            { text: "Demi allah sis, baru 2 minggu praktekin jurus 7... cowok yang dulu ghosting gue TIBA-TIBA nge-DM lagi. Padahal gue ga ngapa-ngapain. Cuma DIEM. Ternyata itu ilmunya 😭🔥", name: "Anisa, 24 thn", time: "2 hari lalu" },
-            { text: "Suami gue yang tadinya cuek, sekarang GELISAH kalau gue keluar rumah. Bukan karena posesif. Tapi karena dia mulai TAKUT KEHILANGAN. Jurus 1 doang udah sedahsyat ini.", name: "Sari, 31 thn", time: "5 hari lalu" },
-            { text: "Ex gue nikah sama cewek lain. 6 bulan kemudian gue apply dark feminine, gue dapet cowok yang 10x lebih ganteng dan kaya. Dan tau ga? Ex gue NGESTALK ig gue sekarang setiap hari. Karma is real 💅", name: "Rina, 27 thn", time: "1 minggu lalu" },
-            { text: "Gue introvert parah, bahkan ngomong sama barista aja gugup. Tapi setelah baca jurus 12 soal 'aura diam', cowok-cowok di kantor mulai NOTICE gue. Bos gue sendiri bilang 'ada yang beda dari lo'. Padahal gue cuma UBAH CARA DIAM gue 😭✨", name: "Dinda, 25 thn", time: "3 hari lalu" },
-            { text: "Gue career woman yang selalu dibilang 'terlalu kuat' sama cowok. Setelah apply jurus push-pull, sekarang CEO tempat gue kerja yang ngejar-ngejar gue. Bukan gue yang berubah jadi lemah, tapi gue jadi TAU KAPAN harus lembut 🔥👠", name: "Mega, 32 thn", time: "4 hari lalu" },
-            { text: "Single mom 2 anak. Udah pasrah ga bakal ada yang mau. Baca ebook ini, praktekin jurus mystery... dalam 3 bulan ada 4 cowok mapan yang serius approach. Yang gue pilih? Dokter. Dan dia SAYANG banget sama anak-anak gue 🥹💜", name: "Wulan, 34 thn", time: "1 minggu lalu" },
-            { text: "Anak kuliahan yang selalu jadi 'sahabat'. Cowok yang gue suka malah curhat soal cewek lain ke gue. Setelah apply jurus 3 dan 7, DIA YANG NEMBAK DULUAN. Temen-temen gue sampe bingung 'lo ngapain sih?' 😂💅", name: "Tasya, 21 thn", time: "6 hari lalu" },
-            { text: "Nikah 8 tahun, suami udah kayak robot. Pulang kerja langsung HP. Gue praktekin jurus hot-cold selama 2 minggu... dia PANIK. Sekarang tiap weekend dia yang PLAN date night. Bahkan mulai kirim bunga lagi kayak waktu pacaran 🌹😍", name: "Fitri, 36 thn", time: "2 minggu lalu" },
+            { text: "Dulu tiap pagi selalu perang urat saraf nyuruh anak mandi. Sejak pakai teknik 'Pilihan Ganda' dari ebook ini, anak malah lari sendiri ke kamar mandi bawa handuk. Ajaib banget sumpah! 😭 Bunda wajib baca.", name: "Mama Kenzo, 29 thn", time: "2 hari lalu" },
+            { text: "Suami tadinya bilang ngapain beli ginian. Pas dia lihat aku berhasil bikin si adek berhenti tantrum di mall cuma dengan SATU kalimat dari panduan ini... besoknya dia ikutan baca module buat para ayah.", name: "Bunda Rara, 32 thn", time: "5 hari lalu" },
+            { text: "Anakku (7th) mulai suka bohong soal tugas sekolah. Hampir aku hukum keras. Untung baca bab 'Akar Kebohongan Anak'. Aku ubah cara tanyaku. Anakku malah nangis meluk aku dan ngaku jujur. Hancur hati ini kalau salah langkah waktu itu.", name: "Ibu Dian, 35 thn", time: "1 minggu lalu" },
+            { text: "Worth it banget! Halaman 45 soal 'Jeda Bernafas' beneran nyelematin kewarasan aku pas lagi PMS dan anak numpahin susu di karpet. Dari yang niatnya mau meledak, jadi bisa senyum ngajak dia bersihin bareng.", name: "Mami Siska, 28 thn", time: "3 hari lalu" },
         ],
         bonuses: [
-            { icon: "🌙", title: "Femme Fatale Secrets (140 hal)", desc: "Rahasia membuat dia terobsesi — dari inner confidence sampai seni manipulasi halus yang LEGAL", price: "Rp97.000" },
-            { icon: "💜", title: "Kursus Femme Fatale (68 hal)", desc: "Program transformasi dari nice girl ke dark feminine — step by step", price: "Rp127.000" },
-            { icon: "📅", title: "Workbook 30 Hari (73 hal)", desc: "Tantangan harian untuk membangun daya tarikmu dalam 30 hari", price: "Rp97.000" },
-            { icon: "🗡️", title: "Seni Merayu — Robert Greene (31 hal)", desc: "Ringkasan strategi rayuan paling legendary sepanjang sejarah", price: "Rp77.000" },
-            { icon: "👑", title: "High Value Woman (22 hal)", desc: "Panduan cepat menjadi wanita bernilai tinggi", price: "Rp57.000" },
-            { icon: "✨", title: "Simply Irresistible (272 hal)", desc: "Unleash your inner siren — panduan lengkap dari studi kasus wanita paling memikat dalam sejarah", price: "Rp147.000" },
-            { icon: "🔥", title: "How to Please Your Man (29 hal)", desc: "Rahasia ranjang yang bikin dia TUNDUK dan KETAGIHAN", price: "Rp97.000", isHighlight: true, highlightText: "Buku tabu yang sungguh-sungguh gila yang seringkali dijual terpisah ratusan ribu, memberi tahu rahasia bagaimana memuaskan pria... di sini menjadi GRATIS sebagai bonus." },
-            { icon: "💋", title: "Selimut Ungu (61 hal)", desc: "Panduan puncak kenikmatan — teknik yang tidak diajarkan siapapun", price: "Rp97.000" },
+            { icon: "🎨", title: "Printable Worksheet (50+ Halaman)", desc: "Aktivitas seru membangun kecerdasan emosional anak di rumah.", price: "Rp149.000" },
+            { icon: "🎧", title: "Audio Afirmasi Bunda", desc: "Audio relaksasi untuk menjaga kewarasan ibu menghadapi anak aktif.", price: "Rp99.000" },
+            { icon: "📅", title: "Jurnal Parenting 30 Hari", desc: "Tracking emosi anak dan progres penerapan metode disiplin positif.", price: "Rp89.000" },
+            { icon: "💡", title: "Cheat Sheet 'Kalimat Ajaib'", desc: "Daftar contekan kalimat pengganti kata 'JANGAN' dan 'TIDAK'.", price: "Rp59.000" },
+            { icon: "👨‍👩‍👦", title: "Module Khusus Ayah", desc: "Panduan singkat agar suami mau terlibat aktif mengasuh anak.", price: "Rp79.000" },
         ],
         valueRows: [
-            { title: "Ebook Utama: 52 Jurus Dark Feminine (156 hal)", price: "Rp199.000" },
-            { title: "Bonus 1: Femme Fatale Secrets (140 hal)", price: "Rp97.000" },
-            { title: "Bonus 2: Kursus Femme Fatale (68 hal)", price: "Rp127.000" },
-            { title: "Bonus 3: Workbook 30 Hari (73 hal)", price: "Rp97.000" },
-            { title: "Bonus 4: Seni Merayu (31 hal)", price: "Rp77.000" },
-            { title: "Bonus 5: High Value Woman (22 hal)", price: "Rp57.000" },
-            { title: "Bonus 6: Simply Irresistible (272 hal)", price: "Rp147.000" },
-            { title: "Bonus 7: How to Please Your Man (29 hal)", price: "Rp97.000" },
-            { title: "Bonus 8: Selimut Ungu (61 hal)", price: "Rp97.000" },
+            { title: "Ebook 'Smart Parenting 4.0'", price: "Rp299.000" },
+            { title: "Printable Worksheet Anak", price: "Rp149.000" },
+            { title: "Audio Afirmasi Bunda", price: "Rp99.000" },
+            { title: "Jurnal Parenting 30 Hari", price: "Rp89.000" },
+            { title: "Cheat Sheet 'Kalimat Ajaib'", price: "Rp59.000" },
+            { title: "Module Khusus Ayah", price: "Rp79.000" },
         ],
         exclItems: [
-            "Wanita yang masih percaya 'menunggu jodoh' itu cukup",
-            "Yang tidak mau berubah dan hanya mau mengeluh",
-            "Yang mencari cara instan tanpa effort",
-            "Yang tidak siap meninggalkan 'nice girl' lama",
+            "Orang tua yang percaya kekerasan/pukulan mendisiplinkan anak",
+            "Orang tua yang tidak mau meluangkan 15 menit/hari untuk membaca",
+            "Mereka yang gengsi untuk mengubah cara pandang mendidik",
+            "Orang tua yang merasa anak yang selalu salah",
         ],
         faqs: [
-            { q: "Bagaimana cara aksesnya?", a: "Setelah pembayaran, ebook dikirim ke WhatsApp kamu dalam 5 menit. Format HTML bisa dibaca di HP, tablet, atau komputer." },
-            { q: "Apakah ini aman dan privat?", a: "100% privat. Tidak ada nama produk di bukti transfer. Semua dikirim digital, rahasia." },
-            { q: "Apakah ini mengajarkan jadi pelakor?", a: "TIDAK. Dark Feminine mengajarkan kamu jadi HIGH VALUE WOMAN yang paham psikologi daya tarik. Bukan jadi orang jahat, tapi jadi BERHARGA." },
-            { q: "Berapa lama sampai terasa hasilnya?", a: "Kebanyakan pembaca merasakan perubahan dalam 2-4 minggu setelah konsisten praktekkan. Jurus 1-7 sudah cukup powerful." },
-            { q: "Apakah berlaku untuk yang berjilbab / religius?", a: "Ya. Dark Feminine bukan soal pakaian atau penampilan fisik. Ini tentang AURA, MISTERI, dan CARA BERPIKIR. Banyak pembaca kami yang berjilbab." },
+            { q: "Cocok untuk anak usia berapa?", a: "Paling optimal untuk usia Toddler hingga pra-remaja (1.5 - 12 tahun), karena prinsip komunikasi empati universal, panduan adaptasinya ada di setiap bab." },
+            { q: "Saya sibuk bekerja, apakah ada waktu mempraktekkannya?", a: "Justru PENTING. Teknik '10 Menit Emas' di ebook ini dirancang khusus untuk working moms agar bonding dengan anak tetap kuat meski waktu terbatas." },
+            { q: "Apakah ini teori Barat yang sulit diterapkan di Indonesia?", a: "Sama sekali tidak. Kami mengadaptasi psikologi modern dengan nilai-nilai ketimuran (sopan santun, agama, hormat pada orang tua) agar relevan." },
+            { q: "Berapa lama aksesnya?", a: "Akses seumur hidup! Begitu bayar, link dikirim instan ke WhatsApp Anda." },
         ],
         pains: [
-            { icon: "😔", text: <>Selalu jadi "teman curhat" tapi bukan <strong>PILIHAN</strong> siapapun</> },
-            { icon: "💔", text: <>Ditinggal atau diselingkuhi padahal sudah baik dan setia</> },
-            { icon: "😤", text: <>Iri sama cewek yang "biasa aja" tapi dapat cowok impian</> },
-            { icon: "📱", text: <>Nonton drama pelakor jam 2 pagi dan diam-diam pengen jadi <strong>DIA</strong></> },
-            { icon: "🔄", text: <>Selalu attract cowok toxic — di-ghosted setelah 3 bulan</> },
-            { icon: "😶", text: <>Diberi label "terlalu baik" yang artinya "terlalu <strong>BORING</strong>"</> },
+            { icon: "😭", text: <>Anak <strong>TANTRUM</strong> berguling-guling di tempat umum</> },
+            { icon: "🤬", text: <>Terlanjur <strong>MEMBENTAK</strong> anak, lalu menyesal dan menangis semalaman</> },
+            { icon: "📱", text: <>Anak kecanduan gadget dan <strong>MELAWAN</strong> jika disuruh berhenti</> },
+            { icon: "😤", text: <>Suami cuek, merasa mengurus anak murni tugas istri sepenuhnya</> },
+            { icon: "🤐", text: <>Anak makin tertutup, bohong, takut cerita karena takut dimarahi</> },
+            { icon: "🤯", text: <>Stres, lelah fisik mental, merasa jadi <strong>IBU YANG GAGAL</strong></> },
         ],
-        urgency: (t: React.ReactNode) => <>⚡ HARGA SPESIAL — Berakhir dalam {t} ⚡</>,
-        heroBadge: "🌙 PANDUAN RAHASIA WANITA",
-        heroH1a: "Jadilah Wanita yang",
-        heroH1b: "Tidak Bisa Dilupakan",
-        heroSub: "52 jurus rahasia daya tarik yang tidak pernah diajarkan ibu, guru, atau siapapun.",
-        heroCta: "DAPATKAN 52 JURUS SEKARANG →",
-        socialProof: "sudah membuktikan",
-        socialProofNum: "4.200+ wanita",
-        painLabel: "JUJUR SAMA DIRI SENDIRI",
-        painH2a: "Kamu Pernah Merasakan",
-        painH2b: "Ini Semua?",
-        agitH2a: 'Kenapa yang "Rendah"',
-        agitH2b: "Malah Dapat CEO?",
-        solLabel: "JAWABANNYA",
-        solH2a: "Dark Feminine",
-        solH2b: "52 Jurus Rahasia",
-        contentsLabel: "YANG AKAN KAMU PELAJARI",
-        contentsH2: "52 Jurus Daya Tarik",
-        contentsH2Span: "Lengkap",
-        testiLabel: "MEREKA SUDAH BUKTIKAN",
-        testiH2: "Hasil Nyata dari",
-        testiH2Span: "4.200+ Wanita",
-        bonusLabel: "BONUS EKSKLUSIF",
-        bonusH2: "8 Bonus Senilai",
-        bonusH2Span: "Rp795.000",
-        priceLabel: "INVESTASI SEUMUR HIDUP",
-        priceH2: "Dapatkan Semuanya",
-        priceTodayLabel: "Harga Hari Ini",
-        savingsBadge: "🎉 Hemat 80% — Penawaran Terbatas!",
-        priceCta: "DAPATKAN SEKARANG — Rp199.000",
-        priceSub: "🚀 Dikirim INSTAN ke WhatsApp kamu",
-        exclH2: "Dark Feminine BUKAN untuk:",
-        exclCta: '"Ini HANYA untuk wanita yang SIAP mengambil kendali hidupnya."',
-        faqLabel: "PERTANYAAN UMUM",
+        urgency: (t: React.ReactNode) => <>⚡ PROMO BUNDA CERDAS — BERAKHIR DALAM {t} ⚡</>,
+        heroBadge: "👶 PANDUAN PARENTING MODERN",
+        heroH1a: "Hentikan Teriakan,",
+        heroH1b: "Mulai Diingatkan",
+        heroSub: "Rahasia mendisiplinkan anak tanpa amarah, air mata, atau membuat mereka menyimpan luka batin hingga dewasa.",
+        heroCta: "SAYA MAU JADI BUNDA LEBIH BAIK →",
+        socialProof: "orang tua sudah bergabung",
+        socialProofNum: "8.500+",
+        painLabel: "REALITA MENJADI IBU",
+        painH2a: "Apakah Bunda Sering",
+        painH2b: "Merasa Kelelahan Batin?",
+        agitH2a: 'Sudah Coba Sabar,',
+        agitH2b: "Kenapa Tetap Kebobolan?",
+        solLabel: "SOLUSI DAMAI",
+        solH2a: "Smart Parenting",
+        solH2b: "Berbasis Psikologi Anak",
+        contentsLabel: "YANG AKAN BUNDA PELAJARI",
+        contentsH2: "Panduan Lengkap",
+        contentsH2Span: "Parenting",
+        testiLabel: "TESTIMONI BUNDA",
+        testiH2: "Kisah Nyata Perubahan",
+        testiH2Span: "Keluarga",
+        bonusLabel: "BONUS UNTUK BUNDA",
+        bonusH2: "Bonus Spesial Senilai",
+        bonusH2Span: "Rp475.000",
+        priceLabel: "INVESTASI MASA DEPAN ANAK",
+        priceH2: "Ambil Semuanya",
+        priceTodayLabel: "Harga Spesial",
+        savingsBadge: "🎉 Hemat 70% — Terbatas Hari Ini!",
+        priceCta: "DAPATKAN SEKARANG — Rp99.000",
+        priceSub: "🚀 Akses langsung ke Email dan WhatsApp kamu",
+        exclH2: "Panduan Ini BUKAN untuk:",
+        exclCta: '"Akses ini HANYA bagi orang tua yang ingin masa depan anaknya cerah tanpa trauma."',
+        faqLabel: "PERTANYAAN BUNDA",
         faqH2: "Ada yang",
-        faqH2Span: "Ditanyakan?",
+        faqH2Span: "Masih Ragu?",
         faqCta: "YA, SAYA SIAP BERUBAH →",
-        faqSub: "🚀 Dikirim INSTAN ke WhatsApp kamu",
+        faqSub: "Akses otomatis setelah bayar",
         stickyCta: "PESAN SEKARANG",
-        stickyText: "🌙 52 Jurus —",
-        stickyPrice: "Rp199.000",
-        btnWa: "https://wa.me/6281234567890?text=Halo%20saya%20mau%20order%20Dark%20Feminine",
+        stickyText: "👶 Smart Parenting —",
+        stickyPrice: "Rp99.000",
+        btnWa: "https://wa.me/6281234567890?text=Halo%20Admin%20Smart%20Parenting",
     },
     en: {
-        agitText: <>You were taught from childhood: be nice, don't flirt, wait for Prince Charming. <strong>AND WHAT HAPPENED?</strong> You became everyone's favorite therapist while he chose someone else.<br /><br /><ul className="agitation-list"><li>The loyal one → left behind.</li><li>The patient one → walked over.</li><li>The understanding one → seen as weak.</li></ul><br />But the "average" girl? Gets <span className="highlight">EVERYTHING</span>.<br /><br />Not because she's pretty. Not because she's lucky.<br />Because she <span className="highlight">KNOWS something you were NEVER taught.</span></>,
-        solText: <>A complete guide to feminine attraction based on modern psychology. From the art of mystery, push-pull dynamics, to building an aura that makes men <strong>UNABLE to stop thinking about you</strong>.<br /><br />Not cheap tips. Not "just be yourself" advice.<br />But <strong>KNOWLEDGE</strong> that truly <strong>CHANGES your frequency.</strong></>,
+        agitText: <>The problem ISN'T that your child is naughty or hard to handle. The problem is your <span className="highlight">COMMUNICATION PATTERN</span>. When you yell, children don't learn to listen, they only learn to <strong>FEAR you.</strong><br /><br /><ul className="agitation-list"><li>The more you yell → the more they rebel</li><li>The more you forbid → the more they hide</li><li>The more you force → the more they tantrum</li></ul><br />Those parents who seem "relaxed"? Their kids listen and are open to them.<br /><br />Not because their kids happen to be naturally obedient.<br />But because they <span className="highlight">UNDERSTAND child psychology that is rarely taught.</span></>,
+        solText: <>We don't share boring 'parenting theories'. We provide a <span className="highlight">PRACTICAL SYSTEM</span> based on modern child psychology. From how to calm tantrums without emotion, the art of active listening, to raising <strong>EMOTIONALLY INTELLIGENT</strong> children.<br /><br />Not just another book.<br />But a <strong>GUIDE</strong> that will <strong>CHANGE your child's future.</strong></>,
         checks: [
-            <>The Art of <strong>MYSTERY</strong> — how to be unpredictable</>,
-            <><strong>PUSH-PULL</strong> Dynamics — attract and repel simultaneously</>,
-            <>Body language that makes him <strong>UNABLE to look away</strong></>,
-            <>Emotional control — you hold the power</>,
-            <><strong>Abundance Mindset</strong> — stop chasing, start ATTRACTING</>,
-            <><strong>Silent Power</strong> — the strength of SILENCE</>,
-            <><strong>Sexual Market Value</strong> — how to raise yours</>,
-            <><strong>Text Game</strong> — make him addicted from texts</>,
+            <>The Art of <strong>EMPATHIC COMMUNICATION</strong> — kids listen without being asked twice</>,
+            <><strong>TANTRUM HACKS</strong> — elegant ways to calm public meltdowns</>,
+            <><strong>Discipline Without Tears</strong> method — firm but still loved</>,
+            <>Building child's <strong>Self-Confidence</strong> from an early age</>,
+            <>Secrets of <strong>Healthy Screen-Time</strong> in the digital era</>,
         ],
-        checksPlus: "+ 44 more moves...",
+        checksPlus: "+ 25 more parenting strategies...",
         testis: [
-            { text: "I swear, just 2 weeks practicing move 7... the guy who ghosted me SUDDENLY DM'd again. I didn't do ANYTHING. Just stayed SILENT. Turns out that's the secret 😭🔥", name: "Anisa, 24", time: "2 days ago" },
-            { text: "My husband who used to ignore me is now ANXIOUS when I leave the house. Not possessive. But because he's starting to FEAR LOSING ME. Just move 1 already this powerful.", name: "Sari, 31", time: "5 days ago" },
-            { text: "My ex married someone else. 6 months later I applied dark feminine, I got a guy 10x more handsome and rich. And guess what? My ex now STALKS my IG every day. Karma is real 💅", name: "Rina, 27", time: "1 week ago" },
+            { text: "Every morning used to be a psychological war to get my kid to bathe. Since using the 'Multiple Choice' technique from this ebook, my child literally runs to the bathroom holding a towel. It's truly magic! 😭 Moms must read this.", name: "Kenzo's Mom, 29", time: "2 days ago" },
+            { text: "My husband asked why I bought this. But when he saw me successfully stop our youngest's tantrum at the mall with just ONE sentence from this guide... the next day he started reading the module for dads.", name: "Mother of Rara, 32", time: "5 days ago" },
+            { text: "My child (7yo) started lying about schoolwork. I almost punished her severely. Luckily I read the 'Roots of Children's Lies' chapter. I changed how I asked her. She ended up crying, hugging me, and telling the truth. My heart would have broken if I took the wrong step back then.", name: "Mrs. Dian, 35", time: "1 week ago" },
+            { text: "So worth it! Page 45 about the 'Breathing Pause' literally saved my sanity while I had PMS and my kid spilled milk on the carpet. Instead of exploding like I wanted to, I managed to smile and invite him to clean it up together.", name: "Mom Siska, 28", time: "3 days ago" }
         ],
         bonuses: [
-            { icon: "🌙", title: "Femme Fatale Secrets (140 pages)", desc: "Secrets to making him obsessed — from inner confidence to the art of subtle (legal) influence", price: "Rp97,000" },
-            { icon: "💜", title: "Femme Fatale Course (68 pages)", desc: "Transformation program from nice girl to dark feminine — step by step", price: "Rp127,000" },
-            { icon: "📅", title: "30-Day Workbook (73 pages)", desc: "Daily challenges to build your attraction in 30 days", price: "Rp97,000" },
-            { icon: "🗡️", title: "The Art of Seduction — Robert Greene (31 pages)", desc: "Summary of the most legendary seduction strategies in history", price: "Rp77,000" },
-            { icon: "👑", title: "High Value Woman (22 pages)", desc: "Quick guide to becoming a high-value woman", price: "Rp57,000" },
-            { icon: "✨", title: "Simply Irresistible (272 pages)", desc: "Unleash your inner siren — complete guide from case studies of history's most captivating women", price: "Rp147,000" },
-            { icon: "🔥", title: "How to Please Your Man (29 pages)", desc: "Bedroom secrets that make him SUBMIT and ADDICTED", price: "Rp97,000", isHighlight: true, highlightText: "A taboo book often sold separately for hundreds of thousands, teaching you bedroom secrets to please a man... included here for FREE as a bonus." },
-            { icon: "💋", title: "Purple Sheets (61 pages)", desc: "Guide to ultimate pleasure — techniques no one has taught you", price: "Rp97,000" },
+            { icon: "🎨", title: "Printable Worksheets (50+ Pages)", desc: "Fun activities to build your child's emotional intelligence at home.", price: "Rp149,000" },
+            { icon: "🎧", title: "Mom's Affirmation Audio", desc: "Relaxation audio to maintain sanity when dealing with active kids.", price: "Rp99,000" },
+            { icon: "📅", title: "30-Day Parenting Journal", desc: "Track your child's emotions and your progress in applying positive discipline.", price: "Rp89,000" },
+            { icon: "💡", title: "The 'Magic Phrases' Cheat Sheet", desc: "A cheat sheet of phrases to replace the words 'DON'T' and 'NO'.", price: "Rp59,000" },
+            { icon: "👨‍👩‍👦", title: "Special Module for Dads", desc: "A quick guide to encourage husbands to be actively involved in parenting.", price: "Rp79,000" },
         ],
         valueRows: [
-            { title: "Main Ebook: 52 Dark Feminine Moves (156 pages)", price: "Rp199,000" },
-            { title: "Bonus 1: Femme Fatale Secrets (140 pages)", price: "Rp97,000" },
-            { title: "Bonus 2: Femme Fatale Course (68 pages)", price: "Rp127,000" },
-            { title: "Bonus 3: 30-Day Workbook (73 pages)", price: "Rp97,000" },
-            { title: "Bonus 4: The Art of Seduction (31 pages)", price: "Rp77,000" },
-            { title: "Bonus 5: High Value Woman (22 pages)", price: "Rp57,000" },
-            { title: "Bonus 6: Simply Irresistible (272 pages)", price: "Rp147,000" },
-            { title: "Bonus 7: How to Please Your Man (29 pages)", price: "Rp97,000" },
-            { title: "Bonus 8: Purple Sheets (61 pages)", price: "Rp97,000" },
+            { title: "Ebook 'Smart Parenting 4.0'", price: "Rp299,000" },
+            { title: "Kids Printable Worksheets", price: "Rp149,000" },
+            { title: "Mom's Affirmation Audio", price: "Rp99,000" },
+            { title: "30-Day Parenting Journal", price: "Rp89,000" },
+            { title: "'Magic Phrases' Cheat Sheet", price: "Rp59,000" },
+            { title: "Special Module for Dads", price: "Rp79,000" },
         ],
         exclItems: [
-            "Women who still believe 'waiting for the right one' is enough",
-            "Those who refuse to change and only complain",
-            "Those looking for instant results with zero effort",
-            "Those not ready to leave the old 'nice girl' behind",
+            "Parents who believe physical violence/hitting disciplines a child",
+            "Parents who refuse to spare 15 minutes/day to read",
+            "Those too proud to change their parenting perspective",
+            "Parents who feel the child is always the one at fault",
         ],
         faqs: [
-            { q: "How do I access it?", a: "After payment, the ebook is sent to your WhatsApp within 5 minutes. HTML format, readable on phone, tablet, or computer." },
-            { q: "Is this safe and private?", a: "100% private. No product name on the payment receipt. Everything delivered digitally and discreetly." },
-            { q: "Does this teach you to be a homewrecker?", a: "NO. Dark Feminine teaches you to be a HIGH VALUE WOMAN who understands the psychology of attraction. Not to be a bad person, but to be VALUABLE." },
-            { q: "How long until I see results?", a: "Most readers feel a change within 2-4 weeks of consistent practice. Moves 1-7 are already powerful enough." },
-            { q: "Does this apply for hijab-wearing / religious women?", a: "Yes. Dark Feminine is not about clothing or physical appearance. It's about AURA, MYSTERY, and MINDSET. Many of our readers wear hijab." },
+            { q: "What age range is this suitable for?", a: "Most optimal for Toddlers to pre-teens (1.5 - 12 years), as the principles of empathic communication are universal, and adaptation guides are in every chapter." },
+            { q: "I'm a busy working mom, will I have time to practice this?", a: "It's exactly why you need this. The '10 Golden Minutes' technique in this ebook is specifically designed for working moms to build strong bonds even with limited time." },
+            { q: "Is this Western theory that's hard to apply in Asia?", a: "Not at all. We adapted modern psychology with Eastern values (politeness, religion, respect for parents) to make it highly relevant." },
+            { q: "How long is the access valid?", a: "Lifetime access! Once paid, the link is sent instantly to your WhatsApp." },
         ],
         pains: [
-            { icon: "😔", text: <>Always the 'best friend' but <strong>NEVER</strong> the first choice</> },
-            { icon: "💔", text: <>Left or cheated on despite being loyal and good</> },
-            { icon: "😤", text: <>Jealous of 'average' girls who get dream boyfriends</> },
-            { icon: "📱", text: <>Watching drama at 2AM secretly wishing to <strong>BE her</strong></> },
-            { icon: "🔄", text: <>Always attracting toxic guys — ghosted after 3 months</> },
-            { icon: "😶", text: <>Labeled 'too nice' which really means 'too <strong>BORING</strong>'</> },
+            { icon: "😭", text: <>Child throwing a <strong>TANTRUM</strong> rolling on the floor in public</> },
+            { icon: "🤬", text: <>Accidentally <strong>YELLING</strong> at your child, then regretting and crying all night</> },
+            { icon: "📱", text: <>Child addicted to gadgets and <strong>TALKING BACK</strong> when told to stop</> },
+            { icon: "😤", text: <>Husband doesn't care, feels raising kids is purely the wife's job</> },
+            { icon: "🤐", text: <>Child becoming closed off, lying, afraid to talk because they fear getting scolded</> },
+            { icon: "🤯", text: <>Stressed, physically & mentally exhausted, feeling like a <strong>FAILED MOTHER</strong></> },
         ],
-        urgency: (t: React.ReactNode) => <>⚡ SPECIAL PRICE — Ends in {t} ⚡</>,
-        heroBadge: "🌙 SECRET WOMEN'S GUIDE",
-        heroH1a: "Become the Woman",
-        heroH1b: "He Can't Forget",
-        heroSub: "52 secret attraction moves never taught by your mother, teachers, or anyone.",
-        heroCta: "GET 52 SECRET MOVES NOW →",
-        socialProof: "women have proven it",
-        socialProofNum: "4,200+ women",
-        painLabel: "BE HONEST WITH YOURSELF",
-        painH2a: "Have You Ever",
-        painH2b: "Felt All of This?",
-        agitH2a: 'Why Does the "Average Girl"',
-        agitH2b: "Get the CEO?",
-        solLabel: "THE ANSWER",
-        solH2a: "Dark Feminine",
-        solH2b: "52 Secret Moves",
-        contentsLabel: "WHAT YOU'LL LEARN",
-        contentsH2: "52 Complete Attraction Moves",
-        contentsH2Span: "Complete",
-        testiLabel: "THEY'VE PROVEN IT",
-        testiH2: "Real Results from",
-        testiH2Span: "4,200+ Women",
-        bonusLabel: "EXCLUSIVE BONUSES",
-        bonusH2: "8 Bonuses Worth",
-        bonusH2Span: "Rp795,000",
-        priceLabel: "LIFETIME INVESTMENT",
+        urgency: (t: React.ReactNode) => <>⚡ SMART MOM PROMO — ENDS IN {t} ⚡</>,
+        heroBadge: "👶 MODERN PARENTING GUIDE",
+        heroH1a: "Stop Yelling,",
+        heroH1b: "Start Connecting",
+        heroSub: "Secrets to disciplining children without anger, tears, or causing them childhood trauma.",
+        heroCta: "I WANT TO BE A BETTER MOM →",
+        socialProof: "parents have joined",
+        socialProofNum: "8,500+",
+        painLabel: "THE REALITY OF MOTHERHOOD",
+        painH2a: "Do You Often Feel",
+        painH2b: "Emotionally Exhausted?",
+        agitH2a: 'Tried Being Patient,',
+        agitH2b: "Why Do You Still Lose Control?",
+        solLabel: "THE PEACEFUL SOLUTION",
+        solH2a: "Smart Parenting",
+        solH2b: "Based on Child Psychology",
+        contentsLabel: "WHAT YOU WILL LEARN",
+        contentsH2: "Complete",
+        contentsH2Span: "Parenting Guide",
+        testiLabel: "MOM'S TESTIMONIALS",
+        testiH2: "True Stories of Family",
+        testiH2Span: "Transformation",
+        bonusLabel: "BONUSES FOR MOM",
+        bonusH2: "Special Bonuses Worth",
+        bonusH2Span: "Rp475,000",
+        priceLabel: "INVESTMENT FOR YOUR CHILD'S FUTURE",
         priceH2: "Get Everything",
-        priceTodayLabel: "Today's Price",
-        savingsBadge: "🎉 Save 80% — Limited Offer!",
-        priceCta: "GET IT NOW — Rp199,000",
-        priceSub: "📲 Delivered INSTANTLY to your WhatsApp",
-        exclH2: "Dark Feminine is NOT for:",
-        exclCta: '"This is ONLY for women READY to take control of their life."',
-        faqLabel: "FAQ",
-        faqH2: "Questions?",
-        faqH2Span: "Anything?",
+        priceTodayLabel: "Special Price",
+        savingsBadge: "🎉 Save 70% — Limited Today!",
+        priceCta: "GET IT NOW — Rp99,000",
+        priceSub: "🚀 Delivered instantly to your Email and WhatsApp",
+        exclH2: "This Guide is NOT for:",
+        exclCta: '"This access is ONLY for parents who want a bright future for their children without trauma."',
+        faqLabel: "MOMS' QUESTIONS",
+        faqH2: "Still Havin",
+        faqH2Span: "Doubts?",
         faqCta: "YES, I'M READY TO CHANGE →",
-        faqSub: "📲 Delivered INSTANTLY to your WhatsApp",
+        faqSub: "Automatic access after payment",
         stickyCta: "ORDER NOW",
-        stickyText: "🌙 52 Moves —",
-        stickyPrice: "Rp199,000",
-        btnWa: "https://wa.me/6281234567890?text=Hello%20I%20want%20to%20order%20Dark%20Feminine",
+        stickyText: "👶 Smart Parenting —",
+        stickyPrice: "Rp99,000",
+        btnWa: "https://wa.me/6281234567890?text=Hello%20Admin%20Smart%20Parenting",
     }
 };
 
-const DarkFeminineTSX = () => {
+const SmartParentingTSX = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [payment, setPayment] = useState("QRIS");
-    const [addUpsell, setAddUpsell] = useState(false);
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const affiliateRef = searchParams.get('ref');
     const { toast } = useToast();
 
     // Payment States
@@ -273,12 +252,12 @@ const DarkFeminineTSX = () => {
     const [loadingFree, setLoadingFree] = useState(false);
     const [successFree, setSuccessFree] = useState(false);
 
-    const priceID = addUpsell ? 249000 : 199000;
+    const priceID = 99000;
     const PIXEL_ID = '3319324491540889';
 
     const sendWAAlert = async (type: 'attempt' | 'success', details: any) => {
         try {
-            const productDesc = `Dark Feminine Package`;
+            const productDesc = `Smart Parenting 4.0`;
             const msg = type === 'attempt'
                 ? `🔔 *Mencoba Checkout*\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nMetode: ${details.method}`
                 : `✅ *Checkout Sukses*\nRef: ${details.ref}\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nTotal: Rp ${details.amount.toLocaleString('id-ID')}`;
@@ -292,7 +271,8 @@ const DarkFeminineTSX = () => {
     };
 
     const submitOrder = async () => {
-        if (!name || !phone || !email) { alert('⚠️ Mohon lengkapi Nama, No. WhatsApp, dan Email Anda!'); return; }
+        if (!name || !phone || !email || !password || !confirmPassword) { alert('⚠️ Mohon lengkapi seluruh data termasuk password!'); return; }
+        if (password !== confirmPassword) { alert('⚠️ Konfirmasi password tidak cocok dengan password!'); return; }
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
@@ -300,7 +280,31 @@ const DarkFeminineTSX = () => {
 
         const { fbc, fbp } = getFbcFbpCookies();
         const clientIp = await getClientIp();
-        const productDesc = `Universal - Dark Feminine - ${name}`;
+        const productDesc = `Smart Parenting 4.0 - ${name}`;
+
+        // Authentication & Registration
+        let currentUserId = null;
+        try {
+            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+                email: email, password: password, options: { data: { display_name: name, phone_number: phone } }
+            });
+            if (signUpError) {
+                if (signUpError.message.includes("already registered")) {
+                    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({ email: email, password: password });
+                    if (signInError) {
+                        toast({ title: "Login Gagal", description: "Email terdaftar. Masukkan password yang benar.", variant: "destructive" });
+                        setLoading(false); return;
+                    }
+                    if (signInData.user) currentUserId = signInData.user.id;
+                } else throw signUpError;
+            } else if (signUpData.user) {
+                currentUserId = signUpData.user.id;
+                await supabase.from('profiles').upsert({ user_id: currentUserId, user_email: email, display_name: name, experience_points: 0, level: 1, streak_days: 0, updated_at: new Date().toISOString() } as any, { onConflict: 'user_id' });
+            }
+        } catch (err: any) {
+            toast({ title: "Gagal Registrasi", description: err.message || "Gagal membuat akun affiliate.", variant: "destructive" });
+            setLoading(false); return;
+        }
 
         try {
             await supabase.functions.invoke('capi-universal', {
@@ -313,10 +317,11 @@ const DarkFeminineTSX = () => {
         } catch (e) { console.error('AddPaymentInfo CAPI error', e); }
 
         const payload = {
-            subscriptionType: 'universal', paymentMethod: payment,
+            subscriptionType: 'smart_parenting', paymentMethod: payment,
             userName: name, userEmail: email, phoneNumber: phone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
-            amount: priceID, currency: 'IDR', quantity: 1, productName: addUpsell ? 'Universal - Dark Feminine + Love Magnet' : 'Universal - Dark Feminine',
+            amount: priceID, currency: 'IDR', quantity: 1, productName: 'Smart Parenting 4.0',
+            userId: currentUserId, affiliateRef, commissionRate: 0.50,
             fbc, fbp, clientIp
         };
 
@@ -396,7 +401,7 @@ const DarkFeminineTSX = () => {
                     if (payload.new?.status === 'PAID') {
                         if (purchaseFiredRef.current) return;
                         purchaseFiredRef.current = true;
-                        toast({ title: "🎉 Pembayaran Berhasil!", description: "Terima kasih! Pembayaran Anda telah kami terima. Link akses Ebook Dark Feminine akan dikirimkan ke Email dan WhatsApp.", duration: 0 });
+                        toast({ title: "🎉 Pembayaran Berhasil!", description: "Terima kasih Bunda! Link akses Smart Parenting 4.0 telah dikirimkan ke Email dan WhatsApp.", duration: 0 });
                         // Note: Purchase tracking is handled by the backend tripay-callback, so we only track AddPaymentInfo and PageView/ViewContent on frontend.
                     }
                 }
@@ -407,7 +412,7 @@ const DarkFeminineTSX = () => {
     useEffect(() => {
         initFacebookPixelWithLogging(PIXEL_ID);
         trackViewContentEvent(
-            { content_name: 'Universal - Dark Feminine', value: priceID, currency: 'IDR' },
+            { content_name: 'Smart Parenting 4.0', value: priceID, currency: 'IDR' },
             undefined,
             PIXEL_ID
         );
@@ -426,8 +431,8 @@ const DarkFeminineTSX = () => {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     useEffect(() => {
-        document.title = "Dark Feminine — 52 Jurus Rahasia";
-        const KEY = 'df_end_time';
+        document.title = "Smart Parenting — Panduan Psikologi Anak";
+        const KEY = 'sp_end_time';
         let endTime = localStorage.getItem(KEY);
         if (!endTime || Date.now() > parseInt(endTime)) {
             endTime = (Date.now() + 3 * 60 * 60 * 1000).toString();
@@ -509,7 +514,7 @@ const DarkFeminineTSX = () => {
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <img src={qrisBcaImage} alt="QRIS BCA" style={{ width: '220px', height: '220px', borderRadius: '12px', border: '1px solid #eee', marginBottom: '24px' }} />
                                 </div>
-                                <a href={`https://wa.me/62895325633487?text=${encodeURIComponent(`Halo kak, saya sudah bayar Ebook Dark Feminine. Ref: ${paymentData.tripay_reference}`)}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+                                <a href={`https://wa.me/6281234567890?text=${encodeURIComponent(`Halo kak, saya sudah bayar Smart Parenting via TF Manual. Ref: ${paymentData.tripay_reference}`)}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
                                     <button className="pay-btn-confirm">Konfirmasi via WhatsApp</button>
                                 </a>
                             </div>
@@ -690,13 +695,6 @@ const DarkFeminineTSX = () => {
         .df-bonus-card {
           background: var(--bg-card); border-radius: 16px; padding: 20px; margin-bottom: 14px;
           border: 1px solid rgba(139,92,246,0.18); display: flex; gap: 16px; align-items: flex-start;
-          transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .df-bonus-highlight {
-          border: 1px solid rgba(239, 68, 68, 0.5);
-          background: linear-gradient(135deg, rgba(26, 10, 46, 1), rgba(40, 10, 20, 0.8));
-          transform: scale(1.02);
-          box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
         }
         .df-value-card { background: var(--bg-card); border-radius: 18px; padding: 28px 22px; border: 1px solid rgba(201,153,26,0.3); }
         .df-value-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid rgba(139,92,246,0.12); }
@@ -958,13 +956,11 @@ const DarkFeminineTSX = () => {
                             <h2 className="df-section-h2">{c.bonusH2} <span className="df-gold">{c.bonusH2Span}</span></h2>
                             <div>
                                 {c.bonuses.map((b: any, i: number) => (
-                                    <div key={i} className={`df-bonus-card ${b.isHighlight ? 'df-bonus-highlight' : ''}`}>
+                                    <div key={i} className="df-bonus-card">
                                         <div style={{ fontSize: '28px', flexShrink: 0 }}>{b.icon}</div>
                                         <div>
-                                            {b.isHighlight && <div style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--red), #b91c1c)', color: '#fff', padding: '3px 8px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', display: 'inline-block', marginBottom: '8px', textTransform: 'uppercase' }}>{lang === 'id' ? '🔥 BUKU TABU (DIJUAL TERPISAH)' : '🔥 TABOO BOOK (SOLD SEPARATELY)'}</div>}
-                                            <div style={{ fontSize: '17px', fontWeight: 700, color: b.isHighlight ? 'var(--gold-light)' : 'var(--white)', marginBottom: '4px' }}>{b.title}</div>
+                                            <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--white)', marginBottom: '4px' }}>{b.title}</div>
                                             <div style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.6 }}>{b.desc}</div>
-                                            {b.highlightText && <div style={{ fontSize: '14px', color: 'var(--cream)', fontStyle: 'italic', marginTop: '6px', padding: '8px', background: 'rgba(239, 68, 68, 0.1)', borderLeft: '3px solid var(--red)' }}>{b.highlightText}</div>}
                                             <div style={{ marginTop: '8px', fontSize: '15px', color: 'var(--green-wa)', fontWeight: 700 }}>
                                                 <s style={{ color: 'var(--muted)', fontWeight: 400 }}>{b.price}</s> → GRATIS
                                             </div>
@@ -1102,18 +1098,28 @@ const DarkFeminineTSX = () => {
                             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                                 <div>
                                     <label className="df-flabel">Nama Lengkap</label>
-                                    <input className="df-finput" placeholder="Contoh: Sarah" value={name} onChange={e => setName(e.target.value)} />
+                                    <input className="df-finput" placeholder="Contoh: Budi" value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div>
-                                    <label className="df-flabel">No. WhatsApp</label>
+                                    <label className="df-flabel">No. WhatsApp Aktif</label>
                                     <div className="df-pwrap">
                                         <div className="df-ppfx">{lang === 'id' ? '🇮🇩 +62' : '🌐 +'}</div>
-                                        <input className="df-finput" placeholder={lang === 'id' ? "812345678" : "Country Code + Number"} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
+                                        <input className="df-finput" placeholder={lang === 'id' ? "812345678" : "Number"} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
                                     </div>
+                                    <p style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '6px' }}>*{lang === 'id' ? 'Ebook akan dikirim ke nomor ini' : 'Ebook will be sent to this number'}</p>
                                 </div>
                                 <div>
-                                    <label className="df-flabel">Email (untuk link download)</label>
+                                    <label className="df-flabel">Email Aktif</label>
                                     <input className="df-finput" type="email" placeholder="contoh@gmail.com" value={email} onChange={e => setEmail(e.target.value)} />
+                                    <p style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '6px' }}>*{lang === 'id' ? 'Sebagai backup akses produk' : 'As backup for product access'}</p>
+                                </div>
+                                <div>
+                                    <label className="df-flabel">Password Affiliate</label>
+                                    <input className="df-finput" type="password" placeholder="Buat password rahasia" value={password} onChange={e => setPassword(e.target.value)} />
+                                </div>
+                                <div>
+                                    <label className="df-flabel">Konfirmasi Password</label>
+                                    <input className="df-finput" type="password" placeholder="Ulangi password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
                                 </div>
                                 <div>
                                     <label className="df-flabel">Metode Pembayaran</label>
@@ -1133,55 +1139,22 @@ const DarkFeminineTSX = () => {
                                         ))}
                                     </div>
                                 </div>
-                                <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, marginBottom: 10 }}>
-                                    <label className="df-flabel" style={{ marginBottom: 4 }}>Pilih Paket Anda</label>
-
-                                    {/* Option 1: Base */}
-                                    <div style={{ display: 'flex', alignItems: 'center', background: !addUpsell ? 'rgba(139,92,246,0.1)' : 'rgba(255,255,255,0.03)', border: !addUpsell ? '1px solid rgba(139,92,246,0.5)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(false)}>
-                                        <div style={{ marginRight: '14px' }}>
-                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: !addUpsell ? '6px solid var(--purple-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
-                                        </div>
-                                        <div style={{ flex: 1 }}>
-                                            <div style={{ fontSize: '15px', fontWeight: 700, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>Paket Lengkap Dark Feminine + 8 Bonus</div>
-                                        </div>
-                                        <div style={{ fontSize: '16px', fontWeight: 800, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>
-                                            Rp199.000
-                                        </div>
-                                    </div>
-
-                                    {/* Option 2: Upsell */}
-                                    <div style={{ display: 'flex', alignItems: 'center', background: addUpsell ? 'rgba(240,200,74,0.1)' : 'rgba(255,255,255,0.03)', border: addUpsell ? '1px solid rgba(240,200,74,0.4)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(true)}>
-                                        <div style={{ marginRight: '14px' }}>
-                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: addUpsell ? '6px solid var(--gold-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
-                                        </div>
-                                        <div style={{ flex: 1 }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                                <div style={{ fontSize: '15px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>Dark Feminine + 8 Bonus <br />+ Audio Love Magnet</div>
-                                                <span style={{ fontSize: '10px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '2px 6px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>PROMO KHUSUS</span>
-                                            </div>
-                                            <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.4 }}>Rahasia memikat pria idaman hanya lewat frekuensi suara. <span style={{ color: 'var(--red)', textDecoration: 'line-through' }}>(Senilai Rp250.000)</span></div>
-                                        </div>
-                                        <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>
-                                            Rp249.000
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div style={{ background: "rgba(139,92,246,.05)", border: "1px solid rgba(139,92,246,.13)", borderRadius: 11, padding: 14, marginTop: 10 }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: addUpsell ? "var(--gold-light)" : "var(--muted)" }}>
-                                        <span style={{ paddingRight: 10 }}>{addUpsell ? "Paket Lengkap + Audio Love Magnet" : "Paket Lengkap Dark Feminine + 8 Bonus"}</span>
-                                        <span style={{ fontWeight: 600 }}>Rp{addUpsell ? "249.000" : "199.000"}</span>
+                                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: "var(--gold-light)" }}>
+                                        <span style={{ paddingRight: 10 }}>Paket Uang Panas + Bonus Lengkap</span>
+                                        <span style={{ fontWeight: 600 }}>Rp100.000</span>
                                     </div>
                                     <div style={{ height: 1, background: "rgba(139,92,246,.09)", marginBottom: 7 }} />
                                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14.5, fontWeight: 700 }}>
                                         <span style={{ color: "var(--cream)" }}>Total</span>
-                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>Rp{addUpsell ? "249.000" : "199.000"}</span>
+                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>Rp100.000</span>
                                     </div>
                                 </div>
                                 <button className="df-sbtn" onClick={submitOrder} disabled={loading}>
-                                    {loading ? "Memproses..." : `🛒 Pesan Sekarang — Rp${addUpsell ? "249.000" : "199.000"}`}
+                                    {loading ? "Memproses..." : `🛒 Pesan Sekarang — Rp100.000`}
                                 </button>
-                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.</p>
+                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital. Anda akan dibuatkan akun Affiliate otomatis setelah pembayaran berhasil.</p>
                             </div>
                         </div>
                     </section>
@@ -1226,16 +1199,15 @@ const DarkFeminineTSX = () => {
                     <div id="df-sticky-cta" className={showSticky ? 'show' : ''}>
                         <div style={{ background: 'var(--bg-card)', borderRadius: '14px', padding: '14px', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', gap: '14px' }}>
                             <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', flex: 1 }}>
-                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>Rp{addUpsell ? '249.000' : '199.000'}</span>
-                                {addUpsell && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
+                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>Rp100.000</span>
                             </div>
-                            <a onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
+                            <a onClick={(name && phone && email && payment && password && confirmPassword && (password === confirmPassword)) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
                         </div>
                     </div>
 
                     {/* FLOATING WHATSAPP BUTTON */}
                     <a
-                        href={`https://wa.me/62895325633487?text=${encodeURIComponent("Halo Admin Dark Feminine, saya mau tanya...")}`}
+                        href={`https://wa.me/62895325633487?text=${encodeURIComponent("Halo Admin Uang Panas, saya mau tanya...")}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
@@ -1267,4 +1239,4 @@ const DarkFeminineTSX = () => {
     );
 };
 
-export default DarkFeminineTSX;
+export default SmartParentingTSX;

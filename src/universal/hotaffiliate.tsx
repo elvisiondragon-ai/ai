@@ -38,17 +38,14 @@ const assetsMap: any = {
 
 const contentData: any = {
     id: {
-        agitText: <>Lo diajarin dari kecil: jadi anak baik, jangan menggoda, tunggu dijemput bola. <strong>DAN APA HASILNYA?</strong> Lo jadi teman curhat favorit sementara dia milih yang lain.<br /><br /><ul className="agitation-list"><li>Yang setia → ditinggalin.</li><li>Yang sabar → diinjak.</li><li>Yang pengertian → dianggap lemah.</li></ul><br />Tapi cewek yang "biasa aja"? Dapat <span className="highlight">SEGALANYA</span>.<br /><br />Bukan karena dia cantik. Bukan karena dia beruntung.<br />Tapi karena dia <span className="highlight">PAHAM sesuatu yang TIDAK PERNAH lo pelajari.</span></>,
-        solText: <>Panduan lengkap daya tarik wanita yang ditulis berdasarkan psikologi modern. Dari seni misteri, push-pull dynamics, sampai cara membangun aura yang bikin pria <strong>TIDAK BISA berhenti memikirkan kamu</strong>.<br /><br />Bukan tips murahan. Bukan saran "jadilah diri sendiri".<br />Tapi <strong>ILMU</strong> yang benar-benar <strong>MENGUBAH frekuensi kamu.</strong></>,
+        agitText: <>Masalahnya BUKAN strategi Anda. Masalahnya adalah <span className="highlight">ENERGI INTERNAL</span> Anda. Otak sadar bilang "Saya mau sukses", tapi 95% pikiran bawah sadar Anda BERTERIAK: <strong>"Uang itu sulit."</strong><br /><br />Tanpa reset energi energi Anda, strategi apapun akan <span className="highlight">menyabotase diri sendiri.</span></>,
+        solText: <>Kami tidak jualan 'strategi' kosong. Kami Reset <span className="highlight">SISTEM INTERNAL</span> Anda melalui Audio Kalibrasi Bio-Energetik dan memberikan Anda <strong>Sistem Copy-Paste Siap Jualan</strong>.<br /><br />Tinggal copy-paste, sebar link, dan dapat margin <strong>50% otomatis!</strong></>,
         checks: [
-            <>Seni <strong>MISTERI</strong> — bagaimana jadi wanita yang tidak bisa ditebak</>,
-            <><strong>PUSH-PULL</strong> Dynamics — menarik dan mendorong bersamaan</>,
-            <>Bahasa tubuh yang bikin pria <strong>TIDAK BISA berpaling</strong></>,
-            <>Kontrol emosi — kamu yang memegang kendali</>,
-            <><strong>Abundance Mindset</strong> — berhenti mengejar, mulai MENARIK</>,
-            <><strong>Silent Power</strong> — kekuatan dari DIAM</>,
-            <><strong>Sexual Market Value</strong> — cara meningkatkan nilaimu</>,
-            <><strong>Text Game</strong> — membuat dia ketagihan dari chat</>,
+            <>Seni <strong>KALIBRASI BIO-ENERGETIK</strong> — reset blok mental rezeki</>,
+            <><strong>COPY-PASTE Lead Magnet</strong> — materi siap pakai</>,
+            <>Sistem Affiliate <strong>Otomatis 50%</strong> (bukan MLM)</>,
+            <>Template Posting Viral (TikTok, IG, FB) yang <strong>Proven</strong></>,
+            <>Script Iklan <strong>Konversi Tinggi</strong> tinggal contek</>,
         ],
         checksPlus: "+ 44 jurus lainnya...",
         testis: [
@@ -62,89 +59,76 @@ const contentData: any = {
             { text: "Nikah 8 tahun, suami udah kayak robot. Pulang kerja langsung HP. Gue praktekin jurus hot-cold selama 2 minggu... dia PANIK. Sekarang tiap weekend dia yang PLAN date night. Bahkan mulai kirim bunga lagi kayak waktu pacaran 🌹😍", name: "Fitri, 36 thn", time: "2 minggu lalu" },
         ],
         bonuses: [
-            { icon: "🌙", title: "Femme Fatale Secrets (140 hal)", desc: "Rahasia membuat dia terobsesi — dari inner confidence sampai seni manipulasi halus yang LEGAL", price: "Rp97.000" },
-            { icon: "💜", title: "Kursus Femme Fatale (68 hal)", desc: "Program transformasi dari nice girl ke dark feminine — step by step", price: "Rp127.000" },
-            { icon: "📅", title: "Workbook 30 Hari (73 hal)", desc: "Tantangan harian untuk membangun daya tarikmu dalam 30 hari", price: "Rp97.000" },
-            { icon: "🗡️", title: "Seni Merayu — Robert Greene (31 hal)", desc: "Ringkasan strategi rayuan paling legendary sepanjang sejarah", price: "Rp77.000" },
-            { icon: "👑", title: "High Value Woman (22 hal)", desc: "Panduan cepat menjadi wanita bernilai tinggi", price: "Rp57.000" },
-            { icon: "✨", title: "Simply Irresistible (272 hal)", desc: "Unleash your inner siren — panduan lengkap dari studi kasus wanita paling memikat dalam sejarah", price: "Rp147.000" },
-            { icon: "🔥", title: "How to Please Your Man (29 hal)", desc: "Rahasia ranjang yang bikin dia TUNDUK dan KETAGIHAN", price: "Rp97.000", isHighlight: true, highlightText: "Buku tabu yang sungguh-sungguh gila yang seringkali dijual terpisah ratusan ribu, memberi tahu rahasia bagaimana memuaskan pria... di sini menjadi GRATIS sebagai bonus." },
-            { icon: "💋", title: "Selimut Ungu (61 hal)", desc: "Panduan puncak kenikmatan — teknik yang tidak diajarkan siapapun", price: "Rp97.000" },
+            { icon: "🧲", title: "7 Lead Magnet Siap Pakai", desc: "Tinggal copy-paste materi ini, langsung jualan tanpa mikir panjang.", price: "Rp5.000.000" },
+            { icon: "🎧", title: "Audio Hipnosis Bio-Energetik", desc: "2 audio premium teknologi brainwave entrainment.", price: "Rp3.000.000" },
+            { icon: "📱", title: "Modul Iklan Organik & Berbayar", desc: "Script FB Ads proven + Template konten viral TikTok", price: "Rp2.000.000" },
+            { icon: "💬", title: "Grup Private Telegram 24/7", desc: "Support langsung dari mentor + Update strategi.", price: "Rp1.500.000" },
+            { icon: "📊", title: "Akses Affiliate Dashboard", desc: "Track komisi real-time + Withdraw otomatis mingguan", price: "Rp750.000" },
         ],
         valueRows: [
-            { title: "Ebook Utama: 52 Jurus Dark Feminine (156 hal)", price: "Rp199.000" },
-            { title: "Bonus 1: Femme Fatale Secrets (140 hal)", price: "Rp97.000" },
-            { title: "Bonus 2: Kursus Femme Fatale (68 hal)", price: "Rp127.000" },
-            { title: "Bonus 3: Workbook 30 Hari (73 hal)", price: "Rp97.000" },
-            { title: "Bonus 4: Seni Merayu (31 hal)", price: "Rp77.000" },
-            { title: "Bonus 5: High Value Woman (22 hal)", price: "Rp57.000" },
-            { title: "Bonus 6: Simply Irresistible (272 hal)", price: "Rp147.000" },
-            { title: "Bonus 7: How to Please Your Man (29 hal)", price: "Rp97.000" },
-            { title: "Bonus 8: Selimut Ungu (61 hal)", price: "Rp97.000" },
+            { title: "Sistem 'UANG PANAS'", price: "Rp500.000" },
+            { title: "7 Lead Magnet Siap Pakai", price: "Rp5.000.000" },
+            { title: "Audio Hipnosis Bio-Energetik", price: "Rp3.000.000" },
+            { title: "Modul Iklan Organik & Berbayar", price: "Rp2.000.000" },
+            { title: "Akses Grup + Dashboard", price: "Rp2.250.000" },
         ],
         exclItems: [
-            "Wanita yang masih percaya 'menunggu jodoh' itu cukup",
-            "Yang tidak mau berubah dan hanya mau mengeluh",
-            "Yang mencari cara instan tanpa effort",
-            "Yang tidak siap meninggalkan 'nice girl' lama",
+            "Orang malas yang ingin kaya mendadak tanpa bertindak",
+            "Pencari alasan yang tidak mau copy-paste modul siap pakai",
         ],
         faqs: [
-            { q: "Bagaimana cara aksesnya?", a: "Setelah pembayaran, ebook dikirim ke WhatsApp kamu dalam 5 menit. Format HTML bisa dibaca di HP, tablet, atau komputer." },
-            { q: "Apakah ini aman dan privat?", a: "100% privat. Tidak ada nama produk di bukti transfer. Semua dikirim digital, rahasia." },
-            { q: "Apakah ini mengajarkan jadi pelakor?", a: "TIDAK. Dark Feminine mengajarkan kamu jadi HIGH VALUE WOMAN yang paham psikologi daya tarik. Bukan jadi orang jahat, tapi jadi BERHARGA." },
-            { q: "Berapa lama sampai terasa hasilnya?", a: "Kebanyakan pembaca merasakan perubahan dalam 2-4 minggu setelah konsisten praktekkan. Jurus 1-7 sudah cukup powerful." },
-            { q: "Apakah berlaku untuk yang berjilbab / religius?", a: "Ya. Dark Feminine bukan soal pakaian atau penampilan fisik. Ini tentang AURA, MISTERI, dan CARA BERPIKIR. Banyak pembaca kami yang berjilbab." },
+            { q: "Ini MLM / Skema Piramid?", a: "BUKAN. Anda tidak perlu rekrut siapapun. Komisi didapat dari penjualan produk digital REAL, Anda hanyalah affiliate." },
+            { q: "Saya tidak punya skill jualan, bisa?", a: "SANGAT BISA. Semua materi dari gambar, caption sampai video sudah disiapkan tim ahli kami. Tugas Anda hanya posting (Copy Paste)." },
+            { q: "Berapa modal awal?", a: "Cukup 100 Ribu. Tidak perlu stok produk, tanpa biaya bulanan." },
         ],
         pains: [
-            { icon: "😔", text: <>Selalu jadi "teman curhat" tapi bukan <strong>PILIHAN</strong> siapapun</> },
-            { icon: "💔", text: <>Ditinggal atau diselingkuhi padahal sudah baik dan setia</> },
-            { icon: "😤", text: <>Iri sama cewek yang "biasa aja" tapi dapat cowok impian</> },
-            { icon: "📱", text: <>Nonton drama pelakor jam 2 pagi dan diam-diam pengen jadi <strong>DIA</strong></> },
-            { icon: "🔄", text: <>Selalu attract cowok toxic — di-ghosted setelah 3 bulan</> },
-            { icon: "😶", text: <>Diberi label "terlalu baik" yang artinya "terlalu <strong>BORING</strong>"</> },
+            { icon: "📉", text: <><strong>UMKM Tercekik</strong> oleh potongan marketplace 20-30%</> },
+            { icon: "💼", text: <><strong>Karyawan Terancam PHK</strong>, gaji stagnan & inflasi naik</> },
+            { icon: "🔄", text: <>Belajar dropship tapi <strong>ZONK</strong>, ikut MLM malah <strong>RUGI</strong></> },
+            { icon: "💸", text: <>Berjualan online tapi toko sepi tanpa ada transaksi</> },
         ],
-        urgency: (t: React.ReactNode) => <>⚡ HARGA SPESIAL — Berakhir dalam {t} ⚡</>,
-        heroBadge: "🌙 PANDUAN RAHASIA WANITA",
-        heroH1a: "Jadilah Wanita yang",
-        heroH1b: "Tidak Bisa Dilupakan",
-        heroSub: "52 jurus rahasia daya tarik yang tidak pernah diajarkan ibu, guru, atau siapapun.",
-        heroCta: "DAPATKAN 52 JURUS SEKARANG →",
-        socialProof: "sudah membuktikan",
-        socialProofNum: "4.200+ wanita",
-        painLabel: "JUJUR SAMA DIRI SENDIRI",
-        painH2a: "Kamu Pernah Merasakan",
-        painH2b: "Ini Semua?",
-        agitH2a: 'Kenapa yang "Rendah"',
-        agitH2b: "Malah Dapat CEO?",
-        solLabel: "JAWABANNYA",
-        solH2a: "Dark Feminine",
-        solH2b: "52 Jurus Rahasia",
-        contentsLabel: "YANG AKAN KAMU PELAJARI",
-        contentsH2: "52 Jurus Daya Tarik",
+        urgency: (t: React.ReactNode) => <>⚡ PROMO SUBSIDI — HARGA NAIK DALAM {t} ⚡</>,
+        heroBadge: "💰 BLUEPRINT PENGHASILAN OTOMATIS",
+        heroH1a: "Bayangkan Modal 100 Ribu",
+        heroH1b: "Raih Ratusan Ribu/Hari",
+        heroSub: "Semua Sudah Disiapkan! Tugas Anda hanya: Copy-Paste lalu Dapatkan Komisi 50%",
+        heroCta: "SAYA MAU AKSES SEKARANG — RP100.000 →",
+        socialProof: "orang sukses bergabung",
+        socialProofNum: "3.800+",
+        painLabel: "FAKTA PAHIT DUNIA",
+        painH2a: "Kerja Keras Anda",
+        painH2b: "TIDAK Menghasilkan Uang?",
+        agitH2a: 'Sudah Coba Segala Cara,',
+        agitH2b: "Kenapa Gagal Terus?",
+        solLabel: "SOLUSI PASTI",
+        solH2a: "Sistem UANG PANAS",
+        solH2b: "3 Langkah Sederhana",
+        contentsLabel: "YANG ANDA DAPAT",
+        contentsH2: "Sistem Affiliate",
         contentsH2Span: "Lengkap",
-        testiLabel: "MEREKA SUDAH BUKTIKAN",
-        testiH2: "Hasil Nyata dari",
-        testiH2Span: "4.200+ Wanita",
-        bonusLabel: "BONUS EKSKLUSIF",
-        bonusH2: "8 Bonus Senilai",
-        bonusH2Span: "Rp795.000",
-        priceLabel: "INVESTASI SEUMUR HIDUP",
-        priceH2: "Dapatkan Semuanya",
-        priceTodayLabel: "Harga Hari Ini",
-        savingsBadge: "🎉 Hemat 80% — Penawaran Terbatas!",
-        priceCta: "DAPATKAN SEKARANG — Rp199.000",
-        priceSub: "🚀 Dikirim INSTAN ke WhatsApp kamu",
-        exclH2: "Dark Feminine BUKAN untuk:",
-        exclCta: '"Ini HANYA untuk wanita yang SIAP mengambil kendali hidupnya."',
+        testiLabel: "BUKTI NYATA KOMUNITAS",
+        testiH2: "Menghasilkan Hingga",
+        testiH2Span: "Rp15 Juta/Bulan",
+        bonusLabel: "BONUS SPESIAL",
+        bonusH2: "Bonus Lengkap Senilai",
+        bonusH2Span: "Rp12.250.000",
+        priceLabel: "PENAWARAN GILA HARI INI",
+        priceH2: "Ambil Semuanya",
+        priceTodayLabel: "Harga Subsidi",
+        savingsBadge: "🎉 Hemat 99% — Hanya untuk Kuota Tersisa!",
+        priceCta: "DAPATKAN SEKARANG — Rp100.000",
+        priceSub: "🚀 Akses langsung ke Email dan WhatsApp kamu",
+        exclH2: "Sistem Ini BUKAN untuk:",
+        exclCta: '"Akses ini HANYA bagi mereka yang SIAP 24 jam."',
         faqLabel: "PERTANYAAN UMUM",
         faqH2: "Ada yang",
-        faqH2Span: "Ditanyakan?",
-        faqCta: "YA, SAYA SIAP BERUBAH →",
-        faqSub: "🚀 Dikirim INSTAN ke WhatsApp kamu",
+        faqH2Span: "Masih Ragu?",
+        faqCta: "YA, SAYA SIAP HASILKAN UANG →",
+        faqSub: "Akses otomatis setelah bayar",
         stickyCta: "PESAN SEKARANG",
-        stickyText: "🌙 52 Jurus —",
-        stickyPrice: "Rp199.000",
-        btnWa: "https://wa.me/6281234567890?text=Halo%20saya%20mau%20order%20Dark%20Feminine",
+        stickyText: "💰 Paket UANG PANAS —",
+        stickyPrice: "Rp100.000",
+        btnWa: "https://wa.me/62895325633487?text=Halo%20saya%20mau%20order%20Uang%20Panas",
     },
     en: {
         agitText: <>You were taught from childhood: be nice, don't flirt, wait for Prince Charming. <strong>AND WHAT HAPPENED?</strong> You became everyone's favorite therapist while he chose someone else.<br /><br /><ul className="agitation-list"><li>The loyal one → left behind.</li><li>The patient one → walked over.</li><li>The understanding one → seen as weak.</li></ul><br />But the "average" girl? Gets <span className="highlight">EVERYTHING</span>.<br /><br />Not because she's pretty. Not because she's lucky.<br />Because she <span className="highlight">KNOWS something you were NEVER taught.</span></>,
@@ -172,7 +156,7 @@ const contentData: any = {
             { icon: "🗡️", title: "The Art of Seduction — Robert Greene (31 pages)", desc: "Summary of the most legendary seduction strategies in history", price: "Rp77,000" },
             { icon: "👑", title: "High Value Woman (22 pages)", desc: "Quick guide to becoming a high-value woman", price: "Rp57,000" },
             { icon: "✨", title: "Simply Irresistible (272 pages)", desc: "Unleash your inner siren — complete guide from case studies of history's most captivating women", price: "Rp147,000" },
-            { icon: "🔥", title: "How to Please Your Man (29 pages)", desc: "Bedroom secrets that make him SUBMIT and ADDICTED", price: "Rp97,000", isHighlight: true, highlightText: "A taboo book often sold separately for hundreds of thousands, teaching you bedroom secrets to please a man... included here for FREE as a bonus." },
+            { icon: "🔥", title: "How to Please Your Man (29 pages)", desc: "Bedroom secrets that make him SUBMIT and ADDICTED", price: "Rp97,000" },
             { icon: "💋", title: "Purple Sheets (61 pages)", desc: "Guide to ultimate pleasure — techniques no one has taught you", price: "Rp97,000" },
         ],
         valueRows: [
@@ -252,13 +236,15 @@ const contentData: any = {
     }
 };
 
-const DarkFeminineTSX = () => {
+const HotAffiliateTSX = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [payment, setPayment] = useState("QRIS");
-    const [addUpsell, setAddUpsell] = useState(false);
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const affiliateRef = searchParams.get('ref');
     const { toast } = useToast();
 
     // Payment States
@@ -273,12 +259,12 @@ const DarkFeminineTSX = () => {
     const [loadingFree, setLoadingFree] = useState(false);
     const [successFree, setSuccessFree] = useState(false);
 
-    const priceID = addUpsell ? 249000 : 199000;
+    const priceID = 100000;
     const PIXEL_ID = '3319324491540889';
 
     const sendWAAlert = async (type: 'attempt' | 'success', details: any) => {
         try {
-            const productDesc = `Dark Feminine Package`;
+            const productDesc = `Hot Affiliate Uang Panas`;
             const msg = type === 'attempt'
                 ? `🔔 *Mencoba Checkout*\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nMetode: ${details.method}`
                 : `✅ *Checkout Sukses*\nRef: ${details.ref}\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nTotal: Rp ${details.amount.toLocaleString('id-ID')}`;
@@ -292,7 +278,8 @@ const DarkFeminineTSX = () => {
     };
 
     const submitOrder = async () => {
-        if (!name || !phone || !email) { alert('⚠️ Mohon lengkapi Nama, No. WhatsApp, dan Email Anda!'); return; }
+        if (!name || !phone || !email || !password || !confirmPassword) { alert('⚠️ Mohon lengkapi seluruh data termasuk password!'); return; }
+        if (password !== confirmPassword) { alert('⚠️ Konfirmasi password tidak cocok dengan password!'); return; }
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
@@ -300,7 +287,31 @@ const DarkFeminineTSX = () => {
 
         const { fbc, fbp } = getFbcFbpCookies();
         const clientIp = await getClientIp();
-        const productDesc = `Universal - Dark Feminine - ${name}`;
+        const productDesc = `Ebook Uang Panas - ${name}`;
+
+        // Authentication & Registration
+        let currentUserId = null;
+        try {
+            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+                email: email, password: password, options: { data: { display_name: name, phone_number: phone } }
+            });
+            if (signUpError) {
+                if (signUpError.message.includes("already registered")) {
+                    const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({ email: email, password: password });
+                    if (signInError) {
+                        toast({ title: "Login Gagal", description: "Email terdaftar. Masukkan password yang benar.", variant: "destructive" });
+                        setLoading(false); return;
+                    }
+                    if (signInData.user) currentUserId = signInData.user.id;
+                } else throw signUpError;
+            } else if (signUpData.user) {
+                currentUserId = signUpData.user.id;
+                await supabase.from('profiles').upsert({ user_id: currentUserId, user_email: email, display_name: name, experience_points: 0, level: 1, streak_days: 0, updated_at: new Date().toISOString() } as any, { onConflict: 'user_id' });
+            }
+        } catch (err: any) {
+            toast({ title: "Gagal Registrasi", description: err.message || "Gagal membuat akun affiliate.", variant: "destructive" });
+            setLoading(false); return;
+        }
 
         try {
             await supabase.functions.invoke('capi-universal', {
@@ -313,10 +324,11 @@ const DarkFeminineTSX = () => {
         } catch (e) { console.error('AddPaymentInfo CAPI error', e); }
 
         const payload = {
-            subscriptionType: 'universal', paymentMethod: payment,
+            subscriptionType: 'ebook_uangpanas', paymentMethod: payment,
             userName: name, userEmail: email, phoneNumber: phone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
-            amount: priceID, currency: 'IDR', quantity: 1, productName: addUpsell ? 'Universal - Dark Feminine + Love Magnet' : 'Universal - Dark Feminine',
+            amount: priceID, currency: 'IDR', quantity: 1, productName: 'Ebook Uang Panas',
+            userId: currentUserId, affiliateRef, commissionRate: 0.50,
             fbc, fbp, clientIp
         };
 
@@ -396,7 +408,7 @@ const DarkFeminineTSX = () => {
                     if (payload.new?.status === 'PAID') {
                         if (purchaseFiredRef.current) return;
                         purchaseFiredRef.current = true;
-                        toast({ title: "🎉 Pembayaran Berhasil!", description: "Terima kasih! Pembayaran Anda telah kami terima. Link akses Ebook Dark Feminine akan dikirimkan ke Email dan WhatsApp.", duration: 0 });
+                        toast({ title: "🎉 Pembayaran Berhasil!", description: "Terima kasih! Pembayaran Anda telah kami terima. Link akses Sistem Uang Panas akan dikirimkan ke Email dan WhatsApp.", duration: 0 });
                         // Note: Purchase tracking is handled by the backend tripay-callback, so we only track AddPaymentInfo and PageView/ViewContent on frontend.
                     }
                 }
@@ -407,7 +419,7 @@ const DarkFeminineTSX = () => {
     useEffect(() => {
         initFacebookPixelWithLogging(PIXEL_ID);
         trackViewContentEvent(
-            { content_name: 'Universal - Dark Feminine', value: priceID, currency: 'IDR' },
+            { content_name: 'Ebook Uang Panas', value: priceID, currency: 'IDR' },
             undefined,
             PIXEL_ID
         );
@@ -426,8 +438,8 @@ const DarkFeminineTSX = () => {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     useEffect(() => {
-        document.title = "Dark Feminine — 52 Jurus Rahasia";
-        const KEY = 'df_end_time';
+        document.title = "Uang Panas — Blueprint Rp500rb/hari";
+        const KEY = 'up_end_time';
         let endTime = localStorage.getItem(KEY);
         if (!endTime || Date.now() > parseInt(endTime)) {
             endTime = (Date.now() + 3 * 60 * 60 * 1000).toString();
@@ -509,7 +521,7 @@ const DarkFeminineTSX = () => {
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <img src={qrisBcaImage} alt="QRIS BCA" style={{ width: '220px', height: '220px', borderRadius: '12px', border: '1px solid #eee', marginBottom: '24px' }} />
                                 </div>
-                                <a href={`https://wa.me/62895325633487?text=${encodeURIComponent(`Halo kak, saya sudah bayar Ebook Dark Feminine. Ref: ${paymentData.tripay_reference}`)}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+                                <a href={`https://wa.me/62895325633487?text=${encodeURIComponent(`Halo kak, saya sudah bayar Uang Panas via TF Manual. Ref: ${paymentData.tripay_reference}`)}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
                                     <button className="pay-btn-confirm">Konfirmasi via WhatsApp</button>
                                 </a>
                             </div>
@@ -690,13 +702,6 @@ const DarkFeminineTSX = () => {
         .df-bonus-card {
           background: var(--bg-card); border-radius: 16px; padding: 20px; margin-bottom: 14px;
           border: 1px solid rgba(139,92,246,0.18); display: flex; gap: 16px; align-items: flex-start;
-          transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .df-bonus-highlight {
-          border: 1px solid rgba(239, 68, 68, 0.5);
-          background: linear-gradient(135deg, rgba(26, 10, 46, 1), rgba(40, 10, 20, 0.8));
-          transform: scale(1.02);
-          box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
         }
         .df-value-card { background: var(--bg-card); border-radius: 18px; padding: 28px 22px; border: 1px solid rgba(201,153,26,0.3); }
         .df-value-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid rgba(139,92,246,0.12); }
@@ -958,13 +963,11 @@ const DarkFeminineTSX = () => {
                             <h2 className="df-section-h2">{c.bonusH2} <span className="df-gold">{c.bonusH2Span}</span></h2>
                             <div>
                                 {c.bonuses.map((b: any, i: number) => (
-                                    <div key={i} className={`df-bonus-card ${b.isHighlight ? 'df-bonus-highlight' : ''}`}>
+                                    <div key={i} className="df-bonus-card">
                                         <div style={{ fontSize: '28px', flexShrink: 0 }}>{b.icon}</div>
                                         <div>
-                                            {b.isHighlight && <div style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--red), #b91c1c)', color: '#fff', padding: '3px 8px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', display: 'inline-block', marginBottom: '8px', textTransform: 'uppercase' }}>{lang === 'id' ? '🔥 BUKU TABU (DIJUAL TERPISAH)' : '🔥 TABOO BOOK (SOLD SEPARATELY)'}</div>}
-                                            <div style={{ fontSize: '17px', fontWeight: 700, color: b.isHighlight ? 'var(--gold-light)' : 'var(--white)', marginBottom: '4px' }}>{b.title}</div>
+                                            <div style={{ fontSize: '17px', fontWeight: 700, color: 'var(--white)', marginBottom: '4px' }}>{b.title}</div>
                                             <div style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.6 }}>{b.desc}</div>
-                                            {b.highlightText && <div style={{ fontSize: '14px', color: 'var(--cream)', fontStyle: 'italic', marginTop: '6px', padding: '8px', background: 'rgba(239, 68, 68, 0.1)', borderLeft: '3px solid var(--red)' }}>{b.highlightText}</div>}
                                             <div style={{ marginTop: '8px', fontSize: '15px', color: 'var(--green-wa)', fontWeight: 700 }}>
                                                 <s style={{ color: 'var(--muted)', fontWeight: 400 }}>{b.price}</s> → GRATIS
                                             </div>
@@ -1102,18 +1105,28 @@ const DarkFeminineTSX = () => {
                             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                                 <div>
                                     <label className="df-flabel">Nama Lengkap</label>
-                                    <input className="df-finput" placeholder="Contoh: Sarah" value={name} onChange={e => setName(e.target.value)} />
+                                    <input className="df-finput" placeholder="Contoh: Budi" value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div>
-                                    <label className="df-flabel">No. WhatsApp</label>
+                                    <label className="df-flabel">No. WhatsApp Aktif</label>
                                     <div className="df-pwrap">
                                         <div className="df-ppfx">{lang === 'id' ? '🇮🇩 +62' : '🌐 +'}</div>
-                                        <input className="df-finput" placeholder={lang === 'id' ? "812345678" : "Country Code + Number"} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
+                                        <input className="df-finput" placeholder={lang === 'id' ? "812345678" : "Number"} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
                                     </div>
+                                    <p style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '6px' }}>*{lang === 'id' ? 'Ebook akan dikirim ke nomor ini' : 'Ebook will be sent to this number'}</p>
                                 </div>
                                 <div>
-                                    <label className="df-flabel">Email (untuk link download)</label>
+                                    <label className="df-flabel">Email Aktif</label>
                                     <input className="df-finput" type="email" placeholder="contoh@gmail.com" value={email} onChange={e => setEmail(e.target.value)} />
+                                    <p style={{ fontSize: '13px', color: 'var(--muted)', marginTop: '6px' }}>*{lang === 'id' ? 'Sebagai backup akses produk' : 'As backup for product access'}</p>
+                                </div>
+                                <div>
+                                    <label className="df-flabel">Password Affiliate</label>
+                                    <input className="df-finput" type="password" placeholder="Buat password rahasia" value={password} onChange={e => setPassword(e.target.value)} />
+                                </div>
+                                <div>
+                                    <label className="df-flabel">Konfirmasi Password</label>
+                                    <input className="df-finput" type="password" placeholder="Ulangi password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
                                 </div>
                                 <div>
                                     <label className="df-flabel">Metode Pembayaran</label>
@@ -1133,55 +1146,22 @@ const DarkFeminineTSX = () => {
                                         ))}
                                     </div>
                                 </div>
-                                <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, marginBottom: 10 }}>
-                                    <label className="df-flabel" style={{ marginBottom: 4 }}>Pilih Paket Anda</label>
-
-                                    {/* Option 1: Base */}
-                                    <div style={{ display: 'flex', alignItems: 'center', background: !addUpsell ? 'rgba(139,92,246,0.1)' : 'rgba(255,255,255,0.03)', border: !addUpsell ? '1px solid rgba(139,92,246,0.5)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(false)}>
-                                        <div style={{ marginRight: '14px' }}>
-                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: !addUpsell ? '6px solid var(--purple-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
-                                        </div>
-                                        <div style={{ flex: 1 }}>
-                                            <div style={{ fontSize: '15px', fontWeight: 700, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>Paket Lengkap Dark Feminine + 8 Bonus</div>
-                                        </div>
-                                        <div style={{ fontSize: '16px', fontWeight: 800, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>
-                                            Rp199.000
-                                        </div>
-                                    </div>
-
-                                    {/* Option 2: Upsell */}
-                                    <div style={{ display: 'flex', alignItems: 'center', background: addUpsell ? 'rgba(240,200,74,0.1)' : 'rgba(255,255,255,0.03)', border: addUpsell ? '1px solid rgba(240,200,74,0.4)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(true)}>
-                                        <div style={{ marginRight: '14px' }}>
-                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: addUpsell ? '6px solid var(--gold-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
-                                        </div>
-                                        <div style={{ flex: 1 }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                                <div style={{ fontSize: '15px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>Dark Feminine + 8 Bonus <br />+ Audio Love Magnet</div>
-                                                <span style={{ fontSize: '10px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '2px 6px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>PROMO KHUSUS</span>
-                                            </div>
-                                            <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.4 }}>Rahasia memikat pria idaman hanya lewat frekuensi suara. <span style={{ color: 'var(--red)', textDecoration: 'line-through' }}>(Senilai Rp250.000)</span></div>
-                                        </div>
-                                        <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>
-                                            Rp249.000
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div style={{ background: "rgba(139,92,246,.05)", border: "1px solid rgba(139,92,246,.13)", borderRadius: 11, padding: 14, marginTop: 10 }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: addUpsell ? "var(--gold-light)" : "var(--muted)" }}>
-                                        <span style={{ paddingRight: 10 }}>{addUpsell ? "Paket Lengkap + Audio Love Magnet" : "Paket Lengkap Dark Feminine + 8 Bonus"}</span>
-                                        <span style={{ fontWeight: 600 }}>Rp{addUpsell ? "249.000" : "199.000"}</span>
+                                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: "var(--gold-light)" }}>
+                                        <span style={{ paddingRight: 10 }}>Paket Uang Panas + Bonus Lengkap</span>
+                                        <span style={{ fontWeight: 600 }}>Rp100.000</span>
                                     </div>
                                     <div style={{ height: 1, background: "rgba(139,92,246,.09)", marginBottom: 7 }} />
                                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14.5, fontWeight: 700 }}>
                                         <span style={{ color: "var(--cream)" }}>Total</span>
-                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>Rp{addUpsell ? "249.000" : "199.000"}</span>
+                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>Rp100.000</span>
                                     </div>
                                 </div>
                                 <button className="df-sbtn" onClick={submitOrder} disabled={loading}>
-                                    {loading ? "Memproses..." : `🛒 Pesan Sekarang — Rp${addUpsell ? "249.000" : "199.000"}`}
+                                    {loading ? "Memproses..." : `🛒 Pesan Sekarang — Rp100.000`}
                                 </button>
-                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.</p>
+                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital. Anda akan dibuatkan akun Affiliate otomatis setelah pembayaran berhasil.</p>
                             </div>
                         </div>
                     </section>
@@ -1226,16 +1206,15 @@ const DarkFeminineTSX = () => {
                     <div id="df-sticky-cta" className={showSticky ? 'show' : ''}>
                         <div style={{ background: 'var(--bg-card)', borderRadius: '14px', padding: '14px', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', gap: '14px' }}>
                             <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', flex: 1 }}>
-                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>Rp{addUpsell ? '249.000' : '199.000'}</span>
-                                {addUpsell && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
+                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>Rp100.000</span>
                             </div>
-                            <a onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
+                            <a onClick={(name && phone && email && payment && password && confirmPassword && (password === confirmPassword)) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
                         </div>
                     </div>
 
                     {/* FLOATING WHATSAPP BUTTON */}
                     <a
-                        href={`https://wa.me/62895325633487?text=${encodeURIComponent("Halo Admin Dark Feminine, saya mau tanya...")}`}
+                        href={`https://wa.me/62895325633487?text=${encodeURIComponent("Halo Admin Uang Panas, saya mau tanya...")}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
@@ -1267,4 +1246,4 @@ const DarkFeminineTSX = () => {
     );
 };
 
-export default DarkFeminineTSX;
+export default HotAffiliateTSX;
