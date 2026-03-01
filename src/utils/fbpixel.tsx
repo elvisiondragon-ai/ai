@@ -211,4 +211,53 @@ export const trackAddToCartEvent = async (eventData: any = {}, eventID?: string,
 export const trackPurchaseEvent = async (eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData, testCode?: string) => trackEvent('Purchase', eventData, { eventID, pixelId, userData, testCode });
 export const trackAddPaymentInfoEvent = async (eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData, testCode?: string) => trackEvent('AddPaymentInfo', eventData, { eventID, pixelId, userData, testCode });
 export const trackInitiateCheckoutEvent = async (eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData, testCode?: string) => trackEvent('InitiateCheckout', eventData, { eventID, pixelId, userData, testCode });
+
+/**
+ * 🚀 CAPI-Only Track Helper
+ * Sends event ONLY to capi-universal via Supabase Edge Function
+ * Used when we don't want to fire local pixel events (e.g. for InitiateCheckout/AddPaymentInfo)
+ */
+export const trackCapiOnlyEvent = async (
+  eventName: string, 
+  eventData: any = {}, 
+  pixelId: string, 
+  secret: string, 
+  testCode?: string,
+  userDataOverride?: AdvancedMatchingData
+) => {
+  if (typeof window === 'undefined') return;
+  try {
+    const { supabase } = await import('@/integrations/supabase/client');
+    const { fbc, fbp } = getFbcFbpCookies();
+    const eventId = `${eventName.toLowerCase()}-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+    
+    const body: any = {
+      pixelId,
+      eventName,
+      secret,
+      eventId,
+      eventData,
+      eventSourceUrl: window.location.href,
+      testCode: testCode || 'testcode_indo',
+      userData: {
+        client_user_agent: navigator.userAgent,
+        fbc: userDataOverride?.fbc || fbc,
+        fbp: userDataOverride?.fbp || fbp,
+        external_id: userDataOverride?.external_id,
+        em: userDataOverride?.em,
+        ph: userDataOverride?.ph,
+        fn: userDataOverride?.fn,
+        ln: userDataOverride?.ln,
+      }
+    };
+
+    // Remove undefined fields
+    Object.keys(body.userData).forEach(key => body.userData[key] === undefined && delete body.userData[key]);
+
+    await supabase.functions.invoke('capi-universal', { body });
+  } catch (error) {
+    console.error(`CAPI-Only ${eventName} failed:`, error);
+  }
+};
+
 export const trackCustomEvent = async (eventName: string, eventData: any = {}, eventID?: string, pixelId?: string, userData?: AdvancedMatchingData, testCode?: string) => trackEvent(eventName, eventData, { eventID, pixelId, userData, testCode });
