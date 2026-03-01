@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { initFacebookPixelWithLogging, trackPageViewEvent, trackInitiateCheckoutEvent } from "./utils/fbpixel";
+import { initFacebookPixelWithLogging, trackPageViewEvent, trackViewContentEvent, trackCapiOnlyEvent } from "./utils/fbpixel";
 import demoProduct from "./assets/display/nano_banana_demo_1_product.png";
 import demoAutoReply from "./assets/display/nano_banana_demo_2_autoreply.png";
 import demoAutoDM from "./assets/display/nano_banana_demo_3_autodm.png";
@@ -10,6 +10,8 @@ import umkmVideo from "./assets/UMKM_V1.mp4";
 import umkmThumb from "./assets/UMKM_V1.jpeg";
 
 const PIXEL_ID = "2158382114674235";
+const TEST_CODE = "TEST39702";
+const CAPI_SECRET = "CAPI_UMKM";
 
 type Language = "id" | "en";
 
@@ -225,7 +227,13 @@ export default function LandingPage() {
 
     useEffect(() => {
         initFacebookPixelWithLogging(PIXEL_ID);
-        trackPageViewEvent({}, undefined, PIXEL_ID);
+        trackPageViewEvent({}, undefined, PIXEL_ID, undefined, TEST_CODE);
+        trackViewContentEvent({
+            content_name: 'Landing Page Auto Sell with AI',
+            content_category: 'Service',
+            content_ids: ['autosell_ai_lp'],
+            content_type: 'product'
+        }, undefined, PIXEL_ID, undefined, TEST_CODE);
     }, []);
 
     const formatCurrency = (n: number) =>
@@ -319,7 +327,7 @@ export default function LandingPage() {
                         {t.heroSub}
                     </p>
                     <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                        <a href={whatsappLink} target="_blank" onClick={() => trackInitiateCheckoutEvent({}, undefined, PIXEL_ID)}>
+                        <a href={whatsappLink} target="_blank" onClick={() => trackCapiOnlyEvent('InitiateCheckout', {}, PIXEL_ID, CAPI_SECRET, TEST_CODE)}>
                             <button className="btn-primary" style={{ fontSize: 18 }}>{t.ctaPesan}</button>
                         </a>
                         <button style={{ padding: "16px 28px", borderRadius: 50, border: "2px solid #CBD5E1", background: "transparent", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", color: "#334155" }}>
@@ -541,7 +549,7 @@ export default function LandingPage() {
                                     href={whatsappLink} 
                                     target="_blank" 
                                     style={{ width: "100%" }}
-                                    onClick={() => trackInitiateCheckoutEvent({ value: plan.price, currency: 'IDR' }, undefined, PIXEL_ID)}
+                                    onClick={() => trackCapiOnlyEvent('InitiateCheckout', { value: plan.price, currency: 'IDR' }, PIXEL_ID, CAPI_SECRET, TEST_CODE)}
                                 >
                                     <button
                                         className="btn-primary"
@@ -599,7 +607,7 @@ export default function LandingPage() {
                         <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, marginBottom: 32, lineHeight: 1.6 }}>
                             {t.ctaBottomSub}
                         </p>
-                        <a href={whatsappLink} target="_blank" onClick={() => trackInitiateCheckoutEvent({}, undefined, PIXEL_ID)}>
+                        <a href={whatsappLink} target="_blank" onClick={() => trackCapiOnlyEvent('InitiateCheckout', {}, PIXEL_ID, CAPI_SECRET, TEST_CODE)}>
                             <button style={{ background: "white", color: "#0EA5E9", border: "none", padding: "18px 40px", borderRadius: 50, fontWeight: 800, fontSize: 18, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)", transition: "transform 0.2s" }}
                                 onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.03)")}
                                 onMouseLeave={e => (e.currentTarget.style.transform = "")}
