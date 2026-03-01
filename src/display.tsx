@@ -1,529 +1,487 @@
-"use client";
+import { useState, useEffect, useRef } from "react";
+import demoProduct from "./assets/display/nano_banana_demo_1_product.png";
+import demoAutoReply from "./assets/display/nano_banana_demo_2_autoreply.png";
+import demoAutoDM from "./assets/display/nano_banana_demo_3_autodm.png";
+import demoAnalysis from "./assets/display/demo_ai_analysis.png";
+import demoVoice from "./assets/display/voice.mp3";
+import demoVideo from "./assets/darkfem_id/video3.mp4";
 
-import { useEffect, useRef, useState } from "react";
+const plans = {
+    monthly: [
+        {
+            name: "Starter",
+            price: 299000,
+            color: "#0EA5E9",
+            features: [
+                "Auto Reply Komentar Instagram",
+                "Auto DM ke Calon Pembeli",
+                "Setup dalam 1 Jam",
+                "Support via WhatsApp",
+                "Laporan Mingguan Basic",
+            ],
+            cta: "Pilih Paket",
+            highlight: false,
+        },
+        {
+            name: "Growth",
+            price: 599000,
+            color: "#10B981",
+            features: [
+                "Semua fitur Starter",
+                "AI Chatbot WhatsApp",
+                "Auto Trigger Pesanan",
+                "Image Generator Produk (10/bln)",
+                "Video Reels/TikTok (10/bln)",
+                "Laporan AI Mingguan",
+            ],
+            cta: "Pilih Paket",
+            highlight: true,
+        },
+        {
+            name: "Pro",
+            price: 999000,
+            color: "#8B5CF6",
+            features: [
+                "Semua fitur Growth",
+                "Voice Cloning AI",
+                "Image Generator Tak Terbatas",
+                "Video Promosi (12/bln)",
+                "Analisa Datasheet Otomatis",
+                "Manajer Akun Pribadi",
+                "Priority Support 24/7",
+            ],
+            cta: "Pilih Paket",
+            highlight: false,
+        },
+    ],
+    yearly: [
+        {
+            name: "Starter",
+            price: 2490000,
+            color: "#0EA5E9",
+            features: [
+                "Auto Reply Komentar Instagram",
+                "Auto DM ke Calon Pembeli",
+                "Setup dalam 1 Jam",
+                "Support via WhatsApp",
+                "Laporan Mingguan Basic",
+            ],
+            cta: "Pilih Paket",
+            highlight: false,
+        },
+        {
+            name: "Growth",
+            price: 4990000,
+            color: "#10B981",
+            features: [
+                "Semua fitur Starter",
+                "AI Chatbot WhatsApp",
+                "Auto Trigger Pesanan",
+                "Image Generator Produk (10/bln)",
+                "Video Reels/TikTok (10/bln)",
+                "Laporan AI Mingguan",
+            ],
+            cta: "Pilih Paket",
+            highlight: true,
+        },
+        {
+            name: "Pro",
+            price: 8490000,
+            color: "#8B5CF6",
+            features: [
+                "Semua fitur Growth",
+                "Voice Cloning AI",
+                "Image Generator Tak Terbatas",
+                "Video Promosi (12/bln)",
+                "Analisa Datasheet Otomatis",
+                "Manajer Akun Pribadi",
+                "Priority Support 24/7",
+            ],
+            cta: "Pilih Paket",
+            highlight: false,
+        },
+    ],
+};
 
-const TAGLINES = [
-  "Membangun Masa Depan dengan Kecerdasan Buatan",
-  "Building Tomorrow Through Artificial Intelligence",
-  "Mengintegrasikan AI ke Dalam Setiap Dimensi Bisnis",
-  "Where Human Vision Meets Machine Intelligence",
-];
-
-export default function AIeLVisionPage() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [taglineIndex, setTaglineIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  // Typewriter effect
-  useEffect(() => {
-    const current = TAGLINES[taglineIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-    if (!isDeleting && charIndex <= current.length) {
-      setDisplayText(current.slice(0, charIndex));
-      timeout = setTimeout(() => setCharIndex((c) => c + 1), 45);
-    } else if (!isDeleting && charIndex > current.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 2400);
-    } else if (isDeleting && charIndex > 0) {
-      setDisplayText(current.slice(0, charIndex));
-      timeout = setTimeout(() => setCharIndex((c) => c - 1), 20);
-    } else {
-      setIsDeleting(false);
-      setTaglineIndex((i) => (i + 1) % TAGLINES.length);
-    }
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, taglineIndex]);
-
-  // Neural network canvas — blue/violet palette
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    let animId: number;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const NODE_COUNT = 80;
-    type Node = {
-      x: number; y: number;
-      vx: number; vy: number;
-      r: number; phase: number; colorShift: number;
-    };
-
-    const nodes: Node[] = Array.from({ length: NODE_COUNT }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.32,
-      vy: (Math.random() - 0.5) * 0.32,
-      r: Math.random() * 2 + 0.8,
-      phase: Math.random() * Math.PI * 2,
-      colorShift: Math.random(),
-    }));
-
-    let t = 0;
-    const lerp = (a: number, b: number, v: number) => a + (b - a) * v;
-
-    const draw = () => {
-      t += 0.007;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Grid
-      ctx.save();
-      ctx.strokeStyle = "rgba(80, 140, 255, 0.045)";
-      ctx.lineWidth = 0.6;
-      const gSize = 90;
-      const drift = (t * 14) % gSize;
-      for (let x = -gSize; x < canvas.width + gSize; x += gSize) {
-        ctx.beginPath(); ctx.moveTo(x + drift * 0.5, 0); ctx.lineTo(x + drift * 0.5, canvas.height); ctx.stroke();
-      }
-      for (let y = -gSize; y < canvas.height + gSize; y += gSize) {
-        ctx.beginPath(); ctx.moveTo(0, y + drift * 0.25); ctx.lineTo(canvas.width, y + drift * 0.25); ctx.stroke();
-      }
-      ctx.restore();
-
-      // Connections
-      for (let i = 0; i < NODE_COUNT; i++) {
-        for (let j = i + 1; j < NODE_COUNT; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
-            const alpha = (1 - dist / 140) * 0.25;
-            const pulse = Math.sin(t * 1.6 + nodes[i].phase) * 0.5 + 0.5;
-            const cs = (nodes[i].colorShift + nodes[j].colorShift) / 2;
-            const r = Math.round(lerp(40, 130, cs));
-            const g = Math.round(lerp(120, 60, cs));
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(${r},${g},255,${alpha * pulse})`;
-            ctx.lineWidth = 0.7;
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Nodes
-      for (const node of nodes) {
-        node.x += node.vx;
-        node.y += node.vy;
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-
-        const glow = Math.sin(t * 2.0 + node.phase) * 0.5 + 0.5;
-        const cs = node.colorShift;
-        const r = Math.round(lerp(30, 160, cs));
-        const g = Math.round(lerp(140, 80, cs));
-
-        const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.r * 6);
-        grad.addColorStop(0, `rgba(${r},${g},255,${0.9 * glow})`);
-        grad.addColorStop(1, `rgba(${r},${g},255,0)`);
-        ctx.beginPath(); ctx.fillStyle = grad;
-        ctx.arc(node.x, node.y, node.r * 6, 0, Math.PI * 2); ctx.fill();
-
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(200,220,255,${0.6 + glow * 0.4})`;
-        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2); ctx.fill();
-      }
-
-      // Scan sweep
-      const scanY = ((Math.sin(t * 0.35) + 1) / 2) * canvas.height;
-      const sg = ctx.createLinearGradient(0, scanY - 80, 0, scanY + 80);
-      sg.addColorStop(0, "rgba(80,140,255,0)");
-      sg.addColorStop(0.5, "rgba(80,140,255,0.06)");
-      sg.addColorStop(1, "rgba(80,140,255,0)");
-      ctx.fillStyle = sg; ctx.fillRect(0, scanY - 80, canvas.width, 160);
-
-      // Data streaks
-      if (Math.sin(t * 7.3) > 0.97) {
-        const sx = Math.random() * canvas.width;
-        const streakGrad = ctx.createLinearGradient(sx, 0, sx + 1, canvas.height);
-        streakGrad.addColorStop(0, "rgba(100,160,255,0)");
-        streakGrad.addColorStop(0.45, "rgba(160,200,255,0.18)");
-        streakGrad.addColorStop(1, "rgba(100,160,255,0)");
-        ctx.fillStyle = streakGrad;
-        ctx.fillRect(sx, 0, 1, canvas.height);
-      }
-
-      animId = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize); };
-  }, []);
-
-  return (
-    <div style={styles.root}>
-      <div style={styles.bgBase} />
-      <div style={styles.bgGlowCenter} />
-      <div style={styles.bgGlowLeft} />
-      <div style={styles.bgGlowRight} />
-      <canvas ref={canvasRef} style={styles.canvas} />
-      <div style={styles.noise} />
-      <div style={styles.vignette} />
-
-      <div style={styles.content}>
-
-        {/* Status badge */}
-        <div style={styles.badge}>
-          <span style={styles.badgeDot} />
-          <span style={styles.badgeText}>SYSTEM ONLINE · AI INTEGRATION ACTIVE</span>
-          <span style={styles.badgeSep}>|</span>
-          <span style={styles.badgeVer}>v4.1.0</span>
-        </div>
-
-        {/* Eyebrow */}
-        <div style={styles.eyebrow}>◈ &nbsp; ARTIFICIAL INTELLIGENT INTEGRATION DIVISION &nbsp; ◈</div>
-
-        {/* Main title */}
-        <div style={styles.titleWrap}>
-          <h1 style={styles.mainTitle}>
-            <span style={styles.titleAI}>AI</span>
-            <span style={styles.titleEL}>&nbsp;eL&nbsp;</span>
-            <span style={styles.titleVision}>Vision</span>
-          </h1>
-          <div style={styles.titleBar}>
-            <div style={styles.titleBarShimmer} />
-          </div>
-        </div>
-
-        {/* Typewriter */}
-        <div style={styles.taglineWrap}>
-          <span style={styles.tagline}>
-            {displayText}
-            <span style={styles.cursor}>▋</span>
-          </span>
-        </div>
-
-        {/* Rule */}
-        <div style={styles.rule}>
-          <div style={styles.ruleLine} />
-          <div style={styles.ruleDiamond} />
-          <div style={styles.ruleLine} />
-        </div>
-
-        {/* Stats */}
-        <div style={styles.statsRow}>
-          {[
-            { val: "99.4%", id: "Akurasi Model", en: "Model Accuracy" },
-            { val: "200+", id: "Klien Aktif", en: "Active Clients" },
-            { val: "1.2M", id: "Proses / Detik", en: "Processes / Sec" },
-            { val: "99.9%", id: "Uptime Sistem", en: "System Uptime" },
-          ].map((s, i) => (
-            <div key={i} style={styles.statCard}>
-              <div style={styles.statVal}>{s.val}</div>
-              <div style={styles.statId}>{s.id}</div>
-              <div style={styles.statEn}>{s.en}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Modules */}
-        <div style={styles.modules}>
-          {[
-            { icon: "◈", name: "Neural Core", desc: "Pemrosesan Data Cerdas" },
-            { icon: "⬡", name: "Vision Engine", desc: "Computer Vision & Analysis" },
-            { icon: "◎", name: "Language AI", desc: "NLP & Generative Model" },
-            { icon: "⬟", name: "Automation", desc: "Otomasi Proses Bisnis" },
-            { icon: "◉", name: "Integration", desc: "Koneksi Sistem Enterprise" },
-          ].map((m, i) => (
-            <div key={i} style={{ ...styles.modCard, animationDelay: `${0.6 + i * 0.1}s` }}>
-              <span style={styles.modIcon}>{m.icon}</span>
-              <span style={styles.modName}>{m.name}</span>
-              <span style={styles.modDesc}>{m.desc}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer */}
-        <div style={styles.footer}>
-          <span style={styles.footerText}>
-            © {new Date().getFullYear()} AI eL Vision &nbsp;·&nbsp; Artificial Intelligent Integration Division &nbsp;·&nbsp; <em>The Future is Integrated</em>
-          </span>
-        </div>
-
-      </div>
-
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html, body { background-color: #04060f; }
-
-        @keyframes fadeUp {
-          from { opacity:0; transform:translateY(28px); }
-          to   { opacity:1; transform:translateY(0); }
-        }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-        @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.5)} }
-        @keyframes ringPulse {
-          0%{box-shadow:0 0 0 0 rgba(100,160,255,0.5)}
-          70%{box-shadow:0 0 0 9px rgba(100,160,255,0)}
-          100%{box-shadow:0 0 0 0 rgba(100,160,255,0)}
-        }
-        @keyframes barSlide {
-          from{transform:scaleX(0);opacity:0}
-          to{transform:scaleX(1);opacity:1}
-        }
-        @keyframes shimmer {
-          0%{background-position:200% center}
-          100%{background-position:-200% center}
-        }
-        @keyframes cardIn {
-          from{opacity:0;transform:translateY(18px) scale(0.96)}
-          to{opacity:1;transform:translateY(0) scale(1)}
-        }
-      `}</style>
-    </div>
-  );
+function useInView(threshold = 0.15) {
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+    useEffect(() => {
+        const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold });
+        if (ref.current) obs.observe(ref.current);
+        return () => obs.disconnect();
+    }, []);
+    return { ref, inView };
 }
 
-const styles: Record<string, React.CSSProperties> = {
-  root: {
-    position: "relative",
-    minHeight: "100vh",
-    width: "100%",
-    background: "#04060f",
-    overflow: "hidden",
-    fontFamily: "'Rajdhani', sans-serif",
-    color: "#ffffff",
-  },
-  bgBase: {
-    position: "fixed", inset: 0,
-    background: "linear-gradient(160deg, #060a22 0%, #04060f 45%, #08041e 100%)",
-    zIndex: 0,
-  },
-  bgGlowCenter: {
-    position: "fixed", left: "50%", top: "38%",
-    transform: "translate(-50%,-50%)",
-    width: "72vw", height: "72vw", borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(40,80,220,0.18) 0%, transparent 65%)",
-    zIndex: 0, pointerEvents: "none",
-  },
-  bgGlowLeft: {
-    position: "fixed", left: "-10%", top: "10%",
-    width: "48vw", height: "48vw", borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(100,60,255,0.1) 0%, transparent 70%)",
-    zIndex: 0, pointerEvents: "none",
-  },
-  bgGlowRight: {
-    position: "fixed", right: "-12%", bottom: "5%",
-    width: "44vw", height: "44vw", borderRadius: "50%",
-    background: "radial-gradient(ellipse, rgba(30,120,255,0.1) 0%, transparent 70%)",
-    zIndex: 0, pointerEvents: "none",
-  },
-  canvas: {
-    position: "fixed", inset: 0, width: "100%", height: "100%",
-    zIndex: 1, pointerEvents: "none",
-  },
-  noise: {
-    position: "fixed", inset: 0, zIndex: 2,
-    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
-    backgroundRepeat: "repeat", opacity: 0.45, pointerEvents: "none",
-  },
-  vignette: {
-    position: "fixed", inset: 0, zIndex: 2,
-    background: "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 50%, rgba(2,4,15,0.72) 100%)",
-    pointerEvents: "none",
-  },
-  content: {
-    position: "relative", zIndex: 3,
-    minHeight: "100vh",
-    display: "flex", flexDirection: "column",
-    alignItems: "center", justifyContent: "center",
-    padding: "60px 32px", gap: "28px",
-  },
+function AnimSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+    const { ref, inView } = useInView();
+    return (
+        <div
+            ref={ref}
+            style={{
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(32px)",
+                transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+            }}
+        >
+            {children}
+        </div>
+    );
+}
 
-  // Badge
-  badge: {
-    display: "flex", alignItems: "center", gap: "10px",
-    border: "1px solid rgba(91,159,255,0.14)",
-    borderRadius: "2px", padding: "5px 16px",
-    background: "rgba(91,159,255,0.05)",
-    backdropFilter: "blur(10px)",
-    animation: "fadeUp 0.7s ease both",
-  },
-  badgeDot: {
-    display: "inline-block",
-    width: "7px", height: "7px", borderRadius: "50%",
-    background: "#5b9fff",
-    boxShadow: "0 0 8px #5b9fff",
-    animation: "dotPulse 2s ease-in-out infinite, ringPulse 2.2s ease-in-out infinite",
-  },
-  badgeText: {
-    fontFamily: "'Share Tech Mono', monospace",
-    fontSize: "9.5px", letterSpacing: "0.22em", color: "#5b9fff",
-  },
-  badgeSep: { color: "#ffffff", fontSize: "11px" },
-  badgeVer: {
-    fontFamily: "'Share Tech Mono', monospace",
-    fontSize: "9px", letterSpacing: "0.15em", color: "#ffffff",
-  },
+export default function LandingPage() {
+    const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+    const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  // Eyebrow
-  eyebrow: {
-    fontFamily: "'Share Tech Mono', monospace",
-    fontSize: "9px", letterSpacing: "0.26em",
-    color: "#ffffff",
-    textTransform: "uppercase", textAlign: "center",
-    animation: "fadeUp 0.7s ease 0.1s both",
-  },
+    const formatRupiah = (n: number) =>
+        "Rp " + n.toLocaleString("id-ID");
 
-  // Title
-  titleWrap: {
-    textAlign: "center",
-    animation: "fadeUp 0.8s ease 0.18s both",
-  },
-  mainTitle: {
-    fontFamily: "'Orbitron', sans-serif",
-    fontSize: "clamp(48px, 9.5vw, 108px)",
-    fontWeight: 900, lineHeight: 1,
-    letterSpacing: "0.02em", whiteSpace: "nowrap", userSelect: "none",
-  },
-  titleAI: {
-    background: "linear-gradient(135deg, #82c8ff 0%, #4d8fff 45%, #7c5cfc 100%)",
-    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-    filter: "drop-shadow(0 0 32px rgba(91,159,255,0.6))",
-  },
-  titleEL: {
-    background: "linear-gradient(135deg, #c2deff 0%, #8ab4ff 100%)",
-    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-    filter: "drop-shadow(0 0 20px rgba(140,180,255,0.35))",
-  },
-  titleVision: {
-    background: "linear-gradient(135deg, #ffffff 0%, #c8d8ff 55%, #9b8fff 100%)",
-    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-  },
-  titleBar: {
-    margin: "14px auto 0",
-    width: "clamp(200px, 40%, 500px)", height: "2px",
-    background: "linear-gradient(90deg, transparent, rgba(91,159,255,0.65), rgba(155,125,255,0.65), transparent)",
-    transformOrigin: "center",
-    animation: "barSlide 1s ease 0.5s both",
-    borderRadius: "1px", overflow: "visible", position: "relative",
-  },
-  titleBarShimmer: {
-    position: "absolute", inset: 0, borderRadius: "1px",
-    background: "linear-gradient(90deg, transparent, rgba(200,220,255,0.95), transparent)",
-    backgroundSize: "200% auto",
-    animation: "shimmer 3s linear infinite",
-  },
+    const faqs = [
+        { q: "Apakah saya perlu keahlian teknis?", a: "Sama sekali tidak. Anda cukup beri kami akses akun, dan tim kami yang setup semuanya dalam waktu kurang dari 1 jam. Anda hanya perlu duduk dan lihat hasilnya." },
+        { q: "Apakah akun Instagram/WhatsApp saya aman?", a: "Keamanan akun Anda adalah prioritas kami. Kami menggunakan koneksi resmi via API Meta yang sudah tersertifikasi, bukan metode pihak ketiga yang berisiko." },
+        { q: "Bagaimana cara kerja Voice Cloning?", a: "Anda kirim rekaman suara Anda (minimal 2 menit), AI kami mempelajarinya, lalu setiap teks yang Anda kirim bisa diubah menjadi suara Anda yang asli untuk video iklan." },
+        { q: "Bisakah saya ganti paket kapan saja?", a: "Tentu bisa! Anda bisa upgrade atau downgrade paket kapan saja. Perubahan berlaku di siklus tagihan berikutnya." },
+    ];
 
-  // Tagline
-  taglineWrap: {
-    minHeight: "36px", textAlign: "center",
-    animation: "fadeUp 0.8s ease 0.3s both",
-    display: "flex", justifyContent: "center",
-    whiteSpace: "nowrap",
-  },
-  tagline: {
-    fontFamily: "'Rajdhani', sans-serif",
-    fontWeight: 500, fontSize: "clamp(11px, 2.8vw, 19px)",
-    letterSpacing: "0.06em", color: "#ffffff",
-    whiteSpace: "nowrap",
-  },
-  cursor: {
-    display: "inline-block", color: "#5b9fff",
-    animation: "blink 0.9s step-end infinite",
-    marginLeft: "2px", fontSize: "0.9em",
-  },
+    return (
+        <div style={{ fontFamily: "'Plus Jakarta Sans', 'Nunito', sans-serif", background: "#F8FAFC", color: "#0F172A", overflowX: "hidden" }}>
+            <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        .btn-primary {
+          background: linear-gradient(135deg, #0EA5E9, #10B981);
+          color: white;
+          border: none;
+          padding: 16px 32px;
+          border-radius: 50px;
+          font-size: 16px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          font-family: inherit;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,165,233,0.35); }
+        .card { background: white; border-radius: 20px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+        .badge { display: inline-block; background: #EFF6FF; color: #0EA5E9; border: 1px solid #BAE6FD; padding: 6px 16px; border-radius: 50px; font-size: 14px; font-weight: 600; }
+        .step-num { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; flex-shrink: 0; }
+        a { text-decoration: none; color: inherit; }
+      `}</style>
 
-  // Rule
-  rule: {
-    display: "flex", alignItems: "center", gap: "14px",
-    width: "min(560px, 88%)",
-    animation: "fadeUp 0.8s ease 0.38s both",
-  },
-  ruleLine: {
-    flex: 1, height: "1px",
-    background: "linear-gradient(90deg, transparent, rgba(91,159,255,0.25))",
-  },
-  ruleDiamond: {
-    width: "7px", height: "7px",
-    background: "linear-gradient(135deg, #5b9fff, #9b7dff)",
-    transform: "rotate(45deg)",
-    boxShadow: "0 0 12px rgba(91,159,255,0.7)",
-    borderRadius: "1px",
-  },
+            {/* NAV */}
+            <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(248,250,252,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E2E8F0", padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ fontWeight: 800, fontSize: 20, background: "linear-gradient(135deg,#0EA5E9,#10B981)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                    Auto Sell with AI
+                </div>
+                <a href="#harga">
+                    <button className="btn-primary" style={{ padding: "10px 24px", fontSize: 14 }}>Lihat Harga</button>
+                </a>
+            </nav>
 
-  // Stats
-  statsRow: {
-    display: "flex", gap: "14px", flexWrap: "wrap", justifyContent: "center",
-    animation: "fadeUp 0.9s ease 0.45s both",
-  },
-  statCard: {
-    textAlign: "center",
-    padding: "18px 26px",
-    border: "1px solid rgba(91,159,255,0.13)",
-    borderRadius: "4px",
-    background: "rgba(20,40,100,0.22)",
-    backdropFilter: "blur(14px)",
-    minWidth: "136px",
-    transition: "border-color 0.3s, background 0.3s",
-  },
-  statVal: {
-    fontFamily: "'Orbitron', sans-serif",
-    fontSize: "26px", fontWeight: 700,
-    background: "linear-gradient(135deg, #8ac4ff, #6a8eff, #b09fff)",
-    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-    filter: "drop-shadow(0 0 12px rgba(91,159,255,0.5))",
-    lineHeight: 1,
-  },
-  statId: {
-    fontFamily: "'Rajdhani', sans-serif",
-    fontSize: "12px", fontWeight: 600, letterSpacing: "0.07em",
-    color: "#ffffff", marginTop: "6px",
-  },
-  statEn: {
-    fontFamily: "'Share Tech Mono', monospace",
-    fontSize: "8.5px", color: "#ffffff",
-    marginTop: "2px", letterSpacing: "0.1em",
-  },
+            {/* HERO */}
+            <section style={{ padding: "80px 24px 60px", maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+                <AnimSection>
+                    <span className="badge">🚀 Untuk UMKM Indonesia</span>
+                    <h1 style={{ fontSize: "clamp(32px,6vw,52px)", fontWeight: 800, lineHeight: 1.2, marginTop: 20, marginBottom: 20 }}>
+                        Ubah Komentar Menjadi{" "}
+                        <span style={{ background: "linear-gradient(135deg,#0EA5E9,#10B981)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                            Uang Secara Otomatis!
+                        </span>
+                    </h1>
+                    <p style={{ fontSize: 18, lineHeight: 1.7, color: "#475569", marginBottom: 32 }}>
+                        Pernah lihat postingan viral yang minta orang ketik <strong>"MAU"</strong>? Itu bukan sihir — itu sistem kami. Dan sekarang, Anda bisa punya sistem yang sama.
+                    </p>
+                    <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+                        <a href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" target="_blank">
+                            <button className="btn-primary" style={{ fontSize: 18 }}>Pesan Sekarang →</button>
+                        </a>
+                        <button style={{ padding: "16px 28px", borderRadius: 50, border: "2px solid #CBD5E1", background: "transparent", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", color: "#334155" }}>
+                            Lihat Demo
+                        </button>
+                    </div>
+                    <p style={{ marginTop: 16, fontSize: 14, color: "#94A3B8" }}>Setup &lt; 1 Jam · Tanpa Ribet · Hasil Instan</p>
+                </AnimSection>
 
-  // Modules
-  modules: {
-    display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center",
-    animation: "fadeUp 1s ease 0.55s both",
-  },
-  modCard: {
-    display: "flex", flexDirection: "column", alignItems: "center", gap: "5px",
-    padding: "18px 20px",
-    border: "1px solid rgba(91,159,255,0.11)",
-    borderRadius: "4px",
-    background: "rgba(10,20,60,0.45)",
-    backdropFilter: "blur(16px)",
-    minWidth: "128px",
-    animation: "cardIn 0.7s ease both",
-    transition: "border-color 0.3s, background 0.3s, transform 0.3s",
-  },
-  modIcon: {
-    fontSize: "20px",
-    background: "linear-gradient(135deg, #82b8ff, #9b7dff)",
-    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-    filter: "drop-shadow(0 0 8px rgba(91,159,255,0.6))",
-    lineHeight: 1,
-  },
-  modName: {
-    fontFamily: "'Orbitron', sans-serif",
-    fontSize: "9.5px", fontWeight: 600, letterSpacing: "0.1em",
-    color: "#ffffff", textAlign: "center",
-  },
-  modDesc: {
-    fontFamily: "'Rajdhani', sans-serif",
-    fontSize: "10.5px", color: "#ffffff",
-    textAlign: "center", letterSpacing: "0.04em",
-  },
+                {/* FLOW VISUAL */}
+                <AnimSection delay={0.15}>
+                    <div style={{ marginTop: 60, background: "white", borderRadius: 24, padding: "32px 28px", boxShadow: "0 4px 32px rgba(0,0,0,0.08)", textAlign: "left" }}>
+                        <p style={{ fontSize: 13, fontWeight: 700, color: "#94A3B8", letterSpacing: 1, marginBottom: 24, textTransform: "uppercase" }}>Begini cara kerjanya</p>
+                        {[
+                            { icon: "💬", color: "#EFF6FF", num: "01", title: "Calon pembeli ketik \"MAU\" di komentar", sub: "Algoritma Instagram pun ikut naik karena banyak interaksi" },
+                            { icon: "⚡", color: "#ECFDF5", num: "02", title: "Sistem kami membalas komentar secara otomatis", sub: "Real-time, tanpa Anda harus pegang HP" },
+                            { icon: "📦", color: "#FFF7ED", num: "03", title: "DM berisi link katalog/pesanan dikirim otomatis", sub: "Calon pembeli langsung bisa order. Anda bisa tidur nyenyak." },
+                        ].map((s, i) => (
+                            <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: i < 2 ? 24 : 0, paddingBottom: i < 2 ? 24 : 0, borderBottom: i < 2 ? "1px solid #F1F5F9" : "none" }}>
+                                <div className="step-num" style={{ background: s.color, color: "#0F172A" }}>{s.icon}</div>
+                                <div>
+                                    <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: 1 }}>LANGKAH {s.num}</div>
+                                    <div style={{ fontWeight: 700, fontSize: 16, marginTop: 2 }}>{s.title}</div>
+                                    <div style={{ fontSize: 14, color: "#64748B", marginTop: 4 }}>{s.sub}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </AnimSection>
+            </section>
 
-  // Footer
-  footer: { animation: "fadeUp 1s ease 0.75s both" },
-  footerText: {
-    fontFamily: "'Share Tech Mono', monospace",
-    fontSize: "8.5px", letterSpacing: "0.16em",
-    color: "#ffffff",
-  },
-};
+            {/* HOW TO ORDER SECTION */}
+            <section style={{ background: "#F1F5F9", padding: "80px 24px" }}>
+                <div style={{ maxWidth: 900, margin: "0 auto" }}>
+                    <AnimSection>
+                        <div style={{ textAlign: "center", marginBottom: 48 }}>
+                            <span className="badge">✅ Sangat Mudah</span>
+                            <h2 style={{ fontSize: "clamp(26px,4vw,36px)", fontWeight: 800, marginTop: 16 }}>4 Langkah Mulai Autopilot</h2>
+                        </div>
+                    </AnimSection>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20 }}>
+                        {[
+                            { icon: "🎯", title: "Pilih Paket", desc: "Tentukan paket yang sesuai dengan kebutuhan skala usaha Anda." },
+                            { icon: "📱", title: "Hubungi CS", desc: "Klik tombol pesan untuk terhubung langsung dengan tim setup kami via WhatsApp." },
+                            { icon: "💸", title: "Transfer", desc: "Lakukan pembayaran sesuai paket yang dipilih untuk aktivasi sistem." },
+                            { icon: "🚀", title: "Mulai & Data", desc: "Berikan data chat/format yang diinginkan. Dalam 1 jam, sistem Anda siap jualan!" },
+                        ].map((step, i) => (
+                            <AnimSection key={i} delay={i * 0.1}>
+                                <div className="card" style={{ padding: 24, textAlign: "center", height: "100%" }}>
+                                    <div style={{ fontSize: 32, marginBottom: 12 }}>{step.icon}</div>
+                                    <h3 style={{ fontWeight: 700, fontSize: 17, marginBottom: 8 }}>{step.title}</h3>
+                                    <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.5 }}>{step.desc}</p>
+                                </div>
+                            </AnimSection>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SOCIAL PROOF STRIP */}
+            <div style={{ background: "linear-gradient(135deg,#0EA5E9,#10B981)", padding: "20px 24px", textAlign: "center" }}>
+                <p style={{ color: "white", fontWeight: 600, fontSize: 16 }}>
+                    🎉 Sudah dipercaya <strong>2.400+</strong> UMKM Indonesia · Rating ⭐ 4.9/5
+                </p>
+            </div>
+
+            {/* AI TWIN SECTION */}
+            <section style={{ maxWidth: 900, margin: "0 auto", padding: "80px 24px" }}>
+                <AnimSection>
+                    <div style={{ textAlign: "center", marginBottom: 48 }}>
+                        <span className="badge">✨ Layanan Kreatif</span>
+                        <h2 style={{ fontSize: "clamp(28px,4vw,40px)", fontWeight: 800, marginTop: 16, lineHeight: 1.2 }}>
+                            Konten Mewah Tanpa Perlu<br />Sewa Studio Mahal
+                        </h2>
+                        <p style={{ color: "#475569", fontSize: 17, marginTop: 12, maxWidth: 520, margin: "12px auto 0" }}>
+                            Kami menyediakan agen AI khusus yang bekerja seperti tim kreatif profesional — hanya untuk usaha Anda.
+                        </p>
+                    </div>
+                </AnimSection>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
+                    {[
+                        { icon: "🖼️", title: "Image Generator", color: "#EFF6FF", accent: "#0EA5E9", desc: "Foto produk Anda tampil sekelas iklan majalah. Upload foto biasa, AI kami poles jadi visual yang bikin orang berhenti scroll." },
+                        { icon: "🎬", title: "Video Generator", color: "#ECFDF5", accent: "#10B981", desc: "Video promosi estetik yang menghidupkan brand Anda. Dapatkan Reels & TikTok viral setiap minggu tanpa harus pusing editing atau rekam ulang." },
+                        { icon: "🎙️", title: "Voice Cloning AI", color: "#FFF7ED", accent: "#F97316", desc: "Kami klon suara Anda. Kirim teks, dan \"AI Anda\" yang bicara di video iklan dengan suara Anda yang asli!" },
+                        { icon: "🤖", title: "Chatbot WhatsApp", color: "#F5F3FF", accent: "#8B5CF6", desc: "WhatsApp Anda membalas pesan calon pembeli 24 jam, persis seperti yang Anda mau. Tidak ada lagi pesan yang terlewat." },
+                        { icon: "📲", title: "Auto Trigger Pesanan", color: "#FFF1F2", accent: "#F43F5E", desc: "Ada pesanan masuk? Bot Anda otomatis kirim notifikasi ke pembeli DAN Anda. Semua terorganisir rapi." },
+                        { icon: "📊", title: "Laporan & Analisa AI", color: "#F0FDF4", accent: "#22C55E", desc: "Ribuan baris datasheet pusing dibaca? Kami scrape dan jelaskan dalam bahasa manusia yang mudah dimengerti." },
+                    ].map((item, i) => (
+                        <AnimSection key={i} delay={i * 0.07}>
+                            <div className="card" style={{ padding: 28, height: "100%", transition: "transform 0.2s, box-shadow 0.2s" }}
+                                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.10)"; }}
+                                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = ""; (e.currentTarget as HTMLDivElement).style.boxShadow = ""; }}
+                            >
+                                <div style={{ width: 52, height: 52, borderRadius: 16, background: item.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, marginBottom: 16 }}>{item.icon}</div>
+                                <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>{item.title}</h3>
+                                <p style={{ color: "#475569", fontSize: 15, lineHeight: 1.6, marginBottom: (item.title === "Video Generator" || item.title === "Image Generator" || item.title === "Chatbot WhatsApp" || item.title === "Auto Trigger Pesanan" || item.title === "Laporan & Analisa AI" || item.title === "Voice Cloning AI") ? 16 : 0 }}>{item.desc}</p>
+                                {item.title === "Video Generator" && (
+                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
+                                        <video src={demoVideo} controls loop playsInline style={{ width: "100%", aspectRatio: "9/16", objectFit: "cover", display: "block" }} />
+                                    </div>
+                                )}
+                                {item.title === "Image Generator" && (
+                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
+                                        <img src={demoProduct} alt="AI Product" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
+                                    </div>
+                                )}
+                                {item.title === "Voice Cloning AI" && (
+                                    <div style={{ marginTop: 12 }}>
+                                        <audio src={demoVoice} controls style={{ width: "100%" }} />
+                                    </div>
+                                )}
+                                {item.title === "Chatbot WhatsApp" && (
+                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
+                                        <img src={demoAutoDM} alt="Chatbot DM" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
+                                    </div>
+                                )}
+                                {item.title === "Auto Trigger Pesanan" && (
+                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
+                                        <img src={demoAutoReply} alt="Auto Trigger Reply" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
+                                    </div>
+                                )}
+                                {item.title === "Laporan & Analisa AI" && (
+                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
+                                        <img src={demoAnalysis} alt="AI Analysis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
+                                    </div>
+                                )}
+                            </div>
+                        </AnimSection>
+                    ))}
+                </div>
+            </section>
+
+            {/* TESTIMONIALS */}
+            <section style={{ background: "#F1F5F9", padding: "72px 24px" }}>
+                <AnimSection>
+                    <div style={{ textAlign: "center", marginBottom: 48 }}>
+                        <span className="badge">💬 Kata Mereka</span>
+                        <h2 style={{ fontSize: "clamp(26px,4vw,36px)", fontWeight: 800, marginTop: 16 }}>UMKM Nyata, Hasil Nyata</h2>
+                    </div>
+                </AnimSection>
+                <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
+                    {[
+                        { name: "Sari W.", biz: "Hijab Online · Bandung", text: "Awalnya saya takut ribet. Ternyata tim AutoSell setup cuma 45 menit! Sekarang tiap pagi DM sudah antri dari calon pembeli yang ketik MAU semalam.", stars: 5 },
+                        { name: "Budi H.", biz: "Kuliner Frozen · Surabaya", text: "Omzet naik 3x dalam 2 bulan. Yang paling keren adalah foto produk saya sekarang kelihatan profesional banget. Pelanggan sering nanya pakai fotografer mana.", stars: 5 },
+                        { name: "Dewi K.", biz: "Skincare UMKM · Jakarta", text: "Fitur Voice Cloning ini gila sih. Saya rekam suara sekali, sekarang tiap video iklan pakai suara saya sendiri tanpa harus rekaman lagi.", stars: 5 },
+                    ].map((t, i) => (
+                        <AnimSection key={i} delay={i * 0.1}>
+                            <div className="card" style={{ padding: 28 }}>
+                                <div style={{ color: "#F59E0B", fontSize: 18, marginBottom: 12 }}>{"★".repeat(t.stars)}</div>
+                                <p style={{ fontSize: 15, lineHeight: 1.7, color: "#334155", marginBottom: 20 }}>"{t.text}"</p>
+                                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                    <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg,#0EA5E9,#10B981)", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 700, fontSize: 18 }}>{t.name[0]}</div>
+                                    <div>
+                                        <div style={{ fontWeight: 700, fontSize: 15 }}>{t.name}</div>
+                                        <div style={{ fontSize: 13, color: "#94A3B8" }}>{t.biz}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </AnimSection>
+                    ))}
+                </div>
+            </section>
+
+            {/* PRICING */}
+            <section id="harga" style={{ maxWidth: 980, margin: "0 auto", padding: "80px 24px" }}>
+                <AnimSection>
+                    <div style={{ textAlign: "center", marginBottom: 40 }}>
+                        <span className="badge">💰 Harga Transparan</span>
+                        <h2 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, marginTop: 16 }}>Pilih Paket Yang Sesuai</h2>
+                        <p style={{ color: "#475569", fontSize: 16, marginTop: 8 }}>Hemat hingga <strong>30%</strong> dengan paket tahunan</p>
+
+                        <div style={{ display: "inline-flex", background: "#F1F5F9", borderRadius: 50, padding: 4, marginTop: 24, gap: 4 }}>
+                            {(["monthly", "yearly"] as const).map(b => (
+                                <button key={b} onClick={() => setBilling(b)} style={{ padding: "10px 24px", borderRadius: 50, border: "none", background: billing === b ? "white" : "transparent", boxShadow: billing === b ? "0 2px 8px rgba(0,0,0,0.08)" : "none", fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "inherit", color: billing === b ? "#0F172A" : "#64748B", transition: "all 0.2s" }}>
+                                    {b === "monthly" ? "Bulanan" : "Tahunan 🎉"}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </AnimSection>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, alignItems: "center" }}>
+                    {plans[billing].map((plan, i) => (
+                        <AnimSection key={plan.name} delay={i * 0.1}>
+                            <div
+                                className="card"
+                                style={{
+                                    padding: 32,
+                                    border: plan.highlight ? `2px solid ${plan.color}` : "2px solid transparent",
+                                    transform: plan.highlight ? "scale(1.03)" : "scale(1)",
+                                    position: "relative",
+                                    transition: "transform 0.2s, box-shadow 0.2s",
+                                }}
+                            >
+                                {plan.highlight && (
+                                    <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: plan.color, color: "white", padding: "4px 16px", borderRadius: 50, fontSize: 13, fontWeight: 700, whiteSpace: "nowrap" }}>
+                                        ⭐ Paling Populer
+                                    </div>
+                                )}
+                                <div style={{ fontWeight: 800, fontSize: 20, color: plan.color, marginBottom: 8 }}>{plan.name}</div>
+                                <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 6 }}>
+                                    <span style={{ fontSize: 36, fontWeight: 800 }}>{formatRupiah(plan.price)}</span>
+                                </div>
+                                <div style={{ fontSize: 14, color: "#94A3B8", marginBottom: 24 }}>/{billing === "monthly" ? "bulan" : "tahun"}</div>
+                                <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 20, marginBottom: 24 }}>
+                                    {plan.features.map((f, j) => (
+                                        <div key={j} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12 }}>
+                                            <span style={{ color: plan.color, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>✓</span>
+                                            <span style={{ fontSize: 15, color: "#334155" }}>{f}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <a href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" target="_blank" style={{ width: "100%" }}>
+                                    <button
+                                        className="btn-primary"
+                                        style={{ width: "100%", background: plan.highlight ? `linear-gradient(135deg, ${plan.color}, #0EA5E9)` : "white", color: plan.highlight ? "white" : plan.color, border: `2px solid ${plan.color}`, textAlign: "center" as const }}
+                                    >
+                                        {plan.cta}
+                                    </button>
+                                </a>
+                            </div>
+                        </AnimSection>
+                    ))}
+                </div>
+                <AnimSection delay={0.3}>
+                    <p style={{ textAlign: "center", marginTop: 28, fontSize: 14, color: "#94A3B8" }}>
+                        💡 Setup selesai dalam waktu kurang dari 1 jam · Hasil langsung terasa
+                    </p>
+                </AnimSection>
+            </section>
+
+            {/* FAQ */}
+            <section style={{ background: "#F8FAFC", padding: "72px 24px" }}>
+                <div style={{ maxWidth: 680, margin: "0 auto" }}>
+                    <AnimSection>
+                        <div style={{ textAlign: "center", marginBottom: 48 }}>
+                            <span className="badge">❓ Pertanyaan Umum</span>
+                            <h2 style={{ fontSize: "clamp(26px,4vw,36px)", fontWeight: 800, marginTop: 16 }}>Kami Jawab Kekhawatiran Anda</h2>
+                        </div>
+                    </AnimSection>
+                    {faqs.map((faq, i) => (
+                        <AnimSection key={i} delay={i * 0.07}>
+                            <div className="card" style={{ marginBottom: 12, overflow: "hidden" }}>
+                                <button
+                                    onClick={() => setActiveFaq(activeFaq === i ? null : i)}
+                                    style={{ width: "100%", padding: "22px 24px", background: "none", border: "none", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: "inherit" }}
+                                >
+                                    <span style={{ fontWeight: 700, fontSize: 16, color: "#0F172A", paddingRight: 16 }}>{faq.q}</span>
+                                    <span style={{ fontSize: 22, color: "#0EA5E9", flexShrink: 0, transform: activeFaq === i ? "rotate(45deg)" : "rotate(0)", transition: "transform 0.3s" }}>+</span>
+                                </button>
+                                {activeFaq === i && (
+                                    <div style={{ padding: "0 24px 22px", fontSize: 15, color: "#475569", lineHeight: 1.7 }}>{faq.a}</div>
+                                )}
+                            </div>
+                        </AnimSection>
+                    ))}
+                </div>
+            </section>
+
+            {/* CTA BOTTOM */}
+            <section style={{ padding: "80px 24px", textAlign: "center" }}>
+                <AnimSection>
+                    <div style={{ maxWidth: 620, margin: "0 auto", background: "linear-gradient(135deg,#0EA5E9,#10B981)", borderRadius: 28, padding: "56px 40px" }}>
+                        <h2 style={{ fontSize: "clamp(26px,4vw,38px)", fontWeight: 800, color: "white", lineHeight: 1.2, marginBottom: 16 }}>
+                            Siap Biarkan Sistem yang Jualan untuk Anda?
+                        </h2>
+                        <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, marginBottom: 32, lineHeight: 1.6 }}>
+                            Bergabung dengan 2.400+ UMKM yang sudah autopilot. Setup selesai dalam 1 jam, hasil langsung terasa.
+                        </p>
+                        <a href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" target="_blank">
+                            <button style={{ background: "white", color: "#0EA5E9", border: "none", padding: "18px 40px", borderRadius: 50, fontWeight: 800, fontSize: 18, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)", transition: "transform 0.2s" }}
+                                onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.03)")}
+                                onMouseLeave={e => (e.currentTarget.style.transform = "")}
+                            >
+                                Pesan Sekarang →
+                            </button>
+                        </a>
+                        <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 16, fontSize: 14 }}>Aktivasi cepat · CS Standby · Hasil Instan</p>
+                    </div>
+                </AnimSection>
+            </section>
+
+            {/* FOOTER */}
+            <footer style={{ borderTop: "1px solid #E2E8F0", padding: "28px 24px", textAlign: "center" }}>
+                <div style={{ fontWeight: 800, fontSize: 18, background: "linear-gradient(135deg,#0EA5E9,#10B981)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 8 }}>Auto Sell with AI</div>
+                <p style={{ fontSize: 14, color: "#94A3B8" }}>© 2025 Auto Sell with AI · Dibuat dengan ❤️ untuk UMKM Indonesia</p>
+            </footer>
+        </div>
+    );
+}
