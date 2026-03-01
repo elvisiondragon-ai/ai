@@ -85,8 +85,14 @@ const translations = {
             analysis: "AI Analysis"
         },
         supportBox: {
-            title: "AI eL Vision adalah Support no 1 Business UMKM yang gaptek menggunakan AI",
-            desc: "Kamu cukup minta dan System kami yang akan otomatiskan semua. Dengan bahasa yang mudah dimengerti."
+            title: "AI eL Vision: Mitra Digital #1 untuk UMKM yang Ingin Maju Tanpa Ribet",
+            desc: "Kami hadir khusus untuk Anda yang ingin jualan otomatis tanpa harus pusing belajar teknis AI. Cukup berikan instruksi sederhana, dan sistem kami yang akan bekerja 24 jam untuk Anda. Kami bicara bahasa bisnis Anda, bukan bahasa komputer."
+        },
+        suitability: {
+            title: "Apakah ini cocok untuk Anda?",
+            desc1: "Pertanyaannya bukan berapa biaya bulanan di sini, melainkan seberapa besar masalah Anda dalam hal operasional dan seberapa berharga waktu Anda untuk kehidupan yang lebih santai.",
+            desc2: "Jika Anda merasa pusing membalas chat satu per satu, lelah memproses pesanan manual, dan waktu Anda habis hanya untuk hal teknis, maka investasi bulanan kami sangatlah kecil dibandingkan beban berat yang kami angkat dari pundak Anda.",
+            desc3: "Namun, jika bisnis Anda masih sangat baru, jumlah pelanggan masih sedikit, dan Anda masih nyaman menghandle semuanya sendiri, maka jujur saja, produk ini belum Anda butuhkan."
         },
         planFeatures: {
             starter: ["Auto Reply Komentar Instagram", "Auto DM ke Calon Pembeli", "Setup dalam 1 Jam", "Support via WhatsApp", "Laporan Mingguan Basic"],
@@ -163,8 +169,14 @@ const translations = {
             analysis: "AI Analysis"
         },
         supportBox: {
-            title: "AI eL Vision adalah Support no 1 Business UMKM yang gaptek menggunakan AI",
-            desc: "Kamu cukup minta dan System kami yang akan otomatiskan semua. Dengan bahasa yang mudah dimengerti."
+            title: "AI eL Vision: The #1 Digital Partner for Scaling Without Technical Hassle",
+            desc: "Designed specifically for businesses that want to automate sales without the headache of learning AI. Just provide simple instructions, and our system works 24/7 for you. We speak your business language, not computer code."
+        },
+        suitability: {
+            title: "Is this right for you?",
+            desc1: "The question isn't about the monthly cost, but rather how much of a burden your current manual operations are, and how much you value a more relaxed, stress-free life.",
+            desc2: "If you're overwhelmed by constant chats, exhausted by manual order processing, and losing precious time to technical tasks, then our monthly investment is negligible compared to the massive weight we lift off your shoulders.",
+            desc3: "However, if your business is just starting out, your customer volume is low, and you're perfectly fine handling everything manually, then honestly, you don't need this product yet."
         },
         planFeatures: {
             starter: ["Instagram Comment Auto-Reply", "Auto DM to Leads", "Setup in 1 Hour", "Support via WhatsApp", "Basic Weekly Report"],
@@ -503,6 +515,27 @@ export default function LandingPage() {
                         </div>
 
                         <p style={{ color: "#475569", fontSize: 16, marginTop: 32 }}>{t.pricingSub}</p>
+
+                        {/* SUITABILITY CHECK BOX */}
+                        <div style={{ maxWidth: 700, margin: "40px auto 32px", textAlign: "left", background: "white", borderRadius: 24, padding: "32px", border: "1px solid #E2E8F0", boxShadow: "0 4px 20px rgba(0,0,0,0.04)" }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+                                <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#F1F5F9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>🤔</div>
+                                <h3 style={{ fontWeight: 800, fontSize: 20, color: "#0F172A" }}>{t.suitability.title}</h3>
+                            </div>
+                            <div>
+                                <p style={{ color: "#475569", fontSize: "15px", lineHeight: 1.6, marginBottom: 16 }}>
+                                    {t.suitability.desc1}
+                                </p>
+                                <div style={{ background: "#F0FDF4", borderLeft: "4px solid #22C55E", padding: "16px", borderRadius: "0 12px 12px 0", marginBottom: 16 }}>
+                                    <p style={{ color: "#166534", fontSize: "15px", lineHeight: 1.6, fontWeight: 500 }}>
+                                        {t.suitability.desc2}
+                                    </p>
+                                </div>
+                                <p style={{ color: "#64748B", fontSize: "15px", lineHeight: 1.6, fontStyle: "italic" }}>
+                                    {t.suitability.desc3}
+                                </p>
+                            </div>
+                        </div>
 
                         <div style={{ display: "inline-flex", background: "#F1F5F9", borderRadius: 50, padding: 4, marginTop: 24, gap: 4 }}>
                             {(["monthly", "yearly"] as const).map(b => (
