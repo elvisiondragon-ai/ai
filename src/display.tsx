@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react";
+import { initFacebookPixelWithLogging, trackPageViewEvent, trackInitiateCheckoutEvent } from "./utils/fbpixel";
 import demoProduct from "./assets/display/nano_banana_demo_1_product.png";
 import demoAutoReply from "./assets/display/nano_banana_demo_2_autoreply.png";
 import demoAutoDM from "./assets/display/nano_banana_demo_3_autodm.png";
 import demoAnalysis from "./assets/display/demo_ai_analysis.png";
 import demoVoice from "./assets/display/voice.mp3";
 import demoVideo from "./assets/darkfem_id/video3.mp4";
+
+const PIXEL_ID = "2158382114674235";
 
 const plans = {
     monthly: [
@@ -134,6 +137,11 @@ export default function LandingPage() {
     const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
     const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
+    useEffect(() => {
+        initFacebookPixelWithLogging(PIXEL_ID);
+        trackPageViewEvent({}, undefined, PIXEL_ID);
+    }, []);
+
     const formatRupiah = (n: number) =>
         "Rp " + n.toLocaleString("id-ID");
 
@@ -193,7 +201,11 @@ export default function LandingPage() {
                         Pernah lihat postingan viral yang minta orang ketik <strong>"MAU"</strong>? Itu bukan sihir — itu sistem kami. Dan sekarang, Anda bisa punya sistem yang sama.
                     </p>
                     <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                        <a href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" target="_blank">
+                        <a 
+                            href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" 
+                            target="_blank"
+                            onClick={() => trackInitiateCheckoutEvent({}, undefined, PIXEL_ID)}
+                        >
                             <button className="btn-primary" style={{ fontSize: 18 }}>Pesan Sekarang →</button>
                         </a>
                         <button style={{ padding: "16px 28px", borderRadius: 50, border: "2px solid #CBD5E1", background: "transparent", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", color: "#334155" }}>
@@ -407,7 +419,12 @@ export default function LandingPage() {
                                         </div>
                                     ))}
                                 </div>
-                                <a href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" target="_blank" style={{ width: "100%" }}>
+                                <a 
+                                    href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" 
+                                    target="_blank" 
+                                    style={{ width: "100%" }}
+                                    onClick={() => trackInitiateCheckoutEvent({ value: plan.price, currency: 'IDR' }, undefined, PIXEL_ID)}
+                                >
                                     <button
                                         className="btn-primary"
                                         style={{ width: "100%", background: plan.highlight ? `linear-gradient(135deg, ${plan.color}, #0EA5E9)` : "white", color: plan.highlight ? "white" : plan.color, border: `2px solid ${plan.color}`, textAlign: "center" as const }}
@@ -464,7 +481,11 @@ export default function LandingPage() {
                         <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, marginBottom: 32, lineHeight: 1.6 }}>
                             Bergabung dengan 2.400+ UMKM yang sudah autopilot. Setup selesai dalam 1 jam, hasil langsung terasa.
                         </p>
-                        <a href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" target="_blank">
+                        <a 
+                            href="https://wa.me/62895325633487?text=Hai%20kak%20saya%20mau%20pesan%20Autosell%20bulanan" 
+                            target="_blank"
+                            onClick={() => trackInitiateCheckoutEvent({}, undefined, PIXEL_ID)}
+                        >
                             <button style={{ background: "white", color: "#0EA5E9", border: "none", padding: "18px 40px", borderRadius: 50, fontWeight: 800, fontSize: 18, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)", transition: "transform 0.2s" }}
                                 onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.03)")}
                                 onMouseLeave={e => (e.currentTarget.style.transform = "")}
