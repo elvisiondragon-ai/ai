@@ -6,6 +6,8 @@ import demoAutoDM from "./assets/display/nano_banana_demo_3_autodm.png";
 import demoAnalysis from "./assets/display/demo_ai_analysis.png";
 import demoVoice from "./assets/display/voice.mp3";
 import demoVideo from "./assets/darkfem_id/video3.mp4";
+import umkmVideo from "./assets/UMKM_V1.mp4";
+import umkmThumb from "./assets/UMKM_V1.jpeg";
 
 const PIXEL_ID = "2158382114674235";
 
@@ -376,7 +378,31 @@ export default function LandingPage() {
                     <div style={{ textAlign: "center", marginBottom: 40 }}>
                         <span className="badge">💰 Harga Transparan</span>
                         <h2 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, marginTop: 16 }}>Pilih Paket Yang Sesuai</h2>
-                        <p style={{ color: "#475569", fontSize: 16, marginTop: 8 }}>Hemat hingga <strong>30%</strong> dengan paket tahunan</p>
+                        
+                        {/* PROMO BOX WITH VIDEO */}
+                        <div style={{ maxWidth: 700, margin: "32px auto 0", background: "linear-gradient(135deg, #FFFBEB, #FEF3C7)", border: "2px dashed #F59E0B", borderRadius: 24, overflow: "hidden", boxShadow: "0 10px 30px rgba(245,158,11,0.15)" }}>
+                            <div style={{ padding: "16px 24px", background: "rgba(245,158,11,0.1)", borderBottom: "1px dashed #F59E0B" }}>
+                                <p style={{ color: "#92400E", fontWeight: 800, fontSize: 18 }}>
+                                    🎁 GRATIS WEBSITE UMKM SETIAP PEMBELIAN
+                                </p>
+                            </div>
+                            <div style={{ padding: "20px" }}>
+                                <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", background: "black" }}>
+                                    <video 
+                                        src={umkmVideo} 
+                                        poster={umkmThumb}
+                                        controls 
+                                        playsInline 
+                                        style={{ width: "100%", display: "block" }} 
+                                    />
+                                </div>
+                                <p style={{ color: "#B45309", fontSize: 14, marginTop: 16, fontWeight: 700 }}>
+                                    👆 Tonton Demo: Bagaimana AI menghandle ratusan pembeli secara otomatis.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p style={{ color: "#475569", fontSize: 16, marginTop: 32 }}>Hemat hingga <strong>30%</strong> dengan paket tahunan</p>
 
                         <div style={{ display: "inline-flex", background: "#F1F5F9", borderRadius: 50, padding: 4, marginTop: 24, gap: 4 }}>
                             {(["monthly", "yearly"] as const).map(b => (
