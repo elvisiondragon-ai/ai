@@ -82,6 +82,10 @@ const translations = {
             product: "AI Product",
             analysis: "AI Analysis"
         },
+        supportBox: {
+            title: "AI eL Vision adalah Support no 1 Business UMKM yang gaptek menggunakan AI",
+            desc: "Kamu cukup minta dan System kami yang akan otomatiskan semua. Dengan bahasa yang mudah dimengerti."
+        },
         planFeatures: {
             starter: ["Auto Reply Komentar Instagram", "Auto DM ke Calon Pembeli", "Setup dalam 1 Jam", "Support via WhatsApp", "Laporan Mingguan Basic"],
             growth: ["Semua fitur Starter", "AI Chatbot WhatsApp", "Auto Trigger Pesanan", "Image Generator Produk (10/bln)", "Video Reels/TikTok (10/bln)", "Laporan AI Mingguan"],
@@ -155,6 +159,10 @@ const translations = {
             dm: "Direct Message",
             product: "AI Product",
             analysis: "AI Analysis"
+        },
+        supportBox: {
+            title: "AI eL Vision adalah Support no 1 Business UMKM yang gaptek menggunakan AI",
+            desc: "Kamu cukup minta dan System kami yang akan otomatiskan semua. Dengan bahasa yang mudah dimengerti."
         },
         planFeatures: {
             starter: ["Instagram Comment Auto-Reply", "Auto DM to Leads", "Setup in 1 Hour", "Support via WhatsApp", "Basic Weekly Report"],
@@ -279,6 +287,23 @@ export default function LandingPage() {
                     </button>
                 </div>
             </nav>
+
+            {/* SUPPORT BOX TOP */}
+            <section style={{ padding: "40px 24px 0", maxWidth: 800, margin: "0 auto" }}>
+                <AnimSection>
+                    <div style={{ background: "linear-gradient(135deg, #0F172A, #1E293B)", borderRadius: 24, padding: "32px", textAlign: "center", color: "white", boxShadow: "0 20px 40px rgba(0,0,0,0.15)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                        <div style={{ display: "inline-block", background: "rgba(14,165,233,0.2)", color: "#38BDF8", padding: "6px 16px", borderRadius: 50, fontSize: "12px", fontWeight: "800", marginBottom: "16px", letterSpacing: "1px", textTransform: "uppercase" }}>
+                            #1 AI Support UMKM
+                        </div>
+                        <h2 style={{ fontSize: "clamp(20px, 4vw, 28px)", fontWeight: "800", lineHeight: "1.3", marginBottom: "12px" }}>
+                            {t.supportBox.title}
+                        </h2>
+                        <p style={{ color: "#94A3B8", fontSize: "16px", lineHeight: "1.6", maxWidth: "600px", margin: "0 auto" }}>
+                            {t.supportBox.desc}
+                        </p>
+                    </div>
+                </AnimSection>
+            </section>
 
             {/* HERO */}
             <section style={{ padding: "80px 24px 60px", maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
