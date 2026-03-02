@@ -428,7 +428,7 @@ const DarkFeminineTSX = () => {
         try {
             const { error } = await supabase.auth.resetPasswordForEmail(
                 loginEmail.trim().toLowerCase(),
-                { redirectTo: 'https://app.elvisiongroup.com/reset-password' }
+                { redirectTo: 'https://app.elvisiongroup.com/reset-password?next=https://ai.elvisiongroup.com/darkfeminine?reviews' }
             );
             if (error) throw error;
             toast({ title: "Reset Email Terkirim", description: "Silahkan Cek Inbox / Important anda." });
