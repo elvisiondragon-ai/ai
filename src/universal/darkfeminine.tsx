@@ -428,7 +428,7 @@ const DarkFeminineTSX = () => {
         try {
             const { error } = await supabase.auth.resetPasswordForEmail(
                 loginEmail.trim().toLowerCase(),
-                { redirectTo: `${window.location.origin}/reset-password` }
+                { redirectTo: 'https://app.elvisiongroup.com/reset-password' }
             );
             if (error) throw error;
             toast({ title: "Reset Email Terkirim", description: "Cek email Anda untuk instruksi reset password." });
