@@ -257,33 +257,33 @@ const MOCK_REVIEWS = [
     { name: "nisa.ayu***@gmail.com", rating: 5, text: "Demi allah sis, baru 2 minggu praktekin jurus 7... cowok yang dulu ghosting gue TIBA-TIBA nge-DM lagi. Padahal gue ga ngapa-ngapain. Cuma DIEM. Ternyata itu ilmunya 😭🔥", lang: "id", country: "ID", flag: "🇮🇩" },
     { name: "sari_19***@yahoo.co.id", rating: 4, text: "Suami gue yang tadinya cuek, sekarang GELISAH kalau gue keluar rumah. Bukan karena posesif. Tapi karena dia mulai TAKUT KEHILANGAN. Bintang 4 karena butuh waktu buat biasa nahan emosi, tapi ilmunya daging banget.", lang: "id", country: "SG", flag: "🇸🇬" },
     { name: "r.agustin***@hotmail.com", rating: 5, text: "Ex gue nikah sama cewek lain. 6 bulan kemudian gue apply dark feminine, gue dapet cowok yang 10x lebih ganteng dan kaya. Dan tau ga? Ex gue NGESTALK ig gue sekarang setiap hari. Karma is real 💅", lang: "id", country: "MY", flag: "🇲🇾" },
-    { name: "dindakh***@gmail.com", rating: 5, text: "Gue introvert parah, bahkan ngomong sama barista aja gugup. Tapi setelah baca jurus 12 soal 'aura diam', cowok-cowok di kantor mulai NOTICE gue. Bos gue sendiri bilang 'ada yang beda dari lo'. Padahal gue cuma UBAH CARA DIAM gue 😭✨", lang: "id", country: "DE", flag: "🇩🇪" },
+    { name: "dindakh***@gmail.com", rating: 5, text: "Gue introvert parah, bahkan ngomong sama barista aja gugup. Tapi setelah baca jurus 12 soal 'aura diam', cowok-cowok di kantor mulai NOTICE gue. Bos gue sendiri bilang 'ada yang beda dari lo'. Padahal gue cuma UBAH CARA DIAM gue 😭✨", lang: "id", country: "PH", flag: "🇵🇭" },
     { name: "mega.wat***@gmail.com", rating: 3, text: "Ilmunya bagus, tapi prakteknya butuh mental baja buat yang terbiasa jadi people pleaser. Masih pelan-pelan nyoba nerapin push-pull, belum berani maksimal.", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "wulansari.***@gmail.com", rating: 5, text: "Single mom 2 anak. Udah pasrah ga bakal ada yang mau. Baca ebook ini, praktekin jurus mystery... dalam 3 bulan ada 4 cowok mapan yang serius approach. Yang gue pilih? Dokter. Dan dia SAYANG banget sama anak-anak gue 🥹💜", lang: "id", country: "KR", flag: "🇰🇷" },
-    { name: "tasya.luth***@yahoo.com", rating: 4, text: "Anak kuliahan yang selalu jadi 'sahabat'. Cowok yang gue suka malah curhat soal cewek lain ke gue. Setelah apply jurus 3 dan 7, DIA YANG NEMBAK DULUAN. Kurang satu bintang karena materinya lumayan panjang buat dibaca wkwk.", lang: "id", country: "CN", flag: "🇨🇳" },
+    { name: "wulansari.***@gmail.com", rating: 5, text: "Single mom 2 anak. Udah pasrah ga bakal ada yang mau. Baca ebook ini, praktekin jurus mystery... dalam 3 bulan ada 4 cowok mapan yang serius approach. Yang gue pilih? Dokter. Dan dia SAYANG banget sama anak-anak gue 🥹💜", lang: "id", country: "MY", flag: "🇲🇾" },
+    { name: "tasya.luth***@yahoo.com", rating: 4, text: "Anak kuliahan yang selalu jadi 'sahabat'. Cowok yang gue suka malah curhat soal cewek lain ke gue. Setelah apply jurus 3 dan 7, DIA YANG NEMBAK DULUAN. Kurang satu bintang karena materinya lumayan panjang buat dibaca wkwk.", lang: "id", country: "SG", flag: "🇸🇬" },
     { name: "fitri.hiday***@gmail.com", rating: 5, text: "Nikah 8 tahun, suami udah kayak robot. Pulang kerja langsung HP. Gue praktekin jurus hot-cold selama 2 minggu... dia PANIK. Sekarang tiap weekend dia yang PLAN date night. Bahkan mulai kirim bunga lagi kayak waktu pacaran 🌹😍", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "jessica.m***@gmail.com", rating: 5, text: "The abundance mindset chapter changed my life! I stopped chasing and now he's the one double texting.", lang: "en", country: "US", flag: "🇺🇸" },
-    { name: "maria.vic***@yahoo.com", rating: 5, text: "Push-pull dynamics is literally magic. Used it on a guy who was pulling away, and he asked me out the next day.", lang: "en", country: "GB", flag: "🇬🇧" },
-    { name: "lucy_h***@hotmail.com", rating: 5, text: "Never thought psychology could be applied to dating this effectively. Highly recommend!", lang: "en", country: "CA", flag: "🇨🇦" },
-    { name: "tara.wil***@gmail.com", rating: 5, text: "I tried the mystery techniques and it drove my husband crazy in a good way. We feel like newlyweds again.", lang: "en", country: "AU", flag: "🇨🇦" },
-    { name: "chloe.m***@gmail.com", rating: 3, text: "Good book, but some techniques take a lot of confidence to pull off. Still practicing. Not a magical overnight fix.", lang: "en", country: "US", flag: "🇺🇸" },
+    { name: "jessica.m***@gmail.com", rating: 5, text: "The abundance mindset chapter changed my life! I stopped chasing and now he's the one double texting.", lang: "en", country: "SG", flag: "🇸🇬" },
+    { name: "maria.vic***@yahoo.com", rating: 5, text: "Push-pull dynamics is literally magic. Used it on a guy who was pulling away, and he asked me out the next day.", lang: "en", country: "PH", flag: "🇵🇭" },
+    { name: "lucy_h***@hotmail.com", rating: 5, text: "Never thought psychology could be applied to dating this effectively. Highly recommend!", lang: "en", country: "MY", flag: "🇲🇾" },
+    { name: "tara.wil***@gmail.com", rating: 5, text: "I tried the mystery techniques and it drove my husband crazy in a good way. We feel like newlyweds again.", lang: "en", country: "SG", flag: "🇸🇬" },
+    { name: "chloe.m***@gmail.com", rating: 3, text: "Good book, but some techniques take a lot of confidence to pull off. Still practicing. Not a magical overnight fix.", lang: "en", country: "PH", flag: "🇵🇭" },
     { name: "kathy.smit***@yahoo.com", rating: 5, text: "Worth every penny. The bonuses alone are worth more than the price.", lang: "en", country: "SG", flag: "🇸🇬" },
-    { name: "emily.r***@gmail.com", rating: 5, text: "This actually works. I was skeptical but the text game examples are spot on.", lang: "en", country: "US", flag: "🇺🇸" },
-    { name: "sarah.b***@hotmail.com", rating: 5, text: "The Femme Fatale Secrets bonus is my favorite. Unleashed a side of me I didn't know existed.", lang: "en", country: "GB", flag: "🇬🇧" },
-    { name: "amelia.col***@gmail.com", rating: 5, text: "My SMV definitely went up after reading this. Men treat me with so much more respect now.", lang: "en", country: "AU", flag: "🇦🇺" },
-    { name: "maya.l***@yahoo.com", rating: 5, text: "I love how practical the 30-day workbook is. Keeps you accountable.", lang: "en", country: "US", flag: "🇺🇸" },
-    { name: "rachel.d***@gmail.com", rating: 3, text: "Informative, but I wish there were more video examples of the body language.", lang: "en", country: "CA", flag: "🇨🇦" },
-    { name: "natalie.j***@hotmail.com", rating: 5, text: "This is the holy grail for women who are tired of being the 'nice girl'.", lang: "en", country: "GB", flag: "🇬🇧" },
-    { name: "olivia.k***@gmail.com", rating: 5, text: "Great insights on emotional control. Helps not just in dating but in career too.", lang: "en", country: "US", flag: "🇺🇸" },
-    { name: "helen.p***@yahoo.com", rating: 5, text: "I read Robert Greene's book before, but this summarizes it perfectly for modern dating.", lang: "en", country: "AU", flag: "🇦🇺" },
+    { name: "emily.r***@gmail.com", rating: 5, text: "This actually works. I was skeptical but the text game examples are spot on.", lang: "en", country: "MY", flag: "🇲🇾" },
+    { name: "sarah.b***@hotmail.com", rating: 5, text: "The Femme Fatale Secrets bonus is my favorite. Unleashed a side of me I didn't know existed.", lang: "en", country: "PH", flag: "🇵🇭" },
+    { name: "amelia.col***@gmail.com", rating: 5, text: "My SMV definitely went up after reading this. Men treat me with so much more respect now.", lang: "en", country: "SG", flag: "🇸🇬" },
+    { name: "maya.l***@yahoo.com", rating: 5, text: "I love how practical the 30-day workbook is. Keeps you accountable.", lang: "en", country: "MY", flag: "🇲🇾" },
+    { name: "rachel.d***@gmail.com", rating: 3, text: "Informative, but I wish there were more video examples of the body language.", lang: "en", country: "PH", flag: "🇵🇭" },
+    { name: "natalie.j***@hotmail.com", rating: 5, text: "This is the holy grail for women who are tired of being the 'nice girl'.", lang: "en", country: "SG", flag: "🇸🇬" },
+    { name: "olivia.k***@gmail.com", rating: 5, text: "Great insights on emotional control. Helps not just in dating but in career too.", lang: "en", country: "MY", flag: "🇲🇾" },
+    { name: "helen.p***@yahoo.com", rating: 5, text: "I read Robert Greene's book before, but this summarizes it perfectly for modern dating.", lang: "en", country: "PH", flag: "🇵🇭" },
     { name: "cindy.99***@gmail.com", rating: 4, text: "Bahasanya gampang dimengerti. Bonusnya banyak banget dan sangat membantu.", lang: "id", country: "ID", flag: "🇮🇩" },
     { name: "nadila.sd***@gmail.com", rating: 5, text: "Dari sekedar 'teman curhat' sekarang aku jadi prioritas utama. Nangis banget akhirnya ngerti cara mainnya.", lang: "id", country: "MY", flag: "🇲🇾" },
     { name: "bella.put***@yahoo.com", rating: 5, text: "Aku nerapin ilmu ini ke gebetan yang toxic, akhirnya aku yang pegang kendali sekarang.", lang: "id", country: "SG", flag: "🇸🇬" },
     { name: "viona.ri***@gmail.com", rating: 5, text: "Nyesel baru tau ilmu ini sekarang. Kalau aja dari dulu tau, gak bakal diselingkuhin.", lang: "id", country: "ID", flag: "🇮🇩" },
     { name: "putri.sar***@hotmail.com", rating: 3, text: "Gila sih ini dark feminine beneran bikin aura kita beda. Cuma menurut aku butuh waktu buat bener-bener nerapin, agak susah buat aku yang introvert murni.", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "gisel.t***@gmail.com", rating: 5, text: "Jurus hot-cold nya ampuh banget buat cowok yang suka ghosting.", lang: "id", country: "CN", flag: "🇨🇳" },
-    { name: "yuni.w***@yahoo.com", rating: 5, text: "Bonus How to Please Your Man nya... wow. Suami makin lengket hahaha.", lang: "id", country: "KR", flag: "🇰🇷" },
-    { name: "zahra.yu***@gmail.com", rating: 5, text: "Baru baca setengah tapi udah berasa perubahannya. Mantap pokoknya.", lang: "id", country: "DE", flag: "🇩🇪" },
+    { name: "gisel.t***@gmail.com", rating: 5, text: "Jurus hot-cold nya ampuh banget buat cowok yang suka ghosting.", lang: "id", country: "PH", flag: "🇵🇭" },
+    { name: "yuni.w***@yahoo.com", rating: 5, text: "Bonus How to Please Your Man nya... wow. Suami makin lengket hahaha.", lang: "id", country: "MY", flag: "🇲🇾" },
+    { name: "zahra.yu***@gmail.com", rating: 5, text: "Baru baca setengah tapi udah berasa perubahannya. Mantap pokoknya.", lang: "id", country: "SG", flag: "🇸🇬" },
     { name: "ulfa.z***@hotmail.com", rating: 5, text: "Sekarang aku ngerti kenapa cewek biasa aja bisa dapet cowok tajir. Ternyata ini rahasianya.", lang: "id", country: "ID", flag: "🇮🇩" },
     { name: "qonita.x***@gmail.com", rating: 5, text: "Gak bohong, ilmu ini bener-bener bikin cowok takut kehilangan kita.", lang: "id", country: "MY", flag: "🇲🇾" }
 ];
@@ -352,7 +352,7 @@ const DarkFeminineTSX = () => {
     const [userReview, setUserReview] = useState<any>(null);
     const [userEmailSession, setUserEmailSession] = useState("");
     const [reviewText, setReviewText] = useState("");
-    const [reviewRating, setReviewRating] = useState(5);
+    const [reviewRating, setReviewRating] = useState(0);
     const [showReviewsCount, setShowReviewsCount] = useState(10);
     const [dbReviews, setDbReviews] = useState<any[]>([]);
 
@@ -370,7 +370,7 @@ const DarkFeminineTSX = () => {
         } else {
             setUserReview(null);
             setReviewText("");
-            setReviewRating(5);
+            setReviewRating(0);
         }
     };
 
@@ -445,7 +445,14 @@ const DarkFeminineTSX = () => {
     };
 
     const submitReview = async () => {
-        if (!reviewText) return;
+        if (!reviewRating) {
+            toast({ title: "Oops!", description: "Silahkan beri rating bintang terlebih dahulu.", variant: "destructive" });
+            return;
+        }
+        if (!reviewText || reviewText.trim() === '') {
+            toast({ title: "Oops!", description: "Ulasan tidak boleh kosong.", variant: "destructive" });
+            return;
+        }
         setIsLoginLoading(true);
         try {
             const payload = {
@@ -1452,13 +1459,23 @@ const DarkFeminineTSX = () => {
                             {/* Display Reviews */}
                             <div>
                                 {[...dbReviews, ...MOCK_REVIEWS]
-                                    .filter(r => !r.lang || r.lang === (lang === 'sg' ? 'en' : lang) || (lang === 'id' && r.lang === 'id'))
+                                    .filter(r => (!r.lang || r.lang === (lang === 'sg' ? 'en' : lang) || (lang === 'id' && r.lang === 'id')) && (r.comment || r.text) && (r.comment?.trim() !== '' || r.text?.trim() !== ''))
                                     .slice(0, showReviewsCount).map((r, i) => (
                                     <div key={i} style={{ background: 'var(--bg-section)', borderRadius: '12px', padding: '16px', marginBottom: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                                             <div>
                                                 <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                                    {r.name} 
+                                                    {(() => {
+                                                        if (r.user_email) {
+                                                            const parts = r.user_email.split('@');
+                                                            if (parts.length === 2) {
+                                                                const namePart = parts[0];
+                                                                const showLen = Math.max(3, Math.floor(namePart.length / 2));
+                                                                return `${namePart.slice(0, showLen)}***@${parts[1]}`;
+                                                            }
+                                                        }
+                                                        return r.name;
+                                                    })()}
                                                     {r.country && <span style={{ fontSize: '14px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px', letterSpacing: '1px', color: 'var(--muted)' }}>{r.country} {(r.flag || getFlagForCountry(r.country))}</span>}
                                                 </div>
                                                 <div style={{ display: 'flex', gap: '2px', marginTop: '4px' }}>
