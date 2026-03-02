@@ -665,6 +665,17 @@ const DarkFeminineTSX = () => {
     }, []);
 
     useEffect(() => {
+        if (searchParams.has('reviews')) {
+            setTimeout(() => {
+                const reviewsEl = document.getElementById('reviews-section');
+                if (reviewsEl) {
+                    reviewsEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500); // Give time for render
+        }
+    }, [searchParams]);
+
+    useEffect(() => {
         const handleScroll = () => {
             const h = document.documentElement;
             const pct = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
@@ -1343,7 +1354,7 @@ const DarkFeminineTSX = () => {
 
                     
                     {/* REVIEWS SECTION */}
-                    <section style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
+                    <section id="reviews-section" style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">ULASAN PELANGGAN</div>
                             <h2 className="df-section-h2" style={{ fontSize: '28px', marginBottom: '8px' }}>Review Real Customer</h2>
