@@ -523,18 +523,6 @@ const DarkFeminineTSX = () => {
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
-
-        // Auto sign up user so they can login to leave a review later
-        try {
-            await supabase.auth.signUp({
-                email: email,
-                password: purchasePassword,
-                options: { data: { full_name: name, phone: phone } }
-            });
-        } catch (e) {
-            console.log('Background sign up attempt', e);
-        }
-
         sendWAAlert('attempt', { name, phone, method: payment });
 
         const { fbc, fbp } = getFbcFbpCookies();
@@ -556,7 +544,7 @@ const DarkFeminineTSX = () => {
             userName: name, userEmail: email, phoneNumber: phone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
             amount: priceID, currency: 'IDR', quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
-            fbc, fbp, clientIp
+            fbc, fbp, clientIp, purchasePassword // Pass password to edge function instead of local signup
         };
 
         try {
@@ -564,6 +552,13 @@ const DarkFeminineTSX = () => {
             if (error) { throw error; }
 
             if (data?.success) {
+                if (data.userAlreadyExists) {
+                    toast({
+                        title: lang === 'id' ? "Akun sudah terdaftar" : "Account already registered",
+                        description: lang === 'id' ? "Lanjutkan pakai akun asli anda secara otomatis." : "Continuing automatically with your original account.",
+                        duration: 5000,
+                    });
+                }
                 setPaymentData(data); setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
                 sendWAAlert('success', { ref: data.tripay_reference, name, phone, amount: priceID });
             } else if (payment === 'BCA_MANUAL') {
@@ -574,7 +569,11 @@ const DarkFeminineTSX = () => {
             } else {
                 alert(data?.error || "Gagal membuat pembayaran, hubungi admin via WhatsApp.");
             }
-        } catch (e) { alert('Network Error. Silakan pesan via WhatsApp.'); console.error(e); } finally { setLoading(false); }
+        } catch (e: any) { 
+            console.error('Payment API Error:', e);
+            const errorMessage = e?.message || e?.error?.message || e?.toString() || 'Unknown Error';
+            alert(`Sistem mendeteksi error: ${errorMessage}\n\nMohon screenshot pesan ini dan hubungi admin via WhatsApp.`); 
+        } finally { setLoading(false); }
     };
 
     const submitFreeEbook = async () => {
@@ -613,11 +612,12 @@ const DarkFeminineTSX = () => {
             if (data?.success) {
                 setSuccessFree(true);
             } else {
-                alert('Gagal mengirim WhatsApp. Silahkan coba lagi nanti.');
+                alert(data?.error || 'Gagal mengirim WhatsApp. Silahkan coba lagi nanti.');
             }
-        } catch (error) {
-            console.error(error);
-            alert('Terjadi kesalahan jaringan.');
+        } catch (error: any) {
+            console.error('Free Ebook API Error:', error);
+            const errorMsg = error?.message || error?.error?.message || error?.toString() || 'Kesalahan jaringan';
+            alert(`Terjadi kesalahan: ${errorMsg}`);
         } finally {
             setLoadingFree(false);
         }
