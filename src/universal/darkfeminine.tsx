@@ -335,6 +335,9 @@ const DarkFeminineTSX = () => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
+    const [purchasePassword, setPurchasePassword] = useState("");
+    const [purchasePasswordRepeat, setPurchasePasswordRepeat] = useState("");
+    const [showPurchasePassword, setShowPurchasePassword] = useState(false);
     const [payment, setPayment] = useState("QRIS");
     const [addUpsell, setAddUpsell] = useState(false);
     const { toast } = useToast();
@@ -515,9 +518,23 @@ const DarkFeminineTSX = () => {
 
     const submitOrder = async () => {
         if (!name || !phone || !email) { alert('⚠️ Mohon lengkapi Nama, No. WhatsApp, dan Email Anda!'); return; }
+        if (!purchasePassword || purchasePassword.length < 6) { alert('⚠️ Password minimal 6 karakter!'); return; }
+        if (purchasePassword !== purchasePasswordRepeat) { alert('⚠️ Password tidak cocok!'); return; }
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
+
+        // Auto sign up user so they can login to leave a review later
+        try {
+            await supabase.auth.signUp({
+                email: email,
+                password: purchasePassword,
+                options: { data: { full_name: name, phone: phone } }
+            });
+        } catch (e) {
+            console.log('Background sign up attempt', e);
+        }
+
         sendWAAlert('attempt', { name, phone, method: payment });
 
         const { fbc, fbp } = getFbcFbpCookies();
@@ -1492,6 +1509,32 @@ const DarkFeminineTSX = () => {
                                 <div>
                                     <label className="df-flabel">Email (untuk link download)</label>
                                     <input className="df-finput" type="email" placeholder="contoh@gmail.com" value={email} onChange={e => setEmail(e.target.value)} />
+                                </div>
+                                <div>
+                                    <label className="df-flabel">Buat Password * <span style={{fontSize:'12px', fontWeight:'normal', color:'var(--muted)'}}>(untuk memberikan review nanti)</span></label>
+                                    <div style={{ position: 'relative' }}>
+                                        <input 
+                                            className="df-finput" 
+                                            type={showPurchasePassword ? "text" : "password"} 
+                                            placeholder="Minimal 6 karakter" 
+                                            value={purchasePassword} 
+                                            onChange={e => setPurchasePassword(e.target.value)} 
+                                            style={{ paddingRight: '40px' }}
+                                        />
+                                        <button type="button" onClick={() => setShowPurchasePassword(!showPurchasePassword)} style={{ position: 'absolute', right: '14px', top: '14px', background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', padding: 0 }}>
+                                            {showPurchasePassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="df-flabel">Ulangi Password *</label>
+                                    <input 
+                                        className="df-finput" 
+                                        type={showPurchasePassword ? "text" : "password"} 
+                                        placeholder="Ulangi password" 
+                                        value={purchasePasswordRepeat} 
+                                        onChange={e => setPurchasePasswordRepeat(e.target.value)} 
+                                    />
                                 </div>
                                 <div>
                                     <label className="df-flabel">Metode Pembayaran</label>
