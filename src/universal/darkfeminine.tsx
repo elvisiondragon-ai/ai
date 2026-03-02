@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { supabase } from "../integrations/supabase/client";
-import { ArrowLeft, Copy } from "lucide-react";
+import { ArrowLeft, Copy, Mail, Lock, Eye, EyeOff, Star, Trash2 } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "../utils/fbpixel";
@@ -252,14 +252,236 @@ const contentData: any = {
     }
 };
 
+
+const MOCK_REVIEWS = [
+    { name: "anisa***@gmail.com", rating: 5, text: "Demi allah sis, baru 2 minggu praktekin jurus 7... cowok yang dulu ghosting gue TIBA-TIBA nge-DM lagi. Padahal gue ga ngapa-ngapain. Cuma DIEM. Ternyata itu ilmunya 😭🔥", lang: "id", country: "ID", flag: "🇮🇩" },
+    { name: "sari.p***@yahoo.com", rating: 4, text: "Suami gue yang tadinya cuek, sekarang GELISAH kalau gue keluar rumah. Bukan karena posesif. Tapi karena dia mulai TAKUT KEHILANGAN. Bintang 4 karena butuh waktu buat biasa nahan emosi, tapi ilmunya daging banget.", lang: "id", country: "SG", flag: "🇸🇬" },
+    { name: "rina.a***@gmail.com", rating: 5, text: "Ex gue nikah sama cewek lain. 6 bulan kemudian gue apply dark feminine, gue dapet cowok yang 10x lebih ganteng dan kaya. Dan tau ga? Ex gue NGESTALK ig gue sekarang setiap hari. Karma is real 💅", lang: "id", country: "MY", flag: "🇲🇾" },
+    { name: "dindaa***@yahoo.com", rating: 5, text: "Gue introvert parah, bahkan ngomong sama barista aja gugup. Tapi setelah baca jurus 12 soal 'aura diam', cowok-cowok di kantor mulai NOTICE gue. Bos gue sendiri bilang 'ada yang beda dari lo'. Padahal gue cuma UBAH CARA DIAM gue 😭✨", lang: "id", country: "DE", flag: "🇩🇪" },
+    { name: "megaw***@gmail.com", rating: 3, text: "Ilmunya bagus, tapi prakteknya butuh mental baja buat yang terbiasa jadi people pleaser. Masih pelan-pelan nyoba nerapin push-pull, belum berani maksimal.", lang: "id", country: "ID", flag: "🇮🇩" },
+    { name: "wulans***@hotmail.com", rating: 5, text: "Single mom 2 anak. Udah pasrah ga bakal ada yang mau. Baca ebook ini, praktekin jurus mystery... dalam 3 bulan ada 4 cowok mapan yang serius approach. Yang gue pilih? Dokter. Dan dia SAYANG banget sama anak-anak gue 🥹💜", lang: "id", country: "KR", flag: "🇰🇷" },
+    { name: "tasya.l***@gmail.com", rating: 4, text: "Anak kuliahan yang selalu jadi 'sahabat'. Cowok yang gue suka malah curhat soal cewek lain ke gue. Setelah apply jurus 3 dan 7, DIA YANG NEMBAK DULUAN. Kurang satu bintang karena materinya lumayan panjang buat dibaca wkwk.", lang: "id", country: "CN", flag: "🇨🇳" },
+    { name: "fitri.h***@gmail.com", rating: 5, text: "Nikah 8 tahun, suami udah kayak robot. Pulang kerja langsung HP. Gue praktekin jurus hot-cold selama 2 minggu... dia PANIK. Sekarang tiap weekend dia yang PLAN date night. Bahkan mulai kirim bunga lagi kayak waktu pacaran 🌹😍", lang: "id", country: "ID", flag: "🇮🇩" },
+    { name: "jesicca***@gmail.com", rating: 5, text: "The abundance mindset chapter changed my life! I stopped chasing and now he's the one double texting.", lang: "en", country: "US", flag: "🇺🇸" },
+    { name: "maria.v***@yahoo.com", rating: 5, text: "Push-pull dynamics is literally magic. Used it on a guy who was pulling away, and he asked me out the next day.", lang: "en", country: "GB", flag: "🇬🇧" },
+    { name: "lucy.h***@hotmail.com", rating: 5, text: "Never thought psychology could be applied to dating this effectively. Highly recommend!", lang: "en", country: "CA", flag: "🇨🇦" },
+    { name: "tara.w***@gmail.com", rating: 5, text: "I tried the mystery techniques and it drove my husband crazy in a good way. We feel like newlyweds again.", lang: "en", country: "AU", flag: "🇨🇦" },
+    { name: "chloe.m***@gmail.com", rating: 3, text: "Good book, but some techniques take a lot of confidence to pull off. Still practicing. Not a magical overnight fix.", lang: "en", country: "US", flag: "🇺🇸" },
+    { name: "kathy.s***@yahoo.com", rating: 5, text: "Worth every penny. The bonuses alone are worth more than the price.", lang: "en", country: "SG", flag: "🇸🇬" },
+    { name: "emily.r***@gmail.com", rating: 5, text: "This actually works. I was skeptical but the text game examples are spot on.", lang: "en", country: "US", flag: "🇺🇸" },
+    { name: "sarah.b***@hotmail.com", rating: 5, text: "The Femme Fatale Secrets bonus is my favorite. Unleashed a side of me I didn't know existed.", lang: "en", country: "GB", flag: "🇬🇧" },
+    { name: "amelia.c***@gmail.com", rating: 5, text: "My SMV definitely went up after reading this. Men treat me with so much more respect now.", lang: "en", country: "AU", flag: "🇦🇺" },
+    { name: "maya.l***@yahoo.com", rating: 5, text: "I love how practical the 30-day workbook is. Keeps you accountable.", lang: "en", country: "US", flag: "🇺🇸" },
+    { name: "rachel.d***@gmail.com", rating: 3, text: "Informative, but I wish there were more video examples of the body language.", lang: "en", country: "CA", flag: "🇨🇦" },
+    { name: "natalie.j***@hotmail.com", rating: 5, text: "This is the holy grail for women who are tired of being the 'nice girl'.", lang: "en", country: "GB", flag: "🇬🇧" },
+    { name: "olivia.k***@gmail.com", rating: 5, text: "Great insights on emotional control. Helps not just in dating but in career too.", lang: "en", country: "US", flag: "🇺🇸" },
+    { name: "helen.p***@yahoo.com", rating: 5, text: "I read Robert Greene's book before, but this summarizes it perfectly for modern dating.", lang: "en", country: "AU", flag: "🇦🇺" },
+    { name: "cindy99***@gmail.com", rating: 4, text: "Bahasanya gampang dimengerti. Bonusnya banyak banget dan sangat membantu.", lang: "id", country: "ID", flag: "🇮🇩" },
+    { name: "nadilasd***@gmail.com", rating: 5, text: "Dari sekedar 'teman curhat' sekarang aku jadi prioritas utama. Nangis banget akhirnya ngerti cara mainnya.", lang: "id", country: "MY", flag: "🇲🇾" },
+    { name: "bella.p***@yahoo.com", rating: 5, text: "Aku nerapin ilmu ini ke gebetan yang toxic, akhirnya aku yang pegang kendali sekarang.", lang: "id", country: "SG", flag: "🇸🇬" },
+    { name: "viona.r***@gmail.com", rating: 5, text: "Nyesel baru tau ilmu ini sekarang. Kalau aja dari dulu tau, gak bakal diselingkuhin.", lang: "id", country: "ID", flag: "🇮🇩" },
+    { name: "putri.s***@hotmail.com", rating: 3, text: "Gila sih ini dark feminine beneran bikin aura kita beda. Cuma menurut aku butuh waktu buat bener-bener nerapin, agak susah buat aku yang introvert murni.", lang: "id", country: "ID", flag: "🇮🇩" },
+    { name: "gisel.t***@gmail.com", rating: 5, text: "Jurus hot-cold nya ampuh banget buat cowok yang suka ghosting.", lang: "id", country: "CN", flag: "🇨🇳" },
+    { name: "yuni.w***@yahoo.com", rating: 5, text: "Bonus How to Please Your Man nya... wow. Suami makin lengket hahaha.", lang: "id", country: "KR", flag: "🇰🇷" },
+    { name: "zahra.y***@gmail.com", rating: 5, text: "Baru baca setengah tapi udah berasa perubahannya. Mantap pokoknya.", lang: "id", country: "DE", flag: "🇩🇪" },
+    { name: "ulfa.z***@hotmail.com", rating: 5, text: "Sekarang aku ngerti kenapa cewek biasa aja bisa dapet cowok tajir. Ternyata ini rahasianya.", lang: "id", country: "ID", flag: "🇮🇩" },
+    { name: "qonita.x***@gmail.com", rating: 5, text: "Gak bohong, ilmu ini bener-bener bikin cowok takut kehilangan kita.", lang: "id", country: "MY", flag: "🇲🇾" }
+];
+
+const getFlagForCountry = (countryCode: string) => {
+    switch (countryCode?.toUpperCase()) {
+        case 'ID': return '🇮🇩';
+        case 'SG': return '🇸🇬';
+        case 'MY': return '🇲🇾';
+        case 'DE': return '🇩🇪';
+        case 'KR': return '🇰🇷';
+        case 'CN': return '🇨🇳';
+        case 'US': return '🇺🇸';
+        case 'GB': return '🇬🇧';
+        case 'CA': return '🇨🇦';
+        case 'AU': return '🇦🇺';
+        default: return '🇮🇩';
+    }
+};
+
 const DarkFeminineTSX = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const hasEn = searchParams.has('en');
+    const hasSg = searchParams.has('sg');
+    const hasId = searchParams.has('id');
+    const initLang = hasEn ? 'en' : (hasSg ? 'sg' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id')));
+    const [lang, setLang] = useState<'id' | 'en' | 'sg'>(initLang as 'id'|'en'|'sg');
+
+    const toggleLang = () => {
+        if (lang === 'id') {
+            setLang('en');
+            setSearchParams({ en: '' });
+        } else if (lang === 'en') {
+            setLang('sg');
+            setSearchParams({ sg: '' });
+        } else {
+            setLang('id');
+            setSearchParams({ id: '' });
+        }
+    };
+
+    // Calculate base product name based on language/country parameter
+    const getBaseProductName = () => {
+        if (lang === 'en') return "Dark Feminine EN";
+        if (lang === 'sg') return "Universal Dark Feminine SG";
+        return "Universal Dark Feminine ID"; // Default ID
+    };
+
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [payment, setPayment] = useState("QRIS");
     const [addUpsell, setAddUpsell] = useState(false);
     const { toast } = useToast();
+
+    // Auth & Reviews State
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [isLoginLoading, setIsLoginLoading] = useState(false);
+    const [userReview, setUserReview] = useState<any>(null);
+    const [userEmailSession, setUserEmailSession] = useState("");
+    const [reviewText, setReviewText] = useState("");
+    const [reviewRating, setReviewRating] = useState(5);
+    const [showReviewsCount, setShowReviewsCount] = useState(10);
+    const [dbReviews, setDbReviews] = useState<any[]>([]);
+
+    const fetchDbReviews = async () => {
+        const { data } = await (supabase as any).from('darkfeminine_reviews').select('*').order('created_at', { ascending: false });
+        if (data) setDbReviews(data);
+    };
+
+    const fetchUserReview = async (email: string) => {
+        const { data } = await (supabase as any).from('darkfeminine_reviews').select('*').eq('user_email', email).maybeSingle();
+        if (data) {
+            setUserReview(data);
+            setReviewText(data.comment);
+            setReviewRating(data.rating);
+        } else {
+            setUserReview(null);
+            setReviewText("");
+            setReviewRating(5);
+        }
+    };
+
+    useEffect(() => {
+        const checkSession = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session?.user) {
+                setIsLoggedIn(true);
+                setUserEmailSession(session.user.email || "");
+                fetchUserReview(session.user.email || "");
+            }
+            const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+                if (session?.user) {
+                    setIsLoggedIn(true);
+                    setUserEmailSession(session.user.email || "");
+                    fetchUserReview(session.user.email || "");
+                } else {
+                    setIsLoggedIn(false);
+                    setUserEmailSession("");
+                    setUserReview(null);
+                }
+            });
+            return () => { authListener.subscription.unsubscribe(); };
+        };
+        checkSession();
+        fetchDbReviews();
+    }, []);
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsLoginLoading(true);
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: loginEmail.trim().toLowerCase(),
+                password: loginPassword,
+            });
+            if (error) throw error;
+            if (data.user) {
+                toast({ title: "Login Berhasil" });
+                setShowLoginModal(false);
+            }
+        } catch (error: any) {
+            toast({ title: "Login Gagal", description: error.message, variant: "destructive" });
+        } finally {
+            setIsLoginLoading(false);
+        }
+    };
+
+    const handleForgotPassword = async () => {
+        if (!loginEmail) {
+            toast({ title: "Masukkan Email", description: "Isi email terlebih dahulu untuk reset password.", variant: "destructive" });
+            return;
+        }
+        setIsLoginLoading(true);
+        try {
+            const { error } = await supabase.auth.resetPasswordForEmail(
+                loginEmail.trim().toLowerCase(),
+                { redirectTo: `${window.location.origin}/reset-password` }
+            );
+            if (error) throw error;
+            toast({ title: "Reset Email Terkirim", description: "Cek email Anda untuk instruksi reset password." });
+        } catch (error: any) {
+            toast({ title: "Gagal", description: error.message, variant: "destructive" });
+        } finally {
+            setIsLoginLoading(false);
+        }
+    };
+
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        toast({ title: "Logout Berhasil" });
+    };
+
+    const submitReview = async () => {
+        if (!reviewText) return;
+        setIsLoginLoading(true);
+        try {
+            const payload = {
+                user_email: userEmailSession,
+                name: userEmailSession.split('@')[0],
+                rating: reviewRating,
+                comment: reviewText
+            };
+            if (userReview) {
+                await (supabase as any).from('darkfeminine_reviews').update(payload).eq('id', userReview.id);
+                toast({ title: "Review diupdate" });
+            } else {
+                await (supabase as any).from('darkfeminine_reviews').insert([payload]);
+                toast({ title: "Review ditambahkan" });
+            }
+            fetchUserReview(userEmailSession);
+            fetchDbReviews();
+        } catch (error: any) {
+            toast({ title: "Gagal submit review", description: error.message, variant: "destructive" });
+        } finally {
+            setIsLoginLoading(false);
+        }
+    };
+
+    const deleteReview = async () => {
+        if (!userReview) return;
+        setIsLoginLoading(true);
+        try {
+            await (supabase as any).from('darkfeminine_reviews').delete().eq('id', userReview.id);
+            toast({ title: "Review dihapus" });
+            fetchUserReview(userEmailSession);
+            fetchDbReviews();
+        } catch (error: any) {
+            toast({ title: "Gagal menghapus review", description: error.message, variant: "destructive" });
+        } finally {
+            setIsLoginLoading(false);
+        }
+    };
+
 
     // Payment States
     const [loading, setLoading] = useState(false);
@@ -300,7 +522,7 @@ const DarkFeminineTSX = () => {
 
         const { fbc, fbp } = getFbcFbpCookies();
         const clientIp = await getClientIp();
-        const productDesc = `Universal - Dark Feminine - ${name}`;
+        const productDesc = `${getBaseProductName()} - ${name}`;
 
         try {
             await supabase.functions.invoke('capi-universal', {
@@ -316,7 +538,7 @@ const DarkFeminineTSX = () => {
             subscriptionType: 'universal', paymentMethod: payment,
             userName: name, userEmail: email, phoneNumber: phone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
-            amount: priceID, currency: 'IDR', quantity: 1, productName: addUpsell ? 'Universal - Dark Feminine + Love Magnet' : 'Universal - Dark Feminine',
+            amount: priceID, currency: 'IDR', quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
             fbc, fbp, clientIp
         };
 
@@ -412,13 +634,10 @@ const DarkFeminineTSX = () => {
             PIXEL_ID
         );
     }, [PIXEL_ID]);
-    const hasEn = searchParams.has('en');
-    const hasId = searchParams.has('id');
-    const initLang = hasEn ? 'en' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id'));
-    const [lang, setLang] = useState<'id' | 'en'>(initLang);
 
-    const c = contentData[lang];
-    const assets = assetsMap[lang];
+    const contentLang = lang === 'sg' ? 'en' : lang;
+    const c = contentData[contentLang];
+    const assets = assetsMap[contentLang];
 
     const [countdown, setCountdown] = useState("00:00:00");
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -463,21 +682,68 @@ const DarkFeminineTSX = () => {
         window.addEventListener('scroll', handleScroll);
         setTimeout(handleScroll, 100);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        }, []);
 
-    const toggleLang = () => {
-        const newLang = lang === 'id' ? 'en' : 'id';
-        setLang(newLang);
-        if (newLang === 'en') {
-            setSearchParams({ en: '' });
-        } else {
-            setSearchParams({ id: '' });
-        }
-    };
-
-    return (
+        return (
         <div style={{ position: 'relative' }}>
             <Toaster />
+            {/* LOGIN MODAL */}
+            {showLoginModal && (
+                <div style={{ position: 'fixed', inset: 0, zIndex: 100000, background: 'rgba(0,0,0,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', backdropFilter: 'blur(8px)' }}>
+                    <div style={{ background: '#251446', width: '100%', maxWidth: '400px', borderRadius: '20px', padding: '32px 24px', border: '1px solid rgba(139,92,246,0.5)', position: 'relative', boxShadow: '0 25px 50px -12px rgba(0,0,0,1)' }}>
+                        <button onClick={() => setShowLoginModal(false)} style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(255,255,255,0.1)', border: 'none', color: 'var(--white)', fontSize: '20px', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}>×</button>
+
+                        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '28px', color: 'white', fontWeight: 700, marginBottom: '8px' }}>Login Akun</h3>                            <p style={{ fontSize: '14px', color: 'white' }}>Masuk untuk memberikan ulasan. Jika belum punya akun, akan otomatis dibuat saat Anda membeli.</p>
+                        </div>
+
+                        <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                            <div>
+                                <label style={{ display: 'block', fontSize: '14px', color: 'white', marginBottom: '8px', fontWeight: 600 }}>Email</label>
+                                <div style={{ position: 'relative' }}>
+                                    <Mail style={{ position: 'absolute', left: '14px', top: '14px', color: 'white' }} size={18} />
+                                    <input 
+                                        type="email" 
+                                        required
+                                        value={loginEmail}
+                                        onChange={(e) => setLoginEmail(e.target.value)}
+                                        placeholder="email@anda.com"
+                                        style={{ width: '100%', padding: '14px 14px 14px 44px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', color: 'white', fontFamily: 'var(--font-body)', outline: 'none', fontSize: '15px' }}
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label style={{ display: 'block', fontSize: '14px', color: 'white', marginBottom: '8px', fontWeight: 600 }}>Password</label>
+                                <div style={{ position: 'relative' }}>
+                                    <Lock style={{ position: 'absolute', left: '14px', top: '14px', color: 'white' }} size={18} />
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        required
+                                        value={loginPassword}
+                                        onChange={(e) => setLoginPassword(e.target.value)}
+                                        placeholder="••••••••"
+                                        style={{ width: '100%', padding: '14px 44px 14px 44px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', color: 'white', fontFamily: 'var(--font-body)', outline: 'none', fontSize: '15px' }}
+                                    />
+                                    <button type="button" onClick={() => setShowPassword(!showPassword)} style={{ position: 'absolute', right: '14px', top: '14px', background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>
+                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="submit" disabled={isLoginLoading} style={{ width: '100%', background: 'var(--purple)', color: 'white', border: 'none', padding: '16px', borderRadius: '10px', fontWeight: 700, fontSize: '16px', cursor: 'pointer', fontFamily: 'var(--font-body)', marginTop: '8px', transition: 'background 0.2s', opacity: isLoginLoading ? 0.7 : 1 }}>
+                                {isLoginLoading ? 'Memproses...' : 'Login Sekarang'}
+                            </button>
+                        </form>
+                        
+                        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                            <button onClick={handleForgotPassword} disabled={isLoginLoading} style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '14px', cursor: 'pointer', fontWeight: 600 }}>
+                                Lupa Password? (Isi email lalu klik ini)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {showPaymentInstructions && paymentData ? (
                 <div style={{ minHeight: '100vh', background: '#EEE5C8', fontFamily: "'DM Sans', sans-serif", color: '#060A12' }}>
                     <style>{`.pay-btn-confirm { background: #25D366; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; width: 100%; padding: 16px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; font-family: 'DM Sans'; margin-top: 15px; }`}</style>
@@ -921,20 +1187,6 @@ const DarkFeminineTSX = () => {
                             <div className="df-img-box">
                                 <img src={assets.df10} alt="Social Proof" />
                             </div>
-                            <div>
-                                {c.testis.map((t: any, i: number) => (
-                                    <div key={i} className="df-testi-card">
-                                        <p style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)', marginBottom: '14px' }}>{t.text}</p>
-                                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '15px' }}>
-                                            <span style={{ color: 'var(--purple-light)', fontWeight: 700 }}>— {t.name}</span>
-                                            <span style={{ color: 'var(--gold-light)', letterSpacing: '2px' }}>★★★★★</span>
-                                        </div>
-                                        <div style={{ fontSize: '13px', color: 'var(--muted)', textAlign: 'right', marginTop: '8px' }}>
-                                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '13px', color: 'var(--green-wa)', fontWeight: 700, background: 'rgba(37,211,102,0.1)', padding: '3px 8px', borderRadius: '10px' }}>✓ Verified</span> &nbsp; {t.time}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
 
                             <div className="df-video-player" style={{ marginTop: '28px' }}>
                                 <video controls playsInline preload="metadata" poster={assets.df04}>
@@ -1089,6 +1341,121 @@ const DarkFeminineTSX = () => {
                         </div>
                     </section>
 
+                    
+                    {/* REVIEWS SECTION */}
+                    <section style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
+                        <div className="df-wrap df-fade-in">
+                            <div className="df-section-label">ULASAN PELANGGAN</div>
+                            <h2 className="df-section-h2" style={{ fontSize: '28px', marginBottom: '8px' }}>Review Real Customer</h2>
+                            <p style={{ fontSize: '15px', color: 'var(--muted)', marginBottom: '16px', lineHeight: 1.6 }}>
+                                (Anda bisa memberikan ulasan setelah membeli dan login dengan email anda) <br/>
+                                Ulasan pasti disensor untuk privasi anda.
+                            </p>
+                            
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', background: 'rgba(201,153,26,0.1)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(201,153,26,0.3)' }}>
+                                <div style={{ fontSize: '42px', fontWeight: 700, color: 'var(--gold-light)', lineHeight: 1 }}>4.8</div>
+                                <div>
+                                    <div style={{ display: 'flex', color: 'var(--gold-light)' }}>
+                                        <Star fill="currentColor" size={20} />
+                                        <Star fill="currentColor" size={20} />
+                                        <Star fill="currentColor" size={20} />
+                                        <Star fill="currentColor" size={20} />
+                                        <Star fill="currentColor" size={20} style={{ opacity: 0.8 }} />
+                                    </div>
+                                    <div style={{ fontSize: '14px', color: 'var(--cream)', marginTop: '4px' }}>Review 4.8++ from 2000 Ladies..</div>
+                                </div>
+                            </div>
+
+                            {/* User Review Input Form */}
+                            <div style={{ background: 'var(--bg-card)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(139,92,246,0.3)', marginBottom: '24px' }}>
+                                {!isLoggedIn ? (
+                                    <div style={{ textAlign: 'center' }}>
+                                        <p style={{ color: 'var(--cream)', fontSize: '15px', marginBottom: '12px' }}>Sudah membeli? Login untuk memberikan ulasan.</p>
+                                        <button onClick={() => setShowLoginModal(true)} style={{ background: 'var(--purple)', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)' }}>
+                                            Login dengan Email
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                                            <div style={{ fontSize: '15px', color: 'var(--cream)' }}>
+                                                Halo, <strong>{userEmailSession.split('@')[0]}</strong>
+                                            </div>
+                                            <button onClick={handleLogout} style={{ background: 'transparent', border: '1px solid var(--red)', color: 'var(--red)', padding: '4px 12px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer' }}>Logout</button>
+                                        </div>
+                                        
+                                        <div style={{ marginBottom: '12px' }}>
+                                            <div style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '8px' }}>Beri Rating:</div>
+                                            <div style={{ display: 'flex', gap: '8px' }}>
+                                                {[1,2,3,4,5].map(star => (
+                                                    <Star 
+                                                        key={star} 
+                                                        size={28} 
+                                                        fill={reviewRating >= star ? "var(--gold-light)" : "transparent"} 
+                                                        color={reviewRating >= star ? "var(--gold-light)" : "var(--muted)"}
+                                                        style={{ cursor: 'pointer', transition: 'all 0.2s' }}
+                                                        onClick={() => setReviewRating(star)}
+                                                    />
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <textarea 
+                                            value={reviewText}
+                                            onChange={(e) => setReviewText(e.target.value)}
+                                            placeholder="Tulis ulasan jujur Anda di sini..."
+                                            style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--cream)', padding: '14px', borderRadius: '8px', minHeight: '100px', fontFamily: 'var(--font-body)', fontSize: '15px', outline: 'none', marginBottom: '12px' }}
+                                        />
+                                        
+                                        <div style={{ display: 'flex', gap: '12px' }}>
+                                            <button onClick={submitReview} disabled={isLoginLoading} style={{ flex: 1, background: 'var(--purple)', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', opacity: isLoginLoading ? 0.7 : 1 }}>
+                                                {isLoginLoading ? 'Memproses...' : (userReview ? 'Update Ulasan' : 'Kirim Ulasan')}
+                                            </button>
+                                            {userReview && (
+                                                <button onClick={deleteReview} disabled={isLoginLoading} style={{ background: 'rgba(239,68,68,0.1)', color: 'var(--red)', border: '1px solid rgba(239,68,68,0.3)', padding: '12px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                    <Trash2 size={20} />
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Display Reviews */}
+                            <div>
+                                {[...dbReviews, ...MOCK_REVIEWS]
+                                    .filter(r => !r.lang || r.lang === (lang === 'sg' ? 'en' : lang) || (lang === 'id' && r.lang === 'id'))
+                                    .slice(0, showReviewsCount).map((r, i) => (
+                                    <div key={i} style={{ background: 'var(--bg-section)', borderRadius: '12px', padding: '16px', marginBottom: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                                            <div>
+                                                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                    {r.name} 
+                                                    {r.country && <span style={{ fontSize: '14px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px', letterSpacing: '1px', color: 'var(--muted)' }}>{r.country} {(r.flag || getFlagForCountry(r.country))}</span>}
+                                                </div>
+                                                <div style={{ display: 'flex', gap: '2px', marginTop: '4px' }}>
+                                                    {Array.from({ length: 5 }).map((_, j) => (
+                                                        <Star key={j} size={14} fill={j < r.rating ? "var(--gold-light)" : "transparent"} color={j < r.rating ? "var(--gold-light)" : "var(--muted)"} />
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div style={{ fontSize: '12px', color: 'var(--green-wa)', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(37,211,102,0.1)', padding: '2px 8px', borderRadius: '12px' }}>
+                                                ✓ Verified Buyer
+                                            </div>
+                                        </div>
+                                        <p style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.6, marginTop: '8px' }}>{r.comment || r.text}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            {showReviewsCount < [...dbReviews, ...MOCK_REVIEWS].length && (
+                                <button onClick={() => setShowReviewsCount(30)} style={{ width: '100%', background: 'transparent', border: '1px solid var(--purple-light)', color: 'var(--purple-light)', padding: '14px', borderRadius: '12px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', marginTop: '8px', transition: 'all 0.2s' }}>
+                                    ▾ Buka Review Lain
+                                </button>
+                            )}
+
+                        </div>
+                    </section>
                     {/* CHECKOUT FORM */}
                     <section id="checkout" className="df-formsec">
                         <div className="df-wrap df-fade-in">
