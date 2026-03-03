@@ -1,663 +1,529 @@
-import { useState, useEffect, useRef } from "react";
-import { initFacebookPixelWithLogging, trackPageViewEvent, trackViewContentEvent, trackCapiOnlyEvent } from "./utils/fbpixel";
-import demoProduct from "./assets/display/nano_banana_demo_1_product.png";
-import demoAutoReply from "./assets/display/nano_banana_demo_2_autoreply.png";
-import demoAutoDM from "./assets/display/nano_banana_demo_3_autodm.png";
-import demoAnalysis from "./assets/display/demo_ai_analysis.png";
-import demoVoice from "./assets/display/voice.mp3";
-import demoVideo from "./assets/darkfem_id/video3.mp4";
-import umkmVideo from "./assets/UMKM_V1.mp4";
-import umkmThumb from "./assets/UMKM_V1.jpeg";
+"use client";
 
-const PIXEL_ID = "2158382114674235";
-const TEST_CODE = "TEST39702";
-const CAPI_SECRET = "CAPI_UMKM";
+import { useEffect, useRef, useState } from "react";
 
-type Language = "id" | "en";
+const TAGLINES = [
+  "Membangun Masa Depan dengan Kecerdasan Buatan",
+  "Building Tomorrow Through Artificial Intelligence",
+  "Mengintegrasikan AI ke Dalam Setiap Dimensi Bisnis",
+  "Where Human Vision Meets Machine Intelligence",
+];
 
-const translations = {
-    id: {
-        navPrice: "Lihat Harga",
-        heroBadge: "🚀 Untuk UMKM Indonesia",
-        heroTitle: "Ubah Komentar Menjadi ",
-        heroTitleAccent: "Uang Secara Otomatis!",
-        heroSub: "Pernah lihat postingan viral yang minta orang ketik \"MAU\"? Itu bukan sihir — itu sistem kami. Dan sekarang, Anda bisa punya sistem yang sama.",
-        ctaPesan: "Pesan Sekarang →",
-        ctaDemo: "Lihat Demo",
-        heroFoot: "Setup < 1 Jam · Tanpa Ribet · Hasil Instan",
-        flowTitle: "Begini cara kerjanya",
-        flowSteps: [
-            { icon: "💬", title: "Calon pembeli ketik \"MAU\" di komentar", sub: "Algoritma Instagram pun ikut naik karena banyak interaksi" },
-            { icon: "⚡", title: "Sistem kami membalas komentar secara otomatis", sub: "Real-time, tanpa Anda harus pegang HP" },
-            { icon: "📦", title: "DM berisi link katalog/pesanan dikirim otomatis", sub: "Calon pembeli langsung bisa order. Anda bisa tidur nyenyak." },
-        ],
-        orderBadge: "✅ Sangat Mudah",
-        orderTitle: "4 Langkah Mulai Autopilot",
-        orderSteps: [
-            { icon: "🎯", title: "Pilih Paket", desc: "Tentukan paket yang sesuai dengan kebutuhan skala usaha Anda." },
-            { icon: "📱", title: "Hubungi CS", desc: "Klik tombol pesan untuk terhubung langsung dengan tim setup kami via WhatsApp." },
-            { icon: "💸", title: "Transfer", desc: "Lakukan pembayaran sesuai paket yang dipilih untuk aktivasi sistem." },
-            { icon: "🚀", title: "Mulai & Data", desc: "Berikan data chat/format yang diinginkan. Dalam 1 jam, sistem Anda siap jualan!" },
-        ],
-        socialProof: "Sudah dipercaya 2.400+ UMKM Indonesia · Rating ⭐ 4.9/5",
-        creativeBadge: "✨ Layanan Kreatif",
-        creativeTitle: "Konten Mewah Tanpa Perlu Sewa Studio Mahal",
-        creativeSub: "Kami menyediakan agen AI khusus yang bekerja seperti tim kreatif profesional — hanya untuk usaha Anda.",
-        features: [
-            { icon: "🖼️", title: "Image Generator", desc: "Foto produk Anda tampil sekelas iklan majalah. Upload foto biasa, AI kami poles jadi visual yang bikin orang berhenti scroll." },
-            { icon: "🎬", title: "Video Generator", desc: "Video promosi estetik yang menghidupkan brand Anda. Dapatkan Reels & TikTok viral setiap minggu tanpa harus pusing editing atau rekam ulang." },
-            { icon: "🎙️", title: "Voice Cloning AI", desc: "Kami klon suara Anda. Kirim teks, dan \"AI Anda\" yang bicara di video iklan dengan suara Anda yang asli!" },
-            { icon: "🤖", title: "Chatbot WhatsApp", desc: "WhatsApp Anda membalas pesan calon pembeli 24 jam, persis seperti yang Anda mau. Tidak ada lagi pesan yang terlewat." },
-            { icon: "📲", title: "Auto Trigger Pesanan", desc: "Ada pesanan masuk? Bot Anda otomatis kirim notifikasi ke pembeli DAN Anda. Semua terorganisir rapi." },
-            { icon: "📊", title: "Laporan & Analisa AI", desc: "Ribuan baris datasheet pusing dibaca? Kami scrape dan jelaskan dalam bahasa manusia yang mudah dimengerti." },
-        ],
-        testimonialsBadge: "💬 Kata Mereka",
-        testimonialsTitle: "UMKM Nyata, Hasil Nyata",
-        testimonials: [
-            { name: "Sari W.", biz: "Hijab Online · Bandung", text: "Awalnya saya takut ribet. Ternyata tim AutoSell setup cuma 45 menit! Sekarang tiap pagi DM sudah antri dari calon pembeli yang ketik MAU semalam." },
-            { name: "Budi H.", biz: "Kuliner Frozen · Surabaya", text: "Omzet naik 3x dalam 2 bulan. Yang paling keren adalah foto produk saya sekarang kelihatan profesional banget. Pelanggan sering nanya pakai fotografer mana." },
-            { name: "Dewi K.", biz: "Skincare UMKM · Jakarta", text: "Fitur Voice Cloning ini gila sih. Saya rekam suara sekali, sekarang tiap video iklan pakai suara saya sendiri tanpa harus rekaman lagi." },
-        ],
-        pricingBadge: "💰 Harga Transparan",
-        pricingTitle: "Pilih Paket Yang Sesuai",
-        promoTitle: "🎁 GRATIS WEBSITE UMKM SETIAP PEMBELIAN",
-        promoSub: "👆 Tonton Demo: Bagaimana AI menghandle ratusan pembeli secara otomatis.",
-        pricingSub: "Hemat hingga 30% dengan paket tahunan",
-        billingMonthly: "Bulanan",
-        billingYearly: "Tahunan 🎉",
-        pricingFoot: "💡 Setup selesai dalam waktu kurang dari 1 jam · Hasil langsung terasa",
-        faqBadge: "❓ Pertanyaan Umum",
-        faqTitle: "Kami Jawab Kekhawatiran Anda",
-        faqs: [
-            { q: "Apakah saya perlu keahlian teknis?", a: "Sama sekali tidak. Anda cukup beri kami akses akun, dan tim kami yang setup semuanya dalam waktu kurang dari 1 jam. Anda hanya perlu duduk dan lihat hasilnya." },
-            { q: "Apakah akun Instagram/WhatsApp saya aman?", a: "Keamanan akun Anda adalah prioritas kami. Kami menggunakan koneksi resmi via API Meta yang sudah tersertifikasi, bukan metode pihak ketiga yang berisiko." },
-            { q: "Bagaimana cara kerja Voice Cloning?", a: "Anda kirim rekaman suara Anda (minimal 2 menit), AI kami mempelajarinya, lalu setiap teks yang Anda kirim bisa diubah menjadi suara Anda yang asli untuk video iklan." },
-            { q: "Bisakah saya ganti paket kapan saja?", a: "Tentu bisa! Anda bisa upgrade atau downgrade paket kapan saja. Perubahan berlaku di siklus tagihan berikutnya." },
-        ],
-        ctaBottomTitle: "Siap Biarkan Sistem yang Jualan untuk Anda?",
-        ctaBottomSub: "Bergabung dengan 2.400+ UMKM yang sudah autopilot. Setup selesai dalam 1 jam, hasil langsung terasa.",
-        ctaBottomFoot: "Aktivasi cepat · CS Standby · Hasil Instan",
-        footerText: "© 2025 Auto Sell with AI · Dibuat dengan ❤️ untuk UMKM Indonesia",
-        assetLabels: {
-            reply: "Auto Reply",
-            dm: "Direct Message",
-            product: "AI Product",
-            analysis: "AI Analysis"
-        },
-        supportBox: {
-            title: "AI eL Vision: Mitra Digital #1 untuk UMKM yang Ingin Maju Tanpa Ribet",
-            desc: "Kami hadir khusus untuk Anda yang ingin jualan otomatis tanpa harus pusing belajar teknis AI. Cukup berikan instruksi sederhana, dan sistem kami yang akan bekerja 24 jam untuk Anda. Kami bicara bahasa bisnis Anda, bukan bahasa komputer."
-        },
-        suitability: {
-            title: "Apakah ini cocok untuk Anda?",
-            desc1: "Pertanyaannya bukan berapa biaya bulanan di sini, melainkan seberapa besar masalah Anda dalam hal operasional dan seberapa berharga waktu Anda untuk kehidupan yang lebih santai.",
-            desc2: "Jika Anda merasa pusing membalas chat satu per satu, lelah memproses pesanan manual, dan waktu Anda habis hanya untuk hal teknis, maka investasi bulanan kami sangatlah kecil dibandingkan beban berat yang kami angkat dari pundak Anda.",
-            desc3: "Namun, jika bisnis Anda masih sangat baru, jumlah pelanggan masih sedikit, dan Anda masih nyaman menghandle semuanya sendiri, maka jujur saja, produk ini belum Anda butuhkan."
-        },
-        planFeatures: {
-            starter: ["Auto Reply Komentar Instagram", "Auto DM ke Calon Pembeli", "Setup dalam 1 Jam", "Support via WhatsApp", "Laporan Mingguan Basic"],
-            growth: ["Semua fitur Starter", "AI Chatbot WhatsApp", "Auto Trigger Pesanan", "Image Generator Produk (10/bln)", "Video Reels/TikTok (10/bln)", "Laporan AI Mingguan"],
-            pro: ["Semua fitur Growth", "Voice Cloning AI", "Image Generator Tak Terbatas", "Video Promosi (12/bln)", "Analisa Datasheet Otomatis", "Manajer Akun Pribadi", "Priority Support 24/7"]
-        }
-    },
-    en: {
-        navPrice: "See Pricing",
-        heroBadge: "🚀 For Global Businesses",
-        heroTitle: "Turn Comments Into ",
-        heroTitleAccent: "Money Automatically!",
-        heroSub: "Ever seen a viral post asking people to type \"YES\"? That's not magic — it's our system. And now, you can have the same system for your brand.",
-        ctaPesan: "Order Now →",
-        ctaDemo: "Watch Demo",
-        heroFoot: "Setup < 1 Hour · No Hassle · Instant Results",
-        flowTitle: "How it works",
-        flowSteps: [
-            { icon: "💬", title: "Customer types \"YES\" in comments", sub: "Your engagement skyrockets as the algorithm loves the interaction" },
-            { icon: "⚡", title: "Our system replies automatically", sub: "Real-time response, without you touching your phone" },
-            { icon: "📦", title: "DM with catalog/order link is sent", sub: "Customer orders instantly. You sleep soundly." },
-        ],
-        orderBadge: "✅ Simple Process",
-        orderTitle: "4 Steps to Autopilot",
-        orderSteps: [
-            { icon: "🎯", title: "Pick a Plan", desc: "Choose the plan that fits your business scale." },
-            { icon: "📱", title: "Contact CS", desc: "Click the order button to connect with our setup team via WhatsApp." },
-            { icon: "💸", title: "Transfer", desc: "Make the payment for the selected plan to activate the system." },
-            { icon: "🚀", title: "Start & Data", desc: "Provide chat data/formats. Your system will be ready in 1 hour!" },
-        ],
-        socialProof: "Trusted by 2,400+ Businesses · Rating ⭐ 4.9/5",
-        creativeBadge: "✨ Creative Services",
-        creativeTitle: "Luxury Content Without the Expensive Studio",
-        creativeSub: "We provide specialized AI agents that work like a professional creative team — exclusively for your business.",
-        features: [
-            { icon: "🖼️", title: "Image Generator", desc: "Make your product photos look like magazine ads. Upload a normal photo, our AI makes it scroll-stopping." },
-            { icon: "🎬", title: "Video Generator", desc: "Aesthetic promotional videos for Reels & TikTok every week. Consistent without daily re-filming." },
-            { icon: "🎙️", title: "Voice Cloning AI", desc: "We clone your voice. Send text, and \"Your AI\" speaks in ad videos with your real voice!" },
-            { icon: "🤖", title: "WhatsApp Chatbot", desc: "Your WhatsApp replies to leads 24/7, exactly how you want. No more missed messages." },
-            { icon: "📲", title: "Auto Order Trigger", desc: "Order incoming? Your bot automatically notifies you and the customer. Stay organized." },
-            { icon: "📊", title: "AI Reports & Analysis", desc: "Confused by thousands of datasheet rows? We scrape and explain it in plain human language." },
-        ],
-        testimonialsBadge: "💬 Testimonials",
-        testimonialsTitle: "Real Businesses, Real Results",
-        testimonials: [
-            { name: "Sarah W.", biz: "Fashion Retail · Bandung", text: "I was afraid it would be complicated. Turns out the team set it up in 45 mins! Now every morning my DM is full of leads." },
-            { name: "Ben H.", biz: "Food & Beverage · Surabaya", text: "Revenue tripled in 2 months. The coolest part is my product photos now look incredibly professional." },
-            { name: "Diana K.", biz: "Skincare Brand · Jakarta", text: "This Voice Cloning feature is insane. I recorded my voice once, now every ad uses my real voice effortlessly." },
-        ],
-        pricingBadge: "💰 Transparent Pricing",
-        pricingTitle: "Choose the Right Plan",
-        promoTitle: "🎁 FREE WEBSITE WITH EVERY PURCHASE",
-        promoSub: "👆 Watch Demo: See how AI handles hundreds of customers automatically.",
-        pricingSub: "Save up to 30% with annual plans",
-        billingMonthly: "Monthly",
-        billingYearly: "Yearly 🎉",
-        pricingFoot: "💡 Setup completed in less than 1 hour · Instant results",
-        faqBadge: "❓ FAQ",
-        faqTitle: "We Answer Your Concerns",
-        faqs: [
-            { q: "Do I need technical skills?", a: "Not at all. Just give us access, and our team sets everything up in under 1 hour. You just sit back and see the results." },
-            { q: "Is my IG/WA account safe?", a: "Your security is our priority. We use official Meta API connections, not risky third-party methods." },
-            { q: "How does Voice Cloning work?", a: "Send a recording of your voice (min. 2 mins), our AI learns it, then any text can be converted to your real voice." },
-            { q: "Can I change plans anytime?", a: "Yes! You can upgrade or downgrade anytime. Changes apply to the next billing cycle." },
-        ],
-        ctaBottomTitle: "Ready to Let the System Sell for You?",
-        ctaBottomSub: "Join 2,400+ businesses already on autopilot. Setup in 1 hour, results felt instantly.",
-        ctaBottomFoot: "Fast activation · CS Standby · Instant Results",
-        footerText: "© 2025 Auto Sell with AI · Built with ❤️ for Global Businesses",
-        assetLabels: {
-            reply: "Auto Reply",
-            dm: "Direct Message",
-            product: "AI Product",
-            analysis: "AI Analysis"
-        },
-        supportBox: {
-            title: "AI eL Vision: The #1 Digital Partner for Scaling Without Technical Hassle",
-            desc: "Designed specifically for businesses that want to automate sales without the headache of learning AI. Just provide simple instructions, and our system works 24/7 for you. We speak your business language, not computer code."
-        },
-        suitability: {
-            title: "Is this right for you?",
-            desc1: "The question isn't about the monthly cost, but rather how much of a burden your current manual operations are, and how much you value a more relaxed, stress-free life.",
-            desc2: "If you're overwhelmed by constant chats, exhausted by manual order processing, and losing precious time to technical tasks, then our monthly investment is negligible compared to the massive weight we lift off your shoulders.",
-            desc3: "However, if your business is just starting out, your customer volume is low, and you're perfectly fine handling everything manually, then honestly, you don't need this product yet."
-        },
-        planFeatures: {
-            starter: ["Instagram Comment Auto-Reply", "Auto DM to Leads", "Setup in 1 Hour", "Support via WhatsApp", "Basic Weekly Report"],
-            growth: ["All Starter Features", "WhatsApp AI Chatbot", "Auto Order Trigger", "AI Product Image (10/mo)", "Reels/TikTok Videos (10/mo)", "Weekly AI Report"],
-            pro: ["All Growth Features", "Voice Cloning AI", "Unlimited AI Images", "Promo Videos (12/mo)", "Auto Datasheet Analysis", "Personal Account Manager", "24/7 Priority Support"]
-        }
+export default function AIeLVisionPage() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [taglineIndex, setTaglineIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Typewriter effect
+  useEffect(() => {
+    const current = TAGLINES[taglineIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+    if (!isDeleting && charIndex <= current.length) {
+      setDisplayText(current.slice(0, charIndex));
+      timeout = setTimeout(() => setCharIndex((c) => c + 1), 45);
+    } else if (!isDeleting && charIndex > current.length) {
+      timeout = setTimeout(() => setIsDeleting(true), 2400);
+    } else if (isDeleting && charIndex > 0) {
+      setDisplayText(current.slice(0, charIndex));
+      timeout = setTimeout(() => setCharIndex((c) => c - 1), 20);
+    } else {
+      setIsDeleting(false);
+      setTaglineIndex((i) => (i + 1) % TAGLINES.length);
     }
-};
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, taglineIndex]);
 
-const getPlans = (lang: Language) => {
-    const f = translations[lang].planFeatures;
-    return {
-        monthly: [
-            { name: "Starter", price: 299000, color: "#0EA5E9", features: f.starter, cta: lang === "id" ? "Pilih Paket" : "Pick Plan", highlight: false },
-            { name: "Growth", price: 599000, color: "#10B981", features: f.growth, cta: lang === "id" ? "Pilih Paket" : "Pick Plan", highlight: true },
-            { name: "Pro", price: 999000, color: "#8B5CF6", features: f.pro, cta: lang === "id" ? "Pilih Paket" : "Pick Plan", highlight: false },
-        ],
-        yearly: [
-            { name: "Starter", price: 2490000, color: "#0EA5E9", features: f.starter, cta: lang === "id" ? "Pilih Paket" : "Pick Plan", highlight: false },
-            { name: "Growth", price: 4990000, color: "#10B981", features: f.growth, cta: lang === "id" ? "Pilih Paket" : "Pick Plan", highlight: true },
-            { name: "Pro", price: 8490000, color: "#8B5CF6", features: f.pro, cta: lang === "id" ? "Pilih Paket" : "Pick Plan", highlight: false },
-        ],
+  // Neural network canvas — blue/violet palette
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    let animId: number;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
-};
+    resize();
+    window.addEventListener("resize", resize);
 
-function useInView(threshold = 0.15) {
-    const ref = useRef<HTMLDivElement>(null);
-    const [inView, setInView] = useState(false);
-    useEffect(() => {
-        const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold });
-        if (ref.current) obs.observe(ref.current);
-        return () => obs.disconnect();
-    }, []);
-    return { ref, inView };
-}
+    const NODE_COUNT = 80;
+    type Node = {
+      x: number; y: number;
+      vx: number; vy: number;
+      r: number; phase: number; colorShift: number;
+    };
 
-function AnimSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-    const { ref, inView } = useInView();
-    return (
-        <div
-            ref={ref}
-            style={{
-                opacity: inView ? 1 : 0,
-                transform: inView ? "translateY(0)" : "translateY(32px)",
-                transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
-            }}
-        >
-            {children}
-        </div>
-    );
-}
+    const nodes: Node[] = Array.from({ length: NODE_COUNT }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.32,
+      vy: (Math.random() - 0.5) * 0.32,
+      r: Math.random() * 2 + 0.8,
+      phase: Math.random() * Math.PI * 2,
+      colorShift: Math.random(),
+    }));
 
-export default function LandingPage() {
-    const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
-    const [activeFaq, setActiveFaq] = useState<number | null>(null);
-    const [lang, setLang] = useState<Language>("id");
+    let t = 0;
+    const lerp = (a: number, b: number, v: number) => a + (b - a) * v;
 
-    const t = translations[lang];
-    const plans = getPlans(lang);
+    const draw = () => {
+      t += 0.007;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    useEffect(() => {
-        initFacebookPixelWithLogging(PIXEL_ID);
-        trackPageViewEvent({}, undefined, PIXEL_ID, undefined, TEST_CODE);
-        trackViewContentEvent({
-            content_name: 'Landing Page Auto Sell with AI',
-            content_category: 'Service',
-            content_ids: ['autosell_ai_lp'],
-            content_type: 'product'
-        }, undefined, PIXEL_ID, undefined, TEST_CODE);
-    }, []);
+      // Grid
+      ctx.save();
+      ctx.strokeStyle = "rgba(80, 140, 255, 0.045)";
+      ctx.lineWidth = 0.6;
+      const gSize = 90;
+      const drift = (t * 14) % gSize;
+      for (let x = -gSize; x < canvas.width + gSize; x += gSize) {
+        ctx.beginPath(); ctx.moveTo(x + drift * 0.5, 0); ctx.lineTo(x + drift * 0.5, canvas.height); ctx.stroke();
+      }
+      for (let y = -gSize; y < canvas.height + gSize; y += gSize) {
+        ctx.beginPath(); ctx.moveTo(0, y + drift * 0.25); ctx.lineTo(canvas.width, y + drift * 0.25); ctx.stroke();
+      }
+      ctx.restore();
 
-    const formatCurrency = (n: number) =>
-        lang === "id" ? "Rp " + n.toLocaleString("id-ID") : "$" + (n / 15000).toFixed(0);
-
-    const whatsappLink = `https://wa.me/62895325633487?text=${encodeURIComponent(lang === "id" ? "Hai kak saya mau pesan Autosell bulanan" : "Hi, I would like to order the Autosell plan")}`;
-
-    return (
-        <div style={{ fontFamily: "'Plus Jakarta Sans', 'Nunito', sans-serif", background: "#F8FAFC", color: "#0F172A", overflowX: "hidden" }}>
-            <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { overflow-x: hidden; position: relative; width: 100%; touch-action: pan-y; }
-        html { scroll-behavior: smooth; }
-        .btn-primary {
-          background: linear-gradient(135deg, #0EA5E9, #10B981);
-          color: white;
-          border: none;
-          padding: 16px 32px;
-          border-radius: 50px;
-          font-size: 16px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: transform 0.2s, box-shadow 0.2s;
-          font-family: inherit;
+      // Connections
+      for (let i = 0; i < NODE_COUNT; i++) {
+        for (let j = i + 1; j < NODE_COUNT; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            const alpha = (1 - dist / 140) * 0.25;
+            const pulse = Math.sin(t * 1.6 + nodes[i].phase) * 0.5 + 0.5;
+            const cs = (nodes[i].colorShift + nodes[j].colorShift) / 2;
+            const r = Math.round(lerp(40, 130, cs));
+            const g = Math.round(lerp(120, 60, cs));
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(${r},${g},255,${alpha * pulse})`;
+            ctx.lineWidth = 0.7;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,165,233,0.35); }
-        .card { background: white; border-radius: 20px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-        .badge { display: inline-block; background: #EFF6FF; color: #0EA5E9; border: 1px solid #BAE6FD; padding: 6px 16px; border-radius: 50px; font-size: 14px; font-weight: 600; }
-        .step-num { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; flex-shrink: 0; }
-        a { text-decoration: none; color: inherit; }
-        .lang-btn { background: none; border: 1px solid #E2E8F0; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; color: #64748B; transition: all 0.2s; }
-        .lang-btn.active { background: #0EA5E9; color: white; border-color: #0EA5E9; }
-      `}</style>
+      }
 
-            {/* NAV */}
-            <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(248,250,252,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E2E8F0", padding: "16px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ fontWeight: 800, fontSize: 20, background: "linear-gradient(135deg,#0EA5E9,#10B981)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    Auto Sell with AI
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <button 
-                        onClick={() => setLang(lang === "id" ? "en" : "id")} 
-                        className="card"
-                        style={{ 
-                            padding: "8px 16px", 
-                            fontSize: "14px", 
-                            fontWeight: "700", 
-                            cursor: "pointer", 
-                            display: "flex", 
-                            alignItems: "center", 
-                            gap: "8px", 
-                            border: "1px solid #E2E8F0",
-                            background: "white",
-                            color: "#475569"
-                        }}
-                    >
-                        {lang === "id" ? "🇬🇧 EN" : "🇮🇩 ID"}
-                    </button>
-                </div>
-            </nav>
+      // Nodes
+      for (const node of nodes) {
+        node.x += node.vx;
+        node.y += node.vy;
+        if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
 
-            {/* SUPPORT BOX TOP */}
-            <section style={{ padding: "40px 24px 0", maxWidth: 800, margin: "0 auto" }}>
-                <AnimSection>
-                    <div style={{ background: "linear-gradient(135deg, #0F172A, #1E293B)", borderRadius: 24, padding: "32px", textAlign: "center", color: "white", boxShadow: "0 20px 40px rgba(0,0,0,0.15)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                        <div style={{ display: "inline-block", background: "rgba(14,165,233,0.2)", color: "#38BDF8", padding: "6px 16px", borderRadius: 50, fontSize: "12px", fontWeight: "800", marginBottom: "16px", letterSpacing: "1px", textTransform: "uppercase" }}>
-                            #1 AI Support UMKM
-                        </div>
-                        <h2 style={{ fontSize: "clamp(20px, 4vw, 28px)", fontWeight: "800", lineHeight: "1.3", marginBottom: "12px" }}>
-                            {t.supportBox.title}
-                        </h2>
-                        <p style={{ color: "#94A3B8", fontSize: "16px", lineHeight: "1.6", maxWidth: "600px", margin: "0 auto" }}>
-                            {t.supportBox.desc}
-                        </p>
-                    </div>
-                </AnimSection>
-            </section>
+        const glow = Math.sin(t * 2.0 + node.phase) * 0.5 + 0.5;
+        const cs = node.colorShift;
+        const r = Math.round(lerp(30, 160, cs));
+        const g = Math.round(lerp(140, 80, cs));
 
-            {/* HERO */}
-            <section style={{ padding: "80px 24px 60px", maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-                <AnimSection>
-                    <span className="badge">{t.heroBadge}</span>
-                    <h1 style={{ fontSize: "clamp(32px,6vw,52px)", fontWeight: 800, lineHeight: 1.2, marginTop: 20, marginBottom: 20 }}>
-                        {t.heroTitle}
-                        <span style={{ background: "linear-gradient(135deg,#0EA5E9,#10B981)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                            {t.heroTitleAccent}
-                        </span>
-                    </h1>
-                    <p style={{ fontSize: 18, lineHeight: 1.7, color: "#475569", marginBottom: 32 }}>
-                        {t.heroSub}
-                    </p>
-                    <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                        <a href={whatsappLink} target="_blank" onClick={() => trackCapiOnlyEvent('InitiateCheckout', {}, PIXEL_ID, CAPI_SECRET, TEST_CODE)}>
-                            <button className="btn-primary" style={{ fontSize: 18 }}>{t.ctaPesan}</button>
-                        </a>
-                        <button style={{ padding: "16px 28px", borderRadius: 50, border: "2px solid #CBD5E1", background: "transparent", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", color: "#334155" }}>
-                            {t.ctaDemo}
-                        </button>
-                    </div>
-                    <p style={{ marginTop: 16, fontSize: 14, color: "#94A3B8" }}>{t.heroFoot}</p>
-                </AnimSection>
+        const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.r * 6);
+        grad.addColorStop(0, `rgba(${r},${g},255,${0.9 * glow})`);
+        grad.addColorStop(1, `rgba(${r},${g},255,0)`);
+        ctx.beginPath(); ctx.fillStyle = grad;
+        ctx.arc(node.x, node.y, node.r * 6, 0, Math.PI * 2); ctx.fill();
 
-                {/* FLOW VISUAL */}
-                <AnimSection delay={0.15}>
-                    <div style={{ marginTop: 60, background: "white", borderRadius: 24, padding: "32px 28px", boxShadow: "0 4px 32px rgba(0,0,0,0.08)", textAlign: "left" }}>
-                        <p style={{ fontSize: 13, fontWeight: 700, color: "#94A3B8", letterSpacing: 1, marginBottom: 24, textTransform: "uppercase" }}>{t.flowTitle}</p>
-                        {t.flowSteps.map((s, i) => (
-                            <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: i < 2 ? 24 : 0, paddingBottom: i < 2 ? 24 : 0, borderBottom: i < 2 ? "1px solid #F1F5F9" : "none" }}>
-                                <div className="step-num" style={{ background: "#F1F5F9", color: "#0F172A" }}>{s.icon}</div>
-                                <div>
-                                    <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: 1 }}>{lang === "id" ? "LANGKAH" : "STEP"} 0{i+1}</div>
-                                    <div style={{ fontWeight: 700, fontSize: 16, marginTop: 2 }}>{s.title}</div>
-                                    <div style={{ fontSize: 14, color: "#64748B", marginTop: 4 }}>{s.sub}</div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </AnimSection>
-            </section>
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(200,220,255,${0.6 + glow * 0.4})`;
+        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2); ctx.fill();
+      }
 
-            {/* HOW TO ORDER SECTION */}
-            <section style={{ background: "#F1F5F9", padding: "80px 24px" }}>
-                <div style={{ maxWidth: 900, margin: "0 auto" }}>
-                    <AnimSection>
-                        <div style={{ textAlign: "center", marginBottom: 48 }}>
-                            <span className="badge">{t.orderBadge}</span>
-                            <h2 style={{ fontSize: "clamp(26px,4vw,36px)", fontWeight: 800, marginTop: 16 }}>{t.orderTitle}</h2>
-                        </div>
-                    </AnimSection>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20 }}>
-                        {t.orderSteps.map((step, i) => (
-                            <AnimSection key={i} delay={i * 0.1}>
-                                <div className="card" style={{ padding: 24, textAlign: "center", height: "100%" }}>
-                                    <div style={{ fontSize: 32, marginBottom: 12 }}>{step.icon}</div>
-                                    <h3 style={{ fontWeight: 700, fontSize: 17, marginBottom: 8 }}>{step.title}</h3>
-                                    <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.5 }}>{step.desc}</p>
-                                </div>
-                            </AnimSection>
-                        ))}
-                    </div>
-                </div>
-            </section>
+      // Scan sweep
+      const scanY = ((Math.sin(t * 0.35) + 1) / 2) * canvas.height;
+      const sg = ctx.createLinearGradient(0, scanY - 80, 0, scanY + 80);
+      sg.addColorStop(0, "rgba(80,140,255,0)");
+      sg.addColorStop(0.5, "rgba(80,140,255,0.06)");
+      sg.addColorStop(1, "rgba(80,140,255,0)");
+      ctx.fillStyle = sg; ctx.fillRect(0, scanY - 80, canvas.width, 160);
 
-            {/* SOCIAL PROOF STRIP */}
-            <div style={{ background: "linear-gradient(135deg,#0EA5E9,#10B981)", padding: "20px 24px", textAlign: "center" }}>
-                <p style={{ color: "white", fontWeight: 600, fontSize: 16 }}>
-                    🎉 {t.socialProof}
-                </p>
-            </div>
+      // Data streaks
+      if (Math.sin(t * 7.3) > 0.97) {
+        const sx = Math.random() * canvas.width;
+        const streakGrad = ctx.createLinearGradient(sx, 0, sx + 1, canvas.height);
+        streakGrad.addColorStop(0, "rgba(100,160,255,0)");
+        streakGrad.addColorStop(0.45, "rgba(160,200,255,0.18)");
+        streakGrad.addColorStop(1, "rgba(100,160,255,0)");
+        ctx.fillStyle = streakGrad;
+        ctx.fillRect(sx, 0, 1, canvas.height);
+      }
 
-            {/* AI TWIN SECTION */}
-            <section style={{ maxWidth: 900, margin: "0 auto", padding: "80px 24px" }}>
-                <AnimSection>
-                    <div style={{ textAlign: "center", marginBottom: 48 }}>
-                        <span className="badge">{t.creativeBadge}</span>
-                        <h2 style={{ fontSize: "clamp(28px,4vw,40px)", fontWeight: 800, marginTop: 16, lineHeight: 1.2 }}>
-                            {t.creativeTitle}
-                        </h2>
-                        <p style={{ color: "#475569", fontSize: 17, marginTop: 12, maxWidth: 520, margin: "12px auto 0" }}>
-                            {t.creativeSub}
-                        </p>
-                    </div>
-                </AnimSection>
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize); };
+  }, []);
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
-                    {t.features.map((item, i) => (
-                        <AnimSection key={i} delay={i * 0.07}>
-                            <div className="card" style={{ padding: 28, height: "100%", transition: "transform 0.2s, box-shadow 0.2s" }}
-                                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.10)"; }}
-                                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = ""; (e.currentTarget as HTMLDivElement).style.boxShadow = ""; }}
-                            >
-                                <div style={{ width: 52, height: 52, borderRadius: 16, background: "#F1F5F9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, marginBottom: 16 }}>{item.icon}</div>
-                                <h3 style={{ fontWeight: 700, fontSize: 18, marginBottom: 8 }}>{item.title}</h3>
-                                <p style={{ color: "#475569", fontSize: 15, lineHeight: 1.6, marginBottom: (item.title.includes("Video") || item.title.includes("Image") || item.title.includes("Chatbot") || item.title.includes("Trigger") || item.title.includes("Laporan") || item.title.includes("Analisa") || item.title.includes("Voice")) ? 16 : 0 }}>{item.desc}</p>
-                                {item.title.includes("Video") && (
-                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
-                                        <video src={demoVideo} controls loop playsInline style={{ width: "100%", aspectRatio: "9/16", objectFit: "cover", display: "block" }} />
-                                    </div>
-                                )}
-                                {item.title.includes("Image") && (
-                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
-                                        <img src={demoProduct} alt="AI Product" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
-                                    </div>
-                                )}
-                                {item.title.includes("Voice") && (
-                                    <div style={{ marginTop: 12 }}>
-                                        <audio src={demoVoice} controls style={{ width: "100%" }} />
-                                    </div>
-                                )}
-                                {item.title.includes("Chatbot") && (
-                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
-                                        <img src={demoAutoDM} alt="Chatbot DM" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
-                                    </div>
-                                )}
-                                {item.title.includes("Trigger") && (
-                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
-                                        <img src={demoAutoReply} alt="Auto Trigger Reply" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
-                                    </div>
-                                )}
-                                {(item.title.includes("Laporan") || item.title.includes("Analisa")) && (
-                                    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #E2E8F0", marginTop: 12 }}>
-                                        <img src={demoAnalysis} alt="AI Analysis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
-                                    </div>
-                                )}
-                            </div>
-                        </AnimSection>
-                    ))}
-                </div>
-            </section>
+  return (
+    <div style={styles.root}>
+      <div style={styles.bgBase} />
+      <div style={styles.bgGlowCenter} />
+      <div style={styles.bgGlowLeft} />
+      <div style={styles.bgGlowRight} />
+      <canvas ref={canvasRef} style={styles.canvas} />
+      <div style={styles.noise} />
+      <div style={styles.vignette} />
 
-            {/* TESTIMONIALS */}
-            <section style={{ background: "#F1F5F9", padding: "72px 24px" }}>
-                <AnimSection>
-                    <div style={{ textAlign: "center", marginBottom: 48 }}>
-                        <span className="badge">{t.testimonialsBadge}</span>
-                        <h2 style={{ fontSize: "clamp(26px,4vw,36px)", fontWeight: 800, marginTop: 16 }}>{t.testimonialsTitle}</h2>
-                    </div>
-                </AnimSection>
-                <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
-                    {t.testimonials.map((t_item, i) => (
-                        <AnimSection key={i} delay={i * 0.1}>
-                            <div className="card" style={{ padding: 28 }}>
-                                <div style={{ color: "#F59E0B", fontSize: 18, marginBottom: 12 }}>{"★".repeat(5)}</div>
-                                <p style={{ fontSize: 15, lineHeight: 1.7, color: "#334155", marginBottom: 20 }}>"{t_item.text}"</p>
-                                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                                    <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg,#0EA5E9,#10B981)", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontWeight: 700, fontSize: 18 }}>{t_item.name[0]}</div>
-                                    <div>
-                                        <div style={{ fontWeight: 700, fontSize: 15 }}>{t_item.name}</div>
-                                        <div style={{ fontSize: 13, color: "#94A3B8" }}>{t_item.biz}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </AnimSection>
-                    ))}
-                </div>
-            </section>
+      <div style={styles.content}>
 
-            {/* PRICING */}
-            <section id="harga" style={{ maxWidth: 980, margin: "0 auto", padding: "80px 24px" }}>
-                <AnimSection>
-                    <div style={{ textAlign: "center", marginBottom: 40 }}>
-                        <span className="badge">{t.pricingBadge}</span>
-                        <h2 style={{ fontSize: "clamp(26px,4vw,40px)", fontWeight: 800, marginTop: 16 }}>{t.pricingTitle}</h2>
-                        
-                        {/* PROMO BOX WITH VIDEO */}
-                        <div style={{ maxWidth: 700, margin: "32px auto 0", background: "linear-gradient(135deg, #FFFBEB, #FEF3C7)", border: "2px dashed #F59E0B", borderRadius: 24, overflow: "hidden", boxShadow: "0 10px 30px rgba(245,158,11,0.15)" }}>
-                            <div style={{ padding: "16px 24px", background: "rgba(245,158,11,0.1)", borderBottom: "1px dashed #F59E0B" }}>
-                                <p style={{ color: "#92400E", fontWeight: 800, fontSize: 18 }}>
-                                    {t.promoTitle}
-                                </p>
-                            </div>
-                            <div style={{ padding: "20px" }}>
-                                <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 4px 20px rgba(0,0,0,0.1)", background: "black" }}>
-                                    <video 
-                                        src={umkmVideo} 
-                                        poster={umkmThumb}
-                                        controls 
-                                        playsInline 
-                                        style={{ width: "100%", display: "block" }} 
-                                    />
-                                </div>
-                                <p style={{ color: "#B45309", fontSize: 14, marginTop: 16, fontWeight: 700 }}>
-                                    {t.promoSub}
-                                </p>
-                            </div>
-                        </div>
-
-                        <p style={{ color: "#475569", fontSize: 16, marginTop: 32 }}>{t.pricingSub}</p>
-
-                        {/* SUITABILITY CHECK BOX */}
-                        <div style={{ maxWidth: 700, margin: "40px auto 32px", textAlign: "left", background: "white", borderRadius: 24, padding: "32px", border: "1px solid #E2E8F0", boxShadow: "0 4px 20px rgba(0,0,0,0.04)" }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-                                <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#F1F5F9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>🤔</div>
-                                <h3 style={{ fontWeight: 800, fontSize: 20, color: "#0F172A" }}>{t.suitability.title}</h3>
-                            </div>
-                            <div>
-                                <p style={{ color: "#475569", fontSize: "15px", lineHeight: 1.6, marginBottom: 16 }}>
-                                    {t.suitability.desc1}
-                                </p>
-                                <div style={{ background: "#F0FDF4", borderLeft: "4px solid #22C55E", padding: "16px", borderRadius: "0 12px 12px 0", marginBottom: 16 }}>
-                                    <p style={{ color: "#166534", fontSize: "15px", lineHeight: 1.6, fontWeight: 500 }}>
-                                        {t.suitability.desc2}
-                                    </p>
-                                </div>
-                                <p style={{ color: "#64748B", fontSize: "15px", lineHeight: 1.6, fontStyle: "italic" }}>
-                                    {t.suitability.desc3}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div style={{ display: "inline-flex", background: "#F1F5F9", borderRadius: 50, padding: 4, marginTop: 24, gap: 4 }}>
-                            {(["monthly", "yearly"] as const).map(b => (
-                                <button key={b} onClick={() => setBilling(b)} style={{ padding: "10px 24px", borderRadius: 50, border: "none", background: billing === b ? "white" : "transparent", boxShadow: billing === b ? "0 2px 8px rgba(0,0,0,0.08)" : "none", fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "inherit", color: billing === b ? "#0F172A" : "#64748B", transition: "all 0.2s" }}>
-                                    {b === "monthly" ? t.billingMonthly : t.billingYearly}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                </AnimSection>
-
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, alignItems: "center" }}>
-                    {plans[billing].map((plan, i) => (
-                        <AnimSection key={plan.name} delay={i * 0.1}>
-                            <div
-                                className="card"
-                                style={{
-                                    padding: 32,
-                                    border: plan.highlight ? `2px solid ${plan.color}` : "2px solid transparent",
-                                    transform: plan.highlight ? "scale(1.03)" : "scale(1)",
-                                    position: "relative",
-                                    transition: "transform 0.2s, box-shadow 0.2s",
-                                }}
-                            >
-                                {plan.highlight && (
-                                    <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: plan.color, color: "white", padding: "4px 16px", borderRadius: 50, fontSize: 13, fontWeight: 700, whiteSpace: "nowrap" }}>
-                                        ⭐ {lang === "id" ? "Paling Populer" : "Most Popular"}
-                                    </div>
-                                )}
-                                <div style={{ fontWeight: 800, fontSize: 20, color: plan.color, marginBottom: 8 }}>{plan.name}</div>
-                                <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 6 }}>
-                                    <span style={{ fontSize: 36, fontWeight: 800 }}>{formatCurrency(plan.price)}</span>
-                                </div>
-                                <div style={{ fontSize: 14, color: "#94A3B8", marginBottom: 24 }}>/{billing === "monthly" ? (lang === "id" ? "bulan" : "month") : (lang === "id" ? "tahun" : "year")}</div>
-                                <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 20, marginBottom: 24 }}>
-                                    {plan.features.map((f, j) => (
-                                        <div key={j} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 12 }}>
-                                            <span style={{ color: plan.color, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>✓</span>
-                                            <span style={{ fontSize: 15, color: "#334155" }}>{f}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <a 
-                                    href={whatsappLink} 
-                                    target="_blank" 
-                                    style={{ width: "100%" }}
-                                    onClick={() => trackCapiOnlyEvent('InitiateCheckout', { value: plan.price, currency: 'IDR' }, PIXEL_ID, CAPI_SECRET, TEST_CODE)}
-                                >
-                                    <button
-                                        className="btn-primary"
-                                        style={{ width: "100%", background: plan.highlight ? `linear-gradient(135deg, ${plan.color}, #0EA5E9)` : "white", color: plan.highlight ? "white" : plan.color, border: `2px solid ${plan.color}`, textAlign: "center" as const }}
-                                    >
-                                        {plan.cta}
-                                    </button>
-                                </a>
-                            </div>
-                        </AnimSection>
-                    ))}
-                </div>
-                <AnimSection delay={0.3}>
-                    <p style={{ textAlign: "center", marginTop: 28, fontSize: 14, color: "#94A3B8" }}>
-                        {t.pricingFoot}
-                    </p>
-                </AnimSection>
-            </section>
-
-            {/* FAQ */}
-            <section style={{ background: "#F8FAFC", padding: "72px 24px" }}>
-                <div style={{ maxWidth: 680, margin: "0 auto" }}>
-                    <AnimSection>
-                        <div style={{ textAlign: "center", marginBottom: 48 }}>
-                            <span className="badge">{t.faqBadge}</span>
-                            <h2 style={{ fontSize: "clamp(26px,4vw,36px)", fontWeight: 800, marginTop: 16 }}>{t.faqTitle}</h2>
-                        </div>
-                    </AnimSection>
-                    {t.faqs.map((faq, i) => (
-                        <AnimSection key={i} delay={i * 0.07}>
-                            <div className="card" style={{ marginBottom: 12, overflow: "hidden" }}>
-                                <button
-                                    onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                                    style={{ width: "100%", padding: "22px 24px", background: "none", border: "none", textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: "inherit" }}
-                                >
-                                    <span style={{ fontWeight: 700, fontSize: 16, color: "#0F172A", paddingRight: 16 }}>{faq.q}</span>
-                                    <span style={{ fontSize: 22, color: "#0EA5E9", flexShrink: 0, transform: activeFaq === i ? "rotate(45deg)" : "rotate(0)", transition: "transform 0.3s" }}>+</span>
-                                </button>
-                                {activeFaq === i && (
-                                    <div style={{ padding: "0 24px 22px", fontSize: 15, color: "#475569", lineHeight: 1.7 }}>{faq.a}</div>
-                                )}
-                            </div>
-                        </AnimSection>
-                    ))}
-                </div>
-            </section>
-
-            {/* CTA BOTTOM */}
-            <section style={{ padding: "80px 24px", textAlign: "center" }}>
-                <AnimSection>
-                    <div style={{ maxWidth: 620, margin: "0 auto", background: "linear-gradient(135deg,#0EA5E9,#10B981)", borderRadius: 28, padding: "56px 40px" }}>
-                        <h2 style={{ fontSize: "clamp(26px,4vw,38px)", fontWeight: 800, color: "white", lineHeight: 1.2, marginBottom: 16 }}>
-                            {t.ctaBottomTitle}
-                        </h2>
-                        <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, marginBottom: 32, lineHeight: 1.6 }}>
-                            {t.ctaBottomSub}
-                        </p>
-                        <a href={whatsappLink} target="_blank" onClick={() => trackCapiOnlyEvent('InitiateCheckout', {}, PIXEL_ID, CAPI_SECRET, TEST_CODE)}>
-                            <button style={{ background: "white", color: "#0EA5E9", border: "none", padding: "18px 40px", borderRadius: 50, fontWeight: 800, fontSize: 18, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(0,0,0,0.15)", transition: "transform 0.2s" }}
-                                onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.03)")}
-                                onMouseLeave={e => (e.currentTarget.style.transform = "")}
-                            >
-                                {t.ctaPesan}
-                            </button>
-                        </a>
-                        <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 16, fontSize: 14 }}>{t.ctaBottomFoot}</p>
-                    </div>
-                </AnimSection>
-            </section>
-
-            {/* FOOTER */}
-            <footer style={{ borderTop: "1px solid #E2E8F0", padding: "28px 24px", textAlign: "center" }}>
-                <div style={{ fontWeight: 800, fontSize: 18, background: "linear-gradient(135deg,#0EA5E9,#10B981)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 8 }}>Auto Sell with AI</div>
-                <p style={{ fontSize: 14, color: "#94A3B8" }}>{t.footerText}</p>
-            </footer>
+        {/* Status badge */}
+        <div style={styles.badge}>
+          <span style={styles.badgeDot} />
+          <span style={styles.badgeText}>SYSTEM ONLINE · AI INTEGRATION ACTIVE</span>
+          <span style={styles.badgeSep}>|</span>
+          <span style={styles.badgeVer}>v4.1.0</span>
         </div>
-    );
+
+        {/* Eyebrow */}
+        <div style={styles.eyebrow}>◈ &nbsp; ARTIFICIAL INTELLIGENT INTEGRATION DIVISION &nbsp; ◈</div>
+
+        {/* Main title */}
+        <div style={styles.titleWrap}>
+          <h1 style={styles.mainTitle}>
+            <span style={styles.titleAI}>AI</span>
+            <span style={styles.titleEL}>&nbsp;eL&nbsp;</span>
+            <span style={styles.titleVision}>Vision</span>
+          </h1>
+          <div style={styles.titleBar}>
+            <div style={styles.titleBarShimmer} />
+          </div>
+        </div>
+
+        {/* Typewriter */}
+        <div style={styles.taglineWrap}>
+          <span style={styles.tagline}>
+            {displayText}
+            <span style={styles.cursor}>▋</span>
+          </span>
+        </div>
+
+        {/* Rule */}
+        <div style={styles.rule}>
+          <div style={styles.ruleLine} />
+          <div style={styles.ruleDiamond} />
+          <div style={styles.ruleLine} />
+        </div>
+
+        {/* Stats */}
+        <div style={styles.statsRow}>
+          {[
+            { val: "99.4%", id: "Akurasi Model", en: "Model Accuracy" },
+            { val: "200+", id: "Klien Aktif", en: "Active Clients" },
+            { val: "1.2M", id: "Proses / Detik", en: "Processes / Sec" },
+            { val: "99.9%", id: "Uptime Sistem", en: "System Uptime" },
+          ].map((s, i) => (
+            <div key={i} style={styles.statCard}>
+              <div style={styles.statVal}>{s.val}</div>
+              <div style={styles.statId}>{s.id}</div>
+              <div style={styles.statEn}>{s.en}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Modules */}
+        <div style={styles.modules}>
+          {[
+            { icon: "◈", name: "Neural Core", desc: "Pemrosesan Data Cerdas" },
+            { icon: "⬡", name: "Vision Engine", desc: "Computer Vision & Analysis" },
+            { icon: "◎", name: "Language AI", desc: "NLP & Generative Model" },
+            { icon: "⬟", name: "Automation", desc: "Otomasi Proses Bisnis" },
+            { icon: "◉", name: "Integration", desc: "Koneksi Sistem Enterprise" },
+          ].map((m, i) => (
+            <div key={i} style={{ ...styles.modCard, animationDelay: `${0.6 + i * 0.1}s` }}>
+              <span style={styles.modIcon}>{m.icon}</span>
+              <span style={styles.modName}>{m.name}</span>
+              <span style={styles.modDesc}>{m.desc}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div style={styles.footer}>
+          <span style={styles.footerText}>
+            © {new Date().getFullYear()} AI eL Vision &nbsp;·&nbsp; Artificial Intelligent Integration Division &nbsp;·&nbsp; <em>The Future is Integrated</em>
+          </span>
+        </div>
+
+      </div>
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html, body { background-color: #04060f; }
+
+        @keyframes fadeUp {
+          from { opacity:0; transform:translateY(28px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.5)} }
+        @keyframes ringPulse {
+          0%{box-shadow:0 0 0 0 rgba(100,160,255,0.5)}
+          70%{box-shadow:0 0 0 9px rgba(100,160,255,0)}
+          100%{box-shadow:0 0 0 0 rgba(100,160,255,0)}
+        }
+        @keyframes barSlide {
+          from{transform:scaleX(0);opacity:0}
+          to{transform:scaleX(1);opacity:1}
+        }
+        @keyframes shimmer {
+          0%{background-position:200% center}
+          100%{background-position:-200% center}
+        }
+        @keyframes cardIn {
+          from{opacity:0;transform:translateY(18px) scale(0.96)}
+          to{opacity:1;transform:translateY(0) scale(1)}
+        }
+      `}</style>
+    </div>
+  );
 }
+
+const styles: Record<string, React.CSSProperties> = {
+  root: {
+    position: "relative",
+    minHeight: "100vh",
+    width: "100%",
+    background: "#04060f",
+    overflow: "hidden",
+    fontFamily: "'Rajdhani', sans-serif",
+    color: "#ffffff",
+  },
+  bgBase: {
+    position: "fixed", inset: 0,
+    background: "linear-gradient(160deg, #060a22 0%, #04060f 45%, #08041e 100%)",
+    zIndex: 0,
+  },
+  bgGlowCenter: {
+    position: "fixed", left: "50%", top: "38%",
+    transform: "translate(-50%,-50%)",
+    width: "72vw", height: "72vw", borderRadius: "50%",
+    background: "radial-gradient(ellipse, rgba(40,80,220,0.18) 0%, transparent 65%)",
+    zIndex: 0, pointerEvents: "none",
+  },
+  bgGlowLeft: {
+    position: "fixed", left: "-10%", top: "10%",
+    width: "48vw", height: "48vw", borderRadius: "50%",
+    background: "radial-gradient(ellipse, rgba(100,60,255,0.1) 0%, transparent 70%)",
+    zIndex: 0, pointerEvents: "none",
+  },
+  bgGlowRight: {
+    position: "fixed", right: "-12%", bottom: "5%",
+    width: "44vw", height: "44vw", borderRadius: "50%",
+    background: "radial-gradient(ellipse, rgba(30,120,255,0.1) 0%, transparent 70%)",
+    zIndex: 0, pointerEvents: "none",
+  },
+  canvas: {
+    position: "fixed", inset: 0, width: "100%", height: "100%",
+    zIndex: 1, pointerEvents: "none",
+  },
+  noise: {
+    position: "fixed", inset: 0, zIndex: 2,
+    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
+    backgroundRepeat: "repeat", opacity: 0.45, pointerEvents: "none",
+  },
+  vignette: {
+    position: "fixed", inset: 0, zIndex: 2,
+    background: "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 50%, rgba(2,4,15,0.72) 100%)",
+    pointerEvents: "none",
+  },
+  content: {
+    position: "relative", zIndex: 3,
+    minHeight: "100vh",
+    display: "flex", flexDirection: "column",
+    alignItems: "center", justifyContent: "center",
+    padding: "60px 32px", gap: "28px",
+  },
+
+  // Badge
+  badge: {
+    display: "flex", alignItems: "center", gap: "10px",
+    border: "1px solid rgba(91,159,255,0.14)",
+    borderRadius: "2px", padding: "5px 16px",
+    background: "rgba(91,159,255,0.05)",
+    backdropFilter: "blur(10px)",
+    animation: "fadeUp 0.7s ease both",
+  },
+  badgeDot: {
+    display: "inline-block",
+    width: "7px", height: "7px", borderRadius: "50%",
+    background: "#5b9fff",
+    boxShadow: "0 0 8px #5b9fff",
+    animation: "dotPulse 2s ease-in-out infinite, ringPulse 2.2s ease-in-out infinite",
+  },
+  badgeText: {
+    fontFamily: "'Share Tech Mono', monospace",
+    fontSize: "9.5px", letterSpacing: "0.22em", color: "#5b9fff",
+  },
+  badgeSep: { color: "#ffffff", fontSize: "11px" },
+  badgeVer: {
+    fontFamily: "'Share Tech Mono', monospace",
+    fontSize: "9px", letterSpacing: "0.15em", color: "#ffffff",
+  },
+
+  // Eyebrow
+  eyebrow: {
+    fontFamily: "'Share Tech Mono', monospace",
+    fontSize: "9px", letterSpacing: "0.26em",
+    color: "#ffffff",
+    textTransform: "uppercase", textAlign: "center",
+    animation: "fadeUp 0.7s ease 0.1s both",
+  },
+
+  // Title
+  titleWrap: {
+    textAlign: "center",
+    animation: "fadeUp 0.8s ease 0.18s both",
+  },
+  mainTitle: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: "clamp(48px, 9.5vw, 108px)",
+    fontWeight: 900, lineHeight: 1,
+    letterSpacing: "0.02em", whiteSpace: "nowrap", userSelect: "none",
+  },
+  titleAI: {
+    background: "linear-gradient(135deg, #82c8ff 0%, #4d8fff 45%, #7c5cfc 100%)",
+    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+    filter: "drop-shadow(0 0 32px rgba(91,159,255,0.6))",
+  },
+  titleEL: {
+    background: "linear-gradient(135deg, #c2deff 0%, #8ab4ff 100%)",
+    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+    filter: "drop-shadow(0 0 20px rgba(140,180,255,0.35))",
+  },
+  titleVision: {
+    background: "linear-gradient(135deg, #ffffff 0%, #c8d8ff 55%, #9b8fff 100%)",
+    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+  },
+  titleBar: {
+    margin: "14px auto 0",
+    width: "clamp(200px, 40%, 500px)", height: "2px",
+    background: "linear-gradient(90deg, transparent, rgba(91,159,255,0.65), rgba(155,125,255,0.65), transparent)",
+    transformOrigin: "center",
+    animation: "barSlide 1s ease 0.5s both",
+    borderRadius: "1px", overflow: "visible", position: "relative",
+  },
+  titleBarShimmer: {
+    position: "absolute", inset: 0, borderRadius: "1px",
+    background: "linear-gradient(90deg, transparent, rgba(200,220,255,0.95), transparent)",
+    backgroundSize: "200% auto",
+    animation: "shimmer 3s linear infinite",
+  },
+
+  // Tagline
+  taglineWrap: {
+    minHeight: "36px", textAlign: "center",
+    animation: "fadeUp 0.8s ease 0.3s both",
+    display: "flex", justifyContent: "center",
+    whiteSpace: "nowrap",
+  },
+  tagline: {
+    fontFamily: "'Rajdhani', sans-serif",
+    fontWeight: 500, fontSize: "clamp(11px, 2.8vw, 19px)",
+    letterSpacing: "0.06em", color: "#ffffff",
+    whiteSpace: "nowrap",
+  },
+  cursor: {
+    display: "inline-block", color: "#5b9fff",
+    animation: "blink 0.9s step-end infinite",
+    marginLeft: "2px", fontSize: "0.9em",
+  },
+
+  // Rule
+  rule: {
+    display: "flex", alignItems: "center", gap: "14px",
+    width: "min(560px, 88%)",
+    animation: "fadeUp 0.8s ease 0.38s both",
+  },
+  ruleLine: {
+    flex: 1, height: "1px",
+    background: "linear-gradient(90deg, transparent, rgba(91,159,255,0.25))",
+  },
+  ruleDiamond: {
+    width: "7px", height: "7px",
+    background: "linear-gradient(135deg, #5b9fff, #9b7dff)",
+    transform: "rotate(45deg)",
+    boxShadow: "0 0 12px rgba(91,159,255,0.7)",
+    borderRadius: "1px",
+  },
+
+  // Stats
+  statsRow: {
+    display: "flex", gap: "14px", flexWrap: "wrap", justifyContent: "center",
+    animation: "fadeUp 0.9s ease 0.45s both",
+  },
+  statCard: {
+    textAlign: "center",
+    padding: "18px 26px",
+    border: "1px solid rgba(91,159,255,0.13)",
+    borderRadius: "4px",
+    background: "rgba(20,40,100,0.22)",
+    backdropFilter: "blur(14px)",
+    minWidth: "136px",
+    transition: "border-color 0.3s, background 0.3s",
+  },
+  statVal: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: "26px", fontWeight: 700,
+    background: "linear-gradient(135deg, #8ac4ff, #6a8eff, #b09fff)",
+    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+    filter: "drop-shadow(0 0 12px rgba(91,159,255,0.5))",
+    lineHeight: 1,
+  },
+  statId: {
+    fontFamily: "'Rajdhani', sans-serif",
+    fontSize: "12px", fontWeight: 600, letterSpacing: "0.07em",
+    color: "#ffffff", marginTop: "6px",
+  },
+  statEn: {
+    fontFamily: "'Share Tech Mono', monospace",
+    fontSize: "8.5px", color: "#ffffff",
+    marginTop: "2px", letterSpacing: "0.1em",
+  },
+
+  // Modules
+  modules: {
+    display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center",
+    animation: "fadeUp 1s ease 0.55s both",
+  },
+  modCard: {
+    display: "flex", flexDirection: "column", alignItems: "center", gap: "5px",
+    padding: "18px 20px",
+    border: "1px solid rgba(91,159,255,0.11)",
+    borderRadius: "4px",
+    background: "rgba(10,20,60,0.45)",
+    backdropFilter: "blur(16px)",
+    minWidth: "128px",
+    animation: "cardIn 0.7s ease both",
+    transition: "border-color 0.3s, background 0.3s, transform 0.3s",
+  },
+  modIcon: {
+    fontSize: "20px",
+    background: "linear-gradient(135deg, #82b8ff, #9b7dff)",
+    WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+    filter: "drop-shadow(0 0 8px rgba(91,159,255,0.6))",
+    lineHeight: 1,
+  },
+  modName: {
+    fontFamily: "'Orbitron', sans-serif",
+    fontSize: "9.5px", fontWeight: 600, letterSpacing: "0.1em",
+    color: "#ffffff", textAlign: "center",
+  },
+  modDesc: {
+    fontFamily: "'Rajdhani', sans-serif",
+    fontSize: "10.5px", color: "#ffffff",
+    textAlign: "center", letterSpacing: "0.04em",
+  },
+
+  // Footer
+  footer: { animation: "fadeUp 1s ease 0.75s both" },
+  footerText: {
+    fontFamily: "'Share Tech Mono', monospace",
+    fontSize: "8.5px", letterSpacing: "0.16em",
+    color: "#ffffff",
+  },
+};
