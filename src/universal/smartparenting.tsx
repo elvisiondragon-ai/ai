@@ -8,19 +8,19 @@ import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewC
 import qrisBcaImage from "../assets/qrisbca.jpeg";
 
 // Asset Imports for ID
-import df01Id from '../assets/darkfem_id/df01_paradox.png';
-import df02Id from '../assets/darkfem_id/df02_2am_scroll.png';
-import df03Id from '../assets/darkfem_id/df03_nice_girl_dies.png';
-import df04Id from '../assets/darkfem_id/df04_teman_curhat.png';
-import df05Id from '../assets/darkfem_id/df05_comparison.png';
-import df06Id from '../assets/darkfem_id/df06_fuckboy_cycle.png';
-import df07Id from '../assets/darkfem_id/df07_drakor_fantasy.png';
-import df08Id from '../assets/darkfem_id/df08_secret_she_knows.png';
-import df09Id from '../assets/darkfem_id/df09_wake_up_call.png';
-import df10Id from '../assets/darkfem_id/df10_society_lie.png';
-import video1Id from '../assets/darkfem_id/video1.mp4';
-import video2Id from '../assets/darkfem_id/video2.mp4';
-import video3Id from '../assets/darkfem_id/video3.mp4';
+import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
+import df02Id from '../assets/darkfem/indo_image/df02_2am_scroll.png';
+import df03Id from '../assets/darkfem/indo_image/df03_nice_girl_dies.png';
+import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.png';
+import df05Id from '../assets/darkfem/indo_image/df05_comparison.png';
+import df06Id from '../assets/darkfem/indo_image/df06_fuckboy_cycle.png';
+import df07Id from '../assets/darkfem/indo_image/df07_drakor_fantasy.png';
+import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
+import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
+import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
+import video1Id from '../assets/darkfem/indo_image/video1.mp4';
+import video2Id from '../assets/darkfem/indo_image/video2.mp4';
+import video3Id from '../assets/darkfem/indo_image/video3.mp4';
 
 // For English, fallback to ID if we don't have separate assets yet.
 const assetsMap: any = {
