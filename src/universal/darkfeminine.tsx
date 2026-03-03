@@ -249,6 +249,110 @@ const contentData: any = {
         stickyText: "🌙 52 Moves —",
         stickyPrice: "Rp199,000",
         btnWa: "https://wa.me/6281234567890?text=Hello%20I%20want%20to%20order%20Dark%20Feminine",
+    },
+    ph: {
+        agitText: <>Tinuruan ka mula bata pa: maging mabait, huwag lumandi, maghintay kay Prince Charming. <strong>AT ANO ANG NANGYARI?</strong> Naging paboritong therapist ka habang siya ay pumili ng iba.<br /><br /><ul className="agitation-list"><li>Ang tapat → iniwan.</li><li>Ang pasensyosa → tinapakan.</li><li>Ang maunawain → tinuring na mahina.</li></ul><br />Pero ang "ordinaryong" babae? Nakukuha ang <span className="highlight">LAHAT</span>.<br /><br />Hindi dahil maganda siya. Hindi dahil swerte siya.<br />Kundi dahil may <span className="highlight">ALAM SIYANG HINDI MO NATUTUNAN kailanman.</span></>,
+        solText: <>Isang kumpletong gabay sa pambabaeng pang-akit batay sa modernong sikolohiya. Mula sa sining ng misteryo, push-pull dynamics, hanggang sa pagbuo ng aura na gagawing <strong>HINDI kana niya mawalay sa kanyang isip</strong>.<br /><br />Hindi murang tips. Hindi payong "maging totoo sa sarili".<br />Kundi isang <strong>KAALAMAN</strong> na tunay na <strong>MAGBABAGO sa iyong dalas (frequency).</strong></>,
+        checks: [
+            <>Ang Sining ng <strong>MISTERYO</strong> — paano maging hindi mahuhulaan</>,
+            <><strong>PUSH-PULL</strong> Dynamics — mang-akit at magtulak nang sabay</>,
+            <>Body language na gagawing <strong>HINDI siya makatingin sa iba</strong></>,
+            <>Pagkontrol ng emosyon — ikaw ang may hawak ng kapangyarihan</>,
+            <><strong>Abundance Mindset</strong> — tumigil sa paghahabol, magsimulang MANG-AKIT</>,
+            <><strong>Silent Power</strong> — ang lakas ng KATAHIMIKAN</>,
+            <><strong>Sexual Market Value</strong> — paano pataasin ang halaga mo</>,
+            <><strong>Text Game</strong> — gawin siyang adik sa mga text mo</>,
+        ],
+        checksPlus: "+ 44 pang mga hakbang...",
+        testis: [
+            { text: "Grabe, 2 linggo ko palang pina-practice ang move 7... yung lalaking nag-ghost sakin BIGLANG nag-DM ulit. Wala akong ginawa. NANAHIMIK lang ako. Yun pala ang sikreto 😭🔥", name: "Anisa, 24", time: "2 araw ang nakalipas" },
+            { text: "Ang asawa kong laging walang paki, ngayon ALIGAGA kapag aalis ako ng bahay. Hindi pagiging possessive. Kundi dahil nagsisimula siyang MATAKOT NA MAWALA AKO. Move 1 pa lang sobrang lakas na.", name: "Sari, 31", time: "5 araw ang nakalipas" },
+            { text: "Kinabukasan ng ex ko, ikinasal siya sa iba. Makalipas ang 6 na buwan, sinubukan ko ang dark feminine, at nakakuha ako ng lalaking 10x na mas gwapo at mayaman. At alam niyo ba? Ini-ISTALK ako ngayon ng ex ko araw-araw. Karma is real 💅", name: "Rina, 27", time: "1 linggo ang nakalipas" },
+        ],
+        bonuses: [
+            { icon: "🌙", title: "Femme Fatale Secrets (140 pahina)", desc: "Mga sikreto para gawin siyang baliw sa iyo — mula sa kumpiyansa sa sarili hanggang sa sining ng banayad (na legal) na impluwensya", price: "Rp97,000" },
+            { icon: "💜", title: "Femme Fatale Course (68 pahina)", desc: "Programa ng transpormasyon mula sa mabait na babae hanggang sa dark feminine — hakbang-hakbang", price: "Rp127,000" },
+            { icon: "📅", title: "30-Day Workbook (73 pahina)", desc: "Pang-araw-araw na hamon upang buuin ang iyong pang-akit sa loob ng 30 araw", price: "Rp97,000" },
+            { icon: "🗡️", title: "The Art of Seduction — Robert Greene (31 pahina)", desc: "Buod ng mga pinakalegendaryong estratehiya sa pang-aakit sa kasaysayan", price: "Rp77,000" },
+            { icon: "👑", title: "High Value Woman (22 pahina)", desc: "Mabilisang gabay upang maging babaeng may mataas na halaga", price: "Rp57,000" },
+            { icon: "✨", title: "Simply Irresistible (272 pahina)", desc: "Palabasin ang iyong angking pang-akit — kumpletong gabay mula sa mga case study ng mga pinakanakakabighaning babae sa kasaysayan", price: "Rp147,000" },
+            { icon: "🔥", title: "How to Please Your Man (29 pahina)", desc: "Mga sikreto sa kwarto na magpapabaliw at magpapasuko sa kanya", price: "Rp97,000", isHighlight: true, highlightText: "Isang taboo na aklat na madalas ibinebenta nang hiwalay sa libu-libong halaga, nagtuturo ng mga sikreto sa kwarto upang mapasaya ang lalaki... isinama rito nang LIBRE bilang bonus." },
+            { icon: "💋", title: "Purple Sheets (61 pahina)", desc: "Gabay sa sukdulang sarap — mga teknik na hindi itinuro ninuman", price: "Rp97,000" },
+        ],
+        valueRows: [
+            { title: "Main Ebook: 52 Dark Feminine Moves (156 pahina)", price: "Rp199,000" },
+            { title: "Bonus 1: Femme Fatale Secrets (140 pahina)", price: "Rp97,000" },
+            { title: "Bonus 2: Femme Fatale Course (68 pahina)", price: "Rp127,000" },
+            { title: "Bonus 3: 30-Day Workbook (73 pahina)", price: "Rp97,000" },
+            { title: "Bonus 4: The Art of Seduction (31 pahina)", price: "Rp77,000" },
+            { title: "Bonus 5: High Value Woman (22 pahina)", price: "Rp57,000" },
+            { title: "Bonus 6: Simply Irresistible (272 pahina)", price: "Rp147,000" },
+            { title: "Bonus 7: How to Please Your Man (29 pahina)", price: "Rp97,000" },
+            { title: "Bonus 8: Purple Sheets (61 pahina)", price: "Rp97,000" },
+        ],
+        exclItems: [
+            "Mga babaeng naniniwala pa rin na sapat na ang 'maghintay sa tamang tao'",
+            "Mga taong tumatangging magbago at puro reklamo lamang",
+            "Mga naghahanap ng instant na resulta na walang kasamang pagsisikap",
+            "Mga hindi pa handang talikuran ang lumang pagiging 'mabait' at 'boring'",
+        ],
+        faqs: [
+            { q: "Paano ko ito maa-access?", a: "Pagkatapos ng pagbabayad, ipapadala ang ebook sa iyong WhatsApp sa loob ng 5 minuto. Sa format na HTML, na mababasa sa telepono, tablet, o computer." },
+            { q: "Ito ba ay ligtas at pribado?", a: "100% pribado. Walang pangalan ng produkto sa resibo ng pagbabayad. Ang lahat ay ihinahatid sa digital at pribadong paraan." },
+            { q: "Tinuturuan ba nito akong manira ng relasyon?", a: "HINDI. Itinuturo ng Dark Feminine na maging isang HIGH VALUE WOMAN na nakakaintindi ng sikolohiya ng pang-akit. Hindi upang maging masamang tao, kundi upang maging MAHALAGA." },
+            { q: "Gaano katagal bago ko makita ang resulta?", a: "Pansin ng karamihan sa aming mambabasa ang pagbabago sa loob ng 2-4 linggo ng tuloy-tuloy na pagsasanay. Ang Move 1-7 ay sapat na para makita ang malaking pagbabago." },
+            { q: "Maaari ba itong gamitin ng mga relihiyosong babae?", a: "Oo. Ang Dark Feminine ay hindi tungkol sa damit o panlabas na anyo. Ito ay tungkol sa AURA, MISTERYO, at PANANAW SA BUHAY. Marami sa aming mga mambabasa ay nakahi-jab." },
+        ],
+        pains: [
+            { icon: "😔", text: <>Laging 'best friend' pero <strong>HINDI</strong> kailanman ang unang pili</> },
+            { icon: "💔", text: <>Iniwan o niloko kahit tapat at mabuti ka</> },
+            { icon: "😤", text: <>Naiinggit sa mga 'ordinaryong' babae na nakukuha ang mga pangarap mong lalaki</> },
+            { icon: "📱", text: <>Nanunuod ng drama ng 2AM at palihim na hinahangad na <strong>MAGING katulad niya</strong></> },
+            { icon: "🔄", text: <>Laging nakakaakit ng toxic na lalaki — ghinost pagkatapos ng 3 buwan</> },
+            { icon: "😶", text: <>Binansagang 'sobrang bait' na ang tunay na ibig sabihin ay 'sobrang <strong>NAKAKAINIP</strong>'</> },
+        ],
+        urgency: (t: React.ReactNode) => <>⚡ SPECIAL PRICE — Matatapos sa {t} ⚡</>,
+        heroBadge: "🌙 SIKRETONG GABAY NG MGA BABAE",
+        heroH1a: "Maging Babaeng",
+        heroH1b: "Hindi Niya Makakalimutan",
+        heroSub: "52 sikretong hakbang sa pang-aakit na hindi itinuro kailanman ng iyong ina, guro, o sinuman.",
+        heroCta: "KUNIN ANG 52 SIKRETONG HAKBANG NGAYON →",
+        socialProof: "na babae ang nagpatunay",
+        socialProofNum: "4,200+ babae",
+        painLabel: "MAGING TAPAT SA IYONG SARILI",
+        painH2a: "Naranasan Mo Na Ba",
+        painH2b: "Ang Lahat Nang Ito?",
+        agitH2a: 'Bakit Yung "Ordinaryong Babae"',
+        agitH2b: "Ang Nakakuha Ng CEO?",
+        solLabel: "ANG SAGOT",
+        solH2a: "Dark Feminine",
+        solH2b: "52 Sikretong Hakbang",
+        contentsLabel: "ANG IYONG MATUTUTUNAN",
+        contentsH2: "52 Kumpletong Hakbang",
+        contentsH2Span: "Pang-akit",
+        testiLabel: "NAPATUNAYAN NA NILA",
+        testiH2: "Tunay na Resulta Mula",
+        testiH2Span: "Sa 4,200+ Babae",
+        bonusLabel: "EKSKLUSIBONG BONUSES",
+        bonusH2: "8 Bonus na Nagkakahalaga ng",
+        bonusH2Span: "Rp795,000",
+        priceLabel: "PANGHABAMBUHAY NA INVESTMENT",
+        priceH2: "Kunin Ang Lahat",
+        priceTodayLabel: "Presyo Ngayon",
+        savingsBadge: "🎉 Makatipid ng 80% — Limitadong Alok!",
+        priceCta: "KUNIN NA NGAYON — Rp199,000",
+        priceSub: "📲 Ipapasa IMMEDIATELY sa iyong WhatsApp",
+        exclH2: "Ang Dark Feminine ay HINDI para sa:",
+        exclCta: '"Ito ay PARA LAMANG sa mga babaeng HANDA ng hawakan ang kontrol sa kanilang buhay."',
+        faqLabel: "Mga Madalas Itanong",
+        faqH2: "Mayroon Pa Bang",
+        faqH2Span: "Tanong?",
+        faqCta: "OO, HANDA NA AKONG MAGBAGO →",
+        faqSub: "📲 Ipapasa IMMEDIATELY sa iyong WhatsApp",
+        stickyCta: "UMORDER NGAYON",
+        stickyText: "🌙 52 Hakbang —",
+        stickyPrice: "Rp199,000",
+        btnWa: "https://wa.me/6281234567890?text=Hello%20Gusto%20kong%20umorder%20ng%20Dark%20Feminine",
     }
 };
 
@@ -309,19 +413,19 @@ const DarkFeminineTSX = () => {
     const hasEn = searchParams.has('en');
     const hasSg = searchParams.has('sg');
     const hasId = searchParams.has('id');
-    const initLang = hasEn ? 'en' : (hasSg ? 'sg' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id')));
-    const [lang, setLang] = useState<'id' | 'en' | 'sg'>(initLang as 'id'|'en'|'sg');
+    const hasPh = searchParams.has('ph');
+    const initLang = hasEn ? 'en' : (hasSg ? 'sg' : (hasPh ? 'ph' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id'))));
+    const [lang, setLang] = useState<'id' | 'en' | 'sg' | 'ph'>(initLang as 'id' | 'en' | 'sg' | 'ph');
 
-    const toggleLang = () => {
-        if (lang === 'id') {
-            setLang('en');
-            setSearchParams({ en: '' });
-        } else if (lang === 'en') {
-            setLang('sg');
-            setSearchParams({ sg: '' });
+    const handleLangChange = (newLang: 'id' | 'en' | 'sg' | 'ph') => {
+        setLang(newLang);
+        setSearchParams({ [newLang]: '' });
+
+        // Auto-select PayPal if English is chosen
+        if (newLang === 'en' || newLang === 'sg' || newLang === 'ph') {
+            setPayment("PAYPAL");
         } else {
-            setLang('id');
-            setSearchParams({ id: '' });
+            setPayment("QRIS");
         }
     };
 
@@ -329,6 +433,7 @@ const DarkFeminineTSX = () => {
     const getBaseProductName = () => {
         if (lang === 'en') return "Dark Feminine EN";
         if (lang === 'sg') return "Universal Dark Feminine SG";
+        if (lang === 'ph') return "Universal Dark Feminine PH";
         return "Universal Dark Feminine ID"; // Default ID
     };
 
@@ -338,7 +443,7 @@ const DarkFeminineTSX = () => {
     const [purchasePassword, setPurchasePassword] = useState("");
     const [purchasePasswordRepeat, setPurchasePasswordRepeat] = useState("");
     const [showPurchasePassword, setShowPurchasePassword] = useState(false);
-    const [payment, setPayment] = useState("QRIS");
+    const [payment, setPayment] = useState(initLang === 'en' || initLang === 'sg' || initLang === 'ph' ? "PAYPAL" : "QRIS");
     const [addUpsell, setAddUpsell] = useState(false);
     const { toast } = useToast();
 
@@ -506,6 +611,12 @@ const DarkFeminineTSX = () => {
     const [successFree, setSuccessFree] = useState(false);
 
     const priceID = addUpsell ? 249000 : 199000;
+    const priceUSD = addUpsell ? 19 : 15;
+    const isEnglish = lang === 'en' || lang === 'sg' || lang === 'ph';
+    const finalAmount = isEnglish ? priceUSD : priceID;
+    const finalCurrency = isEnglish ? 'USD' : 'IDR';
+    const finalPriceStr = isEnglish ? `$${finalAmount}` : `Rp${finalAmount.toLocaleString('id-ID')}`;
+
     const PIXEL_ID = '3319324491540889';
 
     const sendWAAlert = async (type: 'attempt' | 'success', details: any) => {
@@ -513,7 +624,7 @@ const DarkFeminineTSX = () => {
             const productDesc = `Dark Feminine Package`;
             const msg = type === 'attempt'
                 ? `🔔 *Mencoba Checkout*\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nMetode: ${details.method}`
-                : `✅ *Checkout Sukses*\nRef: ${details.ref}\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nTotal: Rp ${details.amount.toLocaleString('id-ID')}`;
+                : `✅ *Checkout Sukses*\nRef: ${details.ref}\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nTotal: ${finalPriceStr}`;
 
             await fetch('https://watzapp.web.id/api/message', {
                 method: 'POST',
@@ -540,7 +651,7 @@ const DarkFeminineTSX = () => {
             await supabase.functions.invoke('capi-universal', {
                 body: {
                     pixelId: PIXEL_ID, eventName: 'AddPaymentInfo', eventSourceUrl: window.location.href,
-                    customData: { content_name: productDesc, value: priceID, currency: 'IDR' },
+                    customData: { content_name: productDesc, value: finalAmount, currency: finalCurrency },
                     userData: { fbc, fbp, client_ip_address: clientIp, fn: name, ph: phone, em: email }
                 }
             });
@@ -550,7 +661,7 @@ const DarkFeminineTSX = () => {
             subscriptionType: 'universal', paymentMethod: payment,
             userName: name, userEmail: email, phoneNumber: phone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
-            amount: priceID, currency: 'IDR', quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
+            amount: finalAmount, currency: finalCurrency, quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
             fbc, fbp, clientIp, purchasePassword // Pass password to edge function instead of local signup
         };
 
@@ -566,20 +677,28 @@ const DarkFeminineTSX = () => {
                         duration: 5000,
                     });
                 }
-                setPaymentData(data); setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref: data.tripay_reference, name, phone, amount: priceID });
+                setPaymentData(data);
+
+                // If PayPal, redirect to checkoutUrl directly
+                if (payment === 'PAYPAL' && data.checkoutUrl) {
+                    window.location.href = data.checkoutUrl;
+                    return;
+                }
+
+                setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
+                sendWAAlert('success', { ref: data.tripay_reference, name, phone, amount: finalAmount });
             } else if (payment === 'BCA_MANUAL') {
                 const ref = `MANUAL-${Date.now()}`;
-                setPaymentData({ paymentMethod: 'BCA_MANUAL', amount: priceID, status: 'UNPAID', tripay_reference: ref });
+                setPaymentData({ paymentMethod: 'BCA_MANUAL', amount: finalAmount, status: 'UNPAID', tripay_reference: ref });
                 setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref, name, phone, amount: priceID });
+                sendWAAlert('success', { ref, name, phone, amount: finalAmount });
             } else {
                 alert(data?.error || "Gagal membuat pembayaran, hubungi admin via WhatsApp.");
             }
-        } catch (e: any) { 
+        } catch (e: any) {
             console.error('Payment API Error:', e);
             const errorMessage = e?.message || e?.error?.message || e?.toString() || 'Unknown Error';
-            alert(`Sistem mendeteksi error: ${errorMessage}\n\nMohon screenshot pesan ini dan hubungi admin via WhatsApp.`); 
+            alert(`Sistem mendeteksi error: ${errorMessage}\n\nMohon screenshot pesan ini dan hubungi admin via WhatsApp.`);
         } finally { setLoading(false); }
     };
 
@@ -659,9 +778,9 @@ const DarkFeminineTSX = () => {
         );
     }, [PIXEL_ID]);
 
-    const contentLang = lang === 'sg' ? 'en' : lang;
-    const c = contentData[contentLang];
-    const assets = assetsMap[contentLang];
+    const contentLang = lang; // Since all 3 (id, en, ph) exist now, map directly OR map sg back to en
+    const c = contentData[contentLang === 'sg' ? 'en' : contentLang];
+    const assets = assetsMap[contentLang === 'ph' ? 'en' : (contentLang === 'sg' ? 'en' : contentLang)];
 
     const [countdown, setCountdown] = useState("00:00:00");
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -717,9 +836,9 @@ const DarkFeminineTSX = () => {
         window.addEventListener('scroll', handleScroll);
         setTimeout(handleScroll, 100);
         return () => window.removeEventListener('scroll', handleScroll);
-        }, []);
+    }, []);
 
-        return (
+    return (
         <div style={{ position: 'relative' }}>
             <Toaster />
             {/* LOGIN MODAL */}
@@ -737,8 +856,8 @@ const DarkFeminineTSX = () => {
                                 <label style={{ display: 'block', fontSize: '14px', color: 'white', marginBottom: '8px', fontWeight: 600 }}>Email</label>
                                 <div style={{ position: 'relative' }}>
                                     <Mail style={{ position: 'absolute', left: '14px', top: '14px', color: 'white' }} size={18} />
-                                    <input 
-                                        type="email" 
+                                    <input
+                                        type="email"
                                         required
                                         value={loginEmail}
                                         onChange={(e) => setLoginEmail(e.target.value)}
@@ -747,7 +866,7 @@ const DarkFeminineTSX = () => {
                                     />
                                 </div>
                             </div>
-                            
+
                             <div>
                                 <label style={{ display: 'block', fontSize: '14px', color: 'white', marginBottom: '8px', fontWeight: 600 }}>Password</label>
                                 <div style={{ position: 'relative' }}>
@@ -769,7 +888,7 @@ const DarkFeminineTSX = () => {
                                 {isLoginLoading ? 'Memproses...' : 'Login Sekarang'}
                             </button>
                         </form>
-                        
+
                         <div style={{ textAlign: 'center', marginTop: '20px' }}>
                             <button onClick={handleForgotPassword} disabled={isLoginLoading} style={{ background: 'transparent', border: 'none', color: 'white', fontSize: '14px', cursor: 'pointer', fontWeight: 600 }}>
                                 Lupa Password? (Isi email lalu klik ini)
@@ -892,11 +1011,12 @@ const DarkFeminineTSX = () => {
         #df-lang-btn {
           position: fixed; top: 52px; right: 16px; z-index: 9998;
           background: var(--bg-card); border: 1px solid var(--purple);
-          color: var(--cream); font-size: 13px; font-weight: 700;
-          padding: 6px 12px; border-radius: 20px; cursor: pointer;
-          letter-spacing: 0.04em; transition: all 0.2s;
+          color: var(--cream); font-size: 14px; font-weight: 700;
+          padding: 8px 14px; border-radius: 20px; cursor: pointer;
+          letter-spacing: 0.04em; transition: all 0.2s; outline: none;
+          appearance: none;
         }
-        #df-lang-btn:hover { background: var(--purple); color: #fff; }
+        #df-lang-btn:focus { border-color: var(--gold-light); }
 
         #df-hero {
           min-height: 88vh; display: flex; align-items: center;
@@ -1109,9 +1229,11 @@ const DarkFeminineTSX = () => {
                         <span>{c.urgency(<span style={{ fontFamily: 'var(--font-display)', fontSize: '18px', letterSpacing: '0.08em', color: 'var(--gold-light)' }}>{countdown}</span>)}</span>
                     </div>
 
-                    <button id="df-lang-btn" onClick={toggleLang}>
-                        {lang === 'id' ? '🇮🇩 ID' : '🇬🇧 EN'}
-                    </button>
+                    <select id="df-lang-btn" value={lang} onChange={(e) => handleLangChange(e.target.value as any)}>
+                        <option value="id">🇮🇩 Indonesia</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="ph">🇵🇭 Philippines</option>
+                    </select>
 
                     {/* HERO */}
                     <section id="df-hero">
@@ -1189,7 +1311,7 @@ const DarkFeminineTSX = () => {
                                 <video controls playsInline preload="metadata" poster={assets.df03}>
                                     <source src={assets.video1} type="video/mp4" />
                                 </video>
-                                <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : 'Transformation Story'}</span></div>
+                                <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : (lang === 'ph' ? 'Kuwento ng Transpormasyon' : 'Transformation Story')}</span></div>
                             </div>
                         </div>
                     </section>
@@ -1227,13 +1349,13 @@ const DarkFeminineTSX = () => {
                                 <video controls playsInline preload="metadata" poster={assets.df04}>
                                     <source src={assets.video2} type="video/mp4" />
                                 </video>
-                                <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : 'From Ignored to Admired'}</span></div>
+                                <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : (lang === 'ph' ? 'Mula sa Binalewala Hanggang Hinangaan' : 'From Ignored to Admired')}</span></div>
                             </div>
                             <div className="df-video-player">
                                 <video controls playsInline preload="metadata" poster={assets.df09}>
                                     <source src={assets.video3} type="video/mp4" />
                                 </video>
-                                <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : 'The Forgotten Wife'}</span></div>
+                                <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : (lang === 'ph' ? 'Ang Nakalimutang Asawa' : 'The Forgotten Wife')}</span></div>
                             </div>
                         </div>
                     </section>
@@ -1248,7 +1370,7 @@ const DarkFeminineTSX = () => {
                                     <div key={i} className={`df-bonus-card ${b.isHighlight ? 'df-bonus-highlight' : ''}`}>
                                         <div style={{ fontSize: '28px', flexShrink: 0 }}>{b.icon}</div>
                                         <div>
-                                            {b.isHighlight && <div style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--red), #b91c1c)', color: '#fff', padding: '3px 8px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', display: 'inline-block', marginBottom: '8px', textTransform: 'uppercase' }}>{lang === 'id' ? '🔥 BUKU TABU (DIJUAL TERPISAH)' : '🔥 TABOO BOOK (SOLD SEPARATELY)'}</div>}
+                                            {b.isHighlight && <div style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--red), #b91c1c)', color: '#fff', padding: '3px 8px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', display: 'inline-block', marginBottom: '8px', textTransform: 'uppercase' }}>{lang === 'id' ? '🔥 BUKU TABU (DIJUAL TERPISAH)' : (lang === 'ph' ? '🔥 TABOO BOOK (AY BINEBENTA NANG HIWALAY)' : '🔥 TABOO BOOK (SOLD SEPARATELY)')}</div>}
                                             <div style={{ fontSize: '17px', fontWeight: 700, color: b.isHighlight ? 'var(--gold-light)' : 'var(--white)', marginBottom: '4px' }}>{b.title}</div>
                                             <div style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.6 }}>{b.desc}</div>
                                             {b.highlightText && <div style={{ fontSize: '14px', color: 'var(--cream)', fontStyle: 'italic', marginTop: '6px', padding: '8px', background: 'rgba(239, 68, 68, 0.1)', borderLeft: '3px solid var(--red)' }}>{b.highlightText}</div>}
@@ -1269,7 +1391,7 @@ const DarkFeminineTSX = () => {
                     <section style={{ padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.priceLabel}</div>
-                            <h2 className="df-section-h2">{c.priceH2} <span className="df-gold">{lang === 'id' ? 'Hari Ini' : 'Today'}</span></h2>
+                            <h2 className="df-section-h2">{c.priceH2} <span className="df-gold">{lang === 'id' ? 'Hari Ini' : (lang === 'ph' ? 'Ngayon' : 'Today')}</span></h2>
                             <div className="df-img-box">
                                 <img src={assets.df08} alt="Pricing Visual" />
                             </div>
@@ -1283,12 +1405,12 @@ const DarkFeminineTSX = () => {
                                     ))}
                                 </div>
                                 <div style={{ marginTop: '20px', padding: '16px', background: 'rgba(239,68,68,0.08)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <span style={{ fontSize: '15px', color: 'var(--muted)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{lang === 'id' ? 'Total Nilai' : 'Total Value'}</span>
+                                    <span style={{ fontSize: '15px', color: 'var(--muted)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{lang === 'id' ? 'Total Nilai' : (lang === 'ph' ? 'Kabuuan Na Halaga' : 'Total Value')}</span>
                                     <span style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 700, color: 'var(--red)', textDecoration: 'line-through' }}>Rp995.000</span>
                                 </div>
                                 <div className="df-final-row">
                                     <span style={{ fontSize: '15px', color: 'var(--cream)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{c.priceTodayLabel}</span>
-                                    <span className="df-final-price">Rp199.000</span>
+                                    <span className="df-final-price">{isEnglish ? "$15" : "Rp199.000"}</span>
                                 </div>
                                 <div style={{ display: 'block', textAlign: 'center', marginTop: '14px', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: 'var(--green-wa)', fontSize: '14px', fontWeight: 700, padding: '9px', borderRadius: '10px', letterSpacing: '0.06em' }}>
                                     {c.savingsBadge}
@@ -1306,7 +1428,7 @@ const DarkFeminineTSX = () => {
                     {/* EXCLUSIVITY */}
                     <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
-                            <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : 'NOT FOR EVERYONE'}</div>
+                            <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : (lang === 'ph' ? 'HINDI PARA SA LAHAT' : 'NOT FOR EVERYONE')}</div>
                             <h2 className="df-section-h2">{c.exclH2}</h2>
                             <div className="df-img-box">
                                 <img src={assets.df09} alt="Exclusivity Visual" />
@@ -1326,30 +1448,30 @@ const DarkFeminineTSX = () => {
 
                                 <div className="df-free-form">
                                     <div style={{ textAlign: 'center', marginBottom: '14px' }}>
-                                        <span style={{ color: 'var(--purple-light)', fontSize: '18px', fontWeight: 700 }}>🎁 Dapatkan Free Ebook</span>
+                                        <span style={{ color: 'var(--purple-light)', fontSize: '18px', fontWeight: 700 }}>🎁 {lang === 'id' ? 'Dapatkan Free Ebook' : (lang === 'ph' ? 'Kumuha ng Libreng Ebook' : 'Get a Free Ebook')}</span>
                                     </div>
 
                                     {successFree ? (
                                         <div style={{ textAlign: 'center', background: 'rgba(37, 211, 102, 0.1)', border: '1px solid rgba(37, 211, 102, 0.3)', padding: '16px', borderRadius: '8px' }}>
                                             <div style={{ fontSize: '24px', marginBottom: '8px' }}>✅</div>
-                                            <strong style={{ display: 'block', color: 'var(--green-wa)', marginBottom: '4px' }}>Berhasil!</strong>
-                                            <span style={{ fontSize: '14px', color: 'var(--cream)' }}>Silahkan Periksa whatsapp anda,, Ketik Ya jika anda ingin menerima Free ebook..</span>
+                                            <strong style={{ display: 'block', color: 'var(--green-wa)', marginBottom: '4px' }}>{lang === 'id' ? 'Berhasil!' : (lang === 'ph' ? 'Tagumpay!' : 'Success!')}</strong>
+                                            <span style={{ fontSize: '14px', color: 'var(--cream)' }}>{lang === 'id' ? 'Silahkan Periksa whatsapp anda,, Ketik Ya jika anda ingin menerima Free ebook..' : (lang === 'ph' ? 'Mangyaring suriin ang iyong WhatsApp, Mag-type ng Oo kung gusto mong matanggap ang Libreng ebook..' : 'Please check your WhatsApp, Type Yes if you want to receive the Free ebook..')}</span>
                                         </div>
                                     ) : (
                                         <div>
                                             <input
                                                 type="text"
                                                 className="df-free-input"
-                                                placeholder="Nama Kamu"
+                                                placeholder={lang === 'id' ? "Nama Kamu" : (lang === 'ph' ? "Pangalan Mo" : "Your Name")}
                                                 value={nameFree}
                                                 onChange={(e) => setNameFree(e.target.value)}
                                             />
                                             <div className="df-free-pwrap">
-                                                <div className="df-free-ppfx">{lang === 'id' ? '🇮🇩 +62' : '🌐 +'}</div>
+                                                <div className="df-free-ppfx">{lang === 'id' ? '🇮🇩 +62' : (lang === 'ph' ? '🇵🇭 +63' : '🌐 +')}</div>
                                                 <input
                                                     type="tel"
                                                     className="df-free-input"
-                                                    placeholder={lang === 'id' ? "812345678" : "Country Code + Number"}
+                                                    placeholder={lang === 'id' ? "812345678" : (lang === 'ph' ? "912345678" : "Country Code + Number")}
                                                     value={waFree}
                                                     onChange={(e) => setWaFree(e.target.value)}
                                                 />
@@ -1357,7 +1479,7 @@ const DarkFeminineTSX = () => {
                                             <input
                                                 type="email"
                                                 className="df-free-input"
-                                                placeholder="Email Aktif"
+                                                placeholder={lang === 'id' ? "Email Aktif" : (lang === 'ph' ? "Aktibong Email" : "Active Email")}
                                                 value={emailFree}
                                                 onChange={(e) => setEmailFree(e.target.value)}
                                                 style={{ marginBottom: '16px' }}
@@ -1367,7 +1489,7 @@ const DarkFeminineTSX = () => {
                                                 onClick={submitFreeEbook}
                                                 disabled={loadingFree}
                                             >
-                                                {loadingFree ? 'Memproses...' : 'Kirim Sekarang →'}
+                                                {loadingFree ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : (lang === 'id' ? 'Kirim Sekarang →' : (lang === 'ph' ? 'Ipadala Ngayon →' : 'Send Now →'))}
                                             </button>
                                         </div>
                                     )}
@@ -1376,17 +1498,17 @@ const DarkFeminineTSX = () => {
                         </div>
                     </section>
 
-                    
+
                     {/* REVIEWS SECTION */}
                     <section id="reviews-section" style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
-                            <div className="df-section-label">ULASAN PELANGGAN</div>
+                            <div className="df-section-label">{lang === 'id' ? 'ULASAN PELANGGAN' : (lang === 'ph' ? 'MGA REVIEW NG CUSTOMER' : 'CUSTOMER REVIEWS')}</div>
                             <h2 className="df-section-h2" style={{ fontSize: '28px', marginBottom: '8px' }}>Review Real Customer</h2>
                             <p style={{ fontSize: '15px', color: 'var(--muted)', marginBottom: '16px', lineHeight: 1.6 }}>
-                                (Anda bisa memberikan ulasan setelah membeli dan login dengan email anda) <br/>
-                                Ulasan pasti disensor untuk privasi anda.
+                                {lang === 'id' ? '(Anda bisa memberikan ulasan setelah membeli dan login dengan email anda)' : (lang === 'ph' ? '(Maaari kang mag-iwan ng review pagkatapos bumili at mag-login gamit ang iyong email)' : '(You can leave a review after purchasing and logging in with your email)')} <br />
+                                {lang === 'id' ? 'Ulasan pasti disensor untuk privasi anda.' : (lang === 'ph' ? 'Siniserensura ang mga ulasan para sa iyong privacy.' : 'Reviews are censored for your privacy.')}
                             </p>
-                            
+
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', background: 'rgba(201,153,26,0.1)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(201,153,26,0.3)' }}>
                                 <div style={{ fontSize: '42px', fontWeight: 700, color: 'var(--gold-light)', lineHeight: 1 }}>4.8</div>
                                 <div>
@@ -1418,15 +1540,15 @@ const DarkFeminineTSX = () => {
                                             </div>
                                             <button onClick={handleLogout} style={{ background: 'transparent', border: '1px solid var(--red)', color: 'var(--red)', padding: '4px 12px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer' }}>Logout</button>
                                         </div>
-                                        
+
                                         <div style={{ marginBottom: '12px' }}>
                                             <div style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '8px' }}>Beri Rating:</div>
                                             <div style={{ display: 'flex', gap: '8px' }}>
-                                                {[1,2,3,4,5].map(star => (
-                                                    <Star 
-                                                        key={star} 
-                                                        size={28} 
-                                                        fill={reviewRating >= star ? "var(--gold-light)" : "transparent"} 
+                                                {[1, 2, 3, 4, 5].map(star => (
+                                                    <Star
+                                                        key={star}
+                                                        size={28}
+                                                        fill={reviewRating >= star ? "var(--gold-light)" : "transparent"}
                                                         color={reviewRating >= star ? "var(--gold-light)" : "var(--muted)"}
                                                         style={{ cursor: 'pointer', transition: 'all 0.2s' }}
                                                         onClick={() => setReviewRating(star)}
@@ -1435,13 +1557,13 @@ const DarkFeminineTSX = () => {
                                             </div>
                                         </div>
 
-                                        <textarea 
+                                        <textarea
                                             value={reviewText}
                                             onChange={(e) => setReviewText(e.target.value)}
                                             placeholder="Tulis ulasan jujur Anda di sini..."
                                             style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--cream)', padding: '14px', borderRadius: '8px', minHeight: '100px', fontFamily: 'var(--font-body)', fontSize: '15px', outline: 'none', marginBottom: '12px' }}
                                         />
-                                        
+
                                         <div style={{ display: 'flex', gap: '12px' }}>
                                             <button onClick={submitReview} disabled={isLoginLoading} style={{ flex: 1, background: 'var(--purple)', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', opacity: isLoginLoading ? 0.7 : 1 }}>
                                                 {isLoginLoading ? 'Memproses...' : (userReview ? 'Update Ulasan' : 'Kirim Ulasan')}
@@ -1461,38 +1583,38 @@ const DarkFeminineTSX = () => {
                                 {[...dbReviews, ...MOCK_REVIEWS]
                                     .filter(r => (!r.lang || r.lang === (lang === 'sg' ? 'en' : lang) || (lang === 'id' && r.lang === 'id')) && (r.comment || r.text) && (r.comment?.trim() !== '' || r.text?.trim() !== ''))
                                     .slice(0, showReviewsCount).map((r, i) => (
-                                    <div key={i} style={{ background: 'var(--bg-section)', borderRadius: '12px', padding: '16px', marginBottom: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                                            <div>
-                                                <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                                    {(() => {
-                                                        if (r.user_email) {
-                                                            const parts = r.user_email.split('@');
-                                                            if (parts.length === 2) {
-                                                                const namePart = parts[0];
-                                                                const showLen = Math.max(3, Math.floor(namePart.length / 2));
-                                                                return `${namePart.slice(0, showLen)}***@${parts[1]}`;
+                                        <div key={i} style={{ background: 'var(--bg-section)', borderRadius: '12px', padding: '16px', marginBottom: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                                                <div>
+                                                    <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                        {(() => {
+                                                            if (r.user_email) {
+                                                                const parts = r.user_email.split('@');
+                                                                if (parts.length === 2) {
+                                                                    const namePart = parts[0];
+                                                                    const showLen = Math.max(3, Math.floor(namePart.length / 2));
+                                                                    return `${namePart.slice(0, showLen)}***@${parts[1]}`;
+                                                                }
                                                             }
-                                                        }
-                                                        return r.name;
-                                                    })()}
-                                                    {r.country && <span style={{ fontSize: '14px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px', letterSpacing: '1px', color: 'var(--muted)' }}>{r.country} {(r.flag || getFlagForCountry(r.country))}</span>}
+                                                            return r.name;
+                                                        })()}
+                                                        {r.country && <span style={{ fontSize: '14px', background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px', letterSpacing: '1px', color: 'var(--muted)' }}>{r.country} {(r.flag || getFlagForCountry(r.country))}</span>}
+                                                    </div>
+                                                    <div style={{ display: 'flex', gap: '2px', marginTop: '4px' }}>
+                                                        {Array.from({ length: 5 }).map((_, j) => (
+                                                            <Star key={j} size={14} fill={j < r.rating ? "var(--gold-light)" : "transparent"} color={j < r.rating ? "var(--gold-light)" : "var(--muted)"} />
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                                <div style={{ display: 'flex', gap: '2px', marginTop: '4px' }}>
-                                                    {Array.from({ length: 5 }).map((_, j) => (
-                                                        <Star key={j} size={14} fill={j < r.rating ? "var(--gold-light)" : "transparent"} color={j < r.rating ? "var(--gold-light)" : "var(--muted)"} />
-                                                    ))}
+                                                <div style={{ fontSize: '12px', color: 'var(--green-wa)', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(37,211,102,0.1)', padding: '2px 8px', borderRadius: '12px' }}>
+                                                    ✓ Verified Buyer
                                                 </div>
                                             </div>
-                                            <div style={{ fontSize: '12px', color: 'var(--green-wa)', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(37,211,102,0.1)', padding: '2px 8px', borderRadius: '12px' }}>
-                                                ✓ Verified Buyer
-                                            </div>
+                                            <p style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.6, marginTop: '8px' }}>{r.comment || r.text}</p>
                                         </div>
-                                        <p style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.6, marginTop: '8px' }}>{r.comment || r.text}</p>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
-                            
+
                             {showReviewsCount < [...dbReviews, ...MOCK_REVIEWS].length && (
                                 <button onClick={() => setShowReviewsCount(30)} style={{ width: '100%', background: 'transparent', border: '1px solid var(--purple-light)', color: 'var(--purple-light)', padding: '14px', borderRadius: '12px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', marginTop: '8px', transition: 'all 0.2s' }}>
                                     ▾ Buka Review Lain
@@ -1504,38 +1626,38 @@ const DarkFeminineTSX = () => {
                     {/* CHECKOUT FORM */}
                     <section id="checkout" className="df-formsec">
                         <div className="df-wrap df-fade-in">
-                            <div className="df-section-label">LANGKAH TERAKHIR</div>
-                            <h2 className="df-section-h2">Isi Data & <span className="df-gold">Dapatkan Akses</span></h2>
+                            <div className="df-section-label">{lang === 'id' ? 'LANGKAH TERAKHIR' : (lang === 'ph' ? 'PANGHULING HAKBANG' : 'FINAL STEP')}</div>
+                            <h2 className="df-section-h2">{lang === 'id' ? 'Isi Data &' : (lang === 'ph' ? 'Ilagay ang Detalye at' : 'Fill Details &')} <span className="df-gold">{lang === 'id' ? 'Dapatkan Akses' : (lang === 'ph' ? 'Kumuha ng Access' : 'Get Access')}</span></h2>
                             <div className="df-privstrip">
-                                {[["🔒", "100% Privasi"], ["⚡", "Akses Instan"], ["��", "Bayar Aman"], ["📱", "Seumur Hidup"]].map(([ic, lb]) => (
+                                {[["🔒", lang === 'id' ? "100% Privasi" : (lang === 'ph' ? "100% Pribado" : "100% Privacy")], ["⚡", lang === 'id' ? "Akses Instan" : (lang === 'ph' ? "Instant Access" : "Instant Access")], ["💳", lang === 'id' ? "Bayar Aman" : (lang === 'ph' ? "Ligtas na Bayad" : "Secure Payment")], ["📱", lang === 'id' ? "Seumur Hidup" : (lang === 'ph' ? "Habambuhay Access" : "Lifetime Access")]].map(([ic, lb]) => (
                                     <div key={lb} className="df-privbadge"><span>{ic}</span><span>{lb}</span></div>
                                 ))}
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                                 <div>
-                                    <label className="df-flabel">Nama Lengkap</label>
-                                    <input className="df-finput" placeholder="Contoh: Sarah" value={name} onChange={e => setName(e.target.value)} />
+                                    <label className="df-flabel">{lang === 'id' ? 'Nama Lengkap' : (lang === 'ph' ? 'Buong Pangalan' : 'Full Name')}</label>
+                                    <input className="df-finput" placeholder={lang === 'id' ? "Contoh: Sarah" : (lang === 'ph' ? "Halimbawa: Sarah" : "e.g: Sarah")} value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div>
-                                    <label className="df-flabel">No. WhatsApp</label>
+                                    <label className="df-flabel">{lang === 'id' ? 'No. WhatsApp' : 'WhatsApp Number'}</label>
                                     <div className="df-pwrap">
-                                        <div className="df-ppfx">{lang === 'id' ? '🇮🇩 +62' : '🌐 +'}</div>
-                                        <input className="df-finput" placeholder={lang === 'id' ? "812345678" : "Country Code + Number"} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
+                                        <div className="df-ppfx">{lang === 'id' ? '🇮🇩 +62' : (lang === 'ph' ? '🇵🇭 +63' : '🌐 +')}</div>
+                                        <input className="df-finput" placeholder={lang === 'id' ? "812345678" : (lang === 'ph' ? "912345678" : "Country Code + Number")} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="df-flabel">Email (untuk link download)</label>
+                                    <label className="df-flabel">{lang === 'id' ? 'Email (untuk link download)' : (lang === 'ph' ? 'Email (para sa link download)' : 'Email (for download link)')}</label>
                                     <input className="df-finput" type="email" placeholder="contoh@gmail.com" value={email} onChange={e => setEmail(e.target.value)} />
                                 </div>
                                 <div>
-                                    <label className="df-flabel">Buat Password * <span style={{fontSize:'12px', fontWeight:'normal', color:'var(--muted)'}}>(untuk memberikan review nanti)</span></label>
+                                    <label className="df-flabel">Buat Password * <span style={{ fontSize: '12px', fontWeight: 'normal', color: 'var(--muted)' }}>(untuk memberikan review nanti)</span></label>
                                     <div style={{ position: 'relative' }}>
-                                        <input 
-                                            className="df-finput" 
-                                            type={showPurchasePassword ? "text" : "password"} 
-                                            placeholder="Minimal 6 karakter" 
-                                            value={purchasePassword} 
-                                            onChange={e => setPurchasePassword(e.target.value)} 
+                                        <input
+                                            className="df-finput"
+                                            type={showPurchasePassword ? "text" : "password"}
+                                            placeholder="Minimal 6 karakter"
+                                            value={purchasePassword}
+                                            onChange={e => setPurchasePassword(e.target.value)}
                                             style={{ paddingRight: '40px' }}
                                         />
                                         <button type="button" onClick={() => setShowPurchasePassword(!showPurchasePassword)} style={{ position: 'absolute', right: '14px', top: '14px', background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', padding: 0 }}>
@@ -1545,30 +1667,37 @@ const DarkFeminineTSX = () => {
                                 </div>
                                 <div>
                                     <label className="df-flabel">Ulangi Password *</label>
-                                    <input 
-                                        className="df-finput" 
-                                        type={showPurchasePassword ? "text" : "password"} 
-                                        placeholder="Ulangi password" 
-                                        value={purchasePasswordRepeat} 
-                                        onChange={e => setPurchasePasswordRepeat(e.target.value)} 
+                                    <input
+                                        className="df-finput"
+                                        type={showPurchasePassword ? "text" : "password"}
+                                        placeholder="Ulangi password"
+                                        value={purchasePasswordRepeat}
+                                        onChange={e => setPurchasePasswordRepeat(e.target.value)}
                                     />
                                 </div>
                                 <div>
                                     <label className="df-flabel">Metode Pembayaran</label>
                                     <div className="df-pmgrid">
-                                        {[
-                                            ["QRIS", "QRIS", "Shopee, OVO, GoPay, DANA"],
-                                            ["BCAVA", "BCA Virtual Account", "Otomatis via BCA"],
-                                            ["BNIVA", "BNI Virtual Account", "Otomatis via BNI"],
-                                            ["BRIVA", "BRI Virtual Account", "Otomatis via BRI"],
-                                            ["MANDIRIVA", "Mandiri Virtual Account", "Otomatis via Mandiri"],
-                                            ["PERMATAVA", "Permata Virtual Account", "Otomatis via Permata"]
-                                        ].map(([id, nm, sb]) => (
-                                            <div key={id} className={`df-pmopt ${payment === id ? "sel" : ""}`} onClick={() => setPayment(id)}>
-                                                <div className="df-pmname">{nm}</div>
-                                                <div className="df-pmsub" style={{ color: (id === 'QRIS') ? 'var(--gold-light)' : 'var(--muted)' }}>{sb}</div>
+                                        {isEnglish ? (
+                                            <div className={`df-pmopt ${payment === "PAYPAL" ? "sel" : ""}`} onClick={() => setPayment("PAYPAL")}>
+                                                <div className="df-pmname">PayPal</div>
+                                                <div className="df-pmsub" style={{ color: 'var(--gold-light)' }}>Secure International Payment</div>
                                             </div>
-                                        ))}
+                                        ) : (
+                                            [
+                                                ["QRIS", "QRIS", "Shopee, OVO, GoPay, DANA"],
+                                                ["BCAVA", "BCA Virtual Account", "Otomatis via BCA"],
+                                                ["BNIVA", "BNI Virtual Account", "Otomatis via BNI"],
+                                                ["BRIVA", "BRI Virtual Account", "Otomatis via BRI"],
+                                                ["MANDIRIVA", "Mandiri Virtual Account", "Otomatis via Mandiri"],
+                                                ["PERMATAVA", "Permata Virtual Account", "Otomatis via Permata"]
+                                            ].map(([id, nm, sb]) => (
+                                                <div key={id} className={`df-pmopt ${payment === id ? "sel" : ""}`} onClick={() => setPayment(id)}>
+                                                    <div className="df-pmname">{nm}</div>
+                                                    <div className="df-pmsub" style={{ color: (id === 'QRIS') ? 'var(--gold-light)' : 'var(--muted)' }}>{sb}</div>
+                                                </div>
+                                            ))
+                                        )}
                                     </div>
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, marginBottom: 10 }}>
@@ -1583,7 +1712,7 @@ const DarkFeminineTSX = () => {
                                             <div style={{ fontSize: '15px', fontWeight: 700, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>Paket Lengkap Dark Feminine + 8 Bonus</div>
                                         </div>
                                         <div style={{ fontSize: '16px', fontWeight: 800, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>
-                                            Rp199.000
+                                            {isEnglish ? "$15.00" : "Rp199.000"}
                                         </div>
                                     </div>
 
@@ -1600,7 +1729,7 @@ const DarkFeminineTSX = () => {
                                             <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.4 }}>Rahasia memikat pria idaman hanya lewat frekuensi suara. <span style={{ color: 'var(--red)', textDecoration: 'line-through' }}>(Senilai Rp250.000)</span></div>
                                         </div>
                                         <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>
-                                            Rp249.000
+                                            {isEnglish ? "$19.00" : "Rp249.000"}
                                         </div>
                                     </div>
                                 </div>
@@ -1608,16 +1737,16 @@ const DarkFeminineTSX = () => {
                                 <div style={{ background: "rgba(139,92,246,.05)", border: "1px solid rgba(139,92,246,.13)", borderRadius: 11, padding: 14, marginTop: 10 }}>
                                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: addUpsell ? "var(--gold-light)" : "var(--muted)" }}>
                                         <span style={{ paddingRight: 10 }}>{addUpsell ? "Paket Lengkap + Audio Love Magnet" : "Paket Lengkap Dark Feminine + 8 Bonus"}</span>
-                                        <span style={{ fontWeight: 600 }}>Rp{addUpsell ? "249.000" : "199.000"}</span>
+                                        <span style={{ fontWeight: 600 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}</span>
                                     </div>
                                     <div style={{ height: 1, background: "rgba(139,92,246,.09)", marginBottom: 7 }} />
                                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14.5, fontWeight: 700 }}>
                                         <span style={{ color: "var(--cream)" }}>Total</span>
-                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>Rp{addUpsell ? "249.000" : "199.000"}</span>
+                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}</span>
                                     </div>
                                 </div>
                                 <button className="df-sbtn" onClick={submitOrder} disabled={loading}>
-                                    {loading ? "Memproses..." : `🛒 Pesan Sekarang — Rp${addUpsell ? "249.000" : "199.000"}`}
+                                    {loading ? "Memproses..." : `🛒 Pesan Sekarang — ${isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}`}
                                 </button>
                                 <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.</p>
                             </div>
@@ -1664,7 +1793,7 @@ const DarkFeminineTSX = () => {
                     <div id="df-sticky-cta" className={showSticky ? 'show' : ''}>
                         <div style={{ background: 'var(--bg-card)', borderRadius: '14px', padding: '14px', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', gap: '14px' }}>
                             <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', flex: 1 }}>
-                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>Rp{addUpsell ? '249.000' : '199.000'}</span>
+                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>{isEnglish ? (addUpsell ? '$19.00' : '$15.00') : (addUpsell ? 'Rp249.000' : 'Rp199.000')}</span>
                                 {addUpsell && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
                             </div>
                             <a onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
