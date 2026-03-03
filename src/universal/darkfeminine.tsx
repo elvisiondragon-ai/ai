@@ -669,7 +669,9 @@ const DarkFeminineTSX = () => {
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
-        sendWAAlert('attempt', { name, phone, method: payment });
+        // Sanitize phone: strip +, spaces, dashes so "+62812..." becomes "62812..."
+        const cleanPhone = phone.trim().replace(/^\+/, '').replace(/[\s\-]/g, '');
+        sendWAAlert('attempt', { name, phone: cleanPhone, method: payment });
 
         const { fbc, fbp } = getFbcFbpCookies();
         const clientIp = await getClientIp();
@@ -680,14 +682,14 @@ const DarkFeminineTSX = () => {
                 body: {
                     pixelId: PIXEL_ID, eventName: 'AddPaymentInfo', eventSourceUrl: window.location.href,
                     customData: { content_name: productDesc, value: finalAmount, currency: finalCurrency },
-                    userData: { fbc, fbp, client_ip_address: clientIp, fn: name, ph: phone, em: email }
+                    userData: { fbc, fbp, client_ip_address: clientIp, fn: name, ph: cleanPhone, em: email }
                 }
             });
         } catch (e) { console.error('AddPaymentInfo CAPI error', e); }
 
         const payload = {
             subscriptionType: 'universal', paymentMethod: payment,
-            userName: name, userEmail: email, phoneNumber: phone,
+            userName: name, userEmail: email, phoneNumber: cleanPhone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
             amount: finalAmount, currency: finalCurrency, quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
             fbc, fbp, clientIp, purchasePassword // Pass password to edge function instead of local signup
@@ -714,12 +716,12 @@ const DarkFeminineTSX = () => {
                 }
 
                 setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref: data.tripay_reference, name, phone, amount: finalAmount });
+                sendWAAlert('success', { ref: data.tripay_reference, name, phone: cleanPhone, amount: finalAmount });
             } else if (payment === 'BCA_MANUAL') {
                 const ref = `MANUAL-${Date.now()}`;
                 setPaymentData({ paymentMethod: 'BCA_MANUAL', amount: finalAmount, status: 'UNPAID', tripay_reference: ref });
                 setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref, name, phone, amount: finalAmount });
+                sendWAAlert('success', { ref, name, phone: cleanPhone, amount: finalAmount });
             } else {
                 alert(data?.error || "Gagal membuat pembayaran, hubungi admin via WhatsApp.");
             }
@@ -743,6 +745,12 @@ const DarkFeminineTSX = () => {
             } else if (!formattedWa.startsWith('62')) {
                 formattedWa = '62' + formattedWa;
             }
+        } else if (lang === 'ph') {
+            if (formattedWa.startsWith('0')) {
+                formattedWa = '63' + formattedWa.slice(1);
+            } else if (!formattedWa.startsWith('63')) {
+                formattedWa = '63' + formattedWa;
+            }
         }
 
         setLoadingFree(true);
@@ -762,6 +770,34 @@ const DarkFeminineTSX = () => {
 
             if (data?.success) {
                 setSuccessFree(true);
+
+                // 📊 CAPI: Fire custom "FreeEbook" event to Meta
+                try {
+                    const { fbc, fbp } = getFbcFbpCookies();
+                    const clientIp = await getClientIp();
+                    await supabase.functions.invoke('capi-universal', {
+                        body: {
+                            pixelId: PIXEL_ID,
+                            eventName: 'FreeEbook',
+                            eventSourceUrl: window.location.href,
+                            customData: {
+                                content_name: `Free Ebook Dark Feminine (${lang.toUpperCase()})`,
+                                value: 0,
+                                currency: lang === 'id' ? 'IDR' : 'USD'
+                            },
+                            userData: {
+                                fbc, fbp,
+                                client_ip_address: clientIp,
+                                fn: nameFree,
+                                ph: formattedWa,
+                                em: emailFree
+                            }
+                        }
+                    });
+                    console.log('✅ CAPI FreeEbook event sent');
+                } catch (capiErr) {
+                    console.error('⚠️ CAPI FreeEbook error (non-fatal):', capiErr);
+                }
             } else {
                 alert(data?.error || 'Gagal mengirim WhatsApp. Silahkan coba lagi nanti.');
             }
@@ -1498,11 +1534,11 @@ const DarkFeminineTSX = () => {
                                                 onChange={(e) => setNameFree(e.target.value)}
                                             />
                                             <div className="df-free-pwrap">
-                                                <div className="df-free-ppfx">{lang === 'id' ? '🇮🇩 +62' : (lang === 'ph' ? '🇵🇭 +63' : '🌐 +')}</div>
+                                                <div className="df-free-ppfx">{lang === 'id' ? '🇮🇩 +62' : (lang === 'ph' ? '🇵🇭 +63' : '🌐')}</div>
                                                 <input
                                                     type="tel"
                                                     className="df-free-input"
-                                                    placeholder={lang === 'id' ? "812345678" : (lang === 'ph' ? "912345678" : "Country Code + Number")}
+                                                    placeholder={lang === 'id' ? "812345678" : (lang === 'ph' ? "9123456789" : "e.g. 628123456789 or 19291234567")}
                                                     value={waFree}
                                                     onChange={(e) => setWaFree(e.target.value)}
                                                 />
