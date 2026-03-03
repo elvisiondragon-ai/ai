@@ -8,21 +8,44 @@ import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewC
 import qrisBcaImage from "../assets/qrisbca.jpeg";
 
 // Asset Imports for ID
-import df01Id from '../assets/darkfem_id/df01_paradox.png';
-import df02Id from '../assets/darkfem_id/df02_2am_scroll.png';
-import df03Id from '../assets/darkfem_id/df03_nice_girl_dies.png';
-import df04Id from '../assets/darkfem_id/df04_teman_curhat.png';
-import df05Id from '../assets/darkfem_id/df05_comparison.png';
-import df06Id from '../assets/darkfem_id/df06_fuckboy_cycle.png';
-import df07Id from '../assets/darkfem_id/df07_drakor_fantasy.png';
-import df08Id from '../assets/darkfem_id/df08_secret_she_knows.png';
-import df09Id from '../assets/darkfem_id/df09_wake_up_call.png';
-import df10Id from '../assets/darkfem_id/df10_society_lie.png';
-import video1Id from '../assets/darkfem_id/video1.mp4';
-import video2Id from '../assets/darkfem_id/video2.mp4';
-import video3Id from '../assets/darkfem_id/video3.mp4';
+import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
+import df02Id from '../assets/darkfem/indo_image/df02_2am_scroll.png';
+import df03Id from '../assets/darkfem/indo_image/df03_nice_girl_dies.png';
+import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.png';
+import df05Id from '../assets/darkfem/indo_image/df05_comparison.png';
+import df06Id from '../assets/darkfem/indo_image/df06_fuckboy_cycle.png';
+import df07Id from '../assets/darkfem/indo_image/df07_drakor_fantasy.png';
+import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
+import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
+import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
+import video1Id from '../assets/darkfem/indo_image/video1.mp4';
+import video2Id from '../assets/darkfem/indo_image/video2.mp4';
+import video3Id from '../assets/darkfem/indo_image/video3.mp4';
 
-// For English, fallback to ID if we don't have separate assets yet.
+// Asset Imports for EN
+import df01En from '../assets/darkfem/english_image/df01_paradox_en.png';
+import df02En from '../assets/darkfem/english_image/df02_2am_scroll_en.png';
+import df03En from '../assets/darkfem/english_image/df03_funeral_en.png';
+import df04En from '../assets/darkfem/english_image/df04_secret_she_knows_en.png';
+import df05En from '../assets/darkfem/english_image/df05_therapist_trap_en.png';
+import df06En from '../assets/darkfem/english_image/df06_comparison_en.png';
+import df07En from '../assets/darkfem/english_image/df07_fuckboy_cycle_en.png';
+import df08En from '../assets/darkfem/english_image/df08_fantasy_screen_en.png';
+import df09En from '../assets/darkfem/english_image/df09_wake_up_en.png';
+import df10En from '../assets/darkfem/english_image/df10_society_lie_en.png';
+
+// Asset Imports for PH
+import df01Ph from '../assets/darkfem/philippines_image/df01_ph_paradox.png';
+import df02Ph from '../assets/darkfem/philippines_image/df02_ph_2am_scroll.png';
+import df03Ph from '../assets/darkfem/philippines_image/df03_ph_nice_girl.png';
+import df04Ph from '../assets/darkfem/philippines_image/df04_ph_friendzone.png';
+import df05Ph from '../assets/darkfem/philippines_image/df05_ph_comparison.png';
+import df06Ph from '../assets/darkfem/philippines_image/df06_ph_ghosted.png';
+import df07Ph from '../assets/darkfem/philippines_image/df07_ph_kdrama.png';
+import df08Ph from '../assets/darkfem/philippines_image/df08_ph_secret.png';
+import df09Ph from '../assets/darkfem/philippines_image/df09_ph_wakeup.png';
+import df10Ph from '../assets/darkfem/philippines_image/df10_ph_society_lie.png';
+
 const assetsMap: any = {
     id: {
         df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
@@ -30,9 +53,14 @@ const assetsMap: any = {
         video1: video1Id, video2: video2Id, video3: video3Id
     },
     en: {
-        df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
-        df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
-        video1: video1Id, video2: video2Id, video3: video3Id
+        df01: df01En, df02: df02En, df03: df03En, df04: df04En, df05: df05En,
+        df06: df06En, df07: df07En, df08: df08En, df09: df09En, df10: df10En,
+        video1: null, video2: null, video3: null
+    },
+    ph: {
+        df01: df01Ph, df02: df02Ph, df03: df03Ph, df04: df04Ph, df05: df05Ph,
+        df06: df06Ph, df07: df07Ph, df08: df08Ph, df09: df09Ph, df10: df10Ph,
+        video1: null, video2: null, video3: null
     }
 };
 
@@ -723,13 +751,10 @@ const DarkFeminineTSX = () => {
                 userEmail: emailFree,
                 userName: nameFree,
                 phone: formattedWa,
-                productName: 'darkfeminine_free_ebook',
-                amount: 0,
-                currency: 'IDR',
-                reference: `FREE-${Date.now()}`
+                id: lang // parameter indonesia, etc.
             };
 
-            const { data, error } = await supabase.functions.invoke('send-ebooks-email', {
+            const { data, error } = await supabase.functions.invoke('send-ebooks-free', {
                 body: payload
             });
 
@@ -780,7 +805,7 @@ const DarkFeminineTSX = () => {
 
     const contentLang = lang; // Since all 3 (id, en, ph) exist now, map directly OR map sg back to en
     const c = contentData[contentLang === 'sg' ? 'en' : contentLang];
-    const assets = assetsMap[contentLang === 'ph' ? 'en' : (contentLang === 'sg' ? 'en' : contentLang)];
+    const assets = assetsMap[contentLang === 'sg' ? 'en' : contentLang];
 
     const [countdown, setCountdown] = useState("00:00:00");
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -885,7 +910,7 @@ const DarkFeminineTSX = () => {
                                 </div>
                             </div>
                             <button type="submit" disabled={isLoginLoading} style={{ width: '100%', background: 'var(--purple)', color: 'white', border: 'none', padding: '16px', borderRadius: '10px', fontWeight: 700, fontSize: '16px', cursor: 'pointer', fontFamily: 'var(--font-body)', marginTop: '8px', transition: 'background 0.2s', opacity: isLoginLoading ? 0.7 : 1 }}>
-                                {isLoginLoading ? 'Memproses...' : 'Login Sekarang'}
+                                {isLoginLoading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : (lang === 'id' ? 'Login Sekarang' : 'Login Now')}
                             </button>
                         </form>
 
@@ -1307,12 +1332,14 @@ const DarkFeminineTSX = () => {
                                 <span className="df-newline df-gold">{c.solH2b}</span>
                             </h2>
                             <p style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</p>
-                            <div className="df-video-player">
-                                <video controls playsInline preload="metadata" poster={assets.df03}>
-                                    <source src={assets.video1} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : (lang === 'ph' ? 'Kuwento ng Transpormasyon' : 'Transformation Story')}</span></div>
-                            </div>
+                            {assets.video1 && (
+                                <div className="df-video-player">
+                                    <video controls playsInline preload="metadata" poster={assets.df03}>
+                                        <source src={assets.video1} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : (lang === 'ph' ? 'Kuwento ng Transpormasyon' : 'Transformation Story')}</span></div>
+                                </div>
+                            )}
                         </div>
                     </section>
 
@@ -1345,18 +1372,22 @@ const DarkFeminineTSX = () => {
                                 <img src={assets.df10} alt="Social Proof" />
                             </div>
 
-                            <div className="df-video-player" style={{ marginTop: '28px' }}>
-                                <video controls playsInline preload="metadata" poster={assets.df04}>
-                                    <source src={assets.video2} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : (lang === 'ph' ? 'Mula sa Binalewala Hanggang Hinangaan' : 'From Ignored to Admired')}</span></div>
-                            </div>
-                            <div className="df-video-player">
-                                <video controls playsInline preload="metadata" poster={assets.df09}>
-                                    <source src={assets.video3} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : (lang === 'ph' ? 'Ang Nakalimutang Asawa' : 'The Forgotten Wife')}</span></div>
-                            </div>
+                            {assets.video2 && (
+                                <div className="df-video-player" style={{ marginTop: '28px' }}>
+                                    <video controls playsInline preload="metadata" poster={assets.df04}>
+                                        <source src={assets.video2} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : (lang === 'ph' ? 'Mula sa Binalewala Hanggang Hinangaan' : 'From Ignored to Admired')}</span></div>
+                                </div>
+                            )}
+                            {assets.video3 && (
+                                <div className="df-video-player">
+                                    <video controls playsInline preload="metadata" poster={assets.df09}>
+                                        <source src={assets.video3} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : (lang === 'ph' ? 'Ang Nakalimutang Asawa' : 'The Forgotten Wife')}</span></div>
+                                </div>
+                            )}
                         </div>
                     </section>
 
@@ -1527,9 +1558,11 @@ const DarkFeminineTSX = () => {
                             <div style={{ background: 'var(--bg-card)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(139,92,246,0.3)', marginBottom: '24px' }}>
                                 {!isLoggedIn ? (
                                     <div style={{ textAlign: 'center' }}>
-                                        <p style={{ color: 'var(--cream)', fontSize: '15px', marginBottom: '12px' }}>Sudah membeli? Login untuk memberikan ulasan.</p>
+                                        <p style={{ color: 'var(--cream)', fontSize: '15px', marginBottom: '12px' }}>
+                                            {lang === 'id' ? 'Sudah membeli? Login untuk memberikan ulasan.' : (lang === 'ph' ? 'Nakabili na? Mag-login para mag-iwan ng review.' : 'Already purchased? Login to leave a review.')}
+                                        </p>
                                         <button onClick={() => setShowLoginModal(true)} style={{ background: 'var(--purple)', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)' }}>
-                                            Login dengan Email
+                                            Login
                                         </button>
                                     </div>
                                 ) : (
@@ -1566,7 +1599,7 @@ const DarkFeminineTSX = () => {
 
                                         <div style={{ display: 'flex', gap: '12px' }}>
                                             <button onClick={submitReview} disabled={isLoginLoading} style={{ flex: 1, background: 'var(--purple)', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', opacity: isLoginLoading ? 0.7 : 1 }}>
-                                                {isLoginLoading ? 'Memproses...' : (userReview ? 'Update Ulasan' : 'Kirim Ulasan')}
+                                                {isLoginLoading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : (userReview ? (lang === 'id' ? 'Update Ulasan' : (lang === 'ph' ? 'I-update ang Review' : 'Update Review')) : (lang === 'id' ? 'Kirim Ulasan' : (lang === 'ph' ? 'Isumite Ang Review' : 'Submit Review')))}
                                             </button>
                                             {userReview && (
                                                 <button onClick={deleteReview} disabled={isLoginLoading} style={{ background: 'rgba(239,68,68,0.1)', color: 'var(--red)', border: '1px solid rgba(239,68,68,0.3)', padding: '12px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -1581,7 +1614,7 @@ const DarkFeminineTSX = () => {
                             {/* Display Reviews */}
                             <div>
                                 {[...dbReviews, ...MOCK_REVIEWS]
-                                    .filter(r => (!r.lang || r.lang === (lang === 'sg' ? 'en' : lang) || (lang === 'id' && r.lang === 'id')) && (r.comment || r.text) && (r.comment?.trim() !== '' || r.text?.trim() !== ''))
+                                    .filter(r => (!r.lang || r.lang === (lang === 'sg' || lang === 'ph' ? 'en' : lang) || (lang === 'id' && r.lang === 'id')) && (r.comment || r.text) && (r.comment?.trim() !== '' || r.text?.trim() !== ''))
                                     .slice(0, showReviewsCount).map((r, i) => (
                                         <div key={i} style={{ background: 'var(--bg-section)', borderRadius: '12px', padding: '16px', marginBottom: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
@@ -1617,7 +1650,7 @@ const DarkFeminineTSX = () => {
 
                             {showReviewsCount < [...dbReviews, ...MOCK_REVIEWS].length && (
                                 <button onClick={() => setShowReviewsCount(30)} style={{ width: '100%', background: 'transparent', border: '1px solid var(--purple-light)', color: 'var(--purple-light)', padding: '14px', borderRadius: '12px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', marginTop: '8px', transition: 'all 0.2s' }}>
-                                    ▾ Buka Review Lain
+                                    ▾ {lang === 'id' ? 'Buka Review Lain' : (lang === 'ph' ? 'Tingnan ang Ibang Review' : 'View More Reviews')}
                                 </button>
                             )}
 
@@ -1701,7 +1734,7 @@ const DarkFeminineTSX = () => {
                                     </div>
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, marginBottom: 10 }}>
-                                    <label className="df-flabel" style={{ marginBottom: 4 }}>Pilih Paket Anda</label>
+                                    <label className="df-flabel" style={{ marginBottom: 4 }}>{lang === 'id' ? 'Pilih Paket Anda' : (lang === 'ph' ? 'Piliin ang Iyong Package' : 'Choose Your Package')}</label>
 
                                     {/* Option 1: Base */}
                                     <div style={{ display: 'flex', alignItems: 'center', background: !addUpsell ? 'rgba(139,92,246,0.1)' : 'rgba(255,255,255,0.03)', border: !addUpsell ? '1px solid rgba(139,92,246,0.5)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(false)}>
@@ -1709,7 +1742,7 @@ const DarkFeminineTSX = () => {
                                             <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: !addUpsell ? '6px solid var(--purple-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
                                         </div>
                                         <div style={{ flex: 1 }}>
-                                            <div style={{ fontSize: '15px', fontWeight: 700, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>Paket Lengkap Dark Feminine + 8 Bonus</div>
+                                            <div style={{ fontSize: '15px', fontWeight: 700, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>{lang === 'id' ? 'Paket Lengkap Dark Feminine + 8 Bonus' : (lang === 'ph' ? 'Kumpletuhang Package ng Dark Feminine + 8 Bonus' : 'Dark Feminine Complete Package + 8 Bonuses')}</div>
                                         </div>
                                         <div style={{ fontSize: '16px', fontWeight: 800, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>
                                             {isEnglish ? "$15.00" : "Rp199.000"}
@@ -1723,10 +1756,10 @@ const DarkFeminineTSX = () => {
                                         </div>
                                         <div style={{ flex: 1 }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                                <div style={{ fontSize: '15px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>Dark Feminine + 8 Bonus <br />+ Audio Love Magnet</div>
-                                                <span style={{ fontSize: '10px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '2px 6px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>PROMO KHUSUS</span>
+                                                <div style={{ fontSize: '15px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>{lang === 'id' ? 'Dark Feminine + 8 Bonus' : 'Dark Feminine + 8 Bonus'} <br />+ Audio Love Magnet</div>
+                                                <span style={{ fontSize: '10px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '2px 6px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>{lang === 'id' ? 'PROMO KHUSUS' : (lang === 'ph' ? 'Espesyal Na Promo' : 'SPECIAL PROMO')}</span>
                                             </div>
-                                            <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.4 }}>Rahasia memikat pria idaman hanya lewat frekuensi suara. <span style={{ color: 'var(--red)', textDecoration: 'line-through' }}>(Senilai Rp250.000)</span></div>
+                                            <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.4 }}>{lang === 'id' ? 'Rahasia memikat pria idaman hanya lewat frekuensi suara.' : (lang === 'ph' ? 'Sikreto para akitin ang iyong pangarap na lalaki sa pamamagitan lamang ng dalas ng boses.' : 'Secret to captivating your dream man just through voice frequency.')} <span style={{ color: 'var(--red)', textDecoration: 'line-through' }}>{lang === 'id' ? '(Senilai Rp250.000)' : (lang === 'ph' ? '(Nagkakahalagang P850)' : '(Worth $19)')}</span></div>
                                         </div>
                                         <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>
                                             {isEnglish ? "$19.00" : "Rp249.000"}
@@ -1736,7 +1769,7 @@ const DarkFeminineTSX = () => {
 
                                 <div style={{ background: "rgba(139,92,246,.05)", border: "1px solid rgba(139,92,246,.13)", borderRadius: 11, padding: 14, marginTop: 10 }}>
                                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: addUpsell ? "var(--gold-light)" : "var(--muted)" }}>
-                                        <span style={{ paddingRight: 10 }}>{addUpsell ? "Paket Lengkap + Audio Love Magnet" : "Paket Lengkap Dark Feminine + 8 Bonus"}</span>
+                                        <span style={{ paddingRight: 10 }}>{addUpsell ? (lang === 'id' ? "Paket Lengkap + Audio Love Magnet" : (lang === 'ph' ? "Kumpletuhang Package + Audio Love Magnet" : "Complete Package + Audio Love Magnet")) : (lang === 'id' ? "Paket Lengkap Dark Feminine + 8 Bonus" : (lang === 'ph' ? "Kumpletuhang Package ng Dark Feminine + 8 Bonus" : "Dark Feminine Complete Package + 8 Bonuses"))}</span>
                                         <span style={{ fontWeight: 600 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}</span>
                                     </div>
                                     <div style={{ height: 1, background: "rgba(139,92,246,.09)", marginBottom: 7 }} />
@@ -1746,9 +1779,9 @@ const DarkFeminineTSX = () => {
                                     </div>
                                 </div>
                                 <button className="df-sbtn" onClick={submitOrder} disabled={loading}>
-                                    {loading ? "Memproses..." : `🛒 Pesan Sekarang — ${isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}`}
+                                    {loading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : `🛒 ${lang === 'id' ? 'Pesan Sekarang' : (lang === 'ph' ? 'Mag-order Ngayon' : 'Order Now')} — ${isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}`}
                                 </button>
-                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.</p>
+                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 {lang === 'id' ? 'Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.' : (lang === 'ph' ? 'Ligtas at naka-encrypt ang pagbabayad. Ipinadala nang digital ang produkto. Walang kahina-hinalang singil.' : 'Secure & encrypted payment. Product delivered digitally. No suspicious billing.')}</p>
                             </div>
                         </div>
                     </section>
@@ -1802,7 +1835,7 @@ const DarkFeminineTSX = () => {
 
                     {/* FLOATING WHATSAPP BUTTON */}
                     <a
-                        href={`https://wa.me/62895325633487?text=${encodeURIComponent("Halo Admin Dark Feminine, saya mau tanya...")}`}
+                        href={`https://wa.me/62895325633487?text=${encodeURIComponent(lang === 'ph' ? "Hello Dark Feminine Admin, may tanong ako..." : (lang === 'id' ? "Halo Admin Dark Feminine, saya mau tanya..." : "Hello Dark Feminine Admin, I have a question..."))}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
