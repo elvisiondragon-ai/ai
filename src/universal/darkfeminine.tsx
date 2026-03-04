@@ -1629,7 +1629,7 @@ const DarkFeminineTSX = () => {
                                         <textarea
                                             value={reviewText}
                                             onChange={(e) => setReviewText(e.target.value)}
-                                            placeholder="Tulis ulasan jujur Anda di sini..."
+                                            placeholder={lang === 'id' ? 'Tulis ulasan jujur Anda di sini...' : (lang === 'ph' ? 'Isulat ang iyong tapat na pagsusuri dito...' : 'Write your honest review here...')}
                                             style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--cream)', padding: '14px', borderRadius: '8px', minHeight: '100px', fontFamily: 'var(--font-body)', fontSize: '15px', outline: 'none', marginBottom: '12px' }}
                                         />
 
@@ -1711,20 +1711,20 @@ const DarkFeminineTSX = () => {
                                     <label className="df-flabel">{lang === 'id' ? 'No. WhatsApp' : 'WhatsApp Number'}</label>
                                     <div className="df-pwrap">
                                         <div className="df-ppfx">{lang === 'id' ? '🇮🇩 +62' : (lang === 'ph' ? '🇵🇭 +63' : '🌐 +')}</div>
-                                        <input className="df-finput" placeholder={lang === 'id' ? "812345678" : (lang === 'ph' ? "912345678" : "Country Code + Number")} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
+                                        <input className="df-finput" placeholder={lang === 'id' ? '812345678' : (lang === 'ph' ? '9123456789' : 'e.g. 628123456789 or 19291234567')} inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} />
                                     </div>
                                 </div>
                                 <div>
                                     <label className="df-flabel">{lang === 'id' ? 'Email (untuk link download)' : (lang === 'ph' ? 'Email (para sa link download)' : 'Email (for download link)')}</label>
-                                    <input className="df-finput" type="email" placeholder="contoh@gmail.com" value={email} onChange={e => setEmail(e.target.value)} />
+                                    <input className="df-finput" type="email" placeholder={lang === 'id' ? 'contoh@gmail.com' : (lang === 'ph' ? 'halimbawa@gmail.com' : 'example@gmail.com')} value={email} onChange={e => setEmail(e.target.value)} />
                                 </div>
                                 <div>
-                                    <label className="df-flabel">Buat Password * <span style={{ fontSize: '12px', fontWeight: 'normal', color: 'var(--muted)' }}>(untuk memberikan review nanti)</span></label>
+                                    <label className="df-flabel">{lang === 'id' ? 'Buat Password' : (lang === 'ph' ? 'Gumawa ng Password' : 'Create Password')} * <span style={{ fontSize: '12px', fontWeight: 'normal', color: 'var(--muted)' }}>{lang === 'id' ? '(untuk memberikan review nanti)' : (lang === 'ph' ? '(para magbigay ng review mamaya)' : '(to leave a review later)')}</span></label>
                                     <div style={{ position: 'relative' }}>
                                         <input
                                             className="df-finput"
                                             type={showPurchasePassword ? "text" : "password"}
-                                            placeholder="Minimal 6 karakter"
+                                            placeholder={lang === 'id' ? 'Minimal 6 karakter' : (lang === 'ph' ? 'Hindi bababa sa 6 na karakter' : 'Minimum 6 characters')}
                                             value={purchasePassword}
                                             onChange={e => setPurchasePassword(e.target.value)}
                                             style={{ paddingRight: '40px' }}
@@ -1739,7 +1739,7 @@ const DarkFeminineTSX = () => {
                                     <input
                                         className="df-finput"
                                         type={showPurchasePassword ? "text" : "password"}
-                                        placeholder="Ulangi password"
+                                        placeholder={lang === 'id' ? 'Ulangi password' : (lang === 'ph' ? 'Ulitin ang password' : 'Repeat password')}
                                         value={purchasePasswordRepeat}
                                         onChange={e => setPurchasePasswordRepeat(e.target.value)}
                                     />
