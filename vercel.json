@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/ultima",
+      "destination": "/ultima.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

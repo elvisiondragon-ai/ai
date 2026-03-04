@@ -1,4 +1,4 @@
-const APP_VERSION = '2026.03.04.01'; // Force update
+const APP_VERSION = '2026.03.04.03'; // Force update
 
 if (localStorage.getItem('v_cache') !== APP_VERSION) {
   // 1. Clear Service Workers
@@ -62,6 +62,16 @@ const SgElvision = React.lazy(() => import('./sg/sg_elvision.tsx'));
 
 // Audio Product
 const AudioProductPayment = React.lazy(() => import('./checkout/audio_product.tsx'));
+
+// Ultima Static Page
+const Ultima = () => (
+  <iframe 
+    src="/ultima.html" 
+    className="w-full h-screen border-none" 
+    title="Ultima"
+    style={{ position: 'fixed', top: 0, left: 0, bottom: 0, right: 0, width: '100%', height: '100%', border: 'none', margin: 0, padding: 0, overflow: 'hidden', zIndex: 999999 }}
+  />
+);
 
 // Simple Loading Spinner (For secondary pages)
 const LoadingFallback = () => (
@@ -128,6 +138,9 @@ const App = () => {
 
       {/* Audio */}
       <Route path="/audio" element={<AudioProductPayment />} />
+
+      {/* Ultima */}
+      <Route path="/ultima" element={<Ultima />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
