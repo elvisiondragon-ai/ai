@@ -1573,7 +1573,7 @@ const DarkFeminineTSX = () => {
                             <h2 className="df-section-h2" style={{ fontSize: '28px', marginBottom: '8px' }}>Review Real Customer</h2>
                             <p style={{ fontSize: '15px', color: 'var(--muted)', marginBottom: '16px', lineHeight: 1.6 }}>
                                 {lang === 'id' ? '(Anda bisa memberikan ulasan setelah membeli dan login dengan email anda)' : (lang === 'ph' ? '(Maaari kang mag-iwan ng review pagkatapos bumili at mag-login gamit ang iyong email)' : '(You can leave a review after purchasing and logging in with your email)')} <br />
-                                {lang === 'id' ? 'Ulasan pasti disensor untuk privasi anda.' : (lang === 'ph' ? 'Siniserensura ang mga ulasan para sa iyong privacy.' : 'Reviews are censored for your privacy.')}
+                                {lang === 'id' ? 'Ulasan pasti disensor untuk privasi anda. Kami Berintegritas untuk transparansi, semua review verified buyer akan ditampilkan, untuk jadi pembelajaran produk kami' : (lang === 'ph' ? 'Siniserensura ang mga ulasan para sa iyong privacy.' : 'Reviews are censored for your privacy.')}
                             </p>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', background: 'rgba(201,153,26,0.1)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(201,153,26,0.3)' }}>
