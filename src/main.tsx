@@ -1,4 +1,7 @@
-const APP_VERSION = '2026.03.04.03'; // Force update
+// ==========================================
+export const APP_VERSION = '2026.03.12.01';
+// ==========================================
+// Force update
 
 if (localStorage.getItem('v_cache') !== APP_VERSION) {
   // 1. Clear Service Workers
@@ -46,6 +49,8 @@ const DarkFeminine = React.lazy(() => import('./universal/darkfeminine.tsx'));
 const HotAffiliate = React.lazy(() => import('./universal/hotaffiliate.tsx'));
 const SmartParenting = React.lazy(() => import('./universal/smartparenting.tsx'));
 const Parenting = React.lazy(() => import('./id_ebook/parenting.tsx'));
+const SahamLanding = React.lazy(() => import('./id_ebook/saham.tsx'));
+const CryptoLanding = React.lazy(() => import('./id_ebook/crypto.tsx'));
 
 // Moved from elvisiongroup
 const UsaEbookSlim = React.lazy(() => import('./usa/usa_ebookslim.tsx'));
@@ -65,9 +70,9 @@ const AudioProductPayment = React.lazy(() => import('./checkout/audio_product.ts
 
 // Ultima Static Page
 const Ultima = () => (
-  <iframe 
-    src="/ultima.html" 
-    className="w-full h-screen border-none" 
+  <iframe
+    src="/ultima.html"
+    className="w-full h-screen border-none"
     title="Ultima"
     style={{ position: 'fixed', top: 0, left: 0, bottom: 0, right: 0, width: '100%', height: '100%', border: 'none', margin: 0, padding: 0, overflow: 'hidden', zIndex: 999999 }}
   />
@@ -122,6 +127,8 @@ const App = () => {
       <Route path="/hotaffiliate" element={<HotAffiliate />} />
       <Route path="/smartparenting" element={<SmartParenting />} />
       <Route path="/id_parenting" element={<Parenting />} />
+      <Route path="/saham" element={<SahamLanding />} />
+      <Route path="/crypto" element={<CryptoLanding />} />
 
       {/* Moved from elvisiongroup */}
       <Route path="/usa_ebookslim" element={<UsaEbookSlim />} />
