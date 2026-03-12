@@ -1246,6 +1246,20 @@ const DarkFeminineTSX = () => {
         .df-free-btn:disabled { opacity: 0.7; cursor: not-allowed; }
         .df-free-btn:hover:not(:disabled) { background: var(--purple-light); }
 
+        .df-integrity-row {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          padding: 18px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .df-integrity-row:last-child { border-bottom: none; }
+        .df-integrity-icon {
+          width: 28px; height: 28px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); 
+          border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+          flex-shrink: 0; font-size: 13px; color: #22c55e; font-weight: 700;
+        }
+
         #df-sticky-cta {
           position: fixed; bottom: 0; left: 0; right: 0; z-index: 9997;
           background: linear-gradient(0deg, #0A0612 70%, transparent); padding: 16px 22px 20px;
@@ -1560,13 +1574,54 @@ const DarkFeminineTSX = () => {
                                             </button>
                                         </div>
                                     )}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </section>
 
 
-                    {/* REVIEWS SECTION */}
+                                    {/* TRANSPARANSI SECTION */}
+                                    <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
+                                    <div className="df-wrap df-fade-in">
+                                    <div style={{
+                                    background: 'var(--bg-card)',
+                                    border: '1px solid rgba(139,92,246,0.2)',
+                                    borderRadius: '24px',
+                                    padding: '28px 22px',
+                                    }}>
+                                    <div style={{ marginBottom: '32px' }}>
+                                    <div className="df-section-label">Transparansi</div>
+                                    <h2 className="df-section-h2" style={{ fontSize: '28px', color: 'var(--white)', marginBottom: '12px' }}>
+                                        Kami Berintegritas
+                                    </h2>
+                                    <p style={{ color: 'var(--cream)', fontSize: '15px', lineHeight: 1.7 }}>
+                                        Setiap produk yang dijual anggota <strong style={{ color: 'var(--gold-light)' }}>eL Vision</strong> menggunakan arsitektur kami diwajibkan untuk menampilkan review dari <em>verified buyer</em> — bukan testimoni anonim, bukan ulasan palsu. Review hanya bisa ditulis oleh akun yang sudah melakukan pembelian terverifikasi.
+                                    </p>
+                                    </div>
+
+                                    <div>
+                                    {[
+                                        { title: 'Verified Buyer Only', desc: 'Review hanya bisa ditulis setelah pembelian dikonfirmasi. Tidak ada akun yang bisa review tanpa transaksi nyata.' },
+                                        { title: 'Email Tersensor untuk Privasi', desc: 'Identitas reviewer ditampilkan dalam format email tersensor (contoh: senaditsr***@hotmail.com) untuk melindungi privasi sekaligus membuktikan keaslian.' },
+                                        { title: 'Login untuk Tulis Review', desc: 'Hanya pengguna yang sudah login dengan akun terverifikasi yang bisa menulis review. Tidak bisa dimanipulasi dari luar.' },
+                                        { title: '100% Privacy & Security', desc: 'Sistem kami tidak menyimpan data sensitif pembayaran Anda. Semua transaksi melalui payment gateway terenkripsi.' },
+                                        { title: 'Trusted Architecture', desc: 'Arsitektur website kami dibuat oleh eL Vision Group untuk menjamin kecepatan, keamanan, dan keaslian data pelanggan.' },
+                                    ].map(({ title, desc }) => (
+                                        <div key={title} className="df-integrity-row">
+                                            <div className="df-integrity-icon"><Star size={16} fill="currentColor" /></div>
+                                            <div>
+                                                <div style={{ fontWeight: 700, fontSize: '15px', color: 'var(--white)', marginBottom: '4px' }}>{title}</div>
+                                                <div style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.6 }}>{desc}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </section>
+
+
+                                    {/* REVIEWS SECTION */}
                     <section id="reviews-section" style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{lang === 'id' ? 'ULASAN PELANGGAN' : (lang === 'ph' ? 'MGA REVIEW NG CUSTOMER' : 'CUSTOMER REVIEWS')}</div>
