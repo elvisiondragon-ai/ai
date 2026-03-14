@@ -19,20 +19,31 @@ import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
 import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
 import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
 import video1Id from '../assets/darkfem/indo_image/video1.mp4';
-import video2Id from '../assets/darkfem/indo_image/video2.mp4';
+import video1PosterId from '../assets/darkfem/indo_image/video1.jpg';
 import video3Id from '../assets/darkfem/indo_image/video3.mp4';
+import video3PosterId from '../assets/darkfem/indo_image/video3.jpg';
+
+// Istri Section Assets
+import istri01 from '../assets/darkfem/indo_image/istritest1-Tidur_Sendiri.png';
+import istri02 from '../assets/darkfem/indo_image/istritest2-Dulu_vs_Sekarang.png';
+import istri03 from '../assets/darkfem/indo_image/istritest3-Suami_Perhatian_HP.png';
+import istri04 from '../assets/darkfem/indo_image/istritest4-Ibu_vs_Wanita.png';
+import istri05 from '../assets/darkfem/indo_image/istritest9-Dia_Pilih_Segalanya.png';
+import istri06 from '../assets/darkfem/indo_image/istritest10-Bertahan_Untuk_Anak.png';
 
 // For English, fallback to ID if we don't have separate assets yet.
 const assetsMap: any = {
     id: {
         df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
         df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
-        video1: video1Id, video2: video2Id, video3: video3Id
+        video1: video1Id, video3: video3Id,
+        video1Poster: video1PosterId, video3Poster: video3PosterId,
+        istri01, istri02, istri03, istri04, istri05, istri06
     },
     en: {
         df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
         df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
-        video1: video1Id, video2: video2Id, video3: video3Id
+        video1: video1Id, video3: video3Id
     }
 };
 
@@ -89,6 +100,18 @@ const contentData: any = {
             { icon: "🤐", text: <>Anak makin tertutup, bohong, takut cerita karena takut dimarahi</> },
             { icon: "🤯", text: <>Stres, lelah fisik mental, merasa jadi <strong>IBU YANG GAGAL</strong></> },
         ],
+        wifeSection: {
+            label: "KHUSUS UNTUK ISTRI",
+            title: "Apakah Ini Kehidupan Pernikahan Yang Kamu Impikan?",
+            items: [
+                { img: 'istri01', title: "Tidur Sendiri dalam Keramaian", desc: "Satu ranjang tapi terasa ribuan kilometer jaraknya. Dia lebih asyik dengan dunianya sendiri sementara kamu merindukan sentuhan yang tulus." },
+                { img: 'istri02', title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
+                { img: 'istri03', title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
+                { img: 'istri04', title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
+                { img: 'istri05', title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
+                { img: 'istri06', title: "Bertahan Demi Anak", desc: "Pura-pura bahagia di depan anak-anak, padahal hati sudah hancur and kesepian setiap malam." }
+            ]
+        },
         urgency: (t: React.ReactNode) => <>⚡ PROMO BUNDA CERDAS — BERAKHIR DALAM {t} ⚡</>,
         heroBadge: "👶 PANDUAN PARENTING MODERN",
         heroH1a: "Hentikan Teriakan,",
@@ -781,6 +804,36 @@ const SmartParentingTSX = () => {
 
         @media(max-width:560px) { #df-sticky-cta { max-width: 100%; } .df-hero-h1 { font-size: 38px; } }
 
+        .df-wife-card {
+          background: var(--bg-card);
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid rgba(139,92,246,0.22);
+          margin-bottom: 24px;
+        }
+        .df-wife-img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          display: block;
+        }
+        .df-wife-content {
+          padding: 20px;
+        }
+        .df-wife-title {
+          font-family: var(--font-display);
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--white);
+          margin-bottom: 8px;
+        }
+        .df-wife-desc {
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--cream);
+          opacity: 0.9;
+        }
+
         .df-formsec { background: var(--bg-section); padding: 44px 0; }
         .df-privstrip { display: flex; justify-content: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
         .df-privbadge { display: flex; align-items: center; gap: 5px; font-size: 14px; color: var(--muted); }
@@ -882,14 +935,37 @@ const SmartParentingTSX = () => {
                                 <span className="df-newline df-gold">{c.solH2b}</span>
                             </h2>
                             <p style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</p>
-                            <div className="df-video-player">
-                                <video controls playsInline preload="metadata" poster={assets.df03}>
-                                    <source src={assets.video1} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : 'Transformation Story'}</span></div>
-                            </div>
+                            {assets.video1 && (
+                                <div className="df-video-player">
+                                    <video controls playsInline preload="metadata" poster={assets.video1Poster || assets.df03}>
+                                        <source src={assets.video1} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : 'Transformation Story'}</span></div>
+                                </div>
+                            )}
                         </div>
                     </section>
+
+                    {/* KHUSUS ISTRI SECTION - Indonesia Only */}
+                    {lang === 'id' && c.wifeSection && (
+                        <section style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-section) 100%)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{c.wifeSection.label}</div>
+                                <h2 className="df-section-h2">{c.wifeSection.title}</h2>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                                    {c.wifeSection.items.map((item: any, idx: number) => (
+                                        <div key={idx} className="df-wife-card">
+                                            <img src={(assets as any)[item.img]} alt={item.title} className="df-wife-img" />
+                                            <div className="df-wife-content">
+                                                <h3 className="df-wife-title">{item.title}</h3>
+                                                <p className="df-wife-desc">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* CONTENTS */}
                     <section style={{ padding: '44px 0' }}>
@@ -934,18 +1010,22 @@ const SmartParentingTSX = () => {
                                 ))}
                             </div>
 
-                            <div className="df-video-player" style={{ marginTop: '28px' }}>
-                                <video controls playsInline preload="metadata" poster={assets.df04}>
-                                    <source src={assets.video2} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : 'From Ignored to Admired'}</span></div>
-                            </div>
-                            <div className="df-video-player">
-                                <video controls playsInline preload="metadata" poster={assets.df09}>
-                                    <source src={assets.video3} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : 'The Forgotten Wife'}</span></div>
-                            </div>
+                            {assets.video2 && (
+                                <div className="df-video-player" style={{ marginTop: '28px' }}>
+                                    <video controls playsInline preload="metadata" poster={assets.df04}>
+                                        <source src={assets.video2} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : 'From Ignored to Admired'}</span></div>
+                                </div>
+                            )}
+                            {assets.video3 && (
+                                <div className="df-video-player">
+                                    <video controls playsInline preload="metadata" poster={assets.video3Poster || assets.df09}>
+                                        <source src={assets.video3} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : 'The Forgotten Wife'}</span></div>
+                                </div>
+                            )}
                         </div>
                     </section>
 
@@ -1013,7 +1093,7 @@ const SmartParentingTSX = () => {
                     </section>
 
                     {/* EXCLUSIVITY */}
-                    <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
+                    <section id="free-ebook" style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : 'NOT FOR EVERYONE'}</div>
                             <h2 className="df-section-h2">{c.exclH2}</h2>
