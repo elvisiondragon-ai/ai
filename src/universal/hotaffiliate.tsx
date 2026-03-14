@@ -19,20 +19,31 @@ import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
 import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
 import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
 import video1Id from '../assets/darkfem/indo_image/video1.mp4';
-import video2Id from '../assets/darkfem/indo_image/video2.mp4';
+import video1PosterId from '../assets/darkfem/indo_image/video1.jpg';
 import video3Id from '../assets/darkfem/indo_image/video3.mp4';
+import video3PosterId from '../assets/darkfem/indo_image/video3.jpg';
+
+// Istri Section Assets
+import istri01 from '../assets/darkfem/indo_image/istritest1-Tidur_Sendiri.png';
+import istri02 from '../assets/darkfem/indo_image/istritest2-Dulu_vs_Sekarang.png';
+import istri03 from '../assets/darkfem/indo_image/istritest3-Suami_Perhatian_HP.png';
+import istri04 from '../assets/darkfem/indo_image/istritest4-Ibu_vs_Wanita.png';
+import istri05 from '../assets/darkfem/indo_image/istritest9-Dia_Pilih_Segalanya.png';
+import istri06 from '../assets/darkfem/indo_image/istritest10-Bertahan_Untuk_Anak.png';
 
 // For English, fallback to ID if we don't have separate assets yet.
 const assetsMap: any = {
     id: {
         df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
         df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
-        video1: video1Id, video2: video2Id, video3: video3Id
+        video1: video1Id, video3: video3Id,
+        video1Poster: video1PosterId, video3Poster: video3PosterId,
+        istri01, istri02, istri03, istri04, istri05, istri06
     },
     en: {
         df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
         df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
-        video1: video1Id, video2: video2Id, video3: video3Id
+        video1: video1Id, video3: video3Id
     }
 };
 
@@ -184,14 +195,53 @@ const contentData: any = {
             { q: "Does this apply for hijab-wearing / religious women?", a: "Yes. Dark Feminine is not about clothing or physical appearance. It's about AURA, MYSTERY, and MINDSET. Many of our readers wear hijab." },
         ],
         pains: [
-            { icon: "😔", text: <>Always the 'best friend' but <strong>NEVER</strong> the first choice</> },
-            { icon: "💔", text: <>Left or cheated on despite being loyal and good</> },
-            { icon: "😤", text: <>Jealous of 'average' girls who get dream boyfriends</> },
-            { icon: "📱", text: <>Watching drama at 2AM secretly wishing to <strong>BE her</strong></> },
-            { icon: "🔄", text: <>Always attracting toxic guys — ghosted after 3 months</> },
-            { icon: "😶", text: <>Labeled 'too nice' which really means 'too <strong>BORING</strong>'</> },
+            { icon: "😔", text: <>Selalu jadi "teman curhat" tapi bukan <strong>PILIHAN</strong> siapapun</> },
+            { icon: "💔", text: <>Ditinggal atau diselingkuhi padahal sudah <strong>baik dan setia</strong></> },
+            { icon: "😤", text: <>Iri sama wanita yang "biasa aja" tapi hidupnya lebih <strong>diperhatikan</strong></> },
+            { icon: "📱", text: <>Nonton drama pelakor jam 2 pagi dan diam-diam <strong>pengen jadi DIA</strong></> },
+            { icon: "🔄", text: <>Selalu attract yang salah — di-ghosted, diabaikan, atau tidak dihargai</> },
+            { icon: "😶", text: <>Diberi label "terlalu baik" — yang artinya <strong>terlalu BORING</strong></> },
+            { icon: "🛏️", text: <>Tidur di samping seseorang tapi merasa <strong>lebih sendirian</strong> dari sebelumnya</> },
+            { icon: "📵", text: <>Sadar HP-nya lebih dapat <strong>perhatian</strong> daripada kamu</> },
+            { icon: "😞", text: <>Sudah lakukan segalanya dengan benar — tapi tetap <strong>tidak dilihat</strong></> },
+            { icon: "🪞", text: <>Lupa kapan terakhir kali merasa seperti <strong>WANITA</strong> — bukan hanya ibu, istri, atau karyawan</> },
         ],
-        urgency: (t: React.ReactNode) => <>⚡ SPECIAL PRICE — Ends in {t} ⚡</>,
+        wifeSection: {
+            label: "Dan Jikapun anda memiliki Pasangan",
+            title: "Apakah Ini Kehidupan Pernikahan Yang Kamu Impikan?",
+            items: [
+                { img: 'istri01', title: "Tidur Sendiri dalam Keramaian", desc: "Satu ranjang tapi terasa ribuan kilometer jaraknya. Dia lebih asyik dengan dunianya sendiri sementara kamu merindukan sentuhan yang tulus." },
+                { img: 'istri02', title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
+                { img: 'istri03', title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
+                { img: 'istri04', title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
+                { img: 'istri05', title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
+                { img: 'istri06', title: "Bertahan Demi Anak", desc: "Pura-pura bahagia di depan anak-anak, padahal hati sudah hancur dan kesepian setiap malam." }
+            ]
+        },
+        hesitationBox: {
+            title: "Tunggu sebentar.",
+            subtitle: "Kamu masih di sini — berarti ada sesuatu yang menahan.",
+            body: [
+                "Boleh jujur?",
+                "Harga ini bukan yang kamu takutkan.",
+                "Yang kamu takutkan adalah — bagaimana kalau ini benar-benar berhasil?",
+                "Bagaimana kalau selama ini bukan nasibmu yang salah, tapi hanya satu hal kecil yang belum kamu tahu?",
+                "Karena kalau itu benar — berarti semua rasa sakit itu... bisa dicegah.",
+                "Berarti semua malam yang kamu habiskan menunggu, semua hubungan yang berakhir tanpa alasan jelas, semua kali kamu bertanya \"kenapa bukan aku?\" —",
+                "Semua itu tidak harus terjadi.",
+                "Dan sekarang kamu berdiri di depan pintunya. Harga secangkir kopi per minggu.",
+                "Di satu sisi: jawaban yang sudah kamu cari bertahun-tahun.",
+                "Di sisi lain: kembali ke loop yang sama — dengan orang yang berbeda.",
+                "Pilihannya ada di tanganmu."
+            ],
+            objection: "Kami mengerti kalau kamu masih ragu. Keraguan itu wajar — bahkan itu tanda kamu serius.\n\nTapi ragu bukan alasan untuk tidak bergerak. Ragu adalah alasan untuk mencari tahu lebih dulu.",
+            cta1: "Ya, saya siap berubah — Selesaikan Pembayaran",
+            cta2: "Lihat dulu apa kata mereka yang sudah baca →",
+            cta3: "Belum yakin? Baca dulu versi gratisnya — tanpa risiko",
+            micro: "Ribuan wanita Indonesia sudah membaca ini malam ini. Besok pagi mereka bangun dengan cara pandang yang berbeda. Kamu bisa ikut — atau kamu bisa scroll kembali ke atas dan lanjutkan hari seperti biasa.\n\nKeduanya adalah pilihan yang valid. Tapi hanya satu yang mengubah sesuatu.",
+            sting: "Harga ilmu ini tidak akan pernah lebih murah dari rasa sakit yang sudah kamu tanggung gratis selama ini."
+        },
+        urgency: (t: React.ReactNode) => <>⚡ HARGA SPESIAL — Berakhir dalam {t} ⚡</>,
         heroBadge: "🌙 SECRET WOMEN'S GUIDE",
         heroH1a: "Become the Woman",
         heroH1b: "He Can't Forget",
@@ -788,9 +838,148 @@ const HotAffiliateTSX = () => {
 
         @media(max-width:560px) { #df-sticky-cta { max-width: 100%; } .df-hero-h1 { font-size: 38px; } }
 
+        .df-wife-card {
+          background: var(--bg-card);
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid rgba(139,92,246,0.22);
+          margin-bottom: 24px;
+        }
+        .df-wife-img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          display: block;
+        }
+        .df-wife-content {
+          padding: 20px;
+        }
+        .df-wife-title {
+          font-family: var(--font-display);
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--white);
+          margin-bottom: 8px;
+        }
+        .df-wife-desc {
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--cream);
+          opacity: 0.9;
+        }
+
         .df-formsec { background: var(--bg-section); padding: 44px 0; }
         .df-privstrip { display: flex; justify-content: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
         .df-privbadge { display: flex; align-items: center; gap: 5px; font-size: 14px; color: var(--muted); }
+
+        /* Hesitation Box Styles */
+        .df-hesitation-box {
+          background: linear-gradient(180deg, rgba(10,5,20,0.95) 0%, rgba(25,10,50,0.98) 100%);
+          border: 1px solid rgba(139,92,246,0.25);
+          border-radius: 24px;
+          padding: 32px 24px;
+          margin: 40px auto;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+          position: relative;
+          overflow: hidden;
+        }
+        .df-hesitation-box::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle at center, rgba(139,92,246,0.05) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .df-hesitation-title {
+          font-family: var(--font-display);
+          font-size: 28px;
+          font-weight: 800;
+          color: var(--white);
+          margin-bottom: 8px;
+          text-align: center;
+        }
+        .df-hesitation-subtitle {
+          font-size: 18px;
+          color: var(--gold-light);
+          font-weight: 600;
+          text-align: center;
+          margin-bottom: 28px;
+          line-height: 1.4;
+        }
+        .df-hesitation-body {
+          font-size: 16px;
+          line-height: 1.65;
+          color: var(--cream);
+          margin-bottom: 28px;
+        }
+        .df-hesitation-body p {
+          margin-bottom: 12px;
+        }
+        .df-hesitation-objection {
+          background: rgba(0,0,0,0.2);
+          border-left: 3px solid var(--purple-light);
+          padding: 16px;
+          border-radius: 4px 12px 12px 4px;
+          font-size: 15px;
+          color: var(--white);
+          opacity: 0.9;
+          margin-bottom: 32px;
+          white-space: pre-line;
+        }
+        .df-hesitation-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          padding: 16px;
+          border-radius: 14px;
+          font-weight: 700;
+          font-size: 16px;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-decoration: none;
+          margin-bottom: 12px;
+          border: none;
+          font-family: var(--font-body);
+        }
+        .df-hesitation-btn:active { transform: scale(0.98); }
+        .df-hesitation-btn-primary {
+          background: var(--purple-gold);
+          color: white;
+          box-shadow: 0 4px 15px rgba(139,92,246,0.3);
+        }
+        .df-hesitation-btn-secondary {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(139,92,246,0.3);
+          color: var(--white);
+        }
+        .df-hesitation-btn-tertiary {
+          background: transparent;
+          color: var(--muted);
+          font-size: 14px;
+          text-decoration: underline;
+        }
+        .df-hesitation-micro {
+          font-size: 13px;
+          line-height: 1.5;
+          color: var(--muted);
+          text-align: center;
+          margin-top: 24px;
+          white-space: pre-line;
+        }
+        .df-hesitation-sting {
+          font-size: 11px;
+          color: var(--muted);
+          opacity: 0.6;
+          text-align: center;
+          margin-top: 24px;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+        }
+
         .df-flabel { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 5px; display: block; }
         .df-finput { width: 100%; padding: 13px 15px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09); border-radius: 11px; color: var(--cream); font-size: 18px; font-family: var(--font-body); outline: none; transition: border-color .2s; }
         .df-finput:focus { border-color: var(--purple-light); }
@@ -889,14 +1078,37 @@ const HotAffiliateTSX = () => {
                                 <span className="df-newline df-gold">{c.solH2b}</span>
                             </h2>
                             <p style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</p>
-                            <div className="df-video-player">
-                                <video controls playsInline preload="metadata" poster={assets.df03}>
-                                    <source src={assets.video1} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : 'Transformation Story'}</span></div>
-                            </div>
+                            {assets.video1 && (
+                                <div className="df-video-player">
+                                    <video controls playsInline preload="metadata" poster={assets.video1Poster || assets.df03}>
+                                        <source src={assets.video1} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : 'Transformation Story'}</span></div>
+                                </div>
+                            )}
                         </div>
                     </section>
+
+                    {/* KHUSUS ISTRI SECTION - Indonesia Only */}
+                    {lang === 'id' && c.wifeSection && (
+                        <section style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-section) 100%)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{c.wifeSection.label}</div>
+                                <h2 className="df-section-h2">{c.wifeSection.title}</h2>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                                    {c.wifeSection.items.map((item: any, idx: number) => (
+                                        <div key={idx} className="df-wife-card">
+                                            <img src={(assets as any)[item.img]} alt={item.title} className="df-wife-img" />
+                                            <div className="df-wife-content">
+                                                <h3 className="df-wife-title">{item.title}</h3>
+                                                <p className="df-wife-desc">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* CONTENTS */}
                     <section style={{ padding: '44px 0' }}>
@@ -941,18 +1153,22 @@ const HotAffiliateTSX = () => {
                                 ))}
                             </div>
 
-                            <div className="df-video-player" style={{ marginTop: '28px' }}>
-                                <video controls playsInline preload="metadata" poster={assets.df04}>
-                                    <source src={assets.video2} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : 'From Ignored to Admired'}</span></div>
-                            </div>
-                            <div className="df-video-player">
-                                <video controls playsInline preload="metadata" poster={assets.df09}>
-                                    <source src={assets.video3} type="video/mp4" />
-                                </video>
-                                <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : 'The Forgotten Wife'}</span></div>
-                            </div>
+                            {assets.video2 && (
+                                <div className="df-video-player" style={{ marginTop: '28px' }}>
+                                    <video controls playsInline preload="metadata" poster={assets.df04}>
+                                        <source src={assets.video2} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : 'From Ignored to Admired'}</span></div>
+                                </div>
+                            )}
+                            {assets.video3 && (
+                                <div className="df-video-player">
+                                    <video controls playsInline preload="metadata" poster={assets.video3Poster || assets.df09}>
+                                        <source src={assets.video3} type="video/mp4" />
+                                    </video>
+                                    <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : 'The Forgotten Wife'}</span></div>
+                                </div>
+                            )}
                         </div>
                     </section>
 
@@ -1020,7 +1236,7 @@ const HotAffiliateTSX = () => {
                     </section>
 
                     {/* EXCLUSIVITY */}
-                    <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
+                    <section id="free-ebook" style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : 'NOT FOR EVERYONE'}</div>
                             <h2 className="df-section-h2">{c.exclH2}</h2>
@@ -1098,7 +1314,7 @@ const HotAffiliateTSX = () => {
                             <div className="df-section-label">LANGKAH TERAKHIR</div>
                             <h2 className="df-section-h2">Isi Data & <span className="df-gold">Dapatkan Akses</span></h2>
                             <div className="df-privstrip">
-                                {[["🔒", "100% Privasi"], ["⚡", "Akses Instan"], ["��", "Bayar Aman"], ["📱", "Seumur Hidup"]].map(([ic, lb]) => (
+                                {[["🔒", "100% Privasi"], ["⚡", "Akses Instan"], ["✅", "Bayar Aman"], ["📱", "Seumur Hidup"]].map(([ic, lb]) => (
                                     <div key={lb} className="df-privbadge"><span>{ic}</span><span>{lb}</span></div>
                                 ))}
                             </div>
@@ -1161,10 +1377,63 @@ const HotAffiliateTSX = () => {
                                 <button className="df-sbtn" onClick={submitOrder} disabled={loading}>
                                     {loading ? "Memproses..." : `🛒 Pesan Sekarang — Rp100.000`}
                                 </button>
-                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 Pembayaran aman & dienkripsi. Produk dikirim digital. Anda akan dibuatkan akun Affiliate otomatis setelah pembayaran berhasil.</p>
+                                <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 {lang === 'id' ? 'Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.' : 'Secure & encrypted payment. Product delivered digitally. No suspicious billing.'}</p>
                             </div>
                         </div>
                     </section>
+
+                    {/* HESITATION BOX - Indonesia Only */}
+                    {lang === 'id' && c.hesitationBox && (
+                        <section style={{ padding: '0 0 44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-hesitation-box">
+                                    <div className="df-hesitation-header">
+                                        <h2 className="df-hesitation-title">{c.hesitationBox.title}</h2>
+                                        <p className="df-hesitation-subtitle">{c.hesitationBox.subtitle}</p>
+                                    </div>
+                                    <div className="df-hesitation-body">
+                                        {c.hesitationBox.body.map((p: string, i: number) => (
+                                            <p key={i}>{p}</p>
+                                        ))}
+                                    </div>
+                                    <div className="df-hesitation-objection">
+                                        {c.hesitationBox.objection}
+                                    </div>
+                                    <div className="df-hesitation-ctas">
+                                        <button 
+                                            className="df-hesitation-btn df-hesitation-btn-primary"
+                                            onClick={() => {
+                                                const el = document.getElementById('checkout');
+                                                if(el) el.scrollIntoView({ behavior: 'smooth' });
+                                            }}
+                                        >
+                                            {c.hesitationBox.cta1}
+                                        </button>
+                                        <button 
+                                            className="df-hesitation-btn df-hesitation-btn-secondary"
+                                            onClick={() => {
+                                                const el = document.getElementById('reviews-section');
+                                                if(el) el.scrollIntoView({ behavior: 'smooth' });
+                                            }}
+                                        >
+                                            {c.hesitationBox.cta2}
+                                        </button>
+                                        <button 
+                                            className="df-hesitation-btn df-hesitation-btn-tertiary"
+                                            onClick={() => {
+                                                const el = document.getElementById('free-ebook');
+                                                if(el) el.scrollIntoView({ behavior: 'smooth' });
+                                            }}
+                                        >
+                                            {c.hesitationBox.cta3}
+                                        </button>
+                                    </div>
+                                    <p className="df-hesitation-micro">{c.hesitationBox.micro}</p>
+                                    <p className="df-hesitation-sting">{c.hesitationBox.sting}</p>
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* FAQ */}
                     <section style={{ padding: '44px 0' }}>

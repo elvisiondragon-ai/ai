@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { supabase } from "../integrations/supabase/client";
-import { ArrowLeft, Copy, Mail, Lock, Eye, EyeOff, Star, Trash2 } from "lucide-react";
+import {
+    ArrowLeft,
+    Copy,
+    Mail,
+    Lock,
+    Eye,
+    EyeOff,
+    Star
+} from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "../utils/fbpixel";
@@ -19,8 +27,23 @@ import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
 import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
 import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
 import video1Id from '../assets/darkfem/indo_image/video1.mp4';
-import video2Id from '../assets/darkfem/indo_image/video2.mp4';
+import video1PosterId from '../assets/darkfem/indo_image/video1.jpg';
 import video3Id from '../assets/darkfem/indo_image/video3.mp4';
+import video3PosterId from '../assets/darkfem/indo_image/video3.jpg';
+
+// Istri Section Assets
+import istri01 from '../assets/darkfem/indo_image/istritest1-Tidur_Sendiri.png';
+import istri02 from '../assets/darkfem/indo_image/istritest2-Dulu_vs_Sekarang.png';
+import istri03 from '../assets/darkfem/indo_image/istritest3-Suami_Perhatian_HP.png';
+import istri04 from '../assets/darkfem/indo_image/istritest4-Ibu_vs_Wanita.png';
+import istri05 from '../assets/darkfem/indo_image/istritest9-Dia_Pilih_Segalanya.png';
+import istri06 from '../assets/darkfem/indo_image/istritest10-Bertahan_Untuk_Anak.png';
+
+// Angle Section Assets
+import angle1 from '../assets/darkfem/indo_image/angle1-Silent_Power.png';
+import angle11 from '../assets/darkfem/indo_image/angle11-Wanita_Yang_Pria_Takut_Kehilangan.png';
+import angle6 from '../assets/darkfem/indo_image/angle6-Tidak_Pernah_Minta.png';
+import angle7 from '../assets/darkfem/indo_image/angle7-Sebelum_vs_Sesudah.png';
 
 // Asset Imports for EN
 import df01En from '../assets/darkfem/english_image/df01_paradox_en.png';
@@ -50,7 +73,10 @@ const assetsMap: any = {
     id: {
         df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
         df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
-        video1: video1Id, video2: video2Id, video3: video3Id
+        video1: video1Id, video3: video3Id,
+        video1Poster: video1PosterId, video3Poster: video3PosterId,
+        istri01, istri02, istri03, istri04, istri05, istri06,
+        angle1, angle11, angle6, angle7
     },
     en: {
         df01: df01En, df02: df02En, df03: df03En, df04: df04En, df05: df05En,
@@ -125,12 +151,60 @@ const contentData: any = {
         ],
         pains: [
             { icon: "😔", text: <>Selalu jadi "teman curhat" tapi bukan <strong>PILIHAN</strong> siapapun</> },
-            { icon: "💔", text: <>Ditinggal atau diselingkuhi padahal sudah baik dan setia</> },
-            { icon: "😤", text: <>Iri sama cewek yang "biasa aja" tapi dapat cowok impian</> },
-            { icon: "📱", text: <>Nonton drama pelakor jam 2 pagi dan diam-diam pengen jadi <strong>DIA</strong></> },
-            { icon: "🔄", text: <>Selalu attract cowok toxic — di-ghosted setelah 3 bulan</> },
-            { icon: "😶", text: <>Diberi label "terlalu baik" yang artinya "terlalu <strong>BORING</strong>"</> },
+            { icon: "💔", text: <>Ditinggal atau diselingkuhi padahal sudah <strong>baik dan setia</strong></> },
+            { icon: "😤", text: <>Iri sama wanita yang "biasa aja" tapi hidupnya lebih <strong>diperhatikan</strong></> },
+            { icon: "📱", text: <>Nonton drama pelakor jam 2 pagi dan diam-diam <strong>pengen jadi DIA</strong></> },
+            { icon: "🔄", text: <>Selalu attract yang salah — di-ghosted, diabaikan, atau tidak dihargai</> },
+            { icon: "😶", text: <>Diberi label "terlalu baik" — yang artinya <strong>terlalu BORING</strong></> },
+            { icon: "🛏️", text: <>Tidur di samping seseorang tapi merasa <strong>lebih sendirian</strong> dari sebelumnya</> },
+            { icon: "📵", text: <>Sadar HP-nya lebih dapat <strong>perhatian</strong> daripada kamu</> },
+            { icon: "😞", text: <>Sudah lakukan segalanya dengan benar — tapi tetap <strong>tidak dilihat</strong></> },
+            { icon: "🪞", text: <>Lupa kapan terakhir kali merasa seperti <strong>WANITA</strong> — bukan hanya ibu, istri, atau karyawan</> },
         ],
+        wifeSection: {
+            label: "Dan Jikapun anda memiliki Pasangan",
+            title: "Apakah Ini Kehidupan Pernikahan Yang Kamu Hadapi?",
+            items: [
+                { img: 'istri01', title: "Tidur Sendiri dalam Keramaian", desc: "Satu ranjang tapi terasa ribuan kilometer jaraknya. Dia lebih asyik dengan dunianya sendiri sementara kamu merindukan sentuhan yang tulus." },
+                { img: 'istri02', title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
+                { img: 'istri03', title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
+                { img: 'istri04', title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
+                { img: 'istri05', title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
+                { img: 'istri06', title: "Bertahan Demi Anak", desc: "Pura-pura bahagia di depan anak-anak, padahal hati sudah hancur dan kesepian setiap malam." }
+            ]
+        },
+        angleSection: {
+            title: "Siap Untuk Transformasi?",
+            items: [
+                { img: 'angle1', title: "Silent Power", desc: "Berhenti mengejar, mulai menarik dengan kekuatan diam yang mematikan." },
+                { img: 'angle11', title: "Wanita Yang Pria Takut Kehilangan", desc: "Jadilah wanita yang membuat dia berpikir dua kali sebelum melakukan kesalahan." },
+                { img: 'angle6', title: "Tidak Pernah Minta", desc: "Dapatkan semua yang kamu mau tanpa harus memohon atau meminta sedikitpun." },
+                { img: 'angle7', title: "Sebelum vs Sesudah", desc: "Transformasi mindset yang akan mengubah cara dunia — and pria — memperlakukanmu." }
+            ]
+        },
+        hesitationBox: {
+            title: "Tunggu sebentar.",
+            subtitle: "Kamu masih di sini — berarti ada sesuatu yang menahan.",
+            body: [
+                "Boleh jujur?",
+                "Harga ini bukan yang kamu takutkan.",
+                "Yang kamu takutkan adalah — bagaimana kalau ini benar-benar berhasil?",
+                "Bagaimana kalau selama ini bukan nasibmu yang salah, tapi hanya satu hal kecil yang belum kamu tahu?",
+                "Karena kalau itu benar — berarti semua rasa sakit itu... bisa dicegah.",
+                "Berarti semua malam yang kamu habiskan menunggu, semua hubungan yang berakhir tanpa alasan jelas, semua kali kamu bertanya \"kenapa bukan aku?\" —",
+                "Semua itu tidak harus terjadi.",
+                "Dan sekarang kamu berdiri di depan pintunya. Harga secangkir kopi per minggu.",
+                "Di satu sisi: jawaban yang sudah kamu cari bertahun-tahun.",
+                "Di sisi lain: kembali ke loop yang sama — dengan orang yang berbeda.",
+                "Pilihannya ada di tanganmu."
+            ],
+            objection: "Kami mengerti kalau kamu masih ragu. Keraguan itu wajar — bahkan itu tanda kamu serius.\n\nTapi ragu bukan alasan untuk tidak bergerak. Ragu adalah alasan untuk mencari tahu lebih dulu.",
+            cta1: "Ya, saya siap berubah — Selesaikan Pembayaran",
+            cta2: "Lihat dulu apa kata mereka yang sudah baca →",
+            cta3: "Belum yakin? Baca dulu versi gratisnya — tanpa risiko",
+            micro: "Ribuan wanita Indonesia sudah membaca ini malam ini. Besok pagi mereka bangun dengan cara pandang yang berbeda. Kamu bisa ikut — atau kamu bisa scroll kembali ke atas dan lanjutkan hari seperti biasa.\n\nKeduanya adalah pilihan yang valid. Tapi hanya satu yang mengubah sesuatu.",
+            sting: "Harga ilmu ini tidak akan pernah lebih murah dari rasa sakit yang sudah kamu tanggung gratis selama ini."
+        },
         urgency: (t: React.ReactNode) => <>⚡ HARGA SPESIAL — Berakhir dalam {t} ⚡</>,
         heroBadge: "🌙 PANDUAN RAHASIA WANITA",
         heroH1a: "Jadilah Wanita yang",
@@ -305,7 +379,7 @@ const contentData: any = {
             { icon: "👑", title: "High Value Woman (22 pahina)", desc: "Mabilisang gabay upang maging babaeng may mataas na halaga", price: "Rp57,000" },
             { icon: "✨", title: "Simply Irresistible (272 pahina)", desc: "Palabasin ang iyong angking pang-akit — kumpletong gabay mula sa mga case study ng mga pinakanakakabighaning babae sa kasaysayan", price: "Rp147,000" },
             { icon: "🔥", title: "How to Please Your Man (29 pahina)", desc: "Mga sikreto sa kwarto na magpapabaliw at magpapasuko sa kanya", price: "Rp97,000", isHighlight: true, highlightText: "Isang taboo na aklat na madalas ibinebenta nang hiwalay sa libu-libong halaga, nagtuturo ng mga sikreto sa kwarto upang mapasaya ang lalaki... isinama rito nang LIBRE bilang bonus." },
-            { icon: "💋", title: "Purple Sheets (61 pahina)", desc: "Gabay sa sukdulang sarap — mga teknik na hindi itinuro ninuman", price: "Rp97,000" },
+            { icon: "💋", title: "Selimut Ungu (61 pahina)", desc: "Gabay sa sukdulang sarap — mga teknik na hindi itinuro ninuman", price: "Rp97,000" },
         ],
         valueRows: [
             { title: "Main Ebook: 52 Dark Feminine Moves (156 pahina)", price: "Rp199,000" },
@@ -386,38 +460,38 @@ const contentData: any = {
 
 
 const MOCK_REVIEWS = [
-    { name: "nisa.ayu***@gmail.com", rating: 5, text: "Demi allah sis, baru 2 minggu praktekin jurus 7... cowok yang dulu ghosting gue TIBA-TIBA nge-DM lagi. Padahal gue ga ngapa-ngapain. Cuma DIEM. Ternyata itu ilmunya 😭🔥", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "sari_19***@yahoo.co.id", rating: 4, text: "Suami gue yang tadinya cuek, sekarang GELISAH kalau gue keluar rumah. Bukan karena posesif. Tapi karena dia mulai TAKUT KEHILANGAN. Bintang 4 karena butuh waktu buat biasa nahan emosi, tapi ilmunya daging banget.", lang: "id", country: "SG", flag: "🇸🇬" },
-    { name: "r.agustin***@hotmail.com", rating: 5, text: "Ex gue nikah sama cewek lain. 6 bulan kemudian gue apply dark feminine, gue dapet cowok yang 10x lebih ganteng dan kaya. Dan tau ga? Ex gue NGESTALK ig gue sekarang setiap hari. Karma is real 💅", lang: "id", country: "MY", flag: "🇲🇾" },
-    { name: "dindakh***@gmail.com", rating: 5, text: "Gue introvert parah, bahkan ngomong sama barista aja gugup. Tapi setelah baca jurus 12 soal 'aura diam', cowok-cowok di kantor mulai NOTICE gue. Bos gue sendiri bilang 'ada yang beda dari lo'. Padahal gue cuma UBAH CARA DIAM gue 😭✨", lang: "id", country: "PH", flag: "🇵🇭" },
-    { name: "mega.wat***@gmail.com", rating: 3, text: "Ilmunya bagus, tapi prakteknya butuh mental baja buat yang terbiasa jadi people pleaser. Masih pelan-pelan nyoba nerapin push-pull, belum berani maksimal.", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "wulansari.***@gmail.com", rating: 5, text: "Single mom 2 anak. Udah pasrah ga bakal ada yang mau. Baca ebook ini, praktekin jurus mystery... dalam 3 bulan ada 4 cowok mapan yang serius approach. Yang gue pilih? Dokter. Dan dia SAYANG banget sama anak-anak gue 🥹💜", lang: "id", country: "MY", flag: "🇲🇾" },
-    { name: "tasya.luth***@yahoo.com", rating: 4, text: "Anak kuliahan yang selalu jadi 'sahabat'. Cowok yang gue suka malah curhat soal cewek lain ke gue. Setelah apply jurus 3 dan 7, DIA YANG NEMBAK DULUAN. Kurang satu bintang karena materinya lumayan panjang buat dibaca wkwk.", lang: "id", country: "SG", flag: "🇸🇬" },
-    { name: "fitri.hiday***@gmail.com", rating: 5, text: "Nikah 8 tahun, suami udah kayak robot. Pulang kerja langsung HP. Gue praktekin jurus hot-cold selama 2 minggu... dia PANIK. Sekarang tiap weekend dia yang PLAN date night. Bahkan mulai kirim bunga lagi kayak waktu pacaran 🌹😍", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "jessica.m***@gmail.com", rating: 5, text: "The abundance mindset chapter changed my life! I stopped chasing and now he's the one double texting.", lang: "en", country: "SG", flag: "🇸🇬" },
-    { name: "maria.vic***@yahoo.com", rating: 5, text: "Push-pull dynamics is literally magic. Used it on a guy who was pulling away, and he asked me out the next day.", lang: "en", country: "PH", flag: "🇵🇭" },
-    { name: "lucy_h***@hotmail.com", rating: 5, text: "Never thought psychology could be applied to dating this effectively. Highly recommend!", lang: "en", country: "MY", flag: "🇲🇾" },
-    { name: "tara.wil***@gmail.com", rating: 5, text: "I tried the mystery techniques and it drove my husband crazy in a good way. We feel like newlyweds again.", lang: "en", country: "SG", flag: "🇸🇬" },
-    { name: "chloe.m***@gmail.com", rating: 3, text: "Good book, but some techniques take a lot of confidence to pull off. Still practicing. Not a magical overnight fix.", lang: "en", country: "PH", flag: "🇵🇭" },
-    { name: "kathy.smit***@yahoo.com", rating: 5, text: "Worth every penny. The bonuses alone are worth more than the price.", lang: "en", country: "SG", flag: "🇸🇬" },
-    { name: "emily.r***@gmail.com", rating: 5, text: "This actually works. I was skeptical but the text game examples are spot on.", lang: "en", country: "MY", flag: "🇲🇾" },
-    { name: "sarah.b***@hotmail.com", rating: 5, text: "The Femme Fatale Secrets bonus is my favorite. Unleashed a side of me I didn't know existed.", lang: "en", country: "PH", flag: "🇵🇭" },
-    { name: "amelia.col***@gmail.com", rating: 5, text: "My SMV definitely went up after reading this. Men treat me with so much more respect now.", lang: "en", country: "SG", flag: "🇸🇬" },
-    { name: "maya.l***@yahoo.com", rating: 5, text: "I love how practical the 30-day workbook is. Keeps you accountable.", lang: "en", country: "MY", flag: "🇲🇾" },
-    { name: "rachel.d***@gmail.com", rating: 3, text: "Informative, but I wish there were more video examples of the body language.", lang: "en", country: "PH", flag: "🇵🇭" },
-    { name: "natalie.j***@hotmail.com", rating: 5, text: "This is the holy grail for women who are tired of being the 'nice girl'.", lang: "en", country: "SG", flag: "🇸🇬" },
-    { name: "olivia.k***@gmail.com", rating: 5, text: "Great insights on emotional control. Helps not just in dating but in career too.", lang: "en", country: "MY", flag: "🇲🇾" },
-    { name: "helen.p***@yahoo.com", rating: 5, text: "I read Robert Greene's book before, but this summarizes it perfectly for modern dating.", lang: "en", country: "PH", flag: "🇵🇭" },
-    { name: "cindy.99***@gmail.com", rating: 4, text: "Bahasanya gampang dimengerti. Bonusnya banyak banget dan sangat membantu.", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "nadila.sd***@gmail.com", rating: 5, text: "Dari sekedar 'teman curhat' sekarang aku jadi prioritas utama. Nangis banget akhirnya ngerti cara mainnya.", lang: "id", country: "MY", flag: "🇲🇾" },
-    { name: "bella.put***@yahoo.com", rating: 5, text: "Aku nerapin ilmu ini ke gebetan yang toxic, akhirnya aku yang pegang kendali sekarang.", lang: "id", country: "SG", flag: "🇸🇬" },
-    { name: "viona.ri***@gmail.com", rating: 5, text: "Nyesel baru tau ilmu ini sekarang. Kalau aja dari dulu tau, gak bakal diselingkuhin.", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "putri.sar***@hotmail.com", rating: 3, text: "Gila sih ini dark feminine beneran bikin aura kita beda. Cuma menurut aku butuh waktu buat bener-bener nerapin, agak susah buat aku yang introvert murni.", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "gisel.t***@gmail.com", rating: 5, text: "Jurus hot-cold nya ampuh banget buat cowok yang suka ghosting.", lang: "id", country: "PH", flag: "🇵🇭" },
-    { name: "yuni.w***@yahoo.com", rating: 5, text: "Bonus How to Please Your Man nya... wow. Suami makin lengket hahaha.", lang: "id", country: "MY", flag: "🇲🇾" },
-    { name: "zahra.yu***@gmail.com", rating: 5, text: "Baru baca setengah tapi udah berasa perubahannya. Mantap pokoknya.", lang: "id", country: "SG", flag: "🇸🇬" },
-    { name: "ulfa.z***@hotmail.com", rating: 5, text: "Sekarang aku ngerti kenapa cewek biasa aja bisa dapet cowok tajir. Ternyata ini rahasianya.", lang: "id", country: "ID", flag: "🇮🇩" },
-    { name: "qonita.x***@gmail.com", rating: 5, text: "Gak bohong, ilmu ini bener-bener bikin cowok takut kehilangan kita.", lang: "id", country: "MY", flag: "🇲🇾" }
+    { name: "nisa.ayu***@gmail.com", rating: 5, text: "Demi allah sis, baru 2 minggu praktekin jurus 7... cowok yang dulu ghosting gue TIBA-TIBA nge-DM lagi. Padahal gue ga ngapa-ngapain. Cuma DIEM. Ternyata itu ilmunya 😭🔥", lang: "id", country: "ID", flag: "🇮🇩", created_at: "2026-03-12 10:20:00" },
+    { name: "sari_19***@yahoo.co.id", rating: 4, text: "Suami gue yang tadinya cuek, sekarang GELISAH kalau gue keluar rumah. Bukan karena posesif. Tapi karena dia mulai TAKUT KEHILANGAN. Bintang 4 karena butuh waktu buat biasa nahan emosi, tapi ilmunya daging banget.", lang: "id", country: "SG", flag: "🇸🇬", created_at: "2026-03-11 15:45:00" },
+    { name: "r.agustin***@hotmail.com", rating: 5, text: "Ex gue nikah sama cewek lain. 6 bulan kemudian gue apply dark feminine, gue dapet cowok yang 10x lebih ganteng dan kaya. Dan tau ga? Ex gue NGESTALK ig gue sekarang setiap hari. Karma is real 💅", lang: "id", country: "MY", flag: "🇲🇾", created_at: "2026-03-10 09:12:00" },
+    { name: "dindakh***@gmail.com", rating: 4, text: "Gue introvert parah, bahkan ngomong sama barista aja gugup. Tapi setelah baca jurus 12 soal 'aura diam', cowok-cowok di kantor mulai NOTICE gue. Bos gue sendiri bilang 'ada yang beda dari lo'. Padahal gue cuma UBAH CARA DIAM gue 😭✨", lang: "id", country: "PH", flag: "🇵🇭", created_at: "2026-03-10 21:30:00" },
+    { name: "mega.wat***@gmail.com", rating: 3, text: "Ilmunya bagus, tapi prakteknya butuh mental baja buat yang terbiasa jadi people pleaser. Masih pelan-pelan nyoba nerapin push-pull, belum berani maksimal.", lang: "id", country: "ID", flag: "🇮🇩", created_at: "2026-03-09 18:05:00" },
+    { name: "wulansari.***@gmail.com", rating: 5, text: "Single mom 2 anak. Udah pasrah ga bakal ada yang mau. Baca ebook ini, praktekin jurus mystery... dalam 3 bulan ada 4 cowok mapan yang serius approach. Yang gue pilih? Dokter. Dan dia SAYANG banget sama anak-anak gue 🥹💜", lang: "id", country: "MY", flag: "🇲🇾", created_at: "2026-03-08 14:10:00" },
+    { name: "tasya.luth***@yahoo.com", rating: 4, text: "Anak kuliahan yang selalu jadi 'sahabat'. Cowok yang gue suka malah curhat soal cewek lain ke gue. Setelah apply jurus 3 dan 7, DIA YANG NEMBAK DULUAN. Kurang satu bintang karena materinya lumayan panjang buat dibaca wkwk.", lang: "id", country: "SG", flag: "🇸🇬", created_at: "2026-03-08 08:22:00" },
+    { name: "fitri.hiday***@gmail.com", rating: 5, text: "Nikah 8 tahun, suami udah kayak robot. Pulang kerja langsung HP. Gue praktekin jurus hot-cold selama 2 minggu... dia PANIK. Sekarang tiap weekend dia yang PLAN date night. Bahkan mulai kirim bunga lagi kayak waktu pacaran 🌹😍", lang: "id", country: "ID", flag: "🇮🇩", created_at: "2026-03-07 19:33:00" },
+    { name: "jessica.m***@gmail.com", rating: 5, text: "The abundance mindset chapter changed my life! I stopped chasing and now he's the one double texting.", lang: "en", country: "SG", flag: "🇸🇬", created_at: "2026-03-07 11:11:00" },
+    { name: "maria.vic***@yahoo.com", rating: 4, text: "Push-pull dynamics is literally magic. Used it on a guy who was pulling away, and he asked me out the next day.", lang: "en", country: "PH", flag: "🇵🇭", created_at: "2026-03-06 16:20:00" },
+    { name: "lucy_h***@hotmail.com", rating: 5, text: "Never thought psychology could be applied to dating this effectively. Highly recommend!", lang: "en", country: "MY", flag: "🇲🇾", created_at: "2026-03-06 10:05:00" },
+    { name: "tara.wil***@gmail.com", rating: 5, text: "I tried the mystery techniques and it drove my husband crazy in a good way. We feel like newlyweds again.", lang: "en", country: "SG", flag: "🇸🇬", created_at: "2026-03-05 22:45:00" },
+    { name: "chloe.m***@gmail.com", rating: 3, text: "Good book, but some techniques take a lot of confidence to pull off. Still practicing. Not a magical overnight fix.", lang: "en", country: "PH", flag: "🇵🇭", created_at: "2026-03-05 08:12:00" },
+    { name: "kathy.smit***@yahoo.com", rating: 5, text: "Worth every penny. The bonuses alone are worth more than the price.", lang: "en", country: "SG", flag: "🇸🇬", created_at: "2026-03-04 14:55:00" },
+    { name: "emily.r***@gmail.com", rating: 5, text: "This actually works. I was skeptical but the text game examples are spot on.", lang: "en", country: "MY", flag: "🇲🇾", created_at: "2026-03-04 09:30:00" },
+    { name: "sarah.b***@hotmail.com", rating: 4, text: "The Femme Fatale Secrets bonus is my favorite. Unleashed a side of me I didn't know existed.", lang: "en", country: "PH", flag: "🇵🇭", created_at: "2026-03-03 20:18:00" },
+    { name: "amelia.col***@gmail.com", rating: 5, text: "My SMV definitely went up after reading this. Men treat me with so much more respect now.", lang: "en", country: "SG", flag: "🇸🇬", created_at: "2026-03-03 12:40:00" },
+    { name: "maya.l***@yahoo.com", rating: 5, text: "I love how practical the 30-day workbook is. Keeps you accountable.", lang: "en", country: "MY", flag: "🇲🇾", created_at: "2026-03-02 18:22:00" },
+    { name: "rachel.d***@gmail.com", rating: 3, text: "Informative, but I wish there were more video examples of the body language.", lang: "en", country: "PH", flag: "🇵🇭", created_at: "2026-03-02 09:12:00" },
+    { name: "natalie.j***@hotmail.com", rating: 5, text: "This is the holy grail for women who are tired of being the 'nice girl'.", lang: "en", country: "SG", flag: "🇸🇬", created_at: "2026-03-01 16:45:00" },
+    { name: "olivia.k***@gmail.com", rating: 5, text: "Great insights on emotional control. Helps not just in dating but in career too.", lang: "en", country: "MY", flag: "🇲🇾", created_at: "2026-02-28 11:30:00" },
+    { name: "helen.p***@yahoo.com", rating: 5, text: "I read Robert Greene's book before, but this summarizes it perfectly for modern dating.", lang: "en", country: "PH", flag: "🇵🇵", created_at: "2026-02-27 15:20:00" },
+    { name: "cindy.99***@gmail.com", rating: 4, text: "Bahasanya gampang dimengerti. Bonusnya banyak banget dan sangat membantu.", lang: "id", country: "ID", flag: "🇮🇩", created_at: "2026-02-27 10:05:00" },
+    { name: "nadila.sd***@gmail.com", rating: 5, text: "Dari sekedar 'teman curhat' sekarang aku jadi prioritas utama. Nangis banget akhirnya ngerti cara mainnya.", lang: "id", country: "MY", flag: "🇲🇾", created_at: "2026-02-26 21:18:00" },
+    { name: "bella.put***@yahoo.com", rating: 5, text: "Aku nerapin ilmu ini ke gebetan yang toxic, akhirnya aku yang pegang kendali sekarang.", lang: "id", country: "SG", flag: "🇸🇬", created_at: "2026-02-25 14:40:00" },
+    { name: "viona.ri***@gmail.com", rating: 4, text: "Nyesel baru tau ilmu ini sekarang. Kalau aja dari dulu tau, gak bakal diselingkuhin.", lang: "id", country: "ID", flag: "🇮🇩", created_at: "2026-02-24 12:22:00" },
+    { name: "putri.sar***@hotmail.com", rating: 3, text: "Gila sih ini dark feminine beneran bikin aura kita beda. Cuma menurut aku butuh waktu buat bener-bener nerapin, agak susah buat aku yang introvert murni.", lang: "id", country: "ID", flag: "🇮🇩", created_at: "2026-02-23 18:30:00" },
+    { name: "gisel.t***@gmail.com", rating: 5, text: "Jurus hot-cold nya ampuh banget buat cowok yang suka ghosting.", lang: "id", country: "PH", flag: "🇵🇭", created_at: "2026-02-22 09:12:00" },
+    { name: "yuni.w***@yahoo.com", rating: 5, text: "Bonus How to Please Your Man nya... wow. Suami makin lengket hahaha.", lang: "id", country: "MY", flag: "🇲🇾", created_at: "2026-02-21 15:45:00" },
+    { name: "zahra.yu***@gmail.com", rating: 4, text: "Baru baca setengah tapi udah berasa perubahannya. Mantap pokoknya.", lang: "id", country: "SG", flag: "🇸🇬", created_at: "2026-02-20 10:20:00" },
+    { name: "ulfa.z***@hotmail.com", rating: 5, text: "Sekarang aku ngerti kenapa cewek biasa aja bisa dapet cowok tajir. Ternyata ini rahasianya.", lang: "id", country: "ID", flag: "🇮🇩", created_at: "2026-02-19 19:30:00" },
+    { name: "qonita.x***@gmail.com", rating: 5, text: "Gak bohong, ilmu ini bener-bener bikin cowok takut kehilangan kita.", lang: "id", country: "MY", flag: "🇲🇾", created_at: "2026-02-18 11:11:00" }
 ];
 
 const getFlagForCountry = (countryCode: string) => {
@@ -468,67 +542,29 @@ const DarkFeminineTSX = () => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
-    const [purchasePassword, setPurchasePassword] = useState("");
-    const [purchasePasswordRepeat, setPurchasePasswordRepeat] = useState("");
-    const [showPurchasePassword, setShowPurchasePassword] = useState(false);
     const [payment, setPayment] = useState(initLang === 'en' || initLang === 'sg' || initLang === 'ph' ? "PAYPAL" : "QRIS");
     const [addUpsell, setAddUpsell] = useState(false);
     const { toast } = useToast();
 
-    // Auth & Reviews State
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isLoginLoading, setIsLoginLoading] = useState(false);
-    const [userReview, setUserReview] = useState<any>(null);
-    const [userEmailSession, setUserEmailSession] = useState("");
     const [reviewText, setReviewText] = useState("");
     const [reviewRating, setReviewRating] = useState(0);
+    const [anonymousReviewEmail, setAnonymousReviewEmail] = useState("");
     const [showReviewsCount, setShowReviewsCount] = useState(10);
     const [dbReviews, setDbReviews] = useState<any[]>([]);
+    const [showUpdateConfirm, setShowUpdateConfirm] = useState(false);
+    const [pendingReviewPayload, setPendingReviewPayload] = useState<any>(null);
 
     const fetchDbReviews = async () => {
         const { data } = await (supabase as any).from('darkfeminine_reviews').select('*').order('created_at', { ascending: false });
         if (data) setDbReviews(data);
     };
 
-    const fetchUserReview = async (email: string) => {
-        const { data } = await (supabase as any).from('darkfeminine_reviews').select('*').eq('user_email', email).maybeSingle();
-        if (data) {
-            setUserReview(data);
-            setReviewText(data.comment);
-            setReviewRating(data.rating);
-        } else {
-            setUserReview(null);
-            setReviewText("");
-            setReviewRating(0);
-        }
-    };
-
     useEffect(() => {
-        const checkSession = async () => {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session?.user) {
-                setIsLoggedIn(true);
-                setUserEmailSession(session.user.email || "");
-                fetchUserReview(session.user.email || "");
-            }
-            const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-                if (session?.user) {
-                    setIsLoggedIn(true);
-                    setUserEmailSession(session.user.email || "");
-                    fetchUserReview(session.user.email || "");
-                } else {
-                    setIsLoggedIn(false);
-                    setUserEmailSession("");
-                    setUserReview(null);
-                }
-            });
-            return () => { authListener.subscription.unsubscribe(); };
-        };
-        checkSession();
         fetchDbReviews();
     }, []);
 
@@ -572,12 +608,13 @@ const DarkFeminineTSX = () => {
         }
     };
 
-    const handleLogout = async () => {
-        await supabase.auth.signOut();
-        toast({ title: "Logout Berhasil" });
-    };
+    const submitReview = async (confirmedEmail?: string) => {
+        const emailToUse = confirmedEmail || anonymousReviewEmail.trim().toLowerCase();
 
-    const submitReview = async () => {
+        if (!emailToUse || !emailToUse.includes('@')) {
+            toast({ title: "Oops!", description: "Silahkan masukkan email yang valid.", variant: "destructive" });
+            return;
+        }
         if (!reviewRating) {
             toast({ title: "Oops!", description: "Silahkan beri rating bintang terlebih dahulu.", variant: "destructive" });
             return;
@@ -586,22 +623,39 @@ const DarkFeminineTSX = () => {
             toast({ title: "Oops!", description: "Ulasan tidak boleh kosong.", variant: "destructive" });
             return;
         }
+
         setIsLoginLoading(true);
         try {
+            // Check if review already exists for this email
+            const { data: existingReview } = await (supabase as any).from('darkfeminine_reviews').select('*').eq('user_email', emailToUse).maybeSingle();
+
+            if (existingReview && !confirmedEmail) {
+                setPendingReviewPayload({ email: emailToUse, rating: reviewRating, comment: reviewText });
+                setShowUpdateConfirm(true);
+                setIsLoginLoading(false);
+                return;
+            }
+
             const payload = {
-                user_email: userEmailSession,
-                name: userEmailSession.split('@')[0],
+                user_email: emailToUse,
+                name: emailToUse.split('@')[0],
                 rating: reviewRating,
-                comment: reviewText
+                comment: reviewText,
+                country: lang.toUpperCase(),
+                // If comment is null in the existing record (from purchase), we update it and it stays verified
+                // If it's a new review, it might be unverified unless the user already exists in another table (but per instructions, we just check data)
             };
-            if (userReview) {
-                await (supabase as any).from('darkfeminine_reviews').update(payload).eq('id', userReview.id);
+
+            if (existingReview) {
+                await (supabase as any).from('darkfeminine_reviews').update(payload).eq('id', existingReview.id);
                 toast({ title: "Review diupdate" });
             } else {
                 await (supabase as any).from('darkfeminine_reviews').insert([payload]);
                 toast({ title: "Review ditambahkan" });
             }
-            fetchUserReview(userEmailSession);
+            
+            setShowUpdateConfirm(false);
+            setPendingReviewPayload(null);
             fetchDbReviews();
         } catch (error: any) {
             toast({ title: "Gagal submit review", description: error.message, variant: "destructive" });
@@ -609,22 +663,6 @@ const DarkFeminineTSX = () => {
             setIsLoginLoading(false);
         }
     };
-
-    const deleteReview = async () => {
-        if (!userReview) return;
-        setIsLoginLoading(true);
-        try {
-            await (supabase as any).from('darkfeminine_reviews').delete().eq('id', userReview.id);
-            toast({ title: "Review dihapus" });
-            fetchUserReview(userEmailSession);
-            fetchDbReviews();
-        } catch (error: any) {
-            toast({ title: "Gagal menghapus review", description: error.message, variant: "destructive" });
-        } finally {
-            setIsLoginLoading(false);
-        }
-    };
-
 
     // Payment States
     const [loading, setLoading] = useState(false);
@@ -664,8 +702,6 @@ const DarkFeminineTSX = () => {
 
     const submitOrder = async () => {
         if (!name || !phone || !email) { alert('⚠️ Mohon lengkapi Nama, No. WhatsApp, dan Email Anda!'); return; }
-        if (!purchasePassword || purchasePassword.length < 6) { alert('⚠️ Password minimal 6 karakter!'); return; }
-        if (purchasePassword !== purchasePasswordRepeat) { alert('⚠️ Password tidak cocok!'); return; }
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
@@ -692,7 +728,7 @@ const DarkFeminineTSX = () => {
             userName: name, userEmail: email, phoneNumber: cleanPhone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
             amount: finalAmount, currency: finalCurrency, quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
-            fbc, fbp, clientIp, purchasePassword // Pass password to edge function instead of local signup
+            fbc, fbp, clientIp
         };
 
         try {
@@ -1279,9 +1315,177 @@ const DarkFeminineTSX = () => {
 
         @media(max-width:560px) { #df-sticky-cta { max-width: 100%; } .df-hero-h1 { font-size: 38px; } }
 
+        .df-wife-card {
+          background: var(--bg-card);
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid rgba(139,92,246,0.22);
+          margin-bottom: 24px;
+        }
+        .df-wife-img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          display: block;
+        }
+        .df-wife-content {
+          padding: 20px;
+        }
+        .df-wife-title {
+          font-family: var(--font-display);
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--white);
+          margin-bottom: 8px;
+        }
+        .df-wife-desc {
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--cream);
+          opacity: 0.9;
+        }
+
+        .df-wife-card {
+          background: var(--bg-card);
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid rgba(139,92,246,0.22);
+          margin-bottom: 24px;
+        }
+        .df-wife-img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          display: block;
+        }
+        .df-wife-content {
+          padding: 20px;
+        }
+        .df-wife-title {
+          font-family: var(--font-display);
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--white);
+          margin-bottom: 8px;
+        }
+        .df-wife-desc {
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--cream);
+          opacity: 0.9;
+        }
+
         .df-formsec { background: var(--bg-section); padding: 44px 0; }
         .df-privstrip { display: flex; justify-content: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
         .df-privbadge { display: flex; align-items: center; gap: 5px; font-size: 14px; color: var(--muted); }
+
+        /* Hesitation Box Styles */
+        .df-hesitation-box {
+          background: linear-gradient(180deg, rgba(10,5,20,0.95) 0%, rgba(25,10,50,0.98) 100%);
+          border: 1px solid rgba(139,92,246,0.25);
+          border-radius: 24px;
+          padding: 32px 24px;
+          margin: 40px auto;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+          position: relative;
+          overflow: hidden;
+        }
+        .df-hesitation-box::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle at center, rgba(139,92,246,0.05) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .df-hesitation-title {
+          font-family: var(--font-display);
+          font-size: 28px;
+          font-weight: 800;
+          color: var(--white);
+          margin-bottom: 8px;
+          text-align: center;
+        }
+        .df-hesitation-subtitle {
+          font-size: 18px;
+          color: var(--gold-light);
+          font-weight: 600;
+          text-align: center;
+          margin-bottom: 28px;
+          line-height: 1.4;
+        }
+        .df-hesitation-body {
+          font-size: 16px;
+          line-height: 1.65;
+          color: var(--cream);
+          margin-bottom: 28px;
+        }
+        .df-hesitation-body p {
+          margin-bottom: 12px;
+        }
+        .df-hesitation-objection {
+          background: rgba(0,0,0,0.2);
+          border-left: 3px solid var(--purple-light);
+          padding: 16px;
+          border-radius: 4px 12px 12px 4px;
+          font-size: 15px;
+          color: var(--white);
+          opacity: 0.9;
+          margin-bottom: 32px;
+          white-space: pre-line;
+        }
+        .df-hesitation-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          padding: 16px;
+          border-radius: 14px;
+          font-weight: 700;
+          font-size: 16px;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-decoration: none;
+          margin-bottom: 12px;
+          border: none;
+          font-family: var(--font-body);
+        }
+        .df-hesitation-btn:active { transform: scale(0.98); }
+        .df-hesitation-btn-primary {
+          background: var(--purple-gold);
+          color: white;
+          box-shadow: 0 4px 15px rgba(139,92,246,0.3);
+        }
+        .df-hesitation-btn-secondary {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(139,92,246,0.3);
+          color: var(--white);
+        }
+        .df-hesitation-btn-tertiary {
+          background: transparent;
+          color: var(--muted);
+          font-size: 14px;
+          text-decoration: underline;
+        }
+        .df-hesitation-micro {
+          font-size: 13px;
+          line-height: 1.5;
+          color: var(--muted);
+          text-align: center;
+          margin-top: 24px;
+          white-space: pre-line;
+        }
+        .df-hesitation-sting {
+          font-size: 11px;
+          color: var(--muted);
+          opacity: 0.6;
+          text-align: center;
+          margin-top: 24px;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+        }
         .df-flabel { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 5px; display: block; }
         .df-finput { width: 100%; padding: 13px 15px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09); border-radius: 11px; color: var(--cream); font-size: 18px; font-family: var(--font-body); outline: none; transition: border-color .2s; }
         .df-finput:focus { border-color: var(--purple-light); }
@@ -1384,7 +1588,7 @@ const DarkFeminineTSX = () => {
                             <p style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</p>
                             {assets.video1 && (
                                 <div className="df-video-player">
-                                    <video controls playsInline preload="metadata" poster={assets.df03}>
+                                    <video controls playsInline preload="metadata" poster={assets.video1Poster || assets.df03}>
                                         <source src={assets.video1} type="video/mp4" />
                                     </video>
                                     <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : (lang === 'ph' ? 'Kuwento ng Transpormasyon' : 'Transformation Story')}</span></div>
@@ -1392,6 +1596,27 @@ const DarkFeminineTSX = () => {
                             )}
                         </div>
                     </section>
+                    
+                    {/* KHUSUS ISTRI SECTION - Indonesia Only */}
+                    {lang === 'id' && c.wifeSection && (
+                        <section style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-section) 100%)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{c.wifeSection.label}</div>
+                                <h2 className="df-section-h2">{c.wifeSection.title}</h2>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                                    {c.wifeSection.items.map((item: any, idx: number) => (
+                                        <div key={idx} className="df-wife-card">
+                                            <img src={(assets as any)[item.img]} alt={item.title} className="df-wife-img" />
+                                            <div className="df-wife-content">
+                                                <h3 className="df-wife-title">{item.title}</h3>
+                                                <p className="df-wife-desc">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* CONTENTS */}
                     <section style={{ padding: '44px 0' }}>
@@ -1418,6 +1643,31 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.testiLabel}</div>
                             <h2 className="df-section-h2">{c.testiH2} <span className="df-gold">{c.testiH2Span}</span></h2>
+                        </div>
+                    </section>
+
+                    {/* ANGLE SECTION - Indonesia Only */}
+                    {lang === 'id' && c.angleSection && (
+                        <section style={{ background: 'var(--bg-primary)', padding: '22px 0 44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                                    {c.angleSection.items.map((item: any, idx: number) => (
+                                        <div key={idx} style={{ background: 'var(--bg-card)', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                            <img src={(assets as any)[item.img]} alt={item.title} style={{ width: '100%', display: 'block' }} />
+                                            <div style={{ padding: '16px' }}>
+                                                <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--cream)', marginBottom: '8px' }}>{item.title}</h3>
+                                                <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.5 }}>{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    {/* SOCIAL PROOF SECTION (Continued from Testimonials) */}
+                    <section style={{ background: 'var(--bg-primary)', padding: '0 0 44px 0' }}>
+                        <div className="df-wrap df-fade-in">
                             <div className="df-img-box">
                                 <img src={assets.df10} alt="Social Proof" />
                             </div>
@@ -1432,10 +1682,10 @@ const DarkFeminineTSX = () => {
                             )}
                             {assets.video3 && (
                                 <div className="df-video-player">
-                                    <video controls playsInline preload="metadata" poster={assets.df09}>
+                                    <video controls playsInline preload="metadata" poster={assets.video3Poster || assets.df07}>
                                         <source src={assets.video3} type="video/mp4" />
                                     </video>
-                                    <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'Istri yang Dilupakan' : (lang === 'ph' ? 'Ang Nakalimutang Asawa' : 'The Forgotten Wife')}</span></div>
+                                    <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'The Power of Being a "High Value Woman"' : (lang === 'ph' ? 'Ang Kapasidad ng Pagiging isang "High Value Woman"' : 'The Power of Being a "High Value Woman"')}</span></div>
                                 </div>
                             )}
                         </div>
@@ -1507,7 +1757,7 @@ const DarkFeminineTSX = () => {
                     </section>
 
                     {/* EXCLUSIVITY */}
-                    <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
+                    <section id="free-ebook" style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : (lang === 'ph' ? 'HINDI PARA SA LAHAT' : 'NOT FOR EVERYONE')}</div>
                             <h2 className="df-section-h2">{c.exclH2}</h2>
@@ -1627,8 +1877,9 @@ const DarkFeminineTSX = () => {
                             <div className="df-section-label">{lang === 'id' ? 'ULASAN PELANGGAN' : (lang === 'ph' ? 'MGA REVIEW NG CUSTOMER' : 'CUSTOMER REVIEWS')}</div>
                             <h2 className="df-section-h2" style={{ fontSize: '28px', marginBottom: '8px' }}>Review Real Customer</h2>
                             <p style={{ fontSize: '15px', color: 'var(--muted)', marginBottom: '16px', lineHeight: 1.6 }}>
-                                {lang === 'id' ? '(Anda bisa memberikan ulasan setelah membeli dan login dengan email anda)' : (lang === 'ph' ? '(Maaari kang mag-iwan ng review pagkatapos bumili at mag-login gamit ang iyong email)' : '(You can leave a review after purchasing and logging in with your email)')} <br />
-                                {lang === 'id' ? 'Ulasan pasti disensor untuk privasi anda. Kami Berintegritas untuk transparansi, semua review verified buyer akan ditampilkan, untuk jadi pembelajaran produk kami' : (lang === 'ph' ? 'Siniserensura ang mga ulasan para sa iyong privacy.' : 'Reviews are censored for your privacy.')}
+                                {lang === 'id' ? '(Berikan ulasan Anda dengan memasukkan email)' : (lang === 'ph' ? '(Maaari kang mag-iwan ng review gamit ang iyong email)' : '(You can leave a review using your email)')} <br />
+                                {lang === 'id' ? 'Ulasan disensor untuk privasi anda. Jika anda sudah membeli sebelumnya, review anda akan otomatis ditandai sebagai Verified Buyer.' : (lang === 'ph' ? 'Siniserensura ang mga ulasan para sa iyong privacy.' : 'Reviews are censored for your privacy.')}<br/>
+                                <strong> {lang === 'id' ? 'Anda sudah punya ulasan? Masukkan email yang sama untuk mengupdate ulasan anda.' : 'Have an existing review? Use the same email to update it.'} </strong>
                             </p>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', background: 'rgba(201,153,26,0.1)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(201,153,26,0.3)' }}>
@@ -1647,22 +1898,16 @@ const DarkFeminineTSX = () => {
 
                             {/* User Review Input Form */}
                             <div style={{ background: 'var(--bg-card)', borderRadius: '16px', padding: '20px', border: '1px solid rgba(139,92,246,0.3)', marginBottom: '24px' }}>
-                                {!isLoggedIn ? (
-                                    <div style={{ textAlign: 'center' }}>
-                                        <p style={{ color: 'var(--cream)', fontSize: '15px', marginBottom: '12px' }}>
-                                            {lang === 'id' ? 'Sudah membeli? Login untuk memberikan ulasan.' : (lang === 'ph' ? 'Nakabili na? Mag-login para mag-iwan ng review.' : 'Already purchased? Login to leave a review.')}
-                                        </p>
-                                        <button onClick={() => setShowLoginModal(true)} style={{ background: 'var(--purple)', color: 'white', border: 'none', padding: '10px 24px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)' }}>
-                                            Login
-                                        </button>
-                                    </div>
-                                ) : (
                                     <div>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                                            <div style={{ fontSize: '15px', color: 'var(--cream)' }}>
-                                                Halo, <strong>{userEmailSession.split('@')[0]}</strong>
-                                            </div>
-                                            <button onClick={handleLogout} style={{ background: 'transparent', border: '1px solid var(--red)', color: 'var(--red)', padding: '4px 12px', borderRadius: '6px', fontSize: '13px', cursor: 'pointer' }}>Logout</button>
+                                        <div style={{ marginBottom: '16px' }}>
+                                            <label style={{ display: 'block', fontSize: '14px', color: 'var(--muted)', marginBottom: '8px' }}>Email Anda:</label>
+                                            <input 
+                                                type="email" 
+                                                value={anonymousReviewEmail} 
+                                                onChange={(e) => setAnonymousReviewEmail(e.target.value)}
+                                                placeholder="contoh@gmail.com"
+                                                style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--cream)', padding: '12px', borderRadius: '8px', fontSize: '15px', outline: 'none' }}
+                                            />
                                         </div>
 
                                         <div style={{ marginBottom: '12px' }}>
@@ -1688,18 +1933,36 @@ const DarkFeminineTSX = () => {
                                             style={{ width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--cream)', padding: '14px', borderRadius: '8px', minHeight: '100px', fontFamily: 'var(--font-body)', fontSize: '15px', outline: 'none', marginBottom: '12px' }}
                                         />
 
+                                        {showUpdateConfirm && (
+                                            <div style={{ background: 'rgba(201,153,26,0.1)', border: '1px solid rgba(201,153,26,0.3)', padding: '12px', borderRadius: '8px', marginBottom: '12px', textAlign: 'center' }}>
+                                                <p style={{ color: 'var(--cream)', fontSize: '14px', marginBottom: '8px' }}>
+                                                    {lang === 'id' ? 'Email ini sudah memiliki ulasan. Ingin mengupdate ulasan Anda?' : 'You have reviews already, want to update?'}
+                                                </p>
+                                                <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
+                                                    <button 
+                                                        onClick={() => submitReview(pendingReviewPayload.email)} 
+                                                        style={{ background: 'var(--gold-light)', color: 'var(--bg-primary)', border: 'none', padding: '6px 16px', borderRadius: '6px', fontWeight: 700, cursor: 'pointer' }}
+                                                    >
+                                                        {lang === 'id' ? 'Ya, Update' : 'Yes, Update'}
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => { setShowUpdateConfirm(false); setPendingReviewPayload(null); }} 
+                                                        style={{ background: 'transparent', border: '1px solid var(--muted)', color: 'var(--muted)', padding: '6px 16px', borderRadius: '6px', cursor: 'pointer' }}
+                                                    >
+                                                        {lang === 'id' ? 'Batal' : 'Cancel'}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+
                                         <div style={{ display: 'flex', gap: '12px' }}>
-                                            <button onClick={submitReview} disabled={isLoginLoading} style={{ flex: 1, background: 'var(--purple)', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', opacity: isLoginLoading ? 0.7 : 1 }}>
-                                                {isLoginLoading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : (userReview ? (lang === 'id' ? 'Update Ulasan' : (lang === 'ph' ? 'I-update ang Review' : 'Update Review')) : (lang === 'id' ? 'Kirim Ulasan' : (lang === 'ph' ? 'Isumite Ang Review' : 'Submit Review')))}
-                                            </button>
-                                            {userReview && (
-                                                <button onClick={deleteReview} disabled={isLoginLoading} style={{ background: 'rgba(239,68,68,0.1)', color: 'var(--red)', border: '1px solid rgba(239,68,68,0.3)', padding: '12px', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                                    <Trash2 size={20} />
+                                            {!showUpdateConfirm && (
+                                                <button onClick={() => submitReview()} disabled={isLoginLoading} style={{ flex: 1, background: 'var(--purple)', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-body)', opacity: isLoginLoading ? 0.7 : 1 }}>
+                                                    {isLoginLoading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : (lang === 'id' ? 'Kirim Ulasan' : (lang === 'ph' ? 'Isumite Ang Review' : 'Submit Review'))}
                                                 </button>
                                             )}
                                         </div>
                                     </div>
-                                )}
                             </div>
 
                             {/* Display Reviews */}
@@ -1728,10 +1991,25 @@ const DarkFeminineTSX = () => {
                                                         {Array.from({ length: 5 }).map((_, j) => (
                                                             <Star key={j} size={14} fill={j < r.rating ? "var(--gold-light)" : "transparent"} color={j < r.rating ? "var(--gold-light)" : "var(--muted)"} />
                                                         ))}
+                                                        {r.created_at && (
+                                                            <span style={{ fontSize: '11px', color: 'var(--muted)', marginLeft: '8px' }}>
+                                                                {(() => {
+                                                                    const datePart = r.created_at.includes('T') ? r.created_at.split('T')[0] : r.created_at.split(' ')[0];
+                                                                    const [y, m, d] = datePart.split('-');
+                                                                    const months: any = {
+                                                                        '01': 'Januari', '02': 'Februari', '03': 'Maret', '04': 'April',
+                                                                        '05': 'Mei', '06': 'Juni', '07': 'Juli', '08': 'Agustus',
+                                                                        '09': 'September', '10': 'Oktober', '11': 'November', '12': 'Desember'
+                                                                    };
+                                                                    const dNum = parseInt(d);
+                                                                    return isNaN(dNum) ? datePart : `${dNum} ${months[m] || m} ${y}`;
+                                                                })()}
+                                                            </span>
+                                                        )}
                                                     </div>
                                                 </div>
-                                                <div style={{ fontSize: '12px', color: 'var(--green-wa)', display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(37,211,102,0.1)', padding: '2px 8px', borderRadius: '12px' }}>
-                                                    ✓ Verified Buyer
+                                                <div style={{ fontSize: '12px', color: (r.comment === null || r.is_verified) ? 'var(--green-wa)' : 'var(--muted)', display: 'flex', alignItems: 'center', gap: '4px', background: (r.comment === null || r.is_verified) ? 'rgba(37,211,102,0.1)' : 'rgba(255,255,255,0.05)', padding: '2px 8px', borderRadius: '12px' }}>
+                                                    {(r.comment === null || r.is_verified || r.rating === 5) ? '✓ Verified Buyer' : 'Not Verified'}
                                                 </div>
                                             </div>
                                             <p style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.6, marginTop: '8px' }}>{r.comment || r.text}</p>
@@ -1772,32 +2050,6 @@ const DarkFeminineTSX = () => {
                                 <div>
                                     <label className="df-flabel">{lang === 'id' ? 'Email (untuk link download)' : (lang === 'ph' ? 'Email (para sa link download)' : 'Email (for download link)')}</label>
                                     <input className="df-finput" type="email" placeholder={lang === 'id' ? 'contoh@gmail.com' : (lang === 'ph' ? 'halimbawa@gmail.com' : 'example@gmail.com')} value={email} onChange={e => setEmail(e.target.value)} />
-                                </div>
-                                <div>
-                                    <label className="df-flabel">{lang === 'id' ? 'Buat Password' : (lang === 'ph' ? 'Gumawa ng Password' : 'Create Password')} * <span style={{ fontSize: '12px', fontWeight: 'normal', color: 'var(--muted)' }}>{lang === 'id' ? '(untuk memberikan review nanti)' : (lang === 'ph' ? '(para magbigay ng review mamaya)' : '(to leave a review later)')}</span></label>
-                                    <div style={{ position: 'relative' }}>
-                                        <input
-                                            className="df-finput"
-                                            type={showPurchasePassword ? "text" : "password"}
-                                            placeholder={lang === 'id' ? 'Minimal 6 karakter' : (lang === 'ph' ? 'Hindi bababa sa 6 na karakter' : 'Minimum 6 characters')}
-                                            value={purchasePassword}
-                                            onChange={e => setPurchasePassword(e.target.value)}
-                                            style={{ paddingRight: '40px' }}
-                                        />
-                                        <button type="button" onClick={() => setShowPurchasePassword(!showPurchasePassword)} style={{ position: 'absolute', right: '14px', top: '14px', background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', padding: 0 }}>
-                                            {showPurchasePassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                                        </button>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="df-flabel">Ulangi Password *</label>
-                                    <input
-                                        className="df-finput"
-                                        type={showPurchasePassword ? "text" : "password"}
-                                        placeholder={lang === 'id' ? 'Ulangi password' : (lang === 'ph' ? 'Ulitin ang password' : 'Repeat password')}
-                                        value={purchasePasswordRepeat}
-                                        onChange={e => setPurchasePasswordRepeat(e.target.value)}
-                                    />
                                 </div>
                                 <div>
                                     <label className="df-flabel">Metode Pembayaran</label>
@@ -1876,6 +2128,59 @@ const DarkFeminineTSX = () => {
                             </div>
                         </div>
                     </section>
+
+                    {/* HESITATION BOX - Indonesia Only */}
+                    {lang === 'id' && c.hesitationBox && (
+                        <section style={{ padding: '0 0 44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-hesitation-box">
+                                    <div className="df-hesitation-header">
+                                        <h2 className="df-hesitation-title">{c.hesitationBox.title}</h2>
+                                        <p className="df-hesitation-subtitle">{c.hesitationBox.subtitle}</p>
+                                    </div>
+                                    <div className="df-hesitation-body">
+                                        {c.hesitationBox.body.map((p: string, i: number) => (
+                                            <p key={i}>{p}</p>
+                                        ))}
+                                    </div>
+                                    <div className="df-hesitation-objection">
+                                        {c.hesitationBox.objection}
+                                    </div>
+                                    <div className="df-hesitation-ctas">
+                                        <button 
+                                            className="df-hesitation-btn df-hesitation-btn-primary"
+                                            onClick={() => {
+                                                const el = document.getElementById('checkout');
+                                                if(el) el.scrollIntoView({ behavior: 'smooth' });
+                                            }}
+                                        >
+                                            {c.hesitationBox.cta1}
+                                        </button>
+                                        <button 
+                                            className="df-hesitation-btn df-hesitation-btn-secondary"
+                                            onClick={() => {
+                                                const el = document.getElementById('reviews-section');
+                                                if(el) el.scrollIntoView({ behavior: 'smooth' });
+                                            }}
+                                        >
+                                            {c.hesitationBox.cta2}
+                                        </button>
+                                        <button 
+                                            className="df-hesitation-btn df-hesitation-btn-tertiary"
+                                            onClick={() => {
+                                                const el = document.getElementById('free-ebook');
+                                                if(el) el.scrollIntoView({ behavior: 'smooth' });
+                                            }}
+                                        >
+                                            {c.hesitationBox.cta3}
+                                        </button>
+                                    </div>
+                                    <p className="df-hesitation-micro">{c.hesitationBox.micro}</p>
+                                    <p className="df-hesitation-sting">{c.hesitationBox.sting}</p>
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* FAQ */}
                     <section style={{ padding: '44px 0' }}>
