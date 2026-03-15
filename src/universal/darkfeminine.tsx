@@ -830,7 +830,7 @@ const DarkFeminineTSX = () => {
                             }
                         }
                     });
-                    console.log('✅ CAPI FreeEbook event sent');
+                    // console.log('✅ CAPI FreeEbook event sent');
                 } catch (capiErr) {
                     console.error('⚠️ CAPI FreeEbook error (non-fatal):', capiErr);
                 }
@@ -1569,7 +1569,7 @@ const DarkFeminineTSX = () => {
                                 <img src={assets.df01} alt="Paradox" />
                             </div>
                             <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>
-                                <p>{c.agitText}</p>
+                                <div>{c.agitText}</div>
                             </div>
                             <div className="df-img-box">
                                 <img src={assets.df06} alt="Agitation Visual" />
@@ -1585,7 +1585,7 @@ const DarkFeminineTSX = () => {
                                 <span>{c.solH2a}</span>
                                 <span className="df-newline df-gold">{c.solH2b}</span>
                             </h2>
-                            <p style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</p>
+                            <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</div>
                             {assets.video1 && (
                                 <div className="df-video-player">
                                     <video controls playsInline preload="metadata" poster={assets.video1Poster || assets.df03}>
