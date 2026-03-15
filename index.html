@@ -35,6 +35,47 @@
       <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     </noscript>
+
+    <!-- Console Log Suppression (Executed before other scripts) -->
+    <script>
+      (function() {
+        var originalLog = console.log;
+        var originalWarn = console.warn;
+        var originalInfo = console.info;
+
+        var suppressPatterns = [
+          '[Vercel Speed Insights]',
+          '[Vercel Web Analytics]',
+          '[ContentScript] Injected',
+          'Download the React DevTools',
+          '🔗 Supabase connecting to',
+          "You are sending a non-standard event 'TimeSpent'",
+          'TimeSpent'
+        ];
+
+        function shouldSuppress(args) {
+          for (var i = 0; i < args.length; i++) {
+            var arg = args[i];
+            if (typeof arg === 'string') {
+              for (var j = 0; j < suppressPatterns.length; j++) {
+                if (arg.indexOf(suppressPatterns[j]) !== -1) return true;
+              }
+            }
+          }
+          return false;
+        }
+
+        console.log = function() {
+          if (!shouldSuppress(arguments)) originalLog.apply(console, arguments);
+        };
+        console.warn = function() {
+          if (!shouldSuppress(arguments)) originalWarn.apply(console, arguments);
+        };
+        console.info = function() {
+          if (!shouldSuppress(arguments)) originalInfo.apply(console, arguments);
+        };
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -200,8 +200,14 @@ const trackEvent = async (eventName: string, eventData: any = {}, options: { eve
     const trackOptions: any = {};
     if (options.eventID) trackOptions.eventID = options.eventID;
     if (options.testCode) trackOptions.test_event_code = TEST_CODE_MAPPING[options.testCode] || options.testCode;
-    if (options.pixelId) (window as any).fbq('trackSingle', options.pixelId, eventName, eventData, trackOptions);
-    else (window as any).fbq('track', eventName, eventData, trackOptions);
+    const isStandard = [
+      'AddPaymentInfo', 'AddToCart', 'AddToWishlist', 'CompleteRegistration', 'Contact', 'CustomizeProduct',
+      'Donate', 'FindLocation', 'InitiateCheckout', 'Lead', 'PageView', 'Purchase', 'Schedule', 'Search',
+      'StartTrial', 'SubmitApplication', 'Subscribe', 'ViewContent'
+    ].includes(eventName);
+
+    if (options.pixelId) (window as any).fbq(isStandard ? 'trackSingle' : 'trackSingleCustom', options.pixelId, eventName, eventData, trackOptions);
+    else (window as any).fbq(isStandard ? 'track' : 'trackCustom', eventName, eventData, trackOptions);
   } catch (error) { console.log(`FB Pixel ${eventName} tracking failed:`, error); }
 };
 

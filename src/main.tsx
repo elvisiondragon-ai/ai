@@ -1,6 +1,7 @@
 // ==========================================
 export const APP_VERSION = '2026.03.14.02';
 // ==========================================
+
 // Force update
 
 if (localStorage.getItem('v_cache') !== APP_VERSION) {
@@ -160,7 +161,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Suspense fallback={<LoadingFallback />}>
       <App />
     </Suspense>
-    <SpeedInsights />
-    <Analytics />
+    <SpeedInsights debug={false} />
+    <Analytics debug={false} />
   </BrowserRouter>,
 )
