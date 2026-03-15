@@ -1,3 +1,4 @@
+import { supabase } from "@/integrations/supabase/client";
 // 🌐 IP Address Helper - Fetch client IP (IPv6 preferred)
 export const getClientIp = async (): Promise<string | null> => {
   try {
@@ -233,7 +234,6 @@ export const trackCapiOnlyEvent = async (
 ) => {
   if (typeof window === 'undefined') return;
   try {
-    const { supabase } = await import('@/integrations/supabase/client');
     const { fbc, fbp } = getFbcFbpCookies();
     const eventId = `${eventName.toLowerCase()}-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
     
