@@ -558,6 +558,7 @@ const DarkFeminineTSX = () => {
     const [dbReviews, setDbReviews] = useState<any[]>([]);
     const [showUpdateConfirm, setShowUpdateConfirm] = useState(false);
     const [pendingReviewPayload, setPendingReviewPayload] = useState<any>(null);
+    const freeEbookNameRef = useRef<HTMLInputElement>(null);
 
     const fetchDbReviews = async () => {
         const { data } = await (supabase as any).from('darkfeminine_reviews').select('*').order('created_at', { ascending: false });
@@ -567,15 +568,32 @@ const DarkFeminineTSX = () => {
     useEffect(() => {
         fetchDbReviews();
 
-        // Auto-scroll logic for ?free-ebook parameter
-        if (searchParams.has('free-ebook')) {
-            // Short delay to ensure sections are rendered and layout is ready
-            setTimeout(() => {
-                const element = document.getElementById('free-ebook');
+        // Consolidated Auto-scroll logic for ?free-ebook or ?reviews
+        const hasFreeEbook = searchParams.has('free-ebook') || window.location.hash === '#free-ebook';
+        const hasReviews = searchParams.has('reviews') || window.location.hash === '#reviews-section';
+
+        if (hasFreeEbook || hasReviews) {
+            const scrollTimer = setTimeout(() => {
+                const targetId = hasFreeEbook ? 'free-ebook' : 'reviews-section';
+                const element = document.getElementById(targetId);
+                
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
+                    element.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: hasFreeEbook ? 'center' : 'start' 
+                    });
+
+                    // Auto-focus if it was free-ebook
+                    if (hasFreeEbook) {
+                        setTimeout(() => {
+                            if (freeEbookNameRef.current) {
+                                freeEbookNameRef.current.focus();
+                            }
+                        }, 600);
+                    }
                 }
-            }, 800);
+            }, 1200); // Longer delay for mobile layout stability
+            return () => clearTimeout(scrollTimer);
         }
     }, [searchParams]);
 
@@ -915,16 +933,6 @@ const DarkFeminineTSX = () => {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        if (searchParams.has('reviews')) {
-            setTimeout(() => {
-                const reviewsEl = document.getElementById('reviews-section');
-                if (reviewsEl) {
-                    reviewsEl.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 500); // Give time for render
-        }
-    }, [searchParams]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -1768,7 +1776,7 @@ const DarkFeminineTSX = () => {
                     </section>
 
                     {/* EXCLUSIVITY */}
-                    <section id="free-ebook" style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
+                    <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : (lang === 'ph' ? 'HINDI PARA SA LAHAT' : 'NOT FOR EVERYONE')}</div>
                             <h2 className="df-section-h2">{c.exclH2}</h2>
@@ -1778,7 +1786,11 @@ const DarkFeminineTSX = () => {
                             <div style={{ background: 'var(--bg-card)', borderRadius: '16px', padding: '26px 22px', border: '2px solid rgba(239,68,68,0.35)' }}>
                                 <div>
                                     {c.exclItems.map((item: string, i: number) => (
-                                        <div key={i} className="df-excl-item">
+                                        <div 
+                                            key={i} 
+                                            className="df-excl-item"
+                                            id={item.includes("menunggu jodoh") ? "free-ebook" : undefined}
+                                        >
                                             <span style={{ color: 'var(--red)', fontWeight: 700, fontSize: '18px', flexShrink: 0, marginTop: '2px' }}>✕</span>
                                             <span>{item}</span>
                                         </div>
@@ -1803,6 +1815,7 @@ const DarkFeminineTSX = () => {
                                         <div>
                                             <input
                                                 type="text"
+                                                ref={freeEbookNameRef}
                                                 className="df-free-input"
                                                 placeholder={lang === 'id' ? "Nama Kamu" : (lang === 'ph' ? "Pangalan Mo" : "Your Name")}
                                                 value={nameFree}
