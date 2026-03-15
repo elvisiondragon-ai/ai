@@ -566,7 +566,18 @@ const DarkFeminineTSX = () => {
 
     useEffect(() => {
         fetchDbReviews();
-    }, []);
+
+        // Auto-scroll logic for ?free-ebook parameter
+        if (searchParams.has('free-ebook')) {
+            // Short delay to ensure sections are rendered and layout is ready
+            setTimeout(() => {
+                const element = document.getElementById('free-ebook');
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 800);
+        }
+    }, [searchParams]);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
