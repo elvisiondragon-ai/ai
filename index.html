@@ -42,11 +42,12 @@
         var originalLog = console.log;
         var originalWarn = console.warn;
         var originalInfo = console.info;
+        var originalError = console.error;
+        var originalDebug = console.debug;
 
         var suppressPatterns = [
           '[Vercel Speed Insights]',
           '[Vercel Web Analytics]',
-          '[ContentScript] Injected',
           'Download the React DevTools',
           '🔗 Supabase connecting to',
           "You are sending a non-standard event 'TimeSpent'",
@@ -73,6 +74,12 @@
         };
         console.info = function() {
           if (!shouldSuppress(arguments)) originalInfo.apply(console, arguments);
+        };
+        console.error = function() {
+          if (!shouldSuppress(arguments)) originalError.apply(console, arguments);
+        };
+        console.debug = function() {
+          if (!shouldSuppress(arguments)) originalDebug.apply(console, arguments);
         };
       })();
     </script>
