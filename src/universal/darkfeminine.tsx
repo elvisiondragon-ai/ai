@@ -8,7 +8,8 @@ import {
     Lock,
     Eye,
     EyeOff,
-    Star
+    Star,
+    Download
 } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
@@ -565,6 +566,24 @@ const DarkFeminineTSX = () => {
         if (data) setDbReviews(data);
     };
 
+    const downloadQRIS = async (url: string) => {
+        try {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            const blobUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.download = `QRIS-DarkFeminine-${Date.now()}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(blobUrl);
+        } catch (e) {
+            // Fallback for CORS
+            window.open(url, '_blank');
+        }
+    };
+
     useEffect(() => {
         fetchDbReviews();
 
@@ -1080,11 +1099,30 @@ const DarkFeminineTSX = () => {
                             <div style={{ background: 'white', borderRadius: '14px', padding: '24px', border: '1px solid rgba(201,153,26,.3)', textAlign: 'center' }}>
                                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', marginBottom: '8px', fontWeight: 700 }}>Scan QRIS</h3>
                                 <p style={{ fontSize: '14.5px', color: '#5E7491', marginBottom: '20px', lineHeight: 1.6 }}>Buka aplikasi E-Wallet (GoPay/DANA/ShopeePay/OVO) atau Mobile Banking pilihan Anda.</p>
-                                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    <img src={paymentData.qrUrl} alt="QRIS" style={{ width: '250px', height: '250px', borderRadius: '12px', border: '1px solid #eee', marginBottom: '20px' }} />
+                                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                                    <img src={paymentData.qrUrl} alt="QRIS" style={{ width: '250px', height: '250px', borderRadius: '12px', border: '1px solid #eee' }} />
+                                    <button 
+                                        onClick={() => downloadQRIS(paymentData.qrUrl)}
+                                        style={{ 
+                                            background: '#EEE5C8', 
+                                            color: '#060A12', 
+                                            padding: '10px 20px', 
+                                            borderRadius: '8px', 
+                                            border: '1px solid #C9991A', 
+                                            fontWeight: 700, 
+                                            fontSize: '14px',
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px',
+                                            marginBottom: '15px'
+                                        }}
+                                    >
+                                        <Download size={18} /> Download Gambar QRIS
+                                    </button>
                                 </div>
                                 <div style={{ background: '#e8f5e9', padding: '14px', borderRadius: '10px', color: '#1b5e20', fontSize: '14.5px', fontWeight: 600, lineHeight: 1.5 }}>
-                                    ✅ Screenshot / Simpan gambar QRIS ini lalu upload dari galeri pada aplikasi pembayaran Anda.
+                                    ✅ Silahkan download/simpan foto ini lalu upload di Shopeepay, Qris Bank, Atau Dana, ovo, Gopay anda untuk menyelesaikan pembayaran.
                                 </div>
                             </div>
                         )}
@@ -2264,7 +2302,7 @@ const DarkFeminineTSX = () => {
                                 {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>{isEnglish ? (addUpsell ? '$19.00' : '$15.00') : (addUpsell ? 'Rp249.000' : 'Rp199.000')}</span>
                                 {addUpsell && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
                             </div>
-                            <a onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{c.stickyCta}</a>
+                            <a id="sticky-checkout-trigger" onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{loading ? (lang === 'id' ? 'Memproses...' : 'Processing...') : c.stickyCta}</a>
                         </div>
                     </div>
 

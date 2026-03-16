@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { supabase } from '../integrations/supabase/client';
 import { trackCustomEvent } from '@/utils/fbpixel';
 
 const SESSION_KEY = 'analytics_session_id';
@@ -37,39 +36,17 @@ export const useAnalytics = () => {
   }, [location.pathname]);
 
   const trackEvent = useCallback(async (
-    eventType: 'page_view' | 'impression' | 'heartbeat' | 'click' | 'content_engagement',
-    contentId?: string,
-    metadata?: any
+    _eventType: 'page_view' | 'impression' | 'heartbeat' | 'click' | 'content_engagement',
+    _contentId?: string,
+    _metadata?: any
   ) => {
-    // 1. Block Localhost (TEMPORARILY DISABLED FOR TESTING)
-    /*
-    if (
-        window.location.hostname === 'localhost' || 
-        window.location.hostname === '127.0.0.1'
-    ) {
-        return;
-    }
-    */
-
     // 2. Block Opt-out Users (Run localStorage.setItem('analytics_opt_out', 'true') in console)
     if (localStorage.getItem('analytics_opt_out')) {
         return;
     }
 
     if (!sessionId) return;
-
-    try {
-      await (supabase.from('analytics_events' as any) as any).insert({
-        session_id: sessionId,
-        event_type: eventType,
-        path: location.pathname,
-        content_id: contentId,
-        metadata: metadata,
-      });
-    } catch (error) {
-      console.error('Error tracking event:', error);
-    }
-  }, [sessionId, location.pathname]);
+  }, [sessionId]);
 
   // Track Page View on route change
   useEffect(() => {
