@@ -568,29 +568,35 @@ const DarkFeminineTSX = () => {
     useEffect(() => {
         fetchDbReviews();
 
-        // Consolidated Auto-scroll logic for ?free-ebook or ?reviews
+        // Consolidated Auto-scroll logic for ?free-ebook, ?reviews, or ?pay
         const hasFreeEbook = searchParams.has('free-ebook') || window.location.hash === '#free-ebook';
         const hasReviews = searchParams.has('reviews') || window.location.hash === '#reviews-section';
+        const hasPay = searchParams.has('pay') || window.location.hash === '#checkout-button';
 
-        if (hasFreeEbook || hasReviews) {
+        if (hasFreeEbook || hasReviews || hasPay) {
             const scrollTimer = setTimeout(() => {
-                const targetId = hasFreeEbook ? 'free-ebook' : 'reviews-section';
+                let targetId = 'free-ebook';
+                if (hasReviews) targetId = 'reviews-section';
+                if (hasPay) targetId = 'checkout-button';
+                
                 const element = document.getElementById(targetId);
                 
                 if (element) {
                     element.scrollIntoView({ 
                         behavior: 'smooth', 
-                        block: hasFreeEbook ? 'center' : 'start' 
+                        block: (hasFreeEbook || hasPay) ? 'center' : 'start' 
                     });
 
-                    // Auto-focus if it was free-ebook
-                    if (hasFreeEbook) {
-                        setTimeout(() => {
-                            if (freeEbookNameRef.current) {
-                                freeEbookNameRef.current.focus();
-                            }
-                        }, 600);
-                    }
+                    // Auto-focus logic
+                    setTimeout(() => {
+                        if (hasFreeEbook && freeEbookNameRef.current) {
+                            freeEbookNameRef.current.focus();
+                        } else if (hasPay) {
+                            // Focus name field in checkout since we are paying
+                            const nameField = document.querySelector('input[placeholder="Nama Lengkap"]') as HTMLInputElement;
+                            if (nameField) nameField.focus();
+                        }
+                    }, 600);
                 }
             }, 1200); // Longer delay for mobile layout stability
             return () => clearTimeout(scrollTimer);
@@ -2145,7 +2151,7 @@ const DarkFeminineTSX = () => {
                                         <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}</span>
                                     </div>
                                 </div>
-                                <button className="df-sbtn" onClick={submitOrder} disabled={loading}>
+                                <button id="checkout-button" className="df-sbtn" onClick={submitOrder} disabled={loading}>
                                     {loading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : `🛒 ${lang === 'id' ? 'Pesan Sekarang' : (lang === 'ph' ? 'Mag-order Ngayon' : 'Order Now')} — ${isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}`}
                                 </button>
                                 <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 {lang === 'id' ? 'Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.' : (lang === 'ph' ? 'Ligtas at naka-encrypt ang pagbabayad. Ipinadala nang digital ang produkto. Walang kahina-hinalang singil.' : 'Secure & encrypted payment. Product delivered digitally. No suspicious billing.')}</p>
