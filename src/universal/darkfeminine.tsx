@@ -671,14 +671,23 @@ const DarkFeminineTSX = () => {
                 return;
             }
 
+            // Optional: check if they are already verified in another way or if this is a privileged email
+            let isVerifiedFlag = false;
+            if (existingReview?.is_verified) {
+                isVerifiedFlag = true;
+            } else {
+                // Quick check to global_product for PAID status to set is_verified immediately
+                const { data: paidEntry } = await (supabase as any).from('global_product').select('status').eq('email', emailToUse).eq('status', 'PAID').maybeSingle();
+                if (paidEntry) isVerifiedFlag = true;
+            }
+
             const payload = {
                 user_email: emailToUse,
                 name: emailToUse.split('@')[0],
                 rating: reviewRating,
                 comment: reviewText,
                 country: lang.toUpperCase(),
-                // If comment is null in the existing record (from purchase), we update it and it stays verified
-                // If it's a new review, it might be unverified unless the user already exists in another table (but per instructions, we just check data)
+                is_verified: isVerifiedFlag
             };
 
             if (existingReview) {
