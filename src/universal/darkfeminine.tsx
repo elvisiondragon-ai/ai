@@ -14,7 +14,6 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "../utils/fbpixel";
-import qrisBcaImage from "../assets/qrisbca.jpeg";
 
 // Asset Imports for ID
 import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
@@ -801,11 +800,18 @@ const DarkFeminineTSX = () => {
             });
         } catch (e) { console.error('AddPaymentInfo CAPI error', e); }
 
+        let finalBCAAmount = finalAmount;
+        if (payment === 'BCA_MANUAL') {
+            const uniqueCode = Math.floor(Math.random() * 900) + 100; // 100-999
+            finalBCAAmount = finalAmount + uniqueCode;
+            console.log(`BCA Manual Unique Code: ${uniqueCode}, Total: ${finalBCAAmount}`);
+        }
+
         const payload = {
             subscriptionType: 'universal', paymentMethod: payment,
             userName: name, userEmail: email, phoneNumber: cleanPhone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
-            amount: finalAmount, currency: finalCurrency, quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
+            amount: finalBCAAmount, currency: finalCurrency, quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
             fbc, fbp, clientIp
         };
 
@@ -837,12 +843,7 @@ const DarkFeminineTSX = () => {
                 }
 
                 setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref: data.tripay_reference, name, phone: cleanPhone, amount: finalAmount });
-            } else if (payment === 'BCA_MANUAL') {
-                const ref = `MANUAL-${Date.now()}`;
-                setPaymentData({ paymentMethod: 'BCA_MANUAL', amount: finalAmount, status: 'UNPAID', tripay_reference: ref });
-                setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref, name, phone: cleanPhone, amount: finalAmount });
+                sendWAAlert('success', { ref: data.tripay_reference, name, phone: cleanPhone, amount: finalBCAAmount });
             } else {
                 alert(data?.error || "Gagal membuat pembayaran, hubungi admin via WhatsApp.");
             }
@@ -1107,11 +1108,11 @@ const DarkFeminineTSX = () => {
                                     <span style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'monospace' }}>7751146578</span>
                                     <button onClick={() => { navigator.clipboard.writeText('7751146578'); alert('Tersalin!'); }} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><Copy size={22} color="#C9991A" /></button>
                                 </div>
-                                <p style={{ fontWeight: 700, marginBottom: '20px', fontSize: 16 }}>A.n Delia Mutia</p>
-                                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    <img src={qrisBcaImage} alt="QRIS BCA" style={{ width: '220px', height: '220px', borderRadius: '12px', border: '1px solid #eee', marginBottom: '24px' }} />
-                                </div>
-                                <a href={`https://wa.me/62895325633487?text=${encodeURIComponent(`Halo kak, saya sudah bayar Ebook Dark Feminine. Ref: ${paymentData.tripay_reference}`)}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+                                <p style={{ fontWeight: 700, marginBottom: '8px', fontSize: 16 }}>A.n Delia Mutia</p>
+                                <p style={{ fontSize: '13px', color: '#5E7491', fontStyle: 'italic', marginBottom: '20px', lineHeight: 1.4 }}>
+                                    *Robot kami selalu cek per interval 10 menit, jadi maximal 10 menit setelah kk transfer paling lambat
+                                </p>
+                                <a href={`https://wa.me/62895325633487?text=${encodeURIComponent(`Hai Kak renata saya sudah transfer ini Buktinya.. (upload bukti transfer anda) - Ref: ${paymentData.tripay_reference}`)}`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
                                     <button className="pay-btn-confirm">Konfirmasi via WhatsApp</button>
                                 </a>
                             </div>
@@ -2181,6 +2182,7 @@ const DarkFeminineTSX = () => {
                                                     ["DANA", "DANA", "E-Wallet DANA"],
                                                     ["OVO", "OVO", "E-Wallet OVO"],
                                                     ["SHOPEEPAY", "ShopeePay", "E-Wallet ShopeePay"],
+                                                    ["BCA_MANUAL", "Manual Transfer BCA", "Dicek Manual 1-5 Menit"],
                                                     ["BCAVA", "BCA Virtual Account", "Otomatis via BCA"],
                                                     ["BNIVA", "BNI Virtual Account", "Otomatis via BNI"],
                                                     ["BRIVA", "BRI Virtual Account", "Otomatis via BRI"],
