@@ -1,3 +1,4 @@
+//WHATTHISPAGE
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { supabase } from "../integrations/supabase/client";
@@ -292,6 +293,7 @@ const HotAffiliateTSX = () => {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [payment, setPayment] = useState("QRIS");
+    const [retailOpen, setRetailOpen] = useState(false);
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const affiliateRef = searchParams.get('ref');
@@ -333,7 +335,17 @@ const HotAffiliateTSX = () => {
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
-        sendWAAlert('attempt', { name, phone, method: payment });
+        // Robust phone sanitization
+        let cleanPhone = phone.trim().replace(/\D/g, '');
+        if (lang === 'id') {
+            if (cleanPhone.startsWith('0')) {
+                cleanPhone = '62' + cleanPhone.slice(1);
+            } else if (!cleanPhone.startsWith('62')) {
+                cleanPhone = '62' + cleanPhone;
+            }
+        }
+        
+        sendWAAlert('attempt', { name, phone: cleanPhone, method: payment });
 
         const { fbc, fbp } = getFbcFbpCookies();
         const clientIp = await getClientIp();
@@ -343,7 +355,7 @@ const HotAffiliateTSX = () => {
         let currentUserId = null;
         try {
             const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-                email: email, password: password, options: { data: { display_name: name, phone_number: phone } }
+                email: email, password: password, options: { data: { display_name: name, phone_number: cleanPhone } }
             });
             if (signUpError) {
                 if (signUpError.message.includes("already registered")) {
@@ -368,14 +380,14 @@ const HotAffiliateTSX = () => {
                 body: {
                     pixelId: PIXEL_ID, eventName: 'AddPaymentInfo', eventSourceUrl: window.location.href,
                     customData: { content_name: productDesc, value: priceID, currency: 'IDR' },
-                    userData: { fbc, fbp, client_ip_address: clientIp, fn: name, ph: phone, em: email }
+                    userData: { fbc, fbp, client_ip_address: clientIp, fn: name, ph: cleanPhone, em: email }
                 }
             });
         } catch (e) { console.error('AddPaymentInfo CAPI error', e); }
 
         const payload = {
             subscriptionType: 'ebook_uangpanas', paymentMethod: payment,
-            userName: name, userEmail: email, phoneNumber: phone,
+            userName: name, userEmail: email, phoneNumber: cleanPhone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
             amount: priceID, currency: 'IDR', quantity: 1, productName: 'Ebook Uang Panas',
             userId: currentUserId, affiliateRef, commissionRate: 0.50,
@@ -387,13 +399,19 @@ const HotAffiliateTSX = () => {
             if (error) { throw error; }
 
             if (data?.success) {
+                // If it's an e-wallet or QRIS and we have a checkout URL, redirect to Tripay "The App"
+                const redirectMethods = ['QRIS', 'DANA', 'OVO', 'SHOPEEPAY', 'LINKAJA', 'SAKUKU'];
+                if (data.checkoutUrl && redirectMethods.includes(payment)) {
+                    window.location.href = data.checkoutUrl;
+                    return;
+                }
                 setPaymentData(data); setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref: data.tripay_reference, name, phone, amount: priceID });
+                sendWAAlert('success', { ref: data.tripay_reference, name, phone: cleanPhone, amount: priceID });
             } else if (payment === 'BCA_MANUAL') {
                 const ref = `MANUAL-${Date.now()}`;
                 setPaymentData({ paymentMethod: 'BCA_MANUAL', amount: priceID, status: 'UNPAID', tripay_reference: ref });
                 setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref, name, phone, amount: priceID });
+                sendWAAlert('success', { ref, name, phone: cleanPhone, amount: priceID });
             } else {
                 alert(data?.error || "Gagal membuat pembayaran, hubungi admin via WhatsApp.");
             }
@@ -1348,19 +1366,40 @@ const HotAffiliateTSX = () => {
                                     <label className="df-flabel">Metode Pembayaran</label>
                                     <div className="df-pmgrid">
                                         {[
-                                            ["QRIS", "QRIS", "Shopee, OVO, GoPay, DANA"],
+                                            ["QRIS", "QRIS", "Redirect ke Aplikasi"],
+                                            ["DANA", "DANA", "E-Wallet DANA"],
+                                            ["OVO", "OVO", "E-Wallet OVO"],
+                                            ["SHOPEEPAY", "ShopeePay", "E-Wallet ShopeePay"],
                                             ["BCAVA", "BCA Virtual Account", "Otomatis via BCA"],
                                             ["BNIVA", "BNI Virtual Account", "Otomatis via BNI"],
                                             ["BRIVA", "BRI Virtual Account", "Otomatis via BRI"],
-                                            ["MANDIRIVA", "Mandiri Virtual Account", "Otomatis via Mandiri"],
-                                            ["PERMATAVA", "Permata Virtual Account", "Otomatis via Permata"]
+                                            ["MANDIRIVA", "Mandiri Virtual Account", "Otomatis via Mandiri"]
                                         ].map(([id, nm, sb]) => (
-                                            <div key={id} className={`df-pmopt ${payment === id ? "sel" : ""}`} onClick={() => setPayment(id)}>
+                                            <div key={id} className={`df-pmopt ${payment === id ? "sel" : ""}`} onClick={() => { setPayment(id); setRetailOpen(false); }}>
                                                 <div className="df-pmname">{nm}</div>
-                                                <div className="df-pmsub" style={{ color: (id === 'QRIS') ? 'var(--gold-light)' : 'var(--muted)' }}>{sb}</div>
+                                                <div className="df-pmsub" style={{ color: (['QRIS', 'DANA', 'OVO', 'SHOPEEPAY'].includes(id)) ? 'var(--gold-light)' : 'var(--muted)' }}>{sb}</div>
                                             </div>
                                         ))}
+                                        {/* Retail Dropdown Trigger */}
+                                        <div className={`df-pmopt ${['INDOMARET', 'ALFAMART'].includes(payment) ? "sel" : ""}`} onClick={() => setRetailOpen(!retailOpen)}>
+                                            <div className="df-pmname">Retail / Indomart ▾</div>
+                                            <div className="df-pmsub">Indomaret, Alfamart</div>
+                                        </div>
                                     </div>
+
+                                    {retailOpen && (
+                                        <div className="df-pmgrid" style={{ marginTop: '10px', padding: '12px', background: 'rgba(139,92,246,0.05)', borderRadius: '12px', border: '1px solid rgba(139,92,246,0.1)' }}>
+                                            {[
+                                                ["INDOMARET", "Indomaret", "Gerai Indomaret"],
+                                                ["ALFAMART", "Alfamart", "Gerai Alfamart"]
+                                            ].map(([id, nm, sb]) => (
+                                                <div key={id} className={`df-pmopt ${payment === id ? "sel" : ""}`} onClick={() => setPayment(id)}>
+                                                    <div className="df-pmname">{nm}</div>
+                                                    <div className="df-pmsub">{sb}</div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div style={{ background: "rgba(139,92,246,.05)", border: "1px solid rgba(139,92,246,.13)", borderRadius: 11, padding: 14, marginTop: 10 }}>

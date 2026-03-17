@@ -219,6 +219,15 @@ export default function ELVisionLanding() {
       isProcessingRef.current = true;
       setLoading(true);
 
+      // Robust phone sanitization
+      let cleanPhone = phoneNumber.trim().replace(/\D/g, '');
+      const prefix = currency === 'SGD' ? '65' : '60';
+      if (cleanPhone.startsWith('0')) {
+          cleanPhone = prefix + cleanPhone.slice(1);
+      } else if (!cleanPhone.startsWith(prefix)) {
+          cleanPhone = prefix + cleanPhone;
+      }
+
       const manualMethods = ['QRIS', 'BITCOIN', 'USDT'];
 
       try {
@@ -240,7 +249,7 @@ export default function ELVisionLanding() {
                 paymentMethod: selectedPaymentMethod,
                 userName: userName,
                 userEmail: userEmail,
-                phoneNumber: phoneNumber,
+                phoneNumber: cleanPhone,
                 amount: productPrice,
                 currency: currency,
                 quantity: 1,
@@ -272,7 +281,7 @@ export default function ELVisionLanding() {
           }
 
           if (data?.success) {
-              if (selectedPaymentMethod === 'PAYPAL' && data.checkoutUrl) {
+              if ((selectedPaymentMethod === 'PAYPAL' || ['QRIS', 'DANA', 'OVO', 'SHOPEEPAY', 'LINKAJA', 'SAKUKU'].includes(selectedPaymentMethod)) && data.checkoutUrl) {
                   window.location.href = data.checkoutUrl;
                   return;
               }
