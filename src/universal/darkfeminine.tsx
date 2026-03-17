@@ -544,6 +544,7 @@ const DarkFeminineTSX = () => {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [payment, setPayment] = useState(initLang === 'en' || initLang === 'sg' || initLang === 'ph' ? "PAYPAL" : "QRIS");
+    const [retailOpen, setRetailOpen] = useState(false);
     const [addUpsell, setAddUpsell] = useState(false);
     const { toast } = useToast();
 
@@ -596,14 +597,14 @@ const DarkFeminineTSX = () => {
             const scrollTimer = setTimeout(() => {
                 let targetId = 'free-ebook';
                 if (hasReviews) targetId = 'reviews-section';
-                if (hasPay) targetId = 'checkout-button';
+                if (hasPay) targetId = 'checkout';
                 
                 const element = document.getElementById(targetId);
                 
                 if (element) {
                     element.scrollIntoView({ 
                         behavior: 'smooth', 
-                        block: (hasFreeEbook || hasPay) ? 'center' : 'start' 
+                        block: (hasFreeEbook || hasPay) ? 'start' : 'start' 
                     });
 
                     // Auto-focus logic
@@ -768,8 +769,22 @@ const DarkFeminineTSX = () => {
         if (!payment) { alert('⚠️ Silahkan pilih metode pembayaran!'); return; }
 
         setLoading(true);
-        // Sanitize phone: strip +, spaces, dashes so "+62812..." becomes "62812..."
-        const cleanPhone = phone.trim().replace(/^\+/, '').replace(/[\s\-]/g, '');
+        // Robust phone sanitization
+        let cleanPhone = phone.trim().replace(/\D/g, '');
+        if (lang === 'id') {
+            if (cleanPhone.startsWith('0')) {
+                cleanPhone = '62' + cleanPhone.slice(1);
+            } else if (!cleanPhone.startsWith('62')) {
+                cleanPhone = '62' + cleanPhone;
+            }
+        } else if (lang === 'ph') {
+            if (cleanPhone.startsWith('0')) {
+                cleanPhone = '63' + cleanPhone.slice(1);
+            } else if (!cleanPhone.startsWith('63')) {
+                cleanPhone = '63' + cleanPhone;
+            }
+        }
+        
         sendWAAlert('attempt', { name, phone: cleanPhone, method: payment });
 
         const { fbc, fbp } = getFbcFbpCookies();
@@ -807,6 +822,13 @@ const DarkFeminineTSX = () => {
                     });
                 }
                 setPaymentData(data);
+                
+                // If it's an e-wallet or QRIS and we have a checkout URL, redirect to Tripay "The App"
+                const redirectMethods = ['QRIS', 'DANA', 'OVO', 'SHOPEEPAY', 'LINKAJA', 'SAKUKU'];
+                if (data.checkoutUrl && redirectMethods.includes(payment)) {
+                    window.location.href = data.checkoutUrl;
+                    return;
+                }
 
                 // If PayPal, redirect to checkoutUrl directly
                 if (payment === 'PAYPAL' && data.checkoutUrl) {
@@ -854,6 +876,16 @@ const DarkFeminineTSX = () => {
 
         setLoadingFree(true);
         try {
+            // 📝 Record lead in darkfeminine_free
+            try {
+                await (supabase.from('darkfeminine_free' as any) as any).insert({
+                    user_email: emailFree,
+                    phone: formattedWa
+                } as any);
+            } catch (leadErr) {
+                console.error('⚠️ Lead recording error (non-fatal):', leadErr);
+            }
+
             const payload = {
                 userEmail: emailFree,
                 userName: nameFree,
@@ -2137,21 +2169,45 @@ const DarkFeminineTSX = () => {
                                                 <div className="df-pmsub" style={{ color: 'var(--gold-light)' }}>Secure International Payment</div>
                                             </div>
                                         ) : (
-                                            [
-                                                ["QRIS", "QRIS", "Shopee, OVO, GoPay, DANA"],
-                                                ["BCAVA", "BCA Virtual Account", "Otomatis via BCA"],
-                                                ["BNIVA", "BNI Virtual Account", "Otomatis via BNI"],
-                                                ["BRIVA", "BRI Virtual Account", "Otomatis via BRI"],
-                                                ["MANDIRIVA", "Mandiri Virtual Account", "Otomatis via Mandiri"],
-                                                ["PERMATAVA", "Permata Virtual Account", "Otomatis via Permata"]
+                                            <>
+                                                {[
+                                                    ["QRIS", "QRIS", "Redirect ke Aplikasi"],
+                                                    ["DANA", "DANA", "E-Wallet DANA"],
+                                                    ["OVO", "OVO", "E-Wallet OVO"],
+                                                    ["SHOPEEPAY", "ShopeePay", "E-Wallet ShopeePay"],
+                                                    ["BCAVA", "BCA Virtual Account", "Otomatis via BCA"],
+                                                    ["BNIVA", "BNI Virtual Account", "Otomatis via BNI"],
+                                                    ["BRIVA", "BRI Virtual Account", "Otomatis via BRI"],
+                                                    ["MANDIRIVA", "Mandiri Virtual Account", "Otomatis via Mandiri"]
+                                                ].map(([id, nm, sb]) => (
+                                                    <div key={id} className={`df-pmopt ${payment === id ? "sel" : ""}`} onClick={() => { setPayment(id); setRetailOpen(false); }}>
+                                                        <div className="df-pmname">{nm}</div>
+                                                        <div className="df-pmsub" style={{ color: (['QRIS', 'DANA', 'OVO', 'SHOPEEPAY'].includes(id)) ? 'var(--gold-light)' : 'var(--muted)' }}>{sb}</div>
+                                                    </div>
+                                                ))}
+                                                {/* Retail Dropdown Trigger */}
+                                                <div className={`df-pmopt ${['INDOMARET', 'ALFAMART', 'ALFAMIDI'].includes(payment) ? "sel" : ""}`} onClick={() => setRetailOpen(!retailOpen)}>
+                                                    <div className="df-pmname">Retail / Indomart ▾</div>
+                                                    <div className="df-pmsub">Indomaret, Alfamart, Alfamidi</div>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+
+                                    {!isEnglish && retailOpen && (
+                                        <div className="df-pmgrid" style={{ marginTop: '10px', padding: '12px', background: 'rgba(139,92,246,0.05)', borderRadius: '12px', border: '1px solid rgba(139,92,246,0.1)' }}>
+                                            {[
+                                                ["INDOMARET", "Indomaret", "Gerai Indomaret"],
+                                                ["ALFAMART", "Alfamart", "Gerai Alfamart"],
+                                                ["ALFAMIDI", "Alfamidi", "Gerai Alfamidi"]
                                             ].map(([id, nm, sb]) => (
                                                 <div key={id} className={`df-pmopt ${payment === id ? "sel" : ""}`} onClick={() => setPayment(id)}>
                                                     <div className="df-pmname">{nm}</div>
-                                                    <div className="df-pmsub" style={{ color: (id === 'QRIS') ? 'var(--gold-light)' : 'var(--muted)' }}>{sb}</div>
+                                                    <div className="df-pmsub">{sb}</div>
                                                 </div>
-                                            ))
-                                        )}
-                                    </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                                 <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, marginBottom: 10 }}>
                                     <label className="df-flabel" style={{ marginBottom: 4 }}>{lang === 'id' ? 'Pilih Paket Anda' : (lang === 'ph' ? 'Piliin ang Iyong Package' : 'Choose Your Package')}</label>
