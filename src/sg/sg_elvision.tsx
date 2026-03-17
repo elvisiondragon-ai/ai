@@ -281,7 +281,7 @@ export default function ELVisionLanding() {
           }
 
           if (data?.success) {
-              if ((selectedPaymentMethod === 'PAYPAL' || ['QRIS', 'DANA', 'OVO', 'SHOPEEPAY', 'LINKAJA', 'SAKUKU'].includes(selectedPaymentMethod)) && data.checkoutUrl) {
+              if ((selectedPaymentMethod === 'PAYPAL' || ['DANA', 'OVO', 'SHOPEEPAY', 'LINKAJA', 'SAKUKU'].includes(selectedPaymentMethod)) && data.checkoutUrl) {
                   window.location.href = data.checkoutUrl;
                   return;
               }
@@ -404,6 +404,12 @@ export default function ELVisionLanding() {
                                   <Copy className="w-4 h-4" />
                               </Button>
                           </div>
+                          {['ALFAMART', 'ALFAMIDI', 'INDOMARET'].includes(paymentData.paymentMethod) && (
+                              <div className="mt-2 p-3 bg-slate-50 rounded-lg border-l-4 border-amber-600 text-sm text-slate-700 leading-relaxed">
+                                  <strong>Langkah Pembayaran:</strong><br />
+                                  Pergi ke <strong>{paymentData.paymentMethod === 'INDOMARET' ? 'Indomaret' : (paymentData.paymentMethod === 'ALFAMART' ? 'Alfamart' : 'Alfamidi')}</strong> terdekat, ke kasir berikan kode virtual ini untuk dibayar. Dalam 1 menit setelah dibayar, transaksi akan otomatis selesai dan produk ebook dikirim ke WhatsApp dan email Anda.
+                              </div>
+                          )}
                       </div>
                   )}
   

@@ -823,8 +823,8 @@ const DarkFeminineTSX = () => {
                 }
                 setPaymentData(data);
                 
-                // If it's an e-wallet or QRIS and we have a checkout URL, redirect to Tripay "The App"
-                const redirectMethods = ['QRIS', 'DANA', 'OVO', 'SHOPEEPAY', 'LINKAJA', 'SAKUKU'];
+                // If it's an e-wallet (DANA, OVO, SHOPEEPAY) and we have a checkout URL, redirect to Tripay "The App"
+                const redirectMethods = ['DANA', 'OVO', 'SHOPEEPAY', 'LINKAJA', 'SAKUKU'];
                 if (data.checkoutUrl && redirectMethods.includes(payment)) {
                     window.location.href = data.checkoutUrl;
                     return;
@@ -1120,10 +1120,16 @@ const DarkFeminineTSX = () => {
                         {paymentData.payCode && (
                             <div style={{ background: 'white', borderRadius: '14px', padding: '20px', border: '1px solid rgba(201,153,26,.3)', marginBottom: '16px' }}>
                                 <p style={{ fontSize: '13px', color: '#5E7491', fontWeight: 600, marginBottom: '8px' }}>KODE PEMBAYARAN VA</p>
-                                <div style={{ background: '#EEE5C8', padding: '14px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div style={{ background: '#EEE5C8', padding: '14px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: ['ALFAMART', 'ALFAMIDI', 'INDOMARET'].includes(paymentData.paymentMethod) ? '12px' : '0' }}>
                                     <span style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'monospace', color: '#060A12' }}>{paymentData.payCode}</span>
                                     <button onClick={() => { navigator.clipboard.writeText(paymentData.payCode); alert('Tersalin!'); }} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><Copy size={22} color="#C9991A" /></button>
                                 </div>
+                                {['ALFAMART', 'ALFAMIDI', 'INDOMARET'].includes(paymentData.paymentMethod) && (
+                                    <div style={{ marginTop: '12px', padding: '12px', background: '#f8f9fa', borderRadius: '8px', borderLeft: '4px solid #C9991A', fontSize: '14px', color: '#333', lineHeight: 1.5 }}>
+                                        <strong>Langkah Pembayaran:</strong><br />
+                                        Pergi ke <strong>{paymentData.paymentMethod === 'INDOMARET' ? 'Indomaret' : (paymentData.paymentMethod === 'ALFAMART' ? 'Alfamart' : 'Alfamidi')}</strong> terdekat, ke kasir berikan kode virtual ini untuk dibayar. Dalam 1 menit setelah dibayar, transaksi akan otomatis selesai dan produk ebook dikirim ke WhatsApp dan email Anda.
+                                    </div>
+                                )}
                             </div>
                         )}
 
