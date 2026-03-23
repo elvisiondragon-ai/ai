@@ -18,7 +18,6 @@ import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewC
 // Asset Imports for ID
 import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
 import df02Id from '../assets/darkfem/indo_image/df02_2am_scroll.png';
-import df03Id from '../assets/darkfem/indo_image/df03_nice_girl_dies.png';
 import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.png';
 import df05Id from '../assets/darkfem/indo_image/df05_comparison.png';
 import df06Id from '../assets/darkfem/indo_image/df06_fuckboy_cycle.png';
@@ -26,9 +25,9 @@ import df07Id from '../assets/darkfem/indo_image/df07_drakor_fantasy.png';
 import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
 import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
 import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
-import video1Id from '../assets/darkfem/indo_image/video1.mp4';
+const video1Id = '/assets/videos/video1.mp4';
 import video1PosterId from '../assets/darkfem/indo_image/video1.jpg';
-import video3Id from '../assets/darkfem/indo_image/video3.mp4';
+const video3Id = '/assets/videos/video3.mp4';
 import video3PosterId from '../assets/darkfem/indo_image/video3.jpg';
 
 // Istri Section Assets
@@ -45,10 +44,15 @@ import angle11 from '../assets/darkfem/indo_image/angle11-Wanita_Yang_Pria_Takut
 import angle6 from '../assets/darkfem/indo_image/angle6-Tidak_Pernah_Minta.png';
 import angle7 from '../assets/darkfem/indo_image/angle7-Sebelum_vs_Sesudah.png';
 
+// Winner Section Assets
+import winnerSatuPerubahan from '../assets/darkfem/indo_image/winner-Satu_Perubahan-SENT.jpg';
+import winnerStopJadiOpsi from '../assets/darkfem/indo_image/winner-Stop_Jadi_Opsi-SENT.jpg';
+import winnerJanganMintaPerhatian from '../assets/darkfem/indo_image/winner-Jangan_Minta_Perhatian-SENT.jpg';
+import winnerCrAd from '../assets/darkfem/indo_image/Cr_Ad_DarkFem_A1_MALAM_INI,_CEWEK_"TE_1773316980_2026-03-12-ca3ded6f710055046854af8069d5876f-SENT.jpg';
+
 // Asset Imports for EN
 import df01En from '../assets/darkfem/english_image/df01_paradox_en.png';
 import df02En from '../assets/darkfem/english_image/df02_2am_scroll_en.png';
-import df03En from '../assets/darkfem/english_image/df03_funeral_en.png';
 import df04En from '../assets/darkfem/english_image/df04_secret_she_knows_en.png';
 import df05En from '../assets/darkfem/english_image/df05_therapist_trap_en.png';
 import df06En from '../assets/darkfem/english_image/df06_comparison_en.png';
@@ -60,7 +64,6 @@ import df10En from '../assets/darkfem/english_image/df10_society_lie_en.png';
 // Asset Imports for PH
 import df01Ph from '../assets/darkfem/philippines_image/df01_ph_paradox.png';
 import df02Ph from '../assets/darkfem/philippines_image/df02_ph_2am_scroll.png';
-import df03Ph from '../assets/darkfem/philippines_image/df03_ph_nice_girl.png';
 import df04Ph from '../assets/darkfem/philippines_image/df04_ph_friendzone.png';
 import df05Ph from '../assets/darkfem/philippines_image/df05_ph_comparison.png';
 import df06Ph from '../assets/darkfem/philippines_image/df06_ph_ghosted.png';
@@ -71,20 +74,21 @@ import df10Ph from '../assets/darkfem/philippines_image/df10_ph_society_lie.png'
 
 const assetsMap: any = {
     id: {
-        df01: df01Id, df02: df02Id, df03: df03Id, df04: df04Id, df05: df05Id,
+        df01: df01Id, df02: df02Id, df04: df04Id, df05: df05Id,
         df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
         video1: video1Id, video3: video3Id,
         video1Poster: video1PosterId, video3Poster: video3PosterId,
         istri01, istri02, istri03, istri04, istri05, istri06,
-        angle1, angle11, angle6, angle7
+        angle1, angle11, angle6, angle7,
+        winnerSatuPerubahan, winnerStopJadiOpsi, winnerJanganMintaPerhatian, winnerCrAd
     },
     en: {
-        df01: df01En, df02: df02En, df03: df03En, df04: df04En, df05: df05En,
+        df01: df01En, df02: df02En, df04: df04En, df05: df05En,
         df06: df06En, df07: df07En, df08: df08En, df09: df09En, df10: df10En,
         video1: null, video2: null, video3: null
     },
     ph: {
-        df01: df01Ph, df02: df02Ph, df03: df03Ph, df04: df04Ph, df05: df05Ph,
+        df01: df01Ph, df02: df02Ph, df04: df04Ph, df05: df05Ph,
         df06: df06Ph, df07: df07Ph, df08: df08Ph, df09: df09Ph, df10: df10Ph,
         video1: null, video2: null, video3: null
     }
@@ -142,6 +146,16 @@ const contentData: any = {
             "Yang mencari cara instan tanpa effort",
             "Yang tidak siap meninggalkan 'nice girl' lama",
         ],
+        winningGallery: {
+            title: "Winning Techniques",
+            sub: "Strategi Psikologi yang Telah Membantu Ribuan Wanita Mengubah Takdir Cintanya",
+            images: [
+                "winnerSatuPerubahan",
+                "winnerStopJadiOpsi",
+                "winnerJanganMintaPerhatian",
+                "winnerCrAd"
+            ]
+        },
         faqs: [
             { q: "Bagaimana cara aksesnya?", a: "Setelah pembayaran, ebook dikirim ke WhatsApp kamu dalam 5 menit. Format HTML bisa dibaca di HP, tablet, atau komputer." },
             { q: "Apakah ini aman dan privat?", a: "100% privat. Tidak ada nama produk di bukti transfer. Semua dikirim digital, rahasia." },
@@ -294,6 +308,11 @@ const contentData: any = {
             "Those looking for instant results with zero effort",
             "Those not ready to leave the old 'nice girl' behind",
         ],
+        winningGallery: {
+            title: "",
+            sub: "",
+            images: []
+        },
         faqs: [
             { q: "How do I access it?", a: "After payment, the ebook is sent to your WhatsApp within 5 minutes. HTML format, readable on phone, tablet, or computer." },
             { q: "Is this safe and private?", a: "100% private. No product name on the payment receipt. Everything delivered digitally and discreetly." },
@@ -398,6 +417,11 @@ const contentData: any = {
             "Mga naghahanap ng instant na resulta na walang kasamang pagsisikap",
             "Mga hindi pa handang talikuran ang lumang pagiging 'mabait' at 'boring'",
         ],
+        winningGallery: {
+            title: "",
+            sub: "",
+            images: []
+        },
         faqs: [
             { q: "Paano ko ito maa-access?", a: "Pagkatapos ng pagbabayad, ipapadala ang ebook sa iyong WhatsApp sa loob ng 5 minuto. Sa format na HTML, na mababasa sa telepono, tablet, o computer." },
             { q: "Ito ba ay ligtas at pribado?", a: "100% pribado. Walang pangalan ng produkto sa resibo ng pagbabayad. Ang lahat ay ihinahatid sa digital at pribadong paraan." },
@@ -1699,7 +1723,7 @@ const DarkFeminineTSX = () => {
                             <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</div>
                             {assets.video1 && (
                                 <div className="df-video-player">
-                                    <video controls playsInline preload="metadata" poster={assets.video1Poster || assets.df03}>
+                                    <video controls playsInline preload="metadata" poster={assets.video1Poster}>
                                         <source src={assets.video1} type="video/mp4" />
                                     </video>
                                     <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : (lang === 'ph' ? 'Kuwento ng Transpormasyon' : 'Transformation Story')}</span></div>
@@ -1707,6 +1731,25 @@ const DarkFeminineTSX = () => {
                             )}
                         </div>
                     </section>
+
+                    {/* Winning Gallery */}
+                    {c.winningGallery && c.winningGallery.images && c.winningGallery.images.length > 0 && (
+                        <section style={{ padding: '44px 0', borderTop: '1px solid rgba(139, 92, 246, 0.2)', background: 'var(--bg-primary)' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{c.winningGallery.title}</div>
+                                <h2 className="df-section-h2" style={{ marginBottom: '12px' }}>{c.winningGallery.title}</h2>
+                                <p style={{ color: 'var(--cream)', opacity: 0.8, fontSize: '16px', marginBottom: '32px', textAlign: 'center' }}>{c.winningGallery.sub}</p>
+                                
+                                <div className="df-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                                    {c.winningGallery.images.map((imgKey: string, i: number) => (
+                                        <div key={i} className="df-img-box" style={{ margin: 0, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+                                            <img src={assets[imgKey]} alt={`Winning Technique ${i+1}`} style={{ width: '100%', display: 'block' }} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
                     
                     {/* KHUSUS ISTRI SECTION - Indonesia Only */}
                     {lang === 'id' && c.wifeSection && (
@@ -2328,9 +2371,6 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.faqLabel}</div>
                             <h2 className="df-section-h2">{c.faqH2} <span className="df-gold">{c.faqH2Span}</span></h2>
-                            <div className="df-img-box">
-                                <img src={assets.df03} alt="FAQ Visual" />
-                            </div>
                             <div>
                                 {c.faqs.map((f: any, i: number) => (
                                     <div key={i} className={`df-faq-item ${openFaq === i ? 'open' : ''}`}>

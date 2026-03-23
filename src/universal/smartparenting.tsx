@@ -18,9 +18,9 @@ import df07Id from '../assets/darkfem/indo_image/df07_drakor_fantasy.png';
 import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
 import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
 import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
-import video1Id from '../assets/darkfem/indo_image/video1.mp4';
+const video1Id = '/assets/videos/video1.mp4';
 import video1PosterId from '../assets/darkfem/indo_image/video1.jpg';
-import video3Id from '../assets/darkfem/indo_image/video3.mp4';
+const video3Id = '/assets/videos/video3.mp4';
 import video3PosterId from '../assets/darkfem/indo_image/video3.jpg';
 
 // Istri Section Assets

@@ -18,7 +18,7 @@ import imgPain4 from "../assets/ranjang/pain_04_dinner.png";
 import imgPain5 from "../assets/ranjang/pain_05_clock.png";
 import imgPain6 from "../assets/ranjang/pain_06_goodbye.png";
 import imgPain7 from "../assets/ranjang/pain_07_gossip.png";
-import vidSuami1 from "../assets/ranjang/suami1.mp4";
+const vidSuami1 = "/assets/videos/suami1.mp4";
 import qrisBcaImage from "../assets/qrisbca.jpeg";
 
 // ─── UTILS & INTEGRATIONS ─────────────────────────────────────────────────────
