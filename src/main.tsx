@@ -24,8 +24,6 @@ import ReactDOM from 'react-dom/client'
 import React, { Suspense } from 'react'
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { SpeedInsights } from "@vercel/speed-insights/react"
-import { Analytics } from '@vercel/analytics/react'
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 
 // Lazy Loaded (Primary Landing Pages - Lazy Load)
@@ -161,7 +159,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Suspense fallback={<LoadingFallback />}>
       <App />
     </Suspense>
-    <SpeedInsights debug={false} />
-    <Analytics debug={false} />
   </BrowserRouter>,
 )
