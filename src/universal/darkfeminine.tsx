@@ -768,24 +768,11 @@ const DarkFeminineTSX = () => {
     const isEnglish = lang === 'en' || lang === 'sg' || lang === 'ph';
     const finalAmount = isEnglish ? priceUSD : priceID;
     const finalCurrency = isEnglish ? 'USD' : 'IDR';
-    const finalPriceStr = isEnglish ? `$${finalAmount}` : `Rp${finalAmount.toLocaleString('id-ID')}`;
+
 
     const PIXEL_ID = '3319324491540889';
 
-    const sendWAAlert = async (type: 'attempt' | 'success', details: any) => {
-        try {
-            const productDesc = `Dark Feminine Package`;
-            const msg = type === 'attempt'
-                ? `🔔 *Mencoba Checkout*\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nMetode: ${details.method}`
-                : `✅ *Checkout Sukses*\nRef: ${details.ref}\nProduk: ${productDesc}\nNama: ${details.name}\nWA: ${details.phone}\nTotal: ${finalPriceStr}`;
 
-            await fetch('https://watzapp.web.id/api/message', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Authorization': '23b62c4255c43489f55fa84693dc0451d89ea5a5c9ec00021a7b77287cdce0b8' },
-                body: JSON.stringify({ phone: "62895325633487", message: msg, token: "23b62c4255c43489f55fa84693dc0451d89ea5a5c9ec00021a7b77287cdce0b8" })
-            });
-        } catch (e) { console.error('WA API Error', e); }
-    };
 
     const submitOrder = async () => {
         if (!name || !phone || !email) { alert('⚠️ Mohon lengkapi Nama, No. WhatsApp, dan Email Anda!'); return; }
@@ -808,7 +795,7 @@ const DarkFeminineTSX = () => {
             }
         }
         
-        sendWAAlert('attempt', { name, phone: cleanPhone, method: payment });
+        
 
         const { fbc, fbp } = getFbcFbpCookies();
         const clientIp = await getClientIp();
@@ -867,7 +854,6 @@ const DarkFeminineTSX = () => {
                 }
 
                 setShowPaymentInstructions(true); window.scrollTo({ top: 0, behavior: 'smooth' });
-                sendWAAlert('success', { ref: data.tripay_reference, name, phone: cleanPhone, amount: finalBCAAmount });
             } else {
                 alert(data?.error || "Gagal membuat pembayaran, hubungi admin via WhatsApp.");
             }
