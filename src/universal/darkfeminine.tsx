@@ -586,7 +586,7 @@ const DarkFeminineTSX = () => {
     const freeEbookNameRef = useRef<HTMLInputElement>(null);
 
     const fetchDbReviews = async () => {
-        const { data } = await (supabase as any).from('darkfeminine_reviews').select('*').order('created_at', { ascending: false });
+        const { data } = await (supabase as any).from('reviews_darkfeminine').select('*').order('created_at', { ascending: false });
         if (data) setDbReviews(data);
     };
 
@@ -705,7 +705,7 @@ const DarkFeminineTSX = () => {
         setIsLoginLoading(true);
         try {
             // Check if review already exists for this email
-            const { data: existingReview } = await (supabase as any).from('darkfeminine_reviews').select('*').eq('user_email', emailToUse).maybeSingle();
+            const { data: existingReview } = await (supabase as any).from('reviews_darkfeminine').select('*').eq('user_email', emailToUse).maybeSingle();
 
             if (existingReview && !confirmedEmail) {
                 setPendingReviewPayload({ email: emailToUse, rating: reviewRating, comment: reviewText });
@@ -734,10 +734,10 @@ const DarkFeminineTSX = () => {
             };
 
             if (existingReview) {
-                await (supabase as any).from('darkfeminine_reviews').update(payload).eq('id', existingReview.id);
+                await (supabase as any).from('reviews_darkfeminine').update(payload).eq('id', existingReview.id);
                 toast({ title: "Review diupdate" });
             } else {
-                await (supabase as any).from('darkfeminine_reviews').insert([payload]);
+                await (supabase as any).from('reviews_darkfeminine').insert([payload]);
                 toast({ title: "Review ditambahkan" });
             }
             
