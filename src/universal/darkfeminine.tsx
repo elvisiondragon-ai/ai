@@ -175,19 +175,30 @@ const contentData: any = {
             { icon: "😞", text: <>Sudah lakukan segalanya dengan benar — tapi tetap <strong>tidak dilihat</strong></> },
             { icon: "🪞", text: <>Lupa kapan terakhir kali merasa seperti <strong>WANITA</strong> — bukan hanya ibu, istri, atau karyawan</> },
         ],
-        wifeSection: {
-            label: "Dan Jikapun anda memiliki Pasangan",
-            title: "Apakah Ini Kehidupan Pernikahan Yang Kamu Hadapi?",
-            items: [
-                { img: 'istri01', title: "Tidur Sendiri dalam Keramaian", desc: "Satu ranjang tapi terasa ribuan kilometer jaraknya. Dia lebih asyik dengan dunianya sendiri sementara kamu merindukan sentuhan yang tulus." },
-                { img: 'istri02', title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
-                { img: 'istri03', title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
-                { img: 'istri04', title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
-                { img: 'istri05', title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
-                { img: 'istri06', title: "Bertahan Demi Anak", desc: "Pura-pura bahagia di depan anak-anak, padahal hati sudah hancur dan kesepian setiap malam." }
-            ]
-        },
+        stories: [
+            {
+                img: 'df02',
+                title: 'Jam 2 Pagi. HP Masih di Tangan.',
+                body: `Kamu scroll Instagram lagi. Lihat foto dia — yang di-ghosting kamu minggu lalu — ternyata sudah upload story sama cewek lain.\n\nPerut kamu mual. Tapi kamu tetap klik storynya. Sampai habis.\n\nKamu tahu ini menyakitkan. Tapi kamu tidak bisa berhenti. Karena diam-diam kamu masih berharap dia balik. Padahal dalam hati kamu tahu — dia sudah lupa kamu ada.\n\nDan yang paling menyiksa bukan karena dia pergi. Tapi karena kamu tidak tahu KENAPA.`
+            },
+            {
+                img: 'df04',
+                title: 'Selalu Jadi Pelabuhan. Tidak Pernah Jadi Tujuan.',
+                body: `Dia cerita soal masalah hidupnya ke kamu sampai jam 1 pagi. Kamu dengarkan. Kamu support. Kamu kasih saran terbaik.\n\nDan keesokan harinya? Dia nembak cewek lain.\n\nKamu bingung. Marah. Tapi kamu tetap reply chat-nya. Karena kamu pikir — mungkin kalau kamu cukup sabar, cukup baik, cukup setia... akhirnya dia akan sadar.\n\nTapi itu tidak pernah terjadi. Karena kebaikan tanpa STRATEGI hanya akan membuat kamu jadi opsi, bukan prioritas.`
+            },
+            {
+                img: 'df05',
+                title: 'Scrolling Feed Teman. Semua Sudah Bahagia. Kecuali Kamu.',
+                body: `Teman SMA yang dulu biasa-biasa aja — sekarang engaged. Yang dulu suka di-bully — sekarang dilamar pakai cincin berlian. Yang dulu kamu anggap 'ga lebih dari gue' — sekarang honeymoon di Bali.\n\nDan kamu? Masih di sini. Masih di-ghosting. Masih "yang sabar ya, nanti juga ada yang serius."\n\nKamu mulai bertanya — apa yang salah dengan diri kamu? Kenapa selalu kamu yang tidak dipilih?\n\nJawabannya bukan karena kamu kurang. Tapi karena ada satu hal yang mereka tahu, yang kamu belum tahu.`
+            },
+            {
+                img: 'df06',
+                title: 'Loop Yang Sama. Cowok Yang Berbeda.',
+                body: `Dekat. Harapan. Menghilang.\n\nNama-nya berubah. Wajahnya berubah. Tapi polanya selalu sama.\n\nKamu yang ngasih semuanya duluan. Kamu yang setia. Kamu yang "ngerti." Dan kamu yang selalu ditinggal tanpa penjelasan.\n\nSampai akhirnya kamu mulai percaya bahwa mungkin memang cinta itu bukan buat kamu. Mungkin kamu memang ditakdirkan sendirian.\n\nTapi itu BOHONG. Kamu hanya belum tahu satu hal yang mengubah segalanya. Satu hal yang tidak pernah diajarkan ibu, guru, atau siapapun.`
+            },
+        ],
         angleSection: {
+
             title: "Siap Untuk Transformasi?",
             items: [
                 { img: 'angle1', title: "Silent Power", desc: "Berhenti mengejar, mulai menarik dengan kekuatan diam yang mematikan." },
@@ -540,6 +551,8 @@ const DarkFeminineTSX = () => {
     const hasSg = searchParams.has('sg');
     const hasId = searchParams.has('id');
     const hasPh = searchParams.has('ph');
+    const hasIstri = searchParams.has('istri');
+    const segment = hasIstri ? 'istri' : 'default';
     const initLang = hasEn ? 'en' : (hasSg ? 'sg' : (hasPh ? 'ph' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id'))));
     const [lang, setLang] = useState<'id' | 'en' | 'sg' | 'ph'>(initLang as 'id' | 'en' | 'sg' | 'ph');
 
@@ -992,6 +1005,54 @@ const DarkFeminineTSX = () => {
     const contentLang = lang; // Since all 3 (id, en, ph) exist now, map directly OR map sg back to en
     const c = contentData[contentLang === 'sg' ? 'en' : contentLang];
     const assets = assetsMap[contentLang === 'sg' ? 'en' : contentLang];
+
+    // === SEGMENT OVERRIDES (?istri / ?single) ===
+    const segmentContent = segment === 'istri' ? {
+        heroBadge: "🔥 KHUSUS UNTUK PARA ISTRI",
+        heroH1a: "Kamu Sudah Memberikan Segalanya...",
+        heroH1b: "Tapi Kenapa Masih Merasa Tidak Dilihat?",
+        heroSub: "Untuk istri yang lelah berjuang sendirian. Yang tidur di samping seseorang tapi merasa ribuan kilometer jaraknya. Yang bertanya dalam diam — 'Kenapa dia tidak lagi memilihku?'",
+        heroImg: 'istri03',
+        painLabel: "KISAH YANG TIDAK PERNAH KAMU CERITAKAN",
+        painH2a: "Apakah Ini",
+        painH2b: "Hidupmu Sekarang?",
+        stories: [
+            {
+                img: 'istri01',
+                title: 'Jam 11 Malam. Lampu Kamar Sudah Mati.',
+                body: `Kamu berbaring di samping orang yang dulu berjanji akan menemanimu selamanya. Tapi malam ini — seperti ratusan malam sebelumnya — dia membelakangimu. Cahaya HP-nya memantul di langit-langit kamar.\n\nKamu ingin menyentuhnya. Ingin bilang "aku kangen kamu." Tapi kamu sudah terlalu sering ditolak dengan cara yang paling halus — diam, atau "udah ya, capek."\n\nJadi kamu pilih diam juga. Memeluk bantal. Dan bertanya dalam hati: "Kapan terakhir kali dia memelukku duluan?"`
+            },
+            {
+                img: 'istri02',
+                title: 'Dulu Dia Berlari Untukmu. Sekarang Kamu Mengejar Bayangan.',
+                body: `Ingat waktu pacaran dulu? Dia yang chat duluan. Dia yang cemas kalau kamu belum balas. Dia yang rela hujan-hujanan cuma buat ketemu kamu 30 menit.\n\nSekarang? Kamu yang minta perhatian. Kamu yang inisiatif. Kamu yang "ngerti" kalau dia sibuk, capek, atau butuh waktu sendiri. Selalu kamu yang mengalah.\n\nDan pertanyaan yang paling menyakitkan bukan "kenapa dia berubah?" — tapi "apa aku yang membuatnya berhenti berusaha?"`
+            },
+            {
+                img: 'istri04',
+                title: 'Ibu Yang Sempurna. Istri Yang Hancur.',
+                body: `Pagi-pagi kamu sudah bangun siapkan sarapan. Antarkan anak sekolah. Beres-beres rumah. Kerja. Jemput anak. Masak makan malam. Mandiin anak. Temani PR.\n\nDi mata dunia, kamu ibu yang luar biasa. Di mata anak-anak, kamu superhero.\n\nTapi di dalam kamar mandi — satu-satunya tempat privasi yang kamu punya — kamu menangis tanpa suara dengan air shower menyala. Karena tidak ada seorang pun yang bertanya: "Kamu baik-baik saja?"`
+            },
+            {
+                img: 'istri05',
+                title: 'Dia Punya Waktu Untuk Segalanya. Kecuali Kamu.',
+                body: `Dia bisa scroll sosmed 2 jam. Bisa nonton bola sampai larut. Bisa ngobrol panjang lebar sama teman-temannya.\n\nTapi giliran kamu ajak ngobrol? "Nanti ya." Kamu minta dinner berdua? "Males keluar." Kamu pakai baju baru? Dia bahkan tidak melirik.\n\nDan yang paling pedih — kamu lihat dia like foto wanita lain di IG-nya. Sementara chat dari istrinya sendiri cuma di-read.`
+            },
+            {
+                img: 'istri06',
+                title: 'Bertahan Demi Anak. Tapi Sampai Kapan?',
+                body: `Kamu pernah googling "tanda-tanda pernikahan tidak sehat" jam 2 pagi. Hasilnya cocok semua. Tapi kamu tutup browser-nya karena kamu takut dengan jawabannya.\n\nKamu bertahan. Bukan karena bahagia — tapi karena anak-anak. Karena status. Karena "nanti orang bilang apa."\n\nDan setiap hari, kamu bangun dengan wajah yang sama, senyuman yang sama, dan kekosongan yang sama di dalam dada.\n\nTapi di dalam hati kamu tahu — ini bukan hidup. Ini survival.`
+            },
+        ],
+        pains: [
+            { icon: "🪞", text: <>Kapan terakhir kali kamu merasa seperti <strong>WANITA</strong> — bukan hanya ibu, istri, atau pekerja?</> },
+            { icon: "💔", text: <>Bukan dia yang jahat. Tapi dia sudah <strong>berhenti melihatmu</strong> sebagai wanita yang perlu diperjuangkan.</> },
+            { icon: "🤐", text: <>Kamu memilih <strong>diam</strong> — bukan karena tidak peduli, tapi karena bicara pun sudah tidak didengar.</> },
+            { icon: "🌫️", text: <><strong>Sampai kapan?</strong> Pertanyaan itu muncul setiap malam, dan kamu tidak punya jawabannya.</> },
+        ],
+    } : null;
+
+    // Merge: segment overrides on top of base content
+    const sc: any = segmentContent ? { ...c, ...segmentContent } : c;
 
     const [countdown, setCountdown] = useState("00:00:00");
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -1646,14 +1707,14 @@ const DarkFeminineTSX = () => {
                     {/* HERO */}
                     <section id="df-hero">
                         <div className="df-wrap">
-                            <div className="df-hero-badge">{c.heroBadge}</div>
+                            <div className="df-hero-badge">{sc.heroBadge}</div>
                             <h1 className="df-hero-h1">
-                                <span>{c.heroH1a}</span>
-                                <span className="df-gold-italic">{c.heroH1b}</span>
+                                <span>{sc.heroH1a}</span>
+                                <span className="df-gold-italic">{sc.heroH1b}</span>
                             </h1>
-                            <p className="df-hero-sub">{c.heroSub}</p>
+                            <p className="df-hero-sub">{sc.heroSub}</p>
                             <div className="df-img-box">
-                                <img src={assets.df08} alt="Dark Feminine" />
+                                <img src={segmentContent?.heroImg ? (assets as any)[segmentContent.heroImg] : assets.df08} alt="Dark Feminine" />
                             </div>
                             <div className="df-trust-badges">
                                 <span>🔒 100% Privasi</span><span>⚡ Instan</span><span>📱 Akses Seumur Hidup</span>
@@ -1665,24 +1726,38 @@ const DarkFeminineTSX = () => {
                         </div>
                     </section>
 
-                    {/* PAIN SECTION */}
+                    {/* PAIN / STORYTELLING SECTION */}
                     <section style={{ background: 'linear-gradient(180deg, var(--bg-section) 0%, var(--bg-primary) 100%)', padding: '44px 0' }}>
                         <div className="df-wrap df-fade-in">
-                            <div className="df-section-label">{c.painLabel}</div>
+                            <div className="df-section-label">{sc.painLabel}</div>
                             <h2 className="df-section-h2">
-                                <span>{c.painH2a}</span>
-                                <span className="df-newline df-gold">{c.painH2b}</span>
+                                <span>{sc.painH2a}</span>
+                                <span className="df-newline df-gold">{sc.painH2b}</span>
                             </h2>
+
+                            {/* STORYTELLING SCENES */}
+                            {sc.stories && sc.stories.map((story: any, i: number) => (
+                                <div key={i} className="df-fade-in" style={{ marginBottom: '48px' }}>
+                                    <div className="df-wife-card">
+                                        <img src={(assets as any)[story.img]} alt={story.title} className="df-wife-img" />
+                                        <div className="df-wife-content">
+                                            <h3 className="df-wife-title" style={{ fontSize: '22px', lineHeight: 1.3 }}>{story.title}</h3>
+                                            <div style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--cream)', opacity: 0.92, whiteSpace: 'pre-line' }}>
+                                                {story.body}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Short final pain punches */}
                             <div>
-                                {c.pains.map((p: any, i: number) => (
+                                {sc.pains.map((p: any, i: number) => (
                                     <div key={i} className="df-pain-card">
                                         <span className="df-pain-icon">{p.icon}</span>
                                         <span>{p.text}</span>
                                     </div>
                                 ))}
-                            </div>
-                            <div className="df-img-box">
-                                <img src={assets.df02} alt="Pain Visual" />
                             </div>
                         </div>
                     </section>
@@ -1745,26 +1820,6 @@ const DarkFeminineTSX = () => {
                         </section>
                     )}
                     
-                    {/* KHUSUS ISTRI SECTION - Indonesia Only */}
-                    {lang === 'id' && c.wifeSection && (
-                        <section style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-section) 100%)', padding: '44px 0' }}>
-                            <div className="df-wrap df-fade-in">
-                                <div className="df-section-label">{c.wifeSection.label}</div>
-                                <h2 className="df-section-h2">{c.wifeSection.title}</h2>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                                    {c.wifeSection.items.map((item: any, idx: number) => (
-                                        <div key={idx} className="df-wife-card">
-                                            <img src={(assets as any)[item.img]} alt={item.title} className="df-wife-img" />
-                                            <div className="df-wife-content">
-                                                <h3 className="df-wife-title">{item.title}</h3>
-                                                <p className="df-wife-desc">{item.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-                    )}
 
                     {/* CONTENTS */}
                     <section style={{ padding: '44px 0' }}>
