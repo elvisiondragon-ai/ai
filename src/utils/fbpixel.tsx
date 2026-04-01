@@ -80,15 +80,14 @@ export const getFbcClickIdFromUrl = (): string | null => {
      fbclid = hashParams.get('fbclid');
   }
   if (fbclid) {
-    const hasUppercase = /[A-Z]/.test(fbclid);
-    const hasLowercase = /[a-z]/.test(fbclid);
     const isTooShort = fbclid.length < 20;
     const isTest = /test/i.test(fbclid);
-    const isCorruptedLowercase = !hasUppercase && hasLowercase;
-    if (isTest || isTooShort || isCorruptedLowercase) {
-      console.warn("⚠️ Meta Pixel: Ignoring invalid/corrupted fbclid:", fbclid);
+    if (isTest || isTooShort) {
+      console.warn("⚠️ Meta Pixel: Ignoring invalid fbclid:", fbclid);
       return null;
     }
+    // Note: We no longer strictly strip all-lowercase fbclids to be more resilient 
+    // to redirects that might lowercase query parameters.
     return fbclid;
   }
   return null;
@@ -104,30 +103,48 @@ export const formatFbcCookieValue = (fbclid: string): string => {
 export const setFbcData = (fbclid: string, existingFormattedFbc?: string) => {
     if (!fbclid) return;
     const formattedFbc = existingFormattedFbc || formatFbcCookieValue(fbclid);
+    
+    // Set cookie
     setCookieHelper('_fbc', formattedFbc, 90);
+    
+    // Backup to localStorage
     if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem('_fbc_backup', formattedFbc);
         localStorage.setItem('_fbc_timestamp', Date.now().toString());
+        localStorage.setItem('_fbclid_raw', fbclid); // Also keep raw ID
     }
 };
 
 // 🔗 FBC Cookie Manager
 export const handleFbcCookieManager = (): void => {
   const fbclid = getFbcClickIdFromUrl();
-  if (fbclid) setFbcData(fbclid);
+  if (fbclid) {
+    setFbcData(fbclid);
+  }
 };
 
-// 🍪 Get FBC and FBP Cookies
+// 🍪 Get FBC and FBP Cookies (Enhanced Smart Getter)
 export const getFbcFbpCookies = (): { fbc: string | null; fbp: string | null } => {
+  if (typeof document === 'undefined') return { fbc: null, fbp: null };
+
+  // 1. Try Cookies (Gold Standard)
   let fbc = getFbcCookieHelper('_fbc');
   let fbp = getFbcCookieHelper('_fbp');
-  if (fbc) {
-    const parts = fbc.split('.');
-    if (parts.length >= 4) {
-      const fbclid = parts.slice(3).join('.');
-      if (!/[A-Z]/.test(fbclid) && /[a-z]/.test(fbclid)) fbc = null;
+
+  // 2. Try URL Fallback for FBC (Crucial for fast-clickers or IG browser)
+  if (!fbc) {
+    const fbclidFromUrl = getFbcClickIdFromUrl();
+    if (fbclidFromUrl) {
+      fbc = formatFbcCookieValue(fbclidFromUrl);
+      console.log("🎯 FBC: Captured from URL fallback:", fbc);
     }
   }
+
+  // 3. Try LocalStorage Fallback (Last resort)
+  if (!fbc && typeof window !== 'undefined' && window.localStorage) {
+    fbc = localStorage.getItem('_fbc_backup');
+  }
+
   return { fbc, fbp };
 };
 

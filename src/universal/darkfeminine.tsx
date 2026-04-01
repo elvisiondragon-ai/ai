@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
-import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "../utils/fbpixel";
+import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, sha256 } from "../utils/fbpixel";
 
 // Asset Imports for ID
 import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
@@ -806,7 +806,14 @@ const DarkFeminineTSX = () => {
                 body: {
                     pixelId: PIXEL_ID, eventName: 'AddPaymentInfo', eventSourceUrl: window.location.href,
                     customData: { content_name: productDesc, value: finalAmount, currency: finalCurrency },
-                    userData: { fbc, fbp, client_ip_address: clientIp, fn: name, ph: cleanPhone, em: email }
+                    userData: { 
+                        fbc, fbp, 
+                        client_ip_address: clientIp, 
+                        fn: name, 
+                        ph: cleanPhone, 
+                        em: email,
+                        external_id: await sha256(email) // Boost match quality
+                    }
                 }
             });
         } catch (e) { console.error('AddPaymentInfo CAPI error', e); }
@@ -932,7 +939,8 @@ const DarkFeminineTSX = () => {
                                 client_ip_address: clientIp,
                                 fn: nameFree,
                                 ph: formattedWa,
-                                em: emailFree
+                                em: emailFree,
+                                external_id: await sha256(emailFree) // Boost match quality
                             }
                         }
                     });
