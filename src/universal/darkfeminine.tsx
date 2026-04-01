@@ -197,6 +197,18 @@ const contentData: any = {
                 body: `Dekat. Harapan. Menghilang.\n\nNama-nya berubah. Wajahnya berubah. Tapi polanya selalu sama.\n\nKamu yang ngasih semuanya duluan. Kamu yang setia. Kamu yang "ngerti." Dan kamu yang selalu ditinggal tanpa penjelasan.\n\nSampai akhirnya kamu mulai percaya bahwa mungkin memang cinta itu bukan buat kamu. Mungkin kamu memang ditakdirkan sendirian.\n\nTapi itu BOHONG. Kamu hanya belum tahu satu hal yang mengubah segalanya. Satu hal yang tidak pernah diajarkan ibu, guru, atau siapapun.`
             },
         ],
+        wifeSection: {
+            label: "Dan Jikapun anda memiliki Pasangan",
+            title: "Apakah Ini Kehidupan Pernikahan Yang Kamu Hadapi?",
+            items: [
+                { img: 'istri01', title: "Tidur Sendiri dalam Keramaian", desc: "Satu ranjang tapi terasa ribuan kilometer jaraknya. Dia lebih asyik dengan dunianya sendiri sementara kamu merindukan sentuhan yang tulus." },
+                { img: 'istri02', title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
+                { img: 'istri03', title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
+                { img: 'istri04', title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
+                { img: 'istri05', title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
+                { img: 'istri06', title: "Bertahan Demi Anak", desc: "Pura-pura bahagia di depan anak-anak, padahal hati sudah hancur dan kesepian setiap malam." }
+            ]
+        },
         angleSection: {
 
             title: "Siap Untuk Transformasi?",
@@ -1820,6 +1832,27 @@ const DarkFeminineTSX = () => {
                         </section>
                     )}
                     
+
+                    {/* WIFE SECTION - default page, hidden on ?istri (already has its own storytelling) */}
+                    {lang === 'id' && segment === 'default' && c.wifeSection && (
+                        <section style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-section) 100%)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{c.wifeSection.label}</div>
+                                <h2 className="df-section-h2">{c.wifeSection.title}</h2>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                                    {c.wifeSection.items.map((item: any, idx: number) => (
+                                        <div key={idx} className="df-wife-card">
+                                            <img src={(assets as any)[item.img]} alt={item.title} className="df-wife-img" />
+                                            <div className="df-wife-content">
+                                                <h3 className="df-wife-title">{item.title}</h3>
+                                                <p className="df-wife-desc">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* CONTENTS */}
                     <section style={{ padding: '44px 0' }}>
