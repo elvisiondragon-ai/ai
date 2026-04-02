@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
-import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, sha256 } from "../utils/fbpixel";
+import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, sha256, handleFbcCookieManager } from "../utils/fbpixel";
 
 // Asset Imports for ID
 import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
@@ -855,7 +855,8 @@ const DarkFeminineTSX = () => {
             userName: name, userEmail: email, phoneNumber: cleanPhone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
             amount: finalBCAAmount, currency: finalCurrency, quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
-            fbc, fbp, clientIp
+            fbc, fbp, clientIp,
+            pageUrl: window.location.href
         };
 
         try {
@@ -1004,6 +1005,11 @@ const DarkFeminineTSX = () => {
             ).subscribe();
         return () => { supabase.removeChannel(channel); };
     }, [showPaymentInstructions, paymentData, PIXEL_ID, priceID, toast]);
+
+    // Eagerly capture fbclid from URL before pixel loads, so fbc is available at payment time
+    useEffect(() => {
+        handleFbcCookieManager();
+    }, []);
 
     useEffect(() => {
         initFacebookPixelWithLogging(PIXEL_ID);
