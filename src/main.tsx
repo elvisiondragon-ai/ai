@@ -1,5 +1,5 @@
 // ==========================================
-export const APP_VERSION = "16"
+export const APP_VERSION = "17"
 // ==========================================
 
 // Force update

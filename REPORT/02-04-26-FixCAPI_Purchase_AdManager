@@ -1,0 +1,68 @@
+DATE: 02/04/26
+TASK: Fix Purchase CAPI not attributing to Ads Manager
+
+---
+
+PROBLEM
+
+Meta Ads Manager showed 0 purchases despite CAPI events being received by Meta (Events Manager showed events_received: 1). Backend was firing Purchase events correctly but attribution was broken.
+
+ROOT CAUSES IDENTIFIED
+
+1. action_source: 'physical_store' in tripay-callback
+   - This was the primary cause. Meta never attributes physical_store events to ad campaigns.
+   - Only 'website' and 'app' action sources are counted in Ads Manager.
+   - All Purchase events were being received by Meta but silently unattributed.
+
+2. event_source_url: null on all Purchase events
+   - Purchase fires from backend (tripay-callback), which has no knowledge of the user's landing URL.
+   - Without the URL (which contains fbclid + UTM params), Meta cannot perform proper deduplication or attribution scoring.
+   - global_product table had no page_url column to carry this forward from frontend.
+
+3. fbc: null on some purchases (~40% of users)
+   - handleFbcCookieManager() was only called inside initFacebookPixelWithLogging(), which runs after pixel JS loads asynchronously.
+   - Fast-clicking users or users in Facebook in-app browser would submit payment before fbc was saved.
+
+---
+
+FIXES APPLIED
+
+1. tripay-callback/index.ts
+   - Changed action_source from 'physical_store' to 'website'
+   - Added eventSourceUrl: order.page_url to the capi-universal invocation
+
+2. tripay-create-payment/index.ts
+   - Extracted pageUrl from request body
+   - Saved page_url to global_product on insert
+
+3. ai/src/universal/darkfeminine.tsx
+   - Added pageUrl: window.location.href to the payment payload sent to tripay-create-payment
+   - Added dedicated useEffect with empty deps [] calling handleFbcCookieManager() at component mount (before pixel loads) to ensure fbc is captured early
+
+4. Database
+   - Added page_url TEXT column to global_product table via Supabase Management API
+   - Migration file: elvisiongroup/supabase/migrations/20260402_add_page_url_to_global_product.sql
+
+5. Manual resend
+   - Last purchase (Maria Fransiska, T4427232139978AXUGN, 02/04/26 17:46) was manually resent to Meta CAPI with correct action_source: 'website', fbc, and event_source_url
+   - Same event_id used to prevent duplicate counting
+   - Meta confirmed: events_received: 1, fbtrace_id: Antu7ddJS8UOV1E3bhxlF5x
+
+6. App version bumped: 1.0.0 -> 1.0.1
+   - npm run build completed successfully, 0 errors
+
+---
+
+DEPLOYED
+
+- tripay-callback: deployed via SUPABASE_ACCESS_TOKEN
+- tripay-create-payment: deployed via SUPABASE_ACCESS_TOKEN
+
+---
+
+EXPECTED OUTCOME
+
+All future Purchase events from darkfeminine will fire with:
+- action_source: 'website'
+- event_source_url: full landing URL with fbclid and UTM params
+- fbc: captured early at page mount, stored in DB, passed through to Purchase CAPI
