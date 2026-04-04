@@ -1819,32 +1819,7 @@ const DarkFeminineTSX = () => {
                         </div>
                     </section>
 
-                    {/* WHO AM I - AUTHORITY SECTION */}
-                    {lang === 'id' && (
-                        <section style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-section) 100%)', padding: '52px 0' }}>
-                            <div className="df-wrap df-fade-in">
-                                <div className="df-section-label">SIAPA PENULISNYA?</div>
-                                <h2 className="df-section-h2">
-                                    <span>Who Am I —</span>
-                                    <span className="df-newline df-gold">El Reyzandra</span>
-                                </h2>
-                                <div style={{ fontSize: '17px', lineHeight: 1.85, color: 'var(--cream)', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                                    <p>Selama perjalanan saya, dengan kemampuan psikologis untuk membuat wanita nyaman, saya bertemu banyak wanita — bukan dengan niat menyakiti, tapi karena saya sedang mencari satu yang tepat.</p>
-                                    <p>Di waktu yang sama, saya mengajarkan pria mapan untuk mendapatkan wanita dengan teknik sikap dan pikiran yang santai. Murid-murid saya — high individual semua — takluk dengan wanita berkarakter serupa.</p>
-                                    <p>Saya sudah berhenti melakukan itu. Karena saya sudah mendapatkan wanita yang saya cari.</p>
-                                    <p>Sekarang saya ingin berbagi kepada wanita — apa sebenarnya isi pikiran dan niat pria. Ada pria jahat, tapi kebanyakan tidak. Mereka hanya mencari yang satu pemikiran.</p>
-                                    <p>Dengan ebook ini, saya membongkar isi pikiran pria paling liar dan paling dalam — agar kamu bisa menjadi idaman para pria high performer, seperti di drama-drama China sekalipun.</p>
-                                </div>
-                                <div style={{ marginTop: '32px' }}>
-                                    <a href="https://www.liputan6.com/showbiz/read/5134307/selebgram-el-reyzandra-dalami-profesi-motivator-bisnis-bantu-sukseskan-ratusan-pengusaha-pemula" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                                        <button style={{ background: 'linear-gradient(135deg, var(--purple), #6d28d9)', color: '#fff', border: 'none', borderRadius: '10px', padding: '14px 28px', fontSize: '16px', fontWeight: 700, cursor: 'pointer', letterSpacing: '0.03em' }}>
-                                            Siapa El Reyzandra? →
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
-                        </section>
-                    )}
+
 
                     {/* Winning Gallery */}
                     {c.winningGallery && c.winningGallery.images && c.winningGallery.images.length > 0 && (
