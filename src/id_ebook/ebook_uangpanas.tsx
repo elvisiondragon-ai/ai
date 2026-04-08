@@ -170,11 +170,11 @@ export default function UangPanasLanding() {
   const { toast } = useToast();
 
   // Payment State
-  const [selectedTier, setSelectedTier] = useState<'basic' | 'bundle'>('basic');
-  const productNameBackend = selectedTier === 'bundle' ? 'ebook_uangpanas_bundle' : 'ebook_uangpanas';
-  const displayProductName = selectedTier === 'bundle' ? 'Ebook Uang Panas + Audio Rezeki' : 'Ebook Uang Panas';
-  const originalPrice = 500000;
-  const productPrice = selectedTier === 'bundle' ? 299000 : 199000;
+  const [selectedTier, setSelectedTier] = useState<'basic' | 'bundle' | 'pixel'>('bundle');
+  const productNameBackend = selectedTier === 'pixel' ? 'ebook_uangpanas_pixel' : (selectedTier === 'bundle' ? 'ebook_uangpanas_bundle' : 'ebook_uangpanas');
+  const displayProductName = selectedTier === 'pixel' ? 'Ebook Uang Panas + Pixel' : (selectedTier === 'bundle' ? 'Ebook Uang Panas + Audio Rezeki' : 'Ebook Uang Panas');
+  const originalPrice = selectedTier === 'pixel' ? 2000000 : 500000;
+  const productPrice = selectedTier === 'pixel' ? 999999 : (selectedTier === 'bundle' ? 299000 : 199000);
   const totalQuantity = 1;
   const totalAmount = productPrice;
 
@@ -1536,6 +1536,23 @@ export default function UangPanasLanding() {
                                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-yellow-400 flex-shrink-0" /> Audio Rezeki Pagi + Malam (Bio-Energetik)</li>
                                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-yellow-400 flex-shrink-0" /> Teknologi Brainwave Theta 4-7Hz</li>
                                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-yellow-400 flex-shrink-0" /> Garansi Uang Kembali jika tidak ada manfaat</li>
+                            </ul>
+                        </div>
+                        <div
+                            onClick={() => setSelectedTier('pixel')}
+                            className={`cursor-pointer rounded-xl border-2 p-5 transition-all relative ${selectedTier === 'pixel' ? 'border-orange-500 bg-orange-900/30' : 'border-gray-700 bg-gray-800 hover:border-orange-600'}`}
+                        >
+                            <div className="flex items-center justify-between mb-2">
+                                <p className="font-bold text-white text-lg">Setup Meta Ads + Pixel (Terima Jadi)</p>
+                                <p className="text-orange-500 font-extrabold text-2xl">Rp999.999</p>
+                            </div>
+                            <p className="text-xs text-gray-400 mb-3 leading-relaxed">
+                                (Jika kamu sudah ada produk via WA/Website dan ingin diiklankan di Meta, <strong>setup pixel di website terima jadi</strong>. Tanpa pusing atur pelacakan, berikan akun FB dan jadi dalam &lt; 1 hari)
+                            </p>
+                            <ul className="space-y-1 text-sm text-gray-300">
+                                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-500 flex-shrink-0" /> Full Setup FB/IG Ads + Pixel Tracking</li>
+                                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-500 flex-shrink-0" /> Done in &lt; 24 Hours</li>
+                                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-orange-500 flex-shrink-0" /> Free Ebook & Audio System Included</li>
                             </ul>
                         </div>
                     </div>

@@ -564,6 +564,7 @@ const DarkFeminineTSX = () => {
     const hasId = searchParams.has('id');
     const hasPh = searchParams.has('ph');
     const hasIstri = searchParams.has('istri');
+    const hasDisc = searchParams.has('disc');
     const segment = hasIstri ? 'istri' : 'default';
     const initLang = hasEn ? 'en' : (hasSg ? 'sg' : (hasPh ? 'ph' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id'))));
     const [lang, setLang] = useState<'id' | 'en' | 'sg' | 'ph'>(initLang as 'id' | 'en' | 'sg' | 'ph');
@@ -788,7 +789,7 @@ const DarkFeminineTSX = () => {
     const [loadingFree, setLoadingFree] = useState(false);
     const [successFree, setSuccessFree] = useState(false);
 
-    const priceID = addUpsell ? 249000 : 199000;
+    const priceID = addUpsell ? (hasDisc ? 200000 : 249000) : 199000;
     const priceUSD = addUpsell ? 19 : 15;
     const isEnglish = lang === 'en' || lang === 'sg' || lang === 'ph';
     const finalAmount = isEnglish ? priceUSD : priceID;
@@ -2379,7 +2380,7 @@ const DarkFeminineTSX = () => {
                                             <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.4 }}>{lang === 'id' ? 'Rahasia memikat pria idaman hanya lewat frekuensi suara.' : (lang === 'ph' ? 'Sikreto para akitin ang iyong pangarap na lalaki sa pamamagitan lamang ng dalas ng boses.' : 'Secret to captivating your dream man just through voice frequency.')} <span style={{ color: 'var(--red)', textDecoration: 'line-through' }}>{lang === 'id' ? '(Senilai Rp250.000)' : (lang === 'ph' ? '(Nagkakahalagang P850)' : '(Worth $19)')}</span></div>
                                         </div>
                                         <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>
-                                            {isEnglish ? "$19.00" : "Rp249.000"}
+                                            {isEnglish ? "$19.00" : (hasDisc ? "Rp200.000" : "Rp249.000")}
                                         </div>
                                     </div>
                                 </div>
@@ -2387,16 +2388,16 @@ const DarkFeminineTSX = () => {
                                 <div style={{ background: "rgba(139,92,246,.05)", border: "1px solid rgba(139,92,246,.13)", borderRadius: 11, padding: 14, marginTop: 10 }}>
                                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: addUpsell ? "var(--gold-light)" : "var(--muted)" }}>
                                         <span style={{ paddingRight: 10 }}>{addUpsell ? (lang === 'id' ? "Paket Lengkap + Audio Love Magnet" : (lang === 'ph' ? "Kumpletuhang Package + Audio Love Magnet" : "Complete Package + Audio Love Magnet")) : (lang === 'id' ? "Paket Lengkap Dark Feminine + 8 Bonus" : (lang === 'ph' ? "Kumpletuhang Package ng Dark Feminine + 8 Bonus" : "Dark Feminine Complete Package + 8 Bonuses"))}</span>
-                                        <span style={{ fontWeight: 600 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}</span>
+                                        <span style={{ fontWeight: 600 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}</span>
                                     </div>
                                     <div style={{ height: 1, background: "rgba(139,92,246,.09)", marginBottom: 7 }} />
                                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14.5, fontWeight: 700 }}>
                                         <span style={{ color: "var(--cream)" }}>Total</span>
-                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}</span>
+                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}</span>
                                     </div>
                                 </div>
                                 <button id="checkout-button" className="df-sbtn" onClick={submitOrder} disabled={loading}>
-                                    {loading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : `🛒 ${lang === 'id' ? 'Pesan Sekarang' : (lang === 'ph' ? 'Mag-order Ngayon' : 'Order Now')} — ${isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? "Rp249.000" : "Rp199.000")}`}
+                                    {loading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : `🛒 ${lang === 'id' ? 'Pesan Sekarang' : (lang === 'ph' ? 'Mag-order Ngayon' : 'Order Now')} — ${isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}`}
                                 </button>
                                 <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 {lang === 'id' ? 'Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.' : (lang === 'ph' ? 'Ligtas at naka-encrypt ang pagbabayad. Ipinadala nang digital ang produkto. Walang kahina-hinalang singil.' : 'Secure & encrypted payment. Product delivered digitally. No suspicious billing.')}</p>
                             </div>
@@ -2493,7 +2494,7 @@ const DarkFeminineTSX = () => {
                     <div id="df-sticky-cta" className={showSticky ? 'show' : ''}>
                         <div style={{ background: 'var(--bg-card)', borderRadius: '14px', padding: '14px', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', gap: '14px' }}>
                             <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', flex: 1 }}>
-                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>{isEnglish ? (addUpsell ? '$19.00' : '$15.00') : (addUpsell ? 'Rp249.000' : 'Rp199.000')}</span>
+                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>{isEnglish ? (addUpsell ? '$19.00' : '$15.00') : (addUpsell ? (hasDisc ? 'Rp200.000' : 'Rp249.000') : 'Rp199.000')}</span>
                                 {addUpsell && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
                             </div>
                             <a id="sticky-checkout-trigger" onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{loading ? (lang === 'id' ? 'Memproses...' : 'Processing...') : c.stickyCta}</a>
