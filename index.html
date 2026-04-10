@@ -4,7 +4,7 @@
     <!-- iOS Safari hard cache-bust — ONLY change APP_VERSION here when deploying -->
     <script>
       (function() {
-        var V = '1.0.5';
+        var V = '1.0.6';
         window.__APP_VERSION__ = V;
         var url = new URL(window.location.href);
         if (url.searchParams.get('v') !== V) {
@@ -22,14 +22,17 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logoaiv2.png" />
 
-    <!-- Meta Tags to Prevent WhatsApp Image Preview -->
-    <meta property="og:title" content="eL Vision AI" />
+    <!-- OG / WhatsApp share -->
+    <meta property="og:title" content="eL Vision Group" />
     <meta property="og:description" content="eL Vision Group Ecosystem" />
     <meta property="og:type" content="website" />
-    <!-- By providing an empty image or a very small transparent pixel, WhatsApp usually skips the image preview -->
-    <meta property="og:image" content="" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://ai.elvisiongroup.com/og_logo.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ai.elvisiongroup.com/og_logo.jpg" />
 
     <title>eL Vision AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
