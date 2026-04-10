@@ -1,21 +1,15 @@
 // ==========================================
-export const APP_VERSION = "18"
+// Single source of truth: var V in index.html — only change there
+export const APP_VERSION = (window as any).__APP_VERSION__ as string;
 // ==========================================
 
-// Force update
-
 if (localStorage.getItem('v_cache') !== APP_VERSION) {
-  // 1. Clear Service Workers
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
   }
-
-  // 2. Clear Caches
   if ('caches' in window) {
     caches.keys().then(names => names.forEach(n => caches.delete(n)));
   }
-
-  // 3. Update version and Hard Reload
   localStorage.setItem('v_cache', APP_VERSION);
   setTimeout(() => window.location.reload(), 500);
 }

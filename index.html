@@ -1,6 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- iOS Safari hard cache-bust — ONLY change APP_VERSION here when deploying -->
+    <script>
+      (function() {
+        var V = '1.0.5';
+        window.__APP_VERSION__ = V;
+        var url = new URL(window.location.href);
+        if (url.searchParams.get('v') !== V) {
+          url.searchParams.set('v', V);
+          window.location.replace(url.toString());
+        } else {
+          url.searchParams.delete('v');
+          history.replaceState(null, '', url.pathname + (url.search === '?' ? '' : url.search) + url.hash);
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="eL Vision Group Ecosystem" />
