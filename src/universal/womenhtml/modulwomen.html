@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modul Women AI Consultant — Panduan Lengkap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D0A14;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-section: #12101A;
+      --gold: #D4A84B;
+      --gold-light: #E0B85A;
+      --gold-dim: rgba(212,168,75,0.15);
+      --cream: #F5EFE0;
+      --muted: #9A8B70;
+      --green: #4ADE80;
+      --red: #EF4444;
+      --purple: rgba(139,92,246,0.15);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      z-index: 9999; transition: width 0.1s linear; width: 0%;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: #1A1425;
+      border-bottom: 1px solid var(--gold-dim);
+      padding: 10px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .topbar strong { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,168,75,0.09) 0%, transparent 65%);
+      border-bottom: 1px solid var(--gold-dim);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 4px; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 18px;
+    }
+    .ornament { display: block; color: var(--gold); font-size: 20px; letter-spacing: 8px; opacity: 0.6; margin: 10px 0; }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700; line-height: 1.2;
+      margin: 20px 0 16px;
+    }
+    .hero p { font-size: 16px; color: var(--muted); max-width: 560px; margin: 0 auto; line-height: 1.8; }
+
+    /* LAYOUT */
+    .section { max-width: 860px; margin: 0 auto; padding: 64px 24px; }
+    .section-narrow { max-width: 660px; margin: 0 auto; padding: 64px 24px; }
+
+    /* SECTION HEADER */
+    .section-label {
+      font-size: 11px; letter-spacing: 4px; color: var(--gold);
+      text-transform: uppercase; text-align: center; margin-bottom: 10px;
+    }
+    .section-h2 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 700; text-align: center;
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .section-sub { color: var(--muted); text-align: center; font-size: 15px; margin-bottom: 36px; }
+
+    /* CARDS */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--gold-dim);
+      border-radius: 12px; padding: 24px;
+    }
+    .card-gold {
+      background: rgba(212,168,75,0.06);
+      border: 1px solid rgba(212,168,75,0.3);
+    }
+    .card-red {
+      background: rgba(239,68,68,0.07);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-left: 4px solid var(--red);
+    }
+    .card-green {
+      background: rgba(74,222,128,0.07);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-left: 4px solid var(--green);
+    }
+
+    /* STEP FLOW */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step-row {
+      display: flex; gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(212,168,75,0.08);
+      align-items: flex-start;
+    }
+    .step-row:last-child { border-bottom: none; }
+    .step-left { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(212,168,75,0.12);
+      border: 1px solid rgba(212,168,75,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; color: var(--gold); letter-spacing: 1px;
+    }
+    .step-num.gold-fill {
+      background: linear-gradient(135deg, var(--gold), #B8892E);
+      border: none; color: #0D0A14;
+    }
+    .step-line { width: 1px; height: 24px; background: rgba(212,168,75,0.2); }
+    .step-body { flex: 1; padding-top: 8px; }
+    .step-icon-title { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .step-icon { font-size: 22px; }
+    .step-title { font-family: var(--serif); font-size: 17px; font-weight: 700; }
+    .step-title.gold { color: var(--gold); }
+    .step-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    /* TIP BOXES */
+    .tip-box {
+      background: rgba(212,168,75,0.05);
+      border: 1px solid rgba(212,168,75,0.2);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14px; color: var(--muted);
+      line-height: 1.7; margin-top: 12px;
+    }
+    .tip-box strong { color: var(--cream); }
+
+    /* NOTE BOX */
+    .note-box {
+      background: rgba(139,92,246,0.07);
+      border: 1px solid rgba(139,92,246,0.25);
+      border-left: 3px solid #8B5CF6;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14px; color: var(--muted);
+      line-height: 1.7; margin-top: 12px;
+    }
+    .note-box strong { color: var(--cream); }
+
+    /* DIVIDER */
+    hr.divider { border: none; border-top: 1px solid rgba(212,168,75,0.1); margin: 0; }
+
+    /* BADGE */
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 4px; margin-bottom: 10px;
+    }
+    .badge-gold { background: rgba(212,168,75,0.15); color: var(--gold); border: 1px solid rgba(212,168,75,0.3); }
+    .badge-green { background: rgba(74,222,128,0.12); color: var(--green); border: 1px solid rgba(74,222,128,0.25); }
+    .badge-red { background: rgba(239,68,68,0.12); color: var(--red); border: 1px solid rgba(239,68,68,0.25); }
+    .badge-purple { background: rgba(139,92,246,0.15); color: #A78BFA; border: 1px solid rgba(139,92,246,0.3); }
+
+    /* WORKBOOK */
+    .wb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 500px) { .wb-grid { grid-template-columns: 1fr; } }
+    .wb-cell {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,168,75,0.12);
+      border-radius: 8px; padding: 16px;
+    }
+    .wb-cell-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .wb-input {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 10px 12px;
+      color: var(--cream); font-family: var(--sans);
+      font-size: 13px; resize: vertical; min-height: 60px;
+      outline: none; transition: border-color 0.2s;
+      line-height: 1.6;
+    }
+    .wb-input:focus { border-color: rgba(212,168,75,0.4); }
+    .wb-day-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px; flex-wrap: wrap; gap: 8px;
+    }
+    .wb-day-title { font-family: var(--serif); font-size: 17px; font-weight: 700; }
+    .wb-day-meta { display: flex; gap: 10px; align-items: center; }
+    .wb-date-input {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 6px 10px; color: var(--cream);
+      font-family: var(--sans); font-size: 12px; outline: none;
+    }
+    .wb-sesi { display: flex; gap: 6px; align-items: center; }
+    .wb-sesi-btn {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(212,168,75,0.1); border: 1px solid rgba(212,168,75,0.25);
+      color: var(--gold); font-size: 11px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+    }
+    .wb-sesi-btn.active { background: var(--gold); color: #0D0A14; border-color: var(--gold); }
+    .wb-milestone {
+      background: linear-gradient(135deg, rgba(212,168,75,0.1), rgba(212,168,75,0.04));
+      border: 1px solid rgba(212,168,75,0.3);
+      border-radius: 10px; padding: 18px 20px; margin-bottom: 24px;
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+    .wb-milestone strong { color: var(--gold); font-family: var(--serif); font-size: 15px; }
+    .wb-section-divider {
+      border: none; border-top: 1px dashed rgba(212,168,75,0.15); margin: 32px 0;
+    }
+
+    /* COLLAPSIBLE */
+    .collapsible-header {
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; user-select: none; padding: 4px 0;
+    }
+    .collapsible-header:hover .chevron { color: var(--gold); }
+    .chevron { font-size: 18px; color: var(--muted); transition: transform 0.3s; }
+    .chevron.open { transform: rotate(180deg); }
+    .collapsible-body { display: none; margin-top: 16px; }
+    .collapsible-body.open { display: block; }
+
+    /* GRID 2 */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* TABS */
+    .tabs { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+    .tab-btn {
+      background: transparent; border: 1px solid rgba(212,168,75,0.25);
+      border-radius: 6px; color: var(--muted); font-family: var(--sans);
+      font-size: 13px; padding: 9px 20px; cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: rgba(212,168,75,0.12); border-color: var(--gold); color: var(--gold);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* PRINT / SAVE BTN */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), #B8892E);
+      color: #0D0A14; border: none; border-radius: 8px;
+      padding: 14px 32px; font-family: var(--sans);
+      font-weight: 700; font-size: 15px; cursor: pointer;
+      text-decoration: none; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 24px rgba(212,168,75,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(212,168,75,0.4); }
+    .btn-outline {
+      display: inline-block; background: transparent;
+      color: var(--gold); border: 1.5px solid var(--gold);
+      border-radius: 8px; padding: 12px 28px; font-family: var(--sans);
+      font-weight: 500; font-size: 14px; cursor: pointer;
+      text-decoration: none; text-align: center; transition: all 0.2s;
+    }
+    .btn-outline:hover { background: rgba(212,168,75,0.1); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(212,168,75,0.1);
+      padding: 40px 24px; text-align: center;
+    }
+    footer .brand { font-family: var(--serif); color: var(--gold); font-size: 20px; margin-bottom: 8px; }
+    footer p { font-size: 13px; color: var(--muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .section { padding: 48px 18px; }
+    }
+
+    /* FADE IN */
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <strong>Women AI Consultant</strong> — Modul Panduan Lengkap · Eksklusif untuk Member
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Modul Eksekusi</div>
+  <span class="ornament">— ✦ —</span>
+  <h1>Dari Persona ke Profit —<br /><em style="color: var(--gold)">Panduan Langkah demi Langkah</em></h1>
+  <p style="margin-top: 16px;">
+    Kamu sudah punya Persona Finder. Sekarang saatnya bangun bisnis nyata.
+    Ikuti modul ini dari awal ke akhir — jangan skip.
+  </p>
+</div>
+
+<hr class="divider" />
+
+<!-- ===================== MODUL 1: PERSONA ===================== -->
+<div class="section fade" id="modul-persona">
+  <div class="section-label">Modul 1</div>
+  <h2 class="section-h2">Baca & Tentukan Persona dari<br /><span style="color: var(--gold)">Persona Finder</span></h2>
+  <p class="section-sub">Jangan lewati langkah ini — ini adalah fondasi seluruh bisnis kamu.</p>
+
+  <div class="steps">
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">A</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">📘</span>
+          <div class="step-title">Baca Ebook Persona Finder sampai selesai</div>
+        </div>
+        <div class="step-desc">
+          Pahami 3 pilar metode PersonaFinder: <strong style="color: var(--cream)">Urgency · Daya Beli · Aksesibilitas.</strong>
+          Baca BAB 1–4 dulu — 30 persona siap pakai sudah tersedia. Tandai yang membuat kamu berpikir
+          <em>"ini persis orang-orang di sekitarku."</em>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Tips:</strong> Pilih persona yang paling kamu <em>mengerti</em> — bukan yang paling besar marketnya.
+          Proximity organik = copywriting yang jauh lebih kuat.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">B</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">🎯</span>
+          <div class="step-title">Validasi Persona dalam 24 Jam</div>
+        </div>
+        <div class="step-desc">
+          Cari 5 bukti nyata persona ini aktif mencari solusi: cek grup Facebook, komentar TikTok,
+          review produk di Shopee/Tokopedia, atau thread di X/Twitter. Screenshot sebagai bukti.
+        </div>
+        <div class="tip-box">
+          <strong>Skor validasi:</strong> 5 bukti = Jackpot, langsung eksekusi · 3–4 = Riset lebih dalam · 0–2 = Cari persona lain.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">C</div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">📦</span>
+          <div class="step-title">Putuskan: Ebook Digital atau Produk Fisik?</div>
+        </div>
+        <div class="step-desc">
+          Pilih satu. Jangan keduanya sekaligus.
+        </div>
+        <div class="grid-2" style="margin-top: 14px;">
+          <div class="card card-gold">
+            <div class="badge badge-gold">Ebook Digital</div>
+            <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+              Bisa dibuat dalam 3–7 hari dengan AI. Margin hampir 100%. Tidak perlu gudang, pengiriman, atau stok. Ideal untuk mulai dari nol.
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-purple">Produk Fisik</div>
+            <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+              Pilih jika kamu sudah punya stok atau supplier. Butuh logistik tapi bisa dikombinasi dengan website order otomatis.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ===================== MODUL 2: WEBSITE ===================== -->
+<div style="background: rgba(212,168,75,0.03); border-top: 1px solid var(--gold-dim); border-bottom: 1px solid var(--gold-dim);">
+<div class="section fade" id="modul-website">
+  <div class="section-label">Modul 2</div>
+  <h2 class="section-h2">Buat Website / Landing Page<br /><span style="color: var(--gold)">dalam 10 Menit</span></h2>
+  <p class="section-sub">Minta AI kami buatkan — kamu cukup jelaskan produkmu.</p>
+
+  <div class="steps">
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">01</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">🤖</span>
+          <div class="step-title">Minta AI Buatkan Landing Page</div>
+        </div>
+        <div class="step-desc">
+          Ketik ke AI kami (atau ChatGPT/Claude):
+        </div>
+        <div style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); border-radius: 8px; padding: 16px; margin-top: 12px; font-size: 13px; font-family: monospace; line-height: 1.8; color: #C4B5FD;">
+          "Buatkan saya landing page untuk [nama produk]. Target market saya adalah [persona kamu].
+          Masalah utama mereka adalah [masalah]. Produk saya membantu mereka dengan [solusi].
+          Harganya [Rp...]. Gunakan bahasa Indonesia yang persuasif dan natural."
+        </div>
+        <div class="tip-box">
+          💡 Jika kamu belum yakin deskripsi produknya, minta AI bantu:<br />
+          <strong>"Buatkan deskripsi produk digital untuk [persona] tentang [topik]."</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">02</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">🌐</span>
+          <div class="step-title">Upload ke Server — Elvision atau Cloudflare Pages</div>
+        </div>
+        <div class="step-desc">
+          Setelah file HTML website jadi, upload ke salah satu platform hosting gratis:
+        </div>
+        <div class="grid-2" style="margin-top: 14px;">
+          <div class="card">
+            <div class="badge badge-gold">Server Elvision</div>
+            <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+              Hubungi tim Women AI Consultant via WhatsApp — kami bantu upload dan konfigurasi domain kamu langsung.
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-purple">Cloudflare Pages</div>
+            <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+              Sign up di <strong style="color: var(--cream)">pages.cloudflare.com</strong> → New Project → Upload folder HTML. Gratis, cepat, tidak perlu coding.
+            </div>
+          </div>
+        </div>
+        <div class="note-box">
+          🔗 <strong>Website kamu bisa live dalam 10 menit</strong> setelah file HTML selesai dibuat AI.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">03</div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">🖼️</span>
+          <div class="step-title">Masukkan Gambar / Creative ke Website</div>
+        </div>
+        <div class="step-desc">
+          Setelah website live, tambahkan foto produk atau creative image yang sesuai persona market kamu.
+          Tidak punya foto yang pas? Minta AI buatkan:
+        </div>
+        <div style="background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.2); border-radius: 8px; padding: 16px; margin-top: 12px; font-size: 13px; font-family: monospace; line-height: 1.8; color: #C4B5FD;">
+          "Buatkan foto/gambar untuk iklan Facebook yang ditujukan untuk [persona].
+          Gambar harus berisi teks: '[masalah utama]' dan '[solusi singkat produkku]'.
+          Gaya visual: bersih, modern, warm tone."
+        </div>
+        <div class="tip-box">
+          💡 Tools: <strong>Canva AI</strong> (canva.com) atau <strong>Adobe Firefly</strong> — upload ke website setelah selesai.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider" />
+
+<!-- ===================== MODUL 3: PIXEL + META ADS ===================== -->
+<div class="section fade" id="modul-iklan">
+  <div class="section-label">Modul 3</div>
+  <h2 class="section-h2">Pasang Pixel & Mulai<br /><span style="color: var(--gold)">Beriklan di Meta</span></h2>
+  <p class="section-sub">Tracking otomatis · Budget mulai Rp 100.000/hari · Sistem cari Winning Photo</p>
+
+  <div class="steps">
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">01</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">📡</span>
+          <div class="step-title">Tanam Facebook Pixel di Landing Page</div>
+        </div>
+        <div class="step-desc">
+          Pixel adalah kode tracking — setiap ada penjualan, Meta akan tahu dan otomatis melaporkan ke kamu.
+          Tidak perlu coding: <strong style="color: var(--cream)">cukup kirim Pixel ID kamu ke tim AI kami dan minta ditanam di landing page.</strong>
+        </div>
+        <div class="tip-box">
+          📺 <strong>Belum punya Pixel?</strong> Cari di YouTube: <em>"Cara buat Facebook Pixel 2024"</em> — prosesnya 5 menit di Meta Business Suite.
+          Setelah dapat Pixel ID, kirim ke tim kami via WhatsApp.
+        </div>
+        <div class="note-box" style="margin-top: 10px;">
+          🤖 <strong>AI kami akan otomatis:</strong> Mencatat setiap penjualan dan mengirim notifikasi langsung ke WhatsApp kamu — real-time, tidak ada yang terlewat.
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">02</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">💰</span>
+          <div class="step-title">Setup Campaign — CBO · Sales · Rp 100rb/hari</div>
+        </div>
+        <div class="step-desc">
+          Setting campaign yang tepat untuk pemula:
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
+          {[
+            ['Tujuan Campaign', 'Sales (bukan Traffic atau Awareness)'],
+            ['Budget Type', 'CBO — Campaign Budget Optimization'],
+            ['Budget Awal', 'Rp 100.000 per hari — cukup untuk test'],
+            ['Targeting', 'Sesuai persona riset kamu — usia, lokasi, minat'],
+            ['Pixel', 'Wajib dipasang di landing page sebelum mulai iklan'],
+          ].map(([k, v]) => `
+            <div style="display: flex; gap: 12px; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid rgba(212,168,75,0.1);">
+              <span style="font-size: 12px; color: var(--muted); font-weight: 600; min-width: 130px; flex-shrink: 0;">${k}</span>
+              <span style="font-size: 13px; color: var(--cream);">${v}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num">03</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">🖼️</span>
+          <div class="step-title">Prinsip Utama: Kesan Pertama adalah Segalanya</div>
+        </div>
+        <div class="step-desc">
+          Foto adalah pintu masuk. Jika Rp 100.000 tidak convert — bukan budget-nya yang salah. <strong style="color: var(--cream)">Pesan di foto itu yang salah.</strong>
+          Ganti foto, coba angle berbeda, sampai bertemu <em>winning photo.</em>
+        </div>
+        <div class="card card-red" style="margin-top: 14px;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--red); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">⚠ Jangan Scale Sebelum Ada Convert</div>
+          <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+            Satu foto tidak convert = pesan salah, bukan produknya yang salah. Cari foto lain. Target minimal <strong style="color: var(--cream)">20 foto yang sudah ditest.</strong>
+            Baru scale foto yang winning.
+          </div>
+        </div>
+        <div class="card card-green" style="margin-top: 10px;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">✓ Setelah Ada Convert</div>
+          <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+            Tambahkan lebih banyak foto variasi ke adset yang sama. Budget bisa naik secara bertahap: Rp100rb → Rp200rb → Rp500rb/hari.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-left">
+        <div class="step-num gold-fill">🏆</div>
+      </div>
+      <div class="step-body">
+        <div class="step-icon-title">
+          <span class="step-icon">📈</span>
+          <div class="step-title gold">Hasil: ROAS 3x+++</div>
+        </div>
+        <div class="step-desc">
+          Persona tepat + foto tepat + landing page yang convert = ROAS 3x, 5x, bahkan 9x.
+          <strong style="color: var(--cream)">Keluar Rp 1 juta → masuk Rp 3 juta ke atas.</strong>
+          Sistem ini sudah terbukti pada member kami yang fokus ke niche orang tua, parenting, dan kesehatan anak.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ===================== WORKBOOK 30 HARI ===================== -->
+<div style="background: rgba(212,168,75,0.03); border-top: 1px solid var(--gold-dim); border-bottom: 1px solid var(--gold-dim);">
+<div class="section fade" id="workbook">
+  <div class="section-label">Bonus — Protokol Mental & Rezeki</div>
+  <h2 class="section-h2">Workbook 30 Hari<br /><span style="color: var(--gold)">Protokol Kekacauan + Kedamaian</span></h2>
+  <p class="section-sub">Lakukan ini setiap hari selama kamu menjalankan bisnis — mental dan rezeki berjalan bersama.</p>
+
+  <!-- DATA DIRI -->
+  <div class="card card-gold" style="margin-bottom: 32px;">
+    <div style="font-size: 13px; font-weight: 700; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;">Data Diri & Komitmen</div>
+    <div class="grid-2" style="gap: 14px; margin-bottom: 14px;">
+      <div>
+        <div class="wb-cell-label">Nama Lengkap</div>
+        <input class="wb-input" style="min-height: 40px; resize: none;" type="text" placeholder="Tulis nama kamu..." />
+      </div>
+      <div>
+        <div class="wb-cell-label">Tanggal Mulai</div>
+        <input class="wb-input" style="min-height: 40px; resize: none;" type="date" />
+      </div>
+    </div>
+    <div style="margin-bottom: 14px;">
+      <div class="wb-cell-label">Goal 30 Hari — Spesifik & Ada Angkanya</div>
+      <textarea class="wb-input" placeholder='Contoh: "Saya ingin iklan Facebook saya tembus ROAS 5x dan mendapat Rp 10 juta bulan ini dari niche parenting"'></textarea>
+    </div>
+    <div>
+      <div class="wb-cell-label">Mengapa Ini Penting Bagi Saya</div>
+      <textarea class="wb-input" placeholder="Tulis alasan yang paling dalam mengapa kamu harus berhasil..."></textarea>
+    </div>
+  </div>
+
+  <!-- CARA PAKAI -->
+  <div class="grid-2" style="margin-bottom: 36px; gap: 14px;">
+    <div class="card">
+      <div class="badge badge-red">Kekacauan — Olahraga Intens</div>
+      <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+        Lari, renang, gym, atau olahraga apapun yang membuat detak jantung naik dan tubuh berpeluh. Ini menciptakan urgensi dan energi aktif. Catat durasi dan jenisnya.
+      </div>
+    </div>
+    <div class="card">
+      <div class="badge badge-purple">Kedamaian — Fokus & Pasrah</div>
+      <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+        Saat olahraga atau setelahnya: sholat khusyuk, meditasi, ibadah, atau membantu sesama. Rasakan keinginan terwujud — bukan dengan cemas, tapi dengan yakin dan pasrah.
+      </div>
+    </div>
+    <div class="card">
+      <div class="badge badge-green">Hasil — Catat Apa yang Datang</div>
+      <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+        Tulis "Belum ada" jika belum. Tapi catat juga hal kecil: ide yang tiba-tiba muncul, seseorang menghubungi, peluang dari arah tak terduga.
+      </div>
+    </div>
+    <div class="card">
+      <div class="badge badge-gold">Sesi — 1, 2, atau 3x per Hari</div>
+      <div style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+        Minimal 1x sehari, tidak ada pengecualian. Semakin konsisten, semakin cepat hasilnya. Tandai jumlah sesi yang dilakukan setiap hari.
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size: 13px; color: var(--muted); background: rgba(212,168,75,0.05); border: 1px solid rgba(212,168,75,0.15); border-radius: 8px; padding: 14px 16px; margin-bottom: 36px; line-height: 1.7;">
+    <strong style="color: var(--cream);">Penting:</strong> Setiap orang berbeda. Ada yang menemukan hasil di Hari ke-3, ada yang di Hari ke-14.
+    <strong style="color: var(--cream);">Jangan berhenti sebelum hari ke-30.</strong> Yang datang bisa berupa rezeki langsung ke bisnis, ide baru yang logis, atau seseorang yang membantumu.
+  </div>
+
+  <!-- HARI 1–7 -->
+  <div id="wb-days-container">
+
+    <!-- HARI 1 -->
+    <div class="wb-day-card" data-day="1">
+      <div class="wb-day-header">
+        <div class="wb-day-title">Hari 1</div>
+        <div class="wb-day-meta">
+          <input type="date" class="wb-date-input" />
+          <div class="wb-sesi">
+            <span style="font-size: 11px; color: var(--muted);">Sesi:</span>
+            <button class="wb-sesi-btn" data-sesi="1">1</button>
+            <button class="wb-sesi-btn" data-sesi="2">2</button>
+            <button class="wb-sesi-btn" data-sesi="3">3</button>
+          </div>
+        </div>
+      </div>
+      <div class="wb-grid">
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Olahraga (Kekacauan)</div>
+          <textarea class="wb-input" placeholder="Contoh: Saya lari 20 menit pagi, napas ngos-ngosan sampai berkeringat penuh..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Kedamaian</div>
+          <textarea class="wb-input" placeholder="Contoh: Saya sholat subuh dengan khusyuk dan berdoa dengan pasrah..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Keinginan yang Saya Rasakan</div>
+          <textarea class="wb-input" placeholder="Contoh: Saya merasakan bisnis saya sudah tembus ROAS 5x, sudah terasa nyata dan yakin..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Hasil / Tanda yang Datang</div>
+          <textarea class="wb-input" placeholder="Belum ada — atau: ada ide baru, seseorang menghubungi, peluang muncul..."></textarea>
+        </div>
+      </div>
+    </div>
+    <hr class="wb-section-divider" />
+
+    <!-- HARI 2–6 (template berulang) -->
+    <div id="wb-days-2-6"></div>
+
+    <!-- MILESTONE HARI 7 -->
+    <div class="wb-milestone">
+      <strong>🏅 Milestone Hari ke-7</strong><br />
+      Selamat, kamu sudah 1 minggu! Tubuh dan pikiran mulai sinkron. Tidur lebih nyenyak, fokus lebih tajam. Tanda pertama mungkin sudah mulai muncul — perhatikan hal-hal kecil di sekitar kamu.
+    </div>
+    <div class="wb-day-card" data-day="7">
+      <div class="wb-day-header">
+        <div class="wb-day-title">Hari 7</div>
+        <div class="wb-day-meta">
+          <input type="date" class="wb-date-input" />
+          <div class="wb-sesi">
+            <span style="font-size: 11px; color: var(--muted);">Sesi:</span>
+            <button class="wb-sesi-btn" data-sesi="1">1</button>
+            <button class="wb-sesi-btn" data-sesi="2">2</button>
+            <button class="wb-sesi-btn" data-sesi="3">3</button>
+          </div>
+        </div>
+      </div>
+      <div class="wb-grid">
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Olahraga (Kekacauan)</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Kedamaian</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Keinginan yang Saya Rasakan</div>
+          <textarea class="wb-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Refleksi Minggu Pertama</div>
+          <textarea class="wb-input" placeholder="Apa yang berubah setelah 7 hari? Perubahan kecil apapun, tulis di sini..."></textarea>
+        </div>
+      </div>
+    </div>
+    <hr class="wb-section-divider" />
+
+    <!-- HARI 8–13 -->
+    <div id="wb-days-8-13"></div>
+
+    <!-- MILESTONE HARI 14 -->
+    <div class="wb-milestone">
+      <strong>🔥 Milestone Hari ke-14 — Titik Kritis</strong><br />
+      Banyak anggota melaporkan tanda pertama muncul di sekitar hari ini — bisa berupa rezeki langsung ke bisnis, ide baru yang logis, atau kedatangan seseorang yang membuka peluang. Perhatikan dengan seksama. Catat sekecil apapun.
+    </div>
+    <div class="wb-day-card" data-day="14">
+      <div class="wb-day-header">
+        <div class="wb-day-title">Hari 14</div>
+        <div class="wb-day-meta">
+          <input type="date" class="wb-date-input" />
+          <div class="wb-sesi">
+            <span style="font-size: 11px; color: var(--muted);">Sesi:</span>
+            <button class="wb-sesi-btn" data-sesi="1">1</button>
+            <button class="wb-sesi-btn" data-sesi="2">2</button>
+            <button class="wb-sesi-btn" data-sesi="3">3</button>
+          </div>
+        </div>
+      </div>
+      <div class="wb-grid">
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Olahraga (Kekacauan)</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Kedamaian</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell" style="grid-column: 1 / -1;">
+          <div class="wb-cell-label">Keinginan yang Saya Rasakan Hari Ini</div>
+          <textarea class="wb-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div class="wb-cell" style="grid-column: 1 / -1;">
+          <div class="wb-cell-label">Hasil / Refleksi Hari ke-14 — Apakah Ada Tanda yang Datang?</div>
+          <textarea class="wb-input" style="min-height: 80px;" placeholder="Bisnis, ide, orang, atau peluang dari arah tidak terduga? Tulis detail di sini..."></textarea>
+        </div>
+      </div>
+    </div>
+    <hr class="wb-section-divider" />
+
+    <!-- HARI 15–20 -->
+    <div id="wb-days-15-20"></div>
+
+    <!-- MILESTONE HARI 21 -->
+    <div class="wb-milestone">
+      <strong>⚡ Milestone Hari ke-21 — 3 Minggu</strong><br />
+      Kondisi ini sudah mulai menjadi kebiasaan. Energi kamu beroperasi berbeda dari sebelumnya. Orang di sekitar kamu mulai merasakan perubahan, meski kamu tidak berkata apa-apa. Momentum sedang bergerak.
+    </div>
+    <div class="wb-day-card" data-day="21">
+      <div class="wb-day-header">
+        <div class="wb-day-title">Hari 21</div>
+        <div class="wb-day-meta">
+          <input type="date" class="wb-date-input" />
+          <div class="wb-sesi">
+            <span style="font-size: 11px; color: var(--muted);">Sesi:</span>
+            <button class="wb-sesi-btn" data-sesi="1">1</button>
+            <button class="wb-sesi-btn" data-sesi="2">2</button>
+            <button class="wb-sesi-btn" data-sesi="3">3</button>
+          </div>
+        </div>
+      </div>
+      <div class="wb-grid">
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Olahraga</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Kedamaian</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell" style="grid-column: 1 / -1;">
+          <div class="wb-cell-label">Refleksi 21 Hari — Kumpulkan Semua Tanda Sejak Hari Pertama</div>
+          <textarea class="wb-input" style="min-height: 80px;" placeholder="Apa semua yang sudah datang sejak hari pertama?..."></textarea>
+        </div>
+      </div>
+    </div>
+    <hr class="wb-section-divider" />
+
+    <!-- HARI 22–29 -->
+    <div id="wb-days-22-29"></div>
+
+    <!-- HARI 30 — FINAL -->
+    <div class="wb-milestone" style="background: linear-gradient(135deg, rgba(212,168,75,0.15), rgba(212,168,75,0.06)); border-color: rgba(212,168,75,0.5);">
+      <strong style="font-size: 16px;">🎉 Hari Terakhir — Hari ke-30</strong><br />
+      Kamu sudah sampai. Apapun hasilnya, kamu telah membuktikan komitmen kepada diri sendiri. Sekarang tulis semua yang sudah terjadi selama 30 hari ini.
+    </div>
+    <div class="wb-day-card" data-day="30">
+      <div class="wb-day-header">
+        <div class="wb-day-title">Hari 30 — Hari Terakhir</div>
+        <div class="wb-day-meta">
+          <input type="date" class="wb-date-input" />
+          <div class="wb-sesi">
+            <span style="font-size: 11px; color: var(--muted);">Sesi:</span>
+            <button class="wb-sesi-btn" data-sesi="1">1</button>
+            <button class="wb-sesi-btn" data-sesi="2">2</button>
+            <button class="wb-sesi-btn" data-sesi="3">3</button>
+          </div>
+        </div>
+      </div>
+      <div class="wb-grid">
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Olahraga Terakhir</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell">
+          <div class="wb-cell-label">Kegiatan Kedamaian Terakhir</div>
+          <textarea class="wb-input" placeholder="Saya..."></textarea>
+        </div>
+        <div class="wb-cell" style="grid-column: 1 / -1;">
+          <div class="wb-cell-label">Semua Hasil & Keajaiban Selama 30 Hari</div>
+          <textarea class="wb-input" style="min-height: 100px;" placeholder="Tulis semua rezeki tak terduga, ide besar, orang yang datang, peluang yang muncul, bisnis yang bergerak — sejak hari pertama hingga hari ini..."></textarea>
+        </div>
+        <div class="wb-cell" style="grid-column: 1 / -1;">
+          <div class="wb-cell-label">Keinginan Berikutnya — Siklus 30 Hari ke-2</div>
+          <textarea class="wb-input" placeholder="Saya sekarang siap untuk siklus berikutnya. Keinginan saya berikutnya adalah..."></textarea>
+        </div>
+        <div class="wb-cell" style="grid-column: 1 / -1;">
+          <div class="wb-cell-label">Pesan untuk Diri Sendiri Setelah 30 Hari</div>
+          <textarea class="wb-input" style="min-height: 80px;" placeholder="Tulis apa yang ingin kamu sampaikan kepada diri kamu sendiri setelah perjalanan ini..."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVE / PRINT -->
+  <div style="text-align: center; margin-top: 48px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+    <button class="btn-primary" onclick="window.print()">🖨️ Print / Simpan PDF</button>
+    <button class="btn-outline" onclick="saveWorkbook()">💾 Simpan Progress</button>
+  </div>
+  <p style="text-align: center; font-size: 12px; color: var(--muted); margin-top: 12px;">
+    Progress tersimpan di browser kamu secara lokal — tidak hilang saat refresh.
+  </p>
+</div>
+</div>
+
+<hr class="divider" />
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">Women AI Consultant</div>
+  <p>Dedikasi 100% untuk kemandirian wanita Indonesia</p>
+  <p style="margin-top: 8px; font-size: 12px;">© 2025 Women AI Consultant · Salam Abundance — eL Vision Group</p>
+</footer>
+
+<script>
+  // PROGRESS BAR
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  // FADE IN
+  const fadeEls = document.querySelectorAll('.fade');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // SESI BUTTONS
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('wb-sesi-btn')) {
+      const parent = e.target.closest('.wb-sesi');
+      parent.querySelectorAll('.wb-sesi-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+    }
+  });
+
+  // GENERATE DAYS 2–6
+  function makeDays(containerId, from, to) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    let html = '';
+    for (let d = from; d <= to; d++) {
+      html += `
+        <div class="wb-day-card" data-day="${d}">
+          <div class="wb-day-header">
+            <div class="wb-day-title">Hari ${d}</div>
+            <div class="wb-day-meta">
+              <input type="date" class="wb-date-input" />
+              <div class="wb-sesi">
+                <span style="font-size:11px;color:var(--muted);">Sesi:</span>
+                <button class="wb-sesi-btn" data-sesi="1">1</button>
+                <button class="wb-sesi-btn" data-sesi="2">2</button>
+                <button class="wb-sesi-btn" data-sesi="3">3</button>
+              </div>
+            </div>
+          </div>
+          <div class="wb-grid">
+            <div class="wb-cell">
+              <div class="wb-cell-label">Kegiatan Olahraga (Kekacauan)</div>
+              <textarea class="wb-input" placeholder="Saya..."></textarea>
+            </div>
+            <div class="wb-cell">
+              <div class="wb-cell-label">Kegiatan Kedamaian</div>
+              <textarea class="wb-input" placeholder="Saya..."></textarea>
+            </div>
+            <div class="wb-cell">
+              <div class="wb-cell-label">Keinginan yang Saya Rasakan</div>
+              <textarea class="wb-input" placeholder="Saya merasakan..."></textarea>
+            </div>
+            <div class="wb-cell">
+              <div class="wb-cell-label">Hasil / Tanda yang Datang</div>
+              <textarea class="wb-input" placeholder="Belum ada / ..."></textarea>
+            </div>
+          </div>
+        </div>
+        <hr class="wb-section-divider" />
+      `;
+    }
+    container.innerHTML = html;
+  }
+
+  makeDays('wb-days-2-6', 2, 6);
+  makeDays('wb-days-8-13', 8, 13);
+  makeDays('wb-days-15-20', 15, 20);
+  makeDays('wb-days-22-29', 22, 29);
+
+  // SAVE / LOAD WORKBOOK
+  function saveWorkbook() {
+    const data = {};
+    document.querySelectorAll('.wb-input').forEach((el, i) => { data['input_' + i] = el.value; });
+    document.querySelectorAll('.wb-date-input').forEach((el, i) => { data['date_' + i] = el.value; });
+    document.querySelectorAll('.wb-sesi-btn.active').forEach(btn => {
+      const day = btn.closest('.wb-day-card')?.dataset.day;
+      if (day) data['sesi_' + day] = btn.dataset.sesi;
+    });
+    localStorage.setItem('wc_workbook_30', JSON.stringify(data));
+    alert('Progress tersimpan!');
+  }
+
+  function loadWorkbook() {
+    const raw = localStorage.getItem('wc_workbook_30');
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    document.querySelectorAll('.wb-input').forEach((el, i) => {
+      if (data['input_' + i] !== undefined) el.value = data['input_' + i];
+    });
+    document.querySelectorAll('.wb-date-input').forEach((el, i) => {
+      if (data['date_' + i] !== undefined) el.value = data['date_' + i];
+    });
+    document.querySelectorAll('.wb-day-card').forEach(card => {
+      const day = card.dataset.day;
+      const sesi = data['sesi_' + day];
+      if (sesi) {
+        card.querySelectorAll('.wb-sesi-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.sesi === sesi);
+        });
+      }
+    });
+  }
+
+  // Auto-load on start (after days are generated)
+  setTimeout(loadWorkbook, 100);
+</script>
+
+</body>
+</html>

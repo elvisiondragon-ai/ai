@@ -47,6 +47,7 @@ const Rajaranjang = React.lazy(() => import('./universal/rajaranjang.tsx'));
 const DarkFeminine = React.lazy(() => import('./universal/darkfeminine.tsx'));
 const HotAffiliate = React.lazy(() => import('./universal/hotaffiliate.tsx'));
 const SmartParenting = React.lazy(() => import('./universal/smartparenting.tsx'));
+const WomenConsultant = React.lazy(() => import('./universal/womenconsultant.tsx'));
 const Parenting = React.lazy(() => import('./id_ebook/parenting.tsx'));
 const SahamLanding = React.lazy(() => import('./id_ebook/saham.tsx'));
 const CryptoLanding = React.lazy(() => import('./id_ebook/crypto.tsx'));
@@ -125,6 +126,7 @@ const App = () => {
       <Route path="/darkfeminine" element={<DarkFeminine />} />
       <Route path="/hotaffiliate" element={<HotAffiliate />} />
       <Route path="/smartparenting" element={<SmartParenting />} />
+      <Route path="/womenconsultant" element={<WomenConsultant />} />
       <Route path="/id_parenting" element={<Parenting />} />
       <Route path="/saham" element={<SahamLanding />} />
       <Route path="/crypto" element={<CryptoLanding />} />
