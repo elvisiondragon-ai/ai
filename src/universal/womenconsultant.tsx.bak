@@ -4,7 +4,6 @@ import { ArrowLeft, Copy } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, sha256, handleFbcCookieManager } from "../utils/fbpixel";
-import { WhatsAppButton } from "../components/WhatsAppButton";
 import imgRoas33 from '../assets/womenconsultant_jpg/roas3.3.jpeg';
 import imgRoas38 from '../assets/womenconsultant_jpg/roas 3.8.jpeg';
 import imgRoas52 from '../assets/womenconsultant_jpg/roas 5.2.jpeg';
@@ -235,19 +234,6 @@ export default function WomenConsultant() {
                 }
                 setShowPaymentInstructions(true);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                try {
-                    await supabase.functions.invoke('send-ebooks-email', {
-                        body: {
-                            userEmail: email,
-                            userName: name,
-                            phone: cleanPhone,
-                            productName: 'womenconsult',
-                            amount: finalAmount,
-                            currency: 'IDR',
-                            reference: data.reference || `WC-${Date.now()}`
-                        }
-                    });
-                } catch (emailErr) { console.error('send-ebooks-email error', emailErr); }
             } else {
                 alert(data?.error || "Gagal membuat pembayaran, hubungi admin via WhatsApp.");
             }
@@ -896,8 +882,6 @@ export default function WomenConsultant() {
                 <div className="wc-muted" style={{ fontSize: 13 }}>Dedikasi 100% untuk kemandirian wanita Indonesia</div>
                 <div className="wc-muted" style={{ fontSize: 12, marginTop: 16 }}>© 2025 Women AI Consultant · Semua hak dilindungi</div>
             </div>
-
-            <WhatsAppButton message="Kak mau nanya Women Consultant eL vision seperti apa caranya dan apa yang udah berhasil ?" />
         </div>
     );
 }
