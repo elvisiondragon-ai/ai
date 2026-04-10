@@ -78,17 +78,26 @@ const Ultima = () => (
   />
 );
 
-// Simple Loading Spinner (For secondary pages)
-const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-black text-white">
-    <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
+// Loading Fallback — background matched per route to eliminate white/black flash
+const LoadingFallback = () => {
+  const path = window.location.pathname;
+  const darkRoutes = ['/womenconsultant', '/darkfeminine', '/hotaffiliate', '/smartparenting', '/rajaranjang', '/ebook_feminine', '/ebook_uangpanas', '/ebook_percayadiri'];
+  const isDark = darkRoutes.some(r => path.startsWith(r));
+  const bg = isDark ? '#0D0A14' : '#ffffff';
+  return (
+    <div style={{ minHeight: '100vh', background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ width: 24, height: 24, border: `2px solid ${isDark ? '#D4A84B' : '#999'}`, borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+};
 
 const App = () => {
   // Prefetch secondary pages in background
   React.useEffect(() => {
     const timer = setTimeout(() => {
+      import('./universal/womenconsultant.tsx');
+      import('./universal/darkfeminine.tsx');
       import('./id_ebook/ebook_elvision.tsx');
       import('./id_ebook/vip_15jt.tsx');
       import('./usa/usa_ebookslim.tsx');
