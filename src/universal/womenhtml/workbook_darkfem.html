@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workbook Dark Feminine — 30 Hari Blueprint</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A070F;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-section: #110D1A;
+      --bg-input: rgba(255,255,255,0.06);
+      --pink: #E91E8C;
+      --pink-light: #F472B6;
+      --pink-dim: rgba(233,30,140,0.15);
+      --pink-border: rgba(233,30,140,0.35);
+      --cream: #FAF0F5;
+      --muted: #A08090;
+      --white: #ffffff;
+      --green: #4ADE80;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* PROGRESS BAR */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--pink-light));
+      z-index: 9999; transition: width 0.15s linear; width: 0%;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: #1A0F20;
+      border-bottom: 1px solid var(--pink-dim);
+      padding: 11px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .topbar strong { color: var(--pink-light); }
+
+    /* HERO */
+    .hero {
+      background: radial-gradient(ellipse at 50% 0%, rgba(233,30,140,0.12) 0%, transparent 65%);
+      border-bottom: 1px solid var(--pink-dim);
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 4px; color: var(--pink-light);
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .ornament { display: block; color: var(--pink); font-size: 18px; letter-spacing: 10px; opacity: 0.5; margin: 10px 0; }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 6vw, 52px);
+      font-weight: 700; line-height: 1.15;
+      margin: 18px 0 14px;
+      background: linear-gradient(135deg, #fff 30%, var(--pink-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 17px; color: var(--muted); max-width: 540px;
+      margin: 0 auto 28px; line-height: 1.8;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--pink-dim);
+      border: 1px solid var(--pink-border);
+      color: var(--pink-light);
+      font-size: 13px; font-weight: 600;
+      padding: 8px 20px; border-radius: 100px;
+      letter-spacing: 0.04em;
+    }
+
+    /* PROMISE BOX */
+    .promise-box {
+      max-width: 660px; margin: 0 auto;
+      background: linear-gradient(135deg, rgba(233,30,140,0.08), rgba(194,24,91,0.04));
+      border: 1px solid var(--pink-border);
+      border-radius: 16px; padding: 28px 32px;
+      text-align: center;
+    }
+    .promise-box h2 {
+      font-family: var(--serif);
+      font-size: clamp(20px, 3.5vw, 26px);
+      margin-bottom: 14px; line-height: 1.3;
+      color: var(--pink-light);
+      font-style: italic;
+    }
+    .promise-box p { font-size: 15px; color: var(--muted); line-height: 1.85; }
+    .promise-box strong { color: var(--cream); }
+
+    /* LAYOUT */
+    .section { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+    .section-narrow { max-width: 680px; margin: 0 auto; padding: 60px 24px; }
+
+    /* SECTION HEADER */
+    .section-label {
+      font-size: 11px; letter-spacing: 4px; color: var(--pink-light);
+      text-transform: uppercase; text-align: center; margin-bottom: 10px;
+    }
+    .section-h2 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 700; text-align: center;
+      margin-bottom: 8px; line-height: 1.25;
+    }
+    .section-sub { color: var(--muted); text-align: center; font-size: 15px; margin-bottom: 36px; line-height: 1.7; }
+    .divider { border: none; border-top: 1px solid var(--pink-dim); margin: 0; }
+
+    /* HOW IT WORKS */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-top: 32px;
+    }
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--pink-dim);
+      border-radius: 14px; padding: 22px 18px;
+      text-align: center;
+    }
+    .pillar-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+    .pillar-title { font-family: var(--serif); font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--pink-light); }
+    .pillar-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* RULES */
+    .rules-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .rules-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 14px 16px;
+      font-size: 15px;
+    }
+    .rules-list li .num {
+      background: linear-gradient(135deg, var(--pink), #c2185b);
+      color: #fff; font-weight: 800; font-size: 13px;
+      min-width: 26px; height: 26px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* DAILY CARD */
+    .day-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .day-card.done { border-color: rgba(74,222,128,0.4); }
+    .day-card.done .day-header { background: rgba(74,222,128,0.06); }
+
+    .day-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 20px; cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .day-header:hover { background: rgba(233,30,140,0.05); }
+
+    .day-num {
+      background: linear-gradient(135deg, var(--pink), #c2185b);
+      color: #fff; font-weight: 800; font-size: 14px;
+      min-width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-family: var(--serif);
+    }
+    .day-card.done .day-num { background: linear-gradient(135deg, #4ade80, #16a34a); }
+
+    .day-title { flex: 1; }
+    .day-title h3 { font-size: 16px; font-weight: 700; color: var(--cream); line-height: 1.3; }
+    .day-title span { font-size: 13px; color: var(--muted); }
+
+    .day-check {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all 0.2s; cursor: pointer;
+      font-size: 14px;
+    }
+    .day-card.done .day-check { background: #4ade80; border-color: #4ade80; color: #000; }
+
+    .day-chevron { color: var(--muted); font-size: 18px; flex-shrink: 0; transition: transform 0.2s; }
+    .day-card.open .day-chevron { transform: rotate(90deg); }
+
+    .day-body { display: none; padding: 20px; }
+    .day-card.open .day-body { display: block; }
+
+    /* TASKS INSIDE DAY */
+    .task-section { margin-bottom: 20px; }
+    .task-section-title {
+      font-size: 11px; letter-spacing: 3px; color: var(--pink-light);
+      text-transform: uppercase; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .task-section-title::after { content: ''; flex: 1; height: 1px; background: var(--pink-dim); }
+
+    .task-row {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .task-row:last-child { border-bottom: none; }
+    .task-cb {
+      width: 22px; height: 22px; border-radius: 6px;
+      border: 2px solid rgba(233,30,140,0.4);
+      background: transparent; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s; margin-top: 1px;
+    }
+    .task-cb.checked { background: var(--pink); border-color: var(--pink); }
+    .task-cb.checked::after { content: '✓'; color: #fff; font-size: 13px; font-weight: 700; }
+
+    .task-label { font-size: 15px; color: var(--cream); line-height: 1.5; }
+    .task-label small { display: block; color: var(--muted); font-size: 13px; margin-top: 3px; }
+
+    /* JOURNAL TEXTAREA */
+    .journal-wrap { margin-top: 6px; }
+    .journal-label { font-size: 13px; color: var(--pink-light); font-weight: 600; margin-bottom: 6px; display: block; }
+    .journal-q { font-size: 14px; color: var(--muted); font-style: italic; margin-bottom: 8px; line-height: 1.6; }
+    textarea.journal {
+      width: 100%; min-height: 90px;
+      background: var(--bg-input);
+      border: 1px solid rgba(233,30,140,0.25);
+      border-radius: 10px; padding: 12px 14px;
+      font-family: var(--sans); font-size: 14px;
+      color: var(--cream); resize: vertical;
+      transition: border-color 0.2s; outline: none;
+    }
+    textarea.journal::placeholder { color: var(--muted); }
+    textarea.journal:focus { border-color: var(--pink); }
+
+    /* AFFIRMATION BOX */
+    .affirmation {
+      background: linear-gradient(135deg, rgba(233,30,140,0.1), rgba(194,24,91,0.05));
+      border: 1px solid var(--pink-border);
+      border-radius: 12px; padding: 16px 18px;
+      margin-top: 16px;
+      font-family: var(--serif); font-style: italic;
+      font-size: 15px; color: var(--pink-light);
+      line-height: 1.6; text-align: center;
+    }
+
+    /* WEEK HEADER */
+    .week-header {
+      background: linear-gradient(135deg, rgba(233,30,140,0.12), rgba(194,24,91,0.06));
+      border: 1px solid var(--pink-border);
+      border-radius: 14px; padding: 20px 24px;
+      margin-bottom: 20px; margin-top: 40px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .week-num {
+      font-family: var(--serif); font-size: 36px; font-weight: 700;
+      color: var(--pink); line-height: 1; flex-shrink: 0;
+    }
+    .week-info h3 { font-size: 18px; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
+    .week-info p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+    /* PROGRESS TRACKER */
+    .progress-section { max-width: 680px; margin: 0 auto; padding: 0 24px 60px; }
+    .progress-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px;
+    }
+    .progress-header span { font-size: 13px; color: var(--muted); }
+    .progress-header strong { color: var(--pink-light); font-size: 15px; }
+    .progress-track {
+      background: rgba(255,255,255,0.06);
+      border-radius: 100px; height: 10px; overflow: hidden; margin-bottom: 24px;
+    }
+    .progress-fill {
+      height: 100%; border-radius: 100px;
+      background: linear-gradient(90deg, var(--pink), var(--pink-light));
+      transition: width 0.4s ease;
+    }
+    .days-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+    .day-dot {
+      aspect-ratio: 1; border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .day-dot.done { background: linear-gradient(135deg, var(--pink), #c2185b); border-color: var(--pink); color: #fff; }
+
+    /* SAVE BUTTON */
+    .save-btn {
+      display: block; width: 100%; max-width: 400px; margin: 32px auto 0;
+      background: linear-gradient(135deg, var(--pink), #c2185b);
+      color: #fff; font-family: var(--sans); font-size: 16px; font-weight: 700;
+      padding: 16px 24px; border-radius: 12px; border: none; cursor: pointer;
+      letter-spacing: 0.03em; transition: opacity 0.2s;
+    }
+    .save-btn:hover { opacity: 0.9; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 40px 24px;
+      border-top: 1px solid var(--pink-dim);
+      font-size: 13px; color: var(--muted); line-height: 1.8;
+    }
+    footer strong { color: var(--pink-light); }
+
+    /* UTILS */
+    .mt-8 { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .text-pink { color: var(--pink-light); }
+    .text-center { text-align: center; }
+
+    @media (max-width: 480px) {
+      .days-grid { grid-template-columns: repeat(5, 1fr); }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .week-num { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<div class="topbar">
+  <strong>Dark Feminine × 30 Hari Blueprint</strong> — Workbook Transformasi Daya Tarik
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">52 Jurus Dark Feminine</p>
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1>30 Hari<br/>Blueprint Dark Feminine</h1>
+  <p class="hero-sub">Ini bukan sekedar ebook yang kamu baca lalu tutup. Ini adalah blueprint yang kamu <em>jalani</em> — hari per hari, tubuh, pikiran, dan energimu bersamaan.</p>
+  <span class="hero-badge">💪 Olahraga • 🎧 Audio • 📝 Jurnal Harian</span>
+</section>
+
+<!-- PROMISE -->
+<section class="section-narrow" style="padding-bottom: 0;">
+  <div class="promise-box">
+    <h2>"30 hari dari sekarang, sesuatu akan berubah."</h2>
+    <p>
+      Jika kamu punya pasangan — dia akan mulai memperlakukanmu seperti yang kamu mau, tanpa kamu minta.<br/>
+      Jika kamu single — kamu akan menemukan jalan bertemu pria yang benar-benar cocok denganmu.<br/>
+      Jika kamu memilih sendiri — hidupmu akan terasa <strong>penuh dan bahagia</strong> bukan karena seseorang mengisinya, tapi karena kamu sudah lengkap.
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <p class="section-label">Cara Kerja Blueprint</p>
+  <h2 class="section-h2">3 Pilar Harian yang <span class="text-pink">Tidak Bisa Dilewati</span></h2>
+  <p class="section-sub">Setiap hari terdiri dari tiga hal wajib. Ketiganya bekerja bersama — skip satu, energi yang terbentuk tidak maksimal.</p>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <span class="pillar-icon">🏃‍♀️</span>
+      <div class="pillar-title">Olahraga Wajib</div>
+      <div class="pillar-desc">Tubuh yang bergerak adalah tubuh yang memancarkan energi. Lari, pilates, yoga, gym — pilih satu, lakukan sungguh-sungguh.</div>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">🎧</span>
+      <div class="pillar-title">Audio Love Magnet</div>
+      <div class="pillar-desc">Dengarkan 2× sehari — pagi sebelum mulai hari, malam sebelum tidur. Biarkan frekuensi masuk saat tubuh dan pikiranmu rileks.</div>
+    </div>
+    <div class="pillar-card">
+      <span class="pillar-icon">📝</span>
+      <div class="pillar-title">Tulis di Workbook</div>
+      <div class="pillar-desc">Menulis adalah cara otak memproses dan menyimpan perubahan. Jawab pertanyaan hari ini dengan jujur — tidak ada yang menghakimi.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- RULES -->
+<section class="section-narrow">
+  <p class="section-label">Sebelum Mulai</p>
+  <h2 class="section-h2">Aturan <span class="text-pink">30 Hari</span></h2>
+  <ul class="rules-list">
+    <li><span class="num">1</span><span>Lakukan setiap hari tanpa skip. Kalau terlewat, lanjut — jangan mundur. Tapi jadikan itu pengecualian, bukan kebiasaan.</span></li>
+    <li><span class="num">2</span><span>Olahraga adalah bagian wajib, bukan opsional. Tidak ada alasan yang cukup kuat untuk melewatinya. 20 menit lari sudah cukup.</span></li>
+    <li><span class="num">3</span><span>Audio Love Magnet didengar 2× sehari. Pagi memberi nada untuk hari itu. Malam menanamkan saat bawah sadar aktif.</span></li>
+    <li><span class="num">4</span><span>Tulis jawaban jurnal dengan jujur. Tidak ada yang benar atau salah. Yang terpenting adalah kamu menulis — bukan menyempurnakan.</span></li>
+    <li><span class="num">5</span><span>Jangan cerita ke orang-orang tentang perubahan yang kamu rasakan selama 30 hari. Energi yang baru terbentuk mudah bocor lewat kata-kata.</span></li>
+    <li><span class="num">6</span><span>Centang setiap task setelah selesai. Kepuasan kecil itu nyata — dan otak kamu butuh itu untuk membangun momentum.</span></li>
+  </ul>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROGRESS TRACKER -->
+<section class="progress-section" style="padding-top: 60px;">
+  <p class="section-label" style="text-align:center; margin-bottom:10px;">Tracker Progres Kamu</p>
+  <div class="progress-header">
+    <span>Hari Selesai: <strong id="done-count">0</strong> / 30</span>
+    <strong id="done-pct" class="text-pink">0%</strong>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+  </div>
+  <div class="days-grid" id="days-grid"></div>
+</section>
+
+<hr class="divider"/>
+
+<!-- DAYS -->
+<section class="section" id="days-section">
+
+  <!-- WEEK 1 -->
+  <div class="week-header">
+    <div class="week-num">W1</div>
+    <div class="week-info">
+      <h3>Minggu 1 — Membersihkan Energi Lama</h3>
+      <p>Hari 1–7: Reset pola lama. Tubuh mulai bergerak. Pikiran mulai diam. Energi needy mulai rontok.</p>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card" id="day-1">
+    <div class="day-header" onclick="toggleDay(1)">
+      <div class="day-num">01</div>
+      <div class="day-title">
+        <h3>Kenali Energimu Sekarang</h3>
+        <span>Titik awal yang jujur adalah kekuatan, bukan kelemahan.</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,1)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section">
+        <div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan, berapa lama, dan bagaimana rasanya setelahnya)</div>
+          <textarea class="journal" placeholder="Contoh: lari santai 20 menit di sekitar komplek, keringatan habis, badan terasa lebih ringan dan kepala lebih jernih setelahnya." oninput="saveJournal(1,'ol',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: pagi sebelum mulai hari sambil berbaring, malam sebelum tidur dengan headset — aku merasakan seperti ada ketenangan yang masuk, serasa lega dan lebih tenang dari sebelumnya." oninput="saveJournal(1,'au',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">📝 Jurnal Hari Ini</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Jika kamu jujur sepenuhnya — bagaimana energi yang kamu pancarkan ke orang-orang di sekitarmu sekarang? Apakah kamu lebih sering <em>butuh</em> atau <em>menarik</em>?</div>
+          <textarea class="journal" placeholder="Tulis di sini... tidak ada yang benar atau salah. Yang penting jujur." oninput="saveJournal(1,'q1',this.value)"></textarea>
+        </div>
+        <div class="journal-wrap mt-16">
+          <div class="journal-q">Apa satu hal konkret yang ingin berubah setelah 30 hari ini?</div>
+          <textarea class="journal" placeholder="Contoh: Aku ingin suamiku yang duluan mengajak quality time tanpa aku minta." oninput="saveJournal(1,'q2',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="affirmation">"Aku tidak mengejar siapapun. Aku memancarkan energi yang membuat orang ingin datang ke arahku."</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card" id="day-2">
+    <div class="day-header" onclick="toggleDay(2)">
+      <div class="day-num">02</div>
+      <div class="day-title">
+        <h3>Hentikan Validasi dari Luar</h3>
+        <span>Hari ini kamu belajar bahwa persetujuan tidak dibutuhkan.</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,2)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section">
+        <div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: pilates 30 menit dari YouTube, fokus napas dan core — setelahnya punggung terasa lebih tegak dan ada rasa puas yang aneh tapi menyenangkan." oninput="saveJournal(2,'ol',this.value)"></textarea>
+        </div>
+      </div>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: pagi sebelum mulai hari sambil tiduran, malam sebelum tidur dengan headset — ada rasa tenang yang masuk, pikiran tidak se-ribet biasanya." oninput="saveJournal(2,'au',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">✦ Tantangan Hari Ini</div>
+        <div class="task-row">
+          <div class="task-cb" onclick="checkTask(this)"></div>
+          <div class="task-label">Tidak memposting apapun di sosmed hari ini yang bertujuan mencari likes atau perhatian<small>Jika ingin posting, tanya: apakah ini untuk diriku sendiri, atau untuk reaksi orang?</small></div>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Di mana kamu paling sering mencari validasi dari orang lain? (pasangan, teman, sosmed, keluarga?) Dan bagaimana rasanya saat tidak mendapatkannya?</div>
+          <textarea class="journal" placeholder="Tulis jujur..." oninput="saveJournal(2,'q1',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="affirmation">"Nilaimu tidak ditentukan oleh berapa banyak orang yang menyukaimu. Nilaimu sudah ada sejak lahir."</div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card" id="day-3">
+    <div class="day-header" onclick="toggleDay(3)">
+      <div class="day-num">03</div>
+      <div class="day-title">
+        <h3>Misteri Dimulai dari Diam</h3>
+        <span>Wanita yang paling menarik adalah yang paling sulit ditebak.</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,3)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section">
+        <div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: jalan cepat 30 menit + stretching 10 menit, tidak pegang HP sama sekali selama jalan — kepala terasa lebih bersih." oninput="saveJournal(3,'ol',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: pagi setelah bangun dan malam sebelum tidur — aku merasakan bahagia terhadap kenyataan, serasa lega, ada sesuatu yang mengendap dengan pelan." oninput="saveJournal(3,'au',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">✦ Tantangan Hari Ini</div>
+        <div class="task-row">
+          <div class="task-cb" onclick="checkTask(this)"></div>
+          <div class="task-label">Hari ini, jika ada orang yang bertanya "kamu lagi ngapain?" — jawab singkat dan jangan jelaskan lebih jauh<small>Misteri bukan soal berbohong. Ini soal tidak memberikan semua informasi tanpa diminta.</small></div>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Apakah kamu sering terlalu banyak cerita atau menjelaskan diri? Dengan siapa? Dan mengapa?</div>
+          <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(3,'q1',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="affirmation">"Diamku bukan kekosongan — itu kedalaman. Dan kedalaman selalu menarik orang yang tepat."</div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card" id="day-4">
+    <div class="day-header" onclick="toggleDay(4)">
+      <div class="day-num">04</div>
+      <div class="day-title">
+        <h3>Tubuhmu adalah Rumahmu</h3>
+        <span>Merawat tubuh bukan soal penampilan — ini soal menghormati dirimu sendiri.</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,4)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section">
+        <div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: yoga 30 menit fokus core dan pinggul — setelah selesai postur terasa lebih tegak, ada rasa kuat dari dalam yang berbeda dari biasanya." oninput="saveJournal(4,'ol',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: 2x dengar hari ini — pagi sebelum aktivitas dan malam sambil berbaring. Mulai terasa familiar, ada frekuensi yang entah kenapa bikin rileks lebih dalam." oninput="saveJournal(4,'au',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">✦ Perawatan Diri Hari Ini</div>
+        <div class="task-row">
+          <div class="task-cb" onclick="checkTask(this)"></div>
+          <div class="task-label">Lakukan satu hal untuk tubuhmu yang murni karena kamu ingin — bukan untuk dilihat<small>Masker wajah, mandi air hangat, olesan body lotion pelan-pelan, apapun yang membuat kulitmu terasa diperhatikan.</small></div>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Bagaimana hubunganmu dengan tubuhmu sendiri? Apakah kamu merawatnya dengan cinta, atau kamu sering kritis terhadapnya?</div>
+          <textarea class="journal" placeholder="Tulis jujur..." oninput="saveJournal(4,'q1',this.value)"></textarea>
+        </div>
+        <div class="journal-wrap mt-16">
+          <div class="journal-q">Setelah 4 hari berjalan — apa yang sudah terasa berbeda, walaupun kecil?</div>
+          <textarea class="journal" placeholder="Contoh: aku merasa sedikit lebih tenang hari ini dibanding hari pertama..." oninput="saveJournal(4,'q2',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="affirmation">"Aku merawat tubuhku bukan karena aku ingin terlihat cantik untuk orang lain — tapi karena aku berharga."</div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card" id="day-5">
+    <div class="day-header" onclick="toggleDay(5)">
+      <div class="day-num">05</div>
+      <div class="day-title">
+        <h3>Lepaskan yang Tidak Kamu Kontrol</h3>
+        <span>Attachment adalah musuh terbesar daya tarik.</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,5)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section">
+        <div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: lari 25 menit + 5 menit jalan cool-down — saat lari biarkan pikiran mengalir, setelah selesai rasanya seperti ada beban yang terlepas." oninput="saveJournal(5,'ol',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: lari 20 menit, pilates 30 menit — aku merasakan bahagia terhadap kenyataan, aku serasa lega dan tenang setelahnya." oninput="saveJournal(5,'au',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Apa yang paling sering kamu coba kontrol dalam hubungan atau hidupmu yang sebenarnya tidak bisa dikontrol?</div>
+          <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(5,'q1',this.value)"></textarea>
+        </div>
+        <div class="journal-wrap mt-16">
+          <div class="journal-q">Hari ini setelah olahraga, bagaimana perasaan fisik dan mentalmu? Catat dengan detail.</div>
+          <textarea class="journal" placeholder="Contoh: aku merasa sangat lega setelah lari hari ini, seperti ada sesuatu yang terlepas..." oninput="saveJournal(5,'q2',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="affirmation">"Semakin aku lepaskan, semakin banyak yang datang kepadaku. Kelimpahan mengalir kepada yang tidak mengejar."</div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card" id="day-6">
+    <div class="day-header" onclick="toggleDay(6)">
+      <div class="day-num">06</div>
+      <div class="day-title">
+        <h3>Silent Power — Kekuatan dari Ketenangan</h3>
+        <span>Wanita yang tidak perlu membuktikan apa-apa adalah yang paling ditakuti kehilangan.</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,6)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section">
+        <div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: pilates 30 menit + meditasi duduk 10 menit setelahnya — tubuh lelah tapi pikiran sangat jernih, jarang merasa setranang ini." oninput="saveJournal(6,'ol',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: pagi dan malam — makin hari makin terasa ada sesuatu yang mengendap, seperti ada keyakinan diam-diam yang tumbuh dari dalam." oninput="saveJournal(6,'au',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">✦ Tantangan</div>
+        <div class="task-row">
+          <div class="task-cb" onclick="checkTask(this)"></div>
+          <div class="task-label">Jika ada konflik atau ketegangan hari ini — pilih diam dan observasi, bukan langsung bereaksi<small>Respon yang tertunda adalah kekuatan. Orang yang selalu bereaksi cepat mudah diprediksi dan dikontrol.</small></div>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Kapan terakhir kali kamu bereaksi berlebihan terhadap sesuatu? Apa yang sebenarnya kamu takutkan di balik reaksi itu?</div>
+          <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(6,'q1',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="affirmation">"Ketenanganku adalah kekuatanku. Aku tidak perlu menjelaskan, membuktikan, atau membela diri."</div>
+    </div>
+  </div>
+
+  <!-- DAY 7 — REVIEW MINGGU 1 -->
+  <div class="day-card" id="day-7" style="border-color: var(--pink-border);">
+    <div class="day-header" onclick="toggleDay(7)" style="background: rgba(233,30,140,0.05);">
+      <div class="day-num">07</div>
+      <div class="day-title">
+        <h3>✦ Review Minggu Pertama</h3>
+        <span>Satu minggu selesai. Apa yang sudah bergeser?</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,7)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section">
+        <div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku olahraga: (pilihan bebas — tulis apa yang kamu lakukan dan rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: gym 45 menit — pilihan bebas hari ini, aku pilih lari karena sudah rindu. Badan terasa lebih kuat dari minggu pertama mulai." oninput="saveJournal(7,'ol',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+          <textarea class="journal" placeholder="Contoh: pagi dan malam seperti biasa — 7 hari sudah dengar, mulai terasa seperti ritual yang aku tunggu-tunggu, bukan kewajiban." oninput="saveJournal(7,'au',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="task-section">
+        <div class="task-section-title">📝 Review Minggu 1</div>
+        <div class="journal-wrap">
+          <div class="journal-q">Dari 7 hari ini — momen apa yang paling berkesan? Apa yang paling sulit?</div>
+          <textarea class="journal" placeholder="Tulis review jujurmu..." oninput="saveJournal(7,'q1',this.value)"></textarea>
+        </div>
+        <div class="journal-wrap mt-16">
+          <div class="journal-q">Apakah sudah ada yang berubah dalam cara orang di sekitarmu meresponsmu? Walaupun kecil, catat.</div>
+          <textarea class="journal" placeholder="Contoh: suamiku tadi pagi tanya aku mau sarapan apa duluan sebelum aku minta..." oninput="saveJournal(7,'q2',this.value)"></textarea>
+        </div>
+        <div class="journal-wrap mt-16">
+          <div class="journal-q">Bagaimana energi fisikmu sekarang dibanding hari pertama? Tuliskan perbedaannya.</div>
+          <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(7,'q3',this.value)"></textarea>
+        </div>
+      </div>
+      <div class="affirmation">"Satu minggu. Fondasi sudah terbentuk. Aku tidak berbalik."</div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-header">
+    <div class="week-num">W2</div>
+    <div class="week-info">
+      <h3>Minggu 2 — Membangun Aura</h3>
+      <p>Hari 8–14: Energimu mulai padat. Cara kamu hadir mulai berubah. Orang mulai merespons berbeda.</p>
+    </div>
+  </div>
+
+  <!-- DAY 8-14: WEEK 2 -->
+  <div class="day-card" id="day-8">
+    <div class="day-header" onclick="toggleDay(8)">
+      <div class="day-num">08</div>
+      <div class="day-title"><h3>Fokus ke Dirimu Sendiri</h3><span>Abundance mindset dimulai dari tidak kekurangan perhatian pada dirimu.</span></div>
+      <div class="day-check" onclick="markDone(event,8)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: lari 25 menit + plank dan sit-up 10 menit — badan mulai terasa lebih kencang, ada kepuasan yang tidak bisa dijelaskan setelah selesai." oninput="saveJournal(8,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — sudah masuk minggu 2, audio ini mulai terasa seperti rumah, seperti ada frekuensi yang familiar dan menenangkan." oninput="saveJournal(8,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">✦ Hari Ini</div>
+        <div class="task-row"><div class="task-cb" onclick="checkTask(this)"></div><div class="task-label">Rencanakan sesuatu untuk dirimu sendiri minggu ini — bukan untuk siapapun<small>Kelas baru, buku baru, tempat baru. Hidupmu harus lebih menarik dari jadwalnya.</small></div></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apa yang membuat hidupmu menarik, terlepas dari hubungan atau orang lain?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(8,'q1',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation">"Hidupku menarik bukan karena seseorang ada di dalamnya. Hidupku menarik karena aku yang menjalaninya."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-9">
+    <div class="day-header" onclick="toggleDay(9)">
+      <div class="day-num">09</div>
+      <div class="day-title"><h3>Push-Pull — Menarik dan Melepas</h3><span>Ketegangan adalah bumbu daya tarik yang paling kuat.</span></div>
+      <div class="day-check" onclick="markDone(event,9)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: gym 40 menit — squat, lunges, push-up. Pertama kali ke gym dan ternyata tidak seseram yang dibayangkan, ada rasa kuat yang baru." oninput="saveJournal(9,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hari ini setelah dengar pagi, ada ketenangan yang bertahan sampai sore. Seperti ada lapisan yang melindungi energiku." oninput="saveJournal(9,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apakah kamu terlalu available selama ini? Di mana kamu sering "langsung ada" padahal itu membuat kamu mudah ditebak?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(9,'q1',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation">"Aku tidak selalu ada — dan justru karena itulah mereka tidak bisa berhenti memikirkanku."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-10">
+    <div class="day-header" onclick="toggleDay(10)">
+      <div class="day-num">10</div>
+      <div class="day-title"><h3>Bahasa Tubuh yang Menarik</h3><span>Sebelum kamu bicara, tubuhmu sudah berbicara.</span></div>
+      <div class="day-check" onclick="markDone(event,10)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pilates 30 menit fokus postur — setelah selesai aku sadar punggungku lebih tegak dari biasanya, langkahku terasa berbeda, lebih mantap." oninput="saveJournal(10,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — 10 hari sudah, dan hari ini pertama kali aku sadar cara orang di kantor merespons berbeda. Mungkin energinya yang berubah." oninput="saveJournal(10,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">✦ Latihan Hari Ini</div>
+        <div class="task-row"><div class="task-cb" onclick="checkTask(this)"></div><div class="task-label">Hari ini perhatikan posturmu — bahu ke belakang, dagu sedikit naik, langkah lambat dan pasti<small>Lakukan ini sadar sepanjang hari. Rasakan bedanya.</small></div></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Bagaimana kamu biasanya berjalan dan berdiri di depan orang yang ingin kamu impress? Apakah ada rasa kurang percaya diri yang terbaca dari tubuhmu?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(10,'q1',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation">"Cara aku berjalan mengatakan sesuatu. Hari ini aku berjalan seperti wanita yang tahu nilainya."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-11">
+    <div class="day-header" onclick="toggleDay(11)">
+      <div class="day-num">11</div>
+      <div class="day-title"><h3>Emosi adalah Informasi, Bukan Senjata</h3><span>Kontrol emosi bukan artinya mematikannya.</span></div>
+      <div class="day-check" onclick="markDone(event,11)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan — biarkan pikiran mengalir saat bergerak)</div>
+        <textarea class="journal" placeholder="Contoh: lari 30 menit, biarkan pikiran bebas — saat lari ada kesedihan yang tiba-tiba muncul dan terasa seperti terlepas. Setelah selesai kepala lebih jernih." oninput="saveJournal(11,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hari ini waktu dengar malam ada perasaan haru yang tidak tahu dari mana, tapi terasa seperti sesuatu yang benar." oninput="saveJournal(11,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Emosi apa yang paling sering kamu tahan atau sembunyikan? Dari siapa kamu sembunyikan dan kenapa?</div>
+        <textarea class="journal" placeholder="Tulis jujur..." oninput="saveJournal(11,'q1',this.value)"></textarea></div>
+        <div class="journal-wrap mt-16"><div class="journal-q">Hari ini setelah olahraga, apa yang kamu rasakan? Tuliskan apa saja.</div>
+        <textarea class="journal" placeholder="Contoh: aku merasa lega sekali, ada kesedihan yang ikut keluar saat lari tadi, aku serasa lebih ringan sekarang..." oninput="saveJournal(11,'q2',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation">"Aku merasakan sepenuhnya — dan aku tetap tenang. Keduanya bisa berjalan bersama."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-12">
+    <div class="day-header" onclick="toggleDay(12)">
+      <div class="day-num">12</div>
+      <div class="day-title"><h3>Jangan Menjelaskan Dirimu</h3><span>Wanita yang butuh dimengerti — mudah dimanipulasi.</span></div>
+      <div class="day-check" onclick="markDone(event,12)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: zumba 30 menit dari YouTube — gerak dengan gembira hari ini, tidak ada beban. Lupa lagi stres, lupa lagi masalah. Badan lemes tapi hati senang." oninput="saveJournal(12,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — makin hari makin terasa seperti bagian dari rutinitas yang tidak bisa dilewat. Ada yang hilang kalau tidak dengar." oninput="saveJournal(12,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">✦ Tantangan</div>
+        <div class="task-row"><div class="task-cb" onclick="checkTask(this)"></div><div class="task-label">Hari ini jika ada yang bertanya "kenapa?" soal pilihanmu — jawab "karena aku mau" tanpa penjelasan tambahan</div></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apakah kamu sering merasa perlu disetujui sebelum mengambil keputusan? Oleh siapa?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(12,'q1',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation">"Aku tidak membutuhkan penjelasan yang sempurna untuk setiap pilihanku. Aku cukup."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-13">
+    <div class="day-header" onclick="toggleDay(13)">
+      <div class="day-num">13</div>
+      <div class="day-title"><h3>Kesenangan adalah Hak, Bukan Hadiah</h3><span>Kamu tidak perlu layak dulu sebelum menikmati hidupmu.</span></div>
+      <div class="day-check" onclick="markDone(event,13)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pilates 30 menit pagi + jalan sore 20 menit — dua sesi hari ini terasa seperti hadiah untuk tubuh sendiri, bukan kewajiban." oninput="saveJournal(13,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hari ini waktu dengar malam ada rasa syukur yang aneh, seperti bahagia terhadap kenyataan hidupku sekarang walaupun belum sempurna." oninput="saveJournal(13,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">✦ Hari Ini</div>
+        <div class="task-row"><div class="task-cb" onclick="checkTask(this)"></div><div class="task-label">Lakukan satu hal yang murni menyenangkan bagimu — tanpa rasa bersalah<small>Beli bunga untuk dirimu sendiri. Makan di tempat yang kamu suka sendirian. Nonton film yang kamu mau.</small></div></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apa hal terakhir yang kamu lakukan murni untuk kebahagiaanmu sendiri? Kapan? Dan bagaimana rasanya?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(13,'q1',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation">"Kebahagiaanku bukan reward. Itu hak dasarku sebagai manusia."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-14" style="border-color: var(--pink-border);">
+    <div class="day-header" onclick="toggleDay(14)" style="background: rgba(233,30,140,0.05);">
+      <div class="day-num">14</div>
+      <div class="day-title"><h3>✦ Review Minggu Kedua</h3><span>2 minggu. Setengah jalan. Apa yang sudah berubah?</span></div>
+      <div class="day-check" onclick="markDone(event,14)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (pilihan bebas, lebih panjang — tulis apa yang kamu lakukan)</div>
+        <textarea class="journal" placeholder="Contoh: gym 50 menit hari ini, pilihan bebas — pilih yang paling aku nikmati sekarang. 14 hari tubuh ini sudah jauh lebih kuat dari sebelumnya." oninput="saveJournal(14,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — 14 hari dengar, dan hari ini saat dengar pagi ada perasaan sudah berbeda dari hari pertama. Ada sesuatu yang lebih settled di dalam." oninput="saveJournal(14,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Review Minggu 2</div>
+        <div class="journal-wrap"><div class="journal-q">Dari 14 hari ini — apakah sudah ada respons berbeda dari orang-orang di sekitarmu? Pasangan, teman, kolega?</div>
+        <textarea class="journal" placeholder="Tulis semua yang kamu perhatikan, sekecil apapun..." oninput="saveJournal(14,'q1',this.value)"></textarea></div>
+        <div class="journal-wrap mt-16"><div class="journal-q">Bagaimana tubuhmu sekarang? Apakah olahraga sudah mulai terasa seperti kebutuhan, bukan kewajiban?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(14,'q2',this.value)"></textarea></div>
+        <div class="journal-wrap mt-16"><div class="journal-q">Tulis satu hal tentang dirimu yang dulu tidak kamu percaya — dan sekarang mulai kamu percaya.</div>
+        <textarea class="journal" placeholder="Contoh: aku mulai percaya bahwa aku tidak perlu berusaha terlalu keras untuk diperhatikan..." oninput="saveJournal(14,'q3',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation">"14 hari. Aku sudah berubah — walaupun belum semua orang melihatnya. Tapi aku merasakannya."</div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week-header">
+    <div class="week-num">W3</div>
+    <div class="week-info">
+      <h3>Minggu 3 — Menjadi Pilihan</h3>
+      <p>Hari 15–21: Energimu mulai stabil. Perubahan di luar mulai nyata. Orang mulai memperlakukanmu berbeda.</p>
+    </div>
+  </div>
+
+  <!-- Days 15-21: WEEK 3 -->
+  <div class="day-card" id="day-15">
+    <div class="day-header" onclick="toggleDay(15)">
+      <div class="day-num">15</div>
+      <div class="day-title"><h3>High Value Woman Tidak Memohon</h3><span>Apapun yang kamu minta berulang kali — kamu tidak akan dapatkan.</span></div>
+      <div class="day-check" onclick="markDone(event,15)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: lari 30 menit + lunges squat 3 set — mulai terasa ada kekuatan baru di kaki dan pinggul. Badan ini sudah berubah." oninput="saveJournal(15,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hari ini waktu dengar aku menangis sedikit, tapi bukan sedih. Lebih ke arah lega yang dalam. Seperti sesuatu yang lama tertahan akhirnya lepas." oninput="saveJournal(15,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apa yang selama ini kamu minta berulang kali tapi tidak kamu dapatkan? Apa yang akan terjadi jika kamu berhenti meminta — dan mulai menjalani hidupmu sendiri?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(15,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Aku tidak memohon. Aku tidak mengejar. Aku hanya ada — dan itu sudah cukup untuk menarik yang terbaik."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-16">
+    <div class="day-header" onclick="toggleDay(16)">
+      <div class="day-num">16</div>
+      <div class="day-title"><h3>Berikan Ruang — Tarik dengan Jarak</h3><span>Terlalu dekat membuat orang tidak bisa melihat kamu dengan jelas.</span></div>
+      <div class="day-check" onclick="markDone(event,16)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: yoga 40 menit + pranayama 5 menit — gerakan yang lambat dan sadar, napas yang dalam. Terasa seperti dialog dengan diri sendiri." oninput="saveJournal(16,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — ada rasa tenang yang berbeda hari ini, seperti tidak perlu terburu-buru ke mana-mana, sudah cukup di sini." oninput="saveJournal(16,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">✦ Tantangan</div>
+        <div class="task-row"><div class="task-cb" onclick="checkTask(this)"></div><div class="task-label">Hari ini beri seseorang ruang yang biasanya kamu isi terus — kurangi chat, kurangi inisiatif<small>Lihat apa yang terjadi. Catat di jurnal malam ini.</small></div></div></div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apa yang terjadi setelah kamu memberi ruang hari ini? Bagaimana responnya?</div>
+        <textarea class="journal" placeholder="Tulis apa yang terjadi dan apa yang kamu rasakan..." oninput="saveJournal(16,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Ruang yang aku berikan bukan kekosongan — itu undangan. Dan undangan yang benar selalu dijawab."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-17">
+    <div class="day-header" onclick="toggleDay(17)">
+      <div class="day-num">17</div>
+      <div class="day-title"><h3>Standarmu Menentukan Nilaimu</h3><span>Orang memperlakukanmu sesuai standar yang kamu ijinkan.</span></div>
+      <div class="day-check" onclick="markDone(event,17)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: lari interval 25 menit — sprint-jalan bergantian, melelahkan tapi ada rasa bangga setelah selesai. Tubuh ini bisa lebih dari yang kubayangkan." oninput="saveJournal(17,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — setelah dengar pagi ada dorongan yang kuat untuk tidak minta-minta hari ini. Eksperimen: diam dan lihat apa yang datang sendiri." oninput="saveJournal(17,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Standar apa yang selama ini kamu ijinkan dilanggar dalam hidupmu? Dan apa yang akan berubah jika kamu tidak lagi mengijinkannya?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(17,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Standarku bukan tuntutan — itu cerminan dari seberapa besar aku menghargai diriku sendiri."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-18">
+    <div class="day-header" onclick="toggleDay(18)">
+      <div class="day-num">18</div>
+      <div class="day-title"><h3>Feminitas adalah Kekuatan</h3><span>Lembut bukan lemah. Feminine bukan pasif.</span></div>
+      <div class="day-check" onclick="markDone(event,18)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pilates 30 menit fokus kelenturan dan kontrol — gerakan feminin tapi sangat kuat. Ada keanggunan dalam setiap pose yang mulai aku rasakan." oninput="saveJournal(18,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hari ini saat dengar ada bayangan tentang versi diriku yang sangat feminin dan sangat kuat sekaligus. Mulai percaya itu bisa jadi aku." oninput="saveJournal(18,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">✦ Hari Ini</div>
+        <div class="task-row"><div class="task-cb" onclick="checkTask(this)"></div><div class="task-label">Pakai sesuatu yang membuat kamu merasa feminin — walaupun di rumah saja<small>Feminitas bukan untuk siapapun selain dirimu sendiri.</small></div></div></div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Kapan terakhir kamu merasa benar-benar feminin dan hidup dalam energi itu tanpa performasi?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(18,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Feminitasku adalah senjata paling halus dan paling mematikan yang aku miliki."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-19">
+    <div class="day-header" onclick="toggleDay(19)">
+      <div class="day-num">19</div>
+      <div class="day-title"><h3>Hidupmu Adalah Magnet</h3><span>Semakin penuh dan bahagia hidupmu — semakin banyak yang ingin masuk ke dalamnya.</span></div>
+      <div class="day-check" onclick="markDone(event,19)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: lari pagi 30 menit di luar — sinar matahari langsung ke wajah, angin, suara burung. Ini bukan lagi olahraga, ini sudah jadi sesuatu yang aku tunggu tiap pagi." oninput="saveJournal(19,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hari ini ada kebahagiaan yang aneh. Bukan karena ada yang berubah di luar. Tapi dari dalam. Seperti aku sudah cukup, sudah lengkap." oninput="saveJournal(19,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Bayangkan 6 bulan dari sekarang — hidupmu seperti apa? Bukan tentang orang lain. Tentang dirimu. Tuliskan dengan detail.</div>
+        <textarea class="journal" style="min-height:120px;" placeholder="Tulis hidupmu yang ideal 6 bulan dari sekarang..." oninput="saveJournal(19,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Aku tidak membangun diri untuk seseorang. Aku membangun diri untuk diriku — dan semua orang yang tepat akan tertarik ke dalam cahaya itu."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-20">
+    <div class="day-header" onclick="toggleDay(20)">
+      <div class="day-num">20</div>
+      <div class="day-title"><h3>Batas adalah Bentuk Cinta Diri</h3><span>Orang yang tidak bisa dihormati batasnya — tidak menghormatimu.</span></div>
+      <div class="day-check" onclick="markDone(event,20)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: gym 40 menit — upper body dan core. Waktu angkat beban hari ini aku sadar betapa kuatnya tubuh ini. Bukan untuk siapapun. Untuk aku." oninput="saveJournal(20,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — 20 hari sudah. Hari ini setelah dengar ada dorongan kuat untuk tegakkan batas yang sudah lama tertunda." oninput="saveJournal(20,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apa satu batas yang belum pernah kamu tegakkan tapi sudah lama ingin kamu tegakkan? Apa yang membuatmu ragu?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(20,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Batasan bukan tembok — itu pintu yang aku kendalikan. Aku yang menentukan siapa yang boleh masuk."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-21" style="border-color: var(--pink-border);">
+    <div class="day-header" onclick="toggleDay(21)" style="background: rgba(233,30,140,0.05);">
+      <div class="day-num">21</div>
+      <div class="day-title"><h3>✦ Review Minggu Ketiga</h3><span>21 hari. Kebiasaan baru sudah terbentuk. Energi sudah bergeser.</span></div>
+      <div class="day-check" onclick="markDone(event,21)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (pilihan bebas 45 menit — tulis apa yang kamu pilih dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pilates 45 menit hari ini, nikmati setiap gerakan. 21 hari bergerak — tubuh ini sudah berbeda. Dan aku bangga." oninput="saveJournal(21,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — 21 hari. Saat dengar malam ini ada perasaan sudah sampai di titik yang berbeda. Bukan lagi yang sama seperti hari pertama." oninput="saveJournal(21,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Review Minggu 3</div>
+        <div class="journal-wrap"><div class="journal-q">Bagaimana pasangan atau orang-orang di sekitarmu memperlakukanmu sekarang dibanding 3 minggu lalu?</div>
+        <textarea class="journal" placeholder="Tulis semua perubahan yang kamu perhatikan..." oninput="saveJournal(21,'q1',this.value)"></textarea></div>
+        <div class="journal-wrap mt-16"><div class="journal-q">Bagaimana hubunganmu dengan olahraga sekarang? Apakah sudah berubah dari kewajiban menjadi cinta?</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(21,'q2',this.value)"></textarea></div></div>
+      <div class="affirmation">"21 hari. Aku bukan lagi yang sama. Dan ini baru permulaan."</div>
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week-header">
+    <div class="week-num">W4</div>
+    <div class="week-info">
+      <h3>Minggu 4 — Mempertahankan & Mengintegrasikan</h3>
+      <p>Hari 22–30: Ini bukan lagi latihan. Ini sudah menjadi siapa kamu. Finalkan, integrasikan, jadikan permanen.</p>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-22">
+    <div class="day-header" onclick="toggleDay(22)">
+      <div class="day-num">22</div>
+      <div class="day-title"><h3>Tidak Lagi Butuh Dipilih — Kamu yang Memilih</h3><span>Dari posisi kelimpahan, segalanya berbeda.</span></div>
+      <div class="day-check" onclick="markDone(event,22)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: lari 30 menit pagi, sambil berlari aku visualisasikan diriku yang sudah berubah — wanita yang jalan dengan tenang, tidak terburu-buru ke siapapun." oninput="saveJournal(22,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — sudah 22 hari. Saat dengar hari ini ada rasa bukan lagi perlu memohon apapun. Seperti sudah lengkap dari dalam." oninput="saveJournal(22,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini, sadari bahwa kamu bukan lagi orang yang sama seperti hari pertama. Apa yang paling berbeda dalam dirimu?</div>
+        <textarea class="journal" placeholder="Tulis dengan bangga..." oninput="saveJournal(22,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Aku tidak perlu dipilih. Aku memilih — dan pilihan yang aku buat dari posisi ini, selalu tepat."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-23">
+    <div class="day-header" onclick="toggleDay(23)">
+      <div class="day-num">23</div>
+      <div class="day-title"><h3>Seni Tidak Tersedia Sepenuhnya</h3><span>Kamu tidak bisa diambil begitu saja — dan itu kekuatanmu.</span></div>
+      <div class="day-check" onclick="markDone(event,23)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pilates 30 menit + stretching full body 15 menit — tubuh yang lentur adalah tubuh yang tidak rigid, tidak kaku. Energi lebih mengalir setelah stretching." oninput="saveJournal(23,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — ada kepuasan yang dalam hari ini. Tidak dari siapapun di luar. Murni dari dalam. Ini yang dimaksud dengan self-sufficient." oninput="saveJournal(23,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">✦ Hari Ini</div>
+        <div class="task-row"><div class="task-cb" onclick="checkTask(this)"></div><div class="task-label">Hari ini punya satu slot waktu yang benar-benar untukmu sendiri — tidak bisa diganggu oleh siapapun<small>Jadikan ini habit permanen, bukan pengecualian.</small></div></div></div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Bagaimana kamu menjaga energi dan waktu pribadimu ke depan? Apa ritual harianmu yang akan terus kamu jaga?</div>
+        <textarea class="journal" placeholder="Tulis rencanamu..." oninput="saveJournal(23,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Waktuku adalah aset paling berharga. Aku memberikannya hanya kepada yang layak."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-24">
+    <div class="day-header" onclick="toggleDay(24)">
+      <div class="day-num">24</div>
+      <div class="day-title"><h3>Tentang Menjadi Wanita yang Ditakuti Kehilangan</h3><span>Ini bukan soal ancaman — ini soal menjadi seseorang yang hidupnya nyata dan penuh.</span></div>
+      <div class="day-check" onclick="markDone(event,24)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: HIIT 35 menit — dorong lebih keras dari biasanya hari ini. Ada kekuatan yang aku temukan waktu memaksakan diri melewati batas yang lama." oninput="saveJournal(24,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — saat dengar malam ini terbayang jelas versi diriku yang orang-orang takut kehilangan. Bukan karena aku menakutkan. Karena hidupku sangat penuh." oninput="saveJournal(24,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Jika kamu pergi dari hidup seseorang besok — apakah mereka akan merasakannya? Mengapa ya, atau mengapa tidak?</div>
+        <textarea class="journal" placeholder="Tulis jujur..." oninput="saveJournal(24,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Aku bukan takut ditinggal. Aku adalah seseorang yang orang lain takut kehilangan."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-25">
+    <div class="day-header" onclick="toggleDay(25)">
+      <div class="day-num">25</div>
+      <div class="day-title"><h3>Single Bukan Menunggu — Single Adalah Hidup</h3><span>Untuk yang memilih sendiri: hidupmu bisa sangat bahagia, sangat penuh, tanpa seseorang mengisinya.</span></div>
+      <div class="day-check" onclick="markDone(event,25)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan — nikmati kesendirian saat bergerak)</div>
+        <textarea class="journal" placeholder="Contoh: jalan pagi 30 menit tanpa musik, tanpa podcast — hanya aku dan suara sekitar. Baru tahu ternyata kesendirian seperti ini bisa sangat menenangkan." oninput="saveJournal(25,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — ada rasa damai yang tidak perlu dijelaskan. Bukan karena ada yang datang. Tapi karena aku sudah cukup untuk diriku sendiri." oninput="saveJournal(25,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Apakah kamu sudah mulai menikmati hidupmu sendiri, terlepas dari apapun yang terjadi di luar? Gambarkan bagaimana rasanya hari ini.</div>
+        <textarea class="journal" placeholder="Tulis..." oninput="saveJournal(25,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Kebahagiaanku tidak bergantung pada siapapun. Aku adalah rumahku sendiri — dan rumah ini lengkap."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-26">
+    <div class="day-header" onclick="toggleDay(26)">
+      <div class="day-num">26</div>
+      <div class="day-title"><h3>Menarik tanpa Berusaha — Energi yang Sudah Menjadi Dirimu</h3><span>Di titik ini, kamu tidak lagi berlatih. Kamu hanya menjadi.</span></div>
+      <div class="day-check" onclick="markDone(event,26)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: yoga flow 40 menit — ini bukan workout hari ini, ini meditasi bergerak. Setiap gerakan aku rasakan sepenuhnya. Setelah selesai ada energi yang terasa sangat bersih." oninput="saveJournal(26,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — 26 hari. Saat dengar pagi ini aku sadar sudah tidak 'berusaha' lagi. Energi ini sudah menjadi bagian dari aku." oninput="saveJournal(26,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Tuliskan 5 cara konkret yang sudah berubah dalam hidupmu sejak hari pertama workbook ini.</div>
+        <textarea class="journal" style="min-height:120px;" placeholder="1. ...\n2. ...\n3. ...\n4. ...\n5. ..." oninput="saveJournal(26,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Aku tidak lagi berlatih menjadi Dark Feminine. Aku sudah menjadi dia."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-27">
+    <div class="day-header" onclick="toggleDay(27)">
+      <div class="day-num">27</div>
+      <div class="day-title"><h3>Kepercayaan yang Tidak Bisa Diambil</h3><span>Kepercayaan diri yang sejati tidak bergantung pada situasi.</span></div>
+      <div class="day-check" onclick="markDone(event,27)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: lari 30 menit + strength 20 menit — kombinasi yang sudah jadi favoritku. Badan yang kuat mencerminkan kepercayaan diri yang tidak bisa digoyahkan situasi." oninput="saveJournal(27,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hari ini ada situasi yang dulu biasa bikin aku goyah. Tapi hari ini tidak. Seperti ada fondasi di dalam yang tidak bisa diganggu dari luar." oninput="saveJournal(27,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Di situasi apa kamu masih merasa kepercayaan dirimu goyah? Apa yang perlu kamu terus kerjakan setelah 30 hari ini?</div>
+        <textarea class="journal" placeholder="Tulis jujur — ini bukan kegagalan, ini peta selanjutnya..." oninput="saveJournal(27,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Kepercayaan diriku dibangun dari dalam — bukan dari pujian, bukan dari validasi. Tidak ada yang bisa mengambilnya."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-28">
+    <div class="day-header" onclick="toggleDay(28)">
+      <div class="day-num">28</div>
+      <div class="day-title"><h3>Menulis Surat untuk Dirimu 3 Bulan Lagi</h3><span>Siapa yang kamu tuju? Siapa yang akan membacanya?</span></div>
+      <div class="day-check" onclick="markDone(event,28)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis apa yang kamu lakukan dan rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pilates 30 menit penuh kesadaran — setiap gerakan hari ini seperti ucapan terima kasih untuk tubuh yang sudah setia menemani 28 hari ini." oninput="saveJournal(28,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — hampir selesai. Saat dengar malam ini ada rasa haru dan bangga yang bercampur. 28 hari tidak putus." oninput="saveJournal(28,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Surat untuk Dirimu</div>
+        <div class="journal-wrap"><div class="journal-q">Tuliskan surat untuk dirimu 3 bulan dari sekarang. Ceritakan apa yang sudah kamu capai, bagaimana hidupmu terasa, dan apa yang ingin kamu jaga terus.</div>
+        <textarea class="journal" style="min-height:160px;" placeholder="Kepada diriku di bulan depan...\n\nAku ingin kamu tahu bahwa..." oninput="saveJournal(28,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Aku menulis kepada versi terbaiku — karena dia nyata, dia sedang dalam perjalanan, dan dia pasti tiba."</div>
+    </div>
+  </div>
+
+  <div class="day-card" id="day-29">
+    <div class="day-header" onclick="toggleDay(29)">
+      <div class="day-num">29</div>
+      <div class="day-title"><h3>Integrasi — Semua Menjadi Satu</h3><span>Tubuh, pikiran, energi. Ketiganya kini berjalan bersama.</span></div>
+      <div class="day-check" onclick="markDone(event,29)"></div><div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis olahraga favoritmu sekarang dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pilates sudah jadi favorit aku sekarang — tidak pernah terbayang dulu. Hari ini 40 menit dan setiap gerakan terasa seperti bagian dari siapa aku sekarang." oninput="saveJournal(29,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (tulis kapan dan apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dan malam — besok hari terakhir. Saat dengar malam ini ada rasa penuh. Tubuh, pikiran, energi — ketiganya terasa sudah berjalan bersama." oninput="saveJournal(29,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal</div>
+        <div class="journal-wrap"><div class="journal-q">Bagaimana hidupmu — hubungan, cara orang memperlakukanmu, cara kamu memperlakukan dirimu — 29 hari setelah kamu mulai?</div>
+        <textarea class="journal" style="min-height:130px;" placeholder="Tulis sebanyak yang kamu inginkan..." oninput="saveJournal(29,'q1',this.value)"></textarea></div></div>
+      <div class="affirmation">"Satu hari lagi. Tapi aku sudah tiba."</div>
+    </div>
+  </div>
+
+  <!-- DAY 30 - FINAL -->
+  <div class="day-card" id="day-30" style="border: 2px solid var(--pink); box-shadow: 0 0 30px rgba(233,30,140,0.2);">
+    <div class="day-header" onclick="toggleDay(30)" style="background: linear-gradient(135deg, rgba(233,30,140,0.15), rgba(194,24,91,0.08));">
+      <div class="day-num" style="background: linear-gradient(135deg, var(--pink), #9c0f5f); font-size: 16px;">30</div>
+      <div class="day-title">
+        <h3 style="color: var(--pink-light);">✦ Hari Terakhir — Kamu Sudah Tiba</h3>
+        <span>30 hari. Bukan yang sama seperti dulu.</span>
+      </div>
+      <div class="day-check" onclick="markDone(event,30)"></div>
+      <div class="day-chevron">›</div>
+    </div>
+    <div class="day-body">
+      <div class="task-section"><div class="task-section-title">🏃‍♀️ Olahraga — Rayakan Tubuhmu</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku olahraga: (tulis olahraga spesial hari ini — rayakan tubuhmu yang sudah 30 hari bergerak)</div>
+        <textarea class="journal" placeholder="Contoh: lari 5K pertama kali hari ini sebagai perayaan hari ke-30 — tidak pernah terbayang bisa sampai sini. Atau pilates 1 jam, atau gym yang paling berkesan. Apapun, tuliskan bagaimana rasanya." oninput="saveJournal(30,'ol',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">🎧 Audio Love Magnet — Hari Terakhir</div>
+        <div class="journal-wrap"><div class="journal-q">Hari ini aku dengarkan Love Magnet 2x: (dengarkan dengan penuh kesadaran — bandingkan dengan hari pertama. Tulis apa yang kamu rasakan)</div>
+        <textarea class="journal" placeholder="Contoh: pagi dengar dengan mata tertutup penuh — rasanya sangat berbeda dari hari pertama. Dulu hanya dengar, sekarang merasakan setiap kata masuk. Malam terakhir, ada rasa syukur yang besar." oninput="saveJournal(30,'au',this.value)"></textarea></div>
+      </div>
+      <div class="task-section"><div class="task-section-title">📝 Jurnal Penutup</div>
+        <div class="journal-wrap"><div class="journal-q">Dibandingkan hari pertama — bagaimana hidupmu sekarang? Hubunganmu, cara orang memperlakukanmu, cara kamu merasa tentang dirimu sendiri?</div>
+        <textarea class="journal" style="min-height:140px;" placeholder="Tulis sepenuh hatimu. Ini milikmu." oninput="saveJournal(30,'q1',this.value)"></textarea></div>
+        <div class="journal-wrap mt-16"><div class="journal-q">Apa yang akan kamu teruskan setelah ini? Olahraga, audio, jurnal — mana yang sudah menjadi bagian darimu?</div>
+        <textarea class="journal" placeholder="Tulis komitmenmu ke depan..." oninput="saveJournal(30,'q2',this.value)"></textarea></div>
+        <div class="journal-wrap mt-16"><div class="journal-q">Tuliskan satu kalimat yang merangkum siapa kamu sekarang setelah 30 hari ini.</div>
+        <textarea class="journal" style="min-height:60px;" placeholder="Contoh: Aku adalah wanita yang tidak perlu dikejar karena hidupku sudah penuh dan memancar..." oninput="saveJournal(30,'q3',this.value)"></textarea></div>
+      </div>
+      <div class="affirmation" style="background: linear-gradient(135deg, rgba(233,30,140,0.15), rgba(194,24,91,0.08)); border-color: var(--pink); font-size: 17px; padding: 20px 22px;">
+        "30 hari. Satu pilihan untuk berhenti mengejar dan mulai menjadi.<br/>
+        Dan lihat apa yang telah datang kepadamu."
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="divider"/>
+
+<!-- SAVE BUTTON -->
+<div style="max-width:680px; margin: 0 auto; padding: 40px 24px 0;">
+  <button class="save-btn" onclick="saveAll()">💾 Simpan Semua Jawaban</button>
+  <p style="text-align:center; font-size:13px; color:var(--muted); margin-top:12px;">Jawaban disimpan di browser kamu secara lokal. Tidak ada yang dikirim ke server.</p>
+</div>
+
+<footer>
+  <strong>Dark Feminine — 30 Hari Blueprint</strong><br/>
+  52 Jurus Dark Feminine × eL Vision<br/>
+  <span style="margin-top:8px; display:block; font-size:12px;">Workbook ini pribadi. Jaga, jangan bagikan. Energi yang terbentuk di sini milikmu sepenuhnya.</span>
+</footer>
+
+<script>
+  // PROGRESS BAR
+  window.addEventListener('scroll', () => {
+    const total = document.body.scrollHeight - window.innerHeight;
+    document.getElementById('progress-bar').style.width = (window.scrollY / total * 100) + '%';
+  });
+
+  // LOAD STATE
+  const state = JSON.parse(localStorage.getItem('df_workbook_state') || '{}');
+
+  // DAYS GRID
+  const grid = document.getElementById('days-grid');
+  for (let i = 1; i <= 30; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'day-dot' + (state['done_' + i] ? ' done' : '');
+    dot.textContent = i;
+    dot.title = 'Hari ' + i;
+    dot.onclick = () => {
+      const card = document.getElementById('day-' + i);
+      if (card) { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    };
+    dot.id = 'dot-' + i;
+    grid.appendChild(dot);
+  }
+
+  function updateProgress() {
+    let done = 0;
+    for (let i = 1; i <= 30; i++) { if (state['done_' + i]) done++; }
+    document.getElementById('done-count').textContent = done;
+    document.getElementById('done-pct').textContent = Math.round(done / 30 * 100) + '%';
+    document.getElementById('prog-fill').style.width = (done / 30 * 100) + '%';
+  }
+
+  // TOGGLE DAY
+  function toggleDay(n) {
+    const card = document.getElementById('day-' + n);
+    card.classList.toggle('open');
+  }
+
+  // MARK DONE
+  function markDone(e, n) {
+    e.stopPropagation();
+    const card = document.getElementById('day-' + n);
+    const isDone = !state['done_' + n];
+    state['done_' + n] = isDone;
+    card.classList.toggle('done', isDone);
+    document.getElementById('dot-' + n).classList.toggle('done', isDone);
+    const check = card.querySelector('.day-check');
+    check.textContent = isDone ? '✓' : '';
+    saveState();
+    updateProgress();
+  }
+
+  // CHECK TASK
+  function checkTask(el) {
+    el.classList.toggle('checked');
+  }
+
+  // JOURNAL
+  function saveJournal(day, key, val) {
+    state['j_' + day + '_' + key] = val;
+    localStorage.setItem('df_workbook_state', JSON.stringify(state));
+  }
+
+  function saveAll() {
+    localStorage.setItem('df_workbook_state', JSON.stringify(state));
+    const btn = document.querySelector('.save-btn');
+    btn.textContent = '✓ Tersimpan!';
+    btn.style.background = 'linear-gradient(135deg, #4ade80, #16a34a)';
+    setTimeout(() => {
+      btn.textContent = '💾 Simpan Semua Jawaban';
+      btn.style.background = '';
+    }, 2000);
+  }
+
+  function saveState() {
+    localStorage.setItem('df_workbook_state', JSON.stringify(state));
+  }
+
+  // RESTORE JOURNALS
+  function restoreJournals() {
+    document.querySelectorAll('textarea.journal').forEach(ta => {
+      if (ta.getAttribute('oninput')) {
+        const match = ta.getAttribute('oninput').match(/saveJournal\((\d+),'(\w+)'/);
+        if (match) {
+          const key = 'j_' + match[1] + '_' + match[2];
+          if (state[key]) ta.value = state[key];
+        }
+      }
+    });
+  }
+
+  // RESTORE DONE STATES
+  function restoreDone() {
+    for (let i = 1; i <= 30; i++) {
+      if (state['done_' + i]) {
+        const card = document.getElementById('day-' + i);
+        if (card) {
+          card.classList.add('done');
+          const check = card.querySelector('.day-check');
+          if (check) check.textContent = '✓';
+        }
+      }
+    }
+  }
+
+  restoreJournals();
+  restoreDone();
+  updateProgress();
+</script>
+</body>
+</html>

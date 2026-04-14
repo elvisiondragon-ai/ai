@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WomenGenesis — Kelahiran Baru Perempuan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #0d0b0f;
+    --bg2:       #131018;
+    --bg3:       #1a1622;
+    --rose:      #e8a5b0;
+    --rose-deep: #c4637a;
+    --rose-dark: #8b3a52;
+    --gold:      #d4af80;
+    --gold-light:#f0d5a8;
+    --sage:      #8fada0;
+    --lavender:  #b8a8d4;
+    --cream:     #f5efe8;
+    --muted:     #7a7087;
+    --text:      #e8e2dc;
+    --border:    rgba(212,175,128,0.15);
+    --border2:   rgba(232,165,176,0.12);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────────── */
+  .serif { font-family: 'Cormorant Garamond', serif; }
+
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.15; }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 22px; }
+  .wrap-wide { max-width: 900px; margin: 0 auto; padding: 0 22px; }
+
+  /* ── AMBIENT BACKGROUNDS ─────────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(196,99,122,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px; right: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(184,168,212,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  section { position: relative; z-index: 1; }
+
+  /* ── URGENCY BANNER ──────────────────────────────────────── */
+  .urgency-bar {
+    background: linear-gradient(90deg, var(--rose-dark), var(--rose-deep), var(--rose-dark));
+    background-size: 200% 100%;
+    animation: shimBg 4s ease infinite;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  @keyframes shimBg {
+    0%,100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+  }
+
+  #timer { font-weight: 700; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 1px 7px; margin: 0 4px; }
+
+  /* ── HERO ────────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 22px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-mandala {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(500px, 90vw);
+    height: min(500px, 90vw);
+    opacity: 0.04;
+    animation: rotateSlow 60s linear infinite;
+  }
+  @keyframes rotateSlow { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border);
+    background: rgba(212,175,128,0.06);
+    border-radius: 40px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 8vw, 82px);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 8px;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+  .hero h1 strong {
+    display: block;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--rose));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 20px auto 36px;
+    line-height: 1.7;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-proof {
+    font-size: 13px;
+    color: var(--sage);
+    margin-bottom: 36px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+  .hero-proof strong { color: var(--cream); }
+
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose-deep), var(--rose-dark));
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 18px 42px;
+    border-radius: 60px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 32px rgba(196,99,122,0.4);
+    animation: fadeUp 1s 0.4s ease both, pulseGlow 3s 1.5s ease infinite;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(196,99,122,0.55); }
+
+  @keyframes pulseGlow {
+    0%,100% { box-shadow: 0 8px 32px rgba(196,99,122,0.4); }
+    50%       { box-shadow: 0 8px 48px rgba(196,99,122,0.7); }
+  }
+
+  .hero-micro {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── DIVIDER ─────────────────────────────────────────────── */
+  .divider {
+    text-align: center;
+    padding: 20px 0;
+    color: var(--border);
+    font-size: 22px;
+    letter-spacing: 12px;
+  }
+
+  /* ── SECTION STANDARD ────────────────────────────────────── */
+  .section { padding: 72px 0; }
+  .section-sm { padding: 48px 0; }
+
+  .section-h2 {
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .section-h2 .accent { color: var(--rose); }
+  .section-h2 .gold   { color: var(--gold); }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 44px;
+  }
+
+  /* ── PAIN GRID ───────────────────────────────────────────── */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .pain-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .pain-card:hover { border-color: rgba(232,165,176,0.35); }
+  .pain-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .pain-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  /* ── STORY SECTION ───────────────────────────────────────── */
+  .story-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--rose-deep);
+    border-radius: 0 14px 14px 0;
+    padding: 28px 28px 28px 32px;
+    margin-bottom: 20px;
+  }
+  .story-card h3 {
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .story-card p {
+    font-size: 15px;
+    color: #a89dba;
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+
+  /* ── AGITATION ───────────────────────────────────────────── */
+  .agit-box {
+    background: linear-gradient(135deg, rgba(196,99,122,0.08), rgba(184,168,212,0.05));
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: 44px;
+  }
+  .agit-box p { font-size: 16px; color: var(--text); margin-bottom: 14px; line-height: 1.8; }
+  .agit-list { list-style: none; margin: 20px 0; }
+  .agit-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border2);
+    font-size: 15px;
+    color: var(--text);
+    display: flex;
+    gap: 10px;
+  }
+  .agit-list li::before { content: '→'; color: var(--rose); font-weight: 700; }
+  .highlight { color: var(--gold-light); font-weight: 600; }
+
+  /* ── SOLUTION / PRODUCT REVEAL ───────────────────────────── */
+  .product-reveal {
+    text-align: center;
+    padding: 60px 22px;
+  }
+  .product-emblem {
+    width: 120px; height: 120px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(196,99,122,0.15), rgba(184,168,212,0.1));
+    border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px;
+    animation: breathe 4s ease infinite;
+  }
+  @keyframes breathe {
+    0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196,99,122,0.3); }
+    50%       { transform: scale(1.04); box-shadow: 0 0 40px 10px rgba(196,99,122,0.08); }
+  }
+
+  /* ── WHAT YOU GET ─────────────────────────────────────────── */
+  .checks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 32px 0;
+  }
+  @media(max-width:560px){ .checks-grid { grid-template-columns: 1fr; } }
+
+  .check-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .check-item .ck { color: var(--sage); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── SCIENTIFIC METHOD ────────────────────────────────────── */
+  .science-strip {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+    text-align: center;
+  }
+  .sci-item .sci-icon { font-size: 32px; margin-bottom: 10px; }
+  .sci-item .sci-title { font-size: 14px; font-weight: 600; color: var(--cream); margin-bottom: 6px; }
+  .sci-item .sci-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── TESTIMONIALS ─────────────────────────────────────────── */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .testi-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .testi-card:hover { border-color: rgba(232,165,176,0.35); transform: translateY(-3px); }
+  .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+  .testi-text  { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 16px; }
+  .testi-name  { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+  .impact-row {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px;
+  }
+  .impact-tag {
+    font-size: 11px;
+    background: rgba(143,173,160,0.12);
+    border: 1px solid rgba(143,173,160,0.2);
+    color: var(--sage);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-weight: 500;
+  }
+
+  /* ── BONUS STACK ──────────────────────────────────────────── */
+  .bonus-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+  .bonus-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .bonus-item.highlight-bonus {
+    border-color: rgba(212,175,128,0.4);
+    background: linear-gradient(135deg, var(--bg2), rgba(212,175,128,0.04));
+  }
+  .bonus-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--rose), var(--gold));
+    border-radius: 3px 0 0 3px;
+  }
+  .bonus-icon { font-size: 28px; flex-shrink: 0; }
+  .bonus-info { flex: 1; }
+  .bonus-title { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+  .bonus-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .bonus-price {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+    background: rgba(212,175,128,0.1);
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-top: 6px;
+    display: inline-block;
+  }
+
+  /* ── VALUE TABLE ──────────────────────────────────────────── */
+  .value-table { width: 100%; border-collapse: collapse; margin-top: 28px; }
+  .value-table tr { border-bottom: 1px solid var(--border2); }
+  .value-table td { padding: 12px 4px; font-size: 14px; }
+  .value-table td:first-child { color: var(--text); }
+  .value-table td:last-child  { color: var(--gold); text-align: right; font-weight: 600; white-space: nowrap; }
+  .value-table .total-row td  { font-size: 16px; font-weight: 700; color: var(--cream); border-top: 2px solid var(--border); border-bottom: none; padding-top: 16px; }
+  .value-table .total-row td:last-child { color: var(--gold-light); }
+  .value-table .you-pay td    { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; border: none; }
+  .value-table .you-pay td:last-child { color: var(--rose); font-size: 22px; }
+  .strike { text-decoration: line-through; opacity: 0.5; }
+
+  /* ── GUARANTEE ────────────────────────────────────────────── */
+  .guarantee-box {
+    background: linear-gradient(135deg, rgba(143,173,160,0.08), rgba(212,175,128,0.06));
+    border: 2px solid rgba(143,173,160,0.25);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+  }
+  .guarantee-seal {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage), var(--gold));
+    color: #fff;
+    font-size: 36px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 40px rgba(143,173,160,0.3);
+  }
+  .guarantee-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .guarantee-text { font-size: 15px; color: var(--text); line-height: 1.8; max-width: 480px; margin: 0 auto; }
+
+  /* ── WORKBOOK HIGHLIGHT ───────────────────────────────────── */
+  .workbook-box {
+    background: var(--bg2);
+    border: 1px solid rgba(184,168,212,0.25);
+    border-radius: 20px;
+    padding: 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .workbook-box::before {
+    content: '30';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 160px;
+    font-weight: 700;
+    color: rgba(184,168,212,0.05);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .workbook-days {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .wb-day {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .wb-day .day-num { font-size: 18px; font-weight: 700; font-family: 'Cormorant Garamond', serif; color: var(--lavender); display: block; }
+  .wb-day .day-theme { color: var(--muted); margin-top: 4px; }
+
+  /* ── ABSURD OFFER ─────────────────────────────────────────── */
+  .offer-box {
+    background: linear-gradient(135deg, rgba(196,99,122,0.1), rgba(212,175,128,0.06));
+    border: 1px solid rgba(196,99,122,0.25);
+    border-radius: 24px;
+    padding: 48px 44px;
+    text-align: center;
+  }
+  .offer-total {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .offer-strikethrough {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-bottom: 12px;
+  }
+  .offer-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 68px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light), var(--rose));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin: 12px 0;
+  }
+  .offer-savings {
+    display: inline-block;
+    background: var(--rose-deep);
+    color: #fff;
+    border-radius: 40px;
+    padding: 6px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+  .offer-note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+
+  /* ── CHECKOUT FORM ────────────────────────────────────────── */
+  .form-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+  }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 7px; font-weight: 500; }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 16px;
+    color: var(--cream);
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus { border-color: var(--rose-deep); }
+
+  .payment-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+  .pay-tab {
+    background: var(--bg3);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pay-tab.active { border-color: var(--rose-deep); background: rgba(196,99,122,0.08); }
+  .pay-tab .pay-icon { font-size: 22px; margin-bottom: 4px; }
+  .pay-tab .pay-label { font-size: 12px; font-weight: 600; color: var(--text); }
+
+  /* ── UPSELL TOGGLE ───────────────────────────────────────── */
+  .upsell-box {
+    background: linear-gradient(135deg, rgba(212,175,128,0.08), rgba(196,99,122,0.05));
+    border: 1px solid rgba(212,175,128,0.25);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: border-color 0.2s;
+  }
+  .upsell-box:hover { border-color: rgba(212,175,128,0.45); }
+  .upsell-box.active { border-color: var(--gold); }
+  .upsell-check {
+    width: 22px; height: 22px;
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 13px;
+  }
+  .upsell-info { flex: 1; }
+  .upsell-title { font-size: 14px; font-weight: 600; color: var(--cream); }
+  .upsell-desc  { font-size: 12px; color: var(--muted); }
+  .upsell-price { font-size: 13px; font-weight: 700; color: var(--gold); }
+
+  /* ── FAQ ──────────────────────────────────────────────────── */
+  .faq-item {
+    border-bottom: 1px solid var(--border2);
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: var(--cream);
+    font-weight: 500;
+  }
+  .faq-arrow { color: var(--rose); transition: transform 0.3s; font-size: 18px; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a {
+    display: none;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 12px;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── NOT FOR ──────────────────────────────────────────────── */
+  .notfor-list { list-style: none; margin-top: 20px; }
+  .notfor-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border2);
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    gap: 12px;
+  }
+  .notfor-list li::before { content: '✕'; color: var(--rose-deep); font-weight: 700; }
+
+  /* ── HESITATION BOX ──────────────────────────────────────── */
+  .hesi-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px;
+    text-align: center;
+  }
+  .hesi-box p { font-size: 15px; color: var(--text); margin-bottom: 14px; line-height: 1.9; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .hesi-sting { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--rose); margin-top: 28px !important; }
+
+  /* ── STICKY CTA ───────────────────────────────────────────── */
+  #sticky-cta {
+    position: fixed;
+    bottom: -100px;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 12px 16px;
+    transition: bottom 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  #sticky-cta.show { bottom: 0; }
+  .sticky-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+  }
+  .sticky-text { flex: 1; font-size: 14px; font-weight: 600; color: var(--cream); }
+  .btn-sticky {
+    background: linear-gradient(135deg, var(--rose-deep), var(--rose-dark));
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 11px 22px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* ── FLOATING WA ──────────────────────────────────────────── */
+  #wa-float {
+    position: fixed;
+    bottom: 24px; right: 20px;
+    z-index: 998;
+    width: 54px; height: 54px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+    transition: transform 0.2s, bottom 0.4s;
+    text-decoration: none;
+  }
+  #wa-float:hover { transform: scale(1.1); }
+  #wa-float.lifted { bottom: 90px; }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 40px 22px;
+    border-top: 1px solid var(--border2);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer strong { color: var(--rose); }
+
+  /* ── SCROLL REVEAL ────────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ───────────────────────────────────────────────── */
+  @media(max-width:600px) {
+    .agit-box, .workbook-box, .offer-box, .form-box, .hesi-box, .guarantee-box { padding: 28px 22px; }
+    .offer-price { font-size: 52px; }
+    .payment-tabs { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  ⏳ Penawaran Spesial Berakhir dalam <span id="timer">23:59:47</span> — Harga Normal Kembali Setelahnya
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <svg class="hero-mandala" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="190" stroke="white" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="140" stroke="white" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="90" stroke="white" stroke-width="0.5"/>
+    <line x1="10" y1="200" x2="390" y2="200" stroke="white" stroke-width="0.5"/>
+    <line x1="200" y1="10" x2="200" y2="390" stroke="white" stroke-width="0.5"/>
+    <line x1="55" y1="55" x2="345" y2="345" stroke="white" stroke-width="0.5"/>
+    <line x1="345" y1="55" x2="55" y2="345" stroke="white" stroke-width="0.5"/>
+    <polygon points="200,40 280,140 200,120 120,140" stroke="white" stroke-width="0.5" fill="none"/>
+    <polygon points="200,360 280,260 200,280 120,260" stroke="white" stroke-width="0.5" fill="none"/>
+  </svg>
+
+  <span class="hero-badge">🌸 KELAHIRAN BARU PEREMPUAN</span>
+
+  <h1>
+    <em>Lahir Kembali,</em>
+    <strong>Jauh Lebih Plong</strong>
+  </h1>
+
+  <p class="hero-sub">
+    Metode saintifik untuk perempuan yang lelah overthinking — melepas beban, menenangkan hati, dan membuka pintu rezeki dari berbagai arah.
+  </p>
+
+  <p class="hero-proof"><strong>3.800+ perempuan</strong> sudah merasakan bedanya</p>
+
+  <a href="#checkout" class="btn-primary">
+    MULAI PERJALANANKU SEKARANG →
+  </a>
+  <p class="hero-micro">🔒 Garansi 100% · Digital · Dikirim Instan ke WhatsApp</p>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- PAIN POINTS -->
+<section class="section reveal" id="pain">
+  <div class="wrap">
+    <span class="label">Jujur Sama Diri Sendiri</span>
+    <h2 class="section-h2">Apakah Ini Yang Kamu <span class="accent">Rasakan</span> Tiap Hari?</h2>
+    <p class="section-sub" style="text-align:left;margin-bottom:0">Kamu tidak sendirian. Jutaan perempuan merasakannya — tapi hanya sedikit yang tahu cara keluarnya.</p>
+
+    <div class="pain-grid" style="margin-top:28px">
+      <div class="pain-card">
+        <span class="pain-icon">🌀</span>
+        <span class="pain-text">Pikiran berputar tanpa henti — malam sudah larut tapi otak tidak bisa berhenti</span>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">😮‍💨</span>
+        <span class="pain-text">Bangun pagi sudah capek sebelum hari dimulai — padahal belum ngapa-ngapain</span>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">💸</span>
+        <span class="pain-text">Rezeki terasa seret, usaha keras tapi hasilnya tidak sebanding</span>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🤯</span>
+        <span class="pain-text">Overthinking segala hal — keputusan kecil pun jadi beban besar</span>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">😶</span>
+        <span class="pain-text">Merasa sendirian bahkan di tengah keramaian — tidak ada yang benar-benar mengerti</span>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🔒</span>
+        <span class="pain-text">Tahu sesuatu harus berubah, tapi tidak tahu harus mulai dari mana</span>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🙁</span>
+        <span class="pain-text">Bantuan terasa jauh — padahal kamu sudah mencoba segalanya</span>
+      </div>
+      <div class="pain-card">
+        <span class="pain-icon">🌧️</span>
+        <span class="pain-text">Lupa kapan terakhir kali kamu merasa <strong>benar-benar ringan</strong> dan bahagia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / AGITATION -->
+<section class="section-sm reveal">
+  <div class="wrap">
+    <div class="story-card">
+      <h3>Jam 11 Malam. Pikiran Tidak Berhenti.</h3>
+      <p>Kamu rebahan. Tapi otak malah mulai — mengulang percakapan tadi, merencanakan besok, khawatir soal hal yang belum tentu terjadi.\n\nKamu coba tidur. Matamu menutup. Tapi pikiran? Masih jalan terus.\n\nKamu tahu ini tidak baik. Kamu sudah coba meditasi. Journaling. Ngobrol sama teman. Tapi besoknya kembali lagi.\n\nDan yang paling menguras bukan lelahnya — tapi rasa tidak berdaya karena tidak tahu harus ngapain lagi.</p>
+    </div>
+
+    <div class="story-card">
+      <h3>Rezeki Kerasa Seret, Padahal Sudah Kerja Keras</h3>
+      <p>Kamu sudah usaha. Sudah doa. Sudah ikhlaskan. Tapi tetap saja hasilnya tidak sesuai harapan.\n\nOrang lain seakan-akan mudah dapat rejeki — klien datang sendiri, peluang terbuka, bantuan muncul dari mana-mana.\n\nSementara kamu? Seperti ada tembok tak kasatmata yang menghalangi.\n\nKamu tidak tahu bahwa masalahnya bukan di usaha. Tapi ada sesuatu di dalam dirimu yang belum diselesaikan.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AGITATION BOX -->
+<section class="section-sm reveal">
+  <div class="wrap">
+    <div class="agit-box">
+      <p>Kamu diajarkan untuk <strong>kuat</strong>. Untuk sabar. Untuk tidak mengeluh. Untuk terus melanjutkan hidup.</p>
+      <p><strong>DAN APA HASILNYA?</strong></p>
+      <ul class="agit-list">
+        <li>Yang rajin berdoa → tetap merasa tidak tenang</li>
+        <li>Yang sudah konseling → masih overthinking</li>
+        <li>Yang sudah pasrah → tapi rezeki tetap seret</li>
+      </ul>
+      <p>Tapi perempuan yang <span class="highlight">"paham satu hal ini"</span>? Hidupnya jauh berbeda.</p>
+      <p>Bukan karena dia lebih beruntung. Bukan karena dia lebih cantik atau lebih pintar.<br/>Tapi karena dia <span class="highlight">TAHU cara menenangkan dirinya dari dalam — secara ilmiah.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">· · ·</div>
+
+<!-- SOLUTION -->
+<section class="section reveal" id="solution">
+  <div class="wrap" style="text-align:center">
+    <span class="label">Solusinya</span>
+    <div class="product-emblem">🌸</div>
+    <h2 class="section-h2">WomenGenesis<br/><span class="accent">Kelahiran Baru Perempuan</span></h2>
+    <p style="font-size:16px;color:var(--muted);margin:18px 0 12px">Bukan sekadar ebook motivasi biasa.</p>
+    <p style="font-size:15px;color:var(--text);line-height:1.8;max-width:520px;margin:0 auto">
+      Program transformasi berbasis <strong style="color:var(--sage)">sains</strong> — psikologi positif, neurosains stres, dan kearifan feminine — yang dirancang untuk membantu kamu melepas beban, menenangkan pikiran, dan membuka aliran rezeki yang selama ini tersumbat.
+    </p>
+  </div>
+</section>
+
+<!-- SCIENTIFIC METHOD -->
+<section class="section-sm reveal">
+  <div class="wrap">
+    <span class="label">Metode Saintifik</span>
+    <h2 class="section-h2" style="text-align:center;margin-bottom:28px">Bukan <span class="accent">Klenik</span> — Ini <span class="gold">Ilmu</span></h2>
+    <div class="science-strip">
+      <div class="sci-item">
+        <div class="sci-icon">🧠</div>
+        <div class="sci-title">Neurosains Stres</div>
+        <div class="sci-desc">Cara kerja kortisol dan bagaimana meregulasi sistem saraf secara alami</div>
+      </div>
+      <div class="sci-item">
+        <div class="sci-icon">🌊</div>
+        <div class="sci-title">Psikologi Positif</div>
+        <div class="sci-desc">Teknik evidence-based untuk mengubah pola pikir negatif yang berulang</div>
+      </div>
+      <div class="sci-item">
+        <div class="sci-icon">🎵</div>
+        <div class="sci-title">Audio Terapi</div>
+        <div class="sci-desc">Frekuensi suara yang terbukti menurunkan kecemasan dan meningkatkan fokus</div>
+      </div>
+      <div class="sci-item">
+        <div class="sci-icon">📓</div>
+        <div class="sci-title">Habit Science</div>
+        <div class="sci-desc">30 hari workbook yang didesain berdasarkan siklus pembentukan kebiasaan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section reveal">
+  <div class="wrap">
+    <span class="label">Yang Akan Kamu Pelajari</span>
+    <h2 class="section-h2">Isi Program <span class="gold">WomenGenesis</span></h2>
+    <div class="checks-grid" style="margin-top:24px">
+      <div class="check-item"><span class="ck">✦</span><span><strong>Reset Mental</strong> — teknik 5 menit untuk hentikan overthinking seketika</span></div>
+      <div class="check-item"><span class="ck">✦</span><span><strong>Emotional Release</strong> — cara melepas emosi tertahan yang memblokir rezeki</span></div>
+      <div class="check-item"><span class="ck">✦</span><span><strong>Pola Pikir Abundance</strong> — dari "tidak pernah cukup" ke "lebih dari cukup"</span></div>
+      <div class="check-item"><span class="ck">✦</span><span><strong>Nervous System Reset</strong> — regulasi sistem saraf tanpa obat, tanpa terapi mahal</span></div>
+      <div class="check-item"><span class="ck">✦</span><span><strong>Feminine Energy</strong> — cara mengaktifkan energi feminin yang menarik bantuan & rezeki</span></div>
+      <div class="check-item"><span class="ck">✦</span><span><strong>Affirmation Science</strong> — afirmasi yang benar-benar bekerja secara neuroplastisitas</span></div>
+      <div class="check-item"><span class="ck">✦</span><span><strong>Boundary Setting</strong> — cara berkata tidak tanpa rasa bersalah</span></div>
+      <div class="check-item"><span class="ck">✦</span><span><strong>Sleep & Recovery</strong> — protokol tidur nyenyak untuk otak yang biasa overthinking</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:18px">+ 30 latihan harian yang membuat segalanya terasa nyata dalam hidupmu...</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section reveal" id="reviews">
+  <div class="wrap-wide">
+    <span class="label" style="text-align:center;display:block">Mereka Sudah Merasakan</span>
+    <h2 class="section-h2" style="text-align:center">Hasil Nyata dari <span class="accent">3.800+ Perempuan</span></h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Baru 2 minggu jalanin workbook-nya, tiba-tiba klien baru datang sendiri. Padahal aku cuma berubah secara batin. Rezekiku beneran lancar, bukan kebetulan, ini nyata."</p>
+        <div class="testi-name">Riana W., 29 thn — Jakarta</div>
+        <div class="impact-row">
+          <span class="impact-tag">Rezeki Lancar</span>
+          <span class="impact-tag">Hati Tenang</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Aku udah coba berbagai self-help book. Ini yang pertama kali berasa 'klik'. Audionya bantu banget buat tidur dan akhirnya otakku bisa berhenti duluan."</p>
+        <div class="testi-name">Sella M., 34 thn — Surabaya</div>
+        <div class="impact-row">
+          <span class="impact-tag">Tidur Nyenyak</span>
+          <span class="impact-tag">Overthinking Berkurang</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Bantuan datang dari arah yang tidak aku duga. Tetangga tiba-tiba nawarin kerjasama, mantan klien kembali, dan anak-anakku lebih mudah diajak bicara. Semuanya berubah setelah aku berubah dari dalam."</p>
+        <div class="testi-name">Diah K., 41 thn — Bandung</div>
+        <div class="impact-row">
+          <span class="impact-tag">Bantuan Datang</span>
+          <span class="impact-tag">Hubungan Membaik</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-text">"Bintang 4 karena butuh usaha buat konsisten 30 hari. Tapi setelah selesai? Aku ngerasa kayak orang baru. Overthinking aku berkurang 80%, bukan lebay."</p>
+        <div class="testi-name">Nanda R., 26 thn — Medan</div>
+        <div class="impact-row">
+          <span class="impact-tag">Lebih Percaya Diri</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Suami komentar 'kamu beda sekarang' tapi dia ga tau apa yang berubah 😂 Aku cuma lebih tenang, lebih jarang reaktif. Dan rumah tangga kami jauh lebih damai."</p>
+        <div class="testi-name">Fitri A., 38 thn — Yogyakarta</div>
+        <div class="impact-row">
+          <span class="impact-tag">Rumah Tangga Damai</span>
+          <span class="impact-tag">Lebih Tenang</span>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Single mom yang selama ini hidupnya chaos. Setelah program ini, aku bisa berpikir lebih jernih, keputusanku lebih baik, dan anakku bilang 'mama lebih happy sekarang'. Itu cukup buat aku."</p>
+        <div class="testi-name">Yuni P., 33 thn — Semarang</div>
+        <div class="impact-row">
+          <span class="impact-tag">Lebih Happy</span>
+          <span class="impact-tag">Keputusan Jernih</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">· · ·</div>
+
+<!-- WORKBOOK 30 HARI -->
+<section class="section reveal">
+  <div class="wrap">
+    <span class="label">Kunci Program</span>
+    <h2 class="section-h2">Workbook <span class="gold">30 Hari</span> — Sambil Dengarkan Audio</h2>
+    <p style="font-size:15px;color:var(--muted);margin:14px 0 28px;line-height:1.8">
+      Bukan hanya dibaca lalu dilupakan. Workbook ini adalah teman perjalananmu — setiap hari ada latihan 10–15 menit yang dikerjakan sambil mendengarkan audio khusus yang kami rancang untuk menenangkan sistem saraf.
+    </p>
+
+    <div class="workbook-box">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);margin-bottom:6px">Apa yang Terjadi Dalam 30 Hari?</h3>
+      <p style="font-size:14px;color:var(--muted)">Setiap minggu punya fokus transformasi yang berbeda:</p>
+      <div class="workbook-days">
+        <div class="wb-day"><span class="day-num">1–7</span><span class="day-theme">Melepas Beban & Memulai Reset</span></div>
+        <div class="wb-day"><span class="day-num">8–14</span><span class="day-theme">Membangun Ketenangan dari Dalam</span></div>
+        <div class="wb-day"><span class="day-num">15–21</span><span class="day-theme">Membuka Energi Abundance</span></div>
+        <div class="wb-day"><span class="day-num">22–30</span><span class="day-theme">Menetap dalam Versi Baru Dirimu</span></div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:20px">✦ Audio tersedia dalam format MP3 · Bisa didengarkan sebelum tidur, sambil berjalan, atau kapan saja</p>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS STACK -->
+<section class="section reveal">
+  <div class="wrap">
+    <span class="label">Bonus Eksklusif</span>
+    <h2 class="section-h2">Yang Kamu Dapat <span class="accent">Hari Ini</span></h2>
+
+    <div class="bonus-stack">
+      <div class="bonus-item highlight-bonus">
+        <span class="bonus-icon">📖</span>
+        <div class="bonus-info">
+          <div class="bonus-title">Ebook Utama: WomenGenesis (168 hal)</div>
+          <div class="bonus-desc">Panduan lengkap kelahiran baru perempuan — psikologi, sains, dan praktik harian</div>
+          <span class="bonus-price">Rp249.000</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">🎵</span>
+        <div class="bonus-info">
+          <div class="bonus-title">Bonus 1: Audio Seri Ketenangan (12 Track)</div>
+          <div class="bonus-desc">Audio terapi frekuensi khusus untuk overthinking, tidur, dan nervous system reset</div>
+          <span class="bonus-price">Rp197.000</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">📓</span>
+        <div class="bonus-info">
+          <div class="bonus-title">Bonus 2: Workbook 30 Hari (88 hal)</div>
+          <div class="bonus-desc">Latihan harian 10–15 menit yang membawa perubahan nyata — didesain untuk dipakai, bukan hanya dibaca</div>
+          <span class="bonus-price">Rp127.000</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">💌</span>
+        <div class="bonus-info">
+          <div class="bonus-title">Bonus 3: Kisah Sukses Perempuan Indonesia (56 hal)</div>
+          <div class="bonus-desc">15 kisah nyata perempuan yang bangkit — dari burnout, perceraian, kebangkrutan, dan trauma</div>
+          <span class="bonus-price">Rp97.000</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">✨</span>
+        <div class="bonus-info">
+          <div class="bonus-title">Bonus 4: Affirmation Bible — 365 Afirmasi Perempuan (44 hal)</div>
+          <div class="bonus-desc">Afirmasi harian berbasis neuroplastisitas — bukan klise, tapi yang benar-benar mengubah jalur neural</div>
+          <span class="bonus-price">Rp77.000</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">🌿</span>
+        <div class="bonus-info">
+          <div class="bonus-title">Bonus 5: Rezeki & Feminine Energy (38 hal)</div>
+          <div class="bonus-desc">Koneksi antara ketenangan batin dan kelancaran rezeki — dijelaskan secara saintifik</div>
+          <span class="bonus-price">Rp87.000</span>
+        </div>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-icon">🧘</span>
+        <div class="bonus-info">
+          <div class="bonus-title">Bonus 6: Protokol Anti-Overthinking (28 hal)</div>
+          <div class="bonus-desc">Panduan darurat untuk momen krisis — ketika pikiran sudah di ubun-ubun dan kamu butuh solusi sekarang</div>
+          <span class="bonus-price">Rp67.000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE TABLE / ABSURD OFFER -->
+<section class="section reveal" id="checkout">
+  <div class="wrap">
+    <span class="label">Investasi Hari Ini</span>
+    <h2 class="section-h2" style="text-align:center">Harganya <span class="accent">Tidak Masuk Akal</span> — Sengaja</h2>
+    <p style="font-size:15px;color:var(--muted);text-align:center;margin:14px 0 28px">Kami sengaja membuat harga ini terasa konyol — karena kami ingin <strong style="color:var(--cream)">setiap perempuan</strong> bisa mengaksesnya.</p>
+
+    <table class="value-table">
+      <tr><td>📖 Ebook Utama WomenGenesis (168 hal)</td><td>Rp249.000</td></tr>
+      <tr><td>🎵 Audio Seri Ketenangan (12 Track)</td><td>Rp197.000</td></tr>
+      <tr><td>📓 Workbook 30 Hari (88 hal)</td><td>Rp127.000</td></tr>
+      <tr><td>💌 Kisah Sukses Perempuan Indonesia</td><td>Rp97.000</td></tr>
+      <tr><td>✨ Affirmation Bible 365 Afirmasi</td><td>Rp77.000</td></tr>
+      <tr><td>🌿 Rezeki & Feminine Energy</td><td>Rp87.000</td></tr>
+      <tr><td>🧘 Protokol Anti-Overthinking</td><td>Rp67.000</td></tr>
+      <tr class="total-row"><td>Total Nilai Nyata</td><td>Rp901.000</td></tr>
+      <tr class="you-pay"><td>Harga Hari Ini</td><td>Rp149.000</td></tr>
+    </table>
+
+    <div class="offer-box" style="margin-top:36px">
+      <p class="offer-total">Total nilai seluruh program:</p>
+      <p class="offer-strikethrough">Rp901.000</p>
+      <div class="offer-savings">Hemat 83% — Penawaran Terbatas</div>
+      <p class="offer-price">Rp149.000</p>
+      <p style="font-size:15px;color:var(--muted)">Satu kali bayar · Akses selamanya · Dikirim instan</p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="section-sm reveal">
+  <div class="wrap">
+    <div class="guarantee-box">
+      <div class="guarantee-seal">🛡️</div>
+      <h3 class="guarantee-title">Garansi 100% — Tanpa Tanda Tanya</h3>
+      <p class="guarantee-text">
+        Jika setelah 30 hari kamu sudah menjalankan workbook dan mendengarkan audio tapi tidak merasakan <em>perubahan apapun</em> — kami kembalikan 100% uangmu. Tidak perlu alasan. Tidak perlu drama. Kamu hanya perlu hubungi kami.
+      </p>
+      <p style="margin-top:16px;font-size:13px;color:var(--sage)">✦ Ini bukan janji kosong — karena kami yakin produk ini berhasil untuk perempuan yang benar-benar menjalankannya.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM ORDER -->
+<section class="section reveal" id="form-order">
+  <div class="wrap">
+    <span class="label">Pesan Sekarang</span>
+    <h2 class="section-h2" style="margin-bottom:28px">Mulai <span class="accent">Perjalananmu</span></h2>
+
+    <!-- UPSELL -->
+    <div class="upsell-box" id="upsell-toggle" onclick="toggleUpsell()">
+      <div class="upsell-check" id="upsell-check">✓</div>
+      <div class="upsell-info">
+        <div class="upsell-title">+ Upgrade: Sesi Live Q&A + Komunitas Eksklusif</div>
+        <div class="upsell-desc">Bergabung dengan 500+ perempuan di komunitas privat + 2x sesi tanya jawab live per bulan</div>
+      </div>
+      <div class="upsell-price" id="upsell-price">+Rp50.000</div>
+    </div>
+
+    <div class="form-box">
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <input type="text" placeholder="Contoh: Sari Dewi" id="inp-name" />
+      </div>
+      <div class="form-group">
+        <label>Nomor WhatsApp (untuk pengiriman)</label>
+        <input type="text" placeholder="08xxxxxxxxxx" id="inp-phone" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="email@kamu.com" id="inp-email" />
+      </div>
+
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:600">Pilih Metode Pembayaran:</p>
+      <div class="payment-tabs">
+        <div class="pay-tab active" id="tab-qris" onclick="selectPay('qris')">
+          <div class="pay-icon">📱</div>
+          <div class="pay-label">QRIS / Transfer</div>
+        </div>
+        <div class="pay-tab" id="tab-paypal" onclick="selectPay('paypal')">
+          <div class="pay-icon">💳</div>
+          <div class="pay-label">PayPal / Card</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:8px;margin-bottom:6px">
+        <p style="font-size:15px;font-weight:700;color:var(--cream)" id="total-display">Total: Rp199.000 (termasuk upgrade komunitas)</p>
+        <p style="font-size:12px;color:var(--muted)" id="base-display">Produk: Rp149.000 + Komunitas: Rp50.000</p>
+      </div>
+
+      <button onclick="submitOrder()" style="width:100%;margin-top:16px" class="btn-primary">
+        🌸 MULAI TRANSFORMASIKU SEKARANG →
+      </button>
+      <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:12px">🔒 Pembayaran aman · Produk dikirim instan ke WhatsApp · Garansi 100%</p>
+    </div>
+  </div>
+</section>
+
+<!-- NOT FOR -->
+<section class="section-sm reveal">
+  <div class="wrap">
+    <h2 class="section-h2">WomenGenesis <span class="accent">BUKAN</span> untuk:</h2>
+    <ul class="notfor-list">
+      <li>Perempuan yang sudah puas dengan kondisi hidupnya saat ini</li>
+      <li>Yang mencari solusi instan tanpa mau menjalankan apapun</li>
+      <li>Yang tidak percaya bahwa dirinya bisa berubah</li>
+      <li>Yang masih menyalahkan keadaan dan tidak mau bertanggung jawab</li>
+    </ul>
+    <p style="margin-top:24px;font-size:15px;color:var(--rose);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px">"Ini hanya untuk perempuan yang sudah siap lahir kembali — lebih ringan, lebih kuat, lebih plong."</p>
+  </div>
+</section>
+
+<!-- HESITATION BOX -->
+<section class="section-sm reveal">
+  <div class="wrap">
+    <div class="hesi-box">
+      <h2 class="section-h2" style="margin-bottom:24px">Tunggu <span class="accent">Sebentar.</span></h2>
+      <p>Kamu masih di sini — berarti ada sesuatu yang menahan.</p>
+      <p>Boleh jujur? Harga ini bukan yang kamu takutkan. Yang kamu takutkan adalah — bagaimana kalau ini <strong style="color:var(--cream)">benar-benar berhasil?</strong></p>
+      <p>Bagaimana kalau selama ini bukan nasibmu yang salah — tapi hanya satu hal yang belum kamu selesaikan dari dalam?</p>
+      <p>Karena kalau itu benar — semua malam panjang itu, semua kelelahan itu, semua momen merasa sendiri itu... bisa dicegah.</p>
+      <p>Sekarang kamu berdiri di depan pintunya. Seharga <strong style="color:var(--gold)">segelas kopi seminggu.</strong></p>
+      <p>Di satu sisi: perubahan yang sudah kamu tunggu lama. Di sisi lain: kembali ke loop yang sama besok pagi.</p>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px;align-items:center">
+        <a href="#form-order" class="btn-primary">Ya, saya siap lahir kembali — Pesan Sekarang</a>
+        <a href="#reviews" style="color:var(--muted);font-size:13px;text-decoration:none">Lihat dulu kata mereka yang sudah merasakan →</a>
+      </div>
+      <p class="hesi-sting">"Harga ketenangan tidak pernah lebih murah dari rasa lelah yang kamu tanggung gratis selama ini."</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section reveal">
+  <div class="wrap">
+    <span class="label">Pertanyaan Umum</span>
+    <h2 class="section-h2" style="margin-bottom:28px">Ada yang <span class="accent">Ditanyakan?</span></h2>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Bagaimana cara aksesnya?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Setelah pembayaran dikonfirmasi, semua file (ebook, audio, workbook) dikirim ke WhatsApp kamu dalam 5 menit. Format HTML untuk ebook bisa dibaca di HP, tablet, atau komputer. Audio dalam format MP3.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Apakah ini aman dan privat?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">100% privat. Tidak ada nama produk di bukti transfer. Semua dikirim secara digital dan rahasia.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Berapa lama sampai terasa hasilnya?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Banyak pembaca merasakan perubahan mood dan ketenangan setelah 3–7 hari pertama. Perubahan yang lebih dalam (pola pikir, kelancaran rezeki, hubungan) biasanya terasa jelas di minggu ke-3 dan ke-4 setelah konsisten menjalankan workbook.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Apakah ini untuk yang sudah punya pasangan juga?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Ya! WomenGenesis bukan tentang hubungan romantis — ini tentang hubunganmu dengan dirimu sendiri. Banyak peserta kami adalah ibu rumah tangga, single mom, wanita karir, dan perempuan di berbagai fase hidup.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Bagaimana kalau tidak cocok?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Garansi 100% tanpa tanda tanya. Jalankan workbook selama 30 hari, dengarkan audionya — kalau tidak ada perubahan, hubungi kami dan kami kembalikan uangmu sepenuhnya.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q"><span>Apakah ini berbasis agama atau spiritual tertentu?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Tidak. WomenGenesis berbasis sains (psikologi dan neurosains) dan universal — bisa digunakan oleh perempuan dari latar belakang kepercayaan apapun.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>WomenGenesis — eL Vision</strong><br/>
+  <span style="display:block;margin-top:6px">© 2026 Semua Hak Dilindungi</span>
+  <div style="margin-top:14px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
+    <span>Privasi Terjamin</span><span>·</span>
+    <span>Digital Product</span><span>·</span>
+    <span>WhatsApp Support</span>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div id="sticky-cta">
+  <div class="sticky-inner">
+    <div class="sticky-text">🌸 WomenGenesis — <span style="color:var(--gold)" id="sticky-price">Rp199.000</span></div>
+    <a href="#form-order" class="btn-sticky">PESAN SEKARANG</a>
+  </div>
+</div>
+
+<!-- FLOATING WA -->
+<a id="wa-float" href="https://wa.me/6289532563348?text=Halo%20Admin%20WomenGenesis%2C%20saya%20mau%20tanya..." target="_blank" rel="noopener noreferrer">
+  <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+  </svg>
+</a>
+
+<script>
+  // ── TIMER ──────────────────────────────────────────────
+  (function() {
+    const key = 'wg_timer_end';
+    let end = localStorage.getItem(key);
+    if (!end || Date.now() > +end) {
+      end = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem(key, end);
+    }
+    function update() {
+      const diff = +end - Date.now();
+      if (diff <= 0) { document.getElementById('timer').textContent = '00:00:00'; return; }
+      const h = String(Math.floor(diff / 3600000)).padStart(2,'0');
+      const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+      const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+      document.getElementById('timer').textContent = `${h}:${m}:${s}`;
+    }
+    update();
+    setInterval(update, 1000);
+  })();
+
+  // ── SCROLL REVEAL ──────────────────────────────────────
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // ── STICKY CTA ─────────────────────────────────────────
+  let heroHeight = 0;
+  window.addEventListener('load', () => { heroHeight = document.querySelector('.hero').offsetHeight; });
+  window.addEventListener('scroll', () => {
+    const st = document.getElementById('sticky-cta');
+    const wa = document.getElementById('wa-float');
+    if (window.scrollY > heroHeight) {
+      st.classList.add('show');
+      wa.classList.add('lifted');
+    } else {
+      st.classList.remove('show');
+      wa.classList.remove('lifted');
+    }
+  });
+
+  // ── FAQ TOGGLE ─────────────────────────────────────────
+  function toggleFaq(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  // ── PAYMENT TAB ────────────────────────────────────────
+  function selectPay(type) {
+    document.getElementById('tab-qris').classList.toggle('active', type === 'qris');
+    document.getElementById('tab-paypal').classList.toggle('active', type === 'paypal');
+  }
+
+  // ── UPSELL TOGGLE ──────────────────────────────────────
+  let upsellOn = true;
+  function toggleUpsell() {
+    upsellOn = !upsellOn;
+    const box = document.getElementById('upsell-toggle');
+    const check = document.getElementById('upsell-check');
+    const total = document.getElementById('total-display');
+    const base = document.getElementById('base-display');
+    const sticky = document.getElementById('sticky-price');
+    box.classList.toggle('active', upsellOn);
+    check.textContent = upsellOn ? '✓' : '';
+    if (upsellOn) {
+      total.textContent = 'Total: Rp199.000 (termasuk upgrade komunitas)';
+      base.textContent = 'Produk: Rp149.000 + Komunitas: Rp50.000';
+      sticky.textContent = 'Rp199.000';
+    } else {
+      total.textContent = 'Total: Rp149.000';
+      base.textContent = 'Produk dasar saja';
+      sticky.textContent = 'Rp149.000';
+    }
+  }
+
+  // ── SUBMIT ─────────────────────────────────────────────
+  function submitOrder() {
+    const name  = document.getElementById('inp-name').value.trim();
+    const phone = document.getElementById('inp-phone').value.trim();
+    const email = document.getElementById('inp-email').value.trim();
+    if (!name || !phone || !email) {
+      alert('Mohon lengkapi nama, nomor WhatsApp, dan email kamu ya 💗');
+      return;
+    }
+    const total = upsellOn ? 'Rp199.000' : 'Rp149.000';
+    const msg = encodeURIComponent(`Halo Admin WomenGenesis! 🌸\n\nSaya ingin memesan program WomenGenesis.\n\nNama: ${name}\nWA: ${phone}\nEmail: ${email}\nTotal: ${total}\n\nMohon info pembayarannya ya. Terima kasih!`);
+    window.open(`https://wa.me/6289532563348?text=${msg}`, '_blank');
+  }
+</script>
+</body>
+</html>

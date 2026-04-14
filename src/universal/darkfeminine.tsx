@@ -1,4 +1,16 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+
+const DEBUG_IMAGES = false; // const DEBUG_IMAGES = true;
+const DbgImg = ({ src, alt, className, style, label }: { src: string; alt?: string; className?: string; style?: React.CSSProperties; label: string }) => (
+    <div style={{ position: 'relative', display: 'block', lineHeight: 0 }}>
+        <img src={src} alt={alt} className={className} style={{ display: 'block', width: '100%', ...style }} />
+        {DEBUG_IMAGES && (
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 5 }}>
+                <span style={{ background: 'rgba(0,0,0,0.72)', color: '#FFD700', fontSize: '22px', fontWeight: 900, padding: '8px 18px', borderRadius: '10px', letterSpacing: '0.5px', textAlign: 'center', wordBreak: 'break-all', maxWidth: '90%' }}>{label}</span>
+            </div>
+        )}
+    </div>
+);
 import { useSearchParams } from 'react-router-dom';
 import { supabase } from "../integrations/supabase/client";
 import {
@@ -17,80 +29,106 @@ import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewC
 
 // Asset Imports for ID
 import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
-import df02Id from '../assets/darkfem/indo_image/df02_2am_scroll.png';
 import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.png';
-import df05Id from '../assets/darkfem/indo_image/df05_comparison.png';
-import df06Id from '../assets/darkfem/indo_image/df06_fuckboy_cycle.png';
-import df07Id from '../assets/darkfem/indo_image/df07_drakor_fantasy.png';
 import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
 import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
-import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
-const video1Id = '/assets/videos/video1.mp4';
-import video1PosterId from '../assets/darkfem/indo_image/video1.jpg';
-const video3Id = '/assets/videos/video3.mp4';
-import video3PosterId from '../assets/darkfem/indo_image/video3.jpg';
 
-// Istri Section Assets
-import istri01 from '../assets/darkfem/indo_image/istritest1-Tidur_Sendiri.png';
-import istri02 from '../assets/darkfem/indo_image/istritest2-Dulu_vs_Sekarang.png';
-import istri03 from '../assets/darkfem/indo_image/istritest3-Suami_Perhatian_HP.png';
-import istri04 from '../assets/darkfem/indo_image/istritest4-Ibu_vs_Wanita.png';
-import istri05 from '../assets/darkfem/indo_image/istritest9-Dia_Pilih_Segalanya.png';
-import istri06 from '../assets/darkfem/indo_image/istritest10-Bertahan_Untuk_Anak.png';
+// Istri Carousel Assets (?istri parameter)
+import istriC1S1 from '../assets/darkfem/istri/c1/df_0413_c1_s1_1776094006614.png';
+import istriC1S2 from '../assets/darkfem/istri/c1/df_0413_c1_s2_1776094060387.png';
+import istriC1S3 from '../assets/darkfem/istri/c1/df_0413_c1_s3_1776094080684.png';
+import istriC1S4 from '../assets/darkfem/istri/c1/df_0413_c1_s4_1776094099286.png';
+import istriC2S1 from '../assets/darkfem/istri/c2/df_0413_c2_s1_1776094189631.png';
+import istriC2S2 from '../assets/darkfem/istri/c2/df_0413_c2_s2_1776094206120.png';
+import istriC2S3 from '../assets/darkfem/istri/c2/df_0413_c2_s3_1776094223527.png';
+import istriC2S4 from '../assets/darkfem/istri/c2/df_0413_c2_s4_1776094241692.png';
+import istriC3S1 from '../assets/darkfem/istri/c3/df_0413_sp_s1_1776094310773.png';
+import istriC3S2 from '../assets/darkfem/istri/c3/df_0413_sp_s2_1776094328010.png';
+import istriC3S3 from '../assets/darkfem/istri/c3/df_0413_sp_s3_1776094342928.png';
+import istriC3S4 from '../assets/darkfem/istri/c3/df_0413_sp_s4_1776094363097.png';
+import istriC4S1 from '../assets/darkfem/istri/c4/df_0413_sl_s1_1776094453410.png';
+import istriC4S2 from '../assets/darkfem/istri/c4/df_0413_sl_s2_1776094469075.png';
+import istriC4S3 from '../assets/darkfem/istri/c4/df_0413_sl_s3_1776094484568.png';
+import istriC4S4 from '../assets/darkfem/istri/c4/df_0413_sl_s4_1776094503539.png';
+import istriC5S1 from '../assets/darkfem/istri/c5/df_0413_jmp_s1_v2_1776172859297.png';
+import istriC5S2 from '../assets/darkfem/istri/c5/df_0413_jmp_s2_v2_1776172873565.png';
+import istriC5S3 from '../assets/darkfem/istri/c5/df_0413_jmp_s3_v2_1776172894595.png';
+import istriC5S4 from '../assets/darkfem/istri/c5/df_0413_jmp_s4_v2_1776172913410.png';
+
+// Single Carousel Assets (general page wifeSection)
+import singleC2First from '../assets/darkfem/single/c2single/first.png';
+import singleC2S2 from '../assets/darkfem/single/c2single/df_0413_c2_s2_1776094206120.png';
+import singleC2S3 from '../assets/darkfem/single/c2single/df_0413_c2_s3_1776094223527.png';
+import singleC2S4 from '../assets/darkfem/single/c2single/df_0413_c2_s4_1776094241692.png';
+import singleC3First from '../assets/darkfem/single/c3single/first.png';
+import singleC3S2 from '../assets/darkfem/single/c3single/df_0413_sp_s2_1776094328010.png';
+import singleC3S3 from '../assets/darkfem/single/c3single/df_0413_sp_s3_1776094342928.png';
+import singleC3S4 from '../assets/darkfem/single/c3single/df_0413_sp_s4_1776094363097.png';
+import singleC4First from '../assets/darkfem/single/c4single/first.png';
+import singleC4S2 from '../assets/darkfem/single/c4single/df_0413_sl_s2_1776094469075.png';
+import singleC4S3 from '../assets/darkfem/single/c4single/df_0413_sl_s3_1776094484568.png';
+import singleC4S4 from '../assets/darkfem/single/c4single/df_0413_sl_s4_1776094503539.png';
+import singleC5S1 from '../assets/darkfem/single/c5single/df_0413_jmp_s1_v2_1776172859297.png';
+import singleC5S2 from '../assets/darkfem/single/c5single/df_0413_jmp_s2_v2_1776172873565.png';
+import singleC5S3 from '../assets/darkfem/single/c5single/df_0413_jmp_s3_v2_1776172894595.png';
+import singleC5S4 from '../assets/darkfem/single/c5single/df_0413_jmp_s4_v2_1776172913410.png';
+
+// Before/After Single Assets
+import baS1 from '../assets/darkfem/singlebefore/df_0413_ba_single_s1_v2_1776175357782.png';
+import baS2 from '../assets/darkfem/singlebefore/df_0413_ba_single_s2_v2_1776175376164.png';
+import baS3 from '../assets/darkfem/singlebefore/df_0413_ba_single_s3_v2_1776175390825.png';
+import baS4 from '../assets/darkfem/singlebefore/df_0413_ba_single_s4_v2_1776175411659.png';
+
+// Before/After Istri Assets
+import baI1 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s1_v2_1776175429720.png';
+import baI2 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s2_v2_1776175446156.png';
+import baI3 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s3_v2_1776175462649.png';
+import baI4 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s4_v2_1776175479780.png';
 
 // Angle Section Assets
-import angle1 from '../assets/darkfem/indo_image/angle1-Silent_Power.png';
-import angle11 from '../assets/darkfem/indo_image/angle11-Wanita_Yang_Pria_Takut_Kehilangan.png';
-import angle6 from '../assets/darkfem/indo_image/angle6-Tidak_Pernah_Minta.png';
 import angle7 from '../assets/darkfem/indo_image/angle7-Sebelum_vs_Sesudah.png';
 
 // Winner Section Assets
 import winnerSatuPerubahan from '../assets/darkfem/indo_image/winner-Satu_Perubahan-SENT.jpg';
-import winnerStopJadiOpsi from '../assets/darkfem/indo_image/winner-Stop_Jadi_Opsi-SENT.jpg';
-import winnerJanganMintaPerhatian from '../assets/darkfem/indo_image/winner-Jangan_Minta_Perhatian-SENT.jpg';
 import winnerCrAd from '../assets/darkfem/indo_image/Cr_Ad_DarkFem_A1_MALAM_INI,_CEWEK_"TE_1773316980_2026-03-12-ca3ded6f710055046854af8069d5876f-SENT.jpg';
 
 // Asset Imports for EN
 import df01En from '../assets/darkfem/english_image/df01_paradox_en.png';
-import df02En from '../assets/darkfem/english_image/df02_2am_scroll_en.png';
 import df04En from '../assets/darkfem/english_image/df04_secret_she_knows_en.png';
-import df05En from '../assets/darkfem/english_image/df05_therapist_trap_en.png';
-import df06En from '../assets/darkfem/english_image/df06_comparison_en.png';
-import df07En from '../assets/darkfem/english_image/df07_fuckboy_cycle_en.png';
 import df08En from '../assets/darkfem/english_image/df08_fantasy_screen_en.png';
 import df09En from '../assets/darkfem/english_image/df09_wake_up_en.png';
-import df10En from '../assets/darkfem/english_image/df10_society_lie_en.png';
 
 // Asset Imports for PH
 import df01Ph from '../assets/darkfem/philippines_image/df01_ph_paradox.png';
-import df02Ph from '../assets/darkfem/philippines_image/df02_ph_2am_scroll.png';
 import df04Ph from '../assets/darkfem/philippines_image/df04_ph_friendzone.png';
-import df05Ph from '../assets/darkfem/philippines_image/df05_ph_comparison.png';
-import df06Ph from '../assets/darkfem/philippines_image/df06_ph_ghosted.png';
-import df07Ph from '../assets/darkfem/philippines_image/df07_ph_kdrama.png';
 import df08Ph from '../assets/darkfem/philippines_image/df08_ph_secret.png';
 import df09Ph from '../assets/darkfem/philippines_image/df09_ph_wakeup.png';
-import df10Ph from '../assets/darkfem/philippines_image/df10_ph_society_lie.png';
 
 const assetsMap: any = {
     id: {
-        df01: df01Id, df02: df02Id, df04: df04Id, df05: df05Id,
-        df06: df06Id, df07: df07Id, df08: df08Id, df09: df09Id, df10: df10Id,
-        video1: video1Id, video3: video3Id,
-        video1Poster: video1PosterId, video3Poster: video3PosterId,
-        istri01, istri02, istri03, istri04, istri05, istri06,
-        angle1, angle11, angle6, angle7,
-        winnerSatuPerubahan, winnerStopJadiOpsi, winnerJanganMintaPerhatian, winnerCrAd
+        df01: df01Id, df04: df04Id,
+        df08: df08Id, df09: df09Id,
+        istriC1S1, istriC1S2, istriC1S3, istriC1S4,
+        istriC2S1, istriC2S2, istriC2S3, istriC2S4,
+        istriC3S1, istriC3S2, istriC3S3, istriC3S4,
+        istriC4S1, istriC4S2, istriC4S3, istriC4S4,
+        istriC5S1, istriC5S2, istriC5S3, istriC5S4,
+        singleC2First, singleC2S2, singleC2S3, singleC2S4,
+        singleC3First, singleC3S2, singleC3S3, singleC3S4,
+        singleC4First, singleC4S2, singleC4S3, singleC4S4,
+        singleC5S1, singleC5S2, singleC5S3, singleC5S4,
+        baS1, baS2, baS3, baS4,
+        baI1, baI2, baI3, baI4,
+        angle7,
+        winnerSatuPerubahan, winnerCrAd
     },
     en: {
-        df01: df01En, df02: df02En, df04: df04En, df05: df05En,
-        df06: df06En, df07: df07En, df08: df08En, df09: df09En, df10: df10En,
-        video1: null, video2: null, video3: null
+        df01: df01En, df04: df04En,
+        df08: df08En, df09: df09En,
     },
     ph: {
-        df01: df01Ph, df02: df02Ph, df04: df04Ph, df05: df05Ph,
-        df06: df06Ph, df07: df07Ph, df08: df08Ph, df09: df09Ph, df10: df10Ph,
-        video1: null, video2: null, video3: null
+        df01: df01Ph, df04: df04Ph,
+        df08: df08Ph, df09: df09Ph,
     }
 };
 
@@ -151,8 +189,6 @@ const contentData: any = {
             sub: "Strategi Psikologi yang Telah Membantu Ribuan Wanita Mengubah Takdir Cintanya",
             images: [
                 "winnerSatuPerubahan",
-                "winnerStopJadiOpsi",
-                "winnerJanganMintaPerhatian",
                 "winnerCrAd"
             ]
         },
@@ -177,45 +213,27 @@ const contentData: any = {
         ],
         stories: [
             {
-                img: 'df02',
-                title: 'Jam 2 Pagi. HP Masih di Tangan.',
-                body: `Kamu scroll Instagram lagi. Lihat foto dia — yang di-ghosting kamu minggu lalu — ternyata sudah upload story sama cewek lain.\n\nPerut kamu mual. Tapi kamu tetap klik storynya. Sampai habis.\n\nKamu tahu ini menyakitkan. Tapi kamu tidak bisa berhenti. Karena diam-diam kamu masih berharap dia balik. Padahal dalam hati kamu tahu — dia sudah lupa kamu ada.\n\nDan yang paling menyiksa bukan karena dia pergi. Tapi karena kamu tidak tahu KENAPA.`
-            },
-            {
                 img: 'df04',
                 title: 'Selalu Jadi Pelabuhan. Tidak Pernah Jadi Tujuan.',
                 body: `Dia cerita soal masalah hidupnya ke kamu sampai jam 1 pagi. Kamu dengarkan. Kamu support. Kamu kasih saran terbaik.\n\nDan keesokan harinya? Dia nembak cewek lain.\n\nKamu bingung. Marah. Tapi kamu tetap reply chat-nya. Karena kamu pikir — mungkin kalau kamu cukup sabar, cukup baik, cukup setia... akhirnya dia akan sadar.\n\nTapi itu tidak pernah terjadi. Karena kebaikan tanpa STRATEGI hanya akan membuat kamu jadi opsi, bukan prioritas.`
-            },
-            {
-                img: 'df05',
-                title: 'Scrolling Feed Teman. Semua Sudah Bahagia. Kecuali Kamu.',
-                body: `Teman SMA yang dulu biasa-biasa aja — sekarang engaged. Yang dulu suka di-bully — sekarang dilamar pakai cincin berlian. Yang dulu kamu anggap 'ga lebih dari gue' — sekarang honeymoon di Bali.\n\nDan kamu? Masih di sini. Masih di-ghosting. Masih "yang sabar ya, nanti juga ada yang serius."\n\nKamu mulai bertanya — apa yang salah dengan diri kamu? Kenapa selalu kamu yang tidak dipilih?\n\nJawabannya bukan karena kamu kurang. Tapi karena ada satu hal yang mereka tahu, yang kamu belum tahu.`
-            },
-            {
-                img: 'df06',
-                title: 'Loop Yang Sama. Cowok Yang Berbeda.',
-                body: `Dekat. Harapan. Menghilang.\n\nNama-nya berubah. Wajahnya berubah. Tapi polanya selalu sama.\n\nKamu yang ngasih semuanya duluan. Kamu yang setia. Kamu yang "ngerti." Dan kamu yang selalu ditinggal tanpa penjelasan.\n\nSampai akhirnya kamu mulai percaya bahwa mungkin memang cinta itu bukan buat kamu. Mungkin kamu memang ditakdirkan sendirian.\n\nTapi itu BOHONG. Kamu hanya belum tahu satu hal yang mengubah segalanya. Satu hal yang tidak pernah diajarkan ibu, guru, atau siapapun.`
             },
         ],
         wifeSection: {
             label: "Dan Jikapun anda memiliki Pasangan",
             title: "Apakah Ini Kehidupan Pernikahan Yang Kamu Hadapi?",
             items: [
-                { img: 'istri01', title: "Tidur Sendiri dalam Keramaian", desc: "Satu ranjang tapi terasa ribuan kilometer jaraknya. Dia lebih asyik dengan dunianya sendiri sementara kamu merindukan sentuhan yang tulus." },
-                { img: 'istri02', title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
-                { img: 'istri03', title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
-                { img: 'istri04', title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
-                { img: 'istri05', title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
-                { img: 'istri06', title: "Bertahan Demi Anak", desc: "Pura-pura bahagia di depan anak-anak, padahal hati sudah hancur dan kesepian setiap malam." }
-            ]
+                { imgs: ['singleC2First','singleC2S2','singleC2S3','singleC2S4'], title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
+                { imgs: ['singleC3First','singleC3S2','singleC3S3','singleC3S4'], title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
+                { imgs: ['singleC4First','singleC4S2','singleC4S3','singleC4S4'], title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
+                { imgs: ['singleC5S1','singleC5S2','singleC5S3','singleC5S4'], title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
+            ],
+            beforeAfterSingle: { imgs: ['baS1','baS2','baS3','baS4'], title: "", body: "" },
+            beforeAfterIstri: { imgs: ['baI1','baI2','baI3','baI4'], title: "", body: "" },
         },
         angleSection: {
 
             title: "Siap Untuk Transformasi?",
             items: [
-                { img: 'angle1', title: "Silent Power", desc: "Berhenti mengejar, mulai menarik dengan kekuatan diam yang mematikan." },
-                { img: 'angle11', title: "Wanita Yang Pria Takut Kehilangan", desc: "Jadilah wanita yang membuat dia berpikir dua kali sebelum melakukan kesalahan." },
-                { img: 'angle6', title: "Tidak Pernah Minta", desc: "Dapatkan semua yang kamu mau tanpa harus memohon atau meminta sedikitpun." },
                 { img: 'angle7', title: "Sebelum vs Sesudah", desc: "Transformasi mindset yang akan mengubah cara dunia — and pria — memperlakukanmu." }
             ]
         },
@@ -557,6 +575,67 @@ const getFlagForCountry = (countryCode: string) => {
     }
 };
 
+const IstriCarousel = ({ story, assets }: { story: any; assets: any }) => {
+    const imgs: string[] = story.imgs ?? (story.img ? [story.img] : []);
+    const [active, setActive] = useState(0);
+    const touchStartX = useRef<number | null>(null);
+
+    const prev = () => setActive(a => (a - 1 + imgs.length) % imgs.length);
+    const next = () => setActive(a => (a + 1) % imgs.length);
+
+    const onTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+    const onTouchEnd = (e: React.TouchEvent) => {
+        if (touchStartX.current === null) return;
+        const diff = touchStartX.current - e.changedTouches[0].clientX;
+        if (diff > 40) next();
+        else if (diff < -40) prev();
+        touchStartX.current = null;
+    };
+
+    if (imgs.length === 0) return null;
+
+    return (
+        <div className="df-fade-in" style={{ marginBottom: '48px' }}>
+            <div className="df-wife-card">
+                <div style={{ position: 'relative' }}
+                    onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+                    <DbgImg
+                        src={assets[imgs[active]]}
+                        alt={story.title}
+                        className="df-wife-img"
+                        style={{ transition: 'opacity 0.25s ease', display: 'block', width: '100%' }}
+                        label={imgs[active]}
+                    />
+                    {/* Dot indicators — only show if more than 1 image */}
+                    {imgs.length > 1 && (
+                        <div style={{ position: 'absolute', bottom: '10px', left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: '6px', zIndex: 20 }}>
+                            {imgs.map((_: any, i: number) => (
+                                <button key={i} onClick={() => setActive(i)} style={{
+                                    width: i === active ? '20px' : '8px', height: '8px',
+                                    borderRadius: '4px', border: 'none', cursor: 'pointer',
+                                    background: i === active ? 'var(--gold)' : 'rgba(255,255,255,0.45)',
+                                    transition: 'all 0.2s ease', padding: 0
+                                }} />
+                            ))}
+                        </div>
+                    )}
+                    {/* Arrow buttons — only show if more than 1 image */}
+                    {imgs.length > 1 && <>
+                        <button onClick={prev} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', background: 'linear-gradient(135deg, #e91e8c, #c2185b)', border: 'none', color: '#fff', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', fontSize: '24px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 20, boxShadow: '0 2px 12px rgba(233,30,140,0.5)' }}>‹</button>
+                        <button onClick={next} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', background: 'linear-gradient(135deg, #e91e8c, #c2185b)', border: 'none', color: '#fff', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', fontSize: '24px', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 20, boxShadow: '0 2px 12px rgba(233,30,140,0.5)' }}>›</button>
+                    </>}
+                </div>
+                <div className="df-wife-content">
+                    <h3 className="df-wife-title" style={{ fontSize: '22px', lineHeight: 1.3 }}>{story.title}</h3>
+                    <div style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--cream)', opacity: 0.92, whiteSpace: 'pre-line' }}>
+                        {story.body}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const DarkFeminineTSX = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const hasEn = searchParams.has('en');
@@ -594,7 +673,7 @@ const DarkFeminineTSX = () => {
     const [email, setEmail] = useState("");
     const [payment, setPayment] = useState(initLang === 'en' || initLang === 'sg' || initLang === 'ph' ? "PAYPAL" : "QRIS");
     const [retailOpen, setRetailOpen] = useState(false);
-    const [addUpsell, setAddUpsell] = useState(false);
+    const [addUpsell, setAddUpsell] = useState(0); // 0=base, 1=+LoveMagnet, 2=Ultimate
     const { toast } = useToast();
 
     const [loginEmail, setLoginEmail] = useState("");
@@ -789,8 +868,8 @@ const DarkFeminineTSX = () => {
     const [loadingFree, setLoadingFree] = useState(false);
     const [successFree, setSuccessFree] = useState(false);
 
-    const priceID = addUpsell ? (hasDisc ? 200000 : 249000) : 199000;
-    const priceUSD = addUpsell ? 19 : 15;
+    const priceID = addUpsell === 2 ? 399000 : addUpsell === 1 ? (hasDisc ? 200000 : 249000) : 199000;
+    const priceUSD = addUpsell === 2 ? 30 : addUpsell === 1 ? 19 : 15;
     const isEnglish = lang === 'en' || lang === 'sg' || lang === 'ph';
     const finalAmount = isEnglish ? priceUSD : priceID;
     const finalCurrency = isEnglish ? 'USD' : 'IDR';
@@ -855,7 +934,7 @@ const DarkFeminineTSX = () => {
             subscriptionType: 'universal', paymentMethod: payment,
             userName: name, userEmail: email, phoneNumber: cleanPhone,
             address: 'Digital', province: 'Digital', kota: 'Digital', kecamatan: 'Digital', kodePos: '00000',
-            amount: finalBCAAmount, currency: finalCurrency, quantity: 1, productName: addUpsell ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
+            amount: finalBCAAmount, currency: finalCurrency, quantity: 1, productName: addUpsell === 2 ? `${getBaseProductName()} Ultimate (Blueprint + Workbook + Q&A)` : addUpsell === 1 ? `${getBaseProductName()} + Love Magnet` : getBaseProductName(),
             fbc, fbp, clientIp,
             pageUrl: window.location.href
         };
@@ -1031,33 +1110,32 @@ const DarkFeminineTSX = () => {
         heroH1a: "Kamu Sudah Memberikan Segalanya...",
         heroH1b: "Tapi Kenapa Masih Merasa Tidak Dilihat?",
         heroSub: "Untuk istri yang lelah berjuang sendirian. Yang tidur di samping seseorang tapi merasa ribuan kilometer jaraknya. Yang bertanya dalam diam — 'Kenapa dia tidak lagi memilihku?'",
-        heroImg: 'istri03',
         painLabel: "KISAH YANG TIDAK PERNAH KAMU CERITAKAN",
         painH2a: "Apakah Ini",
         painH2b: "Hidupmu Sekarang?",
         stories: [
             {
-                img: 'istri01',
+                imgs: ['istriC1S1', 'istriC1S2', 'istriC1S3', 'istriC1S4'],
                 title: 'Jam 11 Malam. Lampu Kamar Sudah Mati.',
                 body: `Kamu berbaring di samping orang yang dulu berjanji akan menemanimu selamanya. Tapi malam ini — seperti ratusan malam sebelumnya — dia membelakangimu. Cahaya HP-nya memantul di langit-langit kamar.\n\nKamu ingin menyentuhnya. Ingin bilang "aku kangen kamu." Tapi kamu sudah terlalu sering ditolak dengan cara yang paling halus — diam, atau "udah ya, capek."\n\nJadi kamu pilih diam juga. Memeluk bantal. Dan bertanya dalam hati: "Kapan terakhir kali dia memelukku duluan?"`
             },
             {
-                img: 'istri02',
+                imgs: ['istriC2S1', 'istriC2S2', 'istriC2S3', 'istriC2S4'],
                 title: 'Dulu Dia Berlari Untukmu. Sekarang Kamu Mengejar Bayangan.',
                 body: `Ingat waktu pacaran dulu? Dia yang chat duluan. Dia yang cemas kalau kamu belum balas. Dia yang rela hujan-hujanan cuma buat ketemu kamu 30 menit.\n\nSekarang? Kamu yang minta perhatian. Kamu yang inisiatif. Kamu yang "ngerti" kalau dia sibuk, capek, atau butuh waktu sendiri. Selalu kamu yang mengalah.\n\nDan pertanyaan yang paling menyakitkan bukan "kenapa dia berubah?" — tapi "apa aku yang membuatnya berhenti berusaha?"`
             },
             {
-                img: 'istri04',
+                imgs: ['istriC3S1', 'istriC3S2', 'istriC3S3', 'istriC3S4'],
                 title: 'Ibu Yang Sempurna. Istri Yang Hancur.',
                 body: `Pagi-pagi kamu sudah bangun siapkan sarapan. Antarkan anak sekolah. Beres-beres rumah. Kerja. Jemput anak. Masak makan malam. Mandiin anak. Temani PR.\n\nDi mata dunia, kamu ibu yang luar biasa. Di mata anak-anak, kamu superhero.\n\nTapi di dalam kamar mandi — satu-satunya tempat privasi yang kamu punya — kamu menangis tanpa suara dengan air shower menyala. Karena tidak ada seorang pun yang bertanya: "Kamu baik-baik saja?"`
             },
             {
-                img: 'istri05',
+                imgs: ['istriC4S1', 'istriC4S2', 'istriC4S3', 'istriC4S4'],
                 title: 'Dia Punya Waktu Untuk Segalanya. Kecuali Kamu.',
                 body: `Dia bisa scroll sosmed 2 jam. Bisa nonton bola sampai larut. Bisa ngobrol panjang lebar sama teman-temannya.\n\nTapi giliran kamu ajak ngobrol? "Nanti ya." Kamu minta dinner berdua? "Males keluar." Kamu pakai baju baru? Dia bahkan tidak melirik.\n\nDan yang paling pedih — kamu lihat dia like foto wanita lain di IG-nya. Sementara chat dari istrinya sendiri cuma di-read.`
             },
             {
-                img: 'istri06',
+                imgs: ['istriC5S1', 'istriC5S2', 'istriC5S3', 'istriC5S4'],
                 title: 'Bertahan Demi Anak. Tapi Sampai Kapan?',
                 body: `Kamu pernah googling "tanda-tanda pernikahan tidak sehat" jam 2 pagi. Hasilnya cocok semua. Tapi kamu tutup browser-nya karena kamu takut dengan jawabannya.\n\nKamu bertahan. Bukan karena bahagia — tapi karena anak-anak. Karena status. Karena "nanti orang bilang apa."\n\nDan setiap hari, kamu bangun dengan wajah yang sama, senyuman yang sama, dan kekosongan yang sama di dalam dada.\n\nTapi di dalam hati kamu tahu — ini bukan hidup. Ini survival.`
             },
@@ -1352,15 +1430,6 @@ const DarkFeminineTSX = () => {
           width: 100%; border-radius: 18px; margin: 28px 0; overflow: hidden; border: 1px solid rgba(139,92,246,0.3);
         }
         .df-img-box img { width: 100%; aspect-ratio: 1 / 1; display: block; border-radius: 18px; object-fit: cover; }
-        
-        .df-video-player {
-          width: 100%; border-radius: 16px; overflow: hidden;
-          border: 1px solid rgba(139,92,246,0.25); margin: 18px 0; background: #000;
-          aspect-ratio: 1 / 1;
-        }
-        .df-video-player video { width: 100%; height: 100%; display: block; object-fit: contain; }
-        .df-video-label { padding: 12px 16px; font-size: 15px; color: var(--muted); display: flex; align-items: center; justify-content: space-between; }
-        .df-video-label strong { color: var(--cream); }
         
         .df-cta-btn {
           display: block; width: 100%;
@@ -1732,9 +1801,11 @@ const DarkFeminineTSX = () => {
                                 <span className="df-gold-italic">{sc.heroH1b}</span>
                             </h1>
                             <p className="df-hero-sub">{sc.heroSub}</p>
-                            <div className="df-img-box">
-                                <img src={segmentContent?.heroImg ? (assets as any)[segmentContent.heroImg] : assets.df08} alt="Dark Feminine" />
-                            </div>
+                            {segment !== 'istri' && (
+                                <div className="df-img-box">
+                                    <DbgImg src={assets.df08} alt="Dark Feminine" label="df08" style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
+                                </div>
+                            )}
                             <div className="df-trust-badges">
                                 <span>🔒 100% Privasi</span><span>⚡ Instan</span><span>📱 Akses Seumur Hidup</span>
                             </div>
@@ -1754,20 +1825,15 @@ const DarkFeminineTSX = () => {
                                 <span className="df-newline df-gold">{sc.painH2b}</span>
                             </h2>
 
-                            {/* STORYTELLING SCENES */}
-                            {sc.stories && sc.stories.map((story: any, i: number) => (
-                                <div key={i} className="df-fade-in" style={{ marginBottom: '48px' }}>
-                                    <div className="df-wife-card">
-                                        <img src={(assets as any)[story.img]} alt={story.title} className="df-wife-img" />
-                                        <div className="df-wife-content">
-                                            <h3 className="df-wife-title" style={{ fontSize: '22px', lineHeight: 1.3 }}>{story.title}</h3>
-                                            <div style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--cream)', opacity: 0.92, whiteSpace: 'pre-line' }}>
-                                                {story.body}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            {/* STORYTELLING SCENES — Carousel per story */}
+                            {sc.stories && sc.stories.map((story: any, si: number) => (
+                                <IstriCarousel key={si} story={story} assets={assets} />
                             ))}
+
+                            {/* Before/After Istri — shown on ?istri only */}
+                            {segment === 'istri' && c.wifeSection?.beforeAfterIstri && (
+                                <IstriCarousel story={c.wifeSection.beforeAfterIstri} assets={assets} />
+                            )}
 
                             {/* Short final pain punches */}
                             <div>
@@ -1789,13 +1855,10 @@ const DarkFeminineTSX = () => {
                                 <span className="df-newline df-gold">{c.agitH2b}</span>
                             </h2>
                             <div className="df-img-box" style={{ borderRadius: '16px' }}>
-                                <img src={assets.df01} alt="Paradox" />
+                                <DbgImg src={assets.df01} alt="Paradox" label="df01" style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
                             </div>
                             <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>
                                 <div>{c.agitText}</div>
-                            </div>
-                            <div className="df-img-box">
-                                <img src={assets.df06} alt="Agitation Visual" />
                             </div>
                         </div>
                     </section>
@@ -1809,14 +1872,6 @@ const DarkFeminineTSX = () => {
                                 <span className="df-newline df-gold">{c.solH2b}</span>
                             </h2>
                             <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{c.solText}</div>
-                            {assets.video1 && (
-                                <div className="df-video-player">
-                                    <video controls playsInline preload="metadata" poster={assets.video1Poster}>
-                                        <source src={assets.video1} type="video/mp4" />
-                                    </video>
-                                    <div className="df-video-label"><strong>🎬 Video 1</strong><span>{lang === 'id' ? 'Kisah Transformasi' : (lang === 'ph' ? 'Kuwento ng Transpormasyon' : 'Transformation Story')}</span></div>
-                                </div>
-                            )}
                         </div>
                     </section>
 
@@ -1833,7 +1888,7 @@ const DarkFeminineTSX = () => {
                                 <div className="df-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                                     {c.winningGallery.images.map((imgKey: string, i: number) => (
                                         <div key={i} className="df-img-box" style={{ margin: 0, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
-                                            <img src={assets[imgKey]} alt={`Winning Technique ${i+1}`} style={{ width: '100%', display: 'block' }} />
+                                            <DbgImg src={assets[imgKey]} alt={`Winning Technique ${i+1}`} style={{ width: '100%', display: 'block' }} label={imgKey} />
                                         </div>
                                     ))}
                                 </div>
@@ -1842,23 +1897,19 @@ const DarkFeminineTSX = () => {
                     )}
                     
 
-                    {/* WIFE SECTION - default page, hidden on ?istri (already has its own storytelling) */}
+                    {/* WIFE SECTION - general page only, hidden on ?istri */}
                     {lang === 'id' && segment === 'default' && c.wifeSection && (
                         <section style={{ background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-section) 100%)', padding: '44px 0' }}>
                             <div className="df-wrap df-fade-in">
-                                <div className="df-section-label">{c.wifeSection.label}</div>
-                                <h2 className="df-section-h2">{c.wifeSection.title}</h2>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                                    {c.wifeSection.items.map((item: any, idx: number) => (
-                                        <div key={idx} className="df-wife-card">
-                                            <img src={(assets as any)[item.img]} alt={item.title} className="df-wife-img" />
-                                            <div className="df-wife-content">
-                                                <h3 className="df-wife-title">{item.title}</h3>
-                                                <p className="df-wife-desc">{item.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                                {c.wifeSection.items.map((item: any, idx: number) => (
+                                    <IstriCarousel key={idx} story={item} assets={assets} />
+                                ))}
+                                {c.wifeSection.beforeAfterSingle && (
+                                    <IstriCarousel story={c.wifeSection.beforeAfterSingle} assets={assets} />
+                                )}
+                                {c.wifeSection.beforeAfterIstri && (
+                                    <IstriCarousel story={c.wifeSection.beforeAfterIstri} assets={assets} />
+                                )}
                             </div>
                         </section>
                     )}
@@ -1876,9 +1927,6 @@ const DarkFeminineTSX = () => {
                                     </div>
                                 ))}
                                 <p style={{ textAlign: 'center', fontSize: '15px', color: 'var(--muted)', fontStyle: 'italic', marginTop: '4px' }}>{c.checksPlus}</p>
-                            </div>
-                            <div className="df-img-box">
-                                <img src={assets.df05} alt="Contents Visual" />
                             </div>
                         </div>
                     </section>
@@ -1898,7 +1946,7 @@ const DarkFeminineTSX = () => {
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                                     {c.angleSection.items.map((item: any, idx: number) => (
                                         <div key={idx} style={{ background: 'var(--bg-card)', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)' }}>
-                                            <img src={(assets as any)[item.img]} alt={item.title} style={{ width: '100%', display: 'block' }} />
+                                            <DbgImg src={(assets as any)[item.img]} alt={item.title} style={{ width: '100%', display: 'block' }} label={item.img} />
                                             <div style={{ padding: '16px' }}>
                                                 <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--cream)', marginBottom: '8px' }}>{item.title}</h3>
                                                 <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.5 }}>{item.desc}</p>
@@ -1909,32 +1957,6 @@ const DarkFeminineTSX = () => {
                             </div>
                         </section>
                     )}
-
-                    {/* SOCIAL PROOF SECTION (Continued from Testimonials) */}
-                    <section style={{ background: 'var(--bg-primary)', padding: '0 0 44px 0' }}>
-                        <div className="df-wrap df-fade-in">
-                            <div className="df-img-box">
-                                <img src={assets.df10} alt="Social Proof" />
-                            </div>
-
-                            {assets.video2 && (
-                                <div className="df-video-player" style={{ marginTop: '28px' }}>
-                                    <video controls playsInline preload="metadata" poster={assets.df04}>
-                                        <source src={assets.video2} type="video/mp4" />
-                                    </video>
-                                    <div className="df-video-label"><strong>🎬 Video 2</strong><span>{lang === 'id' ? 'Dari Diabaikan Jadi Dikagumi' : (lang === 'ph' ? 'Mula sa Binalewala Hanggang Hinangaan' : 'From Ignored to Admired')}</span></div>
-                                </div>
-                            )}
-                            {assets.video3 && (
-                                <div className="df-video-player">
-                                    <video controls playsInline preload="metadata" poster={assets.video3Poster || assets.df07}>
-                                        <source src={assets.video3} type="video/mp4" />
-                                    </video>
-                                    <div className="df-video-label"><strong>🎬 Video 3</strong><span>{lang === 'id' ? 'The Power of Being a "High Value Woman"' : (lang === 'ph' ? 'Ang Kapasidad ng Pagiging isang "High Value Woman"' : 'The Power of Being a "High Value Woman"')}</span></div>
-                                </div>
-                            )}
-                        </div>
-                    </section>
 
                     {/* BONUSES */}
                     <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
@@ -1957,9 +1979,6 @@ const DarkFeminineTSX = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className="df-img-box">
-                                <img src={assets.df07} alt="Bonus Visual" />
-                            </div>
                         </div>
                     </section>
 
@@ -1969,7 +1988,7 @@ const DarkFeminineTSX = () => {
                             <div className="df-section-label">{c.priceLabel}</div>
                             <h2 className="df-section-h2">{c.priceH2} <span className="df-gold">{lang === 'id' ? 'Hari Ini' : (lang === 'ph' ? 'Ngayon' : 'Today')}</span></h2>
                             <div className="df-img-box">
-                                <img src={assets.df08} alt="Pricing Visual" />
+                                <DbgImg src={assets.df08} alt="Pricing Visual" label="df08" style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
                             </div>
                             <div className="df-value-card">
                                 <div>
@@ -2007,7 +2026,7 @@ const DarkFeminineTSX = () => {
                             <div className="df-section-label">{lang === 'id' ? 'BUKAN UNTUK SEMUA ORANG' : (lang === 'ph' ? 'HINDI PARA SA LAHAT' : 'NOT FOR EVERYONE')}</div>
                             <h2 className="df-section-h2">{c.exclH2}</h2>
                             <div className="df-img-box">
-                                <img src={assets.df09} alt="Exclusivity Visual" />
+                                <DbgImg src={assets.df09} alt="Exclusivity Visual" label="df09" style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
                             </div>
                             <div style={{ background: 'var(--bg-card)', borderRadius: '16px', padding: '26px 22px', border: '2px solid rgba(239,68,68,0.35)' }}>
                                 <div>
@@ -2355,49 +2374,73 @@ const DarkFeminineTSX = () => {
                                     <label className="df-flabel" style={{ marginBottom: 4 }}>{lang === 'id' ? 'Pilih Paket Anda' : (lang === 'ph' ? 'Piliin ang Iyong Package' : 'Choose Your Package')}</label>
 
                                     {/* Option 1: Base */}
-                                    <div style={{ display: 'flex', alignItems: 'center', background: !addUpsell ? 'rgba(139,92,246,0.1)' : 'rgba(255,255,255,0.03)', border: !addUpsell ? '1px solid rgba(139,92,246,0.5)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(false)}>
+                                    <div style={{ display: 'flex', alignItems: 'center', background: addUpsell === 0 ? 'rgba(139,92,246,0.1)' : 'rgba(255,255,255,0.03)', border: addUpsell === 0 ? '1px solid rgba(139,92,246,0.5)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(0)}>
                                         <div style={{ marginRight: '14px' }}>
-                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: !addUpsell ? '6px solid var(--purple-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
+                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: addUpsell === 0 ? '6px solid var(--purple-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
                                         </div>
                                         <div style={{ flex: 1 }}>
-                                            <div style={{ fontSize: '15px', fontWeight: 700, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>{lang === 'id' ? 'Paket Lengkap Dark Feminine + 8 Bonus' : (lang === 'ph' ? 'Kumpletuhang Package ng Dark Feminine + 8 Bonus' : 'Dark Feminine Complete Package + 8 Bonuses')}</div>
+                                            <div style={{ fontSize: '15px', fontWeight: 700, color: addUpsell === 0 ? 'var(--cream)' : 'var(--muted)' }}>{lang === 'id' ? 'Paket Lengkap Dark Feminine + 8 Bonus' : (lang === 'ph' ? 'Kumpletuhang Package ng Dark Feminine + 8 Bonus' : 'Dark Feminine Complete Package + 8 Bonuses')}</div>
                                         </div>
-                                        <div style={{ fontSize: '16px', fontWeight: 800, color: !addUpsell ? 'var(--cream)' : 'var(--muted)' }}>
+                                        <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell === 0 ? 'var(--cream)' : 'var(--muted)' }}>
                                             {isEnglish ? "$15.00" : "Rp199.000"}
                                         </div>
                                     </div>
 
-                                    {/* Option 2: Upsell */}
-                                    <div style={{ display: 'flex', alignItems: 'center', background: addUpsell ? 'rgba(240,200,74,0.1)' : 'rgba(255,255,255,0.03)', border: addUpsell ? '1px solid rgba(240,200,74,0.4)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(true)}>
+                                    {/* Option 2: +Love Magnet */}
+                                    <div style={{ display: 'flex', alignItems: 'center', background: addUpsell === 1 ? 'rgba(240,200,74,0.1)' : 'rgba(255,255,255,0.03)', border: addUpsell === 1 ? '1px solid rgba(240,200,74,0.4)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setAddUpsell(1)}>
                                         <div style={{ marginRight: '14px' }}>
-                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: addUpsell ? '6px solid var(--gold-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
+                                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: addUpsell === 1 ? '6px solid var(--gold-light)' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
                                         </div>
                                         <div style={{ flex: 1 }}>
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                                                <div style={{ fontSize: '15px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>{lang === 'id' ? 'Dark Feminine + 8 Bonus' : 'Dark Feminine + 8 Bonus'} <br />+ Audio Love Magnet</div>
+                                                <div style={{ fontSize: '15px', fontWeight: 800, color: addUpsell === 1 ? 'var(--gold-light)' : 'var(--cream)' }}>Dark Feminine + 8 Bonus<br />+ Audio Love Magnet</div>
                                                 <span style={{ fontSize: '10px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '2px 6px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>{lang === 'id' ? 'PROMO KHUSUS' : (lang === 'ph' ? 'Espesyal Na Promo' : 'SPECIAL PROMO')}</span>
                                             </div>
                                             <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.4 }}>{lang === 'id' ? 'Rahasia memikat pria idaman hanya lewat frekuensi suara.' : (lang === 'ph' ? 'Sikreto para akitin ang iyong pangarap na lalaki sa pamamagitan lamang ng dalas ng boses.' : 'Secret to captivating your dream man just through voice frequency.')} <span style={{ color: 'var(--red)', textDecoration: 'line-through' }}>{lang === 'id' ? '(Senilai Rp250.000)' : (lang === 'ph' ? '(Nagkakahalagang P850)' : '(Worth $19)')}</span></div>
                                         </div>
-                                        <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell ? 'var(--gold-light)' : 'var(--cream)' }}>
+                                        <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell === 1 ? 'var(--gold-light)' : 'var(--cream)' }}>
                                             {isEnglish ? "$19.00" : (hasDisc ? "Rp200.000" : "Rp249.000")}
                                         </div>
                                     </div>
+
+                                    {/* Option 3: Ultimate */}
+                                    {lang === 'id' && (
+                                        <div style={{ display: 'flex', alignItems: 'flex-start', background: addUpsell === 2 ? 'rgba(233,30,140,0.12)' : 'rgba(255,255,255,0.03)', border: addUpsell === 2 ? '2px solid rgba(233,30,140,0.7)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s', position: 'relative' }} onClick={() => setAddUpsell(2)}>
+                                            <div style={{ marginRight: '14px', marginTop: '2px' }}>
+                                                <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: addUpsell === 2 ? '6px solid #e91e8c' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
+                                            </div>
+                                            <div style={{ flex: 1 }}>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
+                                                    <div style={{ fontSize: '15px', fontWeight: 800, color: addUpsell === 2 ? '#f472b6' : 'var(--cream)' }}>👑 Ultimate Dark Feminine</div>
+                                                    <span style={{ fontSize: '10px', background: 'linear-gradient(90deg, #e91e8c, #c2185b)', color: '#fff', padding: '2px 7px', borderRadius: '4px', fontWeight: 800, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>TERLENGKAP</span>
+                                                </div>
+                                                <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6 }}>
+                                                    <div>✦ Semua isi paket + 8 Bonus + Audio Love Magnet</div>
+                                                    <div>✦ Blueprint + Workbook 30 hari yang kamu isi & lakukan</div>
+                                                    <div>✦ <strong style={{ color: addUpsell === 2 ? '#f472b6' : 'var(--cream)' }}>Q&A unlimited dengan admin</strong> — seperti punya terapis sendiri</div>
+                                                    <div>✦ <strong style={{ color: addUpsell === 2 ? '#f472b6' : 'var(--cream)' }}>Garansi uang kembali</strong> jika tidak merasakan perubahan setelah selesai workbook</div>
+                                                </div>
+                                            </div>
+                                            <div style={{ fontSize: '16px', fontWeight: 800, color: addUpsell === 2 ? '#f472b6' : 'var(--cream)', marginLeft: '10px', whiteSpace: 'nowrap' }}>Rp399.000</div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div style={{ background: "rgba(139,92,246,.05)", border: "1px solid rgba(139,92,246,.13)", borderRadius: 11, padding: 14, marginTop: 10 }}>
-                                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: addUpsell ? "var(--gold-light)" : "var(--muted)" }}>
-                                        <span style={{ paddingRight: 10 }}>{addUpsell ? (lang === 'id' ? "Paket Lengkap + Audio Love Magnet" : (lang === 'ph' ? "Kumpletuhang Package + Audio Love Magnet" : "Complete Package + Audio Love Magnet")) : (lang === 'id' ? "Paket Lengkap Dark Feminine + 8 Bonus" : (lang === 'ph' ? "Kumpletuhang Package ng Dark Feminine + 8 Bonus" : "Dark Feminine Complete Package + 8 Bonuses"))}</span>
-                                        <span style={{ fontWeight: 600 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}</span>
+                                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, fontSize: 13.5, color: addUpsell > 0 ? "var(--gold-light)" : "var(--muted)" }}>
+                                        <span style={{ paddingRight: 10 }}>
+                                            {addUpsell === 2 ? "👑 Ultimate Dark Feminine" : addUpsell === 1 ? (lang === 'id' ? "Paket Lengkap + Audio Love Magnet" : (lang === 'ph' ? "Kumpletuhang Package + Audio Love Magnet" : "Complete Package + Audio Love Magnet")) : (lang === 'id' ? "Paket Lengkap Dark Feminine + 8 Bonus" : (lang === 'ph' ? "Kumpletuhang Package ng Dark Feminine + 8 Bonus" : "Dark Feminine Complete Package + 8 Bonuses"))}
+                                        </span>
+                                        <span style={{ fontWeight: 600 }}>{isEnglish ? (addUpsell === 1 ? "$19.00" : "$15.00") : (addUpsell === 2 ? "Rp399.000" : addUpsell === 1 ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}</span>
                                     </div>
                                     <div style={{ height: 1, background: "rgba(139,92,246,.09)", marginBottom: 7 }} />
                                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14.5, fontWeight: 700 }}>
                                         <span style={{ color: "var(--cream)" }}>Total</span>
-                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>{isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}</span>
+                                        <span style={{ color: "var(--gold-light)", fontFamily: "var(--font-display)", fontSize: 24 }}>{isEnglish ? (addUpsell === 1 ? "$19.00" : "$15.00") : (addUpsell === 2 ? "Rp399.000" : addUpsell === 1 ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}</span>
                                     </div>
                                 </div>
                                 <button id="checkout-button" className="df-sbtn" onClick={submitOrder} disabled={loading}>
-                                    {loading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : `🛒 ${lang === 'id' ? 'Pesan Sekarang' : (lang === 'ph' ? 'Mag-order Ngayon' : 'Order Now')} — ${isEnglish ? (addUpsell ? "$19.00" : "$15.00") : (addUpsell ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}`}
+                                    {loading ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : `🛒 ${lang === 'id' ? 'Pesan Sekarang' : (lang === 'ph' ? 'Mag-order Ngayon' : 'Order Now')} — ${isEnglish ? (addUpsell === 1 ? "$19.00" : "$15.00") : (addUpsell === 2 ? "Rp399.000" : addUpsell === 1 ? (hasDisc ? "Rp200.000" : "Rp249.000") : "Rp199.000")}`}
                                 </button>
                                 <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", lineHeight: 1.75 }}>🔒 {lang === 'id' ? 'Pembayaran aman & dienkripsi. Produk dikirim digital. Tidak ada tagihan mencurigakan.' : (lang === 'ph' ? 'Ligtas at naka-encrypt ang pagbabayad. Ipinadala nang digital ang produkto. Walang kahina-hinalang singil.' : 'Secure & encrypted payment. Product delivered digitally. No suspicious billing.')}</p>
                             </div>
@@ -2494,8 +2537,9 @@ const DarkFeminineTSX = () => {
                     <div id="df-sticky-cta" className={showSticky ? 'show' : ''}>
                         <div style={{ background: 'var(--bg-card)', borderRadius: '14px', padding: '14px', border: '1px solid rgba(139,92,246,0.3)', display: 'flex', alignItems: 'center', gap: '14px' }}>
                             <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--cream)', flex: 1 }}>
-                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>{isEnglish ? (addUpsell ? '$19.00' : '$15.00') : (addUpsell ? (hasDisc ? 'Rp200.000' : 'Rp249.000') : 'Rp199.000')}</span>
-                                {addUpsell && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
+                                {c.stickyText} <span style={{ color: 'var(--gold-light)' }}>{isEnglish ? (addUpsell === 1 ? '$19.00' : '$15.00') : (addUpsell === 2 ? 'Rp399.000' : addUpsell === 1 ? (hasDisc ? 'Rp200.000' : 'Rp249.000') : 'Rp199.000')}</span>
+                                {addUpsell === 2 && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, #e91e8c, #c2185b)', color: '#fff', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>👑 Ultimate</span>}
+                                {addUpsell === 1 && <span style={{ fontSize: '11px', background: 'linear-gradient(90deg, var(--gold-dark), var(--gold-light))', color: '#000', padding: '1px 5px', borderRadius: '4px', fontWeight: 800, marginLeft: '6px' }}>+ Love Magnet</span>}
                             </div>
                             <a id="sticky-checkout-trigger" onClick={(name && phone && email && payment) ? submitOrder : scrollToForm} style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold-light))', color: '#000', fontSize: '15px', fontWeight: 700, padding: '12px 18px', borderRadius: '11px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', minHeight: '44px', textDecoration: 'none', display: 'inline-block', textAlign: 'center', animation: 'dfShimmer 3s ease infinite', backgroundSize: '300% 100%', backgroundImage: 'linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold))' }}>{loading ? (lang === 'id' ? 'Memproses...' : 'Processing...') : c.stickyCta}</a>
                         </div>
