@@ -135,7 +135,7 @@ const assetsMap: any = {
 const contentData: any = {
     id: {
         agitText: <>Lo diajarin dari kecil: jadi anak baik, jangan menggoda, tunggu dijemput bola. <strong>DAN APA HASILNYA?</strong> Lo jadi teman curhat favorit sementara dia milih yang lain.<br /><br /><ul className="agitation-list"><li>Yang setia → ditinggalin.</li><li>Yang sabar → diinjak.</li><li>Yang pengertian → dianggap lemah.</li></ul><br />Tapi cewek yang "biasa aja"? Dapat <span className="highlight">SEGALANYA</span>.<br /><br />Bukan karena dia cantik. Bukan karena dia beruntung.<br />Tapi karena dia <span className="highlight">PAHAM sesuatu yang TIDAK PERNAH lo pelajari.</span></>,
-        solText: <>Panduan lengkap daya tarik wanita yang ditulis berdasarkan psikologi modern. Dari seni misteri, push-pull dynamics, sampai cara membangun aura yang bikin pria <strong>TIDAK BISA berhenti memikirkan kamu</strong>.<br /><br />Bukan tips murahan. Bukan saran "jadilah diri sendiri".<br />Tapi <strong>ILMU</strong> yang benar-benar <strong>MENGUBAH frekuensi kamu.</strong><br /><br /><div style={{background:'rgba(139,92,246,0.08)',border:'1px solid rgba(139,92,246,0.25)',borderRadius:'16px',padding:'20px 18px',marginTop:'8px'}}><div style={{fontSize:'13px',fontWeight:700,letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--purple-light)',marginBottom:'12px'}}>Rahasia yang Tidak Pernah Diajarkan</div><p style={{marginBottom:'12px'}}>Otak pria secara biologis <strong>diprogram untuk mengejar</strong> — bukan untuk menghargai yang terlalu mudah didapat. Bukan salahmu. Bukan salah dia. Ini <strong>cara kerja otaknya.</strong></p><p style={{marginBottom:'12px'}}>Ketika kamu terlalu available, terlalu baik, terlalu predictable — otaknya secara otomatis <strong>mengkategorikan kamu sebagai "aman"</strong>. Dan yang aman tidak membuat jantungnya berdegup.</p><p style={{marginBottom:'0'}}>Dark Feminine bukan tentang menjadi jahat. Ini tentang memahami <strong>frekuensi yang mengaktifkan bagian otaknya</strong> yang paling dalam — bagian yang membuatnya <em>tidak bisa berhenti memikirkanmu</em>. Inilah yang selama ini kamu cari. Dan inilah yang kami ajarkan.</p></div></>,
+        solText: <>Panduan lengkap daya tarik wanita yang ditulis berdasarkan psikologi modern. Dari seni misteri, push-pull dynamics, sampai cara membangun aura yang bikin pria <strong>TIDAK BISA berhenti memikirkan kamu</strong>.<br /><br />Bukan tips murahan. Bukan saran "jadilah diri sendiri".<br />Tapi <strong>ILMU</strong> yang benar-benar <strong>MENGUBAH frekuensi kamu.</strong></>,
         checks: [
             <>Seni <strong>MISTERI</strong> — bagaimana jadi wanita yang tidak bisa ditebak</>,
             <><strong>PUSH-PULL</strong> Dynamics — menarik dan mendorong bersamaan</>,
@@ -1778,73 +1778,6 @@ const DarkFeminineTSX = () => {
         .df-pmsub { font-size: 12px; margin-top: 2px; }
         .df-sbtn { width: 100%; padding: 19px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-dark)); background-size: 200%; border: none; border-radius: 14px; color: #000; font-size: 18px; font-weight: 700; cursor: pointer; font-family: var(--font-body); animation: dfShimmer 3s linear infinite; box-shadow: 0 10px 35px rgba(201,153,26,.4); transition: transform .2s; margin-top: 18px; }
         .df-sbtn:hover { transform: translateY(-2px); }
-
-        /* Guarantee Card */
-        #df-guarantee-card {
-          background: linear-gradient(135deg, #0f0520 0%, #1a0630 50%, #0f0520 100%);
-          border-top: 3px solid var(--gold);
-          border-bottom: 3px solid var(--gold);
-          padding: 28px 22px;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
-        #df-guarantee-card::before {
-          content: '';
-          position: absolute;
-          top: -80px; left: -80px;
-          width: 260px; height: 260px;
-          background: radial-gradient(circle, rgba(201,153,26,0.12) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        #df-guarantee-card::after {
-          content: '';
-          position: absolute;
-          bottom: -80px; right: -80px;
-          width: 260px; height: 260px;
-          background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .df-guarantee-badge {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 72px; height: 72px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, var(--gold-dark), var(--gold-light));
-          font-size: 36px;
-          margin: 0 auto 16px;
-          box-shadow: 0 0 0 6px rgba(201,153,26,0.18), 0 0 0 12px rgba(201,153,26,0.07);
-        }
-        .df-guarantee-headline {
-          font-family: var(--font-display);
-          font-size: 28px;
-          font-weight: 800;
-          color: var(--gold-light);
-          line-height: 1.15;
-          margin-bottom: 12px;
-        }
-        .df-guarantee-body {
-          font-size: 16px;
-          line-height: 1.7;
-          color: var(--cream);
-          max-width: 480px;
-          margin: 0 auto 18px;
-        }
-        .df-guarantee-body strong { color: var(--white); }
-        .df-guarantee-cta-hint {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 13px;
-          font-weight: 700;
-          color: var(--muted);
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          cursor: pointer;
-          transition: color 0.2s;
-        }
-        .df-guarantee-cta-hint:hover { color: var(--gold-light); }
       `}</style>
 
                     <div id="df-progress-bar" style={{ width: `${scrollProgress}%` }}></div>
@@ -1882,26 +1815,6 @@ const DarkFeminineTSX = () => {
                             </div>
                         </div>
                     </section>
-
-                    {/* GUARANTEE CARD — Below Hero Social Proof */}
-                    <div id="df-guarantee-card">
-                        <div className="df-guarantee-badge">🛡️</div>
-                        <h2 className="df-guarantee-headline">
-                            Garansi Uang Kembali 100%
-                        </h2>
-                        <p className="df-guarantee-body">
-                            Jika dalam <strong>30 hari</strong> setelah membaca ebook ini kamu tidak merasakan perubahan — tidak ada rasa <strong>tenang, lepas, dan tentram</strong> dalam menjalani hubungan dengan pasangan atau calon pasangan — kami kembalikan uangmu <strong>100%, tanpa pertanyaan.</strong>
-                        </p>
-                        <button
-                            className="df-guarantee-cta-hint"
-                            onClick={() => {
-                                const el = document.getElementById('reviews-section');
-                                if (el) el.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                        >
-                            Cek review di bawah ↓
-                        </button>
-                    </div>
 
                     {/* PAIN / STORYTELLING SECTION */}
                     <section style={{ background: 'linear-gradient(180deg, var(--bg-section) 0%, var(--bg-primary) 100%)', padding: '44px 0' }}>
@@ -1991,6 +1904,12 @@ const DarkFeminineTSX = () => {
                                 {c.wifeSection.items.map((item: any, idx: number) => (
                                     <IstriCarousel key={idx} story={item} assets={assets} />
                                 ))}
+                                {c.wifeSection.beforeAfterSingle && (
+                                    <IstriCarousel story={c.wifeSection.beforeAfterSingle} assets={assets} />
+                                )}
+                                {c.wifeSection.beforeAfterIstri && (
+                                    <IstriCarousel story={c.wifeSection.beforeAfterIstri} assets={assets} />
+                                )}
                             </div>
                         </section>
                     )}
@@ -2000,9 +1919,6 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.contentsLabel}</div>
                             <h2 className="df-section-h2">{c.contentsH2} <span className="df-gold">{c.contentsH2Span}</span></h2>
-                            <p style={{ fontSize: '18px', fontFamily: 'var(--font-display)', fontStyle: 'italic', color: 'var(--gold-light)', marginBottom: '22px', lineHeight: 1.4 }}>
-                                Apa yang kamu dapatkan setelah mendapat ebook ini
-                            </p>
                             <div>
                                 {c.checks.map((t: any, i: number) => (
                                     <div key={i} className="df-check-item">
@@ -2020,14 +1936,27 @@ const DarkFeminineTSX = () => {
                         <div className="df-wrap df-fade-in">
                             <div className="df-section-label">{c.testiLabel}</div>
                             <h2 className="df-section-h2">{c.testiH2} <span className="df-gold">{c.testiH2Span}</span></h2>
-                            {lang === 'id' && segment === 'default' && c.wifeSection?.beforeAfterSingle && (
-                                <IstriCarousel story={c.wifeSection.beforeAfterSingle} assets={assets} />
-                            )}
-                            {lang === 'id' && segment === 'default' && c.wifeSection?.beforeAfterIstri && (
-                                <IstriCarousel story={c.wifeSection.beforeAfterIstri} assets={assets} />
-                            )}
                         </div>
                     </section>
+
+                    {/* ANGLE SECTION - Indonesia Only */}
+                    {lang === 'id' && c.angleSection && (
+                        <section style={{ background: 'var(--bg-primary)', padding: '22px 0 44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                                    {c.angleSection.items.map((item: any, idx: number) => (
+                                        <div key={idx} style={{ background: 'var(--bg-card)', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                            <DbgImg src={(assets as any)[item.img]} alt={item.title} style={{ width: '100%', display: 'block' }} label={item.img} />
+                                            <div style={{ padding: '16px' }}>
+                                                <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--cream)', marginBottom: '8px' }}>{item.title}</h3>
+                                                <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.5 }}>{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* BONUSES */}
                     <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
@@ -2060,6 +1989,27 @@ const DarkFeminineTSX = () => {
                             <h2 className="df-section-h2">{c.priceH2} <span className="df-gold">{lang === 'id' ? 'Hari Ini' : (lang === 'ph' ? 'Ngayon' : 'Today')}</span></h2>
                             <div className="df-img-box">
                                 <DbgImg src={assets.df08} alt="Pricing Visual" label="df08" style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
+                            </div>
+                            <div className="df-value-card">
+                                <div>
+                                    {c.valueRows.map((r: any, i: number) => (
+                                        <div key={i} className="df-value-row">
+                                            <span style={{ color: 'var(--cream)' }}>{r.title}</span>
+                                            <span style={{ color: 'var(--muted)', fontWeight: 700 }}>{r.price}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div style={{ marginTop: '20px', padding: '16px', background: 'rgba(239,68,68,0.08)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <span style={{ fontSize: '15px', color: 'var(--muted)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{lang === 'id' ? 'Total Nilai' : (lang === 'ph' ? 'Kabuuan Na Halaga' : 'Total Value')}</span>
+                                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 700, color: 'var(--red)', textDecoration: 'line-through' }}>Rp995.000</span>
+                                </div>
+                                <div className="df-final-row">
+                                    <span style={{ fontSize: '15px', color: 'var(--cream)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{c.priceTodayLabel}</span>
+                                    <span className="df-final-price">{isEnglish ? "$15" : "Rp199.000"}</span>
+                                </div>
+                                <div style={{ display: 'block', textAlign: 'center', marginTop: '14px', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: 'var(--green-wa)', fontSize: '14px', fontWeight: 700, padding: '9px', borderRadius: '10px', letterSpacing: '0.06em' }}>
+                                    {c.savingsBadge}
+                                </div>
                             </div>
                             <div style={{ marginTop: '24px' }}>
                                 <p style={{ textAlign: 'center', fontSize: '15px', color: 'var(--muted)', marginTop: '10px' }}>{c.priceSub}</p>
@@ -2095,9 +2045,58 @@ const DarkFeminineTSX = () => {
                                     {c.exclCta}
                                 </p>
 
-                                </div>
-                            </div>
-                        </section>
+                                <div className="df-free-form">
+                                    <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+                                        <span style={{ color: 'var(--purple-light)', fontSize: '18px', fontWeight: 700 }}>🎁 {lang === 'id' ? 'Dapatkan Free Ebook' : (lang === 'ph' ? 'Kumuha ng Libreng Ebook' : 'Get a Free Ebook')}</span>
+                                    </div>
+
+                                    {successFree ? (
+                                        <div style={{ textAlign: 'center', background: 'rgba(37, 211, 102, 0.1)', border: '1px solid rgba(37, 211, 102, 0.3)', padding: '16px', borderRadius: '8px' }}>
+                                            <div style={{ fontSize: '24px', marginBottom: '8px' }}>✅</div>
+                                            <strong style={{ display: 'block', color: 'var(--green-wa)', marginBottom: '4px' }}>{lang === 'id' ? 'Berhasil!' : (lang === 'ph' ? 'Tagumpay!' : 'Success!')}</strong>
+                                            <span style={{ fontSize: '14px', color: 'var(--cream)' }}>{lang === 'id' ? 'Silahkan Periksa whatsapp anda,, Ketik Ya jika anda ingin menerima Free ebook..' : (lang === 'ph' ? 'Mangyaring suriin ang iyong WhatsApp, Mag-type ng Oo kung gusto mong matanggap ang Libreng ebook..' : 'Please check your WhatsApp, Type Yes if you want to receive the Free ebook..')}</span>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <input
+                                                type="text"
+                                                ref={freeEbookNameRef}
+                                                className="df-free-input"
+                                                placeholder={lang === 'id' ? "Nama Kamu" : (lang === 'ph' ? "Pangalan Mo" : "Your Name")}
+                                                value={nameFree}
+                                                onChange={(e) => setNameFree(e.target.value)}
+                                            />
+                                            <div className="df-free-pwrap">
+                                                <div className="df-free-ppfx">{lang === 'id' ? '🇮🇩 +62' : (lang === 'ph' ? '🇵🇭 +63' : '🌐')}</div>
+                                                <input
+                                                    type="tel"
+                                                    className="df-free-input"
+                                                    placeholder={lang === 'id' ? "812345678" : (lang === 'ph' ? "9123456789" : "e.g. 628123456789 or 19291234567")}
+                                                    value={waFree}
+                                                    onChange={(e) => setWaFree(e.target.value)}
+                                                />
+                                            </div>
+                                            <input
+                                                type="email"
+                                                className="df-free-input"
+                                                placeholder={lang === 'id' ? "Email Aktif" : (lang === 'ph' ? "Aktibong Email" : "Active Email")}
+                                                value={emailFree}
+                                                onChange={(e) => setEmailFree(e.target.value)}
+                                                style={{ marginBottom: '16px' }}
+                                            />
+                                            <button
+                                                className="df-free-btn"
+                                                onClick={submitFreeEbook}
+                                                disabled={loadingFree}
+                                            >
+                                                {loadingFree ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : (lang === 'id' ? 'Kirim Sekarang →' : (lang === 'ph' ? 'Ipadala Ngayon →' : 'Send Now →'))}
+                                            </button>
+                                        </div>
+                                    )}
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </section>
 
 
                                     {/* TRANSPARANSI SECTION */}
@@ -2295,33 +2294,6 @@ const DarkFeminineTSX = () => {
 
                         </div>
                     </section>
-                    {/* VALUE STACK — before checkout */}
-                    <section style={{ background: 'var(--bg-section)', padding: '44px 0 0 0' }}>
-                        <div className="df-wrap df-fade-in">
-                            <div className="df-value-card">
-                                <div>
-                                    {c.valueRows.map((r: any, i: number) => (
-                                        <div key={i} className="df-value-row">
-                                            <span style={{ color: 'var(--cream)' }}>{r.title}</span>
-                                            <span style={{ color: 'var(--muted)', fontWeight: 700 }}>{r.price}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div style={{ marginTop: '20px', padding: '16px', background: 'rgba(239,68,68,0.08)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <span style={{ fontSize: '15px', color: 'var(--muted)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{lang === 'id' ? 'Total Nilai' : (lang === 'ph' ? 'Kabuuan Na Halaga' : 'Total Value')}</span>
-                                    <span style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 700, color: 'var(--red)', textDecoration: 'line-through' }}>Rp995.000</span>
-                                </div>
-                                <div className="df-final-row">
-                                    <span style={{ fontSize: '15px', color: 'var(--cream)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{c.priceTodayLabel}</span>
-                                    <span className="df-final-price">{isEnglish ? "$15" : "Rp199.000"}</span>
-                                </div>
-                                <div style={{ display: 'block', textAlign: 'center', marginTop: '14px', background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: 'var(--green-wa)', fontSize: '14px', fontWeight: 700, padding: '9px', borderRadius: '10px', letterSpacing: '0.06em' }}>
-                                    {c.savingsBadge}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
                     {/* CHECKOUT FORM */}
                     <section id="checkout" className="df-formsec">
                         <div className="df-wrap df-fade-in">
@@ -2523,54 +2495,6 @@ const DarkFeminineTSX = () => {
                                     </div>
                                     <p className="df-hesitation-micro">{c.hesitationBox.micro}</p>
                                     <p className="df-hesitation-sting">{c.hesitationBox.sting}</p>
-                                    <div id="free-ebook" className="df-free-form" style={{ marginTop: '32px' }}>
-                                        <div style={{ textAlign: 'center', marginBottom: '14px' }}>
-                                            <span style={{ color: 'var(--purple-light)', fontSize: '18px', fontWeight: 700 }}>🎁 {lang === 'id' ? 'Dapatkan Free Ebook' : (lang === 'ph' ? 'Kumuha ng Libreng Ebook' : 'Get a Free Ebook')}</span>
-                                        </div>
-                                        {successFree ? (
-                                            <div style={{ textAlign: 'center', background: 'rgba(37, 211, 102, 0.1)', border: '1px solid rgba(37, 211, 102, 0.3)', padding: '16px', borderRadius: '8px' }}>
-                                                <div style={{ fontSize: '24px', marginBottom: '8px' }}>✅</div>
-                                                <strong style={{ display: 'block', color: 'var(--green-wa)', marginBottom: '4px' }}>{lang === 'id' ? 'Berhasil!' : (lang === 'ph' ? 'Tagumpay!' : 'Success!')}</strong>
-                                                <span style={{ fontSize: '14px', color: 'var(--cream)' }}>{lang === 'id' ? 'Silahkan Periksa whatsapp anda,, Ketik Ya jika anda ingin menerima Free ebook..' : (lang === 'ph' ? 'Mangyaring suriin ang iyong WhatsApp, Mag-type ng Oo kung gusto mong matanggap ang Libreng ebook..' : 'Please check your WhatsApp, Type Yes if you want to receive the Free ebook..')}</span>
-                                            </div>
-                                        ) : (
-                                            <div>
-                                                <input
-                                                    type="text"
-                                                    ref={freeEbookNameRef}
-                                                    className="df-free-input"
-                                                    placeholder={lang === 'id' ? "Nama Kamu" : (lang === 'ph' ? "Pangalan Mo" : "Your Name")}
-                                                    value={nameFree}
-                                                    onChange={(e) => setNameFree(e.target.value)}
-                                                />
-                                                <div className="df-free-pwrap">
-                                                    <div className="df-free-ppfx">{lang === 'id' ? '🇮🇩 +62' : (lang === 'ph' ? '🇵🇭 +63' : '🌐')}</div>
-                                                    <input
-                                                        type="tel"
-                                                        className="df-free-input"
-                                                        placeholder={lang === 'id' ? "812345678" : (lang === 'ph' ? "9123456789" : "e.g. 628123456789 or 19291234567")}
-                                                        value={waFree}
-                                                        onChange={(e) => setWaFree(e.target.value)}
-                                                    />
-                                                </div>
-                                                <input
-                                                    type="email"
-                                                    className="df-free-input"
-                                                    placeholder={lang === 'id' ? "Email Aktif" : (lang === 'ph' ? "Aktibong Email" : "Active Email")}
-                                                    value={emailFree}
-                                                    onChange={(e) => setEmailFree(e.target.value)}
-                                                    style={{ marginBottom: '16px' }}
-                                                />
-                                                <button
-                                                    className="df-free-btn"
-                                                    onClick={submitFreeEbook}
-                                                    disabled={loadingFree}
-                                                >
-                                                    {loadingFree ? (lang === 'id' ? 'Memproses...' : (lang === 'ph' ? 'Pinoproseso...' : 'Processing...')) : (lang === 'id' ? 'Kirim Sekarang →' : (lang === 'ph' ? 'Ipadala Ngayon →' : 'Send Now →'))}
-                                                </button>
-                                            </div>
-                                        )}
-                                    </div>
                                 </div>
                             </div>
                         </section>
