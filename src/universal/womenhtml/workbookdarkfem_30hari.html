@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workbook 30 Hari - Feminine Energy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap');
+
+    :root {
+      --primary-dark: #121c2d;
+      --accent-gold: #e5a024;
+      --bg-cream: #faf7f2;
+      --text-dark: #333;
+      --text-muted: #777;
+      --border-color: #e2d9cc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #eee;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    .page {
+      background: var(--bg-cream);
+      max-width: 800px;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .hero-section {
+      background-color: var(--primary-dark);
+      color: white;
+      text-align: center;
+      padding: 80px 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: var(--accent-gold);
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    .hero-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: var(--accent-gold);
+      margin-bottom: 25px;
+    }
+
+    .hero-section p {
+      font-size: 18px;
+      font-weight: 300;
+      opacity: 0.9;
+      max-width: 450px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .quote-box {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 50px auto 0;
+    }
+
+    .quote-box p.quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .quote-box p.author {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .hero-footer {
+      margin-top: 60px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0.6;
+      text-transform: uppercase;
+    }
+
+    .content-section {
+      padding: 40px 50px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      color: #a33b3b;
+      font-size: 28px;
+      border-left: 4px solid var(--accent-gold);
+      padding-left: 15px;
+      margin-bottom: 30px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px 40px;
+      margin-bottom: 40px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-flex-direction: column;
+    }
+
+    .input-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .input-group input, .input-group textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 0;
+      font-size: 16px;
+      color: var(--text-dark);
+      font-family: 'Roboto', sans-serif;
+      outline: none;
+    }
+    
+    .input-group input:focus, .input-group textarea:focus {
+      border-bottom-color: var(--accent-gold);
+    }
+
+    .input-group textarea {
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    .goal-box {
+      border: 1px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 25px;
+      background-color: rgba(229, 160, 36, 0.05);
+      margin-bottom: 50px;
+    }
+    
+    .goal-box .input-group input {
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 15px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .info-card h4 {
+      color: #a33b3b;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .warning-box {
+      background-color: rgba(229, 160, 36, 0.15);
+      border: 1px solid rgba(229, 160, 36, 0.4);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Day Cards */
+    .day-container {
+      background: var(--bg-cream);
+      border-top: 1px dashed var(--border-color);
+      padding: 40px 50px;
+    }
+    
+    .day-container:nth-child(even) {
+      background: #fdfaf6;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .day-badge {
+      background-color: var(--primary-dark);
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 8px 25px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+    }
+
+    .day-meta {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .day-meta input[type="date"] {
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      background: transparent;
+      font-family: inherit;
+      color: var(--text-dark);
+      outline: none;
+    }
+
+    .session-circles {
+      display: flex;
+      gap: 6px;
+    }
+
+    .circle {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+    
+    .circle.active {
+      background-color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+
+    .day-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .day-input {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 15px;
+      height: 100px;
+      width: 100%;
+      resize: none;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    
+    .day-input:focus {
+        border-color: var(--accent-gold);
+    }
+    
+    .day-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #a33b3b;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .milestone-box {
+      background-color: var(--primary-dark);
+      color: white;
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    .milestone-box h3 {
+      color: var(--accent-gold);
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .milestone-box p {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+    
+    .print-btn {
+        display: block;
+        margin: 30px auto;
+        padding: 15px 30px;
+        background: var(--primary-dark);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: inherit;
+    }
+    
+    @media print {
+        body { background: white; }
+        .page { box-shadow: none; margin: 0; max-width: 100%; border: none; }
+        .print-btn { display: none; }
+        .day-container { page-break-inside: avoid; border-top: 1px solid #ddd; padding: 30px 20px; }
+        .hero-section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="hero-section">
+      <div class="badge">EL VISION GROUP — SISTEM FEMININE ENERGY</div>
+      <h1>WORKBOOK</h1>
+      <h2>30 HARI</h2>
+      <p>Protokol Kekacauan + Kedamaian untuk Membangkitkan Feminine Energy Tak Terduga</p>
+
+      <div class="quote-box">
+        <p class="quote">"Kekacauan adalah bahan bakar. Kedamaian adalah kemudi. Tanpa keduanya, Anda tidak akan sampai ke tujuan."</p>
+        <p class="author">— eL Reyzandra, Founder eL Vision</p>
+      </div>
+
+      <div class="hero-footer">AI.ELVISIONGROUP.COM · SISTEM FEMININE ENERGY</div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Data Diri & Komitmen</h2>
+      
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Nama Lengkap</label>
+          <input type="text" placeholder="Tulis nama Anda...">
+        </div>
+        <div class="input-group">
+          <label>Umur</label>
+          <input type="text" placeholder="Contoh: 32 tahun">
+        </div>
+        <div class="input-group">
+          <label>Tanggal Mulai</label>
+          <input type="date">
+        </div>
+        <div class="input-group">
+          <label>Pekerjaan / Bisnis Saat Ini</label>
+          <input type="text" placeholder="Contoh: Freelancer, UMKM kuliner, Karyawan">
+        </div>
+      </div>
+
+      <div class="goal-box">
+        <div class="input-group" style="margin-bottom: 15px;">
+          <label style="color: var(--accent-gold);">KEINGINAN UTAMA SAYA (GOAL 30 HARI)</label>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px; text-transform: none; letter-spacing: 0;">
+            Tuliskan satu keinginan spesifik dan angka/hasil yang ingin Anda capai. Contoh: "Saya ingin memancarkan aura yang kuat" atau "Saya ingin mendapat pasangan yang menghargai saya". Semakin spesifik, semakin kuat sinyal yang dikirim.
+          </p>
+        </div>
+        <input type="text" placeholder="Keinginan saya adalah..." style="width:100%; border:none; border-bottom:1px solid #ccc; padding:8px; margin-bottom:15px; outline:none;">
+        <input type="text" placeholder="Target nyata: ..." style="width:100%; border:none; border-bottom:1px solid #ccc; padding:8px; margin-bottom:15px; outline:none;">
+        <input type="text" placeholder="Mengapa ini penting bagi saya..." style="width:100%; border:none; border-bottom:1px solid #ccc; padding:8px; outline:none;">
+      </div>
+
+      <h2 class="section-title">Cara Menggunakan Workbook Ini</h2>
+      
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>KEKACAUAN — OLAHRAGA INTENS</h4>
+          <p>Lari, renang, gym, atau olahraga apapun yang membuat detak jantung naik dan tubuh berpeluh. Ini menciptakan urgensi dan energi aktif di dalam tubuh Anda. Catat durasi dan jenis olahraga.</p>
+        </div>
+        <div class="info-card">
+          <h4>KEDAMAIAN — FOKUS & FEMININE ENERGY</h4>
+          <p>Saat olahraga atau setelahnya: dengarkan Audio Feminine Energy, sholat khusyuk, meditasi, ibadah. Rasakan keinginan Anda terwujud — bukan dengan cemas, tapi dengan yakin dan pasrah.</p>
+        </div>
+        <div class="info-card">
+          <h4>HASIL — CATAT APA YANG DATANG</h4>
+          <p>Tulis "Belum ada" jika belum ada. Tidak apa-apa. Tapi catat juga hal kecil: ide yang tiba-tiba muncul, seseorang yang menghubungi, peluang yang muncul dari arah tidak terduga.</p>
+        </div>
+        <div class="info-card">
+          <h4>SESI HARIAN — 1, 2, ATAU 3X</h4>
+          <p>Anda bisa melakukan 1 sampai 3 sesi per hari. Tandai jumlah sesi yang dilakukan. Semakin konsisten, semakin cepat hasilnya. Minimal 1x sehari, tidak ada pengecualian.</p>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong>Penting:</strong> Setiap orang berbeda. Ada yang menemukan hasil di <strong>Hari ke-3</strong>, ada yang di <strong>Hari ke-7</strong>, ada yang di <strong>Hari ke-14</strong>. Jangan berhenti sebelum hari ke-30. Buktikan sendiri. Yang datang bisa berupa keajaiban feminine energy langsung ke hidup Anda, ide baru yang logis untuk mencapai target, atau kedatangan seseorang yang membantu Anda mencapai goal.
+      </div>
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 1</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Contoh: Saya lari 20 menit pagi, napas ngos-ngosan sampai berkeringat penuh..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Contoh: Saya dengarkan audio dengan khusyuk dan berdoa dengan pasrah..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Contoh: Saya merasakan energi saya meningkat, sudah terasa nyata dan yakin..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada — atau: ada ide baru, seseorang menghubungi, peluang muncul..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 2</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 3</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 4</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 5</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 6</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container" style="padding-top: 20px;">
+      <div class="milestone-box" style="">
+        <h3 style="">MILESTONE HARI KE-7</h3>
+        <p>Selamat, Anda sudah 1 minggu! Tubuh dan pikiran mulai sinkron. Tidur lebih nyenyak, fokus lebih tajam. Tanda pertama mungkin sudah mulai muncul — perhatikan hal-hal kecil di sekitar Anda.</p>
+      </div>
+
+      <div class="day-header">
+        <div class="day-badge">HARI 7</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      <div style="margin-top:20px;"><label class="day-label" style="color:#2a8a43;">HASIL / REFLEKSI MINGGU PERTAMA</label><textarea class="day-input" placeholder="Apa yang berubah setelah 7 hari? Perubahan kecil apapun, tulis di sini..."></textarea></div>
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 8</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 9</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 10</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 11</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 12</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 13</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container" style="padding-top: 20px;">
+      <div class="milestone-box" style="">
+        <h3 style="">MILESTONE HARI KE-14</h3>
+        <p>Ini titik kritis. Banyak anggota melaporkan tanda pertama muncul di sekitar hari ini — bisa berupa feminine energy yang memancar kuat, ide baru yang logis, atau peluang. Perhatikan dengan seksama. Catat sekecil apapun.</p>
+      </div>
+
+      <div class="day-header">
+        <div class="day-badge">HARI 14</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      <div style="margin-top:20px;"><label class="day-label" style="color:#2a8a43;">HASIL / REFLEKSI HARI KE-14</label><textarea class="day-input" placeholder="Apakah ada tanda yang datang? Peluang dari arah tidak terduga? Tulis detail di sini..."></textarea></div>
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 15</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 16</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 17</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 18</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 19</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 20</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container" style="padding-top: 20px;">
+      <div class="milestone-box" style="">
+        <h3 style="">MILESTONE HARI KE-21</h3>
+        <p>3 minggu. Kondisi ini sudah mulai menjadi kebiasaan. Energi Anda beroperasi berbeda dari sebelumnya. Orang di sekitar Anda mulai merasakan perubahan, meski Anda tidak berkata apa-apa. Momentum sedang bergerak.</p>
+      </div>
+
+      <div class="day-header">
+        <div class="day-badge">HARI 21</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      <div style="margin-top:20px;"><label class="day-label" style="color:#2a8a43;">HASIL / REFLEKSI 21 HARI</label><textarea class="day-input" placeholder="Apa semua yang sudah datang sejak hari pertama? Kumpulkan semua tanda di sini..."></textarea></div>
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 22</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 23</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 24</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 25</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 26</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 27</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 28</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <div class="day-header">
+        <div class="day-badge">HARI 29</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container" style="padding-top: 20px;">
+      <div class="milestone-box" style="background-color: var(--accent-gold); color: white;">
+        <h3 style="color: white;">HARI TERAKHIR — HARI KE-30</h3>
+        <p>Anda sudah sampai. Apapun hasilnya, Anda telah membuktikan komitmen kepada diri sendiri. Sekarang tulis semua yang sudah terjadi selama 30 hari ini. Ini adalah kesaksian Anda sendiri.</p>
+      </div>
+
+      <div class="day-header">
+        <div class="day-badge">HARI 30</div>
+        <div class="day-meta">
+          <div>Tanggal: <input type="date"></div>
+          <div style="display:flex; align-items:center; gap:10px;">Jumlah sesi: 
+            <div class="session-circles">
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+              <span class="circle" onclick="this.classList.toggle('active')"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <div>
+          <label class="day-label">KEGIATAN OLAHRAGA (KEKACAUAN)</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color:var(--accent-gold);">KEGIATAN KEDAMAIAN</label>
+          <textarea class="day-input" placeholder="Saya..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #6a4c9c;">KEINGINAN YANG SAYA RASAKAN HARI INI</label>
+          <textarea class="day-input" placeholder="Saya merasakan..."></textarea>
+        </div>
+        <div>
+          <label class="day-label" style="color: #3b9ca3;">HASIL / TANDA YANG DATANG</label>
+          <textarea class="day-input" placeholder="Belum ada / ..."></textarea>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+
+    <div class="day-container">
+      <label class="day-label" style="color: #2a8a43;">SEMUA HASIL & KEAJAIBAN SELAMA 30 HARI</label>
+      <textarea class="day-input" style="height: 150px; margin-bottom: 20px;" placeholder="Tulis semua keajaiban feminine energy, ide besar, orang yang datang, peluang yang muncul, energi yang bergerak — sejak hari pertama hingga hari ini..."></textarea>
+
+      <label class="day-label" style="color: #6a4c9c;">KEINGINAN BERIKUTNYA (SIKLUS 30 HARI KE-2)</label>
+      <textarea class="day-input" style="height: 100px;" placeholder="Saya sekarang siap untuk siklus berikutnya. Keinginan saya berikutnya adalah..."></textarea>
+    </div>
+
+    <div class="hero-section" style="margin-top: 20px;">
+      <h2 style="margin-bottom: 10px;">Selamat.</h2>
+      <p style="margin-bottom: 30px; font-size: 16px;">Anda baru saja menyelesaikan 30 hari protokol yang sangat sedikit orang berani lakukan.</p>
+      <p style="margin-bottom: 40px; font-size: 16px;">Ini bukan akhir — ini awal dari versi baru diri Anda.</p>
+      
+      <div style="border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 30px; text-align: left; max-width: 600px; margin: 0 auto;">
+        <label style="display: block; font-size: 12px; font-weight: bold; color: var(--accent-gold); margin-bottom: 15px; letter-spacing: 1px;">PESAN UNTUK DIRI SENDIRI SETELAH 30 HARI</label>
+        <textarea style="width: 100%; height: 80px; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.3); color: white; font-family: inherit; font-style: italic; resize: none; outline: none;" placeholder="Tulis apa yang ingin Anda sampaikan kepada diri Anda sendiri setelah perjalanan 30 hari ini..."></textarea>
+      </div>
+      
+      <div style="margin-top: 50px; font-size: 14px; opacity: 0.8;">
+        Salam Abundance — eL Vision Group · ai.elvisiongroup.com
+      </div>
+    </div>
+  </div>
+  
+  <button class="print-btn" onclick="window.print()">Cetak Workbook (PDF)</button>
+
+</body>
+</html>

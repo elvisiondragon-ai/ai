@@ -714,6 +714,24 @@ const DarkFeminineTSX = () => {
     };
 
     useEffect(() => {
+        // Preload all carousel images into browser cache so clicks are instant
+        const carouselImages = [
+            istriC1S1, istriC1S2, istriC1S3, istriC1S4,
+            istriC2S1, istriC2S2, istriC2S3, istriC2S4,
+            istriC3S1, istriC3S2, istriC3S3, istriC3S4,
+            istriC4S1, istriC4S2, istriC4S3, istriC4S4,
+            istriC5S1, istriC5S2, istriC5S3, istriC5S4,
+            singleC2First, singleC2S2, singleC2S3, singleC2S4,
+            singleC3First, singleC3S2, singleC3S3, singleC3S4,
+            singleC4First, singleC4S2, singleC4S3, singleC4S4,
+            singleC5S1, singleC5S2, singleC5S3, singleC5S4,
+            baS1, baS2, baS3, baS4,
+            baI1, baI2, baI3, baI4,
+        ];
+        carouselImages.forEach(src => { const img = new Image(); img.src = src; });
+    }, []);
+
+    useEffect(() => {
         fetchDbReviews();
 
         // Consolidated Auto-scroll logic for ?free-ebook, ?reviews, or ?pay
