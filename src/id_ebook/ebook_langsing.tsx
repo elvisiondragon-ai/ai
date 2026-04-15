@@ -13,11 +13,11 @@ import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Toaster } from '@/components/ui/toaster';
 import { Separator } from '@/components/ui/separator';
-import { 
-  initFacebookPixelWithLogging, 
-  trackPageViewEvent, 
-  trackViewContentEvent, 
-  trackAddPaymentInfoEvent, 
+import {
+  initFacebookPixelWithLogging,
+  trackPageViewEvent,
+  trackViewContentEvent,
+  trackAddPaymentInfoEvent,
   trackPurchaseEvent,
   AdvancedMatchingData,
   getFbcFbpCookies,
@@ -58,7 +58,7 @@ export default function DietPaymentPage() {
 
       const { data: { session } } = await supabase.auth.getSession();
       const body: any = {
-        pixelId: '3319324491540889',
+        pixelId: '1572796670108871',
         eventName,
         customData: eventData,
         eventId: eventId,
@@ -112,7 +112,7 @@ export default function DietPaymentPage() {
 
       if (fbc) userData.fbc = fbc;
       if (fbp) userData.fbp = fbp;
-      
+
       body.userData = userData;
 
       await supabase.functions.invoke('capi-universal', { body });
@@ -135,7 +135,7 @@ export default function DietPaymentPage() {
   const [loading, setLoading] = useState(false);
   const [paymentData, setPaymentData] = useState<any>(null);
   const [showPaymentInstructions, setShowPaymentInstructions] = useState(false);
-  
+
   const totalAmount = productPrice;
 
   const hasFiredPixelsRef = useRef(false);
@@ -145,11 +145,11 @@ export default function DietPaymentPage() {
   useEffect(() => {
     if (typeof window !== 'undefined' && !hasFiredPixelsRef.current) {
       hasFiredPixelsRef.current = true;
-      const pixelId = '3319324491540889';
+      const pixelId = '1572796670108871';
       const productNameBackend = 'ebook_diet';
-      
+
       initFacebookPixelWithLogging(pixelId);
-      
+
       const pageEventId = `pageview-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
       trackPageViewEvent({}, pageEventId, pixelId);
 
@@ -218,7 +218,7 @@ export default function DietPaymentPage() {
     setLoading(true);
 
     const addPaymentInfoEventId = `addpaymentinfo-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-    const pixelId = '3319324491540889';
+    const pixelId = '1572796670108871';
     const productNameBackend = 'ebook_diet';
 
     const userDataPixel: AdvancedMatchingData = {
@@ -235,7 +235,7 @@ export default function DietPaymentPage() {
       value: totalAmount,
       currency: 'IDR'
     }, addPaymentInfoEventId, pixelId, userDataPixel, 'testcode_indo');
-    
+
     sendCapiEvent('AddPaymentInfo', {
       content_ids: [productNameBackend],
       content_type: 'product',
@@ -253,7 +253,7 @@ export default function DietPaymentPage() {
           userName: userName,
           userEmail: userEmail,
           phoneNumber: phoneNumber,
-          address: null, 
+          address: null,
           province: null,
           kota: null,
           kecamatan: null,
@@ -328,15 +328,15 @@ export default function DietPaymentPage() {
 
   useEffect(() => {
     if (!showPaymentInstructions || !paymentData?.tripay_reference) return;
-    
+
     const tableName = 'global_product';
     const channelName = `payment-status-diet-${paymentData.tripay_reference}`;
-    
+
     console.log(`[DietPaymentPage] Attempting to subscribe to channel: ${channelName} for tripay_reference: ${paymentData.tripay_reference}`);
 
     const channel = supabase
       .channel(channelName)
-      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: tableName, filter: `tripay_reference=eq.${paymentData.tripay_reference}`},
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: tableName, filter: `tripay_reference=eq.${paymentData.tripay_reference}` },
         (payload) => {
           console.log('[DietPaymentPage] Realtime payload received:', payload);
           if (payload.new?.status === 'PAID') {
@@ -345,16 +345,16 @@ export default function DietPaymentPage() {
 
             console.log('[DietPaymentPage] Payment status is PAID, showing toast.');
             toast({
-                title: "🎉 Pembayaran Berhasil!",
-                description: "Terima kasih, pembayaran Anda telah kami terima. Silakan cek email Anda di Inbox, Important, atau Spam untuk link Ebook.",
-                duration: 0, 
+              title: "🎉 Pembayaran Berhasil!",
+              description: "Terima kasih, pembayaran Anda telah kami terima. Silakan cek email Anda di Inbox, Important, atau Spam untuk link Ebook.",
+              duration: 0,
             });
 
             // Facebook Pixel - Purchase event
             const eventId = paymentData.tripay_reference;
-            const pixelId = '3319324491540889';
+            const pixelId = '1572796670108871';
             const productNameBackend = 'ebook_diet';
-            
+
             const userDataPixel: AdvancedMatchingData = {
               em: userEmail,
               ph: phoneNumber,
@@ -373,14 +373,14 @@ export default function DietPaymentPage() {
             const isBackendCapiSent = payload.new?.capi_purchase_sent === true;
 
             if (isBackendCapiSent) {
-               console.log(`⏭️ CAPI Purchase Skipped (Backend already sent)`);
+              console.log(`⏭️ CAPI Purchase Skipped (Backend already sent)`);
             } else {
-               sendCapiEvent('Purchase', {
-                 content_ids: [productNameBackend],
-                 content_type: 'product',
-                 value: payload.new?.amount || totalAmount,
-                 currency: 'IDR'
-               }, eventId);
+              sendCapiEvent('Purchase', {
+                content_ids: [productNameBackend],
+                content_type: 'product',
+                value: payload.new?.amount || totalAmount,
+                currency: 'IDR'
+              }, eventId);
             }
             // Optionally navigate after showing toast
             // navigate('/success-page'); 
@@ -432,14 +432,14 @@ export default function DietPaymentPage() {
                 <Label className="text-muted-foreground">Metode Pembayaran</Label>
                 <span className="font-medium">{paymentData.paymentMethod}</span>
               </div>
-                          <div className="flex justify-between items-center">
-                            <Label className="text-muted-foreground">Total Pembayaran</Label>
-                            <span className="font-bold text-lg text-primary">{formatCurrency(paymentData.amount)}</span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <Label className="text-muted-foreground">Tripay Reference</Label>
-                            <span className="font-medium">{paymentData.tripay_reference}</span>
-                          </div>              {paymentData.paymentMethod !== 'BCA_MANUAL' && (
+              <div className="flex justify-between items-center">
+                <Label className="text-muted-foreground">Total Pembayaran</Label>
+                <span className="font-bold text-lg text-primary">{formatCurrency(paymentData.amount)}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <Label className="text-muted-foreground">Tripay Reference</Label>
+                <span className="font-medium">{paymentData.tripay_reference}</span>
+              </div>              {paymentData.paymentMethod !== 'BCA_MANUAL' && (
                 <div className="flex justify-between items-center">
                   <Label className="text-muted-foreground">Batas Pembayaran</Label>
                   <span className="font-medium">
@@ -482,19 +482,19 @@ export default function DietPaymentPage() {
                 {paymentData.paymentMethod === 'BCA_MANUAL' && paymentData.status === 'UNPAID' && (
                   <div className="my-12">
                     <a
-                      href={`https://wa.me/62895325633487?text=${encodeURIComponent(`Halo kak, saya sudah melakukan transfer manual BCA untuk pesanan Program Diet.<br/><br/>` + 
-`Detail Pembayaran:<br/>` + 
-`- Nama: ${userName}<br/>` + 
-`- Email: ${userEmail}<br/>` + 
-`- Telepon: ${phoneNumber}<br/>` + 
-`- Produk: ${productName}<br/>` + 
-`- Total: ${formatCurrency(totalAmount)}<br/>` + 
-`- Metode: Manual Transfer BCA<br/>` + 
-`- Ref TriPay: ${paymentData?.tripay_reference || 'N/A'}<br/>` + 
-`- Status: UNPAID (Menunggu Konfirmasi)<br/>` + 
-`${paymentData?.payCode ? `- VA/Kode Bayar: ${paymentData.payCode}<br/>` : ''}` + 
-`${paymentData?.qrUrl ? `- QR Code: ${paymentData.qrUrl}<br/>` : ''}` + 
-`Mohon konfirmasi pesanan saya. Terima kasih.`)}`}
+                      href={`https://wa.me/62895325633487?text=${encodeURIComponent(`Halo kak, saya sudah melakukan transfer manual BCA untuk pesanan Program Diet.<br/><br/>` +
+                        `Detail Pembayaran:<br/>` +
+                        `- Nama: ${userName}<br/>` +
+                        `- Email: ${userEmail}<br/>` +
+                        `- Telepon: ${phoneNumber}<br/>` +
+                        `- Produk: ${productName}<br/>` +
+                        `- Total: ${formatCurrency(totalAmount)}<br/>` +
+                        `- Metode: Manual Transfer BCA<br/>` +
+                        `- Ref TriPay: ${paymentData?.tripay_reference || 'N/A'}<br/>` +
+                        `- Status: UNPAID (Menunggu Konfirmasi)<br/>` +
+                        `${paymentData?.payCode ? `- VA/Kode Bayar: ${paymentData.payCode}<br/>` : ''}` +
+                        `${paymentData?.qrUrl ? `- QR Code: ${paymentData.qrUrl}<br/>` : ''}` +
+                        `Mohon konfirmasi pesanan saya. Terima kasih.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full"
@@ -574,14 +574,14 @@ export default function DietPaymentPage() {
       <WhatsAppButton />
       <div className="p-6 pb-4">
         <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
-                <Button variant="ghost" size="icon" onClick={() => navigate('/')}>
-                    <ArrowLeft className="w-5 h-5" />
-                </Button>
-                <h1 className="text-2xl font-bold font-exo bg-gradient-primary bg-clip-text text-transparent">
-                    Checkout Diet Program
-                </h1>
-            </div>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" onClick={() => navigate('/')}>
+              <ArrowLeft className="w-5 h-5" />
+            </Button>
+            <h1 className="text-2xl font-bold font-exo bg-gradient-primary bg-clip-text text-transparent">
+              Checkout Diet Program
+            </h1>
+          </div>
 
         </div>
       </div>
@@ -598,8 +598,8 @@ export default function DietPaymentPage() {
               <img src={dietImage} alt="Diet Product" className="w-48 h-48 object-contain" />
             </div>
 
-            <Separator/>
-            
+            <Separator />
+
             <div className="flex justify-between items-center">
               <Label className="text-muted-foreground">Harga Asli</Label>
               <span className="font-medium line-through text-red-500">{formatCurrency(originalPrice)}</span>
@@ -621,15 +621,15 @@ export default function DietPaymentPage() {
           <CardHeader><CardTitle>2. Informasi Pengiriman</CardTitle></CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="userName"><User className="inline-block w-4 h-4 mr-2"/>Nama Lengkap</Label>
+              <Label htmlFor="userName"><User className="inline-block w-4 h-4 mr-2" />Nama Lengkap</Label>
               <Input id="userName" name="name" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="John Doe" required />
             </div>
             <div>
-              <Label htmlFor="userEmail"><Mail className="inline-block w-4 h-4 mr-2"/>Email</Label>
+              <Label htmlFor="userEmail"><Mail className="inline-block w-4 h-4 mr-2" />Email</Label>
               <Input id="userEmail" name="email" type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder="email@example.com" required />
             </div>
             <div>
-              <Label htmlFor="phoneNumber"><Phone className="inline-block w-4 h-4 mr-2"/>Nomor Telepon</Label>
+              <Label htmlFor="phoneNumber"><Phone className="inline-block w-4 h-4 mr-2" />Nomor Telepon</Label>
               <Input id="phoneNumber" name="tel" type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="08123456789" required />
             </div>
 
@@ -638,22 +638,22 @@ export default function DietPaymentPage() {
         </Card>
 
         <Card>
-            <CardHeader><CardTitle>3. Metode Pembayaran</CardTitle></CardHeader>
-            <CardContent>
+          <CardHeader><CardTitle>3. Metode Pembayaran</CardTitle></CardHeader>
+          <CardContent>
             <RadioGroup value={selectedPaymentMethod} onValueChange={setSelectedPaymentMethod} className="space-y-3">
-                {paymentMethods.map((method) => (
+              {paymentMethods.map((method) => (
                 <Label key={method.code} htmlFor={method.code} className={`flex flex-col p-4 rounded-lg border cursor-pointer transition-all ${selectedPaymentMethod === method.code ? 'border-primary shadow-lg' : 'border-border'}`}>
-                    <div className="flex items-center space-x-3">
-                        <RadioGroupItem value={method.code} id={method.code} disabled={totalAmount > 5000000 && method.code !== 'BCA_MANUAL'} />
-                        <div className="flex-1">
-                            <span className="font-medium">{method.name}</span>
-                            <p className="text-xs text-muted-foreground">{method.description}</p>
-                        </div>
+                  <div className="flex items-center space-x-3">
+                    <RadioGroupItem value={method.code} id={method.code} disabled={totalAmount > 5000000 && method.code !== 'BCA_MANUAL'} />
+                    <div className="flex-1">
+                      <span className="font-medium">{method.name}</span>
+                      <p className="text-xs text-muted-foreground">{method.description}</p>
                     </div>
+                  </div>
                 </Label>
-                ))}
+              ))}
             </RadioGroup>
-            </CardContent>
+          </CardContent>
         </Card>
 
         <div className="fixed bottom-20 left-6 right-6">
