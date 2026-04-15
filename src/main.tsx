@@ -31,7 +31,6 @@ const EbookAdhdLanding = React.lazy(() => import('./id_ebook/ebook_adhd.tsx'));
 const ArifEbookLanding = React.lazy(() => import('./id_ebook/ebook_arif.tsx'));
 const EbookElvisionPaymentPage = React.lazy(() => import('./id_ebook/ebook_elvision.tsx'));
 const EbookGriefLanding = React.lazy(() => import('./id_ebook/ebook_grief.tsx'));
-const DietPaymentPage = React.lazy(() => import('./id_ebook/ebook_langsing.tsx'));
 const EbookPercayaDiriLP = React.lazy(() => import('./id_ebook/ebook_percayadiri.tsx'));
 const EbookTrackerLanding = React.lazy(() => import('./id_ebook/ebook_tracker.tsx'));
 const ELVision15K = React.lazy(() => import('./id_ebook/vip_15jt.tsx'));
@@ -47,7 +46,6 @@ const SahamLanding = React.lazy(() => import('./id_ebook/saham.tsx'));
 const CryptoLanding = React.lazy(() => import('./id_ebook/crypto.tsx'));
 
 // Moved from elvisiongroup
-const UsaEbookSlim = React.lazy(() => import('./usa/usa_ebookslim.tsx'));
 const Usa3000 = React.lazy(() => import('./usa/usa_3000.tsx'));
 const UsaPay3000 = React.lazy(() => import('./usa/usa_pay3000.tsx'));
 const Usa3000Survey = React.lazy(() => import('./usa/usa_3000survey.tsx'));
@@ -94,7 +92,6 @@ const App = () => {
       import('./universal/darkfeminine.tsx');
       import('./id_ebook/ebook_elvision.tsx');
       import('./id_ebook/vip_15jt.tsx');
-      import('./usa/usa_ebookslim.tsx');
       import('./usa/usa_3000.tsx');
       import('./usa/usa_pay3000.tsx');
       import('./usa/usa_3000survey.tsx');
@@ -120,7 +117,6 @@ const App = () => {
       <Route path="/ebook_arif" element={<ArifEbookLanding />} />
       <Route path="/ebook_elvision" element={<EbookElvisionPaymentPage />} />
       <Route path="/ebook_grief" element={<EbookGriefLanding />} />
-      <Route path="/ebook_langsing" element={<DietPaymentPage />} />
       <Route path="/ebook_percayadiri" element={<EbookPercayaDiriLP />} />
       <Route path="/ebook_tracker" element={<EbookTrackerLanding />} />
       <Route path="/vip_15jt" element={<ELVision15K />} />
@@ -135,7 +131,6 @@ const App = () => {
       <Route path="/crypto" element={<CryptoLanding />} />
 
       {/* Moved from elvisiongroup */}
-      <Route path="/usa_ebookslim" element={<UsaEbookSlim />} />
       <Route path="/usa_3000" element={<Usa3000 />} />
       <Route path="/usa_pay3000" element={<UsaPay3000 />} />
       <Route path="/usa_3000survey" element={<Usa3000Survey />} />
