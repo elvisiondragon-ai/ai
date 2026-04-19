@@ -2648,7 +2648,7 @@ const DarkFeminineTSX = () => {
 
                     {/* FLOATING WHATSAPP BUTTON */}
                     <a
-                        href={`https://wa.me/62895325633487?text=${encodeURIComponent(lang === 'ph' ? "Hello Dark Feminine Admin, may tanong ako..." : (lang === 'id' ? "Halo Admin Dark Feminine, saya mau tanya..." : "Hello Dark Feminine Admin, I have a question..."))}`}
+                        href={`https://wa.me/62895325633487?text=${encodeURIComponent(lang === 'ph' ? "Hello Dark Feminine Admin, may tanong ako..." : (lang === 'id' ? "hai kak minta info dark feminine free ebook dan kemana bayarnya, apa sih yang saya dapat jika membeli nya ?" : "Hello Dark Feminine Admin, I have a question..."))}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
