@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
-import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, sha256, handleFbcCookieManager } from "../utils/fbpixel";
+import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, trackPageViewEvent, trackAddPaymentInfoEvent, sha256, handleFbcCookieManager } from "../utils/fbpixel";
 
 // Asset Imports for ID
 import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
@@ -925,6 +925,12 @@ const DarkFeminineTSX = () => {
         const productDesc = `${getBaseProductName()} - ${name}`;
 
         try {
+            trackAddPaymentInfoEvent(
+                { content_name: productDesc, value: finalAmount, currency: finalCurrency },
+                undefined,
+                PIXEL_ID,
+                { em: email, ph: cleanPhone, fn: name, fbc: fbc || undefined, fbp: fbp || undefined }
+            );
             await supabase.functions.invoke('capi-universal', {
                 body: {
                     pixelId: PIXEL_ID, eventName: 'AddPaymentInfo', eventSourceUrl: window.location.href,
@@ -1111,6 +1117,7 @@ const DarkFeminineTSX = () => {
 
     useEffect(() => {
         initFacebookPixelWithLogging(PIXEL_ID);
+        trackPageViewEvent({}, undefined, PIXEL_ID);
         trackViewContentEvent(
             { content_name: 'Universal - Dark Feminine', value: priceID, currency: 'IDR' },
             undefined,
