@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
-const DEBUG_IMAGES = false; // const DEBUG_IMAGES = true;
+const DEBUG_IMAGES = true;
 const DbgImg = ({ src, alt, className, style, label }: { src: string; alt?: string; className?: string; style?: React.CSSProperties; label: string }) => (
     <div style={{ position: 'relative', display: 'block', lineHeight: 0 }}>
         <img src={src} alt={alt} className={className} style={{ display: 'block', width: '100%', ...style }} />
