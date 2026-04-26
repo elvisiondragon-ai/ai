@@ -55,6 +55,19 @@ import istriC5S2 from '../assets/darkfem/istri/c5/df_0413_jmp_s2_v2_177617287356
 import istriC5S3 from '../assets/darkfem/istri/c5/df_0413_jmp_s3_v2_1776172894595.png';
 import istriC5S4 from '../assets/darkfem/istri/c5/df_0413_jmp_s4_v2_1776172913410.png';
 
+// New Istri Ads 0426
+import newIstri1 from '../assets/darkfem/istri/new_0426/istri_menghapusjejak.png';
+import newIstri2 from '../assets/darkfem/istri/new_0426/istri_membangunrumah.png';
+import newIstri3 from '../assets/darkfem/istri/new_0426/istri_tunggudewasa_1777216228611.png';
+import newIstri4 from '../assets/darkfem/istri/new_0426/istri_sosialdeath_1777216244903.png';
+import newIstri5 from '../assets/darkfem/istri/new_0426/istri_vigoruntukdia_1777216261041.png';
+import newIstri6 from '../assets/darkfem/istri/new_0426/istri_hanyakewajiban_1777216789917.png';
+import newIstri7 from '../assets/darkfem/istri/new_0426/istri_tatapankosong_v2_1777216488783.png';
+import newIstri8 from '../assets/darkfem/istri/new_0426/istri_anakrespek_v2_1777216504562.png';
+import newIstri9 from '../assets/darkfem/istri/new_0426/istri_parfumwanitalain_v2_1777216520501.png';
+import newIstri10 from '../assets/darkfem/istri/new_0426/istri_menyesalmasatua_v2_1777216536956.png';
+import newIstri11 from '../assets/darkfem/istri/new_0426/df_0424_ad04_istri_selingkuh_v2_1777018341684.png';
+
 // Single Carousel Assets (general page wifeSection)
 import singleC2First from '../assets/darkfem/single/c2single/first.png';
 import singleC2S2 from '../assets/darkfem/single/c2single/df_0413_c2_s2_1776094206120.png';
@@ -113,6 +126,7 @@ const assetsMap: any = {
         istriC3S1, istriC3S2, istriC3S3, istriC3S4,
         istriC4S1, istriC4S2, istriC4S3, istriC4S4,
         istriC5S1, istriC5S2, istriC5S3, istriC5S4,
+        newIstri1, newIstri2, newIstri3, newIstri4, newIstri5, newIstri6, newIstri7, newIstri8, newIstri9, newIstri10, newIstri11,
         singleC2First, singleC2S2, singleC2S3, singleC2S4,
         singleC3First, singleC3S2, singleC3S3, singleC3S4,
         singleC4First, singleC4S2, singleC4S3, singleC4S4,
@@ -195,6 +209,7 @@ const contentData: any = {
         faqs: [
             { q: "Bagaimana cara aksesnya?", a: "Setelah pembayaran, ebook dikirim ke WhatsApp kamu dalam 5 menit. Format HTML bisa dibaca di HP, tablet, atau komputer." },
             { q: "Apakah ini aman dan privat?", a: "100% privat. Tidak ada nama produk di bukti transfer. Semua dikirim digital, rahasia." },
+            { q: "Bisakah Bayar Pakai Kartu Kredit?", a: "Bisa. Cukup gunakan QRIS, screenshot foto pembayarannya, lalu scan foto tersebut pakai kartu kredit kamu." },
             { q: "Apakah ini mengajarkan jadi pelakor?", a: "TIDAK. Dark Feminine mengajarkan kamu jadi HIGH VALUE WOMAN yang paham psikologi daya tarik. Bukan jadi orang jahat, tapi jadi BERHARGA." },
             { q: "Berapa lama sampai terasa hasilnya?", a: "Kebanyakan pembaca merasakan perubahan dalam 2-4 minggu setelah konsisten praktekkan. Jurus 1-7 sudah cukup powerful." },
             { q: "Apakah berlaku untuk yang berjilbab / religius?", a: "Ya. Dark Feminine bukan soal pakaian atau penampilan fisik. Ini tentang AURA, MISTERI, dan CARA BERPIKIR. Banyak pembaca kami yang berjilbab." },
@@ -1164,6 +1179,26 @@ const DarkFeminineTSX = () => {
                 title: 'Bertahan Demi Anak. Tapi Sampai Kapan?',
                 body: `Kamu pernah googling "tanda-tanda pernikahan tidak sehat" jam 2 pagi. Hasilnya cocok semua. Tapi kamu tutup browser-nya karena kamu takut dengan jawabannya.\n\nKamu bertahan. Bukan karena bahagia — tapi karena anak-anak. Karena status. Karena "nanti orang bilang apa."\n\nDan setiap hari, kamu bangun dengan wajah yang sama, senyuman yang sama, dan kekosongan yang sama di dalam dada.\n\nTapi di dalam hati kamu tahu — ini bukan hidup. Ini survival.`
             },
+            {
+                imgs: ['newIstri1'],
+                title: 'DIA SEDANG MENGHAPUSMU DARI HIDUPNYA.',
+                body: `Kamu pikir dia cuma "khilaf" sebentar. Kamu pikir kalau kamu lebih sabar, lebih melayani, dan lebih diam, dia akan bosan dengan wanita itu dan kembali padamu.\n\nKamu salah besar.\n\nDia tidak sedang main-main. Dia sedang melakukan kalkulasi dingin. Dia sedang menghapus jejakmu dari rekeningnya, dari rencana masa depannya, dan dari hatinya.`
+            },
+            {
+                imgs: ['newIstri2'],
+                title: 'DIA BANGUN RUMAH BARU DENGAN UANGMU.',
+                body: `Setiap kali dia bilang "uangnya lagi diputar untuk bisnis," atau "masih banyak pengeluaran kantor," kamu percaya. Kamu potong budget skincare-mu, kamu tunda beli tas impianmu, kamu hitung setiap rupiah demi masa depan anak-anak.\n\nDi saat yang sama, wanita itu sedang tertawa sambil memilih furnitur untuk apartemen barunya. Pakai uang siapa? Uang suamimu.`
+            },
+            {
+                imgs: ['newIstri6'],
+                title: 'SENTUHANNYA HANYA KEWAJIBAN.',
+                body: `Pernahkah kamu merasa, saat dia memelukmu, dia tidak benar-benar "ada"?\n\nSentuhannya terasa mekanis. Kata-kata manisnya terdengar seperti naskah yang sudah dihafal. Di tempat tidur, dia ingin segalanya cepat selesai. Bukan karena dia capek kerja, tapi karena pikirannya sudah terbang ke wanita lain.`
+            },
+            {
+                imgs: ['newIstri11'],
+                title: 'JANGAN JADI PILIHAN KEDUA DI RUMAHMU SENDIRI.',
+                body: `Kamu mengorbankan segalanya demi keluarga. Tapi dia mengorbankan keluarganya demi wanita lain.\n\nJangan hanya menunggu. Pahami psikologi daya tarik dan rebut kembali kendali yang selama ini hilang.`
+            }
         ],
         pains: [
             { icon: "🪞", text: <>Kapan terakhir kali kamu merasa seperti <strong>WANITA</strong> — bukan hanya ibu, istri, atau pekerja?</> },
