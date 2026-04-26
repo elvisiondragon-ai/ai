@@ -1180,7 +1180,7 @@ const DarkFeminineTSX = () => {
                 body: `Kamu pernah googling "tanda-tanda pernikahan tidak sehat" jam 2 pagi. Hasilnya cocok semua. Tapi kamu tutup browser-nya karena kamu takut dengan jawabannya.\n\nKamu bertahan. Bukan karena bahagia — tapi karena anak-anak. Karena status. Karena "nanti orang bilang apa."\n\nDan setiap hari, kamu bangun dengan wajah yang sama, senyuman yang sama, dan kekosongan yang sama di dalam dada.\n\nTapi di dalam hati kamu tahu — ini bukan hidup. Ini survival.`
             },
             {
-                imgs: ['newIstri1'],
+                imgs: ['newIstri9', 'newIstri4', 'newIstri9'],
                 title: 'DIA SEDANG MENGHAPUSMU DARI HIDUPNYA.',
                 body: `Kamu pikir dia cuma "khilaf" sebentar. Kamu pikir kalau kamu lebih sabar, lebih melayani, dan lebih diam, dia akan bosan dengan wanita itu dan kembali padamu.\n\nKamu salah besar.\n\nDia tidak sedang main-main. Dia sedang melakukan kalkulasi dingin. Dia sedang menghapus jejakmu dari rekeningnya, dari rencana masa depannya, dan dari hatinya.`
             },
