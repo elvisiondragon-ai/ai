@@ -243,6 +243,7 @@ const contentData: any = {
                 { imgs: ['newIstri9', 'newIstri4', 'newIstri9'], title: "DIA SEDANG MENGHAPUSMU DARI HIDUPNYA", desc: "Kamu pikir dia khilaf? Dia sedang menghapus jejakmu dari rekeningnya, dari rencana masa depannya, dan dari hatinya." },
                 { imgs: ['newIstri2'], title: "BANGUN RUMAH DENGAN UANGMU", desc: "Setiap kali dia bilang uang diputar untuk bisnis, wanita itu sedang memilih furnitur untuk apartemen barunya." },
                 { imgs: ['newIstri6'], title: "HANYA KEWAJIBAN", desc: "Sentuhannya terasa mekanis. Di tempat tidur, dia ingin segalanya cepat selesai karena pikirannya terbang ke wanita lain." },
+                { imgs: ['newIstri8'], title: "ANAKMU SUDAH TAHU", desc: "Kamu pikir bertahan demi anak itu mulia? Di mata mereka, kamu hanya mengajarkan cara menjadi korban." },
                 { imgs: ['newIstri11'], title: "PILIHAN KEDUA", desc: "Kamu mengorbankan segalanya demi keluarga, tapi dia mengorbankan keluarganya demi wanita lain." }
             ],
             beforeAfterSingle: { imgs: ['baS1','baS2','baS3','baS4'], title: "", body: "" },
@@ -1186,6 +1187,11 @@ const DarkFeminineTSX = () => {
                 imgs: ['newIstri6'],
                 title: 'SENTUHANNYA HANYA KEWAJIBAN.',
                 body: `Pernahkah kamu merasa, saat dia memelukmu, dia tidak benar-benar "ada"?\n\nSentuhannya terasa mekanis. Kata-kata manisnya terdengar seperti naskah yang sudah dihafal. Di tempat tidur, dia ingin segalanya cepat selesai. Bukan karena dia capek kerja, tapi karena pikirannya sudah terbang ke wanita lain.`
+            },
+            {
+                imgs: ['newIstri8'],
+                title: 'ANAKMU SUDAH TAHU AYAHNYA KHIANAT.',
+                body: `Kamu pikir "bertahan demi anak" adalah tindakan mulia. Tapi sadarkah kamu bahwa anakmu sebenarnya sudah tahu?\n\nDi mata mereka, kamu tidak sedang berkorban. Kamu sedang mengajarkan mereka bagaimana caranya menjadi korban. Tunjukkan pada mereka bagaimana seorang Ratu bertindak.`
             },
             {
                 imgs: ['newIstri11'],
