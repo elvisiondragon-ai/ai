@@ -238,9 +238,12 @@ const contentData: any = {
             title: "Apakah Ini Kehidupan Pernikahan Yang Kamu Hadapi?",
             items: [
                 { imgs: ['singleC2First','singleC2S2','singleC2S3','singleC2S4'], title: "Dulu vs Sekarang", desc: "Mengingat masa pacaran yang penuh bunga, sementara sekarang hanya ada rutinitas yang membosankan dan hambar." },
-                { imgs: ['singleC3First','singleC3S2','singleC3S3','singleC3S4'], title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
-                { imgs: ['singleC4First','singleC4S2','singleC4S3','singleC4S4'], title: "Ibu vs Wanita", desc: "Terlalu fokus menjadi ibu yang sempurna sampai kamu lupa bagaimana caranya menjadi wanita yang memikat suami sendiri." },
+                { imgs: ['singleC4First','singleC4S2','singleC4S3','singleC4S4'], title: "Bersaing dengan Layar HP", desc: "Lelah mencoba menarik perhatiannya, tapi dia lebih memilih scroll sosmed daripada menatap matamu." },
                 { imgs: ['singleC5S1','singleC5S2','singleC5S3','singleC5S4'], title: "Dia Pilih Segalanya, Kecuali Kamu", desc: "Hobi, teman, hingga pekerjaan selalu jadi prioritas. Kamu hanya ada di daftar terakhir waktu luangnya." },
+                { imgs: ['newIstri9', 'newIstri4', 'newIstri9'], title: "DIA SEDANG MENGHAPUSMU DARI HIDUPNYA", desc: "Kamu pikir dia khilaf? Dia sedang menghapus jejakmu dari rekeningnya, dari rencana masa depannya, dan dari hatinya." },
+                { imgs: ['newIstri2'], title: "BANGUN RUMAH DENGAN UANGMU", desc: "Setiap kali dia bilang uang diputar untuk bisnis, wanita itu sedang memilih furnitur untuk apartemen barunya." },
+                { imgs: ['newIstri6'], title: "HANYA KEWAJIBAN", desc: "Sentuhannya terasa mekanis. Di tempat tidur, dia ingin segalanya cepat selesai karena pikirannya terbang ke wanita lain." },
+                { imgs: ['newIstri11'], title: "PILIHAN KEDUA", desc: "Kamu mengorbankan segalanya demi keluarga, tapi dia mengorbankan keluarganya demi wanita lain." }
             ],
             beforeAfterSingle: { imgs: ['baS1','baS2','baS3','baS4'], title: "", body: "" },
             beforeAfterIstri: { imgs: ['baI1','baI2','baI3','baI4'], title: "", body: "" },
@@ -1155,19 +1158,9 @@ const DarkFeminineTSX = () => {
         painH2b: "Hidupmu Sekarang?",
         stories: [
             {
-                imgs: ['istriC1S1', 'istriC1S2', 'istriC1S3', 'istriC1S4'],
-                title: 'Jam 11 Malam. Lampu Kamar Sudah Mati.',
-                body: `Kamu berbaring di samping orang yang dulu berjanji akan menemanimu selamanya. Tapi malam ini — seperti ratusan malam sebelumnya — dia membelakangimu. Cahaya HP-nya memantul di langit-langit kamar.\n\nKamu ingin menyentuhnya. Ingin bilang "aku kangen kamu." Tapi kamu sudah terlalu sering ditolak dengan cara yang paling halus — diam, atau "udah ya, capek."\n\nJadi kamu pilih diam juga. Memeluk bantal. Dan bertanya dalam hati: "Kapan terakhir kali dia memelukku duluan?"`
-            },
-            {
                 imgs: ['istriC2S1', 'istriC2S2', 'istriC2S3', 'istriC2S4'],
                 title: 'Dulu Dia Berlari Untukmu. Sekarang Kamu Mengejar Bayangan.',
                 body: `Ingat waktu pacaran dulu? Dia yang chat duluan. Dia yang cemas kalau kamu belum balas. Dia yang rela hujan-hujanan cuma buat ketemu kamu 30 menit.\n\nSekarang? Kamu yang minta perhatian. Kamu yang inisiatif. Kamu yang "ngerti" kalau dia sibuk, capek, atau butuh waktu sendiri. Selalu kamu yang mengalah.\n\nDan pertanyaan yang paling menyakitkan bukan "kenapa dia berubah?" — tapi "apa aku yang membuatnya berhenti berusaha?"`
-            },
-            {
-                imgs: ['istriC3S1', 'istriC3S2', 'istriC3S3', 'istriC3S4'],
-                title: 'Ibu Yang Sempurna. Istri Yang Hancur.',
-                body: `Pagi-pagi kamu sudah bangun siapkan sarapan. Antarkan anak sekolah. Beres-beres rumah. Kerja. Jemput anak. Masak makan malam. Mandiin anak. Temani PR.\n\nDi mata dunia, kamu ibu yang luar biasa. Di mata anak-anak, kamu superhero.\n\nTapi di dalam kamar mandi — satu-satunya tempat privasi yang kamu punya — kamu menangis tanpa suara dengan air shower menyala. Karena tidak ada seorang pun yang bertanya: "Kamu baik-baik saja?"`
             },
             {
                 imgs: ['istriC4S1', 'istriC4S2', 'istriC4S3', 'istriC4S4'],
