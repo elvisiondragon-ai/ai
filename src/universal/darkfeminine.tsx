@@ -663,6 +663,7 @@ const DarkFeminineTSX = () => {
     const hasPh = searchParams.has('ph');
     const hasIstri = searchParams.has('istri');
     const hasDisc = searchParams.has('disc');
+    const hasValue = searchParams.has('value') || window.location.search.includes('value');
     const segment = hasIstri ? 'istri' : 'default';
     const initLang = hasEn ? 'en' : (hasSg ? 'sg' : (hasPh ? 'ph' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id'))));
     const [lang, setLang] = useState<'id' | 'en' | 'sg' | 'ph'>(initLang as 'id' | 'en' | 'sg' | 'ph');
@@ -2491,7 +2492,7 @@ const DarkFeminineTSX = () => {
                                     </div>
 
                                     {/* Option 3: Ultimate */}
-                                    {lang === 'id' && (
+                                    {lang === 'id' && hasValue && (
                                         <div style={{ display: 'flex', alignItems: 'flex-start', background: addUpsell === 2 ? 'rgba(233,30,140,0.12)' : 'rgba(255,255,255,0.03)', border: addUpsell === 2 ? '2px solid rgba(233,30,140,0.7)' : '1px solid rgba(255,255,255,0.1)', padding: '16px', borderRadius: '12px', cursor: 'pointer', transition: 'all 0.3s', position: 'relative' }} onClick={() => setAddUpsell(2)}>
                                             <div style={{ marginRight: '14px', marginTop: '2px' }}>
                                                 <div style={{ width: '22px', height: '22px', borderRadius: '50%', border: addUpsell === 2 ? '6px solid #e91e8c' : '2px solid rgba(255,255,255,0.3)', background: 'transparent', transition: 'all 0.2s' }}></div>
