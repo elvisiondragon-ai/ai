@@ -662,6 +662,7 @@ const DarkFeminineTSX = () => {
     const hasId = searchParams.has('id');
     const hasPh = searchParams.has('ph');
     const hasIstri = searchParams.has('istri');
+    const hasSoftlife = searchParams.has('softlife');
     const hasDisc = searchParams.has('disc');
     const hasValue = searchParams.has('value') || window.location.search.includes('value');
     const segment = hasIstri ? 'istri' : 'default';
@@ -1149,7 +1150,48 @@ const DarkFeminineTSX = () => {
     const c = contentData[contentLang === 'sg' ? 'en' : contentLang];
     const assets = assetsMap[contentLang === 'sg' ? 'en' : contentLang];
 
-    // === SEGMENT OVERRIDES (?istri / ?single) ===
+    // === SEGMENT OVERRIDES (?istri / ?softlife / ?single) ===
+    // ?softlife — Persona "Soft Life / High Value Woman" (Juara 2: DF_ID_V2_17_Soft_Life)
+    // Tema: "Wanita lain dimanjakan, ada yang mereka tahu yang tidak diajarkan padamu".
+    // Sudut pandang: kecemburuan sosial terhadap wanita yang hidupnya "mudah" (dimanjakan/dibiayai)
+    // dan rahasia di balik energi tersebut. Karakter wanita yang hebat meski tidak banyak gaya —
+    // tenang, sedikit bicara, tidak butuh validasi, tapi mendapat segalanya. Kategori General/Single.
+    // Kombinasi: ?softlife (Rp199.000 default) | ?softlife&value (membuka opsi Ultimate Rp399.000).
+    const softlifeContent = (hasSoftlife && segment !== 'istri') ? {
+        heroBadge: "🤍 SOFT LIFE — HIGH VALUE WOMAN",
+        heroH1a: "Dia Tidak Lebih Cantik Darimu.",
+        heroH1b: "Tapi Hidupnya Dimanjakan.",
+        heroSub: "Untuk wanita yang lelah berjuang sendirian — sementara wanita lain hidupnya 'mudah'. Dimanjakan, dibayarkan, diperlakukan seperti ratu… tanpa berteriak, tanpa banyak gaya. Mereka paham satu hal yang tidak pernah diajarkan padamu.",
+        painLabel: "RAHASIA SOFT LIFE — HIGH VALUE WOMAN",
+        painH2a: "Kenapa Wanita Lain Dimanjakan,",
+        painH2b: "Sementara Kamu Berjuang Sendiri?",
+        stories: [
+            {
+                img: 'df08',
+                title: 'Dia Tidak Posting Drama. Tidak Banyak Gaya. Tapi Dapat Segalanya.',
+                body: `Lihat sekitarmu. Wanita yang paling dimanjakan bukan yang paling cantik. Bukan yang paling sering posting OOTD. Bukan yang teriak "aku independent woman" di sosmed.\n\nMereka justru yang paling tenang. Yang paling sedikit bicara. Yang hidupnya kelihatan… biasa saja dari luar.\n\nTapi pria-pria mapan datang sendiri. Dibayarkan dinner-nya. Dikirimkan bunga tanpa diminta. Diajak liburan tanpa drama. Hidupnya soft, smooth, dan effortless.\n\nSementara kamu — kerja 12 jam sehari, mandiri sampai capek, posting "boss babe" setiap minggu — tapi tetap pulang ke rumah kosong.`
+            },
+            {
+                img: 'df09',
+                title: 'Mereka Tahu Sesuatu Yang Tidak Pernah Diajarkan Padamu.',
+                body: `Kamu diajari dari kecil: kerja keras, jadi mandiri, jangan bergantung pada pria. Dan kamu lakukan semua itu dengan sempurna.\n\nTapi hasilnya? Kamu jadi "terlalu kuat", "terlalu sibuk", "terlalu independent" — sehingga tidak ada pria yang merasa dia bisa memberikan apapun untukmu.\n\nWanita soft life paham satu hal yang ibumu tidak pernah ajarkan: pria secara biologis didesain untuk MEMBERI dan MELINDUNGI. Ketika kamu menutup pintu itu dengan "aku bisa sendiri", kamu juga menutup pintu untuk dimanjakan.\n\nIni bukan tentang lemah. Ini tentang frekuensi. Tentang energi. Tentang menjadi MAGNET, bukan MESIN.`
+            },
+            {
+                img: 'df01',
+                title: 'High Value Tidak Perlu Membuktikan Apapun.',
+                body: `Kamu pernah merasa harus "berusaha lebih keras" supaya dihargai? Berusaha lebih cantik. Berusaha lebih pintar. Berusaha lebih tinggi posisinya.\n\nTapi semakin keras kamu berusaha, semakin terlihat… butuh validasi.\n\nWanita high value tidak perlu membuktikan apapun. Tidak butuh atensi murahan. Tidak teriak siapa mereka. Mereka diam, dan dunia datang.\n\nKarena nilai sejati tidak pernah perlu dipromosikan. Dan justru karena itulah dunia memperlakukan mereka seperti yang seharusnya kamu dapatkan dari awal.`
+            }
+        ],
+        pains: [
+            { icon: "👑", text: <>Lihat wanita lain <strong>dimanjakan</strong> — dibayarkan, diajak liburan, diberikan hadiah — tanpa harus minta atau berusaha.</> },
+            { icon: "💼", text: <>Kamu kerja keras, mandiri, "independent" — tapi pulang ke rumah <strong>kosong dan capek</strong>.</> },
+            { icon: "🤫", text: <>Mereka tidak banyak gaya, tidak vokal, tidak posting drama — tapi <strong>mendapat segalanya</strong>.</> },
+            { icon: "🔍", text: <>Kamu merasa ada <strong>sesuatu yang tidak kamu tahu</strong> — sesuatu yang diketahui wanita-wanita itu sejak kecil.</> },
+            { icon: "🪞", text: <>Cantikmu tidak kurang. Pintarmu tidak kurang. Tapi <strong>frekuensi</strong>-mu… berbeda.</> },
+            { icon: "💎", text: <>Kamu siap berhenti mengejar. Siap menjadi <strong>yang dikejar, dilayani, dan dimanjakan</strong>.</> },
+        ],
+    } : null;
+
     const segmentContent = segment === 'istri' ? {
         heroBadge: "🔥 KHUSUS UNTUK PARA ISTRI",
         heroH1a: "Kamu Sudah Memberikan Segalanya...",
@@ -1208,8 +1250,10 @@ const DarkFeminineTSX = () => {
         ],
     } : null;
 
-    // Merge: segment overrides on top of base content
-    const sc: any = segmentContent ? { ...c, ...segmentContent } : c;
+    // Merge: segment overrides on top of base content (softlite stacks on top when active)
+    const sc: any = segmentContent
+        ? { ...c, ...segmentContent }
+        : (softlifeContent ? { ...c, ...softlifeContent } : c);
 
     const [countdown, setCountdown] = useState("00:00:00");
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -2681,9 +2725,18 @@ const DarkFeminineTSX = () => {
                         </div>
                     </div>
 
-                    {/* FLOATING WHATSAPP BUTTON */}
+                    {/* FLOATING WHATSAPP BUTTON — kirim URL asal + pertanyaan manfaat spesifik per persona */}
                     <a
-                        href={`https://wa.me/62895325633487?text=${encodeURIComponent(lang === 'ph' ? "Hello Dark Feminine Admin, may tanong ako..." : (lang === 'id' ? "hai kak minta info dark feminine free ebook dan kemana bayarnya, apa sih yang saya dapat jika membeli nya ?" : "Hello Dark Feminine Admin, I have a question..."))}`}
+                        href={`https://wa.me/62895325633487?text=${encodeURIComponent(
+                            lang === 'ph' ? `Hello kak, galing ako sa ${window.location.href} — anong benefits ang makukuha ko?` :
+                            lang !== 'id' ? `Hi, I'm coming from ${window.location.href} — what benefits will I get from this ebook?` :
+                            (segment === 'istri' && hasValue) ? `Halo kak, saya dari ${window.location.href}\n\nSaya istri yang udah lama struggle. Apa benefit paket Ultimate Rp399.000 untuk istri seperti saya? Workbook 30 hari-nya beneran bisa ngebalikin suami yang udah cuek?` :
+                            segment === 'istri' ? `Halo kak, saya dari ${window.location.href}\n\nSaya seorang istri. Manfaat apa yang saya dapat dari ebook Dark Feminine ini? Bisa ngembaliin rasa peduli suami yang udah berasa kayak orang asing?` :
+                            (hasSoftlife && hasValue) ? `Halo kak, saya dari ${window.location.href}\n\nSaya pengen jadi wanita Soft Life yang dimanjakan tanpa banyak gaya. Apa benefit paket Ultimate Rp399.000 untuk capai itu? Workbook 30 hari-nya ngajarin apa?` :
+                            hasSoftlife ? `Halo kak, saya dari ${window.location.href}\n\nSaya pengen jadi wanita Soft Life / High Value yang tenang tapi dapet segalanya. Manfaat nyata apa yang akan saya dapat dari ebook ini?` :
+                            hasValue ? `Halo kak, saya dari ${window.location.href}\n\nApa bedanya paket Ultimate Rp399.000 dengan paket biasa Rp199.000? Worth it ga buat saya bayar lebih?` :
+                            `Halo kak, saya dari ${window.location.href}\n\nManfaat apa yang akan saya dapat dari ebook Dark Feminine ini? Hasil nyata kayak gimana setelah baca?`
+                        )}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
