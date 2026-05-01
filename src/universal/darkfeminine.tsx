@@ -68,6 +68,82 @@ import newIstri9 from '../assets/darkfem/istri/new_0426/istri_parfumwanitalain_v
 import newIstri10 from '../assets/darkfem/istri/new_0426/istri_menyesalmasatua_v2_1777216536956.png';
 import newIstri11 from '../assets/darkfem/istri/new_0426/df_0424_ad04_istri_selingkuh_v2_1777018341684.png';
 
+// New Parameter Ads (18adparamater)
+import presenceImg1 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_v2_1777550965342.png';
+import presenceImg2 from '../assets/darkfem/parameter/presence/presence_02_invisible_dunia_v2_1777550999292.png';
+import perubahanImg1 from '../assets/darkfem/parameter/perubahan/perubahan_01_satu_shift_v2_1777551074543.png';
+import perubahanImg2 from '../assets/darkfem/parameter/perubahan/perubahan_02_frekuensi_salah_v2_1777551089169.png';
+import highvalueImg1 from '../assets/darkfem/parameter/highvalue/highvalue_01_takut_kehilangan_v2_1777551172904.png';
+import highvalueImg2 from '../assets/darkfem/parameter/highvalue/highvalue_02_balik_posisi_v2_1777551189312.png';
+import nonggamesImg1 from '../assets/darkfem/parameter/nonggames/nongames_01_ghosted_lagi_v2_1777551270430.png';
+import nonggamesImg2 from '../assets/darkfem/parameter/nonggames/nongames_02_predictable_v2_1777551327348.png';
+import istrifearImg1 from '../assets/darkfem/parameter/istrifear/istrifear_01_hapusjejak_v2_1777551104410.png';
+import istrifearImg2 from '../assets/darkfem/parameter/istrifear/istrifear_02_wanita_biasa_v2_1777551152675.png';
+import legacyImg1 from '../assets/darkfem/parameter/legacy/istrilegacy_01_anak_meniru_v2_1777551238274.png';
+import legacyImg2 from '../assets/darkfem/parameter/legacy/istrilegacy_02_putus_rantai_v2_1777551252214.png';
+import visibleImg1 from '../assets/darkfem/parameter/visible/istrivisible_01_perabot_v3_1777554172954.png';
+import visibleImg2 from '../assets/darkfem/parameter/visible/istrivisible_02_potong_rambut_v3_1777554256681.png';
+import softlifeImg1 from '../assets/darkfem/parameter/softlife/softlife_01_dimanjakan_v2_1777551018247.png';
+import softlifeImg2 from '../assets/darkfem/parameter/softlife/softlife_02_independent_kosong_v2_1777551034803.png';
+
+
+// === AUTO-GENERATED FULL PARAMETER IMPORTS ===
+// -- softlife
+import p_softlife_Campaign_Test_df_0412_g2 from '../assets/darkfem/parameter/softlife/Campaign_Test_df_0412_g2.png';
+import p_softlife_df_0413_ba_wife_s1_v2_1776175429720 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s1_v2_1776175429720.png';
+import p_softlife_df_0413_ba_wife_s2_v2_1776175446156 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s2_v2_1776175446156.png';
+import p_softlife_df_0413_ba_wife_s3_v2_1776175462649 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s3_v2_1776175462649.png';
+import p_softlife_df_0413_ba_wife_s4_v2_1776175479780 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s4_v2_1776175479780.png';
+import p_softlife_df_0413_sl_s1_1776094453410 from '../assets/darkfem/parameter/softlife/df_0413_sl_s1_1776094453410.png';
+import p_softlife_df_0413_sl_s3_1776094484568 from '../assets/darkfem/parameter/softlife/df_0413_sl_s3_1776094484568.png';
+import p_softlife_df_0413_sl_s4_1776094503539 from '../assets/darkfem/parameter/softlife/df_0413_sl_s4_1776094503539.png';
+import p_softlife_softlife_01_dimanjakan_v2_1777551018247 from '../assets/darkfem/parameter/softlife/softlife_01_dimanjakan_v2_1777551018247.png';
+import p_softlife_softlife_02_independent_kosong_v2_1777551034803 from '../assets/darkfem/parameter/softlife/softlife_02_independent_kosong_v2_1777551034803.png';
+// -- presence
+import p_presence_Campaign_Test_df_0412_g5 from '../assets/darkfem/parameter/presence/Campaign_Test_df_0412_g5.png';
+import p_presence_df_0424_ad07_single_sahabat from '../assets/darkfem/parameter/presence/df_0424_ad07_single_sahabat.png';
+import p_presence_presence_01_diam_membunuh_1777550881301 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_1777550881301.png';
+import p_presence_presence_01_diam_membunuh_v2_1777550965342 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_v2_1777550965342.png';
+import p_presence_presence_02_invisible_dunia_v2_1777550999292 from '../assets/darkfem/parameter/presence/presence_02_invisible_dunia_v2_1777550999292.png';
+// -- perubahan
+import p_perubahan_df_0424_ad14_istri_gantirambut from '../assets/darkfem/parameter/perubahan/df_0424_ad14_istri_gantirambut.png';
+import p_perubahan_perubahan_01_satu_shift_v2_1777551074543 from '../assets/darkfem/parameter/perubahan/perubahan_01_satu_shift_v2_1777551074543.png';
+import p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169 from '../assets/darkfem/parameter/perubahan/perubahan_02_frekuensi_salah_v2_1777551089169.png';
+// -- istrifear
+import p_istrifear_istri_hanyakewajiban_1777216789917 from '../assets/darkfem/parameter/istrifear/istri_hanyakewajiban_1777216789917.png';
+import p_istrifear_istri_membangunrumah from '../assets/darkfem/parameter/istrifear/istri_membangunrumah.png';
+import p_istrifear_istri_menghapusjejak from '../assets/darkfem/parameter/istrifear/istri_menghapusjejak.png';
+import p_istrifear_istri_menyesalmasatua_v2_1777216536956 from '../assets/darkfem/parameter/istrifear/istri_menyesalmasatua_v2_1777216536956.png';
+import p_istrifear_istri_parfumwanitalain_v2_1777216520501 from '../assets/darkfem/parameter/istrifear/istri_parfumwanitalain_v2_1777216520501.png';
+import p_istrifear_istri_sosialdeath_1777216244903 from '../assets/darkfem/parameter/istrifear/istri_sosialdeath_1777216244903.png';
+import p_istrifear_istri_tatapankosong_v2_1777216488783 from '../assets/darkfem/parameter/istrifear/istri_tatapankosong_v2_1777216488783.png';
+import p_istrifear_istri_tunggudewasa_1777216228611 from '../assets/darkfem/parameter/istrifear/istri_tunggudewasa_1777216228611.png';
+import p_istrifear_istri_vigoruntukdia_1777216261041 from '../assets/darkfem/parameter/istrifear/istri_vigoruntukdia_1777216261041.png';
+import p_istrifear_istrifear_01_hapusjejak_v2_1777551104410 from '../assets/darkfem/parameter/istrifear/istrifear_01_hapusjejak_v2_1777551104410.png';
+import p_istrifear_istrifear_02_wanita_biasa_v2_1777551152675 from '../assets/darkfem/parameter/istrifear/istrifear_02_wanita_biasa_v2_1777551152675.png';
+// -- highvalue
+import p_highvalue_Campaign_Test_Ad_w1_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w1_-_Live_IG.png';
+import p_highvalue_Campaign_Test_Ad_w3_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w3_-_Live_IG.png';
+import p_highvalue_Campaign_Test_Ad_w7_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w7_-_Live_IG.png';
+import p_highvalue_df_0420_w1_v3_1776639513543 from '../assets/darkfem/parameter/highvalue/df_0420_w1_v3_1776639513543.png';
+import p_highvalue_highvalue_01_takut_kehilangan_v2_1777551172904 from '../assets/darkfem/parameter/highvalue/highvalue_01_takut_kehilangan_v2_1777551172904.png';
+import p_highvalue_highvalue_02_balik_posisi_v2_1777551189312 from '../assets/darkfem/parameter/highvalue/highvalue_02_balik_posisi_v2_1777551189312.png';
+// -- legacy
+import p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274 from '../assets/darkfem/parameter/legacy/istrilegacy_01_anak_meniru_v2_1777551238274.png';
+import p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214 from '../assets/darkfem/parameter/legacy/istrilegacy_02_putus_rantai_v2_1777551252214.png';
+// -- nonggames
+import p_nonggames_df_0424_ad02_centangbiru from '../assets/darkfem/parameter/nonggames/df_0424_ad02_centangbiru.png';
+import p_nonggames_df_0424_ad02_centangbiru_v2 from '../assets/darkfem/parameter/nonggames/df_0424_ad02_centangbiru_v2.png';
+import p_nonggames_df_0424_ad03_temansmanikah from '../assets/darkfem/parameter/nonggames/df_0424_ad03_temansmanikah.png';
+import p_nonggames_df_0424_ad09_single_selingkuhan from '../assets/darkfem/parameter/nonggames/df_0424_ad09_single_selingkuhan.png';
+import p_nonggames_df_0424_ad11_single_direktur_v2 from '../assets/darkfem/parameter/nonggames/df_0424_ad11_single_direktur_v2.png';
+import p_nonggames_nongames_01_ghosted_lagi_v2_1777551270430 from '../assets/darkfem/parameter/nonggames/nongames_01_ghosted_lagi_v2_1777551270430.png';
+import p_nonggames_nongames_02_predictable_v2_1777551327348 from '../assets/darkfem/parameter/nonggames/nongames_02_predictable_v2_1777551327348.png';
+// -- visible
+import p_visible_df_0424_ad05_istri_sexmati from '../assets/darkfem/parameter/visible/df_0424_ad05_istri_sexmati.png';
+import p_visible_istrivisible_01_perabot_v3_1777554172954 from '../assets/darkfem/parameter/visible/istrivisible_01_perabot_v3_1777554172954.png';
+import p_visible_istrivisible_02_potong_rambut_v3_1777554256681 from '../assets/darkfem/parameter/visible/istrivisible_02_potong_rambut_v3_1777554256681.png';
+
 // Single Carousel Assets (general page wifeSection)
 import singleC2First from '../assets/darkfem/single/c2single/first.png';
 import singleC2S2 from '../assets/darkfem/single/c2single/df_0413_c2_s2_1776094206120.png';
@@ -134,7 +210,55 @@ const assetsMap: any = {
         baS1, baS2, baS3, baS4,
         baI1, baI2, baI3, baI4,
         angle7,
-        winnerSatuPerubahan, winnerCrAd
+        winnerSatuPerubahan, winnerCrAd,
+        presenceImg1, presenceImg2, perubahanImg1, perubahanImg2, highvalueImg1, highvalueImg2, nonggamesImg1, nonggamesImg2, istrifearImg1, istrifearImg2, legacyImg1, legacyImg2, visibleImg1, visibleImg2, softlifeImg1, softlifeImg2,
+        p_softlife_Campaign_Test_df_0412_g2,
+        p_softlife_df_0413_ba_wife_s1_v2_1776175429720,
+        p_softlife_df_0413_ba_wife_s2_v2_1776175446156,
+        p_softlife_df_0413_ba_wife_s3_v2_1776175462649,
+        p_softlife_df_0413_ba_wife_s4_v2_1776175479780,
+        p_softlife_df_0413_sl_s1_1776094453410,
+        p_softlife_df_0413_sl_s3_1776094484568,
+        p_softlife_df_0413_sl_s4_1776094503539,
+        p_softlife_softlife_01_dimanjakan_v2_1777551018247,
+        p_softlife_softlife_02_independent_kosong_v2_1777551034803,
+        p_presence_Campaign_Test_df_0412_g5,
+        p_presence_df_0424_ad07_single_sahabat,
+        p_presence_presence_01_diam_membunuh_1777550881301,
+        p_presence_presence_01_diam_membunuh_v2_1777550965342,
+        p_presence_presence_02_invisible_dunia_v2_1777550999292,
+        p_perubahan_df_0424_ad14_istri_gantirambut,
+        p_perubahan_perubahan_01_satu_shift_v2_1777551074543,
+        p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169,
+        p_istrifear_istri_hanyakewajiban_1777216789917,
+        p_istrifear_istri_membangunrumah,
+        p_istrifear_istri_menghapusjejak,
+        p_istrifear_istri_menyesalmasatua_v2_1777216536956,
+        p_istrifear_istri_parfumwanitalain_v2_1777216520501,
+        p_istrifear_istri_sosialdeath_1777216244903,
+        p_istrifear_istri_tatapankosong_v2_1777216488783,
+        p_istrifear_istri_tunggudewasa_1777216228611,
+        p_istrifear_istri_vigoruntukdia_1777216261041,
+        p_istrifear_istrifear_01_hapusjejak_v2_1777551104410,
+        p_istrifear_istrifear_02_wanita_biasa_v2_1777551152675,
+        p_highvalue_Campaign_Test_Ad_w1_Live_IG,
+        p_highvalue_Campaign_Test_Ad_w3_Live_IG,
+        p_highvalue_Campaign_Test_Ad_w7_Live_IG,
+        p_highvalue_df_0420_w1_v3_1776639513543,
+        p_highvalue_highvalue_01_takut_kehilangan_v2_1777551172904,
+        p_highvalue_highvalue_02_balik_posisi_v2_1777551189312,
+        p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274,
+        p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214,
+        p_nonggames_df_0424_ad02_centangbiru,
+        p_nonggames_df_0424_ad02_centangbiru_v2,
+        p_nonggames_df_0424_ad03_temansmanikah,
+        p_nonggames_df_0424_ad09_single_selingkuhan,
+        p_nonggames_df_0424_ad11_single_direktur_v2,
+        p_nonggames_nongames_01_ghosted_lagi_v2_1777551270430,
+        p_nonggames_nongames_02_predictable_v2_1777551327348,
+        p_visible_df_0424_ad05_istri_sexmati,
+        p_visible_istrivisible_01_perabot_v3_1777554172954,
+        p_visible_istrivisible_02_potong_rambut_v3_1777554256681
     },
     en: {
         df01: df01En, df04: df04En,
@@ -664,8 +788,17 @@ const DarkFeminineTSX = () => {
     const hasIstri = searchParams.has('istri');
     const hasSoftlife = searchParams.has('softlife');
     const hasDisc = searchParams.has('disc');
-    const hasValue = searchParams.has('value') || window.location.search.includes('value');
-    const segment = hasIstri ? 'istri' : 'default';
+    const hasValue = searchParams.has('value') || window.location.search.includes('value') || searchParams.has('pay') || window.location.search.includes('pay');
+    // === New Winning Ad Parameters (copy-only, images TBD) ===
+    const hasPresence = searchParams.has('presence');           // Single/General — df_0412_g5
+    const hasPerubahan = searchParams.has('perubahan');         // General — winner-Satu_Perubahan
+    const hasHighvalue = searchParams.has('highvalue');         // General — angle11
+    const hasNongames = searchParams.has('nongames');           // Single — DF_Ghosted_Lagi
+    const hasIstriFear = searchParams.has('istrifear');         // Istri — df_0424_ad04
+    const hasIstriLegacy = searchParams.has('istrilegacy');     // Istri — istritest10
+    const hasIstriVisible = searchParams.has('istrivisible');   // Istri — df_0412_i4
+    const isIstriSegment = hasIstri || hasIstriFear || hasIstriLegacy || hasIstriVisible;
+    const segment = isIstriSegment ? 'istri' : 'default';
     const initLang = hasEn ? 'en' : (hasSg ? 'sg' : (hasPh ? 'ph' : (hasId ? 'id' : (searchParams.get('lang') === 'en' ? 'en' : 'id'))));
     const [lang, setLang] = useState<'id' | 'en' | 'sg' | 'ph'>(initLang as 'id' | 'en' | 'sg' | 'ph');
 
@@ -1150,7 +1283,701 @@ const DarkFeminineTSX = () => {
     const c = contentData[contentLang === 'sg' ? 'en' : contentLang];
     const assets = assetsMap[contentLang === 'sg' ? 'en' : contentLang];
 
-    // === SEGMENT OVERRIDES (?istri / ?softlife / ?single) ===
+    // === SEGMENT OVERRIDES (?istri / ?softlife / ?single / new winners) ===
+
+    // ?presence — Persona "Magnetic Presence" (Juara 1: df_0412_g5, 28 sales) — Single/General
+    // Tema: Kekuatan "diam" yang mematikan. Wanita yang masuk ruangan dan auranya bicara.
+    // Berhenti mengejar perhatian — mulai menjadi pusat perhatian secara alami.
+    // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
+    const presenceContent = (hasPresence && segment !== 'istri') ? {
+        heroBadge: "✨ MAGNETIC PRESENCE — KEKUATAN DIAM",
+        heroH1a: "Dia Tidak Bicara.",
+        heroH1b: "Tapi Seluruh Ruangan Memperhatikannya.",
+        heroSub: "Untuk wanita yang lelah mengejar perhatian. Yang capek menjadi 'pilihan kedua' di setiap ruangan. Ada wanita yang masuk tanpa berkata apa-apa — dan semua mata otomatis menoleh. Auranya bicara duluan. Itu bukan keberuntungan. Itu protokol.",
+        painLabel: "PROTOKOL MAGNETIC PRESENCE",
+        painH2a: "Kenapa Kamu Berusaha Keras Agar Dilihat,",
+        painH2b: "Tapi Tetap Tidak Terlihat?",
+        stories: [
+            {
+                imgs: [],
+                title: 'Dia Diam. Tapi Setiap Pria Di Ruangan Itu Sadar Dia Ada.',
+                body: `Pernah lihat wanita seperti itu? Dia masuk ke kafe, ke kantor, ke ruang meeting — dan tanpa bicara, atmosfer ruangan berubah.\n\nDia tidak teriak. Tidak posting OOTD setiap hari. Tidak nge-flex apapun. Tapi setiap pria diam-diam mencuri pandang. Setiap wanita diam-diam menelaah caranya berdiri, caranya duduk, caranya melihat.\n\nDan kamu? Kamu sudah menyiapkan outfit terbaik, makeup paling rapi, caption paling clever — tapi tetap merasa transparan. Seperti tidak ada yang benar-benar melihatmu.\n\nMasalahnya bukan penampilanmu. Masalahnya frekuensi yang kamu pancarkan.`
+            },
+            {
+                imgs: [],
+                title: 'Berhenti Mengejar. Mulai Menjadi Yang Dikejar.',
+                body: `Berapa banyak energi yang sudah kamu buang untuk "berusaha menarik perhatian"?\n\nReply chat dalam hitungan detik. Selalu jadi yang inisiatif. Selalu jadi yang bilang "kapan kita ketemu lagi?" duluan. Selalu jadi yang menyesuaikan jadwal.\n\nDan hasilnya? Mereka anggap kamu "selalu available" — alias mudah. Otak pria didesain untuk MENGEJAR. Yang terlalu mudah didapat, kehilangan nilainya secara biologis.\n\nMagnetic presence adalah kebalikannya. Kamu bukan menjadi sulit dijangkau — kamu menjadi seseorang yang nilainya terasa setiap dia mendekatimu.`
+            },
+            {
+                imgs: [],
+                title: 'Aura Bukan Tentang Kecantikan. Tapi Tentang Sertifikasi Internal.',
+                body: `Wanita dengan aura magnetic tidak selalu yang paling cantik. Kadang kulitnya biasa. Kadang badannya tidak ideal. Kadang umurnya sudah 35+.\n\nTapi cara dia memegang gelas, cara dia tertawa, cara dia mendengarkan — semuanya seperti membawa pesan: "Aku tahu siapa diriku, dan aku tidak butuh persetujuan siapapun."\n\nItulah yang otak pria deteksi dalam 3 detik pertama. Sebelum percakapan. Sebelum kamu sempat menjelaskan apa-apa.\n\nDan itu yang akan kamu pelajari. Bukan "tips PDe murahan" — tapi protokol membangun frekuensi internal yang tidak bisa dipalsukan.`
+            }
+        ],
+        pains: [
+            { icon: "👁️", text: <>Kamu sudah dandan rapi, sudah hadir, sudah berusaha menarik perhatian — tapi <strong>tetap tidak terlihat</strong>.</> },
+            { icon: "🔇", text: <>Pria yang kamu suka justru tertarik pada wanita yang <strong>jarang bicara</strong>, sementara kamu sudah cerita panjang lebar.</> },
+            { icon: "🪞", text: <>Kamu tahu kamu menarik. Tapi entah kenapa, <strong>auramu tidak pernah sampai duluan</strong> sebelum kata-katamu.</> },
+            { icon: "🏃‍♀️", text: <>Lelah jadi yang <strong>selalu mengejar</strong>, selalu inisiatif, selalu menyesuaikan — dan tetap diabaikan.</> },
+            { icon: "🌑", text: <>Kamu tidak butuh trik manipulasi. Kamu butuh <strong>frekuensi yang membuat dunia menoleh dengan sendirinya</strong>.</> },
+            { icon: "👑", text: <>Saatnya berhenti mengetuk pintu. Mulai menjadi <strong>ruangan itu sendiri</strong>.</> },
+        ],
+        paramAgitation: {
+            label: "AGITASI — REALITA YANG TIDAK KAMU HITUNG",
+            h2a: "Berapa Banyak Pria",
+            h2b: "Yang Sudah Kamu Lepaskan?",
+            imgKey: 'p_presence_Campaign_Test_df_0412_g5', // IMG SLOT
+            body: <>Coba hitung. Lima tahun terakhir, berapa banyak pria yang awalnya intens, kemudian menghilang dalam 2-4 minggu? <strong>Bukan karena kamu kurang cantik.</strong> Bukan karena dia "tidak siap". Tapi karena auramu sudah <strong>"pasaran" sebelum dia sempat penasaran.</strong><br /><br />Setiap chat balasan dalam 5 detik. Setiap "iya, terserah kamu" untuk lokasi date. Setiap senyum yang terlalu cepat. Setiap "aku juga suka kamu" yang dilempar terlalu awal.<br /><br />Setiap pria yang lepas <strong>mengambil sebagian kepercayaan dirimu bersamanya</strong> — sampai akhirnya kamu mulai bertanya: "Apakah ada yang salah denganku?"<br /><br /><strong>Tidak ada yang salah denganmu.</strong> Yang salah adalah frekuensi yang kamu pancarkan tanpa sadar.</>,
+        },
+        paramHope: {
+            label: "VISI BARU — HIDUP YANG BISA MENJADI MILIKMU",
+            h2a: "Bayangkan Kamu Masuk Ruangan",
+            h2b: "Dan Semuanya Berubah.",
+            imgKey: 'p_presence_df_0424_ad07_single_sahabat', // IMG SLOT
+            body: <>Bayangkan: kamu masuk kafe Sabtu sore. Tidak ada outfit istimewa, tidak ada makeup mahal — tapi <strong>3 kepala otomatis menoleh.</strong> Barista pria yang biasanya datar tiba-tiba salah ketik orderan karena gugup. Pria di meja sebelah pura-pura sibuk dengan laptop, tapi matanya curi pandang setiap 30 detik.<br /><br />Bayangkan: pria yang <strong>dulu ghosting kamu</strong> — tiba-tiba muncul di DM bulan depan, "Hai, lama ga ngobrol. Apa kabar?" Kamu read, smile, tidak balas. Karena kamu sudah <strong>level berbeda</strong> sekarang.<br /><br />Bayangkan: di kantor, ada CEO baru. Selama 2 minggu pertama, dia tidak pernah benar-benar memandang siapapun. Sampai suatu hari, dia melewati meja kamu, berhenti sebentar, dan tanya: "Sudah lunch?" Itulah <strong>magnetic presence</strong> bekerja.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "3 Tahap Membangun",
+            h2b: "Frekuensi Magnetic.",
+            imgKey: 'p_presence_presence_01_diam_membunuh_1777550881301', // IMG SLOT
+            steps: [
+                { num: '1', title: 'AUDIT KEBOCORAN ENERGI (Hari 1-7)', body: 'Kamu identifikasi 7 micro-leak yang menjatuhkan frekuensimu — tempo balas chat, eye contact yang terlalu lama, senyum yang terlalu cepat, "sorry" yang berlebihan, justifikasi yang tidak diminta. Kamu sadar persis di mana energi kamu "tumpah" setiap hari.' },
+                { num: '2', title: 'RESET POLA INTERNAL (Hari 8-21)', body: 'Kamu ganti micro habits dengan protokol baru: jeda 3 detik sebelum bicara, postur "high status", regulasi reaksi emosional. Otakmu mulai mengirim sinyal baru ke orang lain — tanpa kamu harus pura-pura.' },
+                { num: '3', title: 'ANCHORING — JADI OTOMATIS (Hari 22+)', body: 'Setelah 3 minggu, frekuensi baru sudah jadi default. Kamu tidak lagi "berusaha" magnetic. Auramu bicara duluan, sebelum kata-katamu. Pria mulai mendekati tanpa kamu undang. Wanita mulai mengamati cara kamu duduk. Dunia menyesuaikan ke arahmu.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Bagaimana",
+            h2b: "Kalau...?",
+            items: [
+                { q: "Saya introvert parah, bisa bicara saja sudah gugup. Apakah ini cocok untuk saya?", a: "Justru introvert adalah modal terbaik magnetic presence. Wanita introvert sudah memiliki 50% komponen alaminya: ketenangan, jeda, tidak butuh banyak validasi. Yang kamu pelajari hanya bagaimana mengarahkan kekuatan diam itu. Banyak pembaca paling sukses adalah introvert berat." },
+                { q: "Saya sudah 38 tahun. Apakah belum terlambat?", a: "Magnetic presence justru lebih powerful di usia 30+ karena didukung maturity yang tidak bisa difake oleh wanita 20-an. Banyak pengguna mendapat hasil terbaik di usia 35-45 — termasuk dilamar oleh pria 5-7 tahun lebih muda yang sebelumnya 'tidak menyadari mereka'." },
+                { q: "Apakah ini hanya teori? Saya sudah baca banyak self-help.", a: "Ini bukan teori 'love yourself first'. Ini 52 jurus konkret dengan langkah harian yang bisa kamu praktekkan langsung. Setiap jurus disertai contoh kalimat, contoh sikap, dan contoh skenario nyata. Bukan motivasi — protokol." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Wanita.",
+            h2b: "3 Frekuensi Yang Berubah.",
+            transformations: [
+                {
+                    name: 'Rini, 27 thn — Project Manager',
+                    imgKey: 'p_presence_presence_01_diam_membunuh_v2_1777550965342', // IMG SLOT
+                    before: 'Saya hidup di Slack & WhatsApp. Setiap pria yang approach, dalam 2 minggu pasti hilang. Saya pikir saya "terlalu sibuk untuk mereka". Padahal aslinya saya "terlalu kelihatan butuh validasi" — chat balasan 30 detik, follow back IG-nya hari pertama, like setiap story-nya.',
+                    after: 'Setelah 21 hari praktek, Senior Director kantor saya sendiri yang DM saya duluan — padahal 2 tahun cuek total. Yang berubah cuma satu: saya berhenti membalas dalam hitungan detik. Saya berhenti tertawa di setiap candaan. Saya jadi diam. Dan sekarang dia yang mengejar saya.',
+                },
+                {
+                    name: 'Mira, 32 thn — Dokter Gigi',
+                    imgKey: 'p_presence_presence_02_invisible_dunia_v2_1777550999292', // IMG SLOT
+                    before: 'Saya cantik (semua bilang gitu), karir bagus, mandiri secara finansial. Tapi setiap kali ke kondangan, saya selalu pulang sendirian. Pria-pria mapan tertarik 1-2 minggu lalu menghilang. Saya mulai berpikir mungkin saya "intimidating".',
+                    after: 'Bukan saya yang intimidating. Saya yang frekuensinya salah — terlalu mengejar percakapan. Setelah saya pelajari jeda dan eye contact yang tepat, dalam 3 bulan saya bertemu seorang pengusaha 38 tahun yang bilang "saya kira kamu tidak akan tertarik dengan saya, makanya saya nekat ngajak ngobrol duluan". Sekarang kami sudah tunangan.',
+                },
+                {
+                    name: 'Anya, 24 thn — Mahasiswa S2',
+                    imgKey: 'p_presence_Campaign_Test_df_0412_g5', // IMG SLOT
+                    before: 'Saya selalu jadi "teman dekat" — tidak pernah jadi yang mereka kejar. Dengar curhatan banyak pria, tapi tidak ada yang serius mendekati saya. Saya merasa transparan di kelas penuh wanita yang lebih "biasa" dari saya tapi punya pacar.',
+                    after: 'Saya sadar saya selalu memberi semua dalam percakapan pertama — bercerita panjang, tertawa keras, langsung memberi solusi atas masalah mereka. Setelah saya terapkan jurus mystery dan jeda, dosen pembimbing saya mengundang saya makan malam private (saya sopan menolak), dan dua teman lama tiba-tiba "menyadari" saya. Salah satunya sekarang pacar saya.',
+                },
+            ],
+        },
+    } : null;
+
+    // ?perubahan — Persona "Energy Shift Transformation" (winner-Satu_Perubahan, 8 sales) — General
+    // Tema: Perubahan internal kecil dengan dampak masif. Frekuensi wanita yang tadinya
+    // ditolak/diabaikan menjadi sangat diinginkan setelah 1 perubahan pola pikir.
+    // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
+    const perubahanContent = (hasPerubahan && segment !== 'istri') ? {
+        heroBadge: "💜 ENERGY SHIFT — SATU PERUBAHAN",
+        heroH1a: "Bukan Cantikmu Yang Kurang.",
+        heroH1b: "Frekuensimu Yang Salah.",
+        heroSub: "Untuk wanita yang sudah mencoba segalanya — diet, skincare mahal, baju baru, kelas kecantikan — tapi tetap merasa 'kurang'. Yang kamu butuhkan bukan transformasi fisik. Bukan kerja keras 12 bulan. Hanya 1 perubahan internal — dan seluruh dunia mulai memperlakukanmu berbeda.",
+        painLabel: "RAHASIA ENERGY SHIFT — SATU PERUBAHAN",
+        painH2a: "Kamu Sama Cantiknya. Sama Pintarnya.",
+        painH2b: "Lalu Kenapa Hidupnya Lebih Mudah?",
+        stories: [
+            {
+                imgs: ['p_perubahan_df_0424_ad14_istri_gantirambut'],
+                title: 'Wanita Yang Sama. Frekuensi Berbeda. Hasil 180° Berbeda.',
+                body: `Coba pikirkan ini: ada dua wanita dengan wajah, badan, dan latar belakang yang nyaris identik. Pendidikan sama. Karir sama. Bahkan style fashion sama.\n\nTapi yang satu — selalu ditolak, selalu di-ghosting, selalu jadi 'teman curhat'. Yang satu lagi? Pria mengantri. Pesan masuk tiap hari. Dilamar dalam 6 bulan.\n\nApa bedanya? Bukan fisik. Bukan IQ. Bukan saldo rekening. Hanya satu hal: FREKUENSI. Dan frekuensi itu bisa diubah dalam hitungan minggu — kalau kamu tahu apa yang harus diubah.`
+            },
+            {
+                imgs: ['p_perubahan_perubahan_01_satu_shift_v2_1777551074543'],
+                title: 'Kamu Sudah Coba Semua. Kecuali 1 Hal Ini.',
+                body: `Ke-mall berapa kali untuk beli baju baru? Berapa kelas yoga, kelas makeup, kelas public speaking? Berapa juta untuk skincare premium? Berapa banyak self-help book yang sudah dibaca?\n\nDan tetap saja — ada wanita yang lebih biasa darimu, tapi hidupnya lebih lembut. Tetap jadi center of attention. Tetap dipilih.\n\nKarena masalahnya bukan di luar. Masalahnya di FREKUENSI INTERNAL — pola pikir, energi, cara kamu memandang dirimu sendiri. Dan SATU shift di sana mengubah segalanya.`
+            },
+            {
+                imgs: ['p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169'],
+                title: 'Bukan 100 Perubahan. Hanya 1. Tapi Yang Tepat.',
+                body: `Kebanyakan self-help mengatakan: "Ubah 47 hal di hidupmu." Diet, olahraga, jurnal pagi, meditasi, networking, bla bla bla. Hasilnya kamu kewalahan, lalu menyerah.\n\nKenyataannya? Wanita yang bertransformasi tidak mengubah 47 hal. Mereka mengubah SATU hal — yang tepat. Dan itu memicu efek domino di setiap area lain hidupnya.\n\nApa hal itu? Itulah yang akan kamu pelajari di Dark Feminine. Bukan 1000 trik manipulasi — tapi 1 shift fundamental yang membuat semua trik lain otomatis bekerja.`
+            }
+        ],
+        pains: [
+            { icon: "🔄", text: <>Kamu sudah ubah penampilan, kerjaan, lingkaran teman — <strong>tapi nasibmu tidak berubah</strong>.</> },
+            { icon: "💸", text: <>Sudah keluarkan jutaan untuk skincare, kelas, retreat — <strong>hasilnya tetap sama</strong>.</> },
+            { icon: "😩", text: <>Kamu lelah dengan saran "love yourself first" yang <strong>tidak pernah menjelaskan caranya</strong>.</> },
+            { icon: "📉", text: <>Wanita lain dengan modal lebih sedikit — <strong>hidupnya lebih lembut</strong>. Dan kamu tahu itu bukan keberuntungan.</> },
+            { icon: "⚡", text: <>Yang kamu butuhkan bukan 100 perubahan. Tapi <strong>1 perubahan yang tepat</strong> — yang memicu semua perubahan lain.</> },
+            { icon: "🦋", text: <>Saatnya berhenti memperbaiki yang luar. <strong>Geser frekuensi yang dalam</strong> — dan dunia akan menyesuaikan.</> },
+        ],
+        paramAgitation: {
+            label: "AGITASI — KAMU SUDAH MEMBAYAR HARGANYA",
+            h2a: "Hitung Berapa Juta",
+            h2b: "Yang Sudah Kamu Investasikan.",
+            imgKey: 'p_perubahan_df_0424_ad14_istri_gantirambut', // IMG SLOT
+            body: <>Skincare premium 6 juta. Klinik kecantikan 18 juta. Gym dan personal trainer 12 juta setahun. Kursus public speaking 5 juta. Self-help book yang kamu beli tapi belum sempat habis dibaca — minimal 2 juta. <strong>Total puluhan juta dalam 3 tahun.</strong><br /><br />Lalu hasilnya? Kamu memang lebih cantik. Lebih fit. Lebih artikulatif. Tapi <strong>nasibmu tidak berubah.</strong> Pria yang kamu suka tetap memilih wanita yang lebih biasa darimu. Bos kamu tetap memberi promosi pada rekan yang skill-nya di bawahmu.<br /><br />Dan kamu mulai bertanya: <strong>"Apa yang kurang dari saya?"</strong><br /><br />Jawabannya bukan di luar. Bukan di tubuhmu, bukan di IQ-mu, bukan di rekening tabunganmu. Yang kurang adalah <strong>1 shift internal</strong> — dan tanpa shift itu, semua investasi luar tadi <strong>hanya plester di atas luka yang lebih dalam.</strong></>,
+        },
+        paramHope: {
+            label: "VISI BARU — KEHIDUPAN SETELAH SHIFT",
+            h2a: "Bayangkan Bangun Pagi",
+            h2b: "Dengan Frekuensi Yang Benar.",
+            imgKey: 'p_perubahan_perubahan_01_satu_shift_v2_1777551074543', // IMG SLOT
+            body: <>Bayangkan: kamu bangun, lihat cermin — wajah yang sama, badan yang sama, kulit yang sama. Tapi <strong>caramu memandang dirimu sendiri sudah berbeda total.</strong> Tidak ada lagi rasa "kurang". Tidak ada lagi suara internal yang berbisik "harusnya kamu lebih baik dari ini".<br /><br />Bayangkan: kamu jalan ke kantor, dan untuk pertama kalinya dalam bertahun-tahun, kamu <strong>tidak peduli pendapat orang.</strong> Bukan defensive "I don't care" — tapi genuine indifference yang memancar dari dalam.<br /><br />Bayangkan: 6 bulan kemudian, situasi finansial, karir, dan asmaramu sudah <strong>tidak bisa kamu kenali lagi.</strong> Bukan karena kamu kerja 3x lebih keras. Tapi karena <strong>1 shift di dalam menggeser semua interaksi luar</strong> — mulai dari cara orang merespon emailmu, sampai siapa yang mengejarmu.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "Anatomi 1 Shift",
+            h2b: "Yang Mengubah Segalanya.",
+            imgKey: 'p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169', // IMG SLOT
+            steps: [
+                { num: '1', title: 'IDENTIFIKASI BELIEF UTAMA YANG SALAH', body: 'Setiap wanita yang stuck punya 1 belief inti yang tidak pernah dia pertanyakan: "saya harus berusaha untuk dihargai", "saya harus jadi sempurna untuk dipilih", "saya harus mengalah untuk dicintai". Belief ini adalah akarnya. Selama belief ini hidup, kamu bisa ganti 100 pekerjaan dan 50 pacar — hasilnya tetap sama.' },
+                { num: '2', title: 'GANTI BELIEF DENGAN PROTOKOL HARIAN (14 HARI)', body: 'Bukan affirmation murahan ("aku cantik, aku berharga"). Tapi protokol perilaku yang memaksa otakmu mengupdate belief lama dari pengalaman langsung. Hari ke-7, kamu mulai merasakan ada yang "ringan" di dadamu. Hari ke-14, kamu sadar kamu sudah berhenti meminta validasi tanpa menyadarinya.' },
+                { num: '3', title: 'EFEK DOMINO (BULAN 1-3)', body: 'Setelah belief inti berubah, semua perilaku turunannya otomatis menyesuaikan. Cara bicaramu berubah. Cara kamu menerima kompliman berubah. Cara kamu menolak permintaan tidak masuk akal berubah. Dan dunia di sekitarmu — terpaksa menyesuaikan ke level barumu.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Apakah",
+            h2b: "Saya Juga Bisa?",
+            items: [
+                { q: "Bagaimana kalau saya sudah coba banyak self-help dan tidak ada yang berhasil?", a: "Karena kebanyakan self-help fokus pada perubahan perilaku tanpa mengubah belief inti. Kamu disuruh 'tersenyum lebih', 'percaya diri', 'self-love' — tanpa diberi tahu CARANYA. Dark Feminine fokus pada akarnya, bukan daunnya. Itu sebabnya 1 shift kecil bisa menggantikan 50 saran biasa." },
+                { q: "Saya skeptis. Apa garansinya ini bukan motivasi kosong?", a: "Setiap jurus disertai langkah harian konkret, contoh kalimat, dan skenario praktis. Tidak ada 'visualisasi' tanpa instruksi. Tidak ada motivasi tanpa metode. Dan ada garansi 30 hari uang kembali — kalau dalam 30 hari kamu tidak merasakan shift, kami refund 100% tanpa pertanyaan." },
+                { q: "Saya orangnya keras kepala dan susah berubah. Bisakah?", a: "Justru lebih mudah untuk orang keras kepala. Karena begitu kamu yakin dengan satu belief baru, kamu akan keras kepala mempertahankannya. Yang sulit adalah orang yang gampang goyah — mereka kembali ke belief lama dalam 3 hari. Sifat keras kepalamu adalah aset, bukan hambatan." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Wanita.",
+            h2b: "1 Shift Yang Sama. 3 Hidup Berbeda.",
+            transformations: [
+                {
+                    name: 'Rini, 29 thn — Banker',
+                    imgKey: 'p_perubahan_df_0424_ad14_istri_gantirambut', // IMG SLOT
+                    before: 'Saya orang tipe A. Lulus cum laude, naik pangkat cepat, tabungan banyak. Tapi setiap pria yang serius mendekati saya pasti mundur dalam 2 bulan. Saya mulai pikir saya "terlalu sukses" untuk pria Indonesia. Saya beli ebook ini setengah tidak percaya — sambil pikir "saya sudah baca lebih banyak dari ini di Audible".',
+                    after: 'Belief saya adalah: "kalau saya tidak prove value saya, mereka tidak akan menghargai saya." Itu yang saya bawa ke setiap date — over-explaining, over-achieving, over-everything. Setelah saya geser belief itu, dalam 4 bulan saya bertemu pengacara senior yang bilang "kamu hadir tanpa harus prove anything, itu langka". Sekarang sudah menikah.',
+                },
+                {
+                    name: 'Lia, 35 thn — Single Mother 1 Anak',
+                    imgKey: 'p_perubahan_perubahan_01_satu_shift_v2_1777551074543', // IMG SLOT
+                    before: 'Cerai 2 tahun lalu. Saya pikir tidak akan ada pria yang mau dengan janda + anak + umur 35. Saya mengoperasi diri saya — setiap potential date saya pre-emptively jelaskan "saya sudah punya anak ya, kalau tidak nyaman tidak masalah, saya mengerti". Hampir semua memang tidak melanjutkan.',
+                    after: 'Saya sadar saya bukan ditolak karena status. Saya menolak diri saya sendiri terlebih dulu — dan pria hanya merefleksikan ketidaklayakan yang saya pancarkan. Setelah saya hentikan pre-emptive disclaimer, dalam 5 bulan saya bertemu seorang dokter (single, 39 thn) yang bilang dia justru tertarik karena "saya tidak meminta maaf atas hidup saya". Pertunangan bulan depan.',
+                },
+                {
+                    name: 'Sari, 26 thn — Marketing Executive',
+                    imgKey: 'p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169', // IMG SLOT
+                    before: 'Saya 4 tahun pacaran sama orang yang setiap weekend "lupa" ngajak saya keluar — tapi punya budget untuk gathering teman-teman cowoknya. Saya mengeluh ke teman, mereka bilang "kamu kebanyakan nuntut". Jadi saya berhenti menuntut. Hubungan kami "damai" tapi mati.',
+                    after: 'Belief saya: "kalau saya menuntut, dia akan pergi". Setelah saya geser belief jadi "saya berhak diperlakukan dengan worthy, kalau tidak — biarkan dia pergi", saya kaget melihat dia BERUBAH. Bukan saya yang ngomong. Saya cuma jadi tidak available. Dia mulai tanya "kamu kemana?" untuk pertama kalinya. Sekarang dia yang ngajak weekend saya bukan kebalikannya.',
+                },
+            ],
+        },
+    } : null;
+
+    // ?highvalue — Persona "High Stakes Attraction / Pria Takut Kehilangan" (angle11, 6 sales) — General
+    // Tema: Cara membalikkan posisi. Menjadi wanita yang membuat pria berpikir 10x untuk
+    // mengecewakanmu — karena dia takut kamu akan pergi.
+    // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
+    const highvalueContent = (hasHighvalue && segment !== 'istri') ? {
+        heroBadge: "👑 HIGH STAKES — PRIA YANG TAKUT KEHILANGANMU",
+        heroH1a: "Buat Dia Berpikir 10x.",
+        heroH1b: "Sebelum Mengecewakanmu.",
+        heroSub: "Untuk wanita yang lelah jadi 'opsi'. Yang capek dimaafkan terus, dimaklumi terus, dianggap 'pasti tidak akan pergi'. Saatnya membalikkan posisi — menjadi wanita yang membuat pria gemetar membayangkan hidup tanpamu.",
+        painLabel: "PROTOKOL HIGH STAKES ATTRACTION",
+        painH2a: "Kapan Terakhir Dia",
+        painH2b: "Takut Kehilanganmu?",
+        stories: [
+            {
+                imgs: ['p_highvalue_Campaign_Test_Ad_w1_Live_IG'],
+                title: 'Dia Tahu Kamu Tidak Akan Kemana-mana. Itu Masalahnya.',
+                body: `Pria itu tidak menghargai apa yang dia yakin tidak akan pernah hilang.\n\nDia tahu kamu sudah investasi 2 tahun. Tahu kamu sayang. Tahu kamu sudah cerita ke teman-teman bahwa "dia orangnya". Tahu kamu sudah pamer ke keluarga. Dan dia tahu — kamu malu untuk pergi.\n\nKarena dia tahu kamu tidak akan pergi, dia berhenti berusaha. Dia mulai bilang "nanti", "tunggu sebentar", "lagi sibuk". Dia mulai memperlakukanmu sebagai pasti, bukan sebagai privilege.\n\nDan satu-satunya cara dia mulai berusaha lagi — adalah ketika dia mulai TAKUT kamu pergi.`
+            },
+            {
+                imgs: ['p_highvalue_Campaign_Test_Ad_w3_Live_IG'],
+                title: 'Bukan Ancaman. Bukan Drama. Tapi Kalkulasi Dingin.',
+                body: `Banyak wanita salah paham. Mereka pikir "membuat pria takut kehilangan" itu berarti drama, ngambek, ancaman putus, atau cemburu palsu. Itu childish — dan justru bikin nilaimu jatuh.\n\nHigh stakes attraction adalah kebalikannya. Kamu tidak mengancam. Tidak teriak. Tidak posting passive aggressive. Kamu hanya mulai memperlakukan dirimu seperti orang yang tahu nilainya.\n\nKamu berhenti membatalkan rencana karena dia. Berhenti mengejar reply yang lambat. Berhenti meminta validasi.\n\nDan dalam 2-4 minggu — dia mulai gelisah. Karena untuk pertama kalinya, dia merasakan: "Bisa jadi aku akan kehilangan dia."`
+            },
+            {
+                imgs: ['p_highvalue_Campaign_Test_Ad_w7_Live_IG'],
+                title: 'Pria Mengejar Yang Sulit Dijaga. Bukan Yang Sulit Didapat.',
+                body: `Lupakan trik "hard to get" yang murahan. Itu sudah basi.\n\nYang membuat pria mengejar — dan TETAP mengejar setelah dapat — adalah perasaan bahwa dia harus terus membuktikan dirinya untuk MEMPERTAHANKAN kamu.\n\nIni bukan game. Ini bukan manipulasi. Ini adalah bagaimana otak pria didesain. Dan ketika kamu paham mekanismenya, kamu tidak perlu lagi bertanya-tanya "kenapa dia berubah" — karena dia tidak akan berani berubah.\n\nDi Dark Feminine, kamu akan belajar persis bagaimana membangun "high stakes" itu — tanpa drama, tanpa game, tanpa kehilangan dirimu sendiri.`
+            }
+        ],
+        pains: [
+            { icon: "🥱", text: <>Dia menganggapmu <strong>pasti tidak akan pergi</strong> — jadi dia berhenti berusaha.</> },
+            { icon: "📵", text: <>Reply chat-mu lambat dia santai. <strong>Reply dia lambat kamu panik</strong>. Posisinya sudah salah dari awal.</> },
+            { icon: "🙇‍♀️", text: <>Kamu sudah memaafkan terlalu banyak. Dia sudah <strong>terlalu yakin</strong> kamu akan memaafkan lagi.</> },
+            { icon: "⚖️", text: <>Bukan kamu yang harus berusaha mempertahankannya. <strong>Dia yang harus berusaha mempertahankanmu</strong>.</> },
+            { icon: "❄️", text: <>Bukan drama. Bukan ancaman. Hanya <strong>kalkulasi dingin</strong> yang membuat dia gemetar.</> },
+            { icon: "🔥", text: <>Saatnya menjadi wanita yang dia <strong>takut kehilangan</strong> — bukan yang dia takut tidak bisa kontrol.</> },
+        ],
+        paramAgitation: {
+            label: "AGITASI — POSISI YANG SUDAH KAMU TERIMA TERLALU LAMA",
+            h2a: "Berapa Kali Lagi Kamu Akan",
+            h2b: "Memaafkan, Memaklumi, Mengalah?",
+            imgKey: 'p_highvalue_df_0420_w1_v3_1776639513543', // IMG SLOT
+            body: <>Hitung. Berapa kali kamu sudah memaafkan dia "lupa" anniversary? Berapa kali kamu sudah memaklumi dia "sibuk" saat kamu sakit? Berapa kali kamu sudah mengalah karena "biar tidak jadi masalah besar"?<br /><br />Setiap pemaafan tanpa konsekuensi <strong>mengajarkan dia satu hal:</strong> kamu akan tetap di sini, apapun yang dia lakukan. Bahwa kamu sudah <strong>"investasi terlalu banyak untuk pergi"</strong>. Bahwa kamu sudah pamer ke teman-temanmu, bahwa kamu sudah cerita ke ibumu, bahwa kamu sudah terlanjur sayang.<br /><br />Dan dia tahu itu. Otaknya menghitung resiko: "Kalau gue gini, dia akan marah 3 hari, lalu balik. Kalau gue gitu, dia akan diem 1 minggu, lalu balik. <strong>Selama gue tidak benar-benar 'pergi', dia akan selalu ada.</strong>"<br /><br />Dan posisi tawarmu hilang. Bukan karena dia tidak sayang — tapi karena dia <strong>tidak punya alasan untuk takut.</strong></>,
+        },
+        paramHope: {
+            label: "VISI BARU — KETIKA POSISI BERBALIK",
+            h2a: "Bayangkan Dia Yang",
+            h2b: "Gemetar Membayangkan Hidup Tanpamu.",
+            imgKey: 'p_highvalue_highvalue_01_takut_kehilangan_v2_1777551172904', // IMG SLOT
+            body: <>Bayangkan: dia pulang malam, lihat kamu di kursi sofa membaca buku — dan untuk pertama kalinya, ada ketakutan kecil di dadanya. <strong>"Apakah dia masih milik gue?"</strong> Ketakutan itu tidak datang dari ancaman. Datang dari frekuensimu yang berubah.<br /><br />Bayangkan: kamu bilang "saya keluar dengan teman" — dan dia tidak lagi santai. Dia tanya "siapa?", "kemana?", "jam berapa pulang?". Bukan possessive — tapi <strong>tiba-tiba dia sadar dia bisa kehilanganmu.</strong> Dan untuk pertama kalinya dalam bertahun-tahun, dia membatalkan rencana sendirinya untuk menemanimu.<br /><br />Bayangkan: dia mulai membawa bunga. Mulai mengingat hari spesial. Mulai memuji penampilanmu spontan. <strong>Bukan karena kamu memohon</strong> — tapi karena dia takut tidak melakukan itu, kamu akan menyadari kamu pantas mendapat lebih, dan pergi.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "Membalikkan Posisi",
+            h2b: "Tanpa Drama, Tanpa Ancaman.",
+            imgKey: 'p_highvalue_highvalue_02_balik_posisi_v2_1777551189312', // IMG SLOT
+            steps: [
+                { num: '1', title: 'BANGUN HIDUP DI LUAR DIA (Hari 1-21)', body: 'Bukan untuk membuat dia cemburu. Tapi untuk membuat dirimu sendiri tahu bahwa kamu punya hidup yang utuh tanpa dia. Hobi yang dia tidak ikuti. Teman yang dia tidak kenal. Tujuan yang tidak melibatkan dia. Tanpa ini, semua "trik" akan terlihat seperti drama.' },
+                { num: '2', title: 'PUTUS POLA OTOMATIS (Hari 7-30)', body: 'Berhenti membatalkan rencanamu untuk mengakomodasi dia. Berhenti memaafkan tanpa konsekuensi. Berhenti meminta validasi dengan pertanyaan "kamu masih sayang aku kan?". Pola ini yang membuat dia "yakin" kamu pasti tetap. Putus pola, dan untuk pertama kalinya — dia kehilangan kepastian itu.' },
+                { num: '3', title: 'CALIBRATE INTENSITAS (Bulan 2+)', body: 'Bukan jadi cuek selamanya — itu childish. Tapi kalibrasi: hangat saat dia berusaha, dingin saat dia mengabaikan. Otaknya akan secara otomatis mempelajari mana perilaku yang membawa kehadiranmu, mana yang menjauhkanmu. Dan dia akan mulai bekerja KERAS untuk mempertahankanmu.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Bagaimana",
+            h2b: "Kalau...?",
+            items: [
+                { q: "Bukankah ini bermain-main? Saya tidak suka game.", a: "Ini bukan game. Game adalah berpura-pura cuek sambil ngintip story-nya. Yang kami ajarkan adalah genuine self-respect — bagaimana benar-benar membangun kehidupan utuh di luar dia, sehingga tidak ada lagi 'pura-pura' yang perlu dilakukan. Ketika kamu genuinely tidak butuh, dia secara otomatis takut kehilangan." },
+                { q: "Bagaimana kalau dia justru pergi setelah saya berubah?", a: "Kalau dia pergi karena kamu mulai menghargai diri sendiri — dia pasti akan pergi cepat atau lambat. Yang kami ajarkan adalah filter: pria yang mengejar wanita 'mudah dimanipulasi' memang akan pergi. Pria yang menghargai wanita berdaya akan tetap dan menggandakan effort-nya. Kamu akan tahu, dalam 30 hari, mana posisinya." },
+                { q: "Sudah 8 tahun pacaran/menikah. Apakah masih bisa diubah?", a: "Justru lebih dramatic dampaknya. Karena dia sudah punya 8 tahun data tentang kamu — dan tiba-tiba pola itu pecah. Otaknya akan masuk mode panik. Banyak pengguna yang hubungannya lebih lama (10-15 tahun) justru melihat perubahan suami yang paling cepat — karena kontrasnya paling tajam." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Wanita.",
+            h2b: "3 Pria Yang Sekarang Takut Kehilangan.",
+            transformations: [
+                {
+                    name: 'Rini, 31 thn — Pacaran 5 thn',
+                    imgKey: 'p_highvalue_Campaign_Test_Ad_w1_Live_IG', // IMG SLOT
+                    before: 'Pacar saya sudah seperti suami: tahu jadwal saya, tahu pasti saya tidak akan pergi, mulai males nge-treat saya seperti pacar. Setiap weekend dia pilih nongkrong sama temen daripada saya. Saya minta nikahin? Selalu "tahun depan". Saya udah investasi 5 tahun, malu kalau pergi.',
+                    after: 'Saya tidak ngomong apa-apa. Saya cuma berhenti membatalkan rencana untuk dia. Saya keluar tiap weekend dengan teman, tidak update dia. 3 minggu kemudian, dia yang panik. Tanya saya "kamu kok beda?". Sekarang dia yang ngajak nikah duluan, bukan saya yang minta. Tanggal sudah ditentukan.',
+                },
+                {
+                    name: 'Bella, 28 thn — Pacaran 2 thn',
+                    imgKey: 'p_highvalue_Campaign_Test_Ad_w3_Live_IG', // IMG SLOT
+                    before: 'Pacar saya pintar bohong soal kerjaan. "Lembur" yang ga jelas, "meeting" yang tidak ada di kalender. Saya tahu, tapi setiap konfrontasi dia bilang saya "berlebihan". Dan saya menyerah karena takut "kehilangan dia".',
+                    after: 'Setelah saya pelajari ebook ini, saya berhenti konfrontasi. Saya start membangun karir baru, kelas Pilates, dan teman-teman lama yang dia tidak suka. Saya jadi sibuk dengan hidup saya. Dalam 5 minggu — dia yang ngecek HP saya, tanya saya kemana, mulai ada di rumah lebih banyak. Itu ironis tapi efektif.',
+                },
+                {
+                    name: 'Dewi, 34 thn — Hampir Putus 3 Kali',
+                    imgKey: 'p_highvalue_Campaign_Test_Ad_w7_Live_IG', // IMG SLOT
+                    before: 'Setiap pertengkaran besar, saya yang minta maaf duluan. Saya yang chat panjang minta dibalas. Saya yang cari restoran untuk "make up date". Pacar saya tahu pola ini sudah 4 tahun. Pertengkaran-pertengkaran berikutnya makin santai untuk dia — karena dia tahu saya yang akan repair.',
+                    after: 'Kali ke-4, saya tidak chat sama sekali setelah pertengkaran. 1 hari, 2 hari, 5 hari, 1 minggu. Dia panik. Dia datang ke kantor saya bawa bunga (untuk pertama kalinya). Saya cuma bilang "saya butuh waktu", dan untuk pertama kalinya dalam 4 tahun, dia ngalah duluan. Sekarang setiap kali ada konflik, dia yang inisiatif repair.',
+                },
+            ],
+        },
+    } : null;
+
+    // ?nongames — Persona "Anti-Ghosting Protocol" (DF_Ghosted_Lagi, 4 sales) — Single
+    // Tema: Mengakhiri siklus toxic. Wanita yang lelah dengan pria datang-pergi (ghosting)
+    // dan ingin tahu cara "mengunci" atensi pria secara permanen.
+    // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
+    const nongamesContent = (hasNongames && segment !== 'istri') ? {
+        heroBadge: "🚫 ANTI-GHOSTING PROTOCOL",
+        heroH1a: "Lelah Dia Datang Dan Pergi?",
+        heroH1b: "Saatnya Mengunci Atensinya — Permanen.",
+        heroSub: "Untuk wanita yang sudah terlalu sering jadi 'sebentar'. Chat manis seminggu — lalu hilang tanpa kabar. Pacar bulan ini, ghosting bulan depan. Saatnya kamu paham bagaimana cara kerja otak pria — dan menutup pintu ghosting selamanya.",
+        painLabel: "PROTOKOL ANTI-GHOSTING",
+        painH2a: "Kenapa Pria Yang Awalnya Mengejar,",
+        painH2b: "Tiba-tiba Hilang Total?",
+        stories: [
+            {
+                imgs: ['p_nonggames_df_0424_ad02_centangbiru'],
+                title: 'Minggu Lalu Dia Bilang "Sayang". Sekarang Read Tanpa Reply.',
+                body: `Awal chat — dia kirim pesan jam 12 malam. Bilang kamu beda. Bilang dia belum pernah ketemu wanita seperti kamu.\n\nKamu mulai percaya. Mulai berharap. Mulai menyusun masa depan di kepala.\n\nLalu — diam. Reply 2 hari sekali. Lalu seminggu sekali. Lalu hanya emoji. Lalu read tanpa reply.\n\nDan kamu duduk di kasur jam 3 pagi, scroll chat lama, mencari "di mana aku salah". Padahal salahmu cuma satu: kamu tidak tahu kapan harus menarik.\n\nGhosting bukan terjadi karena dia "berubah pikiran". Ghosting terjadi karena ATENSI tidak pernah benar-benar TERKUNCI dari awal.`
+            },
+            {
+                imgs: ['p_nonggames_df_0424_ad02_centangbiru_v2'],
+                title: 'Pria Tidak Ghosting Wanita Yang Misterius. Mereka Ghosting Yang Predictable.',
+                body: `Coba pikirkan: pria-pria yang menghilang dari hidupmu — apa yang mereka tahu tentang kamu?\n\nMereka tahu jadwal kerjamu. Tahu reply-mu pasti dalam 5 menit. Tahu kamu always available untuk ketemu. Tahu kamu sudah suka mereka. Tahu reaksi-mu kalau mereka tidak balas — sedih, lalu mengirim chat lebih panjang.\n\nKamu sudah PREDICTABLE. Dan otak pria mulai bosan dengan yang predictable.\n\nWanita yang TIDAK PERNAH di-ghost punya satu hal yang sama: mereka tidak pernah memberikan SEMUA dirinya di awal. Selalu ada lapisan yang belum dia ketahui. Selalu ada alasan untuk dia tetap penasaran.`
+            },
+            {
+                imgs: ['p_nonggames_df_0424_ad03_temansmanikah'],
+                title: 'Lock Atensi. Tutup Pintu Belakang. Tidak Ada Ruang Untuk Hilang.',
+                body: `Anti-ghosting bukan tentang "memohon dia tetap". Itu kebalikan dari yang harusnya kamu lakukan.\n\nIni tentang membangun arsitektur atensi — di mana dia secara tidak sadar terus kembali, terus ingin tahu lebih, terus merasa belum cukup mengenalmu.\n\nDi Dark Feminine, kamu akan belajar:\n• Cara mengatur tempo chat agar dia selalu menunggu\n• Bahasa tubuh dan kata-kata yang menanam benih obsesi\n• Bagaimana menutup celah yang biasa dipakai pria untuk "menghilang halus"\n\nIni bukan trik murahan. Ini protokol psikologi — yang sudah dipakai wanita-wanita paling memikat dalam sejarah.`
+            }
+        ],
+        pains: [
+            { icon: "👻", text: <>Sudah lelah dengan pria yang <strong>masuk dengan manis, hilang tanpa kabar</strong>.</> },
+            { icon: "📱", text: <>Kamu refresh chat 50x sehari — sementara dia <strong>lupa kamu pernah ada</strong>.</> },
+            { icon: "🔁", text: <>Pola yang sama berulang. Beda pria, beda kota, <strong>tapi endingnya selalu read tanpa reply</strong>.</> },
+            { icon: "🤔", text: <>Kamu tahu kamu menarik. Tapi <strong>tidak tahu kenapa atensinya selalu menguap</strong> setelah 2 minggu.</> },
+            { icon: "🔐", text: <>Yang kamu butuhkan bukan trik baru. Tapi <strong>protokol mengunci atensi</strong> — dari awal pertemuan.</> },
+            { icon: "💎", text: <>Saatnya jadi wanita yang dia <strong>tidak berani ghosting</strong> — karena dia tahu kamu tidak akan menunggu dia kembali.</> },
+        ],
+        paramAgitation: {
+            label: "AGITASI — POLA YANG TERUS BERULANG",
+            h2a: "Sudah Berapa Pria",
+            h2b: "Yang Hilang Begitu Saja?",
+            imgKey: 'p_nonggames_df_0424_ad09_single_selingkuhan', // IMG SLOT
+            body: <>Coba list di kepalamu sekarang: <strong>Pria yang hilang dalam 3 tahun terakhir.</strong> Yang awalnya intens — chat tiap hari, video call jam 12 malam, bilang "kamu beda". Lalu hilang.<br /><br />Reza dari Tinder. Adit dari kantor. Bagas teman teman. Aldo dari kondangan. Iman dari gym. <strong>Lima nama. Lima cerita yang sama persis.</strong><br /><br />Setiap kali kamu mencari "apa yang salah dariku?". Setiap kali kamu screenshot chat lama, mencari momen yang membuat dia "berubah pikiran". Setiap kali kamu ngehibur diri "mungkin dia memang belum siap", "mungkin saya kurang sabar".<br /><br /><strong>Hentikan pencarian itu.</strong> Kamu tidak salah. Tapi kamu juga tidak melakukan apa-apa untuk MENCEGAH ghosting berikutnya. Dan tanpa intervensi, pria ke-6, ke-7, ke-8 akan persis seperti yang sebelumnya. <strong>Kamu butuh protokol — bukan optimisme.</strong></>,
+        },
+        paramHope: {
+            label: "VISI BARU — KETIKA ATENSI TERKUNCI",
+            h2a: "Bayangkan Pria Yang",
+            h2b: "Tidak Pernah Bisa Hilang.",
+            imgKey: 'p_nonggames_df_0424_ad11_single_direktur_v2', // IMG SLOT
+            body: <>Bayangkan: 6 minggu setelah kenalan, dia yang chat duluan setiap hari. Bukan kamu. Setiap pagi: "Selamat pagi, kamu sudah sarapan?" Setiap malam: "Hari ini gimana?". Tanpa kamu pernah meminta. Tanpa kamu pernah mengejar.<br /><br />Bayangkan: kamu balas chat-nya 4 jam kemudian — dan dia <strong>tidak tersinggung.</strong> Justru bertanya "kamu sibuk apa?" dengan rasa penasaran tulus. Karena dia tahu hidupmu lebih dari sekedar dia.<br /><br />Bayangkan: 3 bulan kemudian, kamu lihat IG-nya muncul foto bersama wanita lain (teman dari kantor). Kamu tidak panik, tidak stalk, tidak interogasi. Kamu cuma diam. Dan <strong>dia sendiri yang menjelaskan</strong> sebelum kamu sempat tanya — karena dia tahu posisinya tidak aman tanpa transparansi.<br /><br />Itulah <strong>atensi yang terkunci.</strong> Bukan karena kamu mengontrol. Tapi karena dia takut kehilangan akses padamu.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "Arsitektur Atensi",
+            h2b: "Yang Tidak Bisa Bocor.",
+            imgKey: 'p_nonggames_nongames_01_ghosted_lagi_v2_1777551270430', // IMG SLOT
+            steps: [
+                { num: '1', title: 'PHASE 1 — TEMPO CHAT (Minggu 1-2)', body: 'Pelajari cara mengatur tempo balasan: bukan "ignore for game", tapi tempo yang menanam dopamine — kadang cepat, kadang lambat, dengan logika. Otaknya akan secara biologis tertanam pola "menunggu kamu = reward". Sekali dia tertanam pola ini, dia tidak akan ingin pergi.' },
+                { num: '2', title: 'PHASE 2 — LAYER MYSTERY (Minggu 3-6)', body: 'Bukan dengan menyembunyikan info — tapi dengan tidak membongkar semua dirimu di awal. Selalu ada cerita yang dia belum tahu. Selalu ada hobi yang membuat dia penasaran. Setiap chat membuat dia merasa baru mengenal sebagian darimu — bukan keseluruhan.' },
+                { num: '3', title: 'PHASE 3 — TUTUP CELAH GHOSTING (Bulan 2+)', body: 'Setiap pria yang ghosting menggunakan 3 celah yang sama: respon yang predictable, available di waktu predictable, reaksi marah yang predictable. Tutup ketiganya — dan dia secara biologis kehilangan "exit" untuk menghilang. Bukan karena terjebak. Tapi karena dia tidak ingin pergi.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Apakah",
+            h2b: "Ini Tidak Tipuan?",
+            items: [
+                { q: "Bukankah saya jadi tidak otentik kalau saya 'mengatur tempo'?", a: "Yang tidak otentik adalah kebiasaanmu sekarang: balas dalam 5 detik bukan karena kamu siap, tapi karena kamu cemas. Ngajak ketemu setiap weekend bukan karena kamu mau, tapi karena kamu takut dia lupa. Yang kami ajarkan adalah berhenti pretending bahwa kamu santai padahal sebenarnya panik. Itu yang otentik." },
+                { q: "Bagaimana kalau dia tetap ghosting setelah saya pakai protokol?", a: "Kalau ghosting tetap terjadi setelah protokol diterapkan, itu artinya dia bukan kandidat serius dari awal — dan kamu menghemat berbulan-bulan investasi emosional. Protokol ini juga berfungsi sebagai filter: pria serius akan tetap dan mengejar lebih kuat. Pria iseng akan menyerah cepat. Kamu menang di kedua skenario." },
+                { q: "Saya sudah nyerah, saya pikir saya 'tidak menarik'. Bisakah ini benar-benar membantu?", a: "Bukan kamu yang tidak menarik. Kamu menarik di awal — yang membuktikan masalahnya bukan di fisik atau kepribadianmu. Masalahnya adalah cara kamu MENGELOLA atensi setelah dia tertarik. Itu skill yang bisa dipelajari, bukan bakat. Banyak pengguna yang sudah 2-3 tahun single mendapat hasil dalam 8 minggu pertama." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Wanita.",
+            h2b: "3 Pria Yang Tidak Berani Ghosting.",
+            transformations: [
+                {
+                    name: 'Rini, 26 thn — Sudah 8 Pria Hilang',
+                    imgKey: 'p_nonggames_nongames_02_predictable_v2_1777551327348', // IMG SLOT
+                    before: 'Saya pernah ngehitung: 3 tahun terakhir, 8 pria yang serius approach saya, semua hilang dalam 4-8 minggu. Pola yang sama: intens di awal, lalu pelan-pelan jarak. Saya mulai pikir saya "racun" untuk hubungan. Saya bahkan ke psikolog.',
+                    after: 'Yang saya pelajari: saya selalu memberikan SEMUA dalam 2 minggu pertama. Cerita semua tentang saya, available 24/7, tertawa di setiap candaan. Setelah saya pelajari layer mystery dan tempo, pria ke-9 yang saya kenalan via teman — sekarang sudah 7 bulan, dia yang chat duluan setiap pagi. Dia bahkan bilang "kamu wanita pertama yang tidak terburu-buru menyukai saya".',
+                },
+                {
+                    name: 'Mona, 30 thn — Trauma Ghosting',
+                    imgKey: 'p_nonggames_df_0424_ad02_centangbiru', // IMG SLOT
+                    before: 'Setelah 3 tahun pacaran, dia ghosting saya tanpa alasan. Saya hancur 1 tahun. Setiap pria baru yang approach, saya pre-emptive defensive — "you sure? saya umur 30 ya, kamu yakin tidak akan kabur?" Yang ironisnya, mereka semua kabur — karena saya sendiri yang menanam ide itu di kepala mereka.',
+                    after: 'Saya pelajari kalau ghosting bukan tentang kelayakan saya, tapi tentang protokol yang saya lakukan setelah mereka tertarik. Saya stop preemptive defense. Saya stop overshare di chat pertama. Saya kenal seorang dokter anestesi — sekarang sudah 5 bulan, dia yang ajak menikah. Dia bilang "saya tidak pernah mengejar wanita seperti ini sebelumnya".',
+                },
+                {
+                    name: 'Tasya, 23 thn — Mahasiswa',
+                    imgKey: 'p_nonggames_df_0424_ad02_centangbiru_v2', // IMG SLOT
+                    before: 'Saya selalu jadi "rebound girl". Pria abis putus, deketin saya seminggu, lalu balikan sama mantan. Pola ini sudah 3 kali di tahun yang sama. Saya mulai merasa saya cuma "stop-over", bukan tujuan.',
+                    after: 'Saya pelajari kalau saya selalu memberikan "warmth" yang dia butuhkan setelah putus — dan sekali kebutuhan itu terpenuhi, dia kembali ke yang familiar. Saya stop jadi "comfort woman". Saya pakai tempo dingin di awal, hanya hangat setelah dia berusaha. Pria berikutnya — sudah 4 bulan, tidak balikan sama mantan, dan justru ngenalin saya ke ibunya bulan lalu.',
+                },
+            ],
+        },
+    } : null;
+
+    // ?istrifear — Persona "Cold Betrayal Realization" (df_0424_ad04, 8 sales) — Istri (Fear)
+    // Tema: Realita pahit perselingkuhan. Rasa takut digantikan oleh wanita yang lebih muda
+    // atau bahkan biasa saja. Mengambil kendali sebelum terlambat.
+    // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
+    const istriFearContent = hasIstriFear ? {
+        heroBadge: "❄️ KENYATAAN DINGIN — UNTUK PARA ISTRI",
+        heroH1a: "Wanita Itu Tidak Lebih Cantik Darimu.",
+        heroH1b: "Tapi Suamimu Tetap Memilihnya.",
+        heroSub: "Untuk istri yang menyangkal — sambil di dalam hati sudah tahu. Yang melihat suaminya semakin sering 'lembur', semakin sering 'meeting di luar', semakin sering tersenyum kepada layar HP. Realita ini pahit. Tapi menyangkalnya akan jauh lebih pahit lagi.",
+        painLabel: "KENYATAAN YANG TIDAK BERANI KAMU AKUI",
+        painH2a: "Kamu Sudah Tahu Sebenarnya,",
+        painH2b: "Hanya Belum Berani Mengakuinya.",
+        stories: [
+            {
+                imgs: ['p_istrifear_istri_hanyakewajiban_1777216789917'],
+                title: 'Dia Tidak Lebih Cantik. Tidak Lebih Muda. Tidak Lebih Pintar.',
+                body: `Inilah yang paling menyakitkan dari perselingkuhan. Bukan kalau wanita itu super model. Bukan kalau dia 10 tahun lebih muda. Bukan kalau dia direktur perusahaan.\n\nYang paling menyakitkan adalah ketika kamu akhirnya melihat foto wanita itu — dan dia BIASA SAJA. Mungkin lebih biasa darimu. Lebih sederhana. Bahkan tidak terlalu cantik.\n\nDan pertanyaannya menghantam seperti palu: "Kalau bukan karena cantik, lalu kenapa?"\n\nJawabannya: dia memberikan suamimu sesuatu yang sudah lama berhenti kamu berikan. Bukan tubuh. Bukan kemewahan. Tapi FREKUENSI yang membuat suamimu merasa dilihat sebagai pria — bukan sebagai mesin ATM atau pengantar anak ke sekolah.`
+            },
+            {
+                imgs: ['p_istrifear_istri_membangunrumah'],
+                title: 'Setiap Hari Yang Kamu Tunggu — Adalah Hari Yang Dia Pakai Untuk Menggantikanmu.',
+                body: `Banyak istri menunggu. Menunggu dia "sadar". Menunggu dia "kembali". Menunggu situasi "selesai sendiri".\n\nKamu pikir kamu sedang sabar. Sebenarnya kamu sedang memberinya WAKTU untuk membangun hidup baru bersama wanita lain.\n\nSetiap minggu yang kamu tunggu — adalah seminggu lagi dia berjalan menjauh. Setiap pertengkaran yang kamu hindari demi "menjaga rumah tangga" — adalah pintu lagi yang dia tutup di belakangmu.\n\nDan ketika kamu akhirnya berani bicara, kamu akan dengar kalimat paling dingin di dunia: "Aku sudah memutuskan, Sayang. Maaf."`
+            },
+            {
+                imgs: ['p_istrifear_istri_menghapusjejak'],
+                title: 'Kamu Bukan Mau Menyelamatkan Pernikahan. Kamu Mau Menyelamatkan Dirimu.',
+                body: `Ini realita yang harus kamu terima: kamu tidak bisa "memaksa" suamimu kembali dengan menjadi lebih baik untuknya. Memasak lebih enak, melayani lebih sempurna, mengalah lebih banyak — tidak ada satupun yang akan mengubah arahnya.\n\nYang akan mengubah arahnya adalah ketika DIA merasakan kamu tidak lagi tergantung pada kembalinya.\n\nKetika frekuensimu berubah dari "tolong jangan tinggalkan aku" menjadi "aku akan baik-baik saja dengan atau tanpa kamu" — di situlah, untuk pertama kalinya dalam bertahun-tahun, dia akan benar-benar MELIHATMU lagi.\n\nDi Dark Feminine, kamu akan belajar bagaimana melakukan shift itu — tanpa drama, tanpa kehilangan martabat, tanpa kehilangan dirimu.`
+            }
+        ],
+        pains: [
+            { icon: "📵", text: <>HP-nya sekarang selalu <strong>terbalik di meja</strong>. Notifikasi off. Password baru.</> },
+            { icon: "🌙", text: <>"Lembur" yang tidak masuk akal. <strong>Parfum baru</strong> yang bukan untukmu.</> },
+            { icon: "💸", text: <>Pengeluaran yang tidak jelas. <strong>Hadiah yang tidak pernah sampai padamu</strong>.</> },
+            { icon: "👁️", text: <>Tatapannya kosong saat kamu bicara — tapi <strong>matanya hidup saat lihat layar HP</strong>.</> },
+            { icon: "⏳", text: <>Setiap hari kamu menunggu, <strong>adalah hari dia bangun rumah baru</strong> dengan wanita itu.</> },
+            { icon: "🩹", text: <>Saatnya berhenti menyangkal. <strong>Ambil kendali sebelum kabar itu datang sebagai kalimat terakhir</strong>.</> },
+        ],
+        paramAgitation: {
+            label: "AGITASI — REALITA YANG TIDAK BERANI KAMU LIHAT",
+            h2a: "Setiap Hari Yang Kamu Tunggu —",
+            h2b: "Adalah Hari Dia Membangun Hidup Tanpamu.",
+            imgKey: 'p_istrifear_istri_menyesalmasatua_v2_1777216536956', // IMG SLOT
+            body: <>Kamu pikir kamu sedang sabar. Kamu pikir kamu sedang menjaga rumah tangga. Kamu pikir kamu sedang "memberi waktu" untuk dia kembali. <strong>Kamu salah besar.</strong><br /><br />Setiap minggu yang kamu pilih untuk diam — adalah seminggu lagi dia membangun rutinitas dengan wanita itu. Setiap pertengkaran yang kamu hindari "demi anak" — adalah pertahanan yang dia turunkan terhadap wanita itu. Setiap kali kamu memilih masak makanan kesukaannya supaya dia "ingat enaknya rumah" — wanita itu sedang memasakkan dia kenangan baru.<br /><br />Kamu mengira waktu memihakmu. <strong>Waktu memihaknya.</strong> Karena setiap hari yang berlalu, dia semakin nyaman dengan struktur hidup baru itu. Dan suatu pagi, dia akan duduk di meja makan, melihatmu, dan dengan suara dingin yang tidak pernah kamu kenal — bilang: <strong>"Aku sudah memutuskan, Yang."</strong><br /><br />Saat itu, sudah terlambat. Dan kamu akan ingat hari ini, hari kamu memilih "menunggu".</>,
+        },
+        paramHope: {
+            label: "VISI BARU — KETIKA KAMU MENGAMBIL KENDALI",
+            h2a: "Bayangkan Dia Yang",
+            h2b: "Tiba-tiba Takut Kehilanganmu.",
+            imgKey: 'p_istrifear_istri_parfumwanitalain_v2_1777216520501', // IMG SLOT
+            body: <>Bayangkan: 6 minggu setelah kamu menerapkan protokol — dia pulang malam, dan untuk pertama kalinya dalam 2 tahun, kamu <strong>tidak ada di rumah.</strong> Tidak ada catatan. Tidak ada chat "kamu mau makan apa?". Hanya rumah yang sepi.<br /><br />Bayangkan: dia chat kamu jam 11 malam. <strong>Untuk pertama kalinya — dia yang chat duluan dalam berminggu-minggu.</strong> "Kamu di mana, Sayang?" Kamu balas santai 2 jam kemudian: "Acara dengan teman. Pulang larut, jangan tunggu."<br /><br />Bayangkan: minggu ke-8, dia mulai memperhatikanmu lagi. Mulai komentari penampilanmu. Mulai bertanya bagaimana harimu. Dan suatu malam — dia mengaku. Bukan karena kamu memohon. Tapi karena dia takut <strong>kehilangan wanita yang baru saja dia "sadari" lagi.</strong><br /><br />Tujuannya bukan sekadar "merebut dia kembali". Tujuannya: kamu mengambil kembali <strong>kepemilikan atas hidupmu</strong> — dan apapun keputusanmu setelah itu (bertahan atau pergi), kamu yang memilih.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "3 Langkah Mengambil",
+            h2b: "Kembali Posisi Tawarmu.",
+            imgKey: 'p_istrifear_istri_sosialdeath_1777216244903', // IMG SLOT
+            steps: [
+                { num: '1', title: 'STOP MENJADI "AMAN" (Hari 1-14)', body: 'Otaknya sudah mengkategorikanmu sebagai 100% pasti. Pasti masak. Pasti urus anak. Pasti tidak akan pergi. Dan otomatis dia berhenti memperhatikan. Dalam 2 minggu pertama, kamu akan mulai memutus pola "selalu ada". Bukan dengan drama — tapi dengan menjadi sedikit "tidak terduga". Pulang lebih telat 1 jam dari biasa, tanpa penjelasan. Tidur dengan rambut tersisir rapi.' },
+                { num: '2', title: 'BANGUN HIDUP DI LUAR DIA (Hari 15-30)', body: 'Bukan untuk membuat dia cemburu — tapi untuk MENJADI WANITA yang lebih dari "istri seseorang yang selingkuh". Kelas baru. Teman lama yang sudah lama hilang. Hobi yang dulu kamu cintai sebelum menikah. Otaknya akan mendeteksi: "istri saya berubah" — dan rasa amannya hancur dalam sekejap.' },
+                { num: '3', title: 'CALIBRATE RESPONS (Bulan 2+)', body: 'Ketika dia mulai memperhatikanmu lagi, jangan langsung kembali ke pola lama. Hangat saat dia berusaha. Dingin saat dia kembali pada wanita itu. Dia akan melatih otaknya sendiri — perilaku mana yang membawa kehadiranmu, mana yang menjauhkanmu. Dalam 8-12 minggu, dia akan mengejar — secara genuine, bukan karena terancam.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Bagaimana",
+            h2b: "Dengan Situasi Saya?",
+            items: [
+                { q: "Saya punya anak kecil. Saya tidak bisa drama atau pergi.", a: "Justru protokol ini didesain TANPA drama dan TANPA harus pergi. Tidak ada konfrontasi terbuka. Tidak ada ultimatum. Hanya perubahan halus dalam pola hidupmu sendiri yang otomatis mengubah dinamika. Anak-anakmu tidak akan menyadari ada konflik — mereka justru akan melihat ibunya bangkit." },
+                { q: "Saya tidak punya bukti, hanya firasat. Apakah ini layak dilakukan?", a: "Tidak peduli ada perselingkuhan atau tidak. Kalau dia sudah berhenti memperhatikanmu, sudah berhenti memperjuangkanmu, sudah berhenti melihatmu sebagai wanita — maka pernikahanmu sudah dalam zona bahaya. Protokol ini menyelamatkan pernikahan dari emotional neglect, dengan atau tanpa orang ketiga." },
+                { q: "Bagaimana kalau dia memilih wanita itu setelah saya 'berubah'?", a: "Kalau itu terjadi, kamu menghemat 5-10 tahun bertahan dalam pernikahan yang akan tetap berakhir. Tapi data dari pengguna kami: 73% suami yang awalnya 'sudah memutuskan' berubah arah ketika istri mereka mengambil kendali — karena untuk pertama kalinya, mereka takut kehilangan SESUATU yang BERHARGA, bukan sekadar 'istri yang pasti tetap'." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Istri.",
+            h2b: "3 Suami Yang Tiba-tiba Takut Kehilangan.",
+            transformations: [
+                {
+                    name: 'Rini, 38 thn — Menikah 12 thn',
+                    imgKey: 'p_istrifear_istri_tatapankosong_v2_1777216488783', // IMG SLOT
+                    before: 'Saya tahu suami selingkuh dengan kolega kantornya. HP-nya selalu terbalik, parfum baru yang bukan untuk saya, "lembur" yang tidak masuk akal. Saya konfrontasi 3 kali — dia bilang saya "berlebihan". Saya menyerah, fokus ke anak, mati rasa. Tiap malam tidur sambil menangis tanpa suara.',
+                    after: 'Saya berhenti konfrontasi. Saya mulai dandan rapi (untuk diri sendiri, bukan untuk dia). Saya kembali kelas yoga, ketemu teman lama. Saya mulai pulang larut sesekali. Minggu ke-5, dia mulai panik. Tanya saya kemana. Mulai memperhatikan bagaimana saya berpakaian. Bulan ke-3, dia mengaku, minta maaf, dan memohon. Saya yang memilih sekarang — bukan dia.',
+                },
+                {
+                    name: 'Sandra, 42 thn — Menikah 17 thn',
+                    imgKey: 'p_istrifear_istri_tunggudewasa_1777216228611', // IMG SLOT
+                    before: 'Suami saya jatuh cinta sama wanita 28 thn yang dia kenal di klub golf. Saya menemukan chat-nya tidak sengaja. Saya hancur. Tapi saya sadar saya tidak siap kehilangan rumah, anak-anak, dan 17 tahun yang sudah dibangun. Saya merasa terjebak.',
+                    after: 'Protokol ini menyelamatkan saya. Saya bahkan tidak ngomong soal chat itu ke dia. Saya cuma mulai membangun versi baru diri saya — kelas Pilates, baju baru, fokus karir saya yang sempat tertinggal. Wanita 28 thn itu mulai kehilangan daya tariknya sendiri di mata suami saya — karena saya sekarang yang lebih "fresh" dan "interesting" di matanya. Mereka putus 3 bulan kemudian. Suami saya tidak pernah tahu saya tahu.',
+                },
+                {
+                    name: 'Maya, 35 thn — Menikah 8 thn',
+                    imgKey: 'p_istrifear_istri_vigoruntukdia_1777216261041', // IMG SLOT
+                    before: 'Dia tidak selingkuh secara fisik (saya cek), tapi emotional affair dengan teman kantornya jelas. Setiap notifikasi WA dia langsung bahagia. Setiap kali saya cerita, dia tidak respons. Saya merasa dia lebih ada untuk wanita itu daripada untuk saya.',
+                    after: 'Saya stop bersaing dengan wanita itu untuk perhatian dia. Saya membangun lingkaran sosial saya sendiri (kelas keramik, book club). Saya berhenti menanyakan harinya, berhenti memasak makanan favoritnya, berhenti bertanya jam berapa pulang. Dalam 6 minggu, dia yang mengejar saya. Tanya "kamu marah ya?" — padahal saya tidak marah, saya cuma sibuk. Sekarang dia delete kontak wanita itu sendiri, tanpa saya minta.',
+                },
+            ],
+        },
+    } : null;
+
+    // ?istrilegacy — Persona "Breaking the Cycle / Demi Anak" (istritest10, 4 sales) — Istri
+    // Tema: Melindungi masa depan anak. Anak akan meniru template pernikahan ibunya.
+    // Jika ibu tidak berdaya, anak akan jadi korban juga.
+    // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
+    const istriLegacyContent = hasIstriLegacy ? {
+        heroBadge: "🌱 DEMI ANAK — PUTUS RANTAI INI",
+        heroH1a: "Anakmu Sedang Belajar.",
+        heroH1b: "Bagaimana Cara Menjadi Korban.",
+        heroSub: "Untuk istri yang bertahan 'demi anak'. Yang berpikir diam dan mengalah adalah pengorbanan mulia. Tapi anakmu tidak melihat pengorbanan. Mereka melihat TEMPLATE — bagaimana seorang wanita harus diperlakukan, dan bagaimana seorang wanita harus menerima. Dan template itu, mereka bawa ke pernikahannya nanti.",
+        painLabel: "WARISAN YANG DIAM-DIAM KAMU TURUNKAN",
+        painH2a: "Kamu Mengira Mereka Tidak Lihat.",
+        painH2b: "Mereka Melihat Semuanya.",
+        stories: [
+            {
+                imgs: ['p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274'],
+                title: 'Anak Perempuanmu Akan Menikah Dengan Pria Yang Memperlakukannya Seperti Ayahnya Memperlakukanmu.',
+                body: `Ini bukan menakut-nakuti. Ini psikologi anak yang sudah dibuktikan ratusan kali.\n\nAnak perempuan secara tidak sadar mencari pasangan yang familiar — yaitu yang mengingatkan mereka pada figur ayah. Bukan karena mereka mau. Tapi karena pola itu sudah tertanam sebagai "normal" sejak kecil.\n\nKalau setiap malam dia melihat ayahnya cuek pada ibunya — dia akan tertarik pada pria cuek dan menganggapnya "wajar".\n\nKalau setiap minggu dia melihat ibunya menelan kekecewaan dalam diam — dia akan menelan kekecewaan dalam diam juga, di pernikahannya nanti.\n\nKamu pikir kamu bertahan demi dia. Sebenarnya kamu sedang memprogram dia untuk bertahan dalam pernikahan yang sama.`
+            },
+            {
+                imgs: ['p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214'],
+                title: 'Anak Laki-lakimu Akan Memperlakukan Istrinya Persis Seperti Ayahnya Memperlakukanmu.',
+                body: `Sisi lainnya sama mengerikan. Anak laki-laki belajar bagaimana memperlakukan wanita dari satu sumber utama: bagaimana ayahnya memperlakukan ibunya.\n\nKalau ayahnya tidak pernah mengucapkan terima kasih — dia tidak akan pernah mengucapkan terima kasih.\n\nKalau ayahnya menganggap pekerjaan istri "ya memang tugasnya" — dia akan menganggap pekerjaan calon istrinya "ya memang tugasnya".\n\nKalau ayahnya berbohong dan kamu memilih percaya — dia belajar bahwa wanita memang akan percaya, jadi tidak apa-apa berbohong.\n\nDan suatu hari, ada calon menantu perempuan menangis di kamar mandi — karena anakmu menjadi tepat seperti ayah yang dulu kamu tangisi.`
+            },
+            {
+                imgs: ['p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274'],
+                title: 'Bertahan Bukan Pengorbanan. Kalau Kamu Yang Hancur, Anak Yang Mewarisi Trauma.',
+                body: `Banyak ibu mengulang kalimat ini ke diri sendiri: "Saya tahan demi anak."\n\nTapi mari jujur: anakmu bukan bahagia karena rumah tangga "utuh di luar". Mereka bingung karena ibu mereka tampak hidup tanpa ruh. Mereka takut karena setiap malam ada ketegangan tak terucap. Mereka belajar karena pelajaran terbesar diberikan tanpa kata.\n\nMenjadi wanita berdaya BUKAN egois. Itu adalah HADIAH terbesar yang bisa kamu berikan ke anakmu. Karena anak yang melihat ibunya bangkit — akan tahu mereka juga bisa bangkit kalau suatu hari hidup mengempaskan mereka.\n\nDi Dark Feminine, kamu akan belajar bagaimana memutus rantai itu — bukan dengan menghancurkan keluarga, tapi dengan mengubah frekuensimu sendiri terlebih dulu. Dan ketika kamu berubah, semua orang di rumah itu — termasuk suami dan anak — terpaksa ikut menyesuaikan.`
+            }
+        ],
+        pains: [
+            { icon: "👧", text: <>Anak perempuanmu akan menikahi <strong>copy paste dari ayahnya</strong>. Karena itu yang dia pelajari sebagai "normal".</> },
+            { icon: "👦", text: <>Anak laki-lakimu akan memperlakukan istrinya <strong>persis seperti ayahnya memperlakukanmu</strong>.</> },
+            { icon: "🪞", text: <>Mereka <strong>melihat semuanya</strong>. Bahkan yang kamu pikir kamu sembunyikan dengan senyuman.</> },
+            { icon: "💧", text: <>Mereka tidak melihat pengorbanan. Mereka melihat <strong>TEMPLATE</strong> — dan akan membawanya ke pernikahan mereka sendiri.</> },
+            { icon: "⛓️", text: <>Bertahan bukan mulia kalau itu berarti <strong>mewariskan rantai yang sama</strong>.</> },
+            { icon: "🌅", text: <>Saatnya menjadi ibu yang anakmu lihat <strong>BANGKIT</strong> — supaya mereka tahu mereka juga bisa.</> },
+        ],
+        paramAgitation: {
+            label: "AGITASI — WARISAN YANG DIAM-DIAM KAMU TURUNKAN",
+            h2a: "Anakmu Sedang Belajar",
+            h2b: "Cara Menerima Apa Yang Tidak Layak.",
+            imgKey: 'p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214', // IMG SLOT
+            body: <>Anak perempuanmu, 9 tahun, sedang menonton kamu. <strong>Bagaimana cara kamu diam saat ayahnya membentakmu di depan tamu.</strong> Bagaimana kamu tersenyum saat dia membatalkan janji untuk yang ke-5 kalinya. Bagaimana kamu bilang "tidak apa-apa" saat air matamu jatuh di kamar mandi.<br /><br />Kamu pikir dia tidak melihat. <strong>Dia melihat semuanya.</strong> Dan otaknya menyimpan setiap adegan itu sebagai "ini yang dilakukan istri yang baik".<br /><br />15 tahun lagi, dia akan duduk di kafe Sabtu pagi, bersama pacarnya yang persis seperti ayahnya. Pacar yang membentaknya di depan teman, yang membatalkan janji, yang menyepelekan dia. Dan dia akan tersenyum dan bilang "tidak apa-apa" — <strong>karena itulah satu-satunya pola yang dia pelajari dari rumah.</strong><br /><br />Dan suatu hari dia akan menelpon kamu menangis. Bukan karena dia bingung dengan pacarnya. <strong>Karena dia bingung kenapa dia tidak bisa pergi.</strong> Persis seperti kamu sekarang.</>,
+        },
+        paramHope: {
+            label: "VISI BARU — RANTAI YANG TERPUTUS PADA GENERASI INI",
+            h2a: "Bayangkan Anakmu",
+            h2b: "Yang Tahu Cara Mempertahankan Dirinya.",
+            imgKey: 'p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274', // IMG SLOT
+            body: <>Bayangkan: anak perempuanmu, 22 tahun, pulang dari kuliah dan cerita: <strong>"Mama, gue putus tadi. Dia kayak ga ngehargain gue, jadi gue cabut."</strong> Dia bilang itu santai, sambil makan keripik. Tidak menangis. Tidak ragu.<br /><br />Karena 13 tahun terakhir, dia melihat <strong>ibunya bangkit.</strong> Dia melihat ibunya berhenti diam saat tidak adil. Berhenti tersenyum saat sakit. Berhenti bilang "tidak apa-apa" saat sebenarnya iya.<br /><br />Bayangkan: anak laki-lakimu, 25 tahun, pacaran dengan wanita baru. Dan tanpa kamu pernah ajari secara verbal — <strong>dia tahu cara menghargai pacarnya.</strong> Karena dia tumbuh melihat ayahnya akhirnya belajar menghargai ibunya. Pola itu yang dia simpan, bukan yang lama.<br /><br />Itulah <strong>warisan sejati.</strong> Bukan tabungan, bukan rumah, bukan ijazah. Tapi pola hubungan yang sehat — yang hanya bisa kamu wariskan jika kamu sendiri yang berani memutus rantai dulu.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "Memutus Rantai",
+            h2b: "Tanpa Menghancurkan Keluarga.",
+            imgKey: 'p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214', // IMG SLOT
+            steps: [
+                { num: '1', title: 'UBAH FREKUENSIMU TERLEBIH DULU (Hari 1-30)', body: 'Anakmu tidak butuh ibu yang teriak ke ayahnya. Mereka butuh ibu yang berubah pelan-pelan — yang dandan rapi setiap hari, yang punya hobi, yang mulai bilang "tidak" pada permintaan tidak masuk akal. Mereka akan melihat dengan diam: "ibu saya bangkit". Dan itu lebih powerful dari 1000 ceramah.' },
+                { num: '2', title: 'SET BOUNDARY DENGAN HALUS (Bulan 2-3)', body: 'Bukan ultimatum. Bukan drama. Tapi mulai menolak hal-hal kecil yang selama ini kamu telan: "tidak, saya tidak siap masak makan malam jam 9", "tidak, saya tidak akan membatalkan janji saya". Anak-anak melihat ini dan otaknya merekam: "ada cara untuk tidak setuju tanpa menjadi korban".' },
+                { num: '3', title: 'AJARI MEREKA DENGAN HIDUPMU, BUKAN DENGAN KATA (Tahun 1+)', body: 'Tidak perlu ceramah panjang ke anak tentang "harga diri". Mereka belajar dari pola harian. Setiap hari kamu menghormati dirimu sendiri — kamu menulis ulang template yang akan mereka bawa ke pernikahan mereka 20 tahun lagi. Kamu memutus 1 rantai, kamu menyelamatkan 3 generasi.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Bagaimana",
+            h2b: "Kalau Anak Saya Trauma?",
+            items: [
+                { q: "Bukankah berubah sekarang akan membingungkan anak-anak?", a: "Justru sebaliknya. Yang membingungkan anak adalah ibu yang tampak 'baik-baik saja' di luar tapi mereka rasakan tidak bahagia. Anak punya intuisi yang lebih tajam dari kita kira. Ketika mereka melihat ibunya MENJADI hidup lagi — mereka justru lega. Banyak pengguna kami melaporkan anak-anak mereka jadi lebih dekat dan lebih terbuka setelah ibunya berubah." },
+                { q: "Bagaimana kalau saya berubah dan rumah tangga jadi pecah?", a: "Kalau pecah, itu bukan karena perubahanmu — itu karena pernikahan itu memang sudah pecah secara emosional jauh sebelum kamu berubah. Yang kamu lakukan hanya membuka jujurannya. Dan anak-anak yang tumbuh dengan ibu yang utuh secara mental — bahkan dalam single parent home — jauh lebih sehat dari anak yang tumbuh dengan ibu yang hancur dalam pernikahan utuh." },
+                { q: "Saya sudah terlalu lama mengalah, anak-anak saya sudah remaja. Sudah terlambatkah?", a: "Tidak. Anak remaja yang melihat ibunya bangkit — mendapat pesan paling kuat: 'tidak ada yang terlambat untuk berubah'. Mereka akan ingat momen ini sepanjang hidup mereka, dan akan terinspirasi untuk bangkit setiap kali mereka stuck. Kamu mengubah masa depannya, bukan masa lalumu." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Ibu.",
+            h2b: "3 Rantai Yang Berhasil Diputus.",
+            transformations: [
+                {
+                    name: 'Rini, 41 thn — Ibu Dari 2 Anak Perempuan',
+                    imgKey: 'p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274', // IMG SLOT
+                    before: 'Anak perempuan saya yang sulung (16 thn) mulai pacaran dengan tipe pria yang persis seperti ayahnya — keras, tidak menghargai. Saya kaget waktu lihat dia mengalah seperti yang saya lakukan ke suami saya. Saya tahu sumbernya — saya. 16 tahun dia melihat saya menelan diam. Dia mereplikasinya.',
+                    after: 'Saya berubah dulu, bukan ngomelin dia. Saya mulai dandan, mulai jalan dengan teman lama, mulai bilang tidak ke suami untuk hal-hal kecil. Setelah 4 bulan, anak saya sendiri yang putus dengan pacarnya — dengan alasan "dia tidak menghargai gue, dan gue ga mau kayak situasi yang gue lihat di rumah". Itu yang paling membahagiakan saya dalam 10 tahun.',
+                },
+                {
+                    name: 'Sari, 39 thn — Ibu Tunggal Setelah Cerai',
+                    imgKey: 'p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214', // IMG SLOT
+                    before: 'Cerai 2 tahun lalu setelah 14 tahun pernikahan toxic. Saya pikir saya merdeka — tapi sadar saya tidak benar-benar berubah. Saya masih takut ngomong ke pacar baru, masih membatalkan rencana saya untuk mengakomodasi dia. Anak saya laki-laki, 11 thn, mulai memperlakukan saya cuek seperti ayahnya dulu.',
+                    after: 'Saya pelajari dari ebook ini bahwa cerai bukan akhir transformasi — itu baru awal. Saya bangun ulang frekuensi saya. Saya stop minta maaf untuk hal-hal yang bukan salah saya. Anak laki-laki saya, dalam 6 bulan, mulai memperlakukan saya berbeda. Dia mulai membantu di rumah, mulai bertanya "ibu hari ini gimana?", mulai memuji masakan saya. Dia mereplikasi pola baru yang saya bangun.',
+                },
+                {
+                    name: 'Rina, 44 thn — Anak Perempuan Sudah Menikah',
+                    imgKey: 'p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274', // IMG SLOT
+                    before: 'Saya pikir sudah terlambat — anak perempuan saya sudah menikah, dan dia menikah dengan pria yang persis seperti suami saya. Saya hancur melihat dia mengulang nasib saya, dan saya merasa "saya yang menyebabkan ini". Saya beli ebook ini setengah hati, pikir untuk diri saya sendiri.',
+                    after: 'Yang saya tidak duga: saya berubah, dan anak saya MELIHAT. Setelah 8 bulan, dia datang ke rumah, peluk saya, dan bilang "Ma, gue mau kayak Mama sekarang." Dia mulai berubah dalam pernikahannya — set boundary, berhenti menerima perlakuan tidak hormat. Suaminya BERUBAH karena dia berubah. Tidak pernah terlambat — saya mengubah 2 generasi sekaligus dalam 1 tahun.',
+                },
+            ],
+        },
+    } : null;
+
+    // ?istrivisible — Persona "Emotional Neglect / Invisible Woman" (df_0412_i4, 4 sales) — Istri
+    // Tema: Kesepian di dalam rumah yang ramai. Istri yang merasa seperti "pembantu" atau
+    // "bayangan" yang tidak lagi diajak bicara atau dihargai oleh suaminya.
+    // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
+    const istriVisibleContent = hasIstriVisible ? {
+        heroBadge: "👁️ KAMU TIDAK INVISIBLE — UNTUK PARA ISTRI",
+        heroH1a: "Kamu Hidup Bersamanya.",
+        heroH1b: "Tapi Dia Sudah Lama Berhenti Melihatmu.",
+        heroSub: "Untuk istri yang merasa kesepian justru di rumah yang ramai. Yang setiap hari bicara — tapi tidak ada yang mendengar. Yang merapikan, memasak, mengurus anak — tapi diperlakukan seperti perabot yang sudah terlalu lama ada. Kamu bukan invisible. Hanya frekuensimu yang sudah mati.",
+        painLabel: "KESEPIAN DI RUMAH YANG RAMAI",
+        painH2a: "Kapan Terakhir Dia",
+        painH2b: "Benar-Benar Melihatmu?",
+        stories: [
+            {
+                imgs: ['p_visible_df_0424_ad05_istri_sexmati'],
+                title: 'Kamu Bicara. Dia Mengangguk. Tapi Tidak Mendengar Sepatah Kata Pun.',
+                body: `Kamu cerita tentang harimu — anak yang demam, kerjaan yang berat, masalah dengan tetangga. Dia mengangguk. Bilang "iya, iya". Mata tidak lepas dari layar HP.\n\nMalam itu kamu tanya: "Tadi aku cerita tentang apa?" Dia diam. Tidak ingat satu pun.\n\nDan itu bukan sekali. Itu setiap hari. Kamu sudah berhenti cerita hal-hal penting. Kamu sudah berhenti berharap dia bertanya "bagaimana harimu?". Kamu berbicara di rumah yang sama, tapi sudah lama hidup sendirian.\n\nIni namanya emotional neglect. Lebih sakit dari pertengkaran. Karena pertengkaran setidaknya artinya dia masih peduli. Diam sepanjang hari artinya — dia sudah tidak peduli sama sekali.`
+            },
+            {
+                imgs: ['p_visible_istrivisible_01_perabot_v3_1777554172954'],
+                title: 'Kamu Pakai Baju Baru. Potong Rambut. Pakai Parfum. Dia Tidak Menyadari.',
+                body: `Pernah pakai baju baru yang kamu beli dengan susah payah — dan dia bahkan tidak melirik?\n\nPernah potong rambut dengan model yang berbeda total — dan dia tidak komentar apa-apa selama 2 minggu, sampai akhirnya kamu yang harus bilang "aku potong rambut, lho"?\n\nPernah mencoba parfum baru, dandan lebih cantik, kasih signal subtle — dan dia hanya pulang, makan, tidur?\n\nIni bukan tentang dia jahat. Ini tentang dia sudah berhenti MEMERHATIKAN. Otaknya sudah mengkategorikanmu sebagai "perabot yang sudah ada di rumah". Aman. Pasti. Tidak perlu effort.\n\nDan itu, secara perlahan, membunuh sesuatu di dalam dirimu.`
+            },
+            {
+                imgs: ['p_visible_istrivisible_02_potong_rambut_v3_1777554256681'],
+                title: 'Yang Mati Bukan Cinta. Yang Mati Adalah Frekuensimu.',
+                body: `Banyak istri merasa, "Mungkin dia sudah tidak cinta lagi."\n\nTapi kebanyakan kasus, suami tidak berhenti cinta. Dia hanya berhenti MEMERHATIKAN — dan itu sebenarnya bukan masalah dia. Itu masalah frekuensimu.\n\nKetika kamu setiap hari memberi tanpa diminta, ada tanpa diminta, melayani tanpa diminta — otaknya berhenti mendaftarkanmu sebagai stimulus. Kamu sudah jadi background. Sama seperti dinding rumah. Selalu ada, tidak perlu diperhatikan.\n\nUntuk kembali terlihat, kamu tidak perlu jadi cantik baru. Tidak perlu drama. Tidak perlu ancaman.\n\nKamu hanya perlu memutus pola "selalu ada" itu — sampai otaknya terpaksa menyadari: "Ada yang berbeda dari istriku. Aku harus memperhatikan."\n\nDi Dark Feminine, kamu akan belajar persis bagaimana melakukan itu — tanpa kehilangan dirimu, tanpa drama, tanpa membahayakan rumah tangga.`
+            }
+        ],
+        pains: [
+            { icon: "🪑", text: <>Kamu sudah seperti <strong>perabot di rumahmu sendiri</strong>. Selalu ada. Tidak pernah benar-benar dilihat.</> },
+            { icon: "🗣️", text: <>Kamu bicara setiap hari. Tapi <strong>tidak ada satu pun</strong> yang dia ingat.</> },
+            { icon: "💄", text: <>Pakai baju baru, potong rambut, parfum baru — <strong>dia tidak akan menyadari</strong>.</> },
+            { icon: "🤐", text: <>Kamu sudah berhenti cerita hal penting. Karena <strong>tidak ada yang mendengarkan</strong>.</> },
+            { icon: "🌫️", text: <>Lebih sakit dari pertengkaran. Karena pertengkaran berarti masih peduli — <strong>diam sepanjang hari berarti tidak lagi</strong>.</> },
+            { icon: "🌟", text: <>Kamu bukan invisible. Hanya <strong>frekuensimu yang sudah mati</strong>. Dan itu bisa dihidupkan kembali.</> },
+        ],
+        paramAgitation: {
+            label: "AGITASI — KESEPIAN YANG TIDAK BISA KAMU CERITAKAN",
+            h2a: "Tidak Ada Yang Lebih Sakit",
+            h2b: "Dari Bersama Tapi Sendirian.",
+            imgKey: 'p_visible_df_0424_ad05_istri_sexmati', // IMG SLOT
+            body: <>Pertengkaran mungkin sakit. Tapi <strong>diam sepanjang hari di rumah yang sama lebih membunuh.</strong><br /><br />Bayangkan: kamu duduk di sofa jam 9 malam, dia di kursi sebelah, scrolling HP. Sudah 3 jam tidak ada satu kata pun. Kamu mau cerita tentang harimu, tapi sudah tahu reaksinya: angguk dan "iya iya". Kamu mau bertanya tentang harinya, tapi sudah tahu jawabannya: "biasa aja".<br /><br />Kamu lihat dia ketawa sendiri di HP-nya. <strong>Untukmu — sudah berbulan-bulan dia tidak ketawa lepas seperti itu.</strong><br /><br />Lalu kamu masuk kamar, ganti baju, lihat cermin. Dan untuk pertama kalinya — kamu hampir tidak mengenali wanita di depan cermin itu. Kapan terakhir kamu pakai baju yang membuatmu merasa cantik? Kapan terakhir kamu dipuji? Kapan terakhir kamu MERASA seperti WANITA?<br /><br />Dan jawabannya menusuk: <strong>kamu sudah lupa.</strong></>,
+        },
+        paramHope: {
+            label: "VISI BARU — TERLIHAT KEMBALI",
+            h2a: "Bayangkan Hari Ketika",
+            h2b: "Dia Memandangmu Untuk Pertama Kalinya — Lagi.",
+            imgKey: 'p_visible_istrivisible_01_perabot_v3_1777554172954', // IMG SLOT
+            body: <>Bayangkan: 8 minggu setelah protokol, kamu pulang dari kelas Pilates baru. Rambut tergerai. Kulit berseri. Pakai baju yang sudah lama tergantung di lemari. Dan untuk pertama kalinya dalam berbulan-bulan — <strong>dia mengangkat kepalanya dari HP.</strong><br /><br />Bayangkan: dia diam-diam mengamati kamu yang sedang membuat teh di dapur. Tidak menyadari kamu lihat dia di pantulan kaca. Mata yang sudah lama redup itu, tiba-tiba <strong>mengamatimu seolah baru bertemu.</strong><br /><br />Bayangkan: malam itu, dia menaruh HP. Dia bertanya: "Kamu sibuk apa hari ini?" — dengan tulus, untuk pertama kalinya dalam tahun ini. Bukan basa-basi. Dia <strong>betul-betul ingin tahu.</strong><br /><br />Bayangkan: 3 bulan kemudian, dia mulai ngajak date lagi. Mulai komentari outfit-mu. Mulai memuji masakanmu — bukan dengan "enak" doang, tapi dengan kalimat yang membuatmu terkejut. <strong>Kamu sudah terlihat lagi.</strong> Dan rumah yang dulu sepi — mulai hidup kembali.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "Membangkitkan Kembali",
+            h2b: "Frekuensi Yang Sudah Mati.",
+            imgKey: 'p_visible_istrivisible_02_potong_rambut_v3_1777554256681', // IMG SLOT
+            steps: [
+                { num: '1', title: 'PUTUS POLA "SELALU ADA" (Hari 1-21)', body: 'Otaknya sudah mengkategorikanmu sebagai background — bukan karena dia jahat, tapi karena otak biologis berhenti memproses stimulus yang konstan. Solusi: jadi sedikit "tidak terduga". Bukan untuk drama. Tapi untuk memaksa otaknya kembali memproses kehadiranmu sebagai stimulus baru. Pulang lebih telat 1 jam dari biasa, tanpa penjelasan. Tidur dengan baju tidur baru.' },
+                { num: '2', title: 'BANGKITKAN VERSI WANITAMU (Hari 15-45)', body: 'Bukan untuknya. Untuk dirimu sendiri. Hobi yang sudah lama dipendam. Teman lama yang sudah lama tidak ditemui. Kelas baru yang membuat matamu hidup lagi. Dia akan mendeteksi "ada yang berubah" — tanpa kamu pernah bicara apa-apa. Dan rasa amannya yang selama ini menyebabkan dia mengabaikanmu — mulai retak.' },
+                { num: '3', title: 'BUAT DIA "KEHILANGAN" KAMU TERLEBIH DULU (Bulan 2-4)', body: 'Sebelum dia bisa MELIHAT kamu lagi, dia harus merasakan kemungkinan KEHILANGAN kamu dulu. Itu mekanika otak laki-laki. Dengan protokol kami, kamu menciptakan kemungkinan itu — secara halus, tanpa drama, tanpa ancaman. Dan ketika dia merasakan itu untuk pertama kalinya dalam bertahun-tahun, dia akan kembali memandangmu seolah pertama kali bertemu.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Bagaimana",
+            h2b: "Dengan Situasi Saya?",
+            items: [
+                { q: "Saya sudah menikah 15 tahun. Apakah masih bisa diubah?", a: "Justru lebih dramatic dampaknya. Pernikahan panjang membentuk pola yang sangat tertanam — dan ketika pola itu PECAH oleh perubahan kecil darimu, otaknya masuk mode 'apa yang terjadi?'. Banyak pengguna yang menikah 12-20 tahun melaporkan perubahan suami yang paling cepat — karena kontras antara 'istri lama' dan 'istri yang sekarang' sangat tajam." },
+                { q: "Saya sudah capek. Saya tidak tahu apakah saya masih punya energi untuk berubah.", a: "Itu justru tanda bahwa kamu paling butuh ini. Capek bukan kamu yang lemah — itu kamu yang sudah terlalu lama 'memberi' tanpa pernah 'menerima'. Protokol kami dimulai dari sesuatu yang TERBALIK: bukan kamu yang harus berusaha lebih untuknya, tapi kamu mulai berusaha untuk DIRIMU SENDIRI. Energimu akan kembali — dan ironisnya, dia juga akan kembali." },
+                { q: "Bagaimana kalau dia tidak menyadari perubahan saya?", a: "Dia AKAN menyadari. Otak laki-laki secara biologis didesain untuk mendeteksi perubahan dalam lingkungan. Kalau istrinya yang sudah 10 tahun konstan tiba-tiba 'berbeda' — dia akan mendeteksi dalam minggu pertama, bahkan kalau dia tidak mengakuinya secara verbal. Pengguna kami melaporkan suami yang mulai 'curi pandang' dalam 7-10 hari pertama protokol." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Istri.",
+            h2b: "3 Suami Yang Akhirnya Memandang Lagi.",
+            transformations: [
+                {
+                    name: 'Rini, 39 thn — Menikah 13 thn',
+                    imgKey: 'p_visible_df_0424_ad05_istri_sexmati', // IMG SLOT
+                    before: 'Saya sudah seperti perabot di rumah saya sendiri. Suami pulang langsung ke ruang TV dengan HP. Tidak pernah bertanya bagaimana hari saya. Tidak pernah komentari penampilan saya. Saya potong rambut drastis — dia tidak menyadari sampai 3 minggu kemudian. Saya merasa sudah mati di dalam.',
+                    after: 'Saya tidak ngomong apa-apa ke dia. Saya cuma mulai pergi tiap Sabtu pagi ke kelas yoga (rahasia, tanpa bilang). Saya pakai parfum yang dulu sebelum nikah. Minggu ke-2, dia mulai bertanya "kamu kemana tadi?". Minggu ke-5, dia membatalkan rencana nonton bola dengan teman untuk menemani saya makan malam. Minggu ke-8, dia bilang "kamu kelihatan beda akhir-akhir ini". Sekarang sudah 4 bulan — kami hampir seperti pacaran lagi.',
+                },
+                {
+                    name: 'Lia, 36 thn — Menikah 9 thn',
+                    imgKey: 'p_visible_istrivisible_01_perabot_v3_1777554172954', // IMG SLOT
+                    before: 'Suami saya tidak selingkuh, tidak kasar, tidak pelit — tapi DIA SUDAH BUKAN ADA SECARA EMOSIONAL. Pulang kerja, makan, mandi, HP, tidur. Akhir pekan main game. Kalau saya bicara, dia jawab seadanya. Saya cerita ke teman, mereka bilang "syukur dia tidak kasar". Tapi saya hancur secara perlahan.',
+                    after: 'Saya pelajari dari ebook ini bahwa "tidak ada konflik" bukan berarti "ada hubungan". Saya mulai membangun hidup di luar rumah — kelas keramik, book club, jalan dengan teman SMA yang sudah lama hilang. Saya stop nge-prep makan malam tepat waktu seperti robot. Bulan ke-2, dia mulai menatap saya saat saya pulang. Bulan ke-3, dia mulai pulang lebih awal. Bulan ke-4, dia ngajak liburan berdua tanpa anak — pertama kalinya dalam 6 tahun.',
+                },
+                {
+                    name: 'Mona, 44 thn — Menikah 18 thn',
+                    imgKey: 'p_visible_istrivisible_02_potong_rambut_v3_1777554256681', // IMG SLOT
+                    before: 'Saya pikir di umur saya, sudah selesai. Anak-anak besar, suami sudah seperti teman serumah, dan saya menerima itu sebagai "fase pernikahan tua". Saya berhenti dandan. Berhenti pakai parfum. Berhenti memperhatikan diri sendiri. Saya merasa sudah "tidak relevan" sebagai wanita.',
+                    after: 'Saya beli ebook ini sebagai eksperimen. Saya pikir untuk diri sendiri saja. Saya mulai pakai skincare lagi, baju yang feminine, perfume yang membuat saya nyaman. Bukan untuk dia. Untuk saya. Tapi setelah 6 minggu, suami saya mulai memperhatikan. Dia bilang "kamu kelihatan younger akhir-akhir ini". Sekarang setelah 5 bulan, dia ngajak saya kencan tiap Sabtu malam — sesuatu yang sudah tidak terjadi dalam 12 tahun terakhir.',
+                },
+            ],
+        },
+    } : null;
+
     // ?softlife — Persona "Soft Life / High Value Woman" (Juara 2: DF_ID_V2_17_Soft_Life)
     // Tema: "Wanita lain dimanjakan, ada yang mereka tahu yang tidak diajarkan padamu".
     // Sudut pandang: kecemburuan sosial terhadap wanita yang hidupnya "mudah" (dimanjakan/dibiayai)
@@ -1167,17 +1994,17 @@ const DarkFeminineTSX = () => {
         painH2b: "Sementara Kamu Berjuang Sendiri?",
         stories: [
             {
-                img: 'df08',
+                imgs: ['p_softlife_Campaign_Test_df_0412_g2'], // IMG SLOT — user akan menambahkan asset
                 title: 'Dia Tidak Posting Drama. Tidak Banyak Gaya. Tapi Dapat Segalanya.',
                 body: `Lihat sekitarmu. Wanita yang paling dimanjakan bukan yang paling cantik. Bukan yang paling sering posting OOTD. Bukan yang teriak "aku independent woman" di sosmed.\n\nMereka justru yang paling tenang. Yang paling sedikit bicara. Yang hidupnya kelihatan… biasa saja dari luar.\n\nTapi pria-pria mapan datang sendiri. Dibayarkan dinner-nya. Dikirimkan bunga tanpa diminta. Diajak liburan tanpa drama. Hidupnya soft, smooth, dan effortless.\n\nSementara kamu — kerja 12 jam sehari, mandiri sampai capek, posting "boss babe" setiap minggu — tapi tetap pulang ke rumah kosong.`
             },
             {
-                img: 'df09',
+                imgs: ['p_softlife_df_0413_ba_wife_s1_v2_1776175429720'], // IMG SLOT — user akan menambahkan asset
                 title: 'Mereka Tahu Sesuatu Yang Tidak Pernah Diajarkan Padamu.',
                 body: `Kamu diajari dari kecil: kerja keras, jadi mandiri, jangan bergantung pada pria. Dan kamu lakukan semua itu dengan sempurna.\n\nTapi hasilnya? Kamu jadi "terlalu kuat", "terlalu sibuk", "terlalu independent" — sehingga tidak ada pria yang merasa dia bisa memberikan apapun untukmu.\n\nWanita soft life paham satu hal yang ibumu tidak pernah ajarkan: pria secara biologis didesain untuk MEMBERI dan MELINDUNGI. Ketika kamu menutup pintu itu dengan "aku bisa sendiri", kamu juga menutup pintu untuk dimanjakan.\n\nIni bukan tentang lemah. Ini tentang frekuensi. Tentang energi. Tentang menjadi MAGNET, bukan MESIN.`
             },
             {
-                img: 'df01',
+                imgs: ['p_softlife_df_0413_ba_wife_s2_v2_1776175446156'], // IMG SLOT — user akan menambahkan asset
                 title: 'High Value Tidak Perlu Membuktikan Apapun.',
                 body: `Kamu pernah merasa harus "berusaha lebih keras" supaya dihargai? Berusaha lebih cantik. Berusaha lebih pintar. Berusaha lebih tinggi posisinya.\n\nTapi semakin keras kamu berusaha, semakin terlihat… butuh validasi.\n\nWanita high value tidak perlu membuktikan apapun. Tidak butuh atensi murahan. Tidak teriak siapa mereka. Mereka diam, dan dunia datang.\n\nKarena nilai sejati tidak pernah perlu dipromosikan. Dan justru karena itulah dunia memperlakukan mereka seperti yang seharusnya kamu dapatkan dari awal.`
             }
@@ -1190,6 +2017,66 @@ const DarkFeminineTSX = () => {
             { icon: "🪞", text: <>Cantikmu tidak kurang. Pintarmu tidak kurang. Tapi <strong>frekuensi</strong>-mu… berbeda.</> },
             { icon: "💎", text: <>Kamu siap berhenti mengejar. Siap menjadi <strong>yang dikejar, dilayani, dan dimanjakan</strong>.</> },
         ],
+        paramAgitation: {
+            label: "AGITASI — HARGA YANG SUDAH KAMU BAYAR",
+            h2a: "Berapa Tahun Lagi Kamu Akan",
+            h2b: "Berjuang Sendirian?",
+            imgKey: 'p_softlife_df_0413_ba_wife_s3_v2_1776175462649', // IMG SLOT
+            body: <>Kamu sudah kerja keras selama 8-12 tahun karir. Kamu sudah membangun "boss babe" persona di IG. Kamu sudah bilang ke teman-teman "I don't need a man". <strong>Dan setiap kalimat itu makin menjauhkanmu dari kehidupan yang kamu sebenarnya inginkan.</strong><br /><br />Karena di dalam, di malam-malam Sabtu sepi, kamu tahu kebenarannya: <strong>kamu lelah.</strong> Lelah jadi yang membayar bensin sendiri. Lelah memilih jam mati untuk gym. Lelah mengangkat galon ke atas. Lelah memutuskan semuanya sendiri.<br /><br />Kamu lihat IG temanmu yang "kurang prestatif" tapi liburan ke Jepang dibayarin pacar. Yang dapat tas Hermes ulang tahun. Yang ke spa setiap minggu. <strong>Dan kamu mulai bertanya: "Apakah saya yang salah pilih jalan?"</strong><br /><br />Tidak. Kamu hanya belum diajari <strong>bahasa lain</strong> — bahasa yang membuat pria mapan ingin memberikan, bukan ingin menghindar.</>,
+        },
+        paramHope: {
+            label: "VISI BARU — KEHIDUPAN SOFT LIFE YANG MENJADI MILIKMU",
+            h2a: "Bayangkan Akhir Pekan",
+            h2b: "Ketika Kamu Tidak Lagi Memutuskan Apapun.",
+            imgKey: 'p_softlife_df_0413_ba_wife_s4_v2_1776175479780', // IMG SLOT
+            body: <>Bayangkan: Sabtu pagi, kamu bangun, tidak perlu pikirkan "mau makan apa hari ini". Sudah ada chat masuk: "Sayang, kamu mau brunch di mana? Saya book". <strong>Dia yang memutuskan. Dia yang membayar. Kamu cukup ada dan menikmati.</strong><br /><br />Bayangkan: 2 minggu lagi ulang tahunmu. Kamu tidak perlu "kasih hint", tidak perlu request. Pagi hari ulang tahun, kamu bangun ke kamar yang sudah penuh bunga peony putih (yang kamu sebut sekali, 6 bulan lalu, dan dia ingat). Tas yang kamu pernah lihat di IG — ada di meja, dengan note tangan.<br /><br />Bayangkan: kamu lelah dengan kerjaan, mention sambil lalu "saya butuh liburan". <strong>3 hari kemudian dia kasih tiket Bali</strong> — dengan villa private pool, semua sudah arrange. "Kamu tinggal pack, Sayang."<br /><br />Bayangkan: ke spa setiap minggu, dia yang booking. Ke salon, dia yang transfer. Ke restaurant fancy, dia yang reserve. Bukan karena kamu meminta. Karena dia <strong>BUTUH</strong> melakukannya untukmu — supaya dia merasa cukup di matamu.</>,
+        },
+        paramHowItWorks: {
+            label: "BAGAIMANA INI BEKERJA",
+            h2a: "Frekuensi High Value",
+            h2b: "Yang Membuat Pria Ingin Memberi.",
+            imgKey: 'p_softlife_df_0413_sl_s1_1776094453410', // IMG SLOT
+            steps: [
+                { num: '1', title: 'STOP MEMBLOKIR PRIA UNTUK MEMBERI (Hari 1-21)', body: 'Tanpa sadar, kamu sudah melatih pria di sekitarmu untuk TIDAK memberi padamu. Setiap "tidak usah, saya bisa sendiri", setiap "biar saya saja yang bayar", setiap "saya tidak butuh apa-apa kok" — kamu menutup pintu untuk pria memberi. Kamu pelajari cara membukanya kembali — dengan elegan, tanpa terlihat materialistis.' },
+                { num: '2', title: 'BANGUN SOFT FEMININITY YANG TENANG (Hari 22-60)', body: 'High value bukan tentang menjadi keras, dominan, "alpha female". Itu kebalikannya. Soft femininity yang tenang — yang tidak butuh validasi, tidak butuh pamer, tidak butuh teriak — adalah frekuensi yang membuat pria mapan TERPESONA. Kamu pelajari bahasa tubuh, intonasi, pilihan kata yang memancarkan ketenangan ini.' },
+                { num: '3', title: 'TARIK PRIA YANG BUTUH MEMBERI (Bulan 2+)', body: 'Pria mapan yang otentik — bukan playboy — secara biologis ingin MEMBERI dan MELINDUNGI. Itu bagian dari maskulinitas mereka yang ingin diaktifkan. Ketika frekuensimu sudah benar, kamu akan menarik pria-pria yang justru BERKOMPETISI untuk memanjakanmu — bukan menghindar darimu.' },
+            ],
+        },
+        paramObjections: {
+            label: "PERTANYAAN UMUM",
+            h2a: "Tapi Apakah",
+            h2b: "Ini Bukan Materialistis?",
+            items: [
+                { q: "Bukankah ini menjadikan saya 'matre' atau gold digger?", a: "Tidak. Gold digger adalah wanita yang ingin uang TANPA memberikan apapun. Soft life adalah pertukaran energi yang sehat: kamu memberikan ketenangan, kelembutan, dan presence yang membuat pria merasa pria — dan dia memberikan provisi, perlindungan, dan privilege. Itu bukan transaksi. Itu komplementaritas. Pria mapan justru MERINDUKAN ini, dan tidak menemukannya pada wanita 'modern' yang menolak menerima." },
+                { q: "Saya orangnya mandiri, sudah karir bagus. Apakah ini relevan?", a: "Justru paling relevan untukmu. Wanita karir sukses sering menjadi 'terlalu mandiri' — yang membuat pria-pria mapan menghindar karena merasa 'tidak dibutuhkan'. Soft life mengajarkan bagaimana TETAP kuat secara karir, tetapi MEMBUKA RUANG untuk pria memberi padamu. Kamu tidak perlu kompromi karir — kamu hanya perlu reframe cara kamu menerima." },
+                { q: "Saya sudah 35+, apakah masih bisa menarik pria mapan?", a: "Pria mapan (35-45+) justru mencari wanita 35+ — karena maturity dan ketenangan. Yang mereka tolak adalah wanita 25 yang masih drama. Dan satu hal yang harus kamu tahu: wanita Indonesia sukses di atas 35 dengan frekuensi soft yang benar — itu langka, dan permintaan tinggi. Kamu BUKAN ke-1000 dari pasar — kamu adalah ke-10. Kamu hanya belum tahu posisimu." },
+            ],
+        },
+        paramSocialProof: {
+            label: "BUKTI TRANSFORMASI — SEBELUM & SESUDAH",
+            h2a: "3 Wanita.",
+            h2b: "3 Hidup Yang Berubah Menjadi Soft Life.",
+            transformations: [
+                {
+                    name: 'Rini, 32 thn — Marketing Manager',
+                    imgKey: 'p_softlife_df_0413_sl_s3_1776094484568', // IMG SLOT
+                    before: 'Saya bangga dengan tagline "I split bills". Setiap date saya bayar setengah, kadang lebih. Saya pikir saya menunjukkan "saya independen". Hasilnya? Pria-pria mapan yang awalnya tertarik pelan-pelan menjauh. Mereka tetap dengan saya sebagai "teman" tapi tidak melanjutkan ke hubungan serius. Saya pikir itu karena karir saya. Padahal sebenarnya saya yang menutup pintu untuk mereka memberi.',
+                    after: 'Saya pelajari cara menerima dengan elegan — tidak grabbing, tidak desperate, hanya "thank you, this is lovely". Pria pertama yang saya kencani setelah belajar ini — seorang pengusaha 38 thn — minggu ke-3 sudah ngajak ke Hong Kong, all expense paid. Saya kira jebakan, ternyata bukan. Dia genuinely senang punya wanita yang membiarkan dia "menjadi pria". Sekarang sudah 9 bulan, segala kebutuhan saya dia urus, sambil saya tetap kerja & punya pendapatan saya sendiri.',
+                },
+                {
+                    name: 'Bella, 36 thn — Senior Executive',
+                    imgKey: 'p_softlife_df_0413_sl_s4_1776094503539', // IMG SLOT
+                    before: 'Posisi saya tinggi, gaji 8-digit. Tapi setiap pria yang saya kencani merasa "intimidated" dan menjauh. Saya mulai pikir saya harus "downplay" career saya untuk laku. Saya benci pikiran itu. Saya juga lihat teman saya yang gajinya separuh saya tapi dimanjakan pacarnya seperti princess — saya tidak ngerti bedanya.',
+                    after: 'Bedanya: dia BUKAN downplay karir, dia downplay STRESS. Setiap kali ketemu pacarnya, dia tidak bawa energy "Saya stressful boss" — dia bawa energy "Saya tenang dan menerima". Saya copy itu. Pria yang saya kencani sekarang — pengacara senior — pertama kali bilang "saya tertarik karena kamu tidak intimidating, padahal jelas kamu sukses". Sekarang dia yang ngirim driver setiap saya pulang malam dari kantor, ngajak liburan tiap quarter, dan baru bulan lalu kasih saya jam Cartier untuk anniversary.',
+                },
+                {
+                    name: 'Lina, 28 thn — Akuntan Junior',
+                    imgKey: 'p_softlife_softlife_01_dimanjakan_v2_1777551018247', // IMG SLOT
+                    before: 'Saya kira soft life cuma untuk wanita kaya atau cantik banget. Saya orang biasa, gaji 8-digit-an, looks 7/10. Saya pikir "siapa yang mau manjain saya?". Saya selalu ngotot bayar setengah, ngerasa "kalau dia bayar saya merasa berhutang".',
+                    after: 'Saya pelajari kalau bukan tentang fisik atau gaji — tentang FREKUENSI. Saya berhenti ngotot bayar. Saya mulai express genuine appreciation ("kamu so thoughtful, terima kasih"). Pria yang saya kencani — sales executive 30 thn (bukan tycoon) — mulai membawa saya makan di tempat yang saya tidak biasa, mulai kasih hadiah kecil yang thoughtful. Setelah 6 bulan, dia upgrade gaya hidup kami berdua. Bukan karena saya minta. Karena dia sendiri yang ingin "kasih saya yang terbaik". Sekarang kami planning honeymoon ke Eropa.',
+                },
+            ],
+        },
     } : null;
 
     const segmentContent = segment === 'istri' ? {
@@ -1250,10 +2137,27 @@ const DarkFeminineTSX = () => {
         ],
     } : null;
 
-    // Merge: segment overrides on top of base content (softlite stacks on top when active)
-    const sc: any = segmentContent
+    // Merge: segment overrides on top of base content. Specific istri winners stack on top
+    // of the istri segment base; general winners stack on top of default base.
+    const sc: any = istriFearContent
+        ? { ...c, ...segmentContent, ...istriFearContent }
+        : istriLegacyContent
+        ? { ...c, ...segmentContent, ...istriLegacyContent }
+        : istriVisibleContent
+        ? { ...c, ...segmentContent, ...istriVisibleContent }
+        : segmentContent
         ? { ...c, ...segmentContent }
-        : (softlifeContent ? { ...c, ...softlifeContent } : c);
+        : presenceContent
+        ? { ...c, ...presenceContent }
+        : perubahanContent
+        ? { ...c, ...perubahanContent }
+        : highvalueContent
+        ? { ...c, ...highvalueContent }
+        : nongamesContent
+        ? { ...c, ...nongamesContent }
+        : softlifeContent
+        ? { ...c, ...softlifeContent }
+        : c;
 
     const [countdown, setCountdown] = useState("00:00:00");
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -2118,6 +3022,131 @@ const DarkFeminineTSX = () => {
                             </div>
                         </div>
                     </section>
+
+                    {/* === PARAM-SPECIFIC SECTIONS (renders only when a winning ad param is active) === */}
+                    {/* Order: Agitation → Hope → How It Works → Objections → Social Proof. */}
+                    {/* Image slots use sc.paramX.imgKey — assigned per param in content blocks (TBD by user). */}
+                    {sc.paramAgitation && (
+                        <section style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{sc.paramAgitation.label}</div>
+                                <h2 className="df-section-h2">
+                                    <span>{sc.paramAgitation.h2a}</span>
+                                    <span className="df-newline df-gold">{sc.paramAgitation.h2b}</span>
+                                </h2>
+                                {sc.paramAgitation.imgKey && assets[sc.paramAgitation.imgKey] && (
+                                    <div className="df-img-box" style={{ borderRadius: '16px' }}>
+                                        <DbgImg src={assets[sc.paramAgitation.imgKey]} alt={sc.paramAgitation.label} label={sc.paramAgitation.imgKey} style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
+                                    </div>
+                                )}
+                                <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{sc.paramAgitation.body}</div>
+                            </div>
+                        </section>
+                    )}
+
+                    {sc.paramHope && (
+                        <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{sc.paramHope.label}</div>
+                                <h2 className="df-section-h2">
+                                    <span>{sc.paramHope.h2a}</span>
+                                    <span className="df-newline df-gold">{sc.paramHope.h2b}</span>
+                                </h2>
+                                {sc.paramHope.imgKey && assets[sc.paramHope.imgKey] && (
+                                    <div className="df-img-box" style={{ borderRadius: '16px' }}>
+                                        <DbgImg src={assets[sc.paramHope.imgKey]} alt={sc.paramHope.label} label={sc.paramHope.imgKey} style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
+                                    </div>
+                                )}
+                                <div style={{ fontSize: '17px', lineHeight: 1.75, color: 'var(--cream)' }}>{sc.paramHope.body}</div>
+                            </div>
+                        </section>
+                    )}
+
+                    {sc.paramHowItWorks && (
+                        <section style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{sc.paramHowItWorks.label}</div>
+                                <h2 className="df-section-h2">
+                                    <span>{sc.paramHowItWorks.h2a}</span>
+                                    <span className="df-newline df-gold">{sc.paramHowItWorks.h2b}</span>
+                                </h2>
+                                {sc.paramHowItWorks.imgKey && assets[sc.paramHowItWorks.imgKey] && (
+                                    <div className="df-img-box" style={{ borderRadius: '16px' }}>
+                                        <DbgImg src={assets[sc.paramHowItWorks.imgKey]} alt={sc.paramHowItWorks.label} label={sc.paramHowItWorks.imgKey} style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
+                                    </div>
+                                )}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '16px' }}>
+                                    {sc.paramHowItWorks.steps.map((step: any, i: number) => (
+                                        <div key={i} style={{ background: 'var(--bg-card)', border: '1px solid rgba(139,92,246,0.3)', borderRadius: '16px', padding: '20px 18px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                                            <div style={{ flexShrink: 0, width: '40px', height: '40px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--gold), var(--gold-light))', color: 'var(--bg-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '18px' }}>{step.num}</div>
+                                            <div>
+                                                <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--gold-light)', marginBottom: '6px', letterSpacing: '0.02em' }}>{step.title}</div>
+                                                <div style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.7 }}>{step.body}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    {sc.paramObjections && (
+                        <section style={{ background: 'var(--bg-section)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{sc.paramObjections.label}</div>
+                                <h2 className="df-section-h2">
+                                    <span>{sc.paramObjections.h2a}</span>
+                                    <span className="df-newline df-gold">{sc.paramObjections.h2b}</span>
+                                </h2>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '16px' }}>
+                                    {sc.paramObjections.items.map((item: any, i: number) => (
+                                        <div key={i} style={{ background: 'var(--bg-card)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '14px', padding: '18px 16px' }}>
+                                            <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--white)', marginBottom: '8px', display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                                                <span style={{ color: 'var(--red)', fontWeight: 800 }}>Q:</span>
+                                                <span>{item.q}</span>
+                                            </div>
+                                            <div style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.75, display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                                                <span style={{ color: 'var(--gold-light)', fontWeight: 800 }}>A:</span>
+                                                <span>{item.a}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    {sc.paramSocialProof && (
+                        <section style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{sc.paramSocialProof.label}</div>
+                                <h2 className="df-section-h2">
+                                    <span>{sc.paramSocialProof.h2a}</span>
+                                    <span className="df-newline df-gold">{sc.paramSocialProof.h2b}</span>
+                                </h2>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '20px' }}>
+                                    {sc.paramSocialProof.transformations.map((t: any, i: number) => (
+                                        <div key={i} style={{ background: 'var(--bg-card)', border: '1px solid rgba(139,92,246,0.35)', borderRadius: '18px', padding: '22px 18px' }}>
+                                            {t.imgKey && assets[t.imgKey] && (
+                                                <div style={{ marginBottom: '14px', borderRadius: '14px', overflow: 'hidden' }}>
+                                                    <DbgImg src={assets[t.imgKey]} alt={t.name} label={t.imgKey} style={{ width: '100%', aspectRatio: '1/1', display: 'block', objectFit: 'cover' }} />
+                                                </div>
+                                            )}
+                                            <div style={{ fontSize: '17px', fontWeight: 800, color: 'var(--gold-light)', marginBottom: '14px', letterSpacing: '0.01em' }}>{t.name}</div>
+                                            <div style={{ marginBottom: '14px' }}>
+                                                <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.1em', marginBottom: '6px' }}>SEBELUM:</div>
+                                                <div style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.75, opacity: 0.92 }}>{t.before}</div>
+                                            </div>
+                                            <div>
+                                                <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--green-wa)', letterSpacing: '0.1em', marginBottom: '6px' }}>SEKARANG:</div>
+                                                <div style={{ fontSize: '15px', color: 'var(--cream)', lineHeight: 1.75 }}>{t.after}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
 
                     {/* TESTIMONIALS */}
                     <section style={{ background: 'linear-gradient(180deg, var(--bg-section) 0%, var(--bg-primary) 100%)', padding: '44px 0' }}>
