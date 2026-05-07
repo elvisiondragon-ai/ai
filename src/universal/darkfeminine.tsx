@@ -414,7 +414,7 @@ const contentData: any = {
             sting: "Harga ilmu ini tidak akan pernah lebih murah dari rasa sakit yang sudah kamu tanggung gratis selama ini."
         },
         urgency: (t: React.ReactNode) => <>⚡ HARGA SPESIAL — Berakhir dalam {t} ⚡</>,
-        heroBadge: "🌙 PANDUAN RAHASIA WANITA",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Jadilah Wanita yang",
         heroH1b: "Tidak Bisa Dilupakan",
         heroSub: "52 jurus rahasia daya tarik yang tidak pernah diajarkan ibu, guru, atau siapapun.",
@@ -525,7 +525,7 @@ const contentData: any = {
             { icon: "😶", text: <>Labeled 'too nice' which really means 'too <strong>BORING</strong>'</> },
         ],
         urgency: (t: React.ReactNode) => <>⚡ SPECIAL PRICE — Ends in {t} ⚡</>,
-        heroBadge: "🌙 SECRET WOMEN'S GUIDE",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Become the Woman",
         heroH1b: "He Can't Forget",
         heroSub: "52 secret attraction moves never taught by your mother, teachers, or anyone.",
@@ -636,7 +636,7 @@ const contentData: any = {
             { icon: "😶", text: <>Binansagang 'sobrang bait' na ang tunay na ibig sabihin ay 'sobrang <strong>NAKAKAINIP</strong>'</> },
         ],
         urgency: (t: React.ReactNode) => <>⚡ SPECIAL PRICE — Matatapos sa {t} ⚡</>,
-        heroBadge: "🌙 SIKRETONG GABAY NG MGA BABAE",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Maging Babaeng",
         heroH1b: "Hindi Niya Makakalimutan",
         heroSub: "52 sikretong hakbang sa pang-aakit na hindi itinuro kailanman ng iyong ina, guro, o sinuman.",
@@ -1318,7 +1318,7 @@ const DarkFeminineTSX = () => {
     // Berhenti mengejar perhatian — mulai menjadi pusat perhatian secara alami.
     // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
     const presenceContent = (hasPresence && segment !== 'istri') ? {
-        heroBadge: "✨ MAGNETIC PRESENCE — KEKUATAN DIAM",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Dia Tidak Bicara.",
         heroH1b: "Tapi Seluruh Ruangan Memperhatikannya.",
         heroSub: "Untuk wanita yang lelah mengejar perhatian. Yang capek menjadi 'pilihan kedua' di setiap ruangan. Ada wanita yang masuk tanpa berkata apa-apa — dan semua mata otomatis menoleh. Auranya bicara duluan. Itu bukan keberuntungan. Itu protokol.",
@@ -1414,13 +1414,37 @@ const DarkFeminineTSX = () => {
             label: "FAKTA SEJARAH",
             h2a: "Kebenaran tentang Sang",
             h2b: "Legenda Cleopatra",
-            images: [
-                'df_cleopatra_pelakor',
-                'df_cleopatra_imagine_if',
-                'df_cleopatra_ordinary_extraordinary',
-                'df_cleopatra_protocol_5000',
-                'df_cleopatra_kings_list',
-                'df_cleopatra_deleted_notes'
+            items: [
+                {
+                    imgKey: 'df_cleopatra_deleted_notes',
+                    title: 'Sejarah Telah Menghapus Fakta Ini',
+                    desc: 'Di sekolah, kita diajarkan Cleopatra adalah simbol kecantikan. Itu bohong. Plutarch—sejarawan Yunani yang menulis tentangnya—menggambarkannya sebagai wanita dengan penampilan "biasa saja". Tapi dia menguasai sesuatu yang tidak ada di buku pelajaran: Kharisma yang membuat raja bertekuk lutut.'
+                },
+                {
+                    imgKey: 'df_cleopatra_pelakor',
+                    title: 'Pelakor Takut Pada Wanita Berkharisma',
+                    desc: 'Pelakor tidak takut pada wanita cantik, karena kecantikan bisa ditandingi. Tapi kharisma tidak bisa. Cleopatra membuktikan ini 2.000 tahun lalu. Tidak ada wanita yang berani "merebut" pria yang sudah masuk ke orbitnya.'
+                },
+                {
+                    imgKey: 'df_cleopatra_kings_list',
+                    title: '5 Raja Paling Berkuasa Berlutut',
+                    desc: 'Julius Caesar, Marcus Antonius, Ptolemy, Herodes, Pompeius. Lima penguasa kelas dunia kehilangan logika mereka di hadapan satu wanita biasa. Bukan karena wajah, tapi karena dia menguasai sistem kharisma yang membuat siapapun merasa penting.'
+                },
+                {
+                    imgKey: 'df_cleopatra_ordinary_extraordinary',
+                    title: 'Kekuatan Tak Tertandingi Wanita "Biasa"',
+                    desc: 'Sejarawan menulis dia bukan yang tercantik di Mesir, tapi dia paling tidak bisa dilupakan. Dia tahu cara membuat dirinya menjadi satu-satunya yang ada di pikiran orang lain tanpa meminta, tanpa memaksa, tanpa berteriak minta diperhatikan.'
+                },
+                {
+                    imgKey: 'df_cleopatra_imagine_if',
+                    title: 'Suami Anda Memandang Anda Seperti Caesar',
+                    desc: 'Bayangkan suami Anda pulang ke rumah—dan matanya langsung mencari Anda. Bukan karena gaun baru, tapi karena ada sesuatu dalam cara Anda hadir yang membuatnya terpesona dan memandang Anda layaknya sosok yang tidak tergantikan.'
+                },
+                {
+                    imgKey: 'df_cleopatra_protocol_5000',
+                    title: 'Protokol Kharisma 5.000 Tahun',
+                    desc: 'Ini bukan tips kencan atau motivasi pagi. Ini protokol tertua di dunia yang membuat penguasa rela mempertaruhkan segalanya. Sebuah sistem terukur—dari cara masuk ruangan, cara diam, hingga cara berbicara yang kini bisa Anda kuasai.'
+                }
             ]
         },
     } : null;
@@ -1430,7 +1454,7 @@ const DarkFeminineTSX = () => {
     // ditolak/diabaikan menjadi sangat diinginkan setelah 1 perubahan pola pikir.
     // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
     const perubahanContent = (hasPerubahan && segment !== 'istri') ? {
-        heroBadge: "💜 ENERGY SHIFT — SATU PERUBAHAN",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Bukan Cantikmu Yang Kurang.",
         heroH1b: "Frekuensimu Yang Salah.",
         heroSub: "Untuk wanita yang sudah mencoba segalanya — diet, skincare mahal, baju baru, kelas kecantikan — tapi tetap merasa 'kurang'. Yang kamu butuhkan bukan transformasi fisik. Bukan kerja keras 12 bulan. Hanya 1 perubahan internal — dan seluruh dunia mulai memperlakukanmu berbeda.",
@@ -1529,7 +1553,7 @@ const DarkFeminineTSX = () => {
     // mengecewakanmu — karena dia takut kamu akan pergi.
     // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
     const highvalueContent = (hasHighvalue && segment !== 'istri') ? {
-        heroBadge: "👑 HIGH STAKES — PRIA YANG TAKUT KEHILANGANMU",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Buat Dia Berpikir 10x.",
         heroH1b: "Sebelum Mengecewakanmu.",
         heroSub: "Untuk wanita yang lelah jadi 'opsi'. Yang capek dimaafkan terus, dimaklumi terus, dianggap 'pasti tidak akan pergi'. Saatnya membalikkan posisi — menjadi wanita yang membuat pria gemetar membayangkan hidup tanpamu.",
@@ -1628,7 +1652,7 @@ const DarkFeminineTSX = () => {
     // dan ingin tahu cara "mengunci" atensi pria secara permanen.
     // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
     const nongamesContent = (hasNongames && segment !== 'istri') ? {
-        heroBadge: "🚫 ANTI-GHOSTING PROTOCOL",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Lelah Dia Datang Dan Pergi?",
         heroH1b: "Saatnya Mengunci Atensinya — Permanen.",
         heroSub: "Untuk wanita yang sudah terlalu sering jadi 'sebentar'. Chat manis seminggu — lalu hilang tanpa kabar. Pacar bulan ini, ghosting bulan depan. Saatnya kamu paham bagaimana cara kerja otak pria — dan menutup pintu ghosting selamanya.",
@@ -1727,7 +1751,7 @@ const DarkFeminineTSX = () => {
     // atau bahkan biasa saja. Mengambil kendali sebelum terlambat.
     // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
     const istriFearContent = hasIstriFear ? {
-        heroBadge: "❄️ KENYATAAN DINGIN — UNTUK PARA ISTRI",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Wanita Itu Tidak Lebih Cantik Darimu.",
         heroH1b: "Tapi Suamimu Tetap Memilihnya.",
         heroSub: "Untuk istri yang menyangkal — sambil di dalam hati sudah tahu. Yang melihat suaminya semakin sering 'lembur', semakin sering 'meeting di luar', semakin sering tersenyum kepada layar HP. Realita ini pahit. Tapi menyangkalnya akan jauh lebih pahit lagi.",
@@ -1826,7 +1850,7 @@ const DarkFeminineTSX = () => {
     // Jika ibu tidak berdaya, anak akan jadi korban juga.
     // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
     const istriLegacyContent = hasIstriLegacy ? {
-        heroBadge: "🌱 DEMI ANAK — PUTUS RANTAI INI",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Anakmu Sedang Belajar.",
         heroH1b: "Bagaimana Cara Menjadi Korban.",
         heroSub: "Untuk istri yang bertahan 'demi anak'. Yang berpikir diam dan mengalah adalah pengorbanan mulia. Tapi anakmu tidak melihat pengorbanan. Mereka melihat TEMPLATE — bagaimana seorang wanita harus diperlakukan, dan bagaimana seorang wanita harus menerima. Dan template itu, mereka bawa ke pernikahannya nanti.",
@@ -1925,7 +1949,7 @@ const DarkFeminineTSX = () => {
     // "bayangan" yang tidak lagi diajak bicara atau dihargai oleh suaminya.
     // IMAGES: TBD — user akan menambahkan asset story setelah review copy.
     const istriVisibleContent = hasIstriVisible ? {
-        heroBadge: "👁️ KAMU TIDAK INVISIBLE — UNTUK PARA ISTRI",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Kamu Hidup Bersamanya.",
         heroH1b: "Tapi Dia Sudah Lama Berhenti Melihatmu.",
         heroSub: "Untuk istri yang merasa kesepian justru di rumah yang ramai. Yang setiap hari bicara — tapi tidak ada yang mendengar. Yang merapikan, memasak, mengurus anak — tapi diperlakukan seperti perabot yang sudah terlalu lama ada. Kamu bukan invisible. Hanya frekuensimu yang sudah mati.",
@@ -2026,7 +2050,7 @@ const DarkFeminineTSX = () => {
     // tenang, sedikit bicara, tidak butuh validasi, tapi mendapat segalanya. Kategori General/Single.
     // Kombinasi: ?softlife (Rp199.000 default) | ?softlife&value (membuka opsi Ultimate Rp399.000).
     const softlifeContent = (hasSoftlife && segment !== 'istri') ? {
-        heroBadge: "🤍 SOFT LIFE — HIGH VALUE WOMAN",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Dia Tidak Lebih Cantik Darimu.",
         heroH1b: "Tapi Hidupnya Dimanjakan.",
         heroSub: "Untuk wanita yang lelah berjuang sendirian — sementara wanita lain hidupnya 'mudah'. Dimanjakan, dibayarkan, diperlakukan seperti ratu… tanpa berteriak, tanpa banyak gaya. Mereka paham satu hal yang tidak pernah diajarkan padamu.",
@@ -2121,7 +2145,7 @@ const DarkFeminineTSX = () => {
     } : null;
 
     const segmentContent = segment === 'istri' ? {
-        heroBadge: "🔥 KHUSUS UNTUK PARA ISTRI",
+        heroBadge: "👑 DarkFeminine - Cleopatra Magnet",
         heroH1a: "Kamu Sudah Memberikan Segalanya...",
         heroH1b: "Tapi Kenapa Masih Merasa Tidak Dilihat?",
         heroSub: "Untuk istri yang lelah berjuang sendirian. Yang tidur di samping seseorang tapi merasa ribuan kilometer jaraknya. Yang bertanya dalam diam — 'Kenapa dia tidak lagi memilihku?'",
@@ -2206,7 +2230,7 @@ const DarkFeminineTSX = () => {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     useEffect(() => {
-        document.title = "Dark Feminine — 52 Jurus Rahasia";
+        document.title = "DarkFeminine - Cleopatra Magnet";
         const KEY = 'df_end_time';
         let endTime = localStorage.getItem(KEY);
         if (!endTime || Date.now() > parseInt(endTime)) {
@@ -3165,11 +3189,19 @@ const DarkFeminineTSX = () => {
                                     <span>{sc.paramCleopatra.h2a}</span>
                                     <span className="df-newline df-gold">{sc.paramCleopatra.h2b}</span>
                                 </h2>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '20px' }}>
-                                    {sc.paramCleopatra.images.map((imgKey: string, i: number) => (
-                                        assets[imgKey] && (
-                                            <div key={i} style={{ borderRadius: '18px', overflow: 'hidden', border: '1px solid rgba(201,153,26,0.2)' }}>
-                                                <img src={assets[imgKey]} alt={`Cleopatra ${i+1}`} style={{ width: '100%', display: 'block' }} loading="lazy" />
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '28px' }}>
+                                    {sc.paramCleopatra.items.map((item: any, i: number) => (
+                                        item.imgKey && assets[item.imgKey] && (
+                                            <div key={i} style={{ background: 'var(--bg-card)', border: '1px solid rgba(201,153,26,0.3)', borderRadius: '18px', overflow: 'hidden' }}>
+                                                <img src={assets[item.imgKey]} alt={item.title} style={{ width: '100%', display: 'block' }} loading="lazy" />
+                                                <div style={{ padding: '24px 20px' }}>
+                                                    <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--cream)', marginBottom: '12px', lineHeight: 1.3 }}>
+                                                        {item.title}
+                                                    </h3>
+                                                    <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.6, margin: 0 }}>
+                                                        {item.desc}
+                                                    </p>
+                                                </div>
                                             </div>
                                         )
                                     ))}
