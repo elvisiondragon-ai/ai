@@ -5,31 +5,31 @@ import { ArrowLeft, Copy } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "../utils/fbpixel";
-import qrisBcaImage from "../assets/qrisbca.jpeg";
+import qrisBcaImage from "../assets/qrisbca.webp";
 
 // Asset Imports for ID
-import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
-import df02Id from '../assets/darkfem/indo_image/df02_2am_scroll.png';
-import df03Id from '../assets/darkfem/indo_image/df03_nice_girl_dies.png';
-import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.png';
-import df05Id from '../assets/darkfem/indo_image/df05_comparison.png';
-import df06Id from '../assets/darkfem/indo_image/df06_fuckboy_cycle.png';
-import df07Id from '../assets/darkfem/indo_image/df07_drakor_fantasy.png';
-import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
-import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
-import df10Id from '../assets/darkfem/indo_image/df10_society_lie.png';
+import df01Id from '../assets/darkfem/indo_image/df01_paradox.webp';
+import df02Id from '../assets/darkfem/indo_image/df02_2am_scroll.webp';
+import df03Id from '../assets/darkfem/indo_image/df03_nice_girl_dies.webp';
+import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.webp';
+import df05Id from '../assets/darkfem/indo_image/df05_comparison.webp';
+import df06Id from '../assets/darkfem/indo_image/df06_fuckboy_cycle.webp';
+import df07Id from '../assets/darkfem/indo_image/df07_drakor_fantasy.webp';
+import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.webp';
+import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.webp';
+import df10Id from '../assets/darkfem/indo_image/df10_society_lie.webp';
 const video1Id = '/assets/videos/video1.mp4';
-import video1PosterId from '../assets/darkfem/indo_image/video1.jpg';
+import video1PosterId from '../assets/darkfem/indo_image/video1.webp';
 const video3Id = '/assets/videos/video3.mp4';
-import video3PosterId from '../assets/darkfem/indo_image/video3.jpg';
+import video3PosterId from '../assets/darkfem/indo_image/video3.webp';
 
 // Istri Section Assets
-import istri01 from '../assets/darkfem/indo_image/istritest1-Tidur_Sendiri.png';
-import istri02 from '../assets/darkfem/indo_image/istritest2-Dulu_vs_Sekarang.png';
-import istri03 from '../assets/darkfem/indo_image/istritest3-Suami_Perhatian_HP.png';
-import istri04 from '../assets/darkfem/indo_image/istritest4-Ibu_vs_Wanita.png';
-import istri05 from '../assets/darkfem/indo_image/istritest9-Dia_Pilih_Segalanya.png';
-import istri06 from '../assets/darkfem/indo_image/istritest10-Bertahan_Untuk_Anak.png';
+import istri01 from '../assets/darkfem/indo_image/istritest1-Tidur_Sendiri.webp';
+import istri02 from '../assets/darkfem/indo_image/istritest2-Dulu_vs_Sekarang.webp';
+import istri03 from '../assets/darkfem/indo_image/istritest3-Suami_Perhatian_HP.webp';
+import istri04 from '../assets/darkfem/indo_image/istritest4-Ibu_vs_Wanita.webp';
+import istri05 from '../assets/darkfem/indo_image/istritest9-Dia_Pilih_Segalanya.webp';
+import istri06 from '../assets/darkfem/indo_image/istritest10-Bertahan_Untuk_Anak.webp';
 
 // For English, fallback to ID if we don't have separate assets yet.
 const assetsMap: any = {

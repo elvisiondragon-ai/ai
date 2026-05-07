@@ -4,15 +4,15 @@ import { ArrowLeft, Copy } from "lucide-react";
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent } from "../utils/fbpixel";
-import qrisBcaImage from "../assets/qrisbca.jpeg";
-import appImg1 from "../assets/coparenting_img/1.jpeg";
-import appImg2 from "../assets/coparenting_img/2.jpeg";
-import appImg3 from "../assets/coparenting_img/3.jpeg";
-import appImg4 from "../assets/coparenting_img/4.jpeg";
-import appImg5 from "../assets/coparenting_img/5.jpeg";
-import appImg6 from "../assets/coparenting_img/6.jpeg";
-import appImg7 from "../assets/coparenting_img/7.jpeg";
-import appImg8 from "../assets/coparenting_img/8.jpeg";
+import qrisBcaImage from "../assets/qrisbca.webp";
+import appImg1 from "../assets/coparenting_img/1.webp";
+import appImg2 from "../assets/coparenting_img/2.webp";
+import appImg3 from "../assets/coparenting_img/3.webp";
+import appImg4 from "../assets/coparenting_img/4.webp";
+import appImg5 from "../assets/coparenting_img/5.webp";
+import appImg6 from "../assets/coparenting_img/6.webp";
+import appImg7 from "../assets/coparenting_img/7.webp";
+import appImg8 from "../assets/coparenting_img/8.webp";
 
 const ParentingLanding: React.FC = () => {
 
@@ -736,7 +736,7 @@ Total: Rp ${details.amount.toLocaleString('id-ID')}`;
                             {/* Hero Image */}
                             <div className="hero-image-container mb-10 animate-fade-in-up stagger-3">
                                 <div className="bg-white rounded-2xl p-2 md:p-3 mockup-shadow border border-border">
-                                    <img src="https://i.ibb.co.com/4R0LcwS5/ccaf2a4a-0825-4905-98da-ae676662a3d0.png"
+                                    <img src="https://i.ibb.co.com/4R0LcwS5/ccaf2a4a-0825-4905-98da-ae676662a3d0.webp"
                                         alt="Co-Parenting Digital Planner - Template Google Sheets & Excel"
                                         className="w-full h-auto rounded-xl" loading="eager" />
                                 </div>

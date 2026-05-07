@@ -4,7 +4,7 @@
     <!-- iOS Safari hard cache-bust — ONLY change APP_VERSION here when deploying -->
     <script>
       (function() {
-        var V = '1.0.16';
+        var V = '1.0.18';
         window.__APP_VERSION__ = V;
         var url = new URL(window.location.href);
         if (url.searchParams.get('v') !== V) {
@@ -16,6 +16,11 @@
         }
       })();
     </script>
+    <!-- DNS prefetch for 3rd party origins -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="eL Vision Group Ecosystem" />

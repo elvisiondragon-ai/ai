@@ -749,7 +749,7 @@ export default function USAEbookFeminineLanding() {
                <div className="w-full max-w-[300px] aspect-square rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl bg-black">
                   <video 
                     src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/ugc1.mp4" 
-                    poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/ugc1.jpg" 
+                    poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/ugc1.webp" 
                     className="w-full h-full object-cover"
                     controls
                     playsInline
@@ -761,7 +761,7 @@ export default function USAEbookFeminineLanding() {
                <div className="w-full max-w-[300px] aspect-square rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl bg-black">
                   <video 
                     src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/ugc2.mp4" 
-                    poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/ugc2.jpg" 
+                    poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/ugc2.webp" 
                     className="w-full h-full object-cover"
                     controls
                     playsInline

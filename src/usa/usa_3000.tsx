@@ -79,71 +79,71 @@ export default function ELVision3000() {
       name: "Agus Mulyadi, SH., MH.",
       title: "Head of Pangandaran Intelligence",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/agus.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/agus.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/agus.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/agus.webp"
     },
     {
       name: "Dr. Gumilar",
       title: "Hypnotherapist & Foundation Leader",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.webp"
     },
     {
       name: "Habib Umar",
       title: "Leader of Atsaqofah Islamic Boarding School",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.webp"
     },
     {
       name: "Umi Jamilah",
       title: "Foundation Leader",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/umi.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/umi.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/umi.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/umi.webp"
     },
     {
       name: "Felicia",
       title: "Entrepreneur",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/felicia.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/felicia.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/felicia.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/felicia.webp"
     },
     {
       name: "Lena",
       title: "eL Vision Client",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/lena.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/lena.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/lena.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/lena.webp"
     },
     {
       name: "Vio",
       title: "eL Vision Client",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio2.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio2.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio2.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio2.webp"
     },
     {
       name: "Jacob",
       title: "eL Vision Client",
       type: "image",
-      imageUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/jacob.jpg",
-      thumbnail: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/jacob.jpg"
+      imageUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/jacob.webp",
+      thumbnail: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/jacob.webp"
     },
     {
       name: "Wiliam",
       title: "eL Vision Client",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/wiliam.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/wiliam.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/wiliam.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/wiliam.webp"
     },
     {
       name: "Ana",
       title: "eL Vision Client",
       type: "image",
-      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/ana.jpg",
-      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/ana.jpg"
+      imageUrl: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/ana.webp",
+      thumbnail: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/ana.webp"
     }
   ];
 
@@ -152,7 +152,7 @@ export default function ELVision3000() {
       title: "eL Vision Founder",
       type: "video",
       videoUrl: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_el01.mp4",
-      thumbnail: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_el01.jpg"
+      thumbnail: "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_el01.webp"
     };
 
   const testimonials = [
@@ -673,7 +673,7 @@ export default function ELVision3000() {
                 controls
                 preload="metadata"
                 playsInline
-                poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.jpg"
+                poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.webp"
               >
                 <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_arif1.mp4" type="video/mp4" />
                 Your browser does not support video playback.
@@ -1333,7 +1333,7 @@ export default function ELVision3000() {
                   controls
                   preload="metadata"
                   playsInline
-                  poster="https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/arif2.jpg"
+                  poster="https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/arif2.webp"
                 >
                   <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/usa_methods.mp4" type="video/mp4" />
                   Your browser does not support video playback.
@@ -1351,7 +1351,7 @@ export default function ELVision3000() {
                   controls
                   preload="metadata"
                   playsInline
-                  poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.jpg"
+                  poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.webp"
                 >
                   <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/usa/arif_interview_en.mp4" type="video/mp4" />
                   Your browser does not support video playback.

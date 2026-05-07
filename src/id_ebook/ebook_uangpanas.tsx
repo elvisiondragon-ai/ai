@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ssworkbook from '@/assets/ssworkbook.png';
+import ssworkbook from '@/assets/ssworkbook.webp';
 import { Play, Check, X, Clock, Shield, ChevronDown, User, CreditCard, Copy, Zap, Gift, BookOpen, Star } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -20,35 +20,35 @@ import {
 } from '@/utils/fbpixel';
 
 const communityTestimonials = [
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_15taun.png",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_17juli.png",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_28juli.png",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_2jt.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_3minggu.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_agustinus.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio1.png",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio2.png",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_damai.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_depres.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_eldi3.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jahit.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testI_jahitan.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jauh.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_JOE.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_karimah.png",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_kelas1.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_marah.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_muklas.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pelakor.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantren.png",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantreren01.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_proyek.jpg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santet.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santri.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi01.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi03.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi05.jpeg",
-  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi09.png"
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_15taun.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_17juli.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_28juli.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_2jt.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_3minggu.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_agustinus.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio1.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_audio2.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_damai.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_depres.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_eldi3.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jahit.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testI_jahitan.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_jauh.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_JOE.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_karimah.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_kelas1.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_marah.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_muklas.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pelakor.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantren.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pesantreren01.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_proyek.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santet.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_santri.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi01.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi03.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi05.webp",
+  "https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi09.webp"
 ];
 const MOCK_REVIEWS_UANGPANAS = [
   {
@@ -356,56 +356,56 @@ export default function UangPanasLanding() {
       name: "Habib Umar",
       title: "Ustadz",
       video: "https://www.youtube.com/shorts/jD6XlkCL4sI",
-      poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.jpg",
+      poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/habib.webp",
       quote: "Awalnya ragu, tapi setelah dengar audionya, rezeki datang dari arah tak disangka."
     },
     {
       name: "VIO",
       title: "Anak Muda",
       video: "https://www.youtube.com/shorts/cPwGC0NW8s4",
-      poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio.jpg",
+      poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/vio.webp",
       quote: "Modulnya gampang banget, tinggal copy paste. Sehari bisa dapat 300rb santai."
     },
     {
       name: "Dr Gumilar",
       title: "Hipnoterapis Certified",
       video: "https://www.youtube.com/shorts/U6NsL9RL9rY",
-      poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.jpg",
+      poster: "https://tgojzhjujhjboboqygub.supabase.co/storage/v1/object/public/meta/dr.webp",
       quote: "Marketplace potongan gede, pindah ke sini malah lebih cuan tanpa stok barang."
     },
     {
       name: "Lena",
       title: "Member eL Vision",
       video: "https://www.youtube.com/shorts/-9u7v6vT5ds",
-      poster: "https://img.youtube.com/vi/-9u7v6vT5ds/hqdefault.jpg",
+      poster: "https://img.youtube.com/vi/-9u7v6vT5ds/hqdefault.webp",
       quote: "Dikejar rezeki saat tidak menginginkan apa-apa. Ajaib tapi nyata."
     },
     {
       name: "Orang Tua Inspiratif",
       title: "Member eL Vision",
       video: "https://www.youtube.com/watch?v=1ZNFxjPdFr8",
-      poster: "https://img.youtube.com/vi/1ZNFxjPdFr8/hqdefault.jpg",
+      poster: "https://img.youtube.com/vi/1ZNFxjPdFr8/hqdefault.webp",
       quote: "Latih anak bersyukur sejak dini — karena mindset berlimpah harus dimulai dari keluarga."
     },
     {
       name: "Pak Agus SH., MH.",
       title: "Kepala Satuan Intelijen 2018–2025",
       video: "https://www.youtube.com/watch?v=kVgfxHX_GeY",
-      poster: "https://img.youtube.com/vi/kVgfxHX_GeY/hqdefault.jpg",
+      poster: "https://img.youtube.com/vi/kVgfxHX_GeY/hqdefault.webp",
       quote: "Sebagai mantan pejabat, saya kritis. Tapi pengalaman menjalani eL Vision mengubah pandangan saya."
     },
     {
       name: "Felicia",
       title: "Member eL Vision",
       video: "https://www.youtube.com/watch?v=Rs_UDalr8q8",
-      poster: "https://img.youtube.com/vi/Rs_UDalr8q8/hqdefault.jpg",
+      poster: "https://img.youtube.com/vi/Rs_UDalr8q8/hqdefault.webp",
       quote: "Dari gelisah jadi damai dalam 7 hari. Saya tidak menyangka perubahan bisa secepat ini."
     },
     {
       name: "Gen Z Speaks",
       title: "Generasi Muda",
       video: "https://www.youtube.com/watch?v=wQv7mHlE-5o",
-      poster: "https://img.youtube.com/vi/wQv7mHlE-5o/hqdefault.jpg",
+      poster: "https://img.youtube.com/vi/wQv7mHlE-5o/hqdefault.webp",
       quote: "Gen Z jangan sampai tau video ini — bahaya kalau sampai sadar betapa powerful-nya sistem ini!"
     }
   ];

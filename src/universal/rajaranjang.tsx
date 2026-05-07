@@ -2,24 +2,24 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
 // ─── IMAGE IMPORTS ────────────────────────────────────────────────────────────
-import imgHero from "../assets/ranjang/ph_01_hero_couple_image.jpg";
-import imgTestimonial from "../assets/ranjang/ph_02_testimonial_social_proof.png";
-import imgCurriculum from "../assets/ranjang/ph_03_curriculum_infographic.png";
+import imgHero from "../assets/ranjang/ph_01_hero_couple_image.webp";
+import imgTestimonial from "../assets/ranjang/ph_02_testimonial_social_proof.webp";
+import imgCurriculum from "../assets/ranjang/ph_03_curriculum_infographic.webp";
 import imgCounter from "../assets/ranjang/ph_16_social_proof_counter.png";
-import imgBonus1 from "../assets/ranjang/bonus_1_ebook.png";
-import imgBonus2 from "../assets/ranjang/bonus_2_ebook.png";
-import imgBonus3 from "../assets/ranjang/bonus_3_ebook_video.png";
-import imgBonus4 from "../assets/ranjang/bonus_4_special.png";
-import imgBundle from "../assets/ranjang/bundle_hero_shot.jpg";
-import imgPain1 from "../assets/ranjang/pain_01_alone_bed.png";
-import imgPain2 from "../assets/ranjang/pain_02_mirror.png";
-import imgPain3 from "../assets/ranjang/pain_03_phone.png";
-import imgPain4 from "../assets/ranjang/pain_04_dinner.png";
-import imgPain5 from "../assets/ranjang/pain_05_clock.png";
-import imgPain6 from "../assets/ranjang/pain_06_goodbye.png";
-import imgPain7 from "../assets/ranjang/pain_07_gossip.png";
+import imgBonus1 from "../assets/ranjang/bonus_1_ebook.webp";
+import imgBonus2 from "../assets/ranjang/bonus_2_ebook.webp";
+import imgBonus3 from "../assets/ranjang/bonus_3_ebook_video.webp";
+import imgBonus4 from "../assets/ranjang/bonus_4_special.webp";
+import imgBundle from "../assets/ranjang/bundle_hero_shot.webp";
+import imgPain1 from "../assets/ranjang/pain_01_alone_bed.webp";
+import imgPain2 from "../assets/ranjang/pain_02_mirror.webp";
+import imgPain3 from "../assets/ranjang/pain_03_phone.webp";
+import imgPain4 from "../assets/ranjang/pain_04_dinner.webp";
+import imgPain5 from "../assets/ranjang/pain_05_clock.webp";
+import imgPain6 from "../assets/ranjang/pain_06_goodbye.webp";
+import imgPain7 from "../assets/ranjang/pain_07_gossip.webp";
 const vidSuami1 = "/assets/videos/suami1.mp4";
-import qrisBcaImage from "../assets/qrisbca.jpeg";
+import qrisBcaImage from "../assets/qrisbca.webp";
 
 // ─── UTILS & INTEGRATIONS ─────────────────────────────────────────────────────
 import { supabase } from "../integrations/supabase/client";

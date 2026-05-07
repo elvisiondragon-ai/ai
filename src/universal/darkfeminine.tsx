@@ -36,177 +36,177 @@ import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, trackPageViewEvent, trackAddPaymentInfoEvent, sha256, handleFbcCookieManager } from "../utils/fbpixel";
 
 // Asset Imports for ID
-import df01Id from '../assets/darkfem/indo_image/df01_paradox.png';
-import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.png';
-import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.png';
-import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.png';
+import df01Id from '../assets/darkfem/indo_image/df01_paradox.webp';
+import df04Id from '../assets/darkfem/indo_image/df04_teman_curhat.webp';
+import df08Id from '../assets/darkfem/indo_image/df08_secret_she_knows.webp';
+import df09Id from '../assets/darkfem/indo_image/df09_wake_up_call.webp';
 
 // Istri Carousel Assets (?istri parameter)
-import istriC1S1 from '../assets/darkfem/istri/c1/df_0413_c1_s1_1776094006614.png';
-import istriC1S2 from '../assets/darkfem/istri/c1/df_0413_c1_s2_1776094060387.png';
-import istriC1S3 from '../assets/darkfem/istri/c1/df_0413_c1_s3_1776094080684.png';
-import istriC1S4 from '../assets/darkfem/istri/c1/df_0413_c1_s4_1776094099286.png';
-import istriC2S1 from '../assets/darkfem/istri/c2/df_0413_c2_s1_1776094189631.png';
-import istriC2S2 from '../assets/darkfem/istri/c2/df_0413_c2_s2_1776094206120.png';
-import istriC2S3 from '../assets/darkfem/istri/c2/df_0413_c2_s3_1776094223527.png';
-import istriC2S4 from '../assets/darkfem/istri/c2/df_0413_c2_s4_1776094241692.png';
-import istriC3S1 from '../assets/darkfem/istri/c3/df_0413_sp_s1_1776094310773.png';
-import istriC3S2 from '../assets/darkfem/istri/c3/df_0413_sp_s2_1776094328010.png';
-import istriC3S3 from '../assets/darkfem/istri/c3/df_0413_sp_s3_1776094342928.png';
-import istriC3S4 from '../assets/darkfem/istri/c3/df_0413_sp_s4_1776094363097.png';
-import istriC4S1 from '../assets/darkfem/istri/c4/df_0413_sl_s1_1776094453410.png';
-import istriC4S2 from '../assets/darkfem/istri/c4/df_0413_sl_s2_1776094469075.png';
-import istriC4S3 from '../assets/darkfem/istri/c4/df_0413_sl_s3_1776094484568.png';
-import istriC4S4 from '../assets/darkfem/istri/c4/df_0413_sl_s4_1776094503539.png';
-import istriC5S1 from '../assets/darkfem/istri/c5/df_0413_jmp_s1_v2_1776172859297.png';
-import istriC5S2 from '../assets/darkfem/istri/c5/df_0413_jmp_s2_v2_1776172873565.png';
-import istriC5S3 from '../assets/darkfem/istri/c5/df_0413_jmp_s3_v2_1776172894595.png';
-import istriC5S4 from '../assets/darkfem/istri/c5/df_0413_jmp_s4_v2_1776172913410.png';
+import istriC1S1 from '../assets/darkfem/istri/c1/df_0413_c1_s1_1776094006614.webp';
+import istriC1S2 from '../assets/darkfem/istri/c1/df_0413_c1_s2_1776094060387.webp';
+import istriC1S3 from '../assets/darkfem/istri/c1/df_0413_c1_s3_1776094080684.webp';
+import istriC1S4 from '../assets/darkfem/istri/c1/df_0413_c1_s4_1776094099286.webp';
+import istriC2S1 from '../assets/darkfem/istri/c2/df_0413_c2_s1_1776094189631.webp';
+import istriC2S2 from '../assets/darkfem/istri/c2/df_0413_c2_s2_1776094206120.webp';
+import istriC2S3 from '../assets/darkfem/istri/c2/df_0413_c2_s3_1776094223527.webp';
+import istriC2S4 from '../assets/darkfem/istri/c2/df_0413_c2_s4_1776094241692.webp';
+import istriC3S1 from '../assets/darkfem/istri/c3/df_0413_sp_s1_1776094310773.webp';
+import istriC3S2 from '../assets/darkfem/istri/c3/df_0413_sp_s2_1776094328010.webp';
+import istriC3S3 from '../assets/darkfem/istri/c3/df_0413_sp_s3_1776094342928.webp';
+import istriC3S4 from '../assets/darkfem/istri/c3/df_0413_sp_s4_1776094363097.webp';
+import istriC4S1 from '../assets/darkfem/istri/c4/df_0413_sl_s1_1776094453410.webp';
+import istriC4S2 from '../assets/darkfem/istri/c4/df_0413_sl_s2_1776094469075.webp';
+import istriC4S3 from '../assets/darkfem/istri/c4/df_0413_sl_s3_1776094484568.webp';
+import istriC4S4 from '../assets/darkfem/istri/c4/df_0413_sl_s4_1776094503539.webp';
+import istriC5S1 from '../assets/darkfem/istri/c5/df_0413_jmp_s1_v2_1776172859297.webp';
+import istriC5S2 from '../assets/darkfem/istri/c5/df_0413_jmp_s2_v2_1776172873565.webp';
+import istriC5S3 from '../assets/darkfem/istri/c5/df_0413_jmp_s3_v2_1776172894595.webp';
+import istriC5S4 from '../assets/darkfem/istri/c5/df_0413_jmp_s4_v2_1776172913410.webp';
 
 // New Istri Ads 0426
-import newIstri1 from '../assets/darkfem/istri/new_0426/istri_menghapusjejak.png';
-import newIstri2 from '../assets/darkfem/istri/new_0426/istri_membangunrumah.png';
-import newIstri3 from '../assets/darkfem/istri/new_0426/istri_tunggudewasa_1777216228611.png';
-import newIstri4 from '../assets/darkfem/istri/new_0426/istri_sosialdeath_1777216244903.png';
-import newIstri5 from '../assets/darkfem/istri/new_0426/istri_vigoruntukdia_1777216261041.png';
-import newIstri6 from '../assets/darkfem/istri/new_0426/istri_hanyakewajiban_1777216789917.png';
-import newIstri7 from '../assets/darkfem/istri/new_0426/istri_tatapankosong_v2_1777216488783.png';
-import newIstri8 from '../assets/darkfem/istri/new_0426/istri_anakrespek_v2_1777216504562.png';
-import newIstri9 from '../assets/darkfem/istri/new_0426/istri_parfumwanitalain_v2_1777216520501.png';
-import newIstri10 from '../assets/darkfem/istri/new_0426/istri_menyesalmasatua_v2_1777216536956.png';
-import newIstri11 from '../assets/darkfem/istri/new_0426/df_0424_ad04_istri_selingkuh_v2_1777018341684.png';
+import newIstri1 from '../assets/darkfem/istri/new_0426/istri_menghapusjejak.webp';
+import newIstri2 from '../assets/darkfem/istri/new_0426/istri_membangunrumah.webp';
+import newIstri3 from '../assets/darkfem/istri/new_0426/istri_tunggudewasa_1777216228611.webp';
+import newIstri4 from '../assets/darkfem/istri/new_0426/istri_sosialdeath_1777216244903.webp';
+import newIstri5 from '../assets/darkfem/istri/new_0426/istri_vigoruntukdia_1777216261041.webp';
+import newIstri6 from '../assets/darkfem/istri/new_0426/istri_hanyakewajiban_1777216789917.webp';
+import newIstri7 from '../assets/darkfem/istri/new_0426/istri_tatapankosong_v2_1777216488783.webp';
+import newIstri8 from '../assets/darkfem/istri/new_0426/istri_anakrespek_v2_1777216504562.webp';
+import newIstri9 from '../assets/darkfem/istri/new_0426/istri_parfumwanitalain_v2_1777216520501.webp';
+import newIstri10 from '../assets/darkfem/istri/new_0426/istri_menyesalmasatua_v2_1777216536956.webp';
+import newIstri11 from '../assets/darkfem/istri/new_0426/df_0424_ad04_istri_selingkuh_v2_1777018341684.webp';
 
 // New Parameter Ads (18adparamater)
-import presenceImg1 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_v2_1777550965342.png';
-import presenceImg2 from '../assets/darkfem/parameter/presence/presence_02_invisible_dunia_v2_1777550999292.png';
-import perubahanImg1 from '../assets/darkfem/parameter/perubahan/perubahan_01_satu_shift_v2_1777551074543.png';
-import perubahanImg2 from '../assets/darkfem/parameter/perubahan/perubahan_02_frekuensi_salah_v2_1777551089169.png';
-import highvalueImg1 from '../assets/darkfem/parameter/highvalue/highvalue_01_takut_kehilangan_v2_1777551172904.png';
-import highvalueImg2 from '../assets/darkfem/parameter/highvalue/highvalue_02_balik_posisi_v2_1777551189312.png';
-import nonggamesImg1 from '../assets/darkfem/parameter/nonggames/nongames_01_ghosted_lagi_v2_1777551270430.png';
-import nonggamesImg2 from '../assets/darkfem/parameter/nonggames/nongames_02_predictable_v2_1777551327348.png';
-import istrifearImg1 from '../assets/darkfem/parameter/istrifear/istrifear_01_hapusjejak_v2_1777551104410.png';
-import istrifearImg2 from '../assets/darkfem/parameter/istrifear/istrifear_02_wanita_biasa_v2_1777551152675.png';
-import legacyImg1 from '../assets/darkfem/parameter/legacy/istrilegacy_01_anak_meniru_v2_1777551238274.png';
-import legacyImg2 from '../assets/darkfem/parameter/legacy/istrilegacy_02_putus_rantai_v2_1777551252214.png';
-import visibleImg1 from '../assets/darkfem/parameter/visible/istrivisible_01_perabot_v3_1777554172954.png';
-import visibleImg2 from '../assets/darkfem/parameter/visible/istrivisible_02_potong_rambut_v3_1777554256681.png';
-import softlifeImg1 from '../assets/darkfem/parameter/softlife/softlife_01_dimanjakan_v2_1777551018247.png';
-import softlifeImg2 from '../assets/darkfem/parameter/softlife/softlife_02_independent_kosong_v2_1777551034803.png';
+import presenceImg1 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_v2_1777550965342.webp';
+import presenceImg2 from '../assets/darkfem/parameter/presence/presence_02_invisible_dunia_v2_1777550999292.webp';
+import perubahanImg1 from '../assets/darkfem/parameter/perubahan/perubahan_01_satu_shift_v2_1777551074543.webp';
+import perubahanImg2 from '../assets/darkfem/parameter/perubahan/perubahan_02_frekuensi_salah_v2_1777551089169.webp';
+import highvalueImg1 from '../assets/darkfem/parameter/highvalue/highvalue_01_takut_kehilangan_v2_1777551172904.webp';
+import highvalueImg2 from '../assets/darkfem/parameter/highvalue/highvalue_02_balik_posisi_v2_1777551189312.webp';
+import nonggamesImg1 from '../assets/darkfem/parameter/nonggames/nongames_01_ghosted_lagi_v2_1777551270430.webp';
+import nonggamesImg2 from '../assets/darkfem/parameter/nonggames/nongames_02_predictable_v2_1777551327348.webp';
+import istrifearImg1 from '../assets/darkfem/parameter/istrifear/istrifear_01_hapusjejak_v2_1777551104410.webp';
+import istrifearImg2 from '../assets/darkfem/parameter/istrifear/istrifear_02_wanita_biasa_v2_1777551152675.webp';
+import legacyImg1 from '../assets/darkfem/parameter/legacy/istrilegacy_01_anak_meniru_v2_1777551238274.webp';
+import legacyImg2 from '../assets/darkfem/parameter/legacy/istrilegacy_02_putus_rantai_v2_1777551252214.webp';
+import visibleImg1 from '../assets/darkfem/parameter/visible/istrivisible_01_perabot_v3_1777554172954.webp';
+import visibleImg2 from '../assets/darkfem/parameter/visible/istrivisible_02_potong_rambut_v3_1777554256681.webp';
+import softlifeImg1 from '../assets/darkfem/parameter/softlife/softlife_01_dimanjakan_v2_1777551018247.webp';
+import softlifeImg2 from '../assets/darkfem/parameter/softlife/softlife_02_independent_kosong_v2_1777551034803.webp';
 
 
 // === AUTO-GENERATED FULL PARAMETER IMPORTS ===
 // -- softlife
-import p_softlife_Campaign_Test_df_0412_g2 from '../assets/darkfem/parameter/softlife/Campaign_Test_df_0412_g2.png';
-import p_softlife_df_0413_ba_wife_s1_v2_1776175429720 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s1_v2_1776175429720.png';
-import p_softlife_df_0413_ba_wife_s2_v2_1776175446156 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s2_v2_1776175446156.png';
-import p_softlife_df_0413_ba_wife_s3_v2_1776175462649 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s3_v2_1776175462649.png';
-import p_softlife_df_0413_ba_wife_s4_v2_1776175479780 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s4_v2_1776175479780.png';
-import p_softlife_df_0413_sl_s1_1776094453410 from '../assets/darkfem/parameter/softlife/df_0413_sl_s1_1776094453410.png';
-import p_softlife_df_0413_sl_s3_1776094484568 from '../assets/darkfem/parameter/softlife/df_0413_sl_s3_1776094484568.png';
-import p_softlife_df_0413_sl_s4_1776094503539 from '../assets/darkfem/parameter/softlife/df_0413_sl_s4_1776094503539.png';
-import p_softlife_softlife_01_dimanjakan_v2_1777551018247 from '../assets/darkfem/parameter/softlife/softlife_01_dimanjakan_v2_1777551018247.png';
-import p_softlife_softlife_02_independent_kosong_v2_1777551034803 from '../assets/darkfem/parameter/softlife/softlife_02_independent_kosong_v2_1777551034803.png';
+import p_softlife_Campaign_Test_df_0412_g2 from '../assets/darkfem/parameter/softlife/Campaign_Test_df_0412_g2.webp';
+import p_softlife_df_0413_ba_wife_s1_v2_1776175429720 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s1_v2_1776175429720.webp';
+import p_softlife_df_0413_ba_wife_s2_v2_1776175446156 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s2_v2_1776175446156.webp';
+import p_softlife_df_0413_ba_wife_s3_v2_1776175462649 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s3_v2_1776175462649.webp';
+import p_softlife_df_0413_ba_wife_s4_v2_1776175479780 from '../assets/darkfem/parameter/softlife/df_0413_ba_wife_s4_v2_1776175479780.webp';
+import p_softlife_df_0413_sl_s1_1776094453410 from '../assets/darkfem/parameter/softlife/df_0413_sl_s1_1776094453410.webp';
+import p_softlife_df_0413_sl_s3_1776094484568 from '../assets/darkfem/parameter/softlife/df_0413_sl_s3_1776094484568.webp';
+import p_softlife_df_0413_sl_s4_1776094503539 from '../assets/darkfem/parameter/softlife/df_0413_sl_s4_1776094503539.webp';
+import p_softlife_softlife_01_dimanjakan_v2_1777551018247 from '../assets/darkfem/parameter/softlife/softlife_01_dimanjakan_v2_1777551018247.webp';
+import p_softlife_softlife_02_independent_kosong_v2_1777551034803 from '../assets/darkfem/parameter/softlife/softlife_02_independent_kosong_v2_1777551034803.webp';
 // -- presence
-import p_presence_Campaign_Test_df_0412_g5 from '../assets/darkfem/parameter/presence/Campaign_Test_df_0412_g5.png';
-import p_presence_df_0424_ad07_single_sahabat from '../assets/darkfem/parameter/presence/df_0424_ad07_single_sahabat.png';
-import p_presence_presence_01_diam_membunuh_1777550881301 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_1777550881301.png';
-import p_presence_presence_01_diam_membunuh_v2_1777550965342 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_v2_1777550965342.png';
-import p_presence_presence_02_invisible_dunia_v2_1777550999292 from '../assets/darkfem/parameter/presence/presence_02_invisible_dunia_v2_1777550999292.png';
+import p_presence_Campaign_Test_df_0412_g5 from '../assets/darkfem/parameter/presence/Campaign_Test_df_0412_g5.webp';
+import p_presence_df_0424_ad07_single_sahabat from '../assets/darkfem/parameter/presence/df_0424_ad07_single_sahabat.webp';
+import p_presence_presence_01_diam_membunuh_1777550881301 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_1777550881301.webp';
+import p_presence_presence_01_diam_membunuh_v2_1777550965342 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_v2_1777550965342.webp';
+import p_presence_presence_02_invisible_dunia_v2_1777550999292 from '../assets/darkfem/parameter/presence/presence_02_invisible_dunia_v2_1777550999292.webp';
 // -- cleopatra
-import df_cleopatra_deleted_notes from '../assets/darkfem/cleo/df_cleopatra_deleted_notes_1778144424565.png';
-import df_cleopatra_imagine_if from '../assets/darkfem/cleo/df_cleopatra_imagine_if_1778144214311.png';
-import df_cleopatra_kings_list from '../assets/darkfem/cleo/df_cleopatra_kings_list_1778143886051.png';
-import df_cleopatra_ordinary_extraordinary from '../assets/darkfem/cleo/df_cleopatra_ordinary_extraordinary_1778144499585.png';
-import df_cleopatra_pelakor from '../assets/darkfem/cleo/df_cleopatra_pelakor_1778143864099.png';
-import df_cleopatra_protocol_5000 from '../assets/darkfem/cleo/df_cleopatra_protocol_5000_v2_1778149279607.png';
+import df_cleopatra_deleted_notes from '../assets/darkfem/cleo/df_cleopatra_deleted_notes_1778144424565.webp';
+import df_cleopatra_imagine_if from '../assets/darkfem/cleo/df_cleopatra_imagine_if_1778144214311.webp';
+import df_cleopatra_kings_list from '../assets/darkfem/cleo/df_cleopatra_kings_list_1778143886051.webp';
+import df_cleopatra_ordinary_extraordinary from '../assets/darkfem/cleo/df_cleopatra_ordinary_extraordinary_1778144499585.webp';
+import df_cleopatra_pelakor from '../assets/darkfem/cleo/df_cleopatra_pelakor_1778143864099.webp';
+import df_cleopatra_protocol_5000 from '../assets/darkfem/cleo/df_cleopatra_protocol_5000_v2_1778149279607.webp';
 // -- perubahan
-import p_perubahan_df_0424_ad14_istri_gantirambut from '../assets/darkfem/parameter/perubahan/df_0424_ad14_istri_gantirambut.png';
-import p_perubahan_perubahan_01_satu_shift_v2_1777551074543 from '../assets/darkfem/parameter/perubahan/perubahan_01_satu_shift_v2_1777551074543.png';
-import p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169 from '../assets/darkfem/parameter/perubahan/perubahan_02_frekuensi_salah_v2_1777551089169.png';
+import p_perubahan_df_0424_ad14_istri_gantirambut from '../assets/darkfem/parameter/perubahan/df_0424_ad14_istri_gantirambut.webp';
+import p_perubahan_perubahan_01_satu_shift_v2_1777551074543 from '../assets/darkfem/parameter/perubahan/perubahan_01_satu_shift_v2_1777551074543.webp';
+import p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169 from '../assets/darkfem/parameter/perubahan/perubahan_02_frekuensi_salah_v2_1777551089169.webp';
 // -- istrifear
-import p_istrifear_istri_hanyakewajiban_1777216789917 from '../assets/darkfem/parameter/istrifear/istri_hanyakewajiban_1777216789917.png';
-import p_istrifear_istri_membangunrumah from '../assets/darkfem/parameter/istrifear/istri_membangunrumah.png';
-import p_istrifear_istri_menghapusjejak from '../assets/darkfem/parameter/istrifear/istri_menghapusjejak.png';
-import p_istrifear_istri_menyesalmasatua_v2_1777216536956 from '../assets/darkfem/parameter/istrifear/istri_menyesalmasatua_v2_1777216536956.png';
-import p_istrifear_istri_parfumwanitalain_v2_1777216520501 from '../assets/darkfem/parameter/istrifear/istri_parfumwanitalain_v2_1777216520501.png';
-import p_istrifear_istri_sosialdeath_1777216244903 from '../assets/darkfem/parameter/istrifear/istri_sosialdeath_1777216244903.png';
-import p_istrifear_istri_tatapankosong_v2_1777216488783 from '../assets/darkfem/parameter/istrifear/istri_tatapankosong_v2_1777216488783.png';
-import p_istrifear_istri_tunggudewasa_1777216228611 from '../assets/darkfem/parameter/istrifear/istri_tunggudewasa_1777216228611.png';
-import p_istrifear_istri_vigoruntukdia_1777216261041 from '../assets/darkfem/parameter/istrifear/istri_vigoruntukdia_1777216261041.png';
-import p_istrifear_istrifear_01_hapusjejak_v2_1777551104410 from '../assets/darkfem/parameter/istrifear/istrifear_01_hapusjejak_v2_1777551104410.png';
-import p_istrifear_istrifear_02_wanita_biasa_v2_1777551152675 from '../assets/darkfem/parameter/istrifear/istrifear_02_wanita_biasa_v2_1777551152675.png';
+import p_istrifear_istri_hanyakewajiban_1777216789917 from '../assets/darkfem/parameter/istrifear/istri_hanyakewajiban_1777216789917.webp';
+import p_istrifear_istri_membangunrumah from '../assets/darkfem/parameter/istrifear/istri_membangunrumah.webp';
+import p_istrifear_istri_menghapusjejak from '../assets/darkfem/parameter/istrifear/istri_menghapusjejak.webp';
+import p_istrifear_istri_menyesalmasatua_v2_1777216536956 from '../assets/darkfem/parameter/istrifear/istri_menyesalmasatua_v2_1777216536956.webp';
+import p_istrifear_istri_parfumwanitalain_v2_1777216520501 from '../assets/darkfem/parameter/istrifear/istri_parfumwanitalain_v2_1777216520501.webp';
+import p_istrifear_istri_sosialdeath_1777216244903 from '../assets/darkfem/parameter/istrifear/istri_sosialdeath_1777216244903.webp';
+import p_istrifear_istri_tatapankosong_v2_1777216488783 from '../assets/darkfem/parameter/istrifear/istri_tatapankosong_v2_1777216488783.webp';
+import p_istrifear_istri_tunggudewasa_1777216228611 from '../assets/darkfem/parameter/istrifear/istri_tunggudewasa_1777216228611.webp';
+import p_istrifear_istri_vigoruntukdia_1777216261041 from '../assets/darkfem/parameter/istrifear/istri_vigoruntukdia_1777216261041.webp';
+import p_istrifear_istrifear_01_hapusjejak_v2_1777551104410 from '../assets/darkfem/parameter/istrifear/istrifear_01_hapusjejak_v2_1777551104410.webp';
+import p_istrifear_istrifear_02_wanita_biasa_v2_1777551152675 from '../assets/darkfem/parameter/istrifear/istrifear_02_wanita_biasa_v2_1777551152675.webp';
 // -- highvalue
-import p_highvalue_Campaign_Test_Ad_w1_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w1_-_Live_IG.png';
-import p_highvalue_Campaign_Test_Ad_w3_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w3_-_Live_IG.png';
-import p_highvalue_Campaign_Test_Ad_w7_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w7_-_Live_IG.png';
-import p_highvalue_df_0420_w1_v3_1776639513543 from '../assets/darkfem/parameter/highvalue/df_0420_w1_v3_1776639513543.png';
-import p_highvalue_highvalue_01_takut_kehilangan_v2_1777551172904 from '../assets/darkfem/parameter/highvalue/highvalue_01_takut_kehilangan_v2_1777551172904.png';
-import p_highvalue_highvalue_02_balik_posisi_v2_1777551189312 from '../assets/darkfem/parameter/highvalue/highvalue_02_balik_posisi_v2_1777551189312.png';
+import p_highvalue_Campaign_Test_Ad_w1_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w1_-_Live_IG.webp';
+import p_highvalue_Campaign_Test_Ad_w3_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w3_-_Live_IG.webp';
+import p_highvalue_Campaign_Test_Ad_w7_Live_IG from '../assets/darkfem/parameter/highvalue/Campaign_Test_Ad_w7_-_Live_IG.webp';
+import p_highvalue_df_0420_w1_v3_1776639513543 from '../assets/darkfem/parameter/highvalue/df_0420_w1_v3_1776639513543.webp';
+import p_highvalue_highvalue_01_takut_kehilangan_v2_1777551172904 from '../assets/darkfem/parameter/highvalue/highvalue_01_takut_kehilangan_v2_1777551172904.webp';
+import p_highvalue_highvalue_02_balik_posisi_v2_1777551189312 from '../assets/darkfem/parameter/highvalue/highvalue_02_balik_posisi_v2_1777551189312.webp';
 // -- legacy
-import p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274 from '../assets/darkfem/parameter/legacy/istrilegacy_01_anak_meniru_v2_1777551238274.png';
-import p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214 from '../assets/darkfem/parameter/legacy/istrilegacy_02_putus_rantai_v2_1777551252214.png';
+import p_legacy_istrilegacy_01_anak_meniru_v2_1777551238274 from '../assets/darkfem/parameter/legacy/istrilegacy_01_anak_meniru_v2_1777551238274.webp';
+import p_legacy_istrilegacy_02_putus_rantai_v2_1777551252214 from '../assets/darkfem/parameter/legacy/istrilegacy_02_putus_rantai_v2_1777551252214.webp';
 // -- nonggames
-import p_nonggames_df_0424_ad02_centangbiru from '../assets/darkfem/parameter/nonggames/df_0424_ad02_centangbiru.png';
-import p_nonggames_df_0424_ad02_centangbiru_v2 from '../assets/darkfem/parameter/nonggames/df_0424_ad02_centangbiru_v2.png';
-import p_nonggames_df_0424_ad03_temansmanikah from '../assets/darkfem/parameter/nonggames/df_0424_ad03_temansmanikah.png';
-import p_nonggames_df_0424_ad09_single_selingkuhan from '../assets/darkfem/parameter/nonggames/df_0424_ad09_single_selingkuhan.png';
-import p_nonggames_df_0424_ad11_single_direktur_v2 from '../assets/darkfem/parameter/nonggames/df_0424_ad11_single_direktur_v2.png';
-import p_nonggames_nongames_01_ghosted_lagi_v2_1777551270430 from '../assets/darkfem/parameter/nonggames/nongames_01_ghosted_lagi_v2_1777551270430.png';
-import p_nonggames_nongames_02_predictable_v2_1777551327348 from '../assets/darkfem/parameter/nonggames/nongames_02_predictable_v2_1777551327348.png';
+import p_nonggames_df_0424_ad02_centangbiru from '../assets/darkfem/parameter/nonggames/df_0424_ad02_centangbiru.webp';
+import p_nonggames_df_0424_ad02_centangbiru_v2 from '../assets/darkfem/parameter/nonggames/df_0424_ad02_centangbiru_v2.webp';
+import p_nonggames_df_0424_ad03_temansmanikah from '../assets/darkfem/parameter/nonggames/df_0424_ad03_temansmanikah.webp';
+import p_nonggames_df_0424_ad09_single_selingkuhan from '../assets/darkfem/parameter/nonggames/df_0424_ad09_single_selingkuhan.webp';
+import p_nonggames_df_0424_ad11_single_direktur_v2 from '../assets/darkfem/parameter/nonggames/df_0424_ad11_single_direktur_v2.webp';
+import p_nonggames_nongames_01_ghosted_lagi_v2_1777551270430 from '../assets/darkfem/parameter/nonggames/nongames_01_ghosted_lagi_v2_1777551270430.webp';
+import p_nonggames_nongames_02_predictable_v2_1777551327348 from '../assets/darkfem/parameter/nonggames/nongames_02_predictable_v2_1777551327348.webp';
 // -- visible
-import p_visible_df_0424_ad05_istri_sexmati from '../assets/darkfem/parameter/visible/df_0424_ad05_istri_sexmati.png';
-import p_visible_istrivisible_01_perabot_v3_1777554172954 from '../assets/darkfem/parameter/visible/istrivisible_01_perabot_v3_1777554172954.png';
-import p_visible_istrivisible_02_potong_rambut_v3_1777554256681 from '../assets/darkfem/parameter/visible/istrivisible_02_potong_rambut_v3_1777554256681.png';
+import p_visible_df_0424_ad05_istri_sexmati from '../assets/darkfem/parameter/visible/df_0424_ad05_istri_sexmati.webp';
+import p_visible_istrivisible_01_perabot_v3_1777554172954 from '../assets/darkfem/parameter/visible/istrivisible_01_perabot_v3_1777554172954.webp';
+import p_visible_istrivisible_02_potong_rambut_v3_1777554256681 from '../assets/darkfem/parameter/visible/istrivisible_02_potong_rambut_v3_1777554256681.webp';
 
 // Single Carousel Assets (general page wifeSection)
-import singleC2First from '../assets/darkfem/single/c2single/first.png';
-import singleC2S2 from '../assets/darkfem/single/c2single/df_0413_c2_s2_1776094206120.png';
-import singleC2S3 from '../assets/darkfem/single/c2single/df_0413_c2_s3_1776094223527.png';
-import singleC2S4 from '../assets/darkfem/single/c2single/df_0413_c2_s4_1776094241692.png';
-import singleC3First from '../assets/darkfem/single/c3single/first.png';
-import singleC3S2 from '../assets/darkfem/single/c3single/df_0413_sp_s2_1776094328010.png';
-import singleC3S3 from '../assets/darkfem/single/c3single/df_0413_sp_s3_1776094342928.png';
-import singleC3S4 from '../assets/darkfem/single/c3single/df_0413_sp_s4_1776094363097.png';
-import singleC4First from '../assets/darkfem/single/c4single/first.png';
-import singleC4S2 from '../assets/darkfem/single/c4single/df_0413_sl_s2_1776094469075.png';
-import singleC4S3 from '../assets/darkfem/single/c4single/df_0413_sl_s3_1776094484568.png';
-import singleC4S4 from '../assets/darkfem/single/c4single/df_0413_sl_s4_1776094503539.png';
-import singleC5S1 from '../assets/darkfem/single/c5single/df_0413_jmp_s1_v2_1776172859297.png';
-import singleC5S2 from '../assets/darkfem/single/c5single/df_0413_jmp_s2_v2_1776172873565.png';
-import singleC5S3 from '../assets/darkfem/single/c5single/df_0413_jmp_s3_v2_1776172894595.png';
-import singleC5S4 from '../assets/darkfem/single/c5single/df_0413_jmp_s4_v2_1776172913410.png';
+import singleC2First from '../assets/darkfem/single/c2single/first.webp';
+import singleC2S2 from '../assets/darkfem/single/c2single/df_0413_c2_s2_1776094206120.webp';
+import singleC2S3 from '../assets/darkfem/single/c2single/df_0413_c2_s3_1776094223527.webp';
+import singleC2S4 from '../assets/darkfem/single/c2single/df_0413_c2_s4_1776094241692.webp';
+import singleC3First from '../assets/darkfem/single/c3single/first.webp';
+import singleC3S2 from '../assets/darkfem/single/c3single/df_0413_sp_s2_1776094328010.webp';
+import singleC3S3 from '../assets/darkfem/single/c3single/df_0413_sp_s3_1776094342928.webp';
+import singleC3S4 from '../assets/darkfem/single/c3single/df_0413_sp_s4_1776094363097.webp';
+import singleC4First from '../assets/darkfem/single/c4single/first.webp';
+import singleC4S2 from '../assets/darkfem/single/c4single/df_0413_sl_s2_1776094469075.webp';
+import singleC4S3 from '../assets/darkfem/single/c4single/df_0413_sl_s3_1776094484568.webp';
+import singleC4S4 from '../assets/darkfem/single/c4single/df_0413_sl_s4_1776094503539.webp';
+import singleC5S1 from '../assets/darkfem/single/c5single/df_0413_jmp_s1_v2_1776172859297.webp';
+import singleC5S2 from '../assets/darkfem/single/c5single/df_0413_jmp_s2_v2_1776172873565.webp';
+import singleC5S3 from '../assets/darkfem/single/c5single/df_0413_jmp_s3_v2_1776172894595.webp';
+import singleC5S4 from '../assets/darkfem/single/c5single/df_0413_jmp_s4_v2_1776172913410.webp';
 
 // Before/After Single Assets
-import baS1 from '../assets/darkfem/singlebefore/df_0413_ba_single_s1_v2_1776175357782.png';
-import baS2 from '../assets/darkfem/singlebefore/df_0413_ba_single_s2_v2_1776175376164.png';
-import baS3 from '../assets/darkfem/singlebefore/df_0413_ba_single_s3_v2_1776175390825.png';
-import baS4 from '../assets/darkfem/singlebefore/df_0413_ba_single_s4_v2_1776175411659.png';
+import baS1 from '../assets/darkfem/singlebefore/df_0413_ba_single_s1_v2_1776175357782.webp';
+import baS2 from '../assets/darkfem/singlebefore/df_0413_ba_single_s2_v2_1776175376164.webp';
+import baS3 from '../assets/darkfem/singlebefore/df_0413_ba_single_s3_v2_1776175390825.webp';
+import baS4 from '../assets/darkfem/singlebefore/df_0413_ba_single_s4_v2_1776175411659.webp';
 
 // Before/After Istri Assets
-import baI1 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s1_v2_1776175429720.png';
-import baI2 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s2_v2_1776175446156.png';
-import baI3 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s3_v2_1776175462649.png';
-import baI4 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s4_v2_1776175479780.png';
+import baI1 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s1_v2_1776175429720.webp';
+import baI2 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s2_v2_1776175446156.webp';
+import baI3 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s3_v2_1776175462649.webp';
+import baI4 from '../assets/darkfem/singlebefore/istribefore/df_0413_ba_wife_s4_v2_1776175479780.webp';
 
 // Angle Section Assets
-import angle7 from '../assets/darkfem/indo_image/angle7-Sebelum_vs_Sesudah.png';
+import angle7 from '../assets/darkfem/indo_image/angle7-Sebelum_vs_Sesudah.webp';
 
 // Winner Section Assets
-import winnerSatuPerubahan from '../assets/darkfem/indo_image/winner-Satu_Perubahan-SENT.jpg';
-import winnerCrAd from '../assets/darkfem/indo_image/Cr_Ad_DarkFem_A1_MALAM_INI,_CEWEK_"TE_1773316980_2026-03-12-ca3ded6f710055046854af8069d5876f-SENT.jpg';
+import winnerSatuPerubahan from '../assets/darkfem/indo_image/winner-Satu_Perubahan-SENT.webp';
+import winnerCrAd from '../assets/darkfem/indo_image/Cr_Ad_DarkFem_A1_MALAM_INI,_CEWEK_"TE_1773316980_2026-03-12-ca3ded6f710055046854af8069d5876f-SENT.webp';
 
 // Asset Imports for EN
-import df01En from '../assets/darkfem/english_image/df01_paradox_en.png';
-import df04En from '../assets/darkfem/english_image/df04_secret_she_knows_en.png';
-import df08En from '../assets/darkfem/english_image/df08_fantasy_screen_en.png';
-import df09En from '../assets/darkfem/english_image/df09_wake_up_en.png';
+import df01En from '../assets/darkfem/english_image/df01_paradox_en.webp';
+import df04En from '../assets/darkfem/english_image/df04_secret_she_knows_en.webp';
+import df08En from '../assets/darkfem/english_image/df08_fantasy_screen_en.webp';
+import df09En from '../assets/darkfem/english_image/df09_wake_up_en.webp';
 
 // Asset Imports for PH
-import df01Ph from '../assets/darkfem/philippines_image/df01_ph_paradox.png';
-import df04Ph from '../assets/darkfem/philippines_image/df04_ph_friendzone.png';
-import df08Ph from '../assets/darkfem/philippines_image/df08_ph_secret.png';
-import df09Ph from '../assets/darkfem/philippines_image/df09_ph_wakeup.png';
+import df01Ph from '../assets/darkfem/philippines_image/df01_ph_paradox.webp';
+import df04Ph from '../assets/darkfem/philippines_image/df04_ph_friendzone.webp';
+import df08Ph from '../assets/darkfem/philippines_image/df08_ph_secret.webp';
+import df09Ph from '../assets/darkfem/philippines_image/df09_ph_wakeup.webp';
 
 const assetsMap: any = {
     id: {
@@ -2286,8 +2286,10 @@ const DarkFeminineTSX = () => {
             ...Object.values(assetsMap.en),
             ...Object.values(assetsMap.ph),
         ] as string[];
-        // Deduplicate and skip the current hero (already eagerly loaded)
-        const heroSrc = assetsMap[lang]?.df08 ?? assetsMap.id.df08;
+        
+        // Use the actual lang used for content
+        const contentLang = lang === 'sg' ? 'en' : lang;
+        const heroSrc = assetsMap[contentLang]?.df08 || assetsMap.id.df08;
         const toPreload = [...new Set(allSrcs)].filter(src => src !== heroSrc);
 
         const preloadBatch = (srcs: string[]) => {
@@ -2297,14 +2299,20 @@ const DarkFeminineTSX = () => {
             });
         };
 
-        if ('requestIdleCallback' in window) {
-            const third = Math.ceil(toPreload.length / 3);
-            (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(0, third)));
-            (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third, third * 2)));
-            (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third * 2)));
-        } else {
-            setTimeout(() => preloadBatch(toPreload), 2000);
-        }
+        const startPreload = () => {
+            if ('requestIdleCallback' in window) {
+                const third = Math.ceil(toPreload.length / 3);
+                (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(0, third)));
+                (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third, third * 2)));
+                (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third * 2)));
+            } else {
+                preloadBatch(toPreload);
+            }
+        };
+
+        // Fire after 2 seconds to not interfere with initial load
+        const timer = setTimeout(startPreload, 2000);
+        return () => clearTimeout(timer);
     }, []);
 
     return (

@@ -291,7 +291,7 @@ const EbookHealthLP = () => {
           <div className="bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-1 rounded-full mb-4">
             <div className="bg-white p-1 rounded-full">
               <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500 text-2xl overflow-hidden">
-                <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif2.jpg" alt="Arif" className="w-full h-full object-cover" />
+                <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif2.webp" alt="Arif" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
@@ -347,7 +347,7 @@ const EbookHealthLP = () => {
                   controls 
                   preload="metadata"
                   className="w-full h-full object-cover"
-                  poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif2.jpg"
+                  poster="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif2.webp"
                 >
                   <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif2.mp4" type="video/mp4" />
                   Your browser does not support the video tag.

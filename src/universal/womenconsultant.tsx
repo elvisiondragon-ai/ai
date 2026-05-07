@@ -5,11 +5,11 @@ import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getFbcFbpCookies, getClientIp, initFacebookPixelWithLogging, trackViewContentEvent, sha256, handleFbcCookieManager } from "../utils/fbpixel";
 import { WhatsAppButton } from "../components/WhatsAppButton";
-import imgRoas33 from '../assets/womenconsultant_jpg/roas3.3.jpeg';
-import imgRoas38 from '../assets/womenconsultant_jpg/roas 3.8.jpeg';
-import imgRoas52 from '../assets/womenconsultant_jpg/roas 5.2.jpeg';
-import imgRoas9 from '../assets/womenconsultant_jpg/roas 9.jpeg';
-import img1minggu from '../assets/womenconsultant_jpg/1minggu=3juta.jpeg';
+import imgRoas33 from '../assets/womenconsultant_jpg/roas3.3.webp';
+import imgRoas38 from '../assets/womenconsultant_jpg/roas 3.8.webp';
+import imgRoas52 from '../assets/womenconsultant_jpg/roas 5.2.webp';
+import imgRoas9 from '../assets/womenconsultant_jpg/roas 9.webp';
+import img1minggu from '../assets/womenconsultant_jpg/1minggu=3juta.webp';
 
 const PIXEL_ID = '3319324491540889';
 const PRODUCT_NAME = 'Women AI Consultant';
