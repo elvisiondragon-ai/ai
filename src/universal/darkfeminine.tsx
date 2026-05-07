@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 
 const DEBUG_IMAGES = false;
-const DbgImg = ({ src, alt, className, style, label }: { src: string; alt?: string; className?: string; style?: React.CSSProperties; label: string }) => (
+const DbgImg = ({ src, alt, className, style, label, priority }: { src: string; alt?: string; className?: string; style?: React.CSSProperties; label: string; priority?: boolean }) => (
     <div style={{ position: 'relative', display: 'block', lineHeight: 0 }}>
-        <img src={src} alt={alt} className={className} style={{ display: 'block', width: '100%', ...style }} />
+        <img
+            src={src}
+            alt={alt}
+            className={className}
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'low'}
+            decoding={priority ? 'sync' : 'async'}
+            style={{ display: 'block', width: '100%', ...style }}
+        />
         {DEBUG_IMAGES && (
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', zIndex: 5 }}>
                 <span style={{ background: 'rgba(0,0,0,0.72)', color: '#FFD700', fontSize: '22px', fontWeight: 900, padding: '8px 18px', borderRadius: '10px', letterSpacing: '0.5px', textAlign: 'center', wordBreak: 'break-all', maxWidth: '90%' }}>{label}</span>
@@ -2270,6 +2278,35 @@ const DarkFeminineTSX = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Background preload: after page is idle, silently fetch ALL images into browser cache
+    // (all 3 locale asset maps) so they appear instantly when user scrolls
+    useEffect(() => {
+        const allSrcs = [
+            ...Object.values(assetsMap.id),
+            ...Object.values(assetsMap.en),
+            ...Object.values(assetsMap.ph),
+        ] as string[];
+        // Deduplicate and skip the current hero (already eagerly loaded)
+        const heroSrc = assetsMap[lang]?.df08 ?? assetsMap.id.df08;
+        const toPreload = [...new Set(allSrcs)].filter(src => src !== heroSrc);
+
+        const preloadBatch = (srcs: string[]) => {
+            srcs.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        };
+
+        if ('requestIdleCallback' in window) {
+            const third = Math.ceil(toPreload.length / 3);
+            (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(0, third)));
+            (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third, third * 2)));
+            (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third * 2)));
+        } else {
+            setTimeout(() => preloadBatch(toPreload), 2000);
+        }
+    }, []);
+
     return (
         <div style={{ position: 'relative' }}>
             <Toaster />
@@ -2943,7 +2980,7 @@ const DarkFeminineTSX = () => {
                             <p className="df-hero-sub">{sc.heroSub}</p>
                             {segment !== 'istri' && (
                                 <div className="df-img-box">
-                                    <DbgImg src={assets.df08} alt="Dark Feminine" label="df08" style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
+                                    <DbgImg src={assets.df08} alt="Dark Feminine" label="df08" priority style={{ width: '100%', aspectRatio: '1/1', display: 'block', borderRadius: '18px', objectFit: 'cover' }} />
                                 </div>
                             )}
                             <div className="df-trust-badges">
