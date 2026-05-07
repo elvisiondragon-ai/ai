@@ -304,6 +304,7 @@ const contentData: any = {
             { icon: "✨", title: "Simply Irresistible (272 hal)", desc: "Unleash your inner siren — panduan lengkap dari studi kasus wanita paling memikat dalam sejarah", price: "Rp147.000" },
             { icon: "🔥", title: "How to Please Your Man (29 hal)", desc: "Rahasia ranjang yang bikin dia TUNDUK dan KETAGIHAN", price: "Rp97.000", isHighlight: true, highlightText: "Buku tabu yang sungguh-sungguh gila yang seringkali dijual terpisah ratusan ribu, memberi tahu rahasia bagaimana memuaskan pria... di sini menjadi GRATIS sebagai bonus." },
             { icon: "💋", title: "Selimut Ungu (61 hal)", desc: "Panduan puncak kenikmatan — teknik yang tidak diajarkan siapapun", price: "Rp97.000" },
+            { icon: "👸", title: "Cleopatra Secret Charisma (71 hal)", desc: "Rahasia Cleopatra menaklukan para raja, bukan kecantikan fisik, tapi kecantikan kharismnya yang mewujud menjadi seakan wanita paling cantik di dunia", price: "Rp200.000" },
         ],
         valueRows: [
             { title: "Ebook Utama: 52 Jurus Dark Feminine (156 hal)", price: "Rp199.000" },
@@ -315,6 +316,7 @@ const contentData: any = {
             { title: "Bonus 6: Simply Irresistible (272 hal)", price: "Rp147.000" },
             { title: "Bonus 7: How to Please Your Man (29 hal)", price: "Rp97.000" },
             { title: "Bonus 8: Selimut Ungu (61 hal)", price: "Rp97.000" },
+            { title: "Bonus 9: Cleopatra Secret Charisma (71 hal)", price: "Rp200.000" },
         ],
         exclItems: [
             "Wanita yang masih percaya 'menunggu jodoh' itu cukup",
@@ -426,8 +428,8 @@ const contentData: any = {
         testiH2: "Hasil Nyata dari",
         testiH2Span: "4.200+ Wanita",
         bonusLabel: "BONUS EKSKLUSIF",
-        bonusH2: "8 Bonus Senilai",
-        bonusH2Span: "Rp795.000",
+        bonusH2: "9 Bonus Senilai",
+        bonusH2Span: "Rp995.000",
         priceLabel: "INVESTASI SEUMUR HIDUP",
         priceH2: "Dapatkan Semuanya",
         priceTodayLabel: "Harga Hari Ini",
@@ -474,6 +476,7 @@ const contentData: any = {
             { icon: "✨", title: "Simply Irresistible (272 pages)", desc: "Unleash your inner siren — complete guide from case studies of history's most captivating women", price: "Rp147,000" },
             { icon: "🔥", title: "How to Please Your Man (29 pages)", desc: "Bedroom secrets that make him SUBMIT and ADDICTED", price: "Rp97,000", isHighlight: true, highlightText: "A taboo book often sold separately for hundreds of thousands, teaching you bedroom secrets to please a man... included here for FREE as a bonus." },
             { icon: "💋", title: "Purple Sheets (61 pages)", desc: "Guide to ultimate pleasure — techniques no one has taught you", price: "Rp97,000" },
+            { icon: "👸", title: "Cleopatra's Secret Charisma (71 pages)", desc: "Cleopatra's secret to conquering kings, not through physical beauty, but her charismatic allure that made her appear as the most beautiful woman in the world.", price: "Rp200,000" },
         ],
         valueRows: [
             { title: "Main Ebook: 52 Dark Feminine Moves (156 pages)", price: "Rp199,000" },
@@ -485,6 +488,7 @@ const contentData: any = {
             { title: "Bonus 6: Simply Irresistible (272 pages)", price: "Rp147,000" },
             { title: "Bonus 7: How to Please Your Man (29 pages)", price: "Rp97,000" },
             { title: "Bonus 8: Purple Sheets (61 pages)", price: "Rp97,000" },
+            { title: "Bonus 9: Cleopatra's Secret Charisma (71 pages)", price: "Rp200,000" },
         ],
         exclItems: [
             "Women who still believe 'waiting for the right one' is enough",
@@ -535,8 +539,8 @@ const contentData: any = {
         testiH2: "Real Results from",
         testiH2Span: "4,200+ Women",
         bonusLabel: "EXCLUSIVE BONUSES",
-        bonusH2: "8 Bonuses Worth",
-        bonusH2Span: "Rp795,000",
+        bonusH2: "9 Bonuses Worth",
+        bonusH2Span: "Rp995,000",
         priceLabel: "LIFETIME INVESTMENT",
         priceH2: "Get Everything",
         priceTodayLabel: "Today's Price",
@@ -583,6 +587,7 @@ const contentData: any = {
             { icon: "✨", title: "Simply Irresistible (272 pahina)", desc: "Palabasin ang iyong angking pang-akit — kumpletong gabay mula sa mga case study ng mga pinakanakakabighaning babae sa kasaysayan", price: "Rp147,000" },
             { icon: "🔥", title: "How to Please Your Man (29 pahina)", desc: "Mga sikreto sa kwarto na magpapabaliw at magpapasuko sa kanya", price: "Rp97,000", isHighlight: true, highlightText: "Isang taboo na aklat na madalas ibinebenta nang hiwalay sa libu-libong halaga, nagtuturo ng mga sikreto sa kwarto upang mapasaya ang lalaki... isinama rito nang LIBRE bilang bonus." },
             { icon: "💋", title: "Selimut Ungu (61 pahina)", desc: "Gabay sa sukdulang sarap — mga teknik na hindi itinuro ninuman", price: "Rp97,000" },
+            { icon: "👸", title: "Cleopatra's Secret Charisma (71 pahina)", desc: "Ang lihim ni Cleopatra sa pananakop ng mga hari, hindi sa pisikal na kagandahan, kundi sa kanyang charismatic na alindog na nagmukha siyang pinakamagandang babae sa mundo.", price: "Rp200,000" },
         ],
         valueRows: [
             { title: "Main Ebook: 52 Dark Feminine Moves (156 pahina)", price: "Rp199,000" },
@@ -594,6 +599,7 @@ const contentData: any = {
             { title: "Bonus 6: Simply Irresistible (272 pahina)", price: "Rp147,000" },
             { title: "Bonus 7: How to Please Your Man (29 pahina)", price: "Rp97,000" },
             { title: "Bonus 8: Purple Sheets (61 pahina)", price: "Rp97,000" },
+            { title: "Bonus 9: Cleopatra's Secret Charisma (71 pahina)", price: "Rp200,000" },
         ],
         exclItems: [
             "Mga babaeng naniniwala pa rin na sapat na ang 'maghintay sa tamang tao'",
@@ -644,8 +650,8 @@ const contentData: any = {
         testiH2: "Tunay na Resulta Mula",
         testiH2Span: "Sa 4,200+ Babae",
         bonusLabel: "EKSKLUSIBONG BONUSES",
-        bonusH2: "8 Bonus na Nagkakahalaga ng",
-        bonusH2Span: "Rp795,000",
+        bonusH2: "9 Bonus na Nagkakahalaga ng",
+        bonusH2Span: "Rp995,000",
         priceLabel: "PANGHABAMBUHAY NA INVESTMENT",
         priceH2: "Kunin Ang Lahat",
         priceTodayLabel: "Presyo Ngayon",
@@ -1278,6 +1284,20 @@ const DarkFeminineTSX = () => {
             PIXEL_ID
         );
     }, [PIXEL_ID]);
+
+    useEffect(() => {
+        if (email || phone || name) {
+            const userData: any = {};
+            if (email) userData.em = email.trim().toLowerCase();
+            if (phone) userData.ph = phone.trim();
+            if (name) {
+                const parts = name.trim().split(/\s+/);
+                userData.fn = parts[0];
+                if (parts.length > 1) userData.ln = parts.slice(1).join(" ");
+            }
+            initFacebookPixelWithLogging(PIXEL_ID, userData);
+        }
+    }, [email, phone, name, PIXEL_ID]);
 
     const contentLang = lang; // Since all 3 (id, en, ph) exist now, map directly OR map sg back to en
     const c = contentData[contentLang === 'sg' ? 'en' : contentLang];

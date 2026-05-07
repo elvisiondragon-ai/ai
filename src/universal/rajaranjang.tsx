@@ -446,7 +446,12 @@ export default function RajaRanjangLP() {
     useEffect(() => {
         if (typeof window !== 'undefined' && (window as any).fbq) {
             const fbq = (window as any).fbq;
-            fbq('init', PIXEL_ID);
+            fbq('init', PIXEL_ID, {
+                em: '',
+                ph: '',
+                fn: '',
+                ln: ''
+            });
             fbq('track', 'PageView');
             fbq('track', 'ViewContent', {
                 content_name: 'universal raja ranjang',
@@ -455,6 +460,21 @@ export default function RajaRanjangLP() {
             });
         }
     }, [PIXEL_ID]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && (window as any).fbq && (email || phone || name)) {
+            const fbq = (window as any).fbq;
+            const userData: any = {};
+            if (email) userData.em = email.trim().toLowerCase();
+            if (phone) userData.ph = phone.trim();
+            if (name) {
+                const parts = name.trim().split(/\s+/);
+                userData.fn = parts[0];
+                if (parts.length > 1) userData.ln = parts.slice(1).join(" ");
+            }
+            fbq('init', PIXEL_ID, userData);
+        }
+    }, [email, phone, name, PIXEL_ID]);
 
     const scrollToForm = useCallback(() => {
         document.getElementById("checkout")?.scrollIntoView({ behavior: "smooth" });

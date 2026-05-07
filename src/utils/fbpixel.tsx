@@ -195,7 +195,12 @@ export const initFacebookPixelWithLogging = (pixelId: string, userData?: Advance
     });
   } else {
     if (!initializedPixels.has(pixelId)) {
-        (window as any).fbq('init', pixelId);
+        (window as any).fbq('init', pixelId, {
+            em: '',
+            ph: '',
+            fn: '',
+            ln: ''
+        });
         initializedPixels.add(pixelId);
     }
   }

@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEOPATRA: The Art of Magnetic Charisma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --gold-pale: #F5E6C0;
+            --black: #0A0806;
+            --dark: #1A1208;
+            --dark-mid: #2A1F0E;
+            --cream: #F8F0DC;
+            --crimson: #7A1A1A;
+            --stone: #8B7355;
+            --ink: #1C1510;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        /* ═══ PAGE SYSTEM ═══ */
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            overflow: hidden;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            opacity: 0.7;
+        }
+
+        .ornament {
+            color: var(--gold);
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+            letter-spacing: 8px;
+            opacity: 0.7;
+        }
+
+        .divider {
+            width: 200px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 30px auto;
+        }
+
+        .divider-full {
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 40px auto;
+        }
+
+        /* ═══ COVER PAGE ═══ */
+        .cover {
+            background: var(--black);
+            text-align: center;
+            position: relative;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 60% 40% at 50% 30%, rgba(201,168,76,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 80% 60% at 50% 80%, rgba(122,26,26,0.08) 0%, transparent 70%);
+        }
+
+        .cover-border {
+            position: absolute;
+            inset: 20px;
+            border: 1px solid rgba(201,168,76,0.3);
+            pointer-events: none;
+        }
+
+        .cover-border::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(201,168,76,0.15);
+        }
+
+        .cover-corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-color: var(--gold);
+            border-style: solid;
+            opacity: 0.6;
+        }
+        .cover-corner.tl { top: 30px; left: 30px; border-width: 2px 0 0 2px; }
+        .cover-corner.tr { top: 30px; right: 30px; border-width: 2px 2px 0 0; }
+        .cover-corner.bl { bottom: 30px; left: 30px; border-width: 0 0 2px 2px; }
+        .cover-corner.br { bottom: 30px; right: 30px; border-width: 0 2px 2px 0; }
+
+        .cover-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 6px;
+            color: var(--gold);
+            opacity: 0.8;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .cover-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(50px, 8vw, 100px);
+            font-weight: 900;
+            color: var(--gold-light);
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 0 60px rgba(201,168,76,0.3);
+            letter-spacing: 8px;
+        }
+
+        .cover-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(16px, 2.5vw, 28px);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--cream);
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .cover-eye {
+            font-size: 60px;
+            margin: 20px 0;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .cover-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        .cover-author {
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: var(--stone);
+        }
+
+        /* ═══ CHAPTER OPENER ═══ */
+        .chapter-opener {
+            background: var(--dark);
+            text-align: center;
+        }
+
+        .chapter-opener::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+        }
+
+        .chapter-num {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .chapter-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(28px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1.2;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+
+        .chapter-intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--cream);
+            max-width: 700px;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        /* ═══ CONTENT PAGES ═══ */
+        .content-page {
+            background: var(--dark);
+            justify-content: flex-start;
+            padding: 80px 10%;
+        }
+
+        .content-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            opacity: 0.4;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(20px, 3vw, 32px);
+            font-weight: 700;
+            color: var(--gold-light);
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+            margin-top: 12px;
+            opacity: 0.6;
+        }
+
+        .body-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(17px, 2vw, 20px);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.95;
+            margin-bottom: 28px;
+            max-width: 800px;
+            opacity: 0.9;
+        }
+
+        .drop-cap::first-letter {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 80px;
+            font-weight: 900;
+            color: var(--gold);
+            float: left;
+            line-height: 0.7;
+            margin: 8px 12px 0 0;
+        }
+
+        /* ═══ PULL QUOTES ═══ */
+        .pull-quote {
+            border-left: 3px solid var(--gold);
+            margin: 40px 0 40px 40px;
+            padding: 20px 30px;
+            background: rgba(201,168,76,0.04);
+        }
+
+        .pull-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold-light);
+            line-height: 1.6;
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: var(--stone);
+            text-transform: uppercase;
+        }
+
+        /* ═══ LESSON BOXES ═══ */
+        .lesson-box {
+            border: 1px solid rgba(201,168,76,0.4);
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+            background: rgba(201,168,76,0.03);
+            max-width: 800px;
+        }
+
+        .lesson-box::before {
+            content: attr(data-label);
+            position: absolute;
+            top: -14px;
+            left: 30px;
+            background: var(--dark);
+            padding: 0 16px;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .lesson-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .lesson-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--cream);
+            line-height: 1.85;
+            opacity: 0.9;
+        }
+
+        /* ═══ PRACTICE BOXES ═══ */
+        .practice-box {
+            border: 1px solid rgba(201,168,76,0.3);
+            padding: 35px;
+            margin: 30px 0;
+            background: rgba(10,8,6,0.5);
+            position: relative;
+            max-width: 800px;
+        }
+
+        .practice-box::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -14px;
+            left: 30px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 2px 16px;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .practice-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .practice-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .practice-box ul li {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            color: var(--cream);
+            line-height: 1.8;
+            padding: 8px 0 8px 25px;
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+            position: relative;
+            opacity: 0.9;
+        }
+
+        .practice-box ul li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 10px;
+            top: 13px;
+        }
+
+        /* ═══ STAT CALLOUT ═══ */
+        .stat-callout {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(201,168,76,0.04);
+            border-top: 1px solid rgba(201,168,76,0.2);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+            margin: 40px 0;
+            max-width: 800px;
+        }
+
+        .stat-number {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(60px, 10vw, 120px);
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+            opacity: 0.8;
+        }
+
+        .stat-label {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 5px;
+            color: var(--cream);
+            text-transform: uppercase;
+            margin-top: 15px;
+            opacity: 0.7;
+        }
+
+        /* ═══ PRINCIPLE PAGES ═══ */
+        .principle-page {
+            background: linear-gradient(145deg, var(--dark) 0%, #0F0D06 100%);
+            text-align: center;
+        }
+
+        .principle-number {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(80px, 15vw, 180px);
+            font-weight: 900;
+            color: rgba(201,168,76,0.08);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            pointer-events: none;
+            letter-spacing: -10px;
+        }
+
+        .principle-label {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 8px;
+            color: var(--gold);
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .principle-name {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(30px, 5vw, 60px);
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1.2;
+            margin-bottom: 40px;
+            max-width: 700px;
+            position: relative;
+        }
+
+        .principle-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(18px, 2.5vw, 26px);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--cream);
+            max-width: 650px;
+            line-height: 1.7;
+            position: relative;
+            opacity: 0.85;
+        }
+
+        /* ═══ HISTORICAL SIDEBAR ═══ */
+        .historical-note {
+            background: rgba(139,115,85,0.1);
+            border: 1px solid rgba(139,115,85,0.3);
+            padding: 25px 30px;
+            margin: 30px 0;
+            max-width: 800px;
+        }
+
+        .historical-note .hn-label {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--stone);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .historical-note p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--cream);
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        /* ═══ TWO COLUMN ═══ */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 900px;
+            margin: 30px 0;
+        }
+
+        /* ═══ MANIFEST PAGE ═══ */
+        .manifest-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-bottom: 35px;
+            max-width: 800px;
+        }
+
+        .manifest-num {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: rgba(201,168,76,0.3);
+            line-height: 1;
+            min-width: 50px;
+            margin-top: -5px;
+        }
+
+        .manifest-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .manifest-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            color: var(--cream);
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        /* ═══ CLOSING ═══ */
+        .closing-page {
+            background: var(--black);
+            text-align: center;
+        }
+
+        .closing-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
+        }
+
+        .closing-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(22px, 3vw, 38px);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold-light);
+            max-width: 750px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .snake-divider {
+            font-size: 28px;
+            color: var(--gold);
+            opacity: 0.5;
+            letter-spacing: 20px;
+            margin: 30px 0;
+        }
+
+        /* Print/continuous scroll styling */
+        @media print {
+            .page { page-break-after: always; min-height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ PAGE 1: COVER ═══════════════════════════════════════ -->
+<div class="page cover">
+    <div class="cover-border"></div>
+    <div class="cover-corner tl"></div>
+    <div class="cover-corner tr"></div>
+    <div class="cover-corner bl"></div>
+    <div class="cover-corner br"></div>
+
+    <div style="position:relative; z-index:2; text-align:center;">
+        <p class="cover-tag">Dark Feminine Mastery Series</p>
+        <h1 class="cover-title">CLEOPATRA</h1>
+        <p class="cover-subtitle">The Art of Magnetic Charisma</p>
+        <div class="divider"></div>
+        <span class="cover-eye">𓂀</span>
+        <div class="divider"></div>
+        <p class="cover-desc">Bagaimana Seorang Wanita Menaklukkan Dunia<br>Bukan dengan Kecantikan, Tapi dengan Kekuatan Jiwa</p>
+    </div>
+    <p class="cover-author">THE COMPLETE GUIDE TO CLEOPATRA'S CHARISMA PRINCIPLES</p>
+    <span class="page-number">I</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 2: DEDICATION ═══════════════════════════════════════ -->
+<div class="page" style="background: var(--dark); text-align:center;">
+    <div class="ornament">𓆙 ❖ 𓆙</div>
+    <p style="font-family:'Cormorant Garamond', serif; font-size:22px; font-style:italic; color:var(--cream); opacity:0.7; max-width:500px; line-height:2;">
+        "Untuk setiap wanita yang pernah diremehkan,<br>yang potensinya lebih besar dari yang dunia bayangkan."
+    </p>
+    <div class="divider"></div>
+    <p style="font-family:'Cinzel', serif; font-size:11px; letter-spacing:5px; color:var(--gold); opacity:0.5;">IN THE SPIRIT OF THE LAST QUEEN OF EGYPT</p>
+    <span class="page-number">II</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 3: INTRODUCTION ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Sebuah Pengantar</h2>
+    <p class="body-text drop-cap">
+        Ada sebuah kesalahan besar yang telah berlangsung selama dua ribu tahun. Dunia membisikkan nama Cleopatra dengan nada sensasional — seolah kekuatannya bersumber dari kecantikan fisik semata. Seolah dua pemimpin paling kuat di dunia kuno — Julius Caesar dan Mark Antony — jatuh karena wajah cantik.
+    </p>
+    <p class="body-text">
+        Ini adalah narasi yang salah. Dan narasi ini sengaja dibuat salah.
+    </p>
+    <div class="pull-quote">
+        <p>"Her beauty, as we are told, was in itself not altogether incomparable... but the character that attended all she said or did was something bewitching."</p>
+        <cite>— Plutarch, Sejarawan Yunani</cite>
+    </div>
+    <p class="body-text">
+        Plutarch, sejarawan yang hidup hanya beberapa dekade setelah Cleopatra, memberikan kesaksian paling jujur: bukan fisiknya yang menawan, melainkan <em>karakternya</em>. Kecerdasannya. Cara bicaranya. Kemampuannya membaca manusia dan situasi.
+    </p>
+    <p class="body-text">
+        Ebook ini adalah panduan untuk memahami dan mempraktikkan prinsip-prinsip karisma Cleopatra — pelajaran yang relevan hingga hari ini bagi siapa pun yang ingin meningkatkan magnetisme, kepercayaan diri, dan pengaruh mereka dalam kehidupan nyata.
+    </p>
+    <span class="page-number">1</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 4: TABLE OF CONTENTS ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Daftar Isi</h2>
+    <div style="max-width:700px; width:100%;">
+        <div style="border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold);">BAB I</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--cream); flex:1; margin:0 20px;">Siapa Cleopatra Sesungguhnya</span>
+            <span style="font-family:'Cinzel',serif; font-size:12px; color:var(--stone);">5</span>
+        </div>
+        <div style="border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold);">BAB II</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--cream); flex:1; margin:0 20px;">Prinsip I — Keheningan Sebagai Kekuatan</span>
+            <span style="font-family:'Cinzel',serif; font-size:12px; color:var(--stone);">13</span>
+        </div>
+        <div style="border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold);">BAB III</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--cream); flex:1; margin:0 20px;">Prinsip II — Seni Misteri & Aura</span>
+            <span style="font-family:'Cinzel',serif; font-size:12px; color:var(--stone);">21</span>
+        </div>
+        <div style="border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold);">BAB IV</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--cream); flex:1; margin:0 20px;">Prinsip III — Kecerdasan Emosional & Strategis</span>
+            <span style="font-family:'Cinzel',serif; font-size:12px; color:var(--stone);">29</span>
+        </div>
+        <div style="border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold);">BAB V</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--cream); flex:1; margin:0 20px;">Prinsip IV — Keberanian Menciptakan Momentum</span>
+            <span style="font-family:'Cinzel',serif; font-size:12px; color:var(--stone);">37</span>
+        </div>
+        <div style="border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold);">BAB VI</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--cream); flex:1; margin:0 20px;">Prinsip V — Seni Bicara & Mempengaruhi</span>
+            <span style="font-family:'Cinzel',serif; font-size:12px; color:var(--stone);">45</span>
+        </div>
+        <div style="border-bottom:1px solid rgba(201,168,76,0.15); padding:16px 0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:2px; color:var(--gold);">BAB VII</span>
+            <span style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--cream); flex:1; margin:0 20px;">Warisan & Pelajaran Terakhir</span>
+            <span style="font-family:'Cinzel',serif; font-size:12px; color:var(--stone);">55</span>
+        </div>
+    </div>
+    <span class="page-number">2</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 5: CHAPTER I OPENER ═══════════════════════════════════════ -->
+<div class="page chapter-opener">
+    <div class="chapter-num">Bab Pertama</div>
+    <h2 class="chapter-title">Siapa Cleopatra<br>Sesungguhnya?</h2>
+    <div class="divider"></div>
+    <p class="chapter-intro">Merobek kebohongan dua ribu tahun dan menemukan wanita yang sebenarnya — pemikir strategis, poliglot, dan pemimpin yang mendefinisikan ulang apa artinya menjadi wanita berkuasa.</p>
+    <div class="ornament">𓂀 ❖ 𓆙</div>
+    <span class="page-number">3</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 6: WHO WAS CLEOPATRA ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Fakta yang Mengubah Segalanya</h2>
+    <p class="body-text drop-cap">
+        Cleopatra VII Philopator lahir di Alexandria, Mesir, pada 69 SM. Ia adalah ratu terakhir dari dinasti Ptolemaik — keturunan Makedonia yang memerintah Mesir setelah Alexander Agung. Ia naik takhta pada usia 18 tahun bersama adik laki-lakinya, Ptolemy XIII.
+    </p>
+    <div class="historical-note">
+        <p class="hn-label">Catatan Sejarah</p>
+        <p>Cleopatra adalah satu-satunya penguasa Ptolemaik yang benar-benar belajar berbicara bahasa Mesir. Pendahulunya selama hampir 300 tahun tidak pernah repot-repot belajar bahasa rakyat yang mereka pimpin.</p>
+    </div>
+    <p class="body-text">
+        Ini bukan hal kecil. Ini adalah pernyataan politik dan empati yang luar biasa. Cleopatra tidak hanya memerintah rakyatnya — ia <em>berusaha memahami</em> mereka. Dan pemahaman itu memberinya kekuatan yang tidak dimiliki siapa pun.
+    </p>
+    <p class="body-text">
+        Ia menguasai sembilan bahasa: Mesir, Yunani, Latin, Aram, Ethiopia, Ibrani, Arab, Parthia, dan bahasa Median. Di dunia di mana komunikasi adalah segalanya, Cleopatra tidak pernah membutuhkan penerjemah. Ia bisa berbicara langsung ke hati siapa pun.
+    </p>
+    <span class="page-number">4</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 7: NINE LANGUAGES ═══════════════════════════════════════ -->
+<div class="page" style="background: var(--dark); justify-content:center; align-items:center; text-align:center; padding:60px;">
+    <div class="stat-callout" style="border:none; background:transparent; max-width:100%;">
+        <div class="stat-number">9</div>
+        <div class="stat-label">Bahasa yang dikuasai Cleopatra</div>
+    </div>
+    <div class="divider"></div>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--cream); max-width:600px; opacity:0.8; line-height:1.8;">
+        "Bahasa adalah senjata terbesar seorang pemimpin. Ketika kamu berbicara dalam bahasa seseorang, kamu tidak hanya menyentuh pikirannya — kamu menyentuh jiwanya."
+    </p>
+    <div class="ornament" style="margin-top:30px;">— Pelajaran Cleopatra —</div>
+    <span class="page-number">5</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 8: THE MYTH VS REALITY ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Mitos vs. Kenyataan</h2>
+    <p class="body-text drop-cap">
+        Selama berabad-abad, narasi dominan tentang Cleopatra adalah: ia cantik dan menggunakan kecantikannya untuk memanipulasi pria berkuasa. Narasi ini tidak hanya tidak akurat — narasi ini adalah alat untuk merendahkan kecerdasan luar biasa seorang pemimpin wanita.
+    </p>
+    <div class="two-col">
+        <div>
+            <p style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:3px; color:var(--crimson); margin-bottom:15px; text-transform:uppercase;">Apa yang Dunia Katakan</p>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--cream); line-height:1.8; opacity:0.7; font-style:italic;">
+                "Cleopatra menggoda Caesar dan Antony dengan kecantikannya."<br><br>
+                "Ia adalah wanita penggoda yang menggunakan seksualitasnya."<br><br>
+                "Kekuatannya berasal dari penampilan fisiknya."
+            </p>
+        </div>
+        <div>
+            <p style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:3px; color:var(--gold); margin-bottom:15px; text-transform:uppercase;">Apa yang Sejarah Buktikan</p>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--cream); line-height:1.8; opacity:0.9;">
+                Plutarch menulis kecantikannya "tidak selalu sebanding" dengan wanita lain. Yang memikat adalah <em>karakter</em> dan <em>kecerdasannya</em>.<br><br>
+                Cassius Dio mencatat suaranya "paling menawan" dan kemampuannya membuat siapa pun merasa nyaman.
+            </p>
+        </div>
+    </div>
+    <span class="page-number">6</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 9: HER EDUCATION ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Fondasi Kekuatannya: Pendidikan</h2>
+    <p class="body-text drop-cap">
+        Sejak kecil, Cleopatra dibesarkan di istana Alexandria — salah satu pusat intelektual terbesar di dunia kuno. Perpustakaan Alexandria yang legendaris ada di kota yang sama. Ayahnya, Ptolemy XII, memastikan anak-anaknya mendapat pendidikan terbaik.
+    </p>
+    <p class="body-text">
+        Cleopatra belajar filsafat, sastra, seni, musik, kedokteran, dan tentu saja — politik. Tidak seperti saudara-saudaranya yang hanya memahami dunia dari perspektif Greek, Cleopatra secara aktif mempelajari semua budaya di kerajaannya.
+    </p>
+    <div class="lesson-box" data-label="Pelajaran Hidup">
+        <h3>Pengetahuan Adalah Kekuatan Tak Terlihat</h3>
+        <p>Cleopatra tidak menunggu kekuasaan datang — ia mempersiapkan dirinya untuk kekuasaan jauh sebelum ia mendapatkannya. Setiap bahasa yang ia pelajari adalah pintu yang terbuka. Setiap buku yang ia baca adalah senjata yang diasah. Persiapan diam-diam adalah bentuk ambisi yang paling berbahaya.</p>
+    </div>
+    <p class="body-text">
+        Ketika kekuasaan akhirnya datang, Cleopatra tidak perlu belajar menjadi pemimpin — ia <em>sudah siap</em>. Dan kesiapan itu memberikan aura kepercayaan diri yang tidak bisa dipalsukan.
+    </p>
+    <span class="page-number">7</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 10: HER RISE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Bangkit dari Pengasingan</h2>
+    <p class="body-text drop-cap">
+        Pada 51 SM, ayah Cleopatra meninggal dan mewariskan takhta kepadanya bersama adik laki-lakinya yang berusia sepuluh tahun, Ptolemy XIII. Namun kekuasaan tidak bertahan lama — tiga penasihat adiknya yang korup, Pothinus, Achillas, dan Theodotus, berhasil mengusir Cleopatra dari Alexandria dan mengirimnya ke pengasingan.
+    </p>
+    <div class="pull-quote">
+        <p>Seorang pemimpin sejati tidak mati dalam pengasingan. Ia merencanakan pemulangan.</p>
+        <cite>— Dari kisah Cleopatra</cite>
+    </div>
+    <p class="body-text">
+        Dalam pengasingan, kebanyakan orang akan menyerah. Cleopatra malah berencana. Ia mengumpulkan pasukan, membangun aliansi, dan menunggu momen yang tepat. Dan momen itu datang ketika Julius Caesar — pemimpin paling kuat di dunia — tiba di Alexandria.
+    </p>
+    <p class="body-text">
+        Yang terjadi berikutnya adalah salah satu manuver politik paling brilian dalam sejarah manusia.
+    </p>
+    <span class="page-number">8</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 11: THE CARPET SCENE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Manuver Karpet: Operasi Intelijen</h2>
+    <p class="body-text drop-cap">
+        Cleopatra tahu Caesar ada di istana Alexandria. Ia juga tahu bahwa musuh-musuhnya — penasihat adiknya — mengawasi setiap gerakan. Memasuki istana secara langsung berarti kematian sebelum ia bisa bertemu Caesar.
+    </p>
+    <p class="body-text">
+        Jadi ia melakukan apa yang hanya bisa dilakukan oleh pikiran taktis yang luar biasa: ia meminta seorang sekutunya, Apollodorus, untuk menyelundupkannya ke dalam istana — tersembunyi dalam gulungan karpet (beberapa sumber menyebut kantong linen).
+    </p>
+    <div class="lesson-box" data-label="Analisis Strategis">
+        <h3>Tiga Lapis Kecerdasan dalam Satu Gerakan</h3>
+        <p><strong style="color:var(--gold-light);">Pertama:</strong> Ia tahu bahwa meeting pertama adalah segalanya. Kesan pertama tidak bisa diulang.<br><br>
+        <strong style="color:var(--gold-light);">Kedua:</strong> Ia menolak menunggu diundang. Ia menciptakan kesempatan sendiri dari ketiadaan.<br><br>
+        <strong style="color:var(--gold-light);">Ketiga:</strong> Ia memahami bahwa Caesar adalah pria yang menghargai keberanian dan kejeniusan. Tindakan ini membuktikan keduanya sekaligus — bahkan sebelum ia membuka mulut.</p>
+    </div>
+    <p class="body-text">
+        Caesar malam itu tidak melihat seorang wanita cantik keluar dari karpet. Ia melihat seseorang yang cukup berani, cukup cerdas, dan cukup percaya diri untuk menciptakan situasi yang mustahil — dan mengubahnya menjadi peluang.
+    </p>
+    <span class="page-number">9</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 12: WHAT SHE SAID ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Apa yang Ia Katakan Malam Itu</h2>
+    <p class="body-text drop-cap">
+        Sejarah tidak mencatat kata-kata pasti Cleopatra kepada Caesar malam itu. Tapi dari hasil yang terjadi, kita bisa menyimpulkan dengan pasti: ia tidak memohon. Ia tidak menangis. Ia tidak memperlihatkan kelemahan.
+    </p>
+    <p class="body-text">
+        Cleopatra berbicara kepada Caesar sebagai seorang pemimpin kepada pemimpin lainnya. Ia mempresentasikan kasusnya secara logis, membuktikan haknya atas takhta, dan — yang paling krusial — membuat Caesar merasa bahwa membantu dirinya adalah kepentingan terbaik Rome.
+    </p>
+    <div class="pull-quote">
+        <p>Ia tidak meminta Caesar menjadi penyelamatnya. Ia memposisikan Caesar sebagai mitra strategis dalam visi yang lebih besar.</p>
+        <cite>— Analisis atas pertemuan Caesar-Cleopatra</cite>
+    </div>
+    <p class="body-text">
+        Cleopatra mengerti sesuatu yang sangat sedikit orang pahami: orang berkuasa tidak ingin menjadi pahlawan seseorang. Mereka ingin merasa bahwa mereka membuat keputusan cerdas yang menguntungkan diri mereka sendiri. Buat mereka merasa seperti itu — dan mereka akan melakukan apa pun yang kamu inginkan.
+    </p>
+    <span class="page-number">10</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 13: CHAPTER II OPENER ═══════════════════════════════════════ -->
+<div class="page chapter-opener">
+    <div class="chapter-num">Bab Kedua</div>
+    <h2 class="chapter-title">Prinsip I<br>Keheningan Sebagai<br>Kekuatan Tertinggi</h2>
+    <div class="divider"></div>
+    <p class="chapter-intro">Mengapa orang yang paling berpengaruh justru yang paling jarang bicara — dan bagaimana Cleopatra menggunakan keheningan sebagai senjata dominasi yang tak terlihat.</p>
+    <span class="page-number">11</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 14: SILENCE ═══════════════════════════════════════ -->
+<div class="page principle-page">
+    <div class="principle-number">I</div>
+    <p class="principle-label">Prinsip Pertama Cleopatra</p>
+    <h2 class="principle-name">The Power<br>of Silence</h2>
+    <div class="divider"></div>
+    <p class="principle-quote">
+        "Orang yang selalu mengisi keheningan adalah orang yang paling takut dengan kekuatan dalam dirinya sendiri."
+    </p>
+    <span class="page-number">12</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 15: SILENCE CONTENT ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Mengapa Keheningan Adalah Dominasi</h2>
+    <p class="body-text drop-cap">
+        Cleopatra jarang menjadi yang pertama berbicara dalam negosiasi penting. Para sejarawan mencatat bagaimana ia memiliki kebiasaan membiarkan lawan bicaranya mengungkapkan agenda mereka terlebih dahulu. Sementara itu, ia mengamati — bahasa tubuh, pilihan kata, ketegangan di balik kalimat-kalimat mereka.
+    </p>
+    <p class="body-text">
+        Ini bukan kesopanan. Ini adalah pengumpulan intelijen secara real-time.
+    </p>
+    <div class="lesson-box" data-label="Psikologi Kekuatan">
+        <h3>Mengapa Keheningan Memberi Kamu Kontrol</h3>
+        <p>Ketika seseorang berbicara, mereka memperlihatkan apa yang mereka inginkan, apa yang mereka takutkan, dan apa yang mereka nilai. Ketika kamu diam dan mendengarkan, kamu mengumpulkan semua informasi ini — dan mereka tidak mendapat informasi serupa tentang kamu. Ketidakseimbangan informasi ini adalah ketidakseimbangan kekuasaan.</p>
+    </div>
+    <p class="body-text">
+        Dalam budaya modern yang terobsesi dengan kebisingan — di mana semua orang berlomba-lomba memiliki opini, posting, dan bicara — keheningan yang sengaja menjadi semakin langka dan karenanya semakin kuat.
+    </p>
+    <span class="page-number">13</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 16: SILENCE PRACTICE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Praktik Keheningan Cleopatra</h2>
+    <p class="body-text">
+        Keheningan Cleopatra bukan pasif — ia aktif. Ada perbedaan besar antara diam karena tidak tahu apa yang harus dikatakan, dengan diam karena kamu memilih untuk mengamati lebih dulu.
+    </p>
+    <div class="practice-box" data-step="LATIHAN 01">
+        <h3>The 5-Second Rule of Power</h3>
+        <ul>
+            <li>Sebelum menjawab pertanyaan apapun, tarik napas dulu. Hitung 3-5 detik. Ini terasa lama bagimu tapi membuat kamu tampak lebih berwibawa bagi orang lain.</li>
+            <li>Dalam percakapan penting, izinkan ada jeda natural. Jangan mengisi setiap keheningan dengan kata-kata. Biarkan orang lain yang mengisi — mereka akan memberikan informasi berharga.</li>
+            <li>Ketika seseorang selesai bicara, ulangi poin utama mereka dengan kalimatmu sendiri sebelum merespons. Ini menunjukkan kamu benar-benar mendengar — dan memberi kamu waktu berpikir.</li>
+        </ul>
+    </div>
+    <div class="practice-box" data-step="LATIHAN 02">
+        <h3>Mengurangi Verbosity Digital</h3>
+        <ul>
+            <li>Kurangi 30% kata-kata dalam pesan teks dan emailmu. Kalimat yang lebih pendek terasa lebih tegas dan berkuasa.</li>
+            <li>Jangan memberi penjelasan panjang untuk keputusanmu. "Tidak bisa hari ini" lebih kuat dari "Maaf aku tidak bisa hari ini karena aku harus..."</li>
+            <li>Di media sosial: posting lebih sedikit, tapi lebih bermakna. Frekuensi rendah dengan kualitas tinggi.</li>
+        </ul>
+    </div>
+    <span class="page-number">14</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 17: PRESENCE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Presence: Hadir Sepenuhnya</h2>
+    <p class="body-text drop-cap">
+        Cassius Dio, sejarawan Romawi, mencatat sesuatu yang luar biasa tentang Cleopatra: ketika ia berbicara kepada seseorang, orang itu merasa seperti menjadi satu-satunya manusia di ruangan itu. Ia memberikan perhatian penuh — mata, pikiran, energinya.
+    </p>
+    <p class="body-text">
+        Di era modern, ini adalah hadiah yang semakin langka. Kebanyakan orang hadir secara fisik tapi absen secara mental — pikiran mereka di smartphone, di pekerjaan, di tempat lain. Kehadiran penuh yang Cleopatra berikan adalah bentuk penghormatan tertinggi — dan manusia secara naluri merespons penghormatan dengan loyalitas.
+    </p>
+    <div class="pull-quote">
+        <p>"Buat seseorang merasa bahwa mereka adalah hal paling menarik di duniamu, dan mereka akan menganggapmu sebagai hal paling menarik di dunia mereka."</p>
+        <cite>— Prinsip Cleopatra tentang Presence</cite>
+    </div>
+    <div class="practice-box" data-step="LATIHAN 03">
+        <h3>The Cleopatra Presence Protocol</h3>
+        <ul>
+            <li>Dalam percakapan face-to-face: letakkan ponsel menghadap ke bawah atau di dalam tas. Kontak mata yang konsisten (tapi tidak terlalu intens) menunjukkan kehadiran total.</li>
+            <li>Dengarkan untuk memahami, bukan untuk merespons. Kebanyakan orang sudah menyiapkan jawaban sementara lawan bicara masih berbicara.</li>
+            <li>Perhatikan detail kecil: nama yang disebut, emosi di balik kata-kata. Sebutkan kembali di momen yang tepat.</li>
+        </ul>
+    </div>
+    <span class="page-number">15</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 18: CHAPTER III OPENER ═══════════════════════════════════════ -->
+<div class="page chapter-opener">
+    <div class="chapter-num">Bab Ketiga</div>
+    <h2 class="chapter-title">Prinsip II<br>Seni Misteri &<br>Membangun Aura</h2>
+    <div class="divider"></div>
+    <p class="chapter-intro">Mengapa orang yang paling memikat selalu memiliki sisi yang tidak diketahui — dan bagaimana misteri yang terkelola dengan baik menjadi magnet terkuat dalam hubungan manusia.</p>
+    <span class="page-number">16</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 19: MYSTERY PRINCIPLE ═══════════════════════════════════════ -->
+<div class="page principle-page">
+    <div class="principle-number">II</div>
+    <p class="principle-label">Prinsip Kedua Cleopatra</p>
+    <h2 class="principle-name">The Art of<br>Sacred Mystery</h2>
+    <div class="divider"></div>
+    <p class="principle-quote">
+        "Jangan pernah tunjukkan semua kartu di tanganmu. Selalu biarkan mereka bertanya-tanya apa yang masih tersembunyi."
+    </p>
+    <span class="page-number">17</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 20: MYSTERY CONTENT ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Mengapa Misteri Adalah Magnet</h2>
+    <p class="body-text drop-cap">
+        Cleopatra selalu memiliki rahasia. Selalu ada rencana cadangan yang tidak diketahui siapa pun. Selalu ada informasi yang ia simpan, perspektif yang belum ia ungkapkan, langkah yang belum ia ambil. Orang-orang di sekitarnya — termasuk pria-pria paling kuat di dunia — selalu merasa ada lebih banyak dari Cleopatra yang belum mereka temukan.
+    </p>
+    <p class="body-text">
+        Dan rasa penasaran itu membuat mereka kembali. Lagi dan lagi.
+    </p>
+    <div class="lesson-box" data-label="Psikologi Daya Tarik">
+        <h3>Misteri Menciptakan Investasi Emosional</h3>
+        <p>Otak manusia secara naluri tertarik pada hal-hal yang belum lengkap atau belum dipahami sepenuhnya — ini disebut Zeigarnik Effect dalam psikologi. Ketika seseorang belum "menyelesaikan" kamu dalam pikirannya, mereka terus memikirkan kamu. Misteri yang terkelola dengan baik adalah bentuk daya tarik yang tidak perlu usaha aktif — kamu hanya perlu menahan diri dari mengungkapkan terlalu banyak.</p>
+    </div>
+    <p class="body-text">
+        Shakespeare menangkap esensi ini dengan sempurna ketika Enobarbus berkata tentang Cleopatra: "Age cannot wither her, nor custom stale her infinite variety." Cleopatra selalu tampak baru, selalu ada dimensi baru untuk ditemukan.
+    </p>
+    <span class="page-number">18</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 21: AURA ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Membangun Aura: Ritual Cleopatra</h2>
+    <p class="body-text drop-cap">
+        Cleopatra memahami sesuatu yang sangat penting: aura bukan sesuatu yang terjadi secara kebetulan. Aura adalah hasil dari ritual — tindakan-tindakan terstruktur yang dilakukan secara konsisten yang membangun dan mempertahankan persepsi tentang siapa kamu.
+    </p>
+    <p class="body-text">
+        Cleopatra terkenal dengan parfumnya — campuran neroli, mawar, myrrh, dan sandalwood. Ratu Mesir itu dikatakan memerintahkan layar kapalnya direndam dalam parfum sehingga angin sendiri membawa aromanya sebelum ia tiba. Ini bukan sekadar kecantikan — ini adalah <em>presence engineering</em>. Menciptakan pengalaman sensori yang akan diingat jauh setelah ia pergi.
+    </p>
+    <div class="practice-box" data-step="LATIHAN 04">
+        <h3>Merancang Presence Signature-mu</h3>
+        <ul>
+            <li><strong style="color:var(--gold-light);">Aroma:</strong> Pilih satu parfum yang menjadi "tanda tanganmu". Konsistensi dalam aroma menciptakan asosiasi kuat di memori orang lain.</li>
+            <li><strong style="color:var(--gold-light);">Visual:</strong> Identifikasi 2-3 elemen penampilan yang selalu ada — warna dominan, aksesori signature, gaya rambut tertentu.</li>
+            <li><strong style="color:var(--gold-light);">Cara berbicara:</strong> Kecepatan, nada, pilihan kata. Orang yang berbicara perlahan dan jelas dianggap lebih berwibawa.</li>
+            <li><strong style="color:var(--gold-light);">Cara keluar:</strong> Selalu tinggalkan percakapan sedikit lebih awal dari yang diharapkan. Buat mereka menginginkan lebih.</li>
+        </ul>
+    </div>
+    <span class="page-number">19</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 22: SOCIAL MEDIA MYSTERY ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Misteri di Era Digital</h2>
+    <p class="body-text drop-cap">
+        Di era media sosial, misteri menjadi jauh lebih sulit — dan karenanya jauh lebih berharga. Kita hidup di zaman di mana orang membagikan setiap aspek kehidupan mereka: apa yang mereka makan, ke mana mereka pergi, apa yang mereka rasakan.
+    </p>
+    <p class="body-text">
+        Ini adalah kebalikan total dari filosofi Cleopatra.
+    </p>
+    <div class="lesson-box" data-label="Prinsip Modern">
+        <h3>Digital Mystery Framework</h3>
+        <p><strong style="color:var(--gold-light);">Yang Cleopatra bagikan:</strong> Pencapaian, visi, karya, momen pilihan yang mencerminkan nilai-nilainya.<br><br>
+        <strong style="color:var(--gold-light);">Yang Cleopatra simpan:</strong> Keraguan, detail kehidupan pribadi, rencana sebelum terwujud, respons emosional terhadap kritik.<br><br>
+        Aturan sederhananya: bagikan hasil, bukan proses. Bagikan siapa kamu, bukan apa yang kamu rasakan setiap saat.</p>
+    </div>
+    <div class="pull-quote">
+        <p>"Misteri bukan tentang menjadi tertutup. Misteri adalah tentang memberikan cukup untuk membuat mereka tertarik — dan selalu menyisakan sedikit lagi untuk ditemukan."</p>
+    </div>
+    <span class="page-number">20</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 23: CHAPTER IV OPENER ═══════════════════════════════════════ -->
+<div class="page chapter-opener">
+    <div class="chapter-num">Bab Keempat</div>
+    <h2 class="chapter-title">Prinsip III<br>Kecerdasan Emosional<br>& Strategis</h2>
+    <div class="divider"></div>
+    <p class="chapter-intro">Bagaimana Cleopatra membaca manusia dengan akurasi hampir supernatural — dan menggunakan pemahaman itu untuk selalu berada selangkah lebih maju dari semua orang di sekitarnya.</p>
+    <span class="page-number">21</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 24: EQ PRINCIPLE ═══════════════════════════════════════ -->
+<div class="page principle-page">
+    <div class="principle-number">III</div>
+    <p class="principle-label">Prinsip Ketiga Cleopatra</p>
+    <h2 class="principle-name">Emotional &<br>Strategic Intelligence</h2>
+    <div class="divider"></div>
+    <p class="principle-quote">
+        "Kamu tidak perlu lebih kuat dari lawanmu. Kamu hanya perlu memahami mereka lebih baik dari mereka memahami diri mereka sendiri."
+    </p>
+    <span class="page-number">22</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 25: READING PEOPLE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Seni Membaca Manusia</h2>
+    <p class="body-text drop-cap">
+        Cleopatra bergaul dengan manusia-manusia paling kuat dan kompleks di dunianya — jenderal perang, senator, raja, dan diplomat. Untuk bertahan — bahkan untuk berkembang — di lingkungan seperti itu, ia harus menjadi ahli dalam membaca manusia.
+    </p>
+    <p class="body-text">
+        Plutarch mencatat bahwa Cleopatra mampu berbicara dalam sembilan bahasa — dan ini bukan hanya tentang linguistik. Setiap bahasa membawa nuansa budaya, cara berpikir, dan sistem nilai yang berbeda. Dengan memahami ini, Cleopatra bisa berbicara tidak hanya dalam bahasa verbal seseorang, tapi juga dalam bahasa cultural mereka.
+    </p>
+    <div class="lesson-box" data-label="Kecerdasan Emosional">
+        <h3>Tiga Level Komunikasi Cleopatra</h3>
+        <p><strong style="color:var(--gold-light);">Level 1 — Kata-kata:</strong> Apa yang orang katakan secara literal.<br><br>
+        <strong style="color:var(--gold-light);">Level 2 — Nada:</strong> Bagaimana mereka mengatakan — kecepatan, volume, emosi yang terselip.<br><br>
+        <strong style="color:var(--gold-light);">Level 3 — Kekosongan:</strong> Apa yang <em>tidak</em> mereka katakan — jeda, topik yang dihindari, reaksi yang ditahan. Ini adalah level di mana Cleopatra bermain.</p>
+    </div>
+    <span class="page-number">23</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 26: MAKING PEOPLE FEEL ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Membuat Orang Merasa Luar Biasa</h2>
+    <p class="body-text drop-cap">
+        Ada satu prinsip universal tentang Cleopatra yang semua sumber sejarah setujui: ketika berbicara dengan Cleopatra, orang-orang merasa seperti versi terbaik diri mereka sendiri. Caesar merasa lebih visioner. Antony merasa lebih heroik. Bahkan pejabat dan pelayan biasa merasa dihargai dan penting.
+    </p>
+    <p class="body-text">
+        Ini adalah kualitas kepemimpinan tertinggi — kemampuan untuk melihat dan mencerminkan potensi terbaik orang lain.
+    </p>
+    <div class="pull-quote">
+        <p>"Saat Caesar berbicara tentang takdir Romawi, Cleopatra tidak menyanggahnya. Ia memperluas visi itu dengan perspektif Mesir yang megah. Ia membuat Caesar merasa tidak hanya didengar, tapi <em>dimengerti</em>."</p>
+    </div>
+    <p class="body-text">
+        Teknik ini jauh lebih canggih dari sekadar menjilat atau setuju dengan semua hal. Cleopatra benar-benar <em>mendengar</em>, benar-benar <em>berpikir</em>, dan kemudian memberikan perspektif yang memperkaya — bukan yang melemahkan. Ia menambahkan, bukan mengurangi.
+    </p>
+    <span class="page-number">24</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 27: EMOTIONAL DETACHMENT ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Detasemen Emosional yang Tercerahkan</h2>
+    <p class="body-text drop-cap">
+        Salah satu aspek Cleopatra yang paling sering disalahpahami adalah hubungannya dengan Caesar dan Antony. Dunia melihat romansa — Cleopatra sendiri mungkin merasakan cinta yang nyata. Tapi yang membedakan Cleopatra dari wanita biasa adalah: ia tidak pernah membiarkan emosi menggantikan strategi.
+    </p>
+    <div class="lesson-box" data-label="Dark Feminine Wisdom">
+        <h3>Mencintai dengan Mata Terbuka</h3>
+        <p>Cleopatra mencintai Caesar dan Antony — tapi ia tidak pernah berhenti menjadi seorang ratu saat melakukannya. Kepentingan Mesir selalu menjadi prioritas. Ketika Caesar meninggal, ia tidak terpuruk — ia segera beralih ke Antony sebagai aliansi berikutnya. Ini bukan ketidaktulusan. Ini adalah integritas kepemimpinan: memisahkan apa yang kamu rasakan dengan apa yang harus kamu lakukan.</p>
+    </div>
+    <p class="body-text">
+        Dalam kehidupan modern, ini berarti: kamu boleh memiliki perasaan. Tapi perasaan tidak boleh menjadi navigator utama keputusanmu. Pahami emosi, rasakan mereka — lalu taruh di sisi dan buat keputusan dari tempat yang jernih.
+    </p>
+    <span class="page-number">25</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 28: EQ PRACTICE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Praktik Kecerdasan Emosional</h2>
+    <div class="practice-box" data-step="LATIHAN 05">
+        <h3>Journaling Strategis à la Cleopatra</h3>
+        <ul>
+            <li>Setiap malam, tulis satu interaksi penting hari itu. Apa yang mereka katakan? Apa yang mereka <em>tidak</em> katakan? Apa yang mereka inginkan di balik kata-kata mereka?</li>
+            <li>Identifikasi apa yang memotivasi 3 orang paling penting dalam hidupmu saat ini. Rasa aman? Pengakuan? Kebebasan? Pemahaman ini adalah kunci pengaruh.</li>
+            <li>Sebelum pertemuan penting, luangkan 5 menit untuk bertanya: "Apa yang <em>mereka</em> butuhkan dari pertemuan ini?" Bukan hanya kamu.</li>
+        </ul>
+    </div>
+    <div class="practice-box" data-step="LATIHAN 06">
+        <h3>The Strategic Empathy Map</h3>
+        <ul>
+            <li>Untuk setiap orang penting dalam lingkaranmu, buat catatan: apa ketakutan terbesar mereka? Apa ambisi terdalam mereka? Apa yang membuat mereka merasa aman?</li>
+            <li>Dalam percakapan, berikan komentar yang mengakui pencapaian dan pandangan mereka — bukan sebagai pujian kosong, tapi sebagai pengakuan yang tulus dan spesifik.</li>
+            <li>Latih dirimu untuk merespons reaktif lebih lambat. Ketika emosi tinggi, tunda respons 24 jam jika memungkinkan.</li>
+        </ul>
+    </div>
+    <span class="page-number">26</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 29: CHAPTER V OPENER ═══════════════════════════════════════ -->
+<div class="page chapter-opener">
+    <div class="chapter-num">Bab Kelima</div>
+    <h2 class="chapter-title">Prinsip IV<br>Keberanian Menciptakan<br>Momentum Sendiri</h2>
+    <div class="divider"></div>
+    <p class="chapter-intro">Cleopatra tidak pernah menunggu kesempatan datang. Ia masuk ke dalam karpet. Ia menciptakan kondisi yang tidak bisa diabaikan. Inilah seni membuat dunia tidak bisa mengabaikanmu.</p>
+    <span class="page-number">27</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 30: COURAGE PRINCIPLE ═══════════════════════════════════════ -->
+<div class="page principle-page">
+    <div class="principle-number">IV</div>
+    <p class="principle-label">Prinsip Keempat Cleopatra</p>
+    <h2 class="principle-name">The Courage to<br>Create Your<br>Own Moment</h2>
+    <div class="divider"></div>
+    <p class="principle-quote">
+        "Jangan menunggu kesempatan datang. Ciptakan situasi yang memaksa kesempatan untuk mengenali keberadaanmu."
+    </p>
+    <span class="page-number">28</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 31: BOLD MOVES ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Gerakan Berani vs. Gerakan Ceroboh</h2>
+    <p class="body-text drop-cap">
+        Tindakan Cleopatra dengan karpet sering dikutip sebagai contoh keberanian. Tapi yang sering terlewat adalah bahwa ini bukan keberanian yang impulsif — ini adalah keberanian yang terkalkulasi dengan cermat.
+    </p>
+    <p class="body-text">
+        Cleopatra sudah mempelajari Caesar sebelum ia masuk ke karpet itu. Ia tahu Caesar adalah pria yang menghargai kejeniusan dan keberanian. Ia tahu Caesar sedang dalam posisi yang membutuhkan aliansi lokal. Ia tahu risikonya — dan ia memutuskan risiko tidak bertindak lebih besar dari risiko bertindak.
+    </p>
+    <div class="two-col">
+        <div>
+            <p style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:3px; color:var(--crimson); margin-bottom:15px;">KEBERANIAN CEROBOH</p>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--cream); line-height:1.9; opacity:0.75;">
+                Bertindak tanpa riset.<br>
+                Mengambil risiko tanpa memahami kemungkinan hasilnya.<br>
+                Nekat karena takut bukan karena strategi.<br>
+                Tidak memiliki rencana cadangan.
+            </p>
+        </div>
+        <div>
+            <p style="font-family:'Cinzel',serif; font-size:12px; letter-spacing:3px; color:var(--gold); margin-bottom:15px;">KEBERANIAN CLEOPATRA</p>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--cream); line-height:1.9; opacity:0.9;">
+                Sudah mempelajari situasi secara mendalam.<br>
+                Memahami apa yang dipertaruhkan dan kemungkinan hasilnya.<br>
+                Bertindak karena perhitungan, bukan emosi.<br>
+                Selalu ada rencana B dan C.
+            </p>
+        </div>
+    </div>
+    <span class="page-number">29</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 32: POSITIONING ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Seni Positioning Diri</h2>
+    <p class="body-text drop-cap">
+        Salah satu keterampilan terbesar Cleopatra adalah positioning — menempatkan dirinya di posisi yang tepat pada waktu yang tepat. Ia tidak sekadar ada di tempat yang tepat secara kebetulan. Ia secara aktif menciptakan kondisi untuk berada di sana.
+    </p>
+    <div class="lesson-box" data-label="Strategi Positioning">
+        <h3>Tiga Dimensi Positioning Cleopatra</h3>
+        <p><strong style="color:var(--gold-light);">Positioning Fisik:</strong> Ia memastikan Caesar tidak bisa mengabaikannya secara harfiah — dengan muncul di kamarnya.<br><br>
+        <strong style="color:var(--gold-light);">Positioning Naratif:</strong> Ia memposisikan dirinya bukan sebagai korban yang membutuhkan bantuan, tapi sebagai mitra strategis yang menguntungkan Rome.<br><br>
+        <strong style="color:var(--gold-light);">Positioning Temporal:</strong> Ia datang pada momen ketika Caesar masih dalam posisi mencari aliansi — bukan setelah ia sudah membuat keputusan.</p>
+    </div>
+    <div class="practice-box" data-step="LATIHAN 07">
+        <h3>Latihan Positioning Strategis</h3>
+        <ul>
+            <li>Identifikasi "Caesar" dalam hidupmu — orang atau institusi yang keputusannya berdampak besar pada tujuanmu. Pelajari mereka: apa yang mereka butuhkan? Apa masalah mereka?</li>
+            <li>Posisikan dirimu sebagai solusi untuk masalah mereka, bukan sebagai seseorang yang butuh bantuan mereka.</li>
+            <li>Temukan momen yang tepat untuk hadir — bukan ketika mereka sedang sibuk atau tertekan, tapi ketika mereka sedang open dan receptive.</li>
+        </ul>
+    </div>
+    <span class="page-number">30</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 33: RULING IN TUMULT ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Memerintah di Tengah Badai</h2>
+    <p class="body-text drop-cap">
+        Cleopatra memerintah Mesir selama 21 tahun — tahun-tahun yang diisi dengan ancaman militer dari Roma, kelaparan, persaingan saudara, dan intrik politik yang tidak pernah berhenti. Setiap hari adalah krisis baru.
+    </p>
+    <p class="body-text">
+        Tapi Cleopatra tidak memerintah dengan cara bereaksi terhadap krisis. Ia memerintah dengan cara menciptakan stabilitas di tengah badai — melalui aliansi strategis, komunikasi yang cerdas, dan kemampuannya menjaga kepercayaan rakyat Mesir.
+    </p>
+    <div class="historical-note">
+        <p class="hn-label">Fakta Sejarah</p>
+        <p>Selama masa pemerintahan Cleopatra, aliansinya dengan Julius Caesar dan kemudian Mark Antony berhasil menjaga Mesir tetap merdeka selama hampir 20 tahun — di tengah tekanan terus-menerus dari kekaisaran Roma yang terus berkembang. Ini adalah pencapaian diplomatik dan strategis yang luar biasa.</p>
+    </div>
+    <div class="pull-quote">
+        <p>"Stabilitas sejati bukan datang dari absennya badai. Ia datang dari kemampuanmu menari di tengah badai."</p>
+    </div>
+    <span class="page-number">31</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 34: RESILIENCE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Resiliensi: Bangkit Lebih Tinggi</h2>
+    <p class="body-text drop-cap">
+        Cleopatra pernah diusir dari tahtanya sendiri. Pernah ada di pengasingan, tanpa kekuasaan, dengan musuh yang mengendalikan istananya. Mayoritas orang di posisinya akan menyerah atau menerima nasib.
+    </p>
+    <p class="body-text">
+        Cleopatra membangun kembali. Ia mengumpulkan sumber daya, membangun aliansi baru, dan kembali bukan hanya ke posisi semula — tapi ke posisi yang lebih kuat.
+    </p>
+    <div class="practice-box" data-step="LATIHAN 08">
+        <h3>Framework Resiliensi Cleopatra</h3>
+        <ul>
+            <li><strong style="color:var(--gold-light);">Langkah 1 — Terima realita:</strong> Jangan menghabiskan energi menyangkal situasi sulit. Terima bahwa ini terjadi. Ini menghemat energi untuk langkah berikutnya.</li>
+            <li><strong style="color:var(--gold-light);">Langkah 2 — Identifikasi leverage:</strong> Bahkan dalam situasi terburuk, selalu ada sesuatu yang masih kamu miliki — pengetahuan, jaringan, kemampuan. Cleopatra punya kecerdasannya.</li>
+            <li><strong style="color:var(--gold-light);">Langkah 3 — Cari pintu yang terbuka:</strong> Bukan pintu yang tertutup. Ketika Caesar datang ke Alexandria, Cleopatra tidak meratapi pengasingannya — ia melihat peluang baru.</li>
+            <li><strong style="color:var(--gold-light);">Langkah 4 — Bertindak:</strong> Masuk ke karpet itu. Buat langkah yang diperlukan meski terasa menakutkan.</li>
+        </ul>
+    </div>
+    <span class="page-number">32</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 35: CHAPTER VI OPENER ═══════════════════════════════════════ -->
+<div class="page chapter-opener">
+    <div class="chapter-num">Bab Keenam</div>
+    <h2 class="chapter-title">Prinsip V<br>Seni Bicara &<br>Mempengaruhi</h2>
+    <div class="divider"></div>
+    <p class="chapter-intro">Cleopatra memiliki suara yang "paling menawan" menurut para sejarawan kuno. Ini bukan tentang suara literalnya — ini tentang cara ia menggunakan kata-kata untuk menciptakan dunia yang orang lain mau masuk ke dalamnya.</p>
+    <span class="page-number">33</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 36: SPEECH PRINCIPLE ═══════════════════════════════════════ -->
+<div class="page principle-page">
+    <div class="principle-number">V</div>
+    <p class="principle-label">Prinsip Kelima Cleopatra</p>
+    <h2 class="principle-name">The Art of<br>Magnetic Speech</h2>
+    <div class="divider"></div>
+    <p class="principle-quote">
+        "Kamu tidak hanya berbicara dengan kata-kata. Kamu berbicara dengan ritme, dengan jeda, dengan apa yang kamu pilih untuk <em>tidak</em> katakan."
+    </p>
+    <span class="page-number">34</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 37: THE VOICE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Suara Sebagai Instrumen</h2>
+    <p class="body-text drop-cap">
+        Cassius Dio menulis bahwa Cleopatra memiliki suara "seperti instrumen bersenar banyak" — ia bisa beradaptasi dengan siapa pun yang ia ajak bicara. Dengan Caesar: tegas, analitis, visioner. Dengan Antony: hangat, passionate, berani. Dengan rakyatnya: penuh kasih sayang dan otoritas seorang ibu.
+    </p>
+    <p class="body-text">
+        Ini bukan ketidaktulusan. Ini adalah kecerdasan sosial tertinggi — kemampuan untuk menemukan frekuensi yang sama dengan orang yang berbeda-beda.
+    </p>
+    <div class="lesson-box" data-label="Vocal Intelligence">
+        <h3>Lima Elemen Suara yang Mempengaruhi</h3>
+        <p>
+            <strong style="color:var(--gold-light);">Kecepatan:</strong> Berbicara lebih lambat dari yang terasa natural. Orang yang terburu-buru tampak gugup; orang yang tenang tampak memegang kendali.<br><br>
+            <strong style="color:var(--gold-light);">Volume:</strong> Turunkan volume sedikit di momen penting. Orang yang lebih diam justru membuat orang lain condong ke depan untuk mendengarkan — ini adalah kekuatan fisik.<br><br>
+            <strong style="color:var(--gold-light);">Jeda:</strong> Gunakan pause setelah poin penting. Diam setelah pernyataan kunci memberikan bobot dan membiarkan kata-katamu meresap.<br><br>
+            <strong style="color:var(--gold-light);">Nada:</strong> Hindari nada yang naik di akhir kalimat (uptalk) — ini menimbulkan kesan ketidakpastian. Turunkan nada di akhir untuk otoritas.<br><br>
+            <strong style="color:var(--gold-light);">Kejelasan:</strong> Artikulasi yang jelas menunjukkan pikiran yang jelas.
+        </p>
+    </div>
+    <span class="page-number">35</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 38: PERSUASION ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Seni Persuasi Tanpa Memaksa</h2>
+    <p class="body-text drop-cap">
+        Cleopatra tidak pernah memaksa. Ia tidak mengancam atau berteriak. Kekuatannya bukan pada paksaan — kekuatannya pada kemampuannya membuat orang merasa bahwa keputusan yang ia inginkan adalah keputusan yang <em>mereka</em> inginkan.
+    </p>
+    <p class="body-text">
+        Ini adalah tingkat persuasi tertinggi: orang tidak merasa dipengaruhi. Mereka merasa mereka memilih sendiri.
+    </p>
+    <div class="practice-box" data-step="LATIHAN 09">
+        <h3>Framework Persuasi Cleopatra</h3>
+        <ul>
+            <li><strong style="color:var(--gold-light);">Mulai dari kepentingan mereka:</strong> Selalu mulai dengan apa yang menguntungkan mereka, bukan apa yang kamu inginkan. "Ini akan membantu kamu mencapai X" bukan "Aku butuh kamu melakukan Y."</li>
+            <li><strong style="color:var(--gold-light);">Gunakan bahasa "kita":</strong> Ciptakan rasa kolaborasi. "Bagaimana kita bisa..." terasa lebih mengundang dari "Aku perlu kamu..."</li>
+            <li><strong style="color:var(--gold-light);">Berikan pilihan, bukan ultimatum:</strong> "Apakah lebih nyaman hari Selasa atau Rabu?" — kedua pilihan mengasumsikan mereka setuju untuk bertemu.</li>
+            <li><strong style="color:var(--gold-light);">Biarkan mereka "menemukan" ide:</strong> Ajukan pertanyaan yang mengarahkan mereka ke kesimpulan yang kamu inginkan. Ide yang mereka "temukan sendiri" akan mereka bela mati-matian.</li>
+        </ul>
+    </div>
+    <span class="page-number">36</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 39: STORYTELLING ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Kekuatan Narasi dan Cerita</h2>
+    <p class="body-text drop-cap">
+        Cleopatra mengerti bahwa manusia tidak digerakkan oleh fakta saja — mereka digerakkan oleh cerita. Ketika ia berbicara kepada Caesar, ia tidak hanya mempresentasikan argumen logis. Ia merajut narasi tentang Mesir, tentang warisan, tentang masa depan yang lebih besar dari keduanya.
+    </p>
+    <div class="pull-quote">
+        <p>"Data memberi tahu. Cerita menjual. Narasi menggerakkan hati — dan hatilah yang menggerakkan keputusan."</p>
+    </div>
+    <div class="lesson-box" data-label="Storytelling untuk Pengaruh">
+        <h3>Struktur Narasi Cleopatra</h3>
+        <p><strong style="color:var(--gold-light);">1. Konteks:</strong> Gambarkan dunia seperti yang ada sekarang — masalah, tantangan, status quo.<br><br>
+        <strong style="color:var(--gold-light);">2. Visi:</strong> Lukiskan dunia seperti yang <em>bisa</em> ada — lebih baik, lebih indah, lebih bermakna.<br><br>
+        <strong style="color:var(--gold-light);">3. Jembatan:</strong> Tunjukkan bagaimana tindakan tertentu (yang kamu usulkan) menghubungkan konteks ke visi tersebut.<br><br>
+        <strong style="color:var(--gold-light);">4. Peran mereka:</strong> Tunjukkan bagaimana orang yang kamu ajak bicara adalah kunci dari jembatan itu. Buat mereka merasa penting dan diperlukan.</p>
+    </div>
+    <span class="page-number">37</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 40: NEGOTIATION ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Negosiasi ala Cleopatra</h2>
+    <p class="body-text drop-cap">
+        Cleopatra adalah negosiator brilian. Seluruh masa pemerintahannya adalah serangkaian negosiasi — dengan Roma, dengan saudara-saudaranya, dengan pejabatnya, dengan rakyatnya. Dan ia melakukan ini sambil selalu memastikan Mesir mendapat deal terbaik yang mungkin.
+    </p>
+    <div class="practice-box" data-step="LATIHAN 10">
+        <h3>Prinsip Negosiasi Tanpa Konflik</h3>
+        <ul>
+            <li><strong style="color:var(--gold-light);">Riset sebelum masuk:</strong> Ketahui apa yang mereka butuhkan, apa alternatif terbaik mereka (BATNA), dan batas bawah mereka. Informasi adalah kekuatan.</li>
+            <li><strong style="color:var(--gold-light);">Tetapkan anchor yang tinggi:</strong> Selalu mulai dari posisi yang lebih menguntungkan dirimu dari yang kamu harapkan. Ini memberi ruang untuk "mengalah" tanpa benar-benar mengalah.</li>
+            <li><strong style="color:var(--gold-light);">Biarkan mereka bicara dulu:</strong> Siapa yang bicara lebih banyak, biasanya yang menyerahkan lebih banyak. Pertanyaan > Pernyataan dalam negosiasi.</li>
+            <li><strong style="color:var(--gold-light);">Pisahkan orang dari masalah:</strong> Pertahankan hubungan personal yang hangat bahkan saat bernegosiasi keras. Caesar bisa jadi lawanmu di meja dan sekutumu di depan musuh bersama.</li>
+            <li><strong style="color:var(--gold-light);">Tahu kapan harus berhenti:</strong> Cleopatra tahu kapan aliansi sudah tidak menguntungkan. Ia tidak menggantungkan semua telur pada satu keranjang.</li>
+        </ul>
+    </div>
+    <span class="page-number">38</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 41: CHAPTER VII OPENER ═══════════════════════════════════════ -->
+<div class="page chapter-opener">
+    <div class="chapter-num">Bab Ketujuh</div>
+    <h2 class="chapter-title">Warisan &<br>Pelajaran Terakhir</h2>
+    <div class="divider"></div>
+    <p class="chapter-intro">Apa yang tersisa dari seorang ratu yang meninggal 2000 tahun lalu — dan mengapa prinsip-prinsipnya lebih relevan hari ini dari sebelumnya.</p>
+    <span class="page-number">39</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 42: THE END OF CLEOPATRA ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Kematian yang Bermartabat</h2>
+    <p class="body-text drop-cap">
+        Ketika Octavian (kemudian Augustus) mengalahkan armada Antony di Pertempuran Actium pada 31 SM, Cleopatra tahu bahwa semuanya sudah berakhir. Antony sudah mati. Kekuasaannya sudah berakhir. Octavian datang bukan untuk berdamai — ia datang untuk membawa Cleopatra ke Roma sebagai simbol trophinya.
+    </p>
+    <div class="pull-quote">
+        <p>Hingga akhir hayatnya, Cleopatra tidak pernah menjadi milik orang lain. Ia meninggal sebagaimana ia hidup — sebagai pemilik dirinya sendiri.</p>
+    </div>
+    <p class="body-text">
+        Cleopatra menolak. Ia memilih untuk mengakhiri hidupnya sendiri daripada dipertontonkan di Roma. Dengan berbaring di sarkofagus di samping Antony, mengenakan regalia kerajaannya yang terbaik, ia memilih kematian yang ia rancang sendiri — bukan kematian yang dipaksakan orang lain.
+    </p>
+    <div class="lesson-box" data-label="Pelajaran Terakhir">
+        <h3>Integritas Diri Sebagai Harga Mati</h3>
+        <p>Cleopatra mengajarkan bahwa ada hal-hal yang tidak bisa dikompromikan — dan salah satunya adalah siapa kamu. Ia bisa saja memilih bertahan hidup dengan menyerahkan harga dirinya. Ia memilih tidak. Ketahui batasmu. Ketahui apa yang tidak bisa dinegoisasi dalam hidupmu.</p>
+    </div>
+    <span class="page-number">40</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 43: LEGACY ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Warisan yang Bertahan 2000 Tahun</h2>
+    <p class="body-text drop-cap">
+        Dua milenium telah berlalu. Kekaisaran yang Cleopatra negosiasikan sudah lama runtuh. Bahasa yang ia gunakan sudah menjadi bahasa mati. Istana tempat ia memerintah sudah tenggelam di Laut Mediterania.
+    </p>
+    <p class="body-text">
+        Tapi nama Cleopatra masih bergema. Masih dipelajari. Masih memikat. Ini bukan karena kecantikannya. Ini karena <em>karakternya</em> — prinsip-prinsip yang ia hidupkan yang tidak lekang oleh waktu.
+    </p>
+    <div class="lesson-box" data-label="Warisan Abadi">
+        <h3>Yang Bertahan dari Cleopatra</h3>
+        <p><strong style="color:var(--gold-light);">Pengetahuan mengalahkan segalanya:</strong> Ia membuktikan bahwa pikiran yang terasah adalah senjata paling kuat.<br><br>
+        <strong style="color:var(--gold-light);">Karakter adalah karisma:</strong> Bukan penampilan, tapi siapa kamu sesungguhnya yang menarik orang.<br><br>
+        <strong style="color:var(--gold-light);">Strategi mengalahkan kekerasan:</strong> Cleopatra tidak pernah memiliki kekuatan militer sebanding Rome — tapi strategi dan diplomasinya mengungguli kekuatan itu selama dua dekade.<br><br>
+        <strong style="color:var(--gold-light);">Integritas adalah kemerdekaan terakhir:</strong> Bahkan ketika semua kekuasaan dicabut, ia mempertahankan kendali atas dirinya sendiri.</p>
+    </div>
+    <span class="page-number">41</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 44: THE SEVEN LAWS ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">7 Hukum Karisma Cleopatra</h2>
+    <p class="body-text" style="margin-bottom:30px;">Ringkasan dari semua yang telah kita pelajari — tujuh prinsip yang bisa mulai kamu terapkan hari ini:</p>
+    
+    <div class="manifest-item">
+        <div class="manifest-num">1</div>
+        <div class="manifest-content">
+            <h3>Investasikan dalam Pengetahuan</h3>
+            <p>Kecerdasan adalah aura yang tidak bisa dipalsukan. Baca. Pelajari. Pahami. Tidak ada yang lebih menarik dari pikiran yang kaya.</p>
+        </div>
+    </div>
+    <div class="manifest-item">
+        <div class="manifest-num">2</div>
+        <div class="manifest-content">
+            <h3>Kuasai Keheningan</h3>
+            <p>Berbicara lebih sedikit dari yang kamu mampu. Dengarkan lebih dalam dari yang orang lain harapkan. Biarkan kehadiranmu yang berbicara.</p>
+        </div>
+    </div>
+    <div class="manifest-item">
+        <div class="manifest-num">3</div>
+        <div class="manifest-content">
+            <h3>Jaga Misteri Strategis</h3>
+            <p>Jangan ungkapkan semua sisi dirimu sekaligus. Selalu biarkan ada sesuatu yang belum diketahui — sesuatu yang membuat mereka penasaran.</p>
+        </div>
+    </div>
+    <span class="page-number">42</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 45: SEVEN LAWS CONT ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">7 Hukum Karisma Cleopatra <span style="font-size:0.6em; opacity:0.5;">(lanjutan)</span></h2>
+    
+    <div class="manifest-item">
+        <div class="manifest-num">4</div>
+        <div class="manifest-content">
+            <h3>Pahami Orang Lebih Dalam dari Mereka Memahami Diri</h3>
+            <p>Pelajari apa yang memotivasi, menakutkan, dan membahagiakan mereka. Gunakan pemahaman ini untuk menciptakan koneksi yang tulus.</p>
+        </div>
+    </div>
+    <div class="manifest-item">
+        <div class="manifest-num">5</div>
+        <div class="manifest-content">
+            <h3>Ciptakan Momenmu Sendiri</h3>
+            <p>Jangan menunggu diundang. Kenali momen yang tepat dan masuki dengan percaya diri dan persiapan. Kesempatan tidak datang — ia diciptakan.</p>
+        </div>
+    </div>
+    <div class="manifest-item">
+        <div class="manifest-num">6</div>
+        <div class="manifest-content">
+            <h3>Bicara Untuk Membangun, Bukan Untuk Mengisi</h3>
+            <p>Setiap kata yang kamu ucapkan harus punya tujuan. Ceritakan narasi yang mengundang orang lain masuk ke dalam visimu.</p>
+        </div>
+    </div>
+    <div class="manifest-item">
+        <div class="manifest-num">7</div>
+        <div class="manifest-content">
+            <h3>Pertahankan Integritas Diri</h3>
+            <p>Ketahui siapa kamu dan apa yang tidak bisa dikompromikan. Kekuatan sejati berakar pada kejelasan tentang nilai-nilai dirimu sendiri.</p>
+        </div>
+    </div>
+    <span class="page-number">43</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 46: 30-DAY CHALLENGE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">30-Day Cleopatra Challenge</h2>
+    <p class="body-text">Tidak ada perubahan yang terjadi tanpa praktik. Berikut adalah tantangan 30 hari untuk mulai membangun karisma Cleopatra dalam hidupmu:</p>
+    
+    <div class="practice-box" data-step="MINGGU 1: KEHENINGAN">
+        <h3>Hari 1-7: Melatih Kekuatan Diam</h3>
+        <ul>
+            <li>Sebelum menjawab, selalu jeda 3-5 detik</li>
+            <li>Kurangi 50% kata-kata dalam pesan digitalmu</li>
+            <li>Dalam satu percakapan sehari, lebih banyak bertanya dari bercerita</li>
+            <li>Amati satu orang per hari dengan penuh perhatian — apa yang mereka sembunyikan?</li>
+        </ul>
+    </div>
+    <div class="practice-box" data-step="MINGGU 2: MISTERI & AURA">
+        <h3>Hari 8-14: Membangun Presence</h3>
+        <ul>
+            <li>Tetapkan "signature" penampilanmu — satu elemen yang konsisten</li>
+            <li>Kurangi berbagi update harian di media sosial</li>
+            <li>Dalam percakapan: tinggalkan selalu lebih awal, buat mereka ingin lebih</li>
+            <li>Mulai journaling strategis — catat apa yang kamu pelajari tentang orang lain</li>
+        </ul>
+    </div>
+    <div class="practice-box" data-step="MINGGU 3-4: PENGARUH">
+        <h3>Hari 15-30: Praktik Persuasi & Koneksi</h3>
+        <ul>
+            <li>Dalam setiap permintaan, mulai dari perspektif mereka, bukan perspektifmu</li>
+            <li>Berikan satu compliment yang sangat spesifik kepada seseorang setiap hari</li>
+            <li>Identifikasi satu "Caesar" dalam hidupmu dan mulai posisikan dirimu sebagai solusi</li>
+            <li>Latih satu keterampilan baru yang relevan dengan tujuanmu</li>
+        </ul>
+    </div>
+    <span class="page-number">44</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 47: CLEOPATRA AND YOU ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Cleopatra dalam Dirimu</h2>
+    <p class="body-text drop-cap">
+        Cleopatra tidak lahir dengan karisma. Ia membangunnya — melalui bertahun-tahun pendidikan, observasi, praktik, dan refleksi diri. Ia membuat kesalahan. Ia kalah dalam beberapa pertempuran. Ia kehilangan orang yang ia cintai. Tapi ia tidak pernah berhenti belajar dan tumbuh.
+    </p>
+    <p class="body-text">
+        Kekuatanmu tidak ada di luar dirimu — menunggu untuk ditemukan atau diberikan oleh seseorang. Kekuatanmu ada di dalam — dalam pikiran yang terasah, dalam karakter yang kuat, dalam keberanianmu untuk hadir sepenuhnya sebagai dirimu sendiri.
+    </p>
+    <div class="pull-quote">
+        <p>"Dunia tidak menaklukkan kamu dengan kekuatannya. Dunia menaklukkan kamu ketika kamu melupakan kekuatanmu sendiri."</p>
+    </div>
+    <p class="body-text">
+        Setiap kali kamu memilih untuk belajar sesuatu yang baru, kamu adalah Cleopatra yang mempelajari bahasa kesembilan. Setiap kali kamu memilih untuk diam dan mengamati, kamu adalah Cleopatra yang menganalisis Caesar. Setiap kali kamu menciptakan peluangmu sendiri, kamu adalah Cleopatra yang masuk ke dalam karpet itu.
+    </p>
+    <span class="page-number">45</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 48: REFLECTION QUESTIONS ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Pertanyaan Refleksi Mendalam</h2>
+    <p class="body-text">Luangkan waktu untuk menjawab pertanyaan-pertanyaan ini secara jujur. Jawaban-jawabannya adalah kompas menuju versi terkuat dirimu:</p>
+    
+    <div class="practice-box" data-step="REFLEKSI">
+        <h3>Tentang Pengetahuan & Persiapan</h3>
+        <ul>
+            <li>Apa yang sedang kamu pelajari dengan sungguh-sungguh saat ini? Apakah itu benar-benar mempersiapkanmu untuk yang kamu inginkan?</li>
+            <li>Siapa "Caesar" dalam hidupmu? Apakah kamu sudah cukup memahami mereka untuk menciptakan nilai bagi mereka?</li>
+            <li>Bahasa apa yang perlu kamu kuasai — literal atau metaforis — untuk memperluas pengaruhmu?</li>
+        </ul>
+    </div>
+    <div class="practice-box" data-step="REFLEKSI">
+        <h3>Tentang Karakter & Kehadiran</h3>
+        <ul>
+            <li>Bagaimana orang mendeskripsikanmu setelah bertemu? Apakah deskripsi itu sesuai dengan siapa yang kamu ingin menjadi?</li>
+            <li>Apakah ada sisi dirimu yang terlalu banyak kamu ungkapkan — yang mengurangi misteri dan daya tarikmu?</li>
+            <li>Seberapa sering kamu benar-benar hadir 100% dalam percakapan, tanpa distraksi?</li>
+        </ul>
+    </div>
+    <div class="practice-box" data-step="REFLEKSI">
+        <h3>Tentang Keberanian & Integritas</h3>
+        <ul>
+            <li>Apa "karpet" yang perlu kamu masuki tapi belum berani? Apa yang kamu tunggu?</li>
+            <li>Apa nilai-nilai yang tidak bisa kamu kompromikan, bahkan untuk keuntungan jangka pendek?</li>
+            <li>Jika Cleopatra melihat hidupmu hari ini, apa yang akan ia katakan?</li>
+        </ul>
+    </div>
+    <span class="page-number">46</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 49: BONUS - SHAKESPEARE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Cleopatra dalam Sastra: Shakespeare</h2>
+    <p class="body-text drop-cap">
+        Dalam drama Shakespeare <em>Antony and Cleopatra</em>, karakter Cleopatra adalah salah satu karakter wanita paling kompleks yang pernah ditulis. Shakespeare menangkap paradoks Cleopatra dengan sempurna: ia adalah ratu yang penuh teater, tapi di balik teater itu ada pikiran strategis yang terus bekerja.
+    </p>
+    <div class="historical-note">
+        <p class="hn-label">Analisis Teks Shakespeare</p>
+        <p>Enobarbus, dalam drama Shakespeare, mendeskripsikan Cleopatra: betapa kapalnya seperti singgasana berkilau, layarnya harum sehingga angin sendiri jatuh cinta. Ini bukan kecantikan fisik — ini adalah maestro staging yang memahami bahwa setiap momen bisa menjadi pertunjukan yang tak terlupakan.</p>
+    </div>
+    <p class="body-text">
+        Shakespeare juga menunjukkan sisi strategis Cleopatra melalui kematiannya — pilihan untuk "memberikan nyawa kepada Caesar" (dalam kata-katanya) daripada menjadi "boneka Mesir" yang dipertontonkan. Bahkan dalam kematian, Cleopatra memegang kontrol narasi tentang dirinya sendiri.
+    </p>
+    <div class="pull-quote">
+        <p>"Her infinite variety" — ungkapan Shakespeare tentang Cleopatra — mungkin adalah ringkasan paling tepat dari karisma: selalu ada dimensi baru untuk ditemukan, selalu ada sisi yang belum terungkap.</p>
+    </div>
+    <span class="page-number">47</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 50: HISTORICAL CONTEXT ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Konteks: Dunia Cleopatra</h2>
+    <p class="body-text drop-cap">
+        Untuk benar-benar mengapresiasi apa yang Cleopatra capai, kita harus memahami konteksnya. Ia hidup di dunia di mana wanita tidak memiliki tempat di ranah publik. Di mana otoritas — politik, militer, intelektual — secara default adalah domain pria.
+    </p>
+    <div class="lesson-box" data-label="Konteks Sejarah">
+        <h3>Dunia yang Melawan Cleopatra</h3>
+        <p>Di dunia Cleopatra, wanita diharapkan untuk: tinggal di ranah privat, tidak berbicara di ruang publik, tunduk pada ayah, suami, dan saudara laki-laki, dan tidak memiliki ambisi politik.<br><br>
+        Cleopatra melanggar semua aturan ini — bukan karena ia tidak mengerti aturannya, tapi karena ia cukup cerdas untuk tahu bahwa aturan dibuat oleh manusia, dan manusia bisa dipengaruhi untuk mengubahnya.</p>
+    </div>
+    <p class="body-text">
+        Ini adalah konteks yang perlu selalu diingat: apa yang Cleopatra capai tidak luar biasa karena ia adalah manusia luar biasa. Ia luar biasa karena ia mencapai ini di dunia yang dirancang untuk menghentikannya di setiap langkah — dan ia tetap bergerak maju.
+    </p>
+    <span class="page-number">48</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 51: THE BODY ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Bahasa Tubuh & Kekuasaan</h2>
+    <p class="body-text drop-cap">
+        Para sejarawan kuno tidak bisa melihat foto Cleopatra — tapi mereka bisa mendeskripsikan bagaimana rasanya berada di hadapannya. Dan dari deskripsi-deskripsi itu, kita bisa menyimpulkan bahwa Cleopatra memiliki kesadaran luar biasa tentang bagaimana cara membawa dirinya.
+    </p>
+    <p class="body-text">
+        Cara seseorang berjalan masuk ke ruangan, cara mereka duduk, cara mereka mengarahkan pandangan — semua ini adalah komunikasi yang terjadi sebelum satu kata pun diucapkan. Cleopatra memahami ini dan memanfaatkannya sepenuhnya.
+    </p>
+    <div class="practice-box" data-step="LATIHAN 11">
+        <h3>Power Body Language Protocol</h3>
+        <ul>
+            <li><strong style="color:var(--gold-light);">Berjalan dengan purpose:</strong> Langkah yang jelas, kecepatan yang tenang (tidak terburu-buru). Orang yang bergerak seperti mereka tahu ke mana mereka pergi menarik perhatian secara alami.</li>
+            <li><strong style="color:var(--gold-light);">Duduk dengan ekspansi:</strong> Jangan mengecilkan dirimu di kursi. Ambil ruang yang memadai. Ini bukan arogan — ini adalah tanda kepercayaan diri yang sehat.</li>
+            <li><strong style="color:var(--gold-light);">Kontak mata yang kuat:</strong> Pertahankan kontak mata saat mendengarkan (ini menunjukkan perhatian) dan saat berbicara poin penting (ini menunjukkan keyakinan).</li>
+            <li><strong style="color:var(--gold-light);">Gerakan yang terkontrol:</strong> Kurangi fidgeting — gerakan-gerakan kecil yang tidak disadari seperti memainkan rambut, mengetuk meja, atau sering menyentuh wajah menandakan kecemasan.</li>
+        </ul>
+    </div>
+    <span class="page-number">49</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 52: SELF-KNOWLEDGE ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Kenali Dirimu Sepenuhnya</h2>
+    <p class="body-text drop-cap">
+        Salah satu aspek Cleopatra yang paling sering dilewatkan adalah pemahaman mendalam tentang dirinya sendiri. Ia tahu kekuatannya — kecerdasan, kemampuan bahasa, pemahaman politik. Ia juga tahu kelemahannya — kekuasaan militernya tidak sebanding Rome, ia membutuhkan aliansi untuk bertahan.
+    </p>
+    <p class="body-text">
+        Karena ia tahu kekuatan dan kelemahannya dengan jelas, ia bisa bermain sesuai strengths dan meng-hedge weaknesses. Orang yang tidak mengenal dirinya sendiri sering bermain di arena yang salah — menggunakan kekuatan yang salah di momen yang salah.
+    </p>
+    <div class="lesson-box" data-label="Self-Knowledge Framework">
+        <h3>Peta Kekuatan Diri Cleopatra</h3>
+        <p><strong style="color:var(--gold-light);">Kekuatan yang ia gunakan secara maksimal:</strong> Kecerdasan, kemampuan komunikasi, pemahaman budaya, kemampuan membaca manusia.<br><br>
+        <strong style="color:var(--gold-light);">Kelemahan yang ia kompensasi secara strategis:</strong> Kekuatan militer yang lebih lemah dari Rome → dikompensasi dengan aliansi diplomatik; Status sebagai wanita di dunia patriarki → dikompensasi dengan menampilkan diri sebagai dewi Isis sekaligus ratu.<br><br>
+        Pertanyaan untuk kamu: <em>Apa kekuatan terbesar yang belum kamu gunakan sepenuhnya? Dan apa kelemahan yang bisa dikompensasi dengan strategi?</em></p>
+    </div>
+    <span class="page-number">50</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 53: RELATIONSHIPS ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Hubungan Sebagai Strategi Jangka Panjang</h2>
+    <p class="body-text drop-cap">
+        Cleopatra tidak membangun hubungan untuk jangka pendek. Setiap koneksi yang ia buat — dengan Caesar, Antony, dengan pejabat-pejabatnya, dengan para pedagang dan diplomat — ia rawat dengan visi jangka panjang.
+    </p>
+    <p class="body-text">
+        Ini bukan manipulasi. Ini adalah pemahaman bahwa hubungan adalah aset jangka panjang yang memerlukan investasi konsisten. Cleopatra tidak hanya muncul ketika ia membutuhkan sesuatu — ia hadir, ia memberikan nilai, ia membangun kepercayaan dari waktu ke waktu.
+    </p>
+    <div class="practice-box" data-step="LATIHAN 12">
+        <h3>Membangun Jaringan ala Cleopatra</h3>
+        <ul>
+            <li><strong style="color:var(--gold-light);">Peta hubunganmu:</strong> Identifikasi siapa yang paling penting dalam ekosistemmu. Bukan siapa yang paling kamu sukai — siapa yang posisinya paling strategis.</li>
+            <li><strong style="color:var(--gold-light);">Berikan nilai lebih dulu:</strong> Jangan hubungi seseorang hanya ketika kamu butuh sesuatu. Kirim artikel yang relevan, berikan informasi berguna, rayakan pencapaian mereka.</li>
+            <li><strong style="color:var(--gold-light);">Jadilah orang yang menghubungkan:</strong> Cleopatra menghubungkan dunia Mesir dan Roma. Posisikan dirimu sebagai konekter — orang yang menghubungkan orang dengan sumber daya yang mereka butuhkan.</li>
+            <li><strong style="color:var(--gold-light);">Ingat detail kecil:</strong> Nama anak mereka, passion mereka, tantangan yang sedang mereka hadapi. Ini menciptakan perasaan dipahami yang sangat langka dan sangat berharga.</li>
+        </ul>
+    </div>
+    <span class="page-number">51</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 54: BOUNDARIES ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Batas yang Tak Terlihat tapi Kuat</h2>
+    <p class="body-text drop-cap">
+        Cleopatra memiliki batas yang sangat jelas — tentang apa yang bisa ia terima dan apa yang tidak. Ketika Caesar mencoba menempatkan dirinya dalam posisi subordinat, Cleopatra dengan elegan menolak — bukan dengan konfrontasi langsung, tapi dengan terus menampilkan dirinya sebagai mitra yang setara.
+    </p>
+    <p class="body-text">
+        Batas yang sehat bukan tentang berkata "tidak" dengan keras. Batas adalah tentang mengetahui dirimu cukup baik sehingga kamu tahu — tanpa ragu — apa yang konsisten dengan siapa kamu dan apa yang tidak.
+    </p>
+    <div class="lesson-box" data-label="Batas yang Elegan">
+        <h3>Cara Cleopatra Menegakkan Batas</h3>
+        <p><strong style="color:var(--gold-light);">Bukan dengan konfrontasi:</strong> Cleopatra tidak berteriak atau mengancam. Ia cukup dengan tidak merespons dinamika yang tidak ia setujui — menciptakan ruang kosong yang mengkomunikasikan ketidaksetujuannya.<br><br>
+        <strong style="color:var(--gold-light);">Dengan konsistensi:</strong> Batas yang ditegakkan satu kali tapi kemudian dilanggar tidak ada gunanya. Cleopatra konsisten — dan konsistensi itu membangun rasa hormat yang bertahan.<br><br>
+        <strong style="color:var(--gold-light);">Dengan mempertahankan nilai dirinya:</strong> Ia tidak pernah merendahkan posisinya untuk membuat orang lain nyaman. Ia mengangkat standar — dan mengundang orang lain untuk bertemu standar itu.</p>
+    </div>
+    <span class="page-number">52</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 55: MODERN CLEOPATRA ═══════════════════════════════════════ -->
+<div class="page content-page">
+    <h2 class="section-title">Cleopatra Modern: Kamu</h2>
+    <p class="body-text drop-cap">
+        Dunia tahun 2025 berbeda secara radikal dari Alexandria 69 SM. Tapi prinsip-prinsip yang Cleopatra hidupkan tidak berubah — karena prinsip-prinsip itu bukan tentang zamannya. Mereka adalah prinsip tentang sifat dasar manusia.
+    </p>
+    <p class="body-text">
+        Manusia masih tertarik pada mereka yang hadir sepenuhnya. Manusia masih terpesona oleh misteri yang terkelola. Manusia masih merespons dengan loyal kepada mereka yang membuat mereka merasa dipahami dan dilihat. Manusia masih kagum pada keberanian yang terkalkulasi.
+    </p>
+    <div class="lesson-box" data-label="Cleopatra di Era Modern">
+        <h3>Terjemahan untuk Kehidupan Hari Ini</h3>
+        <p><strong style="color:var(--gold-light);">Sembilan bahasa Cleopatra =</strong> Kemampuan membaca "bahasa" berbagai industri, budaya, dan kepribadian.<br><br>
+        <strong style="color:var(--gold-light);">Karpet Cleopatra =</strong> Email cold yang berani, permintaan meeting yang tidak konvensional, presentasi yang tak terduga.<br><br>
+        <strong style="color:var(--gold-light);">Parfum signature Cleopatra =</strong> Personal brand yang konsisten dan tak terlupakan.<br><br>
+        <strong style="color:var(--gold-light);">Aliansi Caesar dan Antony =</strong> Jaringan strategis yang dibangun dengan nilai timbal balik yang nyata.</p>
+    </div>
+    <span class="page-number">53</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 56: FINAL MANIFESTO ═══════════════════════════════════════ -->
+<div class="page" style="background: var(--dark); justify-content:center; padding:80px 10%;">
+    <h2 class="section-title">Manifesto Cleopatra Modern</h2>
+    <div class="divider-full"></div>
+    
+    <p class="body-text" style="font-family:'Cormorant Garamond', serif; font-size:20px; font-style:italic; line-height:2.1; max-width:750px; opacity:0.9;">
+        Aku percaya bahwa kekuatan sejati bukan berasal dari luar — dari penampilan, dari persetujuan orang lain, atau dari jabatan yang dipegang. Kekuatan sejati berasal dari dalam.
+    </p>
+    <p class="body-text" style="font-family:'Cormorant Garamond', serif; font-size:20px; font-style:italic; line-height:2.1; max-width:750px; opacity:0.9;">
+        Aku akan terus belajar — tidak hanya tentang duniaku, tapi tentang dunia orang-orang yang ada di sekitarku. Setiap bahasa yang kupahami, dalam arti literal maupun metaforis, adalah pintu baru yang terbuka.
+    </p>
+    <p class="body-text" style="font-family:'Cormorant Garamond', serif; font-size:20px; font-style:italic; line-height:2.1; max-width:750px; opacity:0.9;">
+        Aku akan memilih keheningan yang kuat daripada kebisingan yang kosong. Aku akan hadir sepenuhnya, mendengar secara mendalam, dan berbicara dengan tujuan.
+    </p>
+    <p class="body-text" style="font-family:'Cormorant Garamond', serif; font-size:20px; font-style:italic; line-height:2.1; max-width:750px; opacity:0.9;">
+        Aku tidak akan menunggu kesempatan. Aku akan menciptakannya — dengan keberanian yang terkalkulasi dan persiapan yang tak terlihat.
+    </p>
+    <p class="body-text" style="font-family:'Cormorant Garamond', serif; font-size:20px; font-style:italic; line-height:2.1; max-width:750px; opacity:0.9;">
+        Dan di atas segalanya, aku akan menjaga integritas diriku — karena itulah satu-satunya hal yang tidak bisa diambil oleh siapapun.
+    </p>
+    <div class="ornament">𓂀 ❖ 𓆙 ❖ 𓂀</div>
+    <span class="page-number">54</span>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE 57: CLOSING ═══════════════════════════════════════ -->
+<div class="page closing-page">
+    <div class="ornament" style="position:relative;">𓆙 ❖ 𓆙</div>
+    <div class="divider"></div>
+    <p class="closing-quote">
+        "Age cannot wither her, nor custom stale her infinite variety."
+    </p>
+    <p style="font-family:'Cinzel', serif; font-size:11px; letter-spacing:4px; color:var(--stone); position:relative; margin-bottom:60px;">— WILLIAM SHAKESPEARE, ANTONY AND CLEOPATRA</p>
+    
+    <div class="divider-full"></div>
+    
+    <p style="font-family:'Cormorant Garamond', serif; font-size:22px; font-style:italic; color:var(--cream); max-width:650px; line-height:1.8; position:relative; opacity:0.85; margin-bottom:40px;">
+        Cleopatra tidak hidup 2000 tahun yang lalu. Ia hidup setiap kali seseorang memilih untuk tumbuh, bukan menyerah. Setiap kali seseorang berbicara dengan penuh niat, bukan hanya kebisingan. Setiap kali seseorang berani memasuki karpet itu.
+    </p>
+    <div class="ornament" style="position:relative;">𓂀</div>
+    <p style="font-family:'Cinzel', serif; font-size:11px; letter-spacing:6px; color:var(--gold); position:relative; opacity:0.5; margin-top:40px;">THE LAST QUEEN OF EGYPT · CLEOPATRA VII · 69 BC – 30 BC</p>
+    <span class="page-number">55</span>
+</div>
+
+<!-- ═══════════════════════════════════════ BACK COVER ═══════════════════════════════════════ -->
+<div class="page" style="background: var(--black); text-align:center;">
+    <div style="position:absolute; inset:20px; border:1px solid rgba(201,168,76,0.2);"></div>
+    <div class="cover-corner tl" style="top:30px; left:30px;"></div>
+    <div class="cover-corner tr" style="top:30px; right:30px;"></div>
+    <div class="cover-corner bl" style="bottom:30px; left:30px;"></div>
+    <div class="cover-corner br" style="bottom:30px; right:30px;"></div>
+    
+    <div style="position:relative; z-index:2; max-width:600px;">
+        <div class="ornament" style="margin-bottom:40px;">𓂀</div>
+        <p style="font-family:'Cormorant Garamond', serif; font-size:21px; font-style:italic; color:var(--cream); line-height:1.9; margin-bottom:40px; opacity:0.85;">
+            "Kamu tidak membutuhkan kecantikan untuk menjadi tak terlupakan. Kamu membutuhkan kehadiran, kecerdasan, dan keberanian untuk menjadi dirimu sendiri — sepenuhnya, tanpa permintaan maaf."
+        </p>
+        <div class="divider"></div>
+        <div style="margin-top:40px;">
+            <p style="font-family:'Cinzel Decorative', serif; font-size:32px; font-weight:900; color:var(--gold-light); letter-spacing:6px;">CLEOPATRA</p>
+            <p style="font-family:'Cinzel', serif; font-size:11px; letter-spacing:4px; color:var(--stone); margin-top:8px;">THE ART OF MAGNETIC CHARISMA</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

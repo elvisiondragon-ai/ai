@@ -27,7 +27,12 @@ export default function PaypalPaymentPage() {
     s = b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t, s);
     
-    f.fbq('init', '3319324491540889');
+    f.fbq('init', '3319324491540889', {
+      em: '',
+      ph: '',
+      fn: '',
+      ln: ''
+    });
     f.fbq('track', 'PageView');
   }, []);
 
