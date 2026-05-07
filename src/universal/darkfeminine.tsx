@@ -105,6 +105,13 @@ import p_presence_df_0424_ad07_single_sahabat from '../assets/darkfem/parameter/
 import p_presence_presence_01_diam_membunuh_1777550881301 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_1777550881301.png';
 import p_presence_presence_01_diam_membunuh_v2_1777550965342 from '../assets/darkfem/parameter/presence/presence_01_diam_membunuh_v2_1777550965342.png';
 import p_presence_presence_02_invisible_dunia_v2_1777550999292 from '../assets/darkfem/parameter/presence/presence_02_invisible_dunia_v2_1777550999292.png';
+// -- cleopatra
+import df_cleopatra_deleted_notes from '../assets/darkfem/cleo/df_cleopatra_deleted_notes_1778144424565.png';
+import df_cleopatra_imagine_if from '../assets/darkfem/cleo/df_cleopatra_imagine_if_1778144214311.png';
+import df_cleopatra_kings_list from '../assets/darkfem/cleo/df_cleopatra_kings_list_1778143886051.png';
+import df_cleopatra_ordinary_extraordinary from '../assets/darkfem/cleo/df_cleopatra_ordinary_extraordinary_1778144499585.png';
+import df_cleopatra_pelakor from '../assets/darkfem/cleo/df_cleopatra_pelakor_1778143864099.png';
+import df_cleopatra_protocol_5000 from '../assets/darkfem/cleo/df_cleopatra_protocol_5000_v2_1778149279607.png';
 // -- perubahan
 import p_perubahan_df_0424_ad14_istri_gantirambut from '../assets/darkfem/parameter/perubahan/df_0424_ad14_istri_gantirambut.png';
 import p_perubahan_perubahan_01_satu_shift_v2_1777551074543 from '../assets/darkfem/parameter/perubahan/perubahan_01_satu_shift_v2_1777551074543.png';
@@ -227,6 +234,7 @@ const assetsMap: any = {
         p_presence_presence_01_diam_membunuh_1777550881301,
         p_presence_presence_01_diam_membunuh_v2_1777550965342,
         p_presence_presence_02_invisible_dunia_v2_1777550999292,
+        df_cleopatra_deleted_notes, df_cleopatra_imagine_if, df_cleopatra_kings_list, df_cleopatra_ordinary_extraordinary, df_cleopatra_pelakor, df_cleopatra_protocol_5000,
         p_perubahan_df_0424_ad14_istri_gantirambut,
         p_perubahan_perubahan_01_satu_shift_v2_1777551074543,
         p_perubahan_perubahan_02_frekuensi_salah_v2_1777551089169,
@@ -1401,6 +1409,19 @@ const DarkFeminineTSX = () => {
                     after: 'Saya sadar saya selalu memberi semua dalam percakapan pertama — bercerita panjang, tertawa keras, langsung memberi solusi atas masalah mereka. Setelah saya terapkan jurus mystery dan jeda, dosen pembimbing saya mengundang saya makan malam private (saya sopan menolak), dan dua teman lama tiba-tiba "menyadari" saya. Salah satunya sekarang pacar saya.',
                 },
             ],
+        },
+        paramCleopatra: {
+            label: "FAKTA SEJARAH",
+            h2a: "Kebenaran tentang Sang",
+            h2b: "Legenda Cleopatra",
+            images: [
+                'df_cleopatra_pelakor',
+                'df_cleopatra_imagine_if',
+                'df_cleopatra_ordinary_extraordinary',
+                'df_cleopatra_protocol_5000',
+                'df_cleopatra_kings_list',
+                'df_cleopatra_deleted_notes'
+            ]
         },
     } : null;
 
@@ -3130,6 +3151,27 @@ const DarkFeminineTSX = () => {
                                                 <span>{item.a}</span>
                                             </div>
                                         </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
+                    {sc.paramCleopatra && (
+                        <section style={{ background: 'var(--bg-primary)', padding: '44px 0' }}>
+                            <div className="df-wrap df-fade-in">
+                                <div className="df-section-label">{sc.paramCleopatra.label}</div>
+                                <h2 className="df-section-h2">
+                                    <span>{sc.paramCleopatra.h2a}</span>
+                                    <span className="df-newline df-gold">{sc.paramCleopatra.h2b}</span>
+                                </h2>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '20px' }}>
+                                    {sc.paramCleopatra.images.map((imgKey: string, i: number) => (
+                                        assets[imgKey] && (
+                                            <div key={i} style={{ borderRadius: '18px', overflow: 'hidden', border: '1px solid rgba(201,153,26,0.2)' }}>
+                                                <img src={assets[imgKey]} alt={`Cleopatra ${i+1}`} style={{ width: '100%', display: 'block' }} loading="lazy" />
+                                            </div>
+                                        )
                                     ))}
                                 </div>
                             </div>
