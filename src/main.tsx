@@ -3,17 +3,6 @@
 export const APP_VERSION = (window as any).__APP_VERSION__ as string;
 // ==========================================
 
-if (localStorage.getItem('v_cache') !== APP_VERSION) {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
-  }
-  if ('caches' in window) {
-    caches.keys().then(names => names.forEach(n => caches.delete(n)));
-  }
-  localStorage.setItem('v_cache', APP_VERSION);
-  setTimeout(() => window.location.reload(), 500);
-}
-
 import ReactDOM from 'react-dom/client'
 import React, { Suspense } from 'react'
 import './index.css'
