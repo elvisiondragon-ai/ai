@@ -2278,42 +2278,7 @@ const DarkFeminineTSX = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Background preload: after page is idle, silently fetch ALL images into browser cache
-    // (all 3 locale asset maps) so they appear instantly when user scrolls
-    useEffect(() => {
-        const allSrcs = [
-            ...Object.values(assetsMap.id),
-            ...Object.values(assetsMap.en),
-            ...Object.values(assetsMap.ph),
-        ] as string[];
-        
-        // Use the actual lang used for content
-        const contentLang = lang === 'sg' ? 'en' : lang;
-        const heroSrc = assetsMap[contentLang]?.df08 || assetsMap.id.df08;
-        const toPreload = [...new Set(allSrcs)].filter(src => src !== heroSrc);
 
-        const preloadBatch = (srcs: string[]) => {
-            srcs.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        };
-
-        const startPreload = () => {
-            if ('requestIdleCallback' in window) {
-                const third = Math.ceil(toPreload.length / 3);
-                (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(0, third)));
-                (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third, third * 2)));
-                (window as any).requestIdleCallback(() => preloadBatch(toPreload.slice(third * 2)));
-            } else {
-                preloadBatch(toPreload);
-            }
-        };
-
-        // Fire after 2 seconds to not interfere with initial load
-        const timer = setTimeout(startPreload, 2000);
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <div style={{ position: 'relative' }}>
